@@ -1,6 +1,6 @@
-import { Flex, Text } from "@/primitives/main";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/main";
+import { Flex, Text } from "@/primitives/main";
 
 export interface TextInputProps extends React.ComponentProps<"input"> {
   name: string;

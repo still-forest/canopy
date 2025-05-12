@@ -1,6 +1,6 @@
-import { Flex } from "@/primitives/main";
-import { Button as BaseButton } from "@/components/ui/button";
 import type React from "react";
+import { Button as BaseButton } from "@/components/ui/button";
+import { Flex } from "@/primitives/main";
 
 export type BaseButtonVariant = "default" | "secondary" | "destructive" | "outline" | "ghost" | "link";
 export type BaseButtonSize = "default" | "sm" | "lg" | "icon";
