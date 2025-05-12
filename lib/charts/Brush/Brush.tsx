@@ -8,9 +8,9 @@ import { scaleLinear, scaleTime } from "@visx/scale";
 import { extent } from "@visx/vendor/d3-array";
 import { useCallback, useMemo, useRef } from "react";
 
-import type { DataPoint } from "@/AreaChart";
+import type { DataPoint } from "@/charts/AreaChart";
 
-import chartStyle from "@/styles/charts";
+import chartStyle from "@/charts/styles";
 
 export interface BrushProps {
   data: DataPoint[];

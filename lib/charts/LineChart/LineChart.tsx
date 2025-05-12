@@ -1,4 +1,3 @@
-import { Flex, Text } from "@jszymanowski/breeze-primitives";
 import type ProperDate from "@jszymanowski/proper-date.js";
 import { AxisBottom, AxisLeft } from "@visx/axis";
 import { curveMonotoneX } from "@visx/curve";
@@ -11,11 +10,11 @@ import { useTooltip, useTooltipInPortal } from "@visx/tooltip";
 import { bisector, extent, max, min } from "@visx/vendor/d3-array";
 import type React from "react";
 import { useMemo } from "react";
-import { Crosshair } from "@/components/Crosshair";
-import { Separator } from "@/components/ui/separator";
-
-import chartStyle, { defaultTooltipStyles } from "@/styles/charts";
-import color from "@/styles/color";
+import { Crosshair } from "@/charts/components/Crosshair";
+import { Separator } from "@/charts/components/ui/separator";
+import chartStyle, { defaultTooltipStyles } from "@/charts/styles";
+import color from "@/color";
+import { Flex, Text } from "@/primitives/main";
 
 type TooltipData = {
   dataPoint: DataPoint;

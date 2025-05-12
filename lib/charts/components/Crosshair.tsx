@@ -1,8 +1,8 @@
 import { Line } from "@visx/shape";
 import React from "react";
 
-import chartStyle from "@/styles/charts";
-import color from "@/styles/color";
+import chartStyle from "@/charts/styles";
+import color from "@/color";
 
 interface CrosshairProps {
   left: number;

@@ -3,26 +3,25 @@ import type { Preview } from "@storybook/react";
 import React from "react";
 
 import ThemeProvider from "../src/context/ThemeProvider";
+import { THEMES } from "../src/context/ThemeProviderContext";
 
-import "@src/index.css";
+import "../src/index.css";
 
 const preview: Preview = {
   decorators: [
     (Story) => (
-      <ThemeProvider defaultTheme="light" storageKey="breeze-primitives-storybook-theme">
-        <div className="bg-background p-1 outline-2 outline-gray-200">
+      <ThemeProvider defaultTheme={THEMES.LIGHT} storageKey="breeze-charts-storybook-theme">
+        <div className="w-full min-w-[800px] bg-background p-1 outline-2 outline-gray-200 ">
           <Story />
         </div>
       </ThemeProvider>
     ),
     withThemeByClassName({
       themes: {
-        light: "",
-        dark: "dark",
-        slateLight: "slate-light",
-        slateDark: "slate-dark",
+        [THEMES.LIGHT]: "",
+        [THEMES.DARK]: THEMES.DARK,
       },
-      defaultTheme: "light",
+      defaultTheme: THEMES.LIGHT,
       parentSelector: "html",
     }),
   ],

@@ -1,4 +1,4 @@
-import { Text } from "@jszymanowski/breeze-primitives";
+import { Text } from "@/primitives/main";
 import type { Meta, StoryObj } from "@storybook/react";
 
 const meta: Meta<typeof Text> = {

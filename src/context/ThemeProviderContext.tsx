@@ -1,6 +1,13 @@
 import { createContext } from "react";
 
-export type Theme = "dark" | "light" | "system";
+export const THEMES = {
+  LIGHT: "light",
+  DARK: "dark",
+  SYSTEM: "system",
+} as const;
+const themeValues = Object.values(THEMES);
+
+export type Theme = (typeof themeValues)[number];
 
 type ThemeProviderState = {
   theme: Theme;
@@ -8,7 +15,7 @@ type ThemeProviderState = {
 };
 
 const initialState: ThemeProviderState = {
-  theme: "light",
+  theme: THEMES.LIGHT,
   setTheme: () => null,
 };
 

@@ -1,4 +1,4 @@
-import color from "@/styles/color";
+import color from "@/color";
 
 export default {
   colors: {

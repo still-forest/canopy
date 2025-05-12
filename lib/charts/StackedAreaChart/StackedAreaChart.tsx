@@ -1,4 +1,3 @@
-import { Text } from "@jszymanowski/breeze-primitives";
 import ProperDate from "@jszymanowski/proper-date.js";
 import { AxisBottom, AxisLeft, type AxisScale } from "@visx/axis";
 import { curveMonotoneX } from "@visx/curve";
@@ -12,16 +11,15 @@ import { useTooltip, useTooltipInPortal } from "@visx/tooltip";
 import { bisector, extent, max, min } from "@visx/vendor/d3-array";
 import type { NumberValue } from "@visx/vendor/d3-scale";
 import { useId, useMemo, useRef } from "react";
-
-import { Crosshair } from "@/components/Crosshair";
-import { Separator } from "@/components/ui/separator";
-
-import chartStyle from "@/styles/charts";
-import { defaultTooltipStyles } from "@/styles/charts";
-import color from "@/styles/color";
-import { displayUsd } from "@/utilities";
-import { getTickValues, scaleUpNeatly } from "@/utilities";
-import type { VisxAreaStack, VisxAreaStackData, VisxAreaStackDataPoint } from "@/visx-types";
+import { Crosshair } from "@/charts/components/Crosshair";
+import { Separator } from "@/charts/components/ui/separator";
+import chartStyle from "@/charts/styles";
+import { defaultTooltipStyles } from "@/charts/styles";
+import { displayUsd } from "@/charts/utilities";
+import { getTickValues, scaleUpNeatly } from "@/charts/utilities";
+import type { VisxAreaStack, VisxAreaStackData, VisxAreaStackDataPoint } from "@/charts/visx-types";
+import color from "@/color";
+import { Text } from "@/primitives/main";
 import type { DataPoint, TooltipData } from "./types";
 
 export type StackedAreaChartProps = {

@@ -7,8 +7,8 @@ import { scaleLinear, scaleTime } from "@visx/scale";
 import { AreaClosed } from "@visx/shape";
 import { extent, max, min } from "@visx/vendor/d3-array";
 import React, { useMemo } from "react";
-import chartStyle from "@/styles/charts";
-import { scaleUpNeatly } from "@/utilities";
+import chartStyle from "@/charts/styles";
+import { scaleUpNeatly } from "@/charts/utilities";
 
 type ChildWithSizes = {
   width?: number;
