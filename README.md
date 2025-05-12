@@ -22,7 +22,6 @@ _React components, built with Tailwind CSS, Shadcn, and VisX_
   - [Renovate](https://developer.mend.io/github/still-forest/canopy)
 - Other documentation, documents
   - [Changelog](./CHANGELOG.md)
-  - [Roadmap](./docs/ROADMAP.md)
 
 ---
 
@@ -42,7 +41,3 @@ Example `index.css`:
   /* your usual CSS definitions */
 }
 ```
-
-## Other
-
-### [Roadmap](ROADMAP.md)
