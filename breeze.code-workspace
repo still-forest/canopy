@@ -1,22 +1,4 @@
 {
-  "folders": [
-    {
-      "name": "project-root",
-      "path": "."
-    },
-    {
-      "name": "primitives",
-      "path": "packages/primitives"
-    },
-    {
-      "name": "forms",
-      "path": "packages/forms"
-    },
-    {
-      "name": "charts",
-      "path": "packages/charts"
-    }
-  ],
   "settings": {
     "npm.packageManager": "pnpm",
     "files.exclude": {

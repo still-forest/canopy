@@ -1,4 +1,0 @@
-# https://biomejs.dev/guides/integrate-in-vcs/
-# "For now, Biome only takes the ignore file in the working directory into account.""
-coverage
-storybook-static
