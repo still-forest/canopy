@@ -1,0 +1,55 @@
+{
+  "settings": {
+    "npm.packageManager": "pnpm",
+    "files.exclude": {
+      "**/dist": true,
+      "**/coverage": true,
+      "**/node_modules": true,
+      "**/storybook-static": true,
+      "build-storybook.log": true
+    },
+    "[javascript]": {
+      "editor.defaultFormatter": "biomejs.biome",
+      "editor.formatOnSave": true
+    },
+    "[javascriptreact]": {
+      "editor.defaultFormatter": "biomejs.biome",
+      "editor.formatOnSave": true
+    },
+    "[typescript]": {
+      "editor.defaultFormatter": "biomejs.biome",
+      "editor.formatOnSave": true
+    },
+    "[typescriptreact]": {
+      "editor.defaultFormatter": "biomejs.biome",
+      "editor.formatOnSave": true
+    },
+    "[json]": {
+      "editor.defaultFormatter": "biomejs.biome",
+      "editor.formatOnSave": true
+    },
+    "[jsonc]": {
+      "editor.defaultFormatter": "biomejs.biome",
+      "editor.formatOnSave": true
+    },
+    "[css]": {
+      "editor.defaultFormatter": "biomejs.biome",
+      "editor.formatOnSave": true
+    },
+    "[yaml]": {
+      "editor.defaultFormatter": "biomejs.biome",
+      "editor.formatOnSave": true
+    },
+    "terminal.integrated.env.linux": {
+      "NODE_ENV": "development",
+      "ENV": "development"
+    },
+    "terminal.integrated.env.osx": {
+      "NODE_ENV": "development",
+      "ENV": "development"
+    }
+  },
+  "extensions": {
+    "recommendations": ["biomejs.biome"]
+  }
+}

@@ -1,0 +1,10 @@
+export type { BoxProps } from "@/primitives/Box";
+export { Box } from "@/primitives/Box";
+export type { FlexProps } from "@/primitives/Flex";
+export { Flex } from "@/primitives/Flex";
+export type { GridProps } from "@/primitives/Grid";
+export { Grid } from "@/primitives/Grid";
+export type { HeadingProps } from "@/primitives/Heading";
+export { Heading } from "@/primitives/Heading";
+export type { TextProps } from "@/primitives/Text";
+export { Text } from "@/primitives/Text";

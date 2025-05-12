@@ -1,0 +1,15 @@
+{
+  "$schema": "https://biomejs.dev/schemas/2.0.0-beta.2/schema.json",
+  "extends": ["@jszymanowski/biomejs-config"],
+  "linter": {
+    "rules": {
+      "suspicious": {
+        "noArrayIndexKey": "warn"
+      },
+      "a11y": {
+        "useSemanticElements": "warn",
+        "noSvgWithoutTitle": "warn"
+      }
+    }
+  }
+}
