@@ -1,4 +1,4 @@
-import Code from "@stories/templates/Code";
+import Code from "@root/src/components/Code";
 import { Fragment } from "react";
 import { Flex, Grid, type HeadingProps } from "@/main";
 import type { Gap } from "@/types";

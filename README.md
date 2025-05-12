@@ -17,11 +17,9 @@ _React components, built with Tailwind CSS, Shadcn, and VisX_
   - [Vitest](https://vitest.dev/guide/)
 - Documentation via Storybook
   - [Github Pages](https://still-forest.github.io/canopy/) - docs only
-  - [Chromatic](https://67ccefd8fafa91b1c6c38501-dubbfpsqzi.chromatic.com/) - full suite of stories
 - Development
-  - [Chromatic builds](https://www.chromatic.com/builds?appId=67ccefd8fafa91b1c6c38501)
-  - [CodeCov](https://app.codecov.io/gh/jszymanowski/canopy)
-  - [Renovate](https://developer.mend.io/github/jszymanowski/canopy)
+  - [CodeCov](https://app.codecov.io/gh/still-forest/canopy)
+  - [Renovate](https://developer.mend.io/github/still-forest/canopy)
 - Other documentation, documents
   - [Changelog](./CHANGELOG.md)
   - [Roadmap](./docs/ROADMAP.md)

@@ -1,4 +1,4 @@
-import Code from "@stories/templates/Code";
+import Code from "@root/src/components/Code";
 import { Fragment } from "react";
 import { Box, Flex, Grid, type HeadingProps, Text } from "@/main";
 import { FONT_FAMILIES, type FontFamily } from "@/types";
