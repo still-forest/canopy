@@ -1,11 +1,9 @@
-name: Publish Storybook Docs to GitHub Pages
+name: Publish Storybook docs to GitHub Pages
 
 on:
   push:
     branches:
       - main
-    paths:
-      - "packages/primitives/**"
 
 permissions:
   contents: read
@@ -16,10 +14,6 @@ jobs:
   deploy:
     runs-on: ubuntu-latest
     timeout-minutes: 2
-
-    defaults:
-      run:
-        working-directory: ./packages/primitives
 
     steps:
       - name: Checkout code

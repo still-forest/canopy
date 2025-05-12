@@ -4,45 +4,14 @@ on:
   pull_request:
     branches:
       - main
-    paths:
-      - "packages/**"
 
 jobs:
-  detect-changes:
-    runs-on: ubuntu-latest
-    outputs:
-      packages: ${{ steps.filter.outputs.changes }}
-    steps:
-      - name: Checkout code
-        uses: actions/checkout@v4
-
-      - name: Detect file changes
-        uses: dorny/paths-filter@v3
-        id: filter
-        with:
-          filters: |
-            primitives:
-              - 'packages/primitives/**'
-            forms:
-              - 'packages/forms/**'
-            charts:
-              - 'packages/charts/**'
-
   test-suite:
-    needs: detect-changes
     strategy:
       matrix:
-        package: ${{ fromJSON(needs.detect-changes.outputs.packages) }}
         task: [audit, lint, test, build]
     runs-on: ubuntu-latest
     timeout-minutes: 5
-
-    # Skip if no packages were changed
-    if: ${{ needs.detect-changes.outputs.packages != '[]' }}
-
-    defaults:
-      run:
-        working-directory: ./packages/${{ matrix.package }}
 
     steps:
       - name: Checkout code

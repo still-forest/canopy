@@ -4,50 +4,14 @@ on:
   push:
     branches:
       - main
-    paths:
-      - "packages/**"
   pull_request:
     branches:
       - main
-    paths:
-      - "packages/**"
 
 jobs:
-  detect-changes:
-    runs-on: ubuntu-latest
-    outputs:
-      packages: ${{ steps.filter.outputs.changes }}
-    steps:
-      - name: Checkout code
-        uses: actions/checkout@v4
-
-      - name: Detect file changes
-        uses: dorny/paths-filter@v3
-        id: filter
-        with:
-          filters: |
-            primitives:
-              - 'packages/primitives/**'
-            forms:
-              - 'packages/forms/**'
-            charts:
-              - 'packages/charts/**'
-
   test-coverage:
-    needs: detect-changes
     runs-on: ubuntu-latest
     timeout-minutes: 5
-
-    # Skip if no packages were changed
-    if: ${{ needs.detect-changes.outputs.packages != '[]' }}
-
-    strategy:
-      matrix:
-        package: ${{ fromJSON(needs.detect-changes.outputs.packages) }}
-
-    defaults:
-      run:
-        working-directory: ./packages/${{ matrix.package }}
 
     steps:
       - name: Checkout code
@@ -71,6 +35,4 @@ jobs:
         uses: codecov/codecov-action@v5
         with:
           token: ${{ secrets.CODECOV_TOKEN }}
-          directory: ./packages/${{ matrix.package }}/coverage/
-          flags: ${{ matrix.package }}
           fail_ci_if_error: false
