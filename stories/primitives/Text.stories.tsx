@@ -25,7 +25,7 @@ import {
 } from "@/types";
 
 const meta: Meta<typeof Text> = {
-  title: "Typography/Text",
+  title: "Primitives/Typography/Text",
   component: Text,
   parameters: {
     layout: "centered",

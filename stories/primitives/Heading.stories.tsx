@@ -23,7 +23,7 @@ import {
 } from "@/types";
 
 const meta: Meta<typeof Heading> = {
-  title: "Typography/Heading",
+  title: "Primitives/Typography/Heading",
   component: Heading,
   parameters: {
     layout: "centered",

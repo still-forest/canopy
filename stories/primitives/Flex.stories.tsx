@@ -15,7 +15,7 @@ import {
 } from "@/types";
 
 const meta: Meta<typeof Flex> = {
-  title: "Layout/Flex",
+  title: "Primitives/Layout/Flex",
   component: Flex,
   parameters: {
     layout: "centered",

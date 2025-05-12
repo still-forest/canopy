@@ -17,7 +17,7 @@ import {
 } from "@/types";
 
 const meta: Meta<typeof Box> = {
-  title: "Layout/Box",
+  title: "Primitives/Layout/Box",
   component: Box,
   parameters: {
     layout: "centered",

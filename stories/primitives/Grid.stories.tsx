@@ -6,7 +6,7 @@ import { Box, Flex, Grid, Heading } from "@/main";
 import { GAPS, GRID_COLS, GRID_FLOWS, GRID_ROWS, LAYOUT_ELEMENTS } from "@/types";
 
 const meta = {
-  title: "Layout/Grid",
+  title: "Primitives/Layout/Grid",
   component: Grid,
   parameters: {
     layout: "centered",

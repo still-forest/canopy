@@ -1,4 +1,3 @@
-// Primitives
 export type { BoxProps } from "@/primitives/Box";
 export { Box } from "@/primitives/Box";
 export type { FlexProps } from "@/primitives/Flex";
