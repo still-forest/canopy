@@ -1,0 +1,5 @@
+{
+  "extends": [
+    "github>jszymanowski/renovate-config:npm-package#v0.10.0"
+  ]
+}
