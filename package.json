@@ -37,7 +37,8 @@
     "test": "vitest",
     "test:coverage": "vitest run --coverage",
     "test:watch": "vitest --watch",
-    "release": "release-it"
+    "release": "release-it",
+    "release:dry-run": "release-it --dry-run"
   },
   "dependencies": {
     "@radix-ui/react-dialog": "^1.1.10",
