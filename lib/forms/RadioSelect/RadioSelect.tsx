@@ -8,8 +8,8 @@ interface Option {
 }
 
 interface RadioSelectProps {
-  label?: string;
   name: string;
+  label?: string;
   value?: string;
   options: Option[];
   onChange?: (value: string) => void;
