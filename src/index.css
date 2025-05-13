@@ -1,4 +1,7 @@
 @import "tailwindcss";
+@import "tw-animate-css";
+
+@custom-variant dark (&:is(.dark *));
 
 /* Colors are based around shadcn color schemes: https://ui.shadcn.com/colors */
 
