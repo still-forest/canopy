@@ -12,8 +12,14 @@ export interface InterstitialProps {
 
 export const Interstitial = ({ variant, iconComponent, message, children }: InterstitialProps) => {
   if (!iconComponent && !message && !children) {
-    console.warn("Interstitial requires at least one of icon, iconComponent, message, or children");
-    return null;
+    if (process.env.NODE_ENV !== "production") {
+      throw new Error("Interstitial requires at least one of icon, iconComponent, message, or children");
+    }
+    return (
+      <Flex align="center" justify="center" className="h-full w-full">
+        Content missing
+      </Flex>
+    );
   }
 
   const IconComponent = iconComponent ? iconComponent : null;
@@ -31,6 +37,9 @@ export const Interstitial = ({ variant, iconComponent, message, children }: Inte
                 variant === "info" && "text-info",
               )}
               size={128}
+              aria-hidden={!!message} // Hide from screen readers if there's a text message
+              role={!message ? "img" : undefined} // Add role if no message explains the icon
+              aria-label={!message ? `${variant || "info"} icon` : undefined} // Add label if no message
               data-testid="icon"
             />
           </Flex>

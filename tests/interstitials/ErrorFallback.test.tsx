@@ -5,6 +5,22 @@ import { ErrorFallback } from "@/interstitials";
 
 describe("ErrorFallback", () => {
   it("renders with default message", () => {
+    render(<ErrorFallback error={new Error()} />);
+
+    expect(screen.getByText("Something went wrong.")).toBeInTheDocument();
+    expect(screen.getByText("Unknown error occurred")).toBeInTheDocument();
+
+    const icon = screen.getByTestId("icon");
+    expect(icon).toBeInTheDocument();
+    expect(icon.getAttribute("class")).toBe("lucide lucide-circle-x text-destructive");
+
+    const reloadButton = screen.getByRole("button", { name: "Reload" });
+    expect(reloadButton).toBeInTheDocument();
+
+    fireEvent.click(reloadButton);
+  });
+
+  it("renders with error message", () => {
     render(<ErrorFallback error={new Error("Kaboom!")} />);
 
     expect(screen.getByText("Something went wrong.")).toBeInTheDocument();

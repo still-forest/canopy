@@ -1,5 +1,5 @@
 import type { Meta, StoryObj } from "@storybook/react";
-import { PiggyBank } from "lucide-react";
+import { Mailbox, PiggyBank } from "lucide-react";
 import { Button } from "@/forms";
 import { Interstitial, type InterstitialProps } from "@/interstitials";
 import { Box } from "@/layout";
@@ -25,7 +25,7 @@ export default meta;
 type Story = StoryObj<typeof meta>;
 
 const defaultProps: InterstitialProps = {
-  icon: "mailbox",
+  iconComponent: Mailbox,
   message: "Hey, a thing happened...",
 };
 
@@ -52,41 +52,6 @@ export const WithChildren: Story = {
     ...defaultProps,
     message: undefined,
     children: <Button variant="ghost">Click on me</Button>,
-  },
-};
-
-export const PlaneDeparture: Story = {
-  args: {
-    ...defaultProps,
-    icon: "key",
-  },
-};
-
-export const PlaneInflight: Story = {
-  args: {
-    ...defaultProps,
-    icon: "mailbox",
-  },
-};
-
-export const PlaneArrival: Story = {
-  args: {
-    ...defaultProps,
-    icon: "shield_check",
-  },
-};
-
-export const Dizzy: Story = {
-  args: {
-    ...defaultProps,
-    icon: "circle_x",
-  },
-};
-
-export const Earth: Story = {
-  args: {
-    ...defaultProps,
-    icon: "earth",
   },
 };
 
