@@ -21,8 +21,7 @@ import {
   TYPOGRAPHY_VARIANTS,
   type TypographyVariant,
 } from "@/types";
-import { Text } from "@/typography";
-import Code from "@/typography/Code/Code";
+import { Code, Text } from "@/typography";
 
 const meta: Meta<typeof Text> = {
   title: "Typography/Text",
