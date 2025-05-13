@@ -1,7 +1,7 @@
 import { sampleLongText, sampleLongWord, sampleSentences } from "@stories/support/sampleText";
 import { asOptionalValue, summarizeValues } from "@stories/utils";
 import type { Meta, StoryObj } from "@storybook/react";
-import { Box, Flex, Grid, Text } from "@/primitives";
+import { Box, Flex, Grid } from "@/layout";
 import type { Display as DisplayType, Height as HeightType, Width as WidthType } from "@/types";
 import {
   BOX_SIZINGS,
@@ -15,9 +15,10 @@ import {
   SIZES,
   WIDTHS,
 } from "@/types";
+import { Text } from "@/typography";
 
 const meta: Meta<typeof Box> = {
-  title: "Primitives/Layout/Box",
+  title: "Layout/Box",
   component: Box,
   parameters: {
     layout: "centered",

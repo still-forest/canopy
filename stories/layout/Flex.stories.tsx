@@ -2,7 +2,7 @@ import { asOptionalValue, summarizeValues } from "@stories/utils";
 import type { Meta, StoryObj } from "@storybook/react";
 import { Fragment } from "react";
 
-import { Box, Flex, type FlexProps, Grid, Heading } from "@/primitives";
+import { Box, Flex, type FlexProps, Grid } from "@/layout";
 import {
   FLEX_ALIGNS,
   FLEX_DIRECTIONS,
@@ -13,9 +13,10 @@ import {
   GAPS,
   LAYOUT_ELEMENTS,
 } from "@/types";
+import { Heading } from "@/typography";
 
 const meta: Meta<typeof Flex> = {
-  title: "Primitives/Layout/Flex",
+  title: "Layout/Flex",
   component: Flex,
   parameters: {
     layout: "centered",

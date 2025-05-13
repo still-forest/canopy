@@ -1,7 +1,5 @@
 import { render, screen } from "@testing-library/react";
 import { describe, expect, it } from "vitest";
-
-import { Text } from "@/primitives";
 import {
   FONT_FAMILIES,
   FONT_SIZES,
@@ -11,6 +9,7 @@ import {
   TEXT_TRACKINGS,
   TYPOGRAPHY_VARIANTS,
 } from "@/types";
+import { Text } from "@/typography";
 
 describe("Text", () => {
   it("renders with default props", () => {

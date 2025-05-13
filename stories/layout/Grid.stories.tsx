@@ -1,12 +1,12 @@
 import { asOptionalValue, summarizeValues } from "@stories/utils";
 import type { Meta, StoryObj } from "@storybook/react";
 
-import { Box, Flex, Grid, Heading } from "@/primitives";
-
+import { Box, Flex, Grid } from "@/layout";
 import { GAPS, GRID_COLS, GRID_FLOWS, GRID_ROWS, LAYOUT_ELEMENTS } from "@/types";
+import { Heading } from "@/typography";
 
 const meta = {
-  title: "Primitives/Layout/Grid",
+  title: "Layout/Grid",
   component: Grid,
   parameters: {
     layout: "centered",

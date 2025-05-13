@@ -3,7 +3,7 @@ import OptionList from "@stories/templates/OptionList";
 import OptionsByFamilyGrid from "@stories/templates/OptionsByFamilyGrid";
 import { asOptionalValue, summarizeValues } from "@stories/utils";
 import type { Meta, StoryObj } from "@storybook/react";
-import { Box, Flex, Heading, Text } from "@/primitives";
+import { Box, Flex } from "@/layout";
 import {
   FONT_FAMILIES,
   FONT_SIZES,
@@ -21,9 +21,10 @@ import {
   TYPOGRAPHY_VARIANTS,
   type TypographyVariant,
 } from "@/types";
+import { Heading, Text } from "@/typography";
 
 const meta: Meta<typeof Heading> = {
-  title: "Primitives/Typography/Heading",
+  title: "Typography/Heading",
   component: Heading,
   parameters: {
     layout: "centered",

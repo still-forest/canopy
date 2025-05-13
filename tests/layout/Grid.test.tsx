@@ -2,7 +2,7 @@ import { render, screen } from "@testing-library/react";
 import { describe, expect, it } from "vitest";
 import "@testing-library/jest-dom";
 
-import { Grid } from "@/primitives";
+import { Grid } from "@/layout";
 import { GAPS, GRID_COLS, GRID_FLOWS, GRID_ROWS } from "@/types";
 
 describe("Grid", () => {

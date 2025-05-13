@@ -4,8 +4,7 @@ import OptionList from "@stories/templates/OptionList";
 import OptionsByFamilyGrid from "@stories/templates/OptionsByFamilyGrid";
 import { asOptionalValue, summarizeValues } from "@stories/utils";
 import type { Meta, StoryObj } from "@storybook/react";
-import { Box, Flex, Grid, Text } from "@/primitives";
-
+import { Box, Flex, Grid } from "@/layout";
 import {
   FONT_FAMILIES,
   FONT_SIZES,
@@ -23,9 +22,10 @@ import {
   TYPOGRAPHY_VARIANTS,
   type TypographyVariant,
 } from "@/types";
+import { Text } from "@/typography";
 
 const meta: Meta<typeof Text> = {
-  title: "Primitives/Typography/Text",
+  title: "Typography/Text",
   component: Text,
   parameters: {
     layout: "centered",

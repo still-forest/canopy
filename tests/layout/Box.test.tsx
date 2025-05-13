@@ -2,7 +2,7 @@ import { render, screen } from "@testing-library/react";
 import { describe, expect, it } from "vitest";
 import "@testing-library/jest-dom";
 
-import { Box } from "@/primitives";
+import { Box } from "@/layout";
 import {
   BOX_SIZINGS,
   DISPLAYS,
