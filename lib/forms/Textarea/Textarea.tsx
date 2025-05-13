@@ -1,6 +1,6 @@
 import { Textarea as BaseTextarea } from "@/components/ui/textarea";
 import { Label } from "@/main";
-import { Flex, Text } from "@/primitives/main";
+import { Flex, Text } from "@/primitives";
 
 export interface TextareaProps extends React.ComponentProps<"textarea"> {
   name: string;

@@ -1,6 +1,6 @@
 import type { Meta, StoryObj } from "@storybook/react";
 import { Label } from "@/main";
-import { Box, Text } from "@/primitives/main";
+import { Box, Text } from "@/primitives";
 
 const meta: Meta<typeof Label> = {
   title: "Forms/Label",
