@@ -214,4 +214,39 @@ describe("Flex", () => {
     expect(screen.getByTestId("child-element")).toBeInTheDocument();
     expect(screen.getByText("Child content")).toBeInTheDocument();
   });
+
+  it("renders Flex.Item correctly", () => {
+    render(
+      <Flex>
+        <Flex.Item data-testid="flex-item-1">Item 1</Flex.Item>
+        <Flex.Item data-testid="flex-item-2" flex="1">
+          Item 2
+        </Flex.Item>
+        <Flex.Item data-testid="flex-item-3" flex="auto">
+          Item 3
+        </Flex.Item>
+        <Flex.Item data-testid="flex-item-4" flex="none">
+          Item 4
+        </Flex.Item>
+        <Flex.Item data-testid="flex-item-5" flex="initial">
+          Item 5
+        </Flex.Item>
+      </Flex>,
+    );
+
+    expect(screen.getByText("Item 1")).toBeInTheDocument();
+    expect(screen.getByText("Item 2")).toBeInTheDocument();
+
+    const item1 = screen.getByTestId("flex-item-1");
+    const item2 = screen.getByTestId("flex-item-2");
+    const item3 = screen.getByTestId("flex-item-3");
+    const item4 = screen.getByTestId("flex-item-4");
+    const item5 = screen.getByTestId("flex-item-5");
+
+    expect(item1.className).toBe("");
+    expect(item2.className).toBe("flex-1");
+    expect(item3.className).toBe("flex-auto");
+    expect(item4.className).toBe("flex-none");
+    expect(item5.className).toBe("flex-initial");
+  });
 });
