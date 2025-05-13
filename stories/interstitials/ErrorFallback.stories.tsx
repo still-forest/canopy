@@ -1,15 +1,16 @@
 import type { Meta, StoryObj } from "@storybook/react";
 
 import { ErrorFallback } from "@/interstitials";
+import { Box } from "@/layout";
 
 const meta: Meta<typeof ErrorFallback> = {
   title: "Interstitials/ErrorFallback",
   component: ErrorFallback,
   decorators: [
     (Story) => (
-      <div style={{ width: "600px", height: "400px" }}>
+      <Box width="full" height="full">
         <Story />
-      </div>
+      </Box>
     ),
   ],
   parameters: {

@@ -4,7 +4,7 @@ import { Button } from "@/forms";
 import { Box, Flex } from "@/layout";
 import { Text } from "@/typography";
 
-import { InterstitialBase } from "./InterstitialBase";
+import { Interstitial } from "./Interstitial";
 
 interface NotFoundErrorPageProps {
   onClick?: () => void;
@@ -12,7 +12,7 @@ interface NotFoundErrorPageProps {
 
 export const NotFoundErrorPage = ({ onClick }: NotFoundErrorPageProps) => {
   return (
-    <InterstitialBase icon="file_question" message="404: Synergy Not Found.">
+    <Interstitial icon="file_question" message="404: Synergy Not Found.">
       <Flex direction="col" align="center" className="mt-8">
         <Box variant="muted" className="mb-8 w-full p-4">
           <Text variant="inherit" family="mono" align="center" size="xs">
@@ -23,6 +23,6 @@ export const NotFoundErrorPage = ({ onClick }: NotFoundErrorPageProps) => {
           Home
         </Button>
       </Flex>
-    </InterstitialBase>
+    </Interstitial>
   );
 };

@@ -1,10 +1,10 @@
 import type { Meta, StoryObj } from "@storybook/react";
 import { Button } from "@/forms";
-import { InterstitialBase, type InterstitialProps } from "@/interstitials";
-
-const meta: Meta<typeof InterstitialBase> = {
+import { Interstitial, type InterstitialProps } from "@/interstitials";
+import { PiggyBank } from "lucide-react";
+const meta: Meta<typeof Interstitial> = {
   title: "Interstitials/Base",
-  component: InterstitialBase,
+  component: Interstitial,
   decorators: [
     (Story) => (
       <div style={{ width: "600px", height: "400px" }}>
@@ -16,7 +16,7 @@ const meta: Meta<typeof InterstitialBase> = {
     layout: "centered",
   },
   tags: ["autodocs"],
-} satisfies Meta<typeof InterstitialBase>;
+} satisfies Meta<typeof Interstitial>;
 
 export default meta;
 
@@ -85,5 +85,12 @@ export const Earth: Story = {
   args: {
     ...defaultProps,
     icon: "earth",
+  },
+};
+
+export const CustomIcon: Story = {
+  args: {
+    ...defaultProps,
+    iconComponent: PiggyBank,
   },
 };

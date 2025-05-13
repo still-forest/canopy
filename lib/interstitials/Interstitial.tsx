@@ -2,6 +2,7 @@ import { CircleX, FileQuestion, KeyRound, Mailbox, ShieldCheck } from "lucide-re
 import type React from "react";
 import { Flex } from "@/layout";
 import { Heading } from "@/typography";
+import { cn } from "@/utils";
 
 const icons: Record<string, React.ElementType> = {
   key: KeyRound,
@@ -12,25 +13,36 @@ const icons: Record<string, React.ElementType> = {
 } as const;
 
 export interface InterstitialProps {
+  variant?: "error" | "info" | "success" | "warning";
   icon?: keyof typeof icons;
+  iconComponent?: React.ElementType;
   message?: string;
   children?: React.ReactNode;
 }
 
-export function InterstitialBase({ icon, message, children }: InterstitialProps) {
-  if (!icon && !message && !children) {
-    console.warn("InterstitialBase requires at least one of icon, message, or children");
+export const Interstitial = ({ variant, icon, iconComponent, message, children }: InterstitialProps) => {
+  if (!icon && !iconComponent && !message && !children) {
+    console.warn("Interstitial requires at least one of icon, iconComponent, message, or children");
     return null;
   }
 
-  const IconComponent = icon ? icons[icon] : null;
+  const IconComponent = iconComponent ? iconComponent : icon ? icons[icon] : null;
 
   return (
     <Flex align="center" justify="center" className="h-full w-full">
       <Flex direction="col" justify="center">
         {IconComponent && (
           <div className="mx-auto my-12">
-            <IconComponent className="text-info" size={128} />
+            <IconComponent
+              className={cn(
+                "text-info",
+                variant === "error" && "text-destructive",
+                variant === "success" && "text-success",
+                variant === "warning" && "text-warning",
+                variant === "info" && "text-info",
+              )}
+              size={128}
+            />
           </div>
         )}
         <Flex direction="col" justify="center" className="max-w-[500px]">
@@ -44,4 +56,4 @@ export function InterstitialBase({ icon, message, children }: InterstitialProps)
       </Flex>
     </Flex>
   );
-}
+};

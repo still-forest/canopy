@@ -1,9 +1,9 @@
-import { InterstitialBase } from "./InterstitialBase";
+import { Interstitial } from "./Interstitial";
 
 interface ErrorOverlayProps {
   message?: string;
 }
 
 export const ErrorOverlay = ({ message }: ErrorOverlayProps) => {
-  return <InterstitialBase icon="circle_x" message={message} />;
+  return <Interstitial icon="circle_x" message={message} />;
 };

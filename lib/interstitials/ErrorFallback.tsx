@@ -1,10 +1,10 @@
-import { RotateCcw } from "lucide-react";
+import { CircleX, RotateCcw } from "lucide-react";
 
 import { Button } from "@/forms";
 import { Box, Flex } from "@/layout";
 import { Text } from "@/typography";
 
-import { InterstitialBase } from "./InterstitialBase";
+import { Interstitial } from "./Interstitial";
 
 interface ErrorFallbackProps {
   error: Error;
@@ -16,7 +16,7 @@ export const ErrorFallback = ({ error }: ErrorFallbackProps) => {
   };
 
   return (
-    <InterstitialBase icon="circle_x" message="Oops! Something went wrong.">
+    <Interstitial variant="error" iconComponent={CircleX} message="Oops! Something went wrong.">
       <Flex direction="col" align="center" className="mt-8">
         <Box variant="muted" width="full" className="mb-8 p-4">
           <Text variant="inherit" family="mono" align="center" size="xs">
@@ -27,6 +27,6 @@ export const ErrorFallback = ({ error }: ErrorFallbackProps) => {
           Reload
         </Button>
       </Flex>
-    </InterstitialBase>
+    </Interstitial>
   );
 };
