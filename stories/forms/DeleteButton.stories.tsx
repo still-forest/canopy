@@ -1,6 +1,6 @@
 import type { Meta, StoryObj } from "@storybook/react";
 
-import { DeleteButton } from "@/main";
+import { DeleteButton } from "@/forms";
 
 const meta: Meta<typeof DeleteButton> = {
   title: "Forms/Buttons/Delete",

@@ -1,6 +1,7 @@
 import type { Meta, StoryObj } from "@storybook/react";
-import { SelectPicker, type SelectPickerOption } from "@/main";
-import { Flex, Text } from "@/primitives";
+import { SelectPicker, type SelectPickerOption } from "@/forms";
+import { Flex } from "@/layout";
+import { Text } from "@/typography";
 
 const meta: Meta<typeof SelectPicker> = {
   title: "Forms/Inputs/SelectPicker",

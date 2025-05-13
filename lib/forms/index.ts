@@ -1,12 +1,6 @@
-export type { ButtonGroupProps, ButtonProps } from "./Button";
-export { Button, ButtonGroup, DeleteButton, SaveButton } from "./Button";
-export type { LabelProps } from "./Label";
-export { Label } from "./Label";
-export type { NumberInputProps } from "./NumberInput";
-export { NumberInput } from "./NumberInput";
-export type { SelectPickerOption, SelectPickerProps } from "./SelectPicker";
-export { SelectPicker } from "./SelectPicker";
-export type { TextareaProps } from "./Textarea";
-export { Textarea } from "./Textarea";
-export type { TextInputProps } from "./TextInput";
-export { TextInput } from "./TextInput";
+export * from "./Button";
+export * from "./Label";
+export * from "./NumberInput";
+export * from "./SelectPicker";
+export * from "./Textarea";
+export * from "./TextInput";

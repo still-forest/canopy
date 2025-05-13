@@ -1,7 +1,7 @@
 import type { Meta, StoryObj } from "@storybook/react";
 import { PiggyBank } from "lucide-react";
 
-import { SaveButton } from "@/main";
+import { SaveButton } from "@/forms";
 
 const meta: Meta<typeof SaveButton> = {
   title: "Forms/Buttons/Save",

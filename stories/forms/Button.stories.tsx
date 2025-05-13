@@ -1,7 +1,7 @@
 import type { Meta, StoryObj } from "@storybook/react";
 import { Armchair as SampleIcon } from "lucide-react";
 
-import { Button } from "@/main";
+import { Button } from "@/forms";
 
 const meta: Meta<typeof Button> = {
   title: "Forms/Buttons/Default",

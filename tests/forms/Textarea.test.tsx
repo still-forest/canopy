@@ -1,7 +1,7 @@
 import { render, screen } from "@testing-library/react";
 import { EXPECTED_BASE_LABEL_CLASSES } from "@tests/forms/utils";
 import { describe, expect, it } from "vitest";
-import { Textarea } from "@/main";
+import { Textarea } from "@/forms";
 
 describe("Textarea", () => {
   const EXPECTED_BASE_TEXTAREA_CLASSES =
