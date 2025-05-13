@@ -1,6 +1,6 @@
 import { Loader2 } from "lucide-react";
-
-import { Flex, Heading } from "@/primitives";
+import { Flex } from "@/layout";
+import { Heading } from "@/typography";
 
 interface Props {
   message?: string;

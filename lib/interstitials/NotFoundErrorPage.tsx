@@ -1,7 +1,8 @@
 import { Home } from "lucide-react";
 
 import { Button } from "@/forms";
-import { Box, Flex, Text } from "@/primitives";
+import { Box, Flex } from "@/layout";
+import { Text } from "@/typography";
 
 import { InterstitialBase } from "./InterstitialBase";
 

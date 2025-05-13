@@ -1,7 +1,7 @@
 import { CircleX, FileQuestion, KeyRound, Mailbox, ShieldCheck } from "lucide-react";
 import type React from "react";
-
-import { Flex, Heading } from "@/primitives";
+import { Flex } from "@/layout";
+import { Heading } from "@/typography";
 
 const icons: Record<string, React.ElementType> = {
   key: KeyRound,
