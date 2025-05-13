@@ -114,15 +114,15 @@ export default meta;
 type Story = StoryObj<typeof Flex>;
 
 const FlexItem = ({ children }: { children: React.ReactNode }) => (
-  <Box as="span" className="rounded-md bg-info px-1 py-0.5 text-info-foreground">
+  <Flex.Item as="span" className="rounded-md bg-info px-1 py-0.5 text-info-foreground">
     {children}
-  </Box>
+  </Flex.Item>
 );
 
 const FlexItemAsFlex = ({ children, className = "", ...rest }: FlexProps) => (
-  <Flex className={`rounded-md bg-info px-1 py-0.5 text-info-foreground ${className}`} {...rest}>
+  <Flex.Item className={`flex rounded-md bg-info px-1 py-0.5 text-info-foreground ${className}`} {...rest}>
     {children}
-  </Flex>
+  </Flex.Item>
 );
 
 export const Default: Story = {
