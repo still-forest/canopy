@@ -20,8 +20,7 @@ import {
   TYPOGRAPHY_VARIANTS,
   type TypographyVariant,
 } from "@/types";
-import { Heading, Text } from "@/typography";
-import Code from "@/typography/Code/Code";
+import { Code, Heading, Text } from "@/typography";
 
 const meta: Meta<typeof Heading> = {
   title: "Typography/Heading",

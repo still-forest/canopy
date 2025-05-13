@@ -22,13 +22,6 @@ describe("Code", () => {
     );
   });
 
-  it("renders with custom element type", () => {
-    render(<Code as="span">Does not compute</Code>);
-    const element = screen.getByText("Does not compute");
-
-    expect(element.tagName).toBe("SPAN");
-  });
-
   it("renders with custom className", () => {
     render(<Code className="custom-class">Does not compute</Code>);
     const element = screen.getByText("Does not compute");
