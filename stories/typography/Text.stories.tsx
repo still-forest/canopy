@@ -1,4 +1,3 @@
-import Code from "@src/components/Code";
 import { sampleLongText, sampleParagraphText, sampleText } from "@stories/support/sampleText";
 import OptionList from "@stories/templates/OptionList";
 import OptionsByFamilyGrid from "@stories/templates/OptionsByFamilyGrid";
@@ -22,7 +21,7 @@ import {
   TYPOGRAPHY_VARIANTS,
   type TypographyVariant,
 } from "@/types";
-import { Text } from "@/typography";
+import { Code, Text } from "@/typography";
 
 const meta: Meta<typeof Text> = {
   title: "Typography/Text",

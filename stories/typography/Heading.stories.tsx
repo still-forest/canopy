@@ -1,4 +1,3 @@
-import Code from "@src/components/Code";
 import OptionList from "@stories/templates/OptionList";
 import OptionsByFamilyGrid from "@stories/templates/OptionsByFamilyGrid";
 import { asOptionalValue, summarizeValues } from "@stories/utils";
@@ -21,7 +20,7 @@ import {
   TYPOGRAPHY_VARIANTS,
   type TypographyVariant,
 } from "@/types";
-import { Heading, Text } from "@/typography";
+import { Code, Heading, Text } from "@/typography";
 
 const meta: Meta<typeof Heading> = {
   title: "Typography/Heading",
