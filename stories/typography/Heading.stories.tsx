@@ -1,4 +1,4 @@
-import Code from "@src/components/Code";
+import Code from "@/typography/Code/Code";
 import OptionList from "@stories/templates/OptionList";
 import OptionsByFamilyGrid from "@stories/templates/OptionsByFamilyGrid";
 import { asOptionalValue, summarizeValues } from "@stories/utils";

@@ -1,4 +1,4 @@
-import Code from "@src/components/Code";
+import Code from "@/typography/Code/Code";
 import { Fragment } from "react";
 import { Flex, Grid } from "@/layout";
 import type { Gap } from "@/types";

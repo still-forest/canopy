@@ -1,4 +1,4 @@
-import Code from "@src/components/Code";
+import Code from "@/typography/Code/Code";
 import { Fragment } from "react";
 import { Box, Flex, Grid } from "@/layout";
 import { FONT_FAMILIES, type FontFamily } from "@/types";
