@@ -1,11 +1,11 @@
 import type { Meta, StoryObj } from "@storybook/react";
 
-import { NotFoundErrorPage } from "@/interstitials";
+import { PageNotFound } from "@/interstitials";
 import { Box } from "@/layout";
 
-const meta: Meta<typeof NotFoundErrorPage> = {
-  title: "Interstitials/NotFoundErrorPage",
-  component: NotFoundErrorPage,
+const meta: Meta<typeof PageNotFound> = {
+  title: "Interstitials/PageNotFound",
+  component: PageNotFound,
   decorators: [
     (Story) => (
       <Box width="full" height="full" className="min-h-[400px]">
@@ -17,7 +17,7 @@ const meta: Meta<typeof NotFoundErrorPage> = {
     layout: "centered",
   },
   tags: ["autodocs"],
-} satisfies Meta<typeof NotFoundErrorPage>;
+} satisfies Meta<typeof PageNotFound>;
 
 export default meta;
 
