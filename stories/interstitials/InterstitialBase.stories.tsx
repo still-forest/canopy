@@ -1,7 +1,6 @@
 import type { Meta, StoryObj } from "@storybook/react";
-
-import { InterstitialBase, type InterstitialProps } from "@/interstitials";
 import { Button } from "@/forms";
+import { InterstitialBase, type InterstitialProps } from "@/interstitials";
 
 const meta: Meta<typeof InterstitialBase> = {
   title: "Interstitials/Base",

@@ -1,6 +1,5 @@
+import { CircleX, FileQuestion, KeyRound, Mailbox, ShieldCheck } from "lucide-react";
 import type React from "react";
-
-import { CircleX, KeyRound, FileQuestion, Mailbox, ShieldCheck } from "lucide-react";
 
 import { Flex, Heading } from "@/primitives";
 

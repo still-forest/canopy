@@ -5,7 +5,6 @@ import { Box, Flex, Text } from "@/primitives";
 
 import { InterstitialBase } from "./InterstitialBase";
 
-
 interface ErrorFallbackProps {
   error: Error;
 }
