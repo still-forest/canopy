@@ -1,5 +1,5 @@
 import { Loader, Save } from "lucide-react";
-import { Button, type ButtonProps } from "@/main";
+import { Button, type ButtonProps } from "@/forms";
 
 interface Props extends ButtonProps {
   submitting?: boolean;

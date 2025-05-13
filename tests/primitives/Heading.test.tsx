@@ -1,7 +1,7 @@
 import { render, screen } from "@testing-library/react";
 import { describe, expect, it } from "vitest";
 
-import { Heading } from "@/main";
+import { Heading } from "@/primitives";
 import {
   FONT_FAMILIES,
   FONT_SIZES,

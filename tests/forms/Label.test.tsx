@@ -1,7 +1,7 @@
 import { render, screen } from "@testing-library/react";
 import { describe, expect, it } from "vitest";
 
-import { Label } from "@/main";
+import { Label } from "@/forms";
 
 describe("Label", () => {
   const EXPECTED_BASE_LABEL_CLASSES =

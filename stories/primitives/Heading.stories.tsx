@@ -3,7 +3,7 @@ import OptionList from "@stories/templates/OptionList";
 import OptionsByFamilyGrid from "@stories/templates/OptionsByFamilyGrid";
 import { asOptionalValue, summarizeValues } from "@stories/utils";
 import type { Meta, StoryObj } from "@storybook/react";
-import { Box, Flex, Heading, Text } from "@/main";
+import { Box, Flex, Heading, Text } from "@/primitives";
 import {
   FONT_FAMILIES,
   FONT_SIZES,

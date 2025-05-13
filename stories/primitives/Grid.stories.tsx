@@ -1,7 +1,7 @@
 import { asOptionalValue, summarizeValues } from "@stories/utils";
 import type { Meta, StoryObj } from "@storybook/react";
 
-import { Box, Flex, Grid, Heading } from "@/main";
+import { Box, Flex, Grid, Heading } from "@/primitives";
 
 import { GAPS, GRID_COLS, GRID_FLOWS, GRID_ROWS, LAYOUT_ELEMENTS } from "@/types";
 

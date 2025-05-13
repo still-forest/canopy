@@ -1,6 +1,6 @@
 import Code from "@src/components/Code";
 import { Fragment } from "react";
-import { Flex, Grid, type HeadingProps } from "@/main";
+import { Flex, Grid, type HeadingProps } from "@/primitives";
 import type { Gap } from "@/types";
 
 type ValueOf<T> = T[keyof T];

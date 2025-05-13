@@ -1,7 +1,7 @@
 import { sampleLongText, sampleLongWord, sampleSentences } from "@stories/support/sampleText";
 import { asOptionalValue, summarizeValues } from "@stories/utils";
 import type { Meta, StoryObj } from "@storybook/react";
-import { Box, Flex, Grid, Text } from "@/main";
+import { Box, Flex, Grid, Text } from "@/primitives";
 import type { Display as DisplayType, Height as HeightType, Width as WidthType } from "@/types";
 import {
   BOX_SIZINGS,

@@ -1,6 +1,6 @@
 import Code from "@src/components/Code";
 import { Fragment } from "react";
-import { Box, Flex, Grid, type HeadingProps, Text } from "@/main";
+import { Box, Flex, Grid, type HeadingProps, Text } from "@/primitives";
 import { FONT_FAMILIES, type FontFamily } from "@/types";
 
 type ValueOf<T> = T[keyof T];
