@@ -1,8 +1,8 @@
-import Code from "@/typography/Code/Code";
 import { Fragment } from "react";
 import { Flex, Grid } from "@/layout";
 import type { Gap } from "@/types";
 import { HeadingProps } from "@/typography";
+import Code from "@/typography/Code/Code";
 
 type ValueOf<T> = T[keyof T];
 type OptionTypes = ValueOf<HeadingProps> & boolean;

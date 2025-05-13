@@ -1,8 +1,8 @@
-import Code from "@/typography/Code/Code";
 import { Fragment } from "react";
 import { Box, Flex, Grid } from "@/layout";
 import { FONT_FAMILIES, type FontFamily } from "@/types";
 import { HeadingProps, Text } from "@/typography";
+import Code from "@/typography/Code/Code";
 
 type ValueOf<T> = T[keyof T];
 type OptionTypes = ValueOf<HeadingProps>;
