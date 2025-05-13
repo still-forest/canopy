@@ -3,7 +3,7 @@ import { SelectPicker, type SelectPickerOption } from "@/main";
 import { Flex, Text } from "@/primitives/main";
 
 const meta: Meta<typeof SelectPicker> = {
-  title: "Forms/SelectPicker",
+  title: "Forms/Inputs/SelectPicker",
   component: SelectPicker,
   decorators: [
     (Story) => (
