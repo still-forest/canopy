@@ -1,7 +1,7 @@
 import { Box, type BoxProps } from "@/layout";
 import { cn } from "@/utils";
 
-interface ContainerProps extends BoxProps {
+export interface ContainerProps extends BoxProps {
   children: React.ReactNode;
   className?: string;
 }
