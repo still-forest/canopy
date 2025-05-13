@@ -1,7 +1,7 @@
 import Code from "@src/components/Code";
+import { sampleLongText, sampleParagraphText, sampleText } from "@stories/support/sampleText";
 import OptionList from "@stories/templates/OptionList";
 import OptionsByFamilyGrid from "@stories/templates/OptionsByFamilyGrid";
-import { sampleLongText, sampleParagraphText, sampleText } from "@stories/support/sampleText";
 import { asOptionalValue, summarizeValues } from "@stories/utils";
 import type { Meta, StoryObj } from "@storybook/react";
 import { Box, Flex, Grid, Text } from "@/main";
