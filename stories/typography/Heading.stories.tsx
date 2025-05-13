@@ -1,11 +1,9 @@
 import Code from "@src/components/Code";
-import { sampleLongText, sampleParagraphText, sampleText } from "@stories/support/sampleText";
 import OptionList from "@stories/templates/OptionList";
 import OptionsByFamilyGrid from "@stories/templates/OptionsByFamilyGrid";
 import { asOptionalValue, summarizeValues } from "@stories/utils";
 import type { Meta, StoryObj } from "@storybook/react";
-import { Box, Flex, Grid, Text } from "@/main";
-
+import { Box, Flex } from "@/layout";
 import {
   FONT_FAMILIES,
   FONT_SIZES,
@@ -13,20 +11,21 @@ import {
   type FontFamily,
   type FontSize,
   type FontWeight,
+  HEADING_LEVELS,
   TEXT_ALIGNS,
   TEXT_LEADINGS,
   TEXT_TRACKINGS,
   type TextAlign,
   type TextLeading,
   type TextTracking,
-  TYPOGRAPHY_ELEMENTS,
   TYPOGRAPHY_VARIANTS,
   type TypographyVariant,
 } from "@/types";
+import { Heading, Text } from "@/typography";
 
-const meta: Meta<typeof Text> = {
-  title: "Primitives/Typography/Text",
-  component: Text,
+const meta: Meta<typeof Heading> = {
+  title: "Typography/Heading",
+  component: Heading,
   parameters: {
     layout: "centered",
   },
@@ -40,10 +39,18 @@ const meta: Meta<typeof Text> = {
         type: { summary: summarizeValues(TYPOGRAPHY_VARIANTS, true) },
       },
     },
+    level: {
+      control: "select",
+      options: asOptionalValue(HEADING_LEVELS),
+      description: "Controls heading level to use, translating to usage of an `<hX>` HTML element",
+      table: {
+        type: { summary: summarizeValues(HEADING_LEVELS, true) },
+      },
+    },
     size: {
       control: "select",
       options: asOptionalValue(FONT_SIZES),
-      description: "Controls font size",
+      description: "Controls font size on a more granular basis (this will override `level`)",
       table: {
         type: { summary: summarizeValues(FONT_SIZES, true) },
       },
@@ -94,10 +101,6 @@ const meta: Meta<typeof Text> = {
         "Use foreground (lighter) variant for accent colors (info, warning, success, destructive).  No effect on other variants.",
       control: "boolean",
     },
-    truncate: {
-      description: "If true, prevents text from wrapping by truncating overflowing text with an ellipsis (…) if needed",
-      control: "boolean",
-    },
     numeric: {
       description: "If true, use tabular numbers for even spacing",
     },
@@ -106,14 +109,6 @@ const meta: Meta<typeof Text> = {
       description: "Comma-separated CSS class names",
       table: {
         type: { summary: "string" },
-      },
-    },
-    as: {
-      control: "select",
-      options: asOptionalValue(TYPOGRAPHY_ELEMENTS),
-      description: "Specific HTML element to use",
-      table: {
-        type: { summary: summarizeValues(TYPOGRAPHY_ELEMENTS, true) },
       },
     },
     children: {
@@ -126,11 +121,22 @@ const meta: Meta<typeof Text> = {
 };
 
 export default meta;
-type Story = StoryObj<typeof Text>;
+type Story = StoryObj<typeof Heading>;
+
+const sampleHeading = "Old Man Yells At Cloud";
+const sampleLongHeading = "Local Man Loses Pants, Life; Beaver Rescue Falls Short";
+const sampleLongText =
+  " \
+  Now, to take the ferry cost a nickel, and in those days, nickels \
+  had pictures of bumblebees on 'em. Gimme five bees for a quarter, \
+  you'd say. Now where was I... oh yeah. The important thing was \
+  that I had an onion tied to my belt, which was the style at the \
+  time. You couldn't get white onions, because of the war. The only \
+  thing you could get was those big yellow ones.";
 
 export const Default: Story = {
   args: {
-    children: "This is a Text component",
+    children: "This is a Heading component",
   },
   decorators: [
     (Story) => (
@@ -140,15 +146,16 @@ export const Default: Story = {
     ),
   ],
 };
+
 export const WithSampleProps: Story = {
   args: {
-    size: "lg",
+    level: "3",
     family: "serif",
     weight: "normal",
     tracking: "tighter",
     variant: "muted",
     numeric: false,
-    children: "This is a Text component",
+    children: "This is a Heading component",
   },
   decorators: [
     (Story) => (
@@ -157,13 +164,29 @@ export const WithSampleProps: Story = {
       </Box>
     ),
   ],
+};
+
+export const HeadingLevels: Story = {
+  render: () => (
+    <Flex direction="col" gap="4" className="max-w-2xl">
+      {HEADING_LEVELS.map((level) => (
+        <Heading key={level} level={level}>
+          Heading Level {level} (h{level})
+        </Heading>
+      ))}
+    </Flex>
+  ),
 };
 
 export const Families: Story = {
   render: () => (
     <OptionList<FontFamily>
       options={FONT_FAMILIES as unknown as FontFamily[]}
-      renderOption={(family: FontFamily) => <Text family={family}>{sampleText}</Text>}
+      renderOption={(family: FontFamily) => (
+        <Heading level="4" family={family}>
+          {sampleHeading}
+        </Heading>
+      )}
     />
   ),
 };
@@ -175,9 +198,9 @@ export const Sizes: Story = {
         options={FONT_SIZES.slice(0, 6) as unknown as FontSize[]}
         propKey="size"
         renderOption={(family, option) => (
-          <Text family={family} size={option}>
-            {sampleText}
-          </Text>
+          <Heading level="4" align="center" family={family} size={option}>
+            {sampleHeading}
+          </Heading>
         )}
       />
       <Text variant="muted" className="mt-8">
@@ -198,9 +221,9 @@ export const Weights: Story = {
         options={FONT_WEIGHTS as unknown as FontWeight[]}
         propKey="weight"
         renderOption={(family, option) => (
-          <Text family={family} weight={option}>
-            {sampleText}
-          </Text>
+          <Heading level="4" align="center" family={family} weight={option}>
+            {sampleHeading}
+          </Heading>
         )}
       />
       <Text variant="muted" className="mt-8">
@@ -217,10 +240,11 @@ export const Variants: Story = {
       propKey="variant"
       renderOption={(family, option) => {
         const Component = () => (
-          <Text family={family} variant={option}>
-            {sampleText}
-          </Text>
+          <Heading level="4" align="center" family={family} variant={option}>
+            {sampleHeading}
+          </Heading>
         );
+
         if (option === "inherit") {
           return (
             <Box className="text-violet-400">
@@ -244,10 +268,11 @@ export const VariantsAsForeground: Story = {
       propKey="variant"
       renderOption={(family, option) => {
         const Component = () => (
-          <Text family={family} variant={option} asForeground>
-            {sampleText}
-          </Text>
+          <Heading level="4" align="center" family={family} variant={option} asForeground>
+            {sampleHeading}
+          </Heading>
         );
+
         if (option === "inherit") {
           return (
             <Box className="text-violet-400">
@@ -264,27 +289,11 @@ export const VariantsAsForeground: Story = {
   ),
 };
 
-export const Alignments: Story = {
-  render: () => (
-    <OptionList<TextAlign>
-      options={TEXT_ALIGNS as unknown as TextAlign[]}
-      renderOption={(align: TextAlign) => (
-        <>
-          {sampleParagraphText.map((text, t) => (
-            <Text align={align} size="sm" key={t}>
-              {text}
-            </Text>
-          ))}
-        </>
-      )}
-    />
-  ),
-};
-
 export const Leading: Story = {
   render: () => (
     <OptionList<TextLeading>
       options={[undefined, ...TEXT_LEADINGS] as unknown as TextLeading[]}
+      gapY="0"
       renderRowTitle={(option) => (
         <>
           {option === undefined && <Text>{"<no value"}</Text>}
@@ -292,9 +301,12 @@ export const Leading: Story = {
         </>
       )}
       renderOption={(leading: TextLeading) => (
-        <Text leading={leading} size="sm">
-          {sampleLongText}
-        </Text>
+        <>
+          <Heading leading={leading}>{sampleHeading}</Heading>
+          <Text variant="muted" size="sm">
+            {sampleLongText}
+          </Text>
+        </>
       )}
     />
   ),
@@ -306,9 +318,9 @@ export const Tracking: Story = {
       options={TEXT_TRACKINGS as unknown as TextTracking[]}
       propKey="tracking"
       renderOption={(family, option) => (
-        <Text align="center" family={family} tracking={option}>
-          {sampleText}
-        </Text>
+        <Heading level="4" align="center" family={family} tracking={option}>
+          {sampleHeading}
+        </Heading>
       )}
     />
   ),
@@ -316,30 +328,29 @@ export const Tracking: Story = {
 
 export const Truncation: Story = {
   render: () => (
-    <OptionList<boolean>
-      options={[true, false]}
-      renderRowTitle={(option) => <Text>{option ? "Truncated" : "Not truncated"}</Text>}
-      renderOption={(truncated) => (
-        <Text truncate={truncated} size="sm">
-          {sampleLongText}
-        </Text>
-      )}
-    />
+    <Box className="max-w-[600px]">
+      <OptionList<boolean>
+        options={[true, false]}
+        renderRowTitle={(option) => <Text align="right">{option ? "Truncated" : "Not truncated"}</Text>}
+        renderOption={(truncated) => <Heading truncate={truncated}>{sampleLongHeading}</Heading>}
+      />
+    </Box>
   ),
 };
 
-export const PolymorphicText: Story = {
+export const Alignments: Story = {
   render: () => (
-    <Grid cols="2" gap="2" className="w-full max-w-4xl">
-      {TYPOGRAPHY_ELEMENTS.map((element, e) => (
-        <Flex key={e} justify="center" className="w-16 p-1">
-          <Text key={e} as={element} align="center" className="rounded border-1 border-accent border-dotted">
-            {"<"}
-            {element}
-            {">"}
+    <OptionList<TextAlign>
+      options={TEXT_ALIGNS as unknown as TextAlign[]}
+      gapY="0"
+      renderOption={(align: TextAlign) => (
+        <>
+          <Heading align={align}>{sampleHeading}</Heading>
+          <Text variant="muted" align={align} size="sm">
+            {sampleLongText}
           </Text>
-        </Flex>
-      ))}
-    </Grid>
+        </>
+      )}
+    />
   ),
 };

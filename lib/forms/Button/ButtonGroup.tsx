@@ -1,5 +1,5 @@
 import type React from "react";
-import { Flex } from "@/primitives/main";
+import { Flex } from "@/layout";
 import { cn } from "@/utils";
 import { Button, type ButtonProps } from "./Button";
 

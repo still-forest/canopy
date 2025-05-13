@@ -1,7 +1,5 @@
 import { render, screen } from "@testing-library/react";
 import { describe, expect, it } from "vitest";
-
-import { Heading } from "@/main";
 import {
   FONT_FAMILIES,
   FONT_SIZES,
@@ -14,6 +12,7 @@ import {
   TYPOGRAPHY_VARIANTS,
   type TypographyVariant,
 } from "@/types";
+import { Heading } from "@/typography";
 
 describe("Heading", () => {
   it("renders with default props", () => {

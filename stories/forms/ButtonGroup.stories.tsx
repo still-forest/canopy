@@ -1,6 +1,6 @@
 import type { Meta, StoryObj } from "@storybook/react";
 
-import { ButtonGroup } from "@/main";
+import { ButtonGroup } from "@/forms";
 
 const meta: Meta<typeof ButtonGroup> = {
   title: "Forms/Buttons/ButtonGroup",

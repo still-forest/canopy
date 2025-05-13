@@ -1,4 +1,4 @@
-import { Text, type TextProps } from "@/main";
+import { Text, type TextProps } from "@/typography";
 
 export default function Code({ children }: TextProps) {
   return (

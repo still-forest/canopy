@@ -2,7 +2,7 @@ import { fireEvent, render, screen } from "@testing-library/react";
 import { describe, expect, test, vi } from "vitest";
 import "@testing-library/jest-dom";
 
-import { Button } from "@/main";
+import { Button } from "@/forms";
 
 describe("Button", () => {
   test("renders a Button with an onClick action", async () => {

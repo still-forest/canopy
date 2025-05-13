@@ -1,7 +1,7 @@
 import { render, screen } from "@testing-library/react";
 import { EXPECTED_BASE_INPUT_CLASSES, EXPECTED_BASE_LABEL_CLASSES } from "@tests/forms/utils";
 import { describe, expect, it } from "vitest";
-import { TextInput } from "@/main";
+import { TextInput } from "@/forms";
 
 describe("TextInput", () => {
   it("renders with default props", () => {

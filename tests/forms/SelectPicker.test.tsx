@@ -1,6 +1,6 @@
 import { fireEvent, render, screen, within } from "@testing-library/react";
 import { describe, expect, it, vi } from "vitest";
-import { SelectPicker, type SelectPickerOption } from "@/main";
+import { SelectPicker, type SelectPickerOption } from "@/forms";
 
 describe("SelectPicker", () => {
   const OPTIONS = [
