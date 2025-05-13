@@ -7,7 +7,7 @@ interface PageLoaderProps {
 }
 
 const DefaultIconComponent = () => {
-  return <Loader2 className="animate-spin text-info" size={64} />;
+  return <Loader2 className="animate-spin text-info" size={64} data-testid="icon" />;
 };
 
 export const PageLoader = ({ iconComponent, message }: PageLoaderProps) => {
