@@ -4,7 +4,7 @@ type FlexType = "1" | "auto" | "initial" | "none";
 
 interface FlexItemProps extends React.HTMLAttributes<HTMLDivElement> {
   as?: React.ElementType;
-  flex?: FlexType;
+  flex?: FlexType; // shorthand for flex-grow, flex-shrink and flex-basis combined
 }
 
 const FlexItem = ({ flex, className, children, ...props }: FlexItemProps) => (
