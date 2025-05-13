@@ -32,10 +32,9 @@ export const Interstitial = ({ variant, icon, iconComponent, message, children }
     <Flex align="center" justify="center" className="h-full w-full">
       <Flex direction="col" justify="center">
         {IconComponent && (
-          <div className="mx-auto my-12">
+          <Flex align="center" justify="center" gapX="4" className="my-6">
             <IconComponent
               className={cn(
-                "text-info",
                 variant === "error" && "text-destructive",
                 variant === "success" && "text-success",
                 variant === "warning" && "text-warning",
@@ -43,7 +42,7 @@ export const Interstitial = ({ variant, icon, iconComponent, message, children }
               )}
               size={128}
             />
-          </div>
+          </Flex>
         )}
         <Flex direction="col" justify="center" className="max-w-[500px]">
           {message ? (

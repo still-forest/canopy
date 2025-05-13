@@ -8,7 +8,7 @@ const meta: Meta<typeof Interstitial> = {
   component: Interstitial,
   decorators: [
     (Story) => (
-      <Box width="full" height="full" className="min-h-[400px]">
+      <Box width="full" className="min-h-[400px]">
         <Story />
       </Box>
     ),
