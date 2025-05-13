@@ -1,6 +1,6 @@
-import Code from "@root/src/components/Code";
-import OptionList from "@root/stories/templates/OptionList";
-import OptionsByFamilyGrid from "@root/stories/templates/OptionsByFamilyGrid";
+import Code from "@src/components/Code";
+import OptionList from "@stories/templates/OptionList";
+import OptionsByFamilyGrid from "@stories/templates/OptionsByFamilyGrid";
 import { asOptionalValue, summarizeValues } from "@stories/utils";
 import type { Meta, StoryObj } from "@storybook/react";
 import { Box, Flex, Heading, Text } from "@/main";
