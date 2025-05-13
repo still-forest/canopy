@@ -1,9 +1,8 @@
 import { fireEvent, render, screen } from "@testing-library/react";
-import { describe, expect, it, vi } from "vitest";
-
-import { ErrorOverlay } from "@/interstitials";
 import { Home } from "lucide-react";
+import { describe, expect, it, vi } from "vitest";
 import { Button } from "@/forms";
+import { ErrorOverlay } from "@/interstitials";
 
 describe("ErrorOverlay", () => {
   it("renders with default message", () => {

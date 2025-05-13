@@ -1,8 +1,7 @@
 import { render, screen } from "@testing-library/react";
-import { describe, expect, it } from "vitest";
-
-import { PageLoader } from "@/interstitials";
 import { Mailbox } from "lucide-react";
+import { describe, expect, it } from "vitest";
+import { PageLoader } from "@/interstitials";
 
 describe("PageLoader", () => {
   it("renders with message", () => {

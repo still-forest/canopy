@@ -1,6 +1,6 @@
 import type { Meta, StoryObj } from "@storybook/react";
-import { motion } from "motion/react";
 import { PiggyBank } from "lucide-react";
+import { motion } from "motion/react";
 import { PageLoader } from "@/interstitials";
 import { Box, Flex } from "@/layout";
 

@@ -1,8 +1,7 @@
 import { render, screen } from "@testing-library/react";
-import { describe, expect, it } from "vitest";
-
-import { Interstitial } from "@/interstitials";
 import { Mailbox } from "lucide-react";
+import { describe, expect, it } from "vitest";
+import { Interstitial } from "@/interstitials";
 
 describe("Interstitial", () => {
   it("renders with message", () => {

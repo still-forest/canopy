@@ -1,8 +1,7 @@
 import { fireEvent, render, screen } from "@testing-library/react";
-import { describe, expect, it, vi } from "vitest";
-
-import { PageNotFound } from "@/interstitials";
 import { Mailbox } from "lucide-react";
+import { describe, expect, it, vi } from "vitest";
+import { PageNotFound } from "@/interstitials";
 
 describe("PageNotFound", () => {
   it("renders with default message", () => {
