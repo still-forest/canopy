@@ -1,15 +1,16 @@
 import type { Meta, StoryObj } from "@storybook/react";
 import { Button } from "@/forms";
 import { Interstitial, type InterstitialProps } from "@/interstitials";
+import { Box } from "@/layout";
 import { PiggyBank } from "lucide-react";
 const meta: Meta<typeof Interstitial> = {
   title: "Interstitials/Base",
   component: Interstitial,
   decorators: [
     (Story) => (
-      <div style={{ width: "600px", height: "400px" }}>
+      <Box width="full" height="full" className="min-h-[400px]">
         <Story />
-      </div>
+      </Box>
     ),
   ],
   parameters: {

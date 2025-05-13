@@ -8,7 +8,7 @@ const meta: Meta<typeof ErrorFallback> = {
   component: ErrorFallback,
   decorators: [
     (Story) => (
-      <Box width="full" height="full">
+      <Box width="full" height="full" className="min-h-[400px]">
         <Story />
       </Box>
     ),
