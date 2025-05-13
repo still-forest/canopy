@@ -1,3 +1,4 @@
+import { CircleX } from "lucide-react";
 import { Interstitial } from "./Interstitial";
 
 interface ErrorOverlayProps {
@@ -5,9 +6,9 @@ interface ErrorOverlayProps {
   children?: React.ReactNode;
 }
 
-export const ErrorOverlay = ({ message, children }: ErrorOverlayProps) => {
+export const ErrorOverlay = ({ message = "Something went wrong.", children }: ErrorOverlayProps) => {
   return (
-    <Interstitial variant="error" icon="circle_x" message={message}>
+    <Interstitial variant="error" iconComponent={CircleX} message={message}>
       {children}
     </Interstitial>
   );
