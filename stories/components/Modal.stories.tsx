@@ -3,8 +3,7 @@ import type { Meta, StoryObj } from "@storybook/react";
 import { Modal } from "@/components";
 import { Button } from "@/forms";
 import { Flex } from "@/layout";
-import { Heading, Text } from "@/typography";
-import { sampleLongText, sampleText } from "../support/sampleText";
+import { Text } from "@/typography";
 
 const meta: Meta<typeof Modal> = {
   title: "Components/Modal",
