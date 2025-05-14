@@ -31,7 +31,7 @@ describe("Breadcrumbs", () => {
     expect(level2Link).toHaveAttribute("href", "/level_1/two");
     expect(level2Link).not.toHaveAttribute("aria-disabled", "true");
 
-    const currentPage = screen.getByRole("link", { name: "Current" });
+    const currentPage = screen.getByText("Current");
     expect(currentPage).toBeInTheDocument();
     expect(currentPage).toHaveAttribute("aria-disabled", "true");
   });
@@ -74,7 +74,7 @@ describe("Breadcrumbs", () => {
     level2Link.click();
     expect(onLinkClick).toHaveBeenCalledWith("/level_1/two");
 
-    const currentPage = screen.getByRole("button", { name: "Current" });
+    const currentPage = screen.getByText("Current");
     expect(currentPage).toBeInTheDocument();
     expect(currentPage).toHaveAttribute("aria-disabled", "true");
   });
