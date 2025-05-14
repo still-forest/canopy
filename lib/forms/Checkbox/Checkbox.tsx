@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 
 import { Checkbox as BaseCheckbox } from "@/components/ui/checkbox";
 import { Label } from "@/forms";
@@ -15,11 +15,15 @@ export interface CheckboxProps {
 const Checkbox = ({ label, name, value, checked, onCheckedChange }: CheckboxProps) => {
   const [checkedState, setCheckedState] = useState(checked);
 
+  useEffect(() => {
+    // Sync state when checked status changes from outside
+    setCheckedState(checked);
+  }, [checked]);
+
   let fullId = name;
 
-  if (!value) {
-    value = name;
-  } else {
+  const effectiveValue = value || name;
+  if (value) {
     fullId += `[${value}]`;
   }
 
@@ -30,7 +34,13 @@ const Checkbox = ({ label, name, value, checked, onCheckedChange }: CheckboxProp
 
   return (
     <Flex align="center" gap="2">
-      <BaseCheckbox id={fullId} name={name} checked={checkedState} onCheckedChange={handleChange} value={value} />
+      <BaseCheckbox
+        id={fullId}
+        name={name}
+        checked={checkedState}
+        onCheckedChange={handleChange}
+        value={effectiveValue}
+      />
       <Label htmlFor={fullId} className="cursor-pointer">
         {label}
       </Label>

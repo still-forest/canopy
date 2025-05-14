@@ -11,7 +11,6 @@ describe("Checkbox", () => {
     render(<Checkbox label="Test Checkbox" name="test-checkbox" checked={false} />);
 
     const checkbox = screen.getByRole("checkbox");
-    console.log(checkbox);
 
     expect(checkbox).toHaveAccessibleName("Test Checkbox");
     expect(checkbox).toHaveAttribute("type", "button");
@@ -39,7 +38,6 @@ describe("Checkbox", () => {
     render(<Checkbox label="Test Checkbox" name="test-checkbox" checked={false} value="abc1" />);
 
     const checkbox = screen.getByRole("checkbox");
-    console.log(checkbox);
 
     expect(checkbox).toHaveAccessibleName("Test Checkbox");
     expect(checkbox).toHaveAttribute("type", "button");
@@ -57,7 +55,6 @@ describe("Checkbox", () => {
     render(<Checkbox label="Test Checkbox" name="test-checkbox" checked={false} onCheckedChange={handleClick} />);
 
     const checkbox = screen.getByRole("checkbox");
-    console.log(checkbox);
 
     expect(checkbox).toHaveAccessibleName("Test Checkbox");
     expect(checkbox).toHaveAttribute("aria-checked", "false");
