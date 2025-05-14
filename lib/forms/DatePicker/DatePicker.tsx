@@ -35,7 +35,7 @@ export const DatePicker = ({ onDateSelection, initialValue, className, size = "d
         </Button>
       </PopoverTrigger>
       <PopoverContent className="w-auto p-0">
-        <Calendar mode="single" selected={date} onSelect={handleSelect} />
+        <Calendar mode="single" selected={date} onSelect={handleSelect} autoFocus />
       </PopoverContent>
     </Popover>
   );
