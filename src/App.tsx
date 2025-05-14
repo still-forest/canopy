@@ -2,7 +2,6 @@ import ThemeProvider from "@src/context/ThemeProvider";
 import { BookType, FolderTree, Home, LayoutDashboard, LogOut, Settings2, Trees } from "lucide-react";
 import { Container, Flex, SidebarLayout } from "@/layout";
 import { Heading } from "@/typography";
-import { useTheme } from "./context/useTheme";
 
 const BrandContent = () => (
   <>
@@ -73,16 +72,12 @@ const itemSet3 = [
 ];
 
 const InnerApp = () => {
-  const { theme, setTheme } = useTheme();
-
   return (
     <SidebarLayout
       brandContent={<BrandContent />}
       brandOnClick={() => {
         window.alert("brand");
       }}
-      setTheme={setTheme}
-      theme={theme}
       activeSlug="summary"
       itemSets={[{ links: itemSet1 }, { links: itemSet2 }]}
       bottomItemSets={[{ links: itemSet3 }]}

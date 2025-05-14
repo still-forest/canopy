@@ -1,4 +1,5 @@
-import { Moon, Sun } from "lucide-react";
+import { useTheme } from "@src/context/useTheme";
+import { Computer, Moon, Sun } from "lucide-react";
 import { Fragment } from "react";
 import {
   Sidebar as BaseSidebar,
@@ -27,11 +28,7 @@ interface SideLinkSet {
   links: SideLink[];
 }
 
-type Theme = "light" | "dark" | "system";
-
 export interface SidebarProps extends React.ComponentProps<typeof BaseSidebar> {
-  theme: Theme;
-  setTheme: (theme: Theme) => void;
   brandContent: React.ReactNode;
   brandOnClick?: () => void;
   activeSlug?: string;
@@ -87,9 +84,44 @@ const MenuSection = ({ itemSets, activeSlug }: MenuSectionProps) => {
   );
 };
 
+// TODO: This doesn't support selecting system theme
+const ThemeSelection = () => {
+  const { theme, setTheme } = useTheme();
+
+  return (
+    <SidebarMenuButton
+      className="cursor-pointer"
+      onClick={() => {
+        const newTheme = theme === "light" ? "dark" : "light";
+        setTheme(newTheme);
+      }}
+      asChild
+    >
+      <span>
+        {theme === "light" && (
+          <>
+            <Moon />
+            <MenuItemText>Dark mode</MenuItemText>
+          </>
+        )}
+        {theme === "dark" && (
+          <>
+            <Sun />
+            <MenuItemText>Light mode</MenuItemText>
+          </>
+        )}
+        {theme === "system" && (
+          <>
+            <Computer />
+            <MenuItemText>System theme</MenuItemText>
+          </>
+        )}
+      </span>
+    </SidebarMenuButton>
+  );
+};
+
 export const Sidebar = ({
-  theme,
-  setTheme,
   brandContent,
   brandOnClick,
   activeSlug,
@@ -129,29 +161,7 @@ export const Sidebar = ({
             </SidebarMenuButton>
           </SidebarMenuItem>
           <SidebarMenuItem>
-            <SidebarMenuButton
-              className="cursor-pointer"
-              onClick={() => {
-                const newTheme = theme === "light" ? "dark" : "light";
-                setTheme(newTheme);
-              }}
-              asChild
-            >
-              <span>
-                {theme === "light" && (
-                  <>
-                    <Moon />
-                    <MenuItemText>Dark mode</MenuItemText>
-                  </>
-                )}
-                {theme !== "light" && (
-                  <>
-                    <Sun />
-                    <MenuItemText>Light mode</MenuItemText>
-                  </>
-                )}
-              </span>
-            </SidebarMenuButton>
+            <ThemeSelection />
           </SidebarMenuItem>
           {bottomItemSets && (
             <>
