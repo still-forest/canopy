@@ -1,6 +1,6 @@
+import { RadioGroup, RadioGroupItem } from "@/components/ui/radio-group";
 import { InputGroup, Label } from "@/forms";
 import { Flex, Grid } from "@/layout";
-import { RadioGroup, RadioGroupItem } from "@/components/ui/radio-group";
 
 interface Option {
   value: string;

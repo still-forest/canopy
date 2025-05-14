@@ -1,5 +1,5 @@
-import { Flex } from "@/layout";
 import { Label } from "@/forms";
+import { Flex } from "@/layout";
 
 interface InputGroupProps {
   label?: string;

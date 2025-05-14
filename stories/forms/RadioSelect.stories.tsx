@@ -1,8 +1,7 @@
 import type { Meta, StoryObj } from "@storybook/react";
 
 import { RadioSelect } from "@/forms";
-import { Flex } from "@/layout";
-import { Box } from "@/layout";
+import { Box, Flex } from "@/layout";
 
 const meta: Meta<typeof RadioSelect> = {
   title: "Forms/Inputs/RadioSelect",
