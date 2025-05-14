@@ -1,5 +1,5 @@
 import { render, screen } from "@testing-library/react";
-import { describe, expect, test } from "vitest";
+import { describe, expect, test, vi } from "vitest";
 import "@testing-library/jest-dom";
 import userEvent from "@testing-library/user-event";
 
@@ -44,5 +44,29 @@ describe("Tooltip", () => {
 
     const tooltip = screen.getByRole("tooltip");
     expect(tooltip).toHaveTextContent("This is a tooltip");
+  });
+
+  test("renders a Tooltip with onOpenChange", async () => {
+    const user = userEvent.setup();
+
+    const onOpenChange = vi.fn();
+
+    render(
+      <Tooltip onOpenChange={onOpenChange}>
+        <Tooltip.Trigger>
+          <button type="button">Hover over me</button>
+        </Tooltip.Trigger>
+        <Tooltip.Content>This is a tooltip</Tooltip.Content>
+      </Tooltip>,
+    );
+
+    const trigger = screen.getByRole("button");
+    expect(trigger).toHaveTextContent("Hover over me");
+    await user.hover(trigger);
+
+    const tooltip = screen.getByRole("tooltip");
+    expect(tooltip).toHaveTextContent("This is a tooltip");
+
+    expect(onOpenChange).toHaveBeenCalledWith(true);
   });
 });

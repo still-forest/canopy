@@ -3,16 +3,19 @@ import { Tooltip as BaseTooltip, TooltipContent, TooltipProvider, TooltipTrigger
 interface TooltipProps {
   children: React.ReactNode;
   open?: boolean;
+  onOpenChange?: (open: boolean) => void;
 }
 
 interface ChildProps {
   children: React.ReactNode;
 }
 
-const Tooltip = ({ children, open }: TooltipProps) => {
+const Tooltip = ({ children, open, onOpenChange }: TooltipProps) => {
   return (
     <TooltipProvider>
-      <BaseTooltip open={open}>{children}</BaseTooltip>
+      <BaseTooltip open={open} onOpenChange={onOpenChange}>
+        {children}
+      </BaseTooltip>
     </TooltipProvider>
   );
 };
