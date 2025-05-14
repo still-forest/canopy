@@ -1,4 +1,4 @@
-import { fireEvent, render, screen, within } from "@testing-library/react";
+import { fireEvent, render, screen, waitFor, within } from "@testing-library/react";
 import { afterEach, beforeEach, describe, expect, it, vi } from "vitest";
 import { DatePicker } from "@/forms";
 
@@ -208,33 +208,39 @@ describe("DatePicker", () => {
     expect(january12.cell.className).toBe(EXPECTED_SELECTED_DATE_CLASSES);
   });
 
-  // TODO: Need to update to 9.6.7, but that's a challenging update.
-  it.skip("can select from different year", () => {
+  it("can select from different year", async () => {
     render(<DatePicker onDateSelection={onDateSelection} />);
 
     const trigger = screen.getByRole("button");
     fireEvent.click(trigger);
 
-    const calendar = screen.getByRole("dialog");
+    let calendar = screen.getByRole("dialog");
     expect(calendar).toBeVisible();
 
-    const currentMonthButton = within(calendar).getByLabelText("Go to current month");
+    const currentMonthButton = within(calendar).getByRole("button", { name: "December 2024" });
     fireEvent.click(currentMonthButton);
-
+    
     expect(calendar.textContent).toBe(
-      "December 2024SuMoTuWeThFrSa293031123456789101112131415161718192021222324252627282930311",
+      "2019 - 2030201920202021202220232024202520262027202820292030",
+    );
+
+    fireEvent.click(within(calendar).getByRole("button", { name: "2023" }));
+    expect(calendar.textContent).toBe(
+      "January 2023SuMoTuWeThFrSa123456789101112131415161718192021222324252627282930311234",
     );
 
     const dates = screen.getAllByRole("gridcell");
     expect(dates.length).toBe(35);
 
-    const january12 = dates.find((date) => date.textContent === "12") as HTMLElement;
-    expect(january12).toBeInTheDocument();
-    expect(january12.className).toBe(EXPECTED_UNSELECTED_DATE_CLASSES);
+    calendar = screen.getByRole("dialog");
+    let january19 = findDay(calendar, "19");
+    expect(january19.cell).toBeInTheDocument();
+    expect(january19.cell.className).toBe(EXPECTED_UNSELECTED_DATE_CLASSES);
 
-    fireEvent.click(january12);
+    fireEvent.click(january19.button);
 
-    expect(onDateSelection).toHaveBeenCalledWith(new Date("2025-01-12T16:00:00.000Z"));
-    expect(january12.className).toBe(EXPECTED_SELECTED_DATE_CLASSES);
+    expect(onDateSelection).toHaveBeenCalledWith(new Date("2023-01-19T05:00:00.000Z"));
+    january19 = findDay(calendar, "19");
+    expect(january19.cell.className).toBe(EXPECTED_SELECTED_DATE_CLASSES);
   });
 });
