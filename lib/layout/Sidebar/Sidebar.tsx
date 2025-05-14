@@ -43,19 +43,26 @@ export const MenuItemText = ({ children }: { children: React.ReactNode }) => (
 );
 
 const PrimaryMenu = ({ itemSets }: Pick<SidebarProps, "itemSets">) => {
+  const setCount = itemSets.length;
+
   return (
     <SidebarMenu>
-      {itemSets.map((itemSet) => {
-        return itemSet.links.map((item) => (
-          <SidebarMenuItem key={item.key}>
-            <SidebarMenuButton asChild isActive={item.active}>
-              <a href={item.url}>
-                <item.icon />
-                <MenuItemText>{item.title}</MenuItemText>
-              </a>
-            </SidebarMenuButton>
-          </SidebarMenuItem>
-        ));
+      {itemSets.map((itemSet, i) => {
+        return (
+          <>
+            {itemSet.links.map((item) => (
+              <SidebarMenuItem key={item.key}>
+                <SidebarMenuButton asChild isActive={item.active}>
+                  <a href={item.url}>
+                    <item.icon />
+                    <MenuItemText>{item.title}</MenuItemText>
+                  </a>
+                </SidebarMenuButton>
+              </SidebarMenuItem>
+            ))}
+            {i < setCount - 1 && <SidebarSeparator />}
+          </>
+        );
       })}
     </SidebarMenu>
   );
