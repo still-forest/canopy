@@ -1,5 +1,5 @@
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
-
+import { cn } from "@/utils";
 import { Flex } from "@/layout";
 import { Label } from "@/forms";
 import { Text } from "@/typography";
@@ -34,12 +34,12 @@ const SelectInput = ({
     <Flex direction="col" gap="2" className="w-full">
       {label && <Label htmlFor={name}>{label}</Label>}
       <Select name={name} defaultValue={defaultValue as string | undefined} {...props}>
-        <SelectTrigger data-testid={`select-input-${name}`} className={`min-w-[180px] ${className}`}>
+        <SelectTrigger data-testid={`select-input-${name}`} className={cn("min-w-[180px]", className)}>
           <SelectValue placeholder={placeholder} />
         </SelectTrigger>
         <SelectContent>
-          {options.map(({ value, label }, i) => (
-            <SelectItem key={`option-${i}`} value={value}>
+          {options.map(({ value, label }) => (
+            <SelectItem key={`option-${value}`} value={value}>
               {label}
             </SelectItem>
           ))}
