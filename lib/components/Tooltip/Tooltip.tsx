@@ -10,7 +10,12 @@ interface ChildProps {
   children: React.ReactNode;
 }
 
-const Tooltip = ({ children, open, onOpenChange }: TooltipProps) => {
+type TooltipComponent = React.FC<TooltipProps> & {
+  Trigger: React.FC<ChildProps>;
+  Content: React.FC<ChildProps>;
+};
+
+const Tooltip: TooltipComponent = ({ children, open, onOpenChange }) => {
   return (
     <TooltipProvider>
       <BaseTooltip open={open} onOpenChange={onOpenChange}>
