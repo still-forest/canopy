@@ -46,6 +46,7 @@ const itemSet2 = [
     slug: "references",
     title: "References",
     icon: BookType,
+    external: true,
     onClick: () => {
       window.alert("references");
     },
