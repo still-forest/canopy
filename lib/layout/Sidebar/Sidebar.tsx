@@ -28,15 +28,16 @@ export interface SidebarProps extends React.ComponentProps<typeof BaseSidebar> {
   setTheme: (theme: string) => void;
   theme: string;
   brandContent: React.ReactNode;
+  bottomContent: React.ReactNode;
 }
 
-const MenuItemText = ({ children }: { children: React.ReactNode }) => (
+export const MenuItemText = ({ children }: { children: React.ReactNode }) => (
   <Text size="base" truncate>
     {children}
   </Text>
 );
 
-export const Sidebar = ({ brandContent, activeItem, setTheme, theme, ...props }: SidebarProps) => {
+export const Sidebar = ({ brandContent, bottomContent, activeItem, setTheme, theme, ...props }: SidebarProps) => {
   return (
     <BaseSidebar collapsible="icon" {...props}>
       <SidebarHeader>
@@ -85,7 +86,12 @@ export const Sidebar = ({ brandContent, activeItem, setTheme, theme, ...props }:
               </span>
             </SidebarMenuButton>
           </SidebarMenuItem>
-          {/* user menu */}
+          {bottomContent && (
+            <>
+              <SidebarSeparator />
+              {bottomContent}
+            </>
+          )}
         </SidebarMenu>
       </SidebarFooter>
       <SidebarRail />
