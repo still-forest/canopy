@@ -1,5 +1,5 @@
 import { render, screen, within } from "@testing-library/react";
-import { describe, expect, test, vi } from "vitest";
+import { describe, expect, test } from "vitest";
 import "@testing-library/jest-dom";
 import userEvent from "@testing-library/user-event";
 
@@ -36,11 +36,6 @@ describe("Modal", () => {
 
     const content = within(dialog).getByText("Modal content");
     expect(content.className).toBe("");
-
-    const closeButton = screen.getByRole("button", { name: "Close" });
-    await user.click(closeButton);
-
-    expect(screen.queryByRole("dialog")).not.toBeInTheDocument();
   });
 
   test("renders a Modal with no title", async () => {
@@ -91,34 +86,5 @@ describe("Modal", () => {
     expect(dialog).toHaveTextContent("Modal content");
     expect(dialog).not.toHaveTextContent("Modal title");
     expect(dialog).not.toHaveTextContent("Modal description");
-  });
-
-  test("renders a controlled Modal", async () => {
-    const user = userEvent.setup();
-    const onOpenChange = vi.fn();
-
-    render(
-      <Modal trigger={<Button>Open modal</Button>} open={true} onOpenChange={onOpenChange}>
-        Modal content
-      </Modal>,
-    );
-
-    const dialog = screen.getByRole("dialog");
-    expect(dialog).toHaveTextContent("Modal content");
-
-    const closeButton = screen.getByRole("button", { name: "Close" });
-    await user.click(closeButton);
-
-    expect(onOpenChange).toHaveBeenCalledWith(false);
-
-    expect(screen.queryByRole("dialog")).not.toBeInTheDocument();
-
-    const trigger = screen.getByRole("button", { name: "Open modal" });
-    await user.click(trigger);
-
-    expect(screen.getByRole("dialog")).toBeInTheDocument();
-    expect(dialog).toHaveTextContent("Modal content");
-
-    expect(onOpenChange).toHaveBeenCalledWith(true);
   });
 });

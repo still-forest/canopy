@@ -1,5 +1,5 @@
 import type { Meta, StoryObj } from "@storybook/react";
-import { useState } from "react";
+
 import { Modal } from "@/components";
 import { Button } from "@/forms";
 import { Flex } from "@/layout";
@@ -64,24 +64,4 @@ export const SimpleTrigger: Story = {
       <Text>Modal content</Text>
     </Modal>
   ),
-};
-
-export const Controlled: Story = {
-  render: () => {
-    const [isOpen, setIsOpen] = useState(false);
-
-    return (
-      <>
-        <Button onClick={() => setIsOpen(true)}>Open controlled modal</Button>
-        <Modal
-          open={isOpen}
-          onOpenChange={setIsOpen}
-          title="Controlled Modal"
-          description="Demo of controlled open/close"
-        >
-          <Text>Modal content</Text>
-        </Modal>
-      </>
-    );
-  },
 };
