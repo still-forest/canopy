@@ -13,13 +13,20 @@ interface Props {
   children: React.ReactNode;
   title?: string;
   description?: string;
+  open?: boolean;
+  onOpenChange?: (open: boolean) => void;
 }
 
-export const Modal = ({ trigger, children, title, description }: Props) => {
-  const [open, setOpen] = useState(false);
+export const Modal = ({ trigger, children, title, description, open, onOpenChange }: Props) => {
+  const [openState, setOpenState] = useState(open ?? false);
+
+  const handleOpenChange = (open: boolean) => {
+    setOpenState(open);
+    onOpenChange?.(open);
+  };
 
   return (
-    <Dialog open={open} onOpenChange={setOpen}>
+    <Dialog open={openState} onOpenChange={handleOpenChange}>
       <DialogTrigger asChild>{trigger}</DialogTrigger>
       <DialogContent>
         {(title || description) && (
