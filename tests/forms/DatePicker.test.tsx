@@ -2,6 +2,29 @@ import { fireEvent, render, screen, within } from "@testing-library/react";
 import { afterEach, beforeEach, describe, expect, it, vi } from "vitest";
 import { DatePicker } from "@/forms";
 
+const findDay = (calendar: HTMLElement, dayOfMonth: string) => {
+  const button = within(calendar).getByText(dayOfMonth);
+  if (!button) {
+    throw new Error(`Button not found: ${dayOfMonth}`);
+  }
+  if (button.tagName !== "BUTTON") {
+    throw new Error(`Unexpected button element type: ${button.tagName}`);
+  }
+
+  const cell = button.parentElement;
+  if (!cell) {
+    throw new Error(`Day cell not found: ${dayOfMonth}`);
+  }
+  if (cell.tagName !== "TD") {
+    throw new Error(`Unexpected cell element type: ${cell.tagName}`);
+  }
+
+  return {
+    button,
+    cell,
+  };
+};
+
 describe("DatePicker", () => {
   const onDateSelection = vi.fn();
 
@@ -19,14 +42,17 @@ describe("DatePicker", () => {
   const EXPECTED_CALENDAR_CLASSES =
     "data-[state=closed]:fade-out-0 data-[state=open]:fade-in-0 data-[state=closed]:zoom-out-95 data-[state=open]:zoom-in-95 data-[side=bottom]:slide-in-from-top-2 data-[side=left]:slide-in-from-right-2 data-[side=right]:slide-in-from-left-2 data-[side=top]:slide-in-from-bottom-2 z-50 origin-(--radix-popover-content-transform-origin) rounded-md border bg-popover text-popover-foreground shadow-md outline-hidden data-[state=closed]:animate-out data-[state=open]:animate-in w-auto p-0";
 
-  const EXPECTED_UNSELECTED_DATE_CLASSES =
-    "rdp-button_reset rdp-button inline-flex items-center justify-center gap-2 whitespace-nowrap rounded-md text-sm transition-all disabled:pointer-events-none disabled:opacity-50 [&_svg]:pointer-events-none [&_svg:not([class*='size-'])]:size-4 shrink-0 [&_svg]:shrink-0 outline-none focus-visible:border-ring focus-visible:ring-ring/50 focus-visible:ring-[3px] aria-invalid:ring-destructive/20 dark:aria-invalid:ring-destructive/40 aria-invalid:border-destructive hover:bg-accent hover:text-accent-foreground dark:hover:bg-accent/50 has-[>svg]:px-3 size-8 p-0 font-normal aria-selected:opacity-100";
+  const EXPECTED_DATE_BUTTON_CLASSES =
+    "inline-flex items-center justify-center gap-2 whitespace-nowrap text-sm disabled:pointer-events-none disabled:opacity-50 [&_svg]:pointer-events-none [&_svg:not([class*='size-'])]:size-4 shrink-0 [&_svg]:shrink-0 outline-none focus-visible:border-ring focus-visible:ring-ring/50 focus-visible:ring-[3px] aria-invalid:ring-destructive/20 dark:aria-invalid:ring-destructive/40 aria-invalid:border-destructive hover:bg-accent hover:text-accent-foreground dark:hover:bg-accent/50 has-[>svg]:px-3 size-8 rounded-md p-0 font-normal transition-none aria-selected:opacity-100";
 
-  const EXPECTED_CURRENT_DATE_INCREMENTAL_CLASSES = "bg-accent text-accent-foreground";
+  const EXPECTED_UNSELECTED_DATE_CLASSES = "flex size-8 flex-1 items-center justify-center p-0 text-sm";
 
-  const EXPECTED_SELECTED_DATE_CLASSES =
-    EXPECTED_UNSELECTED_DATE_CLASSES +
-    " bg-primary text-primary-foreground hover:bg-primary hover:text-primary-foreground focus:bg-primary focus:text-primary-foreground";
+  const EXPECTED_CURRENT_DATE_INCREMENTAL_CLASSES =
+    "rdp-focused [&>button]:bg-accent [&>button]:text-accent-foreground";
+  const EXPECTED_SELECTED_DATE_INCREMENTAL_CLASSES =
+    "[&>button]:bg-primary [&>button]:text-primary-foreground [&>button]:hover:bg-primary [&>button]:hover:text-primary-foreground";
+
+  const EXPECTED_SELECTED_DATE_CLASSES = `${EXPECTED_UNSELECTED_DATE_CLASSES} rdp-focused ${EXPECTED_SELECTED_DATE_INCREMENTAL_CLASSES}`;
 
   it("renders with calendar", () => {
     render(<DatePicker onDateSelection={onDateSelection} />);
@@ -45,23 +71,32 @@ describe("DatePicker", () => {
       "December 2024SuMoTuWeThFrSa123456789101112131415161718192021222324252627282930311234",
     );
 
-    const dates = screen.getAllByRole("gridcell");
+    const dates = within(calendar).getAllByRole("gridcell");
     expect(dates.length).toBe(35);
 
-    const december29 = dates.find((date) => date.textContent === "29") as HTMLElement;
-    expect(december29).toBeInTheDocument();
-    expect(december29.className).toBe(
+    const december29 = findDay(calendar, "29");
+    expect(december29.cell).toBeInTheDocument();
+    expect(december29.cell.className).toBe(
       `${EXPECTED_UNSELECTED_DATE_CLASSES} ${EXPECTED_CURRENT_DATE_INCREMENTAL_CLASSES}`,
     );
+    expect(december29.button).toBeInTheDocument();
+    expect(december29.button.className).toBe(EXPECTED_DATE_BUTTON_CLASSES);
 
-    const december25 = dates.find((date) => date.textContent === "25") as HTMLElement;
-    expect(december25).toBeInTheDocument();
-    expect(december25.className).toBe(EXPECTED_UNSELECTED_DATE_CLASSES);
+    let december25 = findDay(calendar, "25");
+    expect(december25.cell).toBeInTheDocument();
+    expect(december25.cell.className).toBe(EXPECTED_UNSELECTED_DATE_CLASSES);
+    expect(december25.button).toBeInTheDocument();
+    expect(december25.button.className).toBe(EXPECTED_DATE_BUTTON_CLASSES);
 
-    fireEvent.click(december25);
+    fireEvent.click(december25.button);
 
     expect(onDateSelection).toHaveBeenCalledWith(new Date("2024-12-25T05:00:00.000Z"));
-    expect(december25.className).toBe(EXPECTED_SELECTED_DATE_CLASSES);
+
+    december25 = findDay(calendar, "25");
+    expect(december25.cell).toBeInTheDocument();
+    expect(december25.cell.className).toBe(EXPECTED_SELECTED_DATE_CLASSES);
+    expect(december25.button).toBeInTheDocument();
+    expect(december25.button.className).toBe(EXPECTED_DATE_BUTTON_CLASSES);
   });
 
   it("renders with initial value", () => {
@@ -72,10 +107,10 @@ describe("DatePicker", () => {
 
     fireEvent.click(trigger);
 
-    const dates = screen.getAllByRole("gridcell");
-    const december25 = dates.find((date) => date.textContent === "25") as HTMLElement;
-    expect(december25).toBeInTheDocument();
-    expect(december25.className).toBe(EXPECTED_SELECTED_DATE_CLASSES);
+    const calendar = screen.getByRole("dialog");
+    const december25 = findDay(calendar, "25");
+    expect(december25.cell).toBeInTheDocument();
+    expect(december25.cell.className).toBe(EXPECTED_SELECTED_DATE_CLASSES);
   });
 
   it("renders with initial value that is today", () => {
@@ -86,10 +121,13 @@ describe("DatePicker", () => {
 
     fireEvent.click(trigger);
 
-    const dates = screen.getAllByRole("gridcell");
-    const december29 = dates.find((date) => date.textContent === "29") as HTMLElement;
-    expect(december29).toBeInTheDocument();
-    expect(december29.className).toBe(`${EXPECTED_SELECTED_DATE_CLASSES} ${EXPECTED_CURRENT_DATE_INCREMENTAL_CLASSES}`);
+    const calendar = screen.getByRole("dialog");
+
+    const december29 = findDay(calendar, "29");
+    expect(december29.cell).toBeInTheDocument();
+    expect(december29.cell.className).toBe(
+      `${EXPECTED_UNSELECTED_DATE_CLASSES} ${EXPECTED_CURRENT_DATE_INCREMENTAL_CLASSES} ${EXPECTED_SELECTED_DATE_INCREMENTAL_CLASSES}`,
+    );
   });
 
   it("renders with custom className", () => {
@@ -123,7 +161,7 @@ describe("DatePicker", () => {
     const calendar = screen.getByRole("dialog");
     expect(calendar).toBeVisible();
 
-    const previousMonthButton = within(calendar).getByLabelText("Go to previous month");
+    const previousMonthButton = within(calendar).getByLabelText("Go to the Previous Month");
     fireEvent.click(previousMonthButton);
 
     expect(calendar.textContent).toBe(
@@ -133,14 +171,16 @@ describe("DatePicker", () => {
     const dates = screen.getAllByRole("gridcell");
     expect(dates.length).toBe(35);
 
-    const november12 = dates.find((date) => date.textContent === "12") as HTMLElement;
-    expect(november12).toBeInTheDocument();
-    expect(november12.className).toBe(EXPECTED_UNSELECTED_DATE_CLASSES);
+    let november12 = findDay(calendar, "12");
+    expect(november12.cell).toBeInTheDocument();
+    expect(november12.cell.className).toBe(EXPECTED_UNSELECTED_DATE_CLASSES);
 
-    fireEvent.click(november12);
+    fireEvent.click(november12.button);
 
     expect(onDateSelection).toHaveBeenCalledWith(new Date("2024-11-12T05:00:00.000Z"));
-    expect(november12.className).toBe(EXPECTED_SELECTED_DATE_CLASSES);
+
+    november12 = findDay(calendar, "12");
+    expect(november12.cell.className).toBe(EXPECTED_SELECTED_DATE_CLASSES);
   });
 
   it("can select from future month", () => {
@@ -152,7 +192,7 @@ describe("DatePicker", () => {
     const calendar = screen.getByRole("dialog");
     expect(calendar).toBeVisible();
 
-    const nextMonthButton = within(calendar).getByLabelText("Go to next month");
+    const nextMonthButton = within(calendar).getByLabelText("Go to the Next Month");
     fireEvent.click(nextMonthButton);
 
     expect(calendar.textContent).toBe(
@@ -162,43 +202,48 @@ describe("DatePicker", () => {
     const dates = screen.getAllByRole("gridcell");
     expect(dates.length).toBe(35);
 
-    const january12 = dates.find((date) => date.textContent === "12") as HTMLElement;
-    expect(january12).toBeInTheDocument();
-    expect(january12.className).toBe(EXPECTED_UNSELECTED_DATE_CLASSES);
+    let january12 = findDay(calendar, "12");
+    expect(january12.cell).toBeInTheDocument();
+    expect(january12.cell.className).toBe(EXPECTED_UNSELECTED_DATE_CLASSES);
 
-    fireEvent.click(january12);
-
+    fireEvent.click(january12.button);
     expect(onDateSelection).toHaveBeenCalledWith(new Date("2025-01-12T05:00:00.000Z"));
-    expect(january12.className).toBe(EXPECTED_SELECTED_DATE_CLASSES);
+
+    january12 = findDay(calendar, "12");
+    expect(january12.cell.className).toBe(EXPECTED_SELECTED_DATE_CLASSES);
   });
 
-  // TODO: Need to update to 9.6.7, but that's a challenging update.
-  it.skip("can select from different year", () => {
+  it("can select from different year", async () => {
     render(<DatePicker onDateSelection={onDateSelection} />);
 
     const trigger = screen.getByRole("button");
     fireEvent.click(trigger);
 
-    const calendar = screen.getByRole("dialog");
+    let calendar = screen.getByRole("dialog");
     expect(calendar).toBeVisible();
 
-    const currentMonthButton = within(calendar).getByLabelText("Go to current month");
+    const currentMonthButton = within(calendar).getByRole("button", { name: "December 2024" });
     fireEvent.click(currentMonthButton);
 
+    expect(calendar.textContent).toBe("2019 - 2030201920202021202220232024202520262027202820292030");
+
+    fireEvent.click(within(calendar).getByRole("button", { name: "2023" }));
     expect(calendar.textContent).toBe(
-      "December 2024SuMoTuWeThFrSa293031123456789101112131415161718192021222324252627282930311",
+      "January 2023SuMoTuWeThFrSa123456789101112131415161718192021222324252627282930311234",
     );
 
     const dates = screen.getAllByRole("gridcell");
     expect(dates.length).toBe(35);
 
-    const january12 = dates.find((date) => date.textContent === "12") as HTMLElement;
-    expect(january12).toBeInTheDocument();
-    expect(january12.className).toBe(EXPECTED_UNSELECTED_DATE_CLASSES);
+    calendar = screen.getByRole("dialog");
+    let january19 = findDay(calendar, "19");
+    expect(january19.cell).toBeInTheDocument();
+    expect(january19.cell.className).toBe(EXPECTED_UNSELECTED_DATE_CLASSES);
 
-    fireEvent.click(january12);
+    fireEvent.click(january19.button);
 
-    expect(onDateSelection).toHaveBeenCalledWith(new Date("2025-01-12T16:00:00.000Z"));
-    expect(january12.className).toBe(EXPECTED_SELECTED_DATE_CLASSES);
+    expect(onDateSelection).toHaveBeenCalledWith(new Date("2023-01-19T05:00:00.000Z"));
+    january19 = findDay(calendar, "19");
+    expect(january19.cell.className).toBe(EXPECTED_SELECTED_DATE_CLASSES);
   });
 });
