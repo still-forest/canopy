@@ -1,9 +1,9 @@
 import { Box, Container, Flex, MenuItemText, SidebarLayout } from "@/layout";
 import ThemeProvider from "@src/context/ThemeProvider";
 import { useTheme } from "./context/useTheme";
-import { SidebarMenuButton, SidebarMenuItem } from "@/components/ui/sidebar";
-import { Settings2, Trees, LogOut } from "lucide-react";
-import { Heading, Text } from "@/typography";
+import { SidebarMenuButton, SidebarMenuItem } from "@/components/ui/sidebar"; // TODO: Export from lib
+import { Settings2, Trees, LogOut, BookType, Tag, Home, LayoutDashboard, PiggyBank, FolderTree } from "lucide-react";
+import { Heading } from "@/typography";
 
 const BrandContent = () => (
   <SidebarMenuButton size="lg" asChild>
@@ -20,7 +20,7 @@ const BrandContent = () => (
 
 const BottomContent = () => (
   <>
-    <a href="#" className="hover:cursor-pointer">
+    <a href="#settings" className="hover:cursor-pointer">
       <SidebarMenuItem>
         <SidebarMenuButton asChild>
           <span>
@@ -30,7 +30,7 @@ const BottomContent = () => (
         </SidebarMenuButton>
       </SidebarMenuItem>
     </a>
-    <a href="#" className="hover:cursor-pointer">
+    <a href="#logout" className="hover:cursor-pointer">
       <SidebarMenuItem>
         <SidebarMenuButton asChild>
           <span>
@@ -43,6 +43,40 @@ const BottomContent = () => (
   </>
 );
 
+const itemSet1 = [
+  {
+    key: "home",
+    title: "Home",
+    url: "#home",
+    icon: Home,
+    active: true,
+  },
+  {
+    key: "summary",
+    title: "Summary",
+    url: "#summary",
+    icon: LayoutDashboard,
+    active: false,
+  },
+  {
+    key: "details",
+    title: "Details",
+    url: "#details",
+    icon: FolderTree,
+    active: false,
+  },
+];
+
+const itemSet2 = [
+  {
+    key: "references",
+    title: "References",
+    url: "#references",
+    icon: BookType,
+    active: false,
+  },
+];
+
 const InnerApp = () => {
   const { theme, setTheme } = useTheme();
 
@@ -52,7 +86,7 @@ const InnerApp = () => {
       bottomContent={<BottomContent />}
       setTheme={setTheme}
       theme={theme}
-      items={[]}
+      itemSets={[{ links: itemSet1 }, { links: itemSet2 }]}
     >
       <Container>Canopy</Container>
     </SidebarLayout>

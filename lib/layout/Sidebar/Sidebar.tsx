@@ -15,16 +15,21 @@ import {
 import { Sun, Moon } from "lucide-react";
 
 import { Text } from "@/typography";
-export interface SideLink {
+
+interface SideLink {
   key: string;
   title: string;
   url: string;
   icon: React.ElementType;
+  active: boolean;
+}
+
+interface SideLinkSet {
+  links: SideLink[];
 }
 
 export interface SidebarProps extends React.ComponentProps<typeof BaseSidebar> {
-  activeItem?: string | undefined;
-  items: string[];
+  itemSets: SideLinkSet[];
   setTheme: (theme: string) => void;
   theme: string;
   brandContent: React.ReactNode;
@@ -37,7 +42,26 @@ export const MenuItemText = ({ children }: { children: React.ReactNode }) => (
   </Text>
 );
 
-export const Sidebar = ({ brandContent, bottomContent, activeItem, setTheme, theme, ...props }: SidebarProps) => {
+const PrimaryMenu = ({ itemSets }: Pick<SidebarProps, "itemSets">) => {
+  return (
+    <SidebarMenu>
+      {itemSets.map((itemSet) => {
+        return itemSet.links.map((item) => (
+          <SidebarMenuItem key={item.key}>
+            <SidebarMenuButton asChild isActive={item.active}>
+              <a href={item.url}>
+                <item.icon />
+                <MenuItemText>{item.title}</MenuItemText>
+              </a>
+            </SidebarMenuButton>
+          </SidebarMenuItem>
+        ));
+      })}
+    </SidebarMenu>
+  );
+};
+
+export const Sidebar = ({ brandContent, bottomContent, itemSets, setTheme, theme, ...props }: SidebarProps) => {
   return (
     <BaseSidebar collapsible="icon" {...props}>
       <SidebarHeader>
@@ -48,7 +72,7 @@ export const Sidebar = ({ brandContent, bottomContent, activeItem, setTheme, the
       <SidebarContent>
         <SidebarGroup>
           <SidebarGroupContent>
-            <SidebarMenu>{/* item list */}</SidebarMenu>
+            <PrimaryMenu itemSets={itemSets} />
           </SidebarGroupContent>
         </SidebarGroup>
       </SidebarContent>
