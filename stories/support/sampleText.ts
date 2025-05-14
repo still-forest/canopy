@@ -1,4 +1,5 @@
 export const sampleText = "My cat's breath smells like cat food.";
+export const sampleText2 = "Gimme five bees for a quarter, you'd say.";
 export const sampleParagraphText = [
   "We can't bust heads like we used to. But we have our ways. One \
     trick is to tell stories that don't go anywhere. Like the time I \
