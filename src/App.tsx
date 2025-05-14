@@ -1,21 +1,18 @@
 import ThemeProvider from "@src/context/ThemeProvider";
 import { BookType, FolderTree, Home, LayoutDashboard, LogOut, Settings2, Trees } from "lucide-react";
-import { SidebarMenuButton } from "@/components/ui/sidebar"; // TODO: Export from lib
-import { Box, Container, Flex, SidebarLayout } from "@/layout";
+import { Container, Flex, SidebarLayout } from "@/layout";
 import { Heading } from "@/typography";
 import { useTheme } from "./context/useTheme";
 
 const BrandContent = () => (
-  <SidebarMenuButton size="lg" asChild>
-    <Box>
-      <Flex align="center" justify="center" className="aspect-square size-8 rounded-lg bg-info text-sidebar">
-        <Trees className="size-6" />
-      </Flex>
-      <Heading level="3" className="ml-2 cursor-default">
-        Canopy
-      </Heading>
-    </Box>
-  </SidebarMenuButton>
+  <>
+    <Flex align="center" justify="center" className="aspect-square size-8 rounded-lg bg-info text-sidebar">
+      <Trees className="size-6" />
+    </Flex>
+    <Heading level="3" className="ml-2">
+      Canopy
+    </Heading>
+  </>
 );
 
 const itemSet1 = [
@@ -81,6 +78,9 @@ const InnerApp = () => {
   return (
     <SidebarLayout
       brandContent={<BrandContent />}
+      brandOnClick={() => {
+        window.alert("brand");
+      }}
       setTheme={setTheme}
       theme={theme}
       activeSlug="summary"

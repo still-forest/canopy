@@ -14,6 +14,7 @@ import {
   SidebarSeparator,
   SidebarTrigger,
 } from "@/components/ui/sidebar";
+import { Box } from "@/layout";
 import { Text } from "@/typography";
 
 interface SideLink {
@@ -33,6 +34,7 @@ export interface SidebarProps extends React.ComponentProps<typeof BaseSidebar> {
   theme: Theme;
   setTheme: (theme: Theme) => void;
   brandContent: React.ReactNode;
+  brandOnClick?: () => void;
   activeSlug?: string;
   itemSets: SideLinkSet[];
   bottomItemSets: SideLinkSet[];
@@ -90,6 +92,7 @@ export const Sidebar = ({
   theme,
   setTheme,
   brandContent,
+  brandOnClick,
   activeSlug,
   itemSets,
   bottomItemSets,
@@ -99,7 +102,15 @@ export const Sidebar = ({
     <BaseSidebar collapsible="icon" {...props}>
       <SidebarHeader>
         <SidebarMenu>
-          <SidebarMenuItem>{brandContent}</SidebarMenuItem>
+          <SidebarMenuItem>
+            <SidebarMenuButton
+              size="lg"
+              className={brandOnClick ? "cursor-pointer" : "cursor-default"}
+              onClick={brandOnClick}
+            >
+              {brandContent}
+            </SidebarMenuButton>
+          </SidebarMenuItem>
         </SidebarMenu>
       </SidebarHeader>
       <SidebarContent>
