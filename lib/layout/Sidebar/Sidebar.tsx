@@ -1,5 +1,5 @@
 import { useTheme } from "@src/context/useTheme";
-import { Computer, Moon, Sun } from "lucide-react";
+import { Computer, Moon, SquareArrowOutUpRight, Sun } from "lucide-react";
 import { Fragment } from "react";
 import {
   Sidebar as BaseSidebar,
@@ -15,6 +15,7 @@ import {
   SidebarSeparator,
   SidebarTrigger,
 } from "@/components/ui/sidebar";
+import { Flex } from "@/main";
 import { Text } from "@/typography";
 
 interface SideLink {
@@ -22,6 +23,7 @@ interface SideLink {
   title: string;
   icon: React.ElementType;
   onClick?: () => void;
+  external?: boolean;
 }
 
 interface SideLinkSet {
@@ -56,6 +58,11 @@ const MenuSubSection = ({ itemSet, activeSlug }: MenuSubSectionProps) => {
             <span>
               <item.icon />
               <MenuItemText>{item.title}</MenuItemText>
+              {item.external && (
+                <Flex>
+                  <SquareArrowOutUpRight size={12} strokeWidth={1.5} />
+                </Flex>
+              )}
             </span>
           </SidebarMenuButton>
         </SidebarMenuItem>
