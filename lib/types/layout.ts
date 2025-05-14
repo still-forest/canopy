@@ -1,5 +1,7 @@
 import { COLOR_VARIANTS } from "@/types";
 
+export type Theme = "light" | "dark";
+
 export const LAYOUT_VARIANTS = ["default", ...COLOR_VARIANTS] as const;
 export type LayoutVariant = (typeof LAYOUT_VARIANTS)[number];
 
