@@ -22,6 +22,7 @@ interface SideLink {
   url: string;
   icon: React.ElementType;
   active: boolean;
+  onClick?: () => void;
 }
 
 interface SideLinkSet {
@@ -51,12 +52,18 @@ const PrimaryMenu = ({ itemSets }: Pick<SidebarProps, "itemSets">) => {
         return (
           <>
             {itemSet.links.map((item) => (
-              <SidebarMenuItem key={item.key}>
+              <SidebarMenuItem
+                key={item.key}
+                onClick={() => {
+                  item.onClick?.();
+                }}
+                className="hover:cursor-pointer"
+              >
                 <SidebarMenuButton asChild isActive={item.active}>
-                  <a href={item.url}>
+                  <span>
                     <item.icon />
                     <MenuItemText>{item.title}</MenuItemText>
-                  </a>
+                  </span>
                 </SidebarMenuButton>
               </SidebarMenuItem>
             ))}

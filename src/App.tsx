@@ -50,6 +50,9 @@ const itemSet1 = [
     url: "#home",
     icon: Home,
     active: true,
+    onClick: () => {
+      window.alert("home");
+    },
   },
   {
     key: "summary",
@@ -57,6 +60,9 @@ const itemSet1 = [
     url: "#summary",
     icon: LayoutDashboard,
     active: false,
+    onClick: () => {
+      window.alert("summary");
+    },
   },
   {
     key: "details",
@@ -64,6 +70,9 @@ const itemSet1 = [
     url: "#details",
     icon: FolderTree,
     active: false,
+    onClick: () => {
+      window.alert("details");
+    },
   },
 ];
 
@@ -74,6 +83,9 @@ const itemSet2 = [
     url: "#references",
     icon: BookType,
     active: false,
+    onClick: () => {
+      window.alert("references");
+    },
   },
 ];
 
