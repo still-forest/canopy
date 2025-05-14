@@ -1,5 +1,5 @@
 import { Moon, Sun } from "lucide-react";
-import { Fragment, useState } from "react";
+import { Fragment } from "react";
 import {
   Sidebar as BaseSidebar,
   SidebarContent,
@@ -17,9 +17,8 @@ import {
 import { Text } from "@/typography";
 
 interface SideLink {
-  key: string;
+  slug: string;
   title: string;
-  url: string;
   icon: React.ElementType;
   onClick?: () => void;
 }
@@ -31,12 +30,12 @@ interface SideLinkSet {
 type Theme = "light" | "dark" | "system";
 
 export interface SidebarProps extends React.ComponentProps<typeof BaseSidebar> {
-  itemSets: SideLinkSet[];
-  setTheme: (theme: Theme) => void;
   theme: Theme;
+  setTheme: (theme: Theme) => void;
   brandContent: React.ReactNode;
-  bottomContent: React.ReactNode;
   activeSlug?: string;
+  itemSets: SideLinkSet[];
+  bottomItemSets: SideLinkSet[];
 }
 
 export const MenuItemText = ({ children }: { children: React.ReactNode }) => (
@@ -45,37 +44,41 @@ export const MenuItemText = ({ children }: { children: React.ReactNode }) => (
   </Text>
 );
 
-interface PrimaryMenuProps extends Pick<SidebarProps, "itemSets" | "activeSlug"> {}
+interface MenuSubSectionProps {
+  itemSet: SideLinkSet;
+  activeSlug?: string;
+}
 
-const PrimaryMenu = ({ itemSets, ...props }: PrimaryMenuProps) => {
-  const [activeSlug, setActiveSlug] = useState<string | undefined>(props.activeSlug);
-  const setCount = itemSets.length;
+const MenuSubSection = ({ itemSet, activeSlug }: MenuSubSectionProps) => {
+  return (
+    <>
+      {itemSet.links.map((item) => (
+        <SidebarMenuItem key={item.slug} onClick={item.onClick} className="hover:cursor-pointer">
+          <SidebarMenuButton asChild isActive={activeSlug === item.slug}>
+            <span>
+              <item.icon />
+              <MenuItemText>{item.title}</MenuItemText>
+            </span>
+          </SidebarMenuButton>
+        </SidebarMenuItem>
+      ))}
+    </>
+  );
+};
 
-  console.log(activeSlug);
+interface MenuSectionProps {
+  itemSets: SideLinkSet[];
+  activeSlug?: string;
+}
 
+const MenuSection = ({ itemSets, activeSlug }: MenuSectionProps) => {
   return (
     <SidebarMenu>
       {itemSets.map((itemSet, i) => {
         return (
           <Fragment key={`item-set-${i}`}>
-            {itemSet.links.map((item) => (
-              <SidebarMenuItem
-                key={item.key}
-                onClick={() => {
-                  setActiveSlug(item.key);
-                  item.onClick?.();
-                }}
-                className="hover:cursor-pointer"
-              >
-                <SidebarMenuButton asChild isActive={activeSlug === item.key}>
-                  <span>
-                    <item.icon />
-                    <MenuItemText>{item.title}</MenuItemText>
-                  </span>
-                </SidebarMenuButton>
-              </SidebarMenuItem>
-            ))}
-            {i < setCount - 1 && <SidebarSeparator />}
+            <MenuSubSection itemSet={itemSet} activeSlug={activeSlug} />
+            {i < itemSets.length - 1 && <SidebarSeparator />}
           </Fragment>
         );
       })}
@@ -84,12 +87,12 @@ const PrimaryMenu = ({ itemSets, ...props }: PrimaryMenuProps) => {
 };
 
 export const Sidebar = ({
+  theme,
+  setTheme,
   brandContent,
-  bottomContent,
   activeSlug,
   itemSets,
-  setTheme,
-  theme,
+  bottomItemSets,
   ...props
 }: SidebarProps) => {
   return (
@@ -102,7 +105,7 @@ export const Sidebar = ({
       <SidebarContent>
         <SidebarGroup>
           <SidebarGroupContent>
-            <PrimaryMenu activeSlug={activeSlug} itemSets={itemSets} />
+            <MenuSection itemSets={itemSets} activeSlug={activeSlug} />
           </SidebarGroupContent>
         </SidebarGroup>
       </SidebarContent>
@@ -140,10 +143,10 @@ export const Sidebar = ({
               </span>
             </SidebarMenuButton>
           </SidebarMenuItem>
-          {bottomContent && (
+          {bottomItemSets && (
             <>
               <SidebarSeparator />
-              {bottomContent}
+              <MenuSection itemSets={bottomItemSets} activeSlug={activeSlug} />
             </>
           )}
         </SidebarMenu>

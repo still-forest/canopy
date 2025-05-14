@@ -1,7 +1,7 @@
 import ThemeProvider from "@src/context/ThemeProvider";
 import { BookType, FolderTree, Home, LayoutDashboard, LogOut, Settings2, Trees } from "lucide-react";
-import { SidebarMenuButton, SidebarMenuItem } from "@/components/ui/sidebar"; // TODO: Export from lib
-import { Box, Container, Flex, MenuItemText, SidebarLayout } from "@/layout";
+import { SidebarMenuButton } from "@/components/ui/sidebar"; // TODO: Export from lib
+import { Box, Container, Flex, SidebarLayout } from "@/layout";
 import { Heading } from "@/typography";
 import { useTheme } from "./context/useTheme";
 
@@ -18,54 +18,26 @@ const BrandContent = () => (
   </SidebarMenuButton>
 );
 
-const BottomContent = () => (
-  <>
-    <a href="#settings" className="hover:cursor-pointer">
-      <SidebarMenuItem>
-        <SidebarMenuButton asChild>
-          <span>
-            <Settings2 />
-            <MenuItemText>Settings</MenuItemText>
-          </span>
-        </SidebarMenuButton>
-      </SidebarMenuItem>
-    </a>
-    <a href="#logout" className="hover:cursor-pointer">
-      <SidebarMenuItem>
-        <SidebarMenuButton asChild>
-          <span>
-            <LogOut />
-            <MenuItemText>Log out</MenuItemText>
-          </span>
-        </SidebarMenuButton>
-      </SidebarMenuItem>
-    </a>
-  </>
-);
-
 const itemSet1 = [
   {
-    key: "home",
+    slug: "home",
     title: "Home",
-    url: "#home",
     icon: Home,
     onClick: () => {
       window.alert("home");
     },
   },
   {
-    key: "summary",
+    slug: "summary",
     title: "Summary",
-    url: "#summary",
     icon: LayoutDashboard,
     onClick: () => {
       window.alert("summary");
     },
   },
   {
-    key: "details",
+    slug: "details",
     title: "Details",
-    url: "#details",
     icon: FolderTree,
     onClick: () => {
       window.alert("details");
@@ -75,12 +47,30 @@ const itemSet1 = [
 
 const itemSet2 = [
   {
-    key: "references",
+    slug: "references",
     title: "References",
-    url: "#references",
     icon: BookType,
     onClick: () => {
       window.alert("references");
+    },
+  },
+];
+
+const itemSet3 = [
+  {
+    slug: "settings",
+    title: "Settings",
+    icon: Settings2,
+    onClick: () => {
+      window.alert("settings");
+    },
+  },
+  {
+    slug: "logout",
+    title: "Log out",
+    icon: LogOut,
+    onClick: () => {
+      window.alert("logout");
     },
   },
 ];
@@ -91,11 +81,11 @@ const InnerApp = () => {
   return (
     <SidebarLayout
       brandContent={<BrandContent />}
-      bottomContent={<BottomContent />}
       setTheme={setTheme}
       theme={theme}
       activeSlug="summary"
       itemSets={[{ links: itemSet1 }, { links: itemSet2 }]}
+      bottomItemSets={[{ links: itemSet3 }]}
     >
       <Container>Canopy</Container>
     </SidebarLayout>
