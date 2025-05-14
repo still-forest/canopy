@@ -2,7 +2,7 @@ import { useState } from "react";
 import { Calendar as CalendarIcon } from "lucide-react";
 
 import { cn } from "@/utils";
-import { Button } from "@/components/ui/button";
+import { Button } from "@/forms";
 import { Calendar } from "@/components/ui/calendar";
 import { Popover, PopoverContent, PopoverTrigger } from "@/components/ui/popover";
 
@@ -36,7 +36,7 @@ export const DatePicker = ({ onDateSelection, initialValue, className, size = "d
         </Button>
       </PopoverTrigger>
       <PopoverContent className="w-auto p-0">
-        <Calendar mode="single" selected={date} onSelect={handleSelect} autoFocus />
+        <Calendar mode="single" selected={date} onSelect={handleSelect} />
       </PopoverContent>
     </Popover>
   );
