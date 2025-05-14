@@ -1,9 +1,9 @@
-import { Box, Container, Flex, MenuItemText, SidebarLayout } from "@/layout";
 import ThemeProvider from "@src/context/ThemeProvider";
-import { useTheme } from "./context/useTheme";
+import { BookType, FolderTree, Home, LayoutDashboard, LogOut, Settings2, Trees } from "lucide-react";
 import { SidebarMenuButton, SidebarMenuItem } from "@/components/ui/sidebar"; // TODO: Export from lib
-import { Settings2, Trees, LogOut, BookType, Tag, Home, LayoutDashboard, PiggyBank, FolderTree } from "lucide-react";
+import { Box, Container, Flex, MenuItemText, SidebarLayout } from "@/layout";
 import { Heading } from "@/typography";
+import { useTheme } from "./context/useTheme";
 
 const BrandContent = () => (
   <SidebarMenuButton size="lg" asChild>

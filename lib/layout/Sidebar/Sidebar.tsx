@@ -1,21 +1,20 @@
+import { Moon, Sun } from "lucide-react";
+import { Fragment, useState } from "react";
 import {
   Sidebar as BaseSidebar,
   SidebarContent,
+  SidebarFooter,
   SidebarGroup,
   SidebarGroupContent,
+  SidebarHeader,
   SidebarMenu,
   SidebarMenuButton,
   SidebarMenuItem,
-  SidebarSeparator,
-  SidebarFooter,
-  SidebarHeader,
-  SidebarTrigger,
   SidebarRail,
+  SidebarSeparator,
+  SidebarTrigger,
 } from "@/components/ui/sidebar";
-import { Sun, Moon } from "lucide-react";
-
 import { Text } from "@/typography";
-import { Fragment, useState } from "react";
 
 interface SideLink {
   key: string;
@@ -29,10 +28,12 @@ interface SideLinkSet {
   links: SideLink[];
 }
 
+type Theme = "light" | "dark" | "system";
+
 export interface SidebarProps extends React.ComponentProps<typeof BaseSidebar> {
   itemSets: SideLinkSet[];
-  setTheme: (theme: string) => void;
-  theme: string;
+  setTheme: (theme: Theme) => void;
+  theme: Theme;
   brandContent: React.ReactNode;
   bottomContent: React.ReactNode;
   activeSlug?: string;

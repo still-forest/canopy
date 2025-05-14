@@ -1,6 +1,6 @@
-import { SidebarProvider, SidebarInset } from "@/components/ui/sidebar";
+import { SidebarInset, SidebarProvider } from "@/components/ui/sidebar";
 
-import { Sidebar, SidebarProps } from "./Sidebar";
+import { Sidebar, type SidebarProps } from "./Sidebar";
 
 interface Props extends SidebarProps {
   children?: React.ReactNode;
