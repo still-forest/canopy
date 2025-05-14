@@ -1,8 +1,8 @@
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
-import { cn } from "@/utils";
-import { Flex } from "@/layout";
 import { Label } from "@/forms";
+import { Flex } from "@/layout";
 import { Text } from "@/typography";
+import { cn } from "@/utils";
 
 export interface Option {
   value: string;
