@@ -14,7 +14,6 @@ import {
   SidebarSeparator,
   SidebarTrigger,
 } from "@/components/ui/sidebar";
-import { Box } from "@/layout";
 import { Text } from "@/typography";
 
 interface SideLink {
