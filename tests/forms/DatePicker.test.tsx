@@ -7,19 +7,10 @@ describe("DatePicker", () => {
 
   beforeEach(() => {
     vi.setSystemTime(new Date("2024-12-25T16:00:00.000Z"));
-
-    // Mock Intl.DateTimeFormat to return a fixed locale/timezone
-    vi.spyOn(Intl.DateTimeFormat.prototype, "resolvedOptions").mockReturnValue({
-      locale: "en-US",
-      timeZone: "UTC",
-      calendar: "gregory",
-      numberingSystem: "latn",
-    });
   });
 
   afterEach(() => {
     vi.useRealTimers();
-    vi.restoreAllMocks();
   });
 
   const EXPECTED_TRIGGER_CLASSES =
@@ -69,7 +60,7 @@ describe("DatePicker", () => {
     render(<DatePicker onDateSelection={onDateSelection} initialValue={new Date("2024-12-25")} />);
 
     const trigger = screen.getByRole("button");
-    expect(trigger.textContent).toBe("25/12/2024");
+    expect(trigger.textContent).toBe("2024-12-25");
 
     fireEvent.click(trigger);
 

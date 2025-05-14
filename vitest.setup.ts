@@ -9,3 +9,7 @@ vi.stubGlobal(
     disconnect: vi.fn(),
   })),
 );
+
+export const setup = () => {
+  process.env.TZ = "US/Eastern";
+};

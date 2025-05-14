@@ -31,7 +31,7 @@ export const DatePicker = ({ onDateSelection, initialValue, className, size = "d
           className={cn("w-[280px] justify-start text-left font-normal", !date && "text-muted-foreground", className)}
         >
           <CalendarIcon className="mr-2 h-4 w-4" />
-          {date ? date.toLocaleDateString() : <span>Select a date</span>}
+          {date ? date.toISOString().split("T")[0] : <span>Select a date</span>}
         </Button>
       </PopoverTrigger>
       <PopoverContent className="w-auto p-0">
