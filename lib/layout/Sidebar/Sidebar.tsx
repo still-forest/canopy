@@ -12,33 +12,9 @@ import {
   SidebarTrigger,
   SidebarRail,
 } from "@/components/ui/sidebar";
-import {
-  PiggyBank,
-  Home,
-  Landmark,
-  Banknote,
-  Tag,
-  BookType,
-  LogOut,
-  Settings2,
-  LayoutDashboard,
-  Sun,
-  Moon,
-  SquareArrowOutUpRight,
-} from "lucide-react";
+import { Sun, Moon } from "lucide-react";
 
-import { Flex } from "@/layout";
-import { Heading, Text } from "@/typography";
-import { Theme } from "@/types";
-export type SideLinkType =
-  | "home"
-  | "summary"
-  | "accounts"
-  | "financial_institutions"
-  | "tags"
-  | "account_structures"
-  | "exchange_rates";
-
+import { Text } from "@/typography";
 export interface SideLink {
   key: string;
   title: string;
@@ -47,20 +23,25 @@ export interface SideLink {
 }
 
 export interface SidebarProps extends React.ComponentProps<typeof BaseSidebar> {
-  activeItem?: SideLinkType | undefined;
-  items: SideLinkType[];
+  activeItem?: string | undefined;
+  items: string[];
   setTheme: (theme: string) => void;
   theme: string;
+  brandContent: React.ReactNode;
 }
 
-const MenuItemText = ({ children }: { children: React.ReactNode }) => <Text size="base">{children}</Text>;
+const MenuItemText = ({ children }: { children: React.ReactNode }) => (
+  <Text size="base" truncate>
+    {children}
+  </Text>
+);
 
-export const Sidebar = ({ activeItem, setTheme, theme, ...props }: SidebarProps) => {
+export const Sidebar = ({ brandContent, activeItem, setTheme, theme, ...props }: SidebarProps) => {
   return (
     <BaseSidebar collapsible="icon" {...props}>
       <SidebarHeader>
         <SidebarMenu>
-          <SidebarMenuItem>{/* brand */}</SidebarMenuItem>
+          <SidebarMenuItem>{brandContent}</SidebarMenuItem>
         </SidebarMenu>
       </SidebarHeader>
       <SidebarContent>
