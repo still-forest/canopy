@@ -1,6 +1,6 @@
 import ThemeProvider from "@src/context/ThemeProvider";
 import { BookType, FolderTree, Home, LayoutDashboard, LogOut, Settings2, Trees } from "lucide-react";
-import { Container, Flex, SidebarLayout } from "@/layout";
+import { Container, Flex, SidebarLayout, SidebarTrigger } from "@/layout";
 import { Heading } from "@/typography";
 
 const BrandContent = () => (
@@ -83,7 +83,12 @@ const InnerApp = () => {
       itemSets={[{ links: itemSet1 }, { links: itemSet2 }]}
       bottomItemSets={[{ links: itemSet3 }]}
     >
-      <Container>Canopy</Container>
+      <Container>
+        <SidebarTrigger />
+        <Heading level="1" className="mt-4">
+          Canopy
+        </Heading>
+      </Container>
     </SidebarLayout>
   );
 };
