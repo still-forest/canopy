@@ -26,9 +26,13 @@ const BasicLink = ({ to, label }: { to?: string; label: string }) => (
     {label}
   </BreadcrumbLink>
 );
+const BasicCurrentPage = ({ label }: { label: string }) => (
+  <BreadcrumbPage className="font-display">{label}</BreadcrumbPage>
+);
 
 export const Breadcrumbs = ({ breadcrumbs, linkComponent, className }: Props) => {
   const Link = linkComponent || BasicLink;
+  const CurrentPage = linkComponent || BasicCurrentPage;
 
   return (
     <Breadcrumb className={cn("my-4", className)}>
@@ -41,7 +45,7 @@ export const Breadcrumbs = ({ breadcrumbs, linkComponent, className }: Props) =>
                   <Link to={to} label={label} />
                 </BreadcrumbLink>
               )}
-              {!to && <BreadcrumbPage className="font-display">{label}</BreadcrumbPage>}
+              {!to && <CurrentPage label={label} />}
             </BreadcrumbItem>
             {index < breadcrumbs.length - 1 && <BreadcrumbSeparator />}
           </Fragment>

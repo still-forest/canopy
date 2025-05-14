@@ -34,7 +34,12 @@ export const WithCustomLinkComponent: Story = {
   args: {
     breadcrumbs: defaultBreadcrumbs,
     linkComponent: ({ to, label }: { to: string; label: string }) => (
-      <button type="button" onClick={() => window.alert(`Going to ${to}`)} className="cursor-pointer hover:bg-blue-200">
+      <button
+        type="button"
+        onClick={to ? () => window.alert(`Going to ${to}`) : undefined}
+        className={to ? "cursor-pointer hover:bg-blue-200" : "cursor-default text-black"}
+        aria-disabled={!to}
+      >
         {label}
       </button>
     ),
