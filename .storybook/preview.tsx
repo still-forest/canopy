@@ -1,6 +1,5 @@
 import { withThemeByClassName } from "@storybook/addon-themes";
 import type { Preview } from "@storybook/react";
-import React from "react";
 
 import ThemeProvider from "../src/context/ThemeProvider";
 import { THEMES } from "../src/context/ThemeProviderContext";
