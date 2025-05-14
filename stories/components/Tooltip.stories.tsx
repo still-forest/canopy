@@ -1,7 +1,6 @@
 import type { Meta, StoryObj } from "@storybook/react";
-
-import { Button } from "@/forms";
 import { Tooltip } from "@/components";
+import { Button } from "@/forms";
 import { Flex } from "@/layout";
 import { Heading, Text } from "@/typography";
 
