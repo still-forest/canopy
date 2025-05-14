@@ -20,9 +20,7 @@ export const Modal = ({ trigger, children, title, description }: Props) => {
 
   return (
     <Dialog open={open} onOpenChange={setOpen}>
-      <DialogTrigger data-testid="modal-trigger" asChild>
-        {trigger}
-      </DialogTrigger>
+      <DialogTrigger asChild>{trigger}</DialogTrigger>
       <DialogContent>
         {(title || description) && (
           <DialogHeader>
