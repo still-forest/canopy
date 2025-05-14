@@ -2,8 +2,10 @@ import type { Meta, StoryObj } from "@storybook/react";
 
 import { Separator } from "@/components";
 import { Box, Flex } from "@/layout";
+import { GAPS, type Gap } from "@/types";
 import { Heading, Text } from "@/typography";
-import { sampleLongText, sampleText } from "../support/sampleText";
+import { sampleLongText, sampleText, sampleText2 } from "../support/sampleText";
+import OptionList from "../templates/OptionList";
 
 const meta: Meta<typeof Separator> = {
   title: "Components/Separator",
@@ -28,139 +30,36 @@ export const Default: Story = {
   ],
 };
 
-export const NoGap: Story = {
-  args: { gap: "0" },
-  decorators: [
-    (Story) => (
-      <Box>
-        <Heading>{sampleText}</Heading>
-        <Story />
-        <Text>{sampleLongText}</Text>
-      </Box>
-    ),
-  ],
-};
-
-export const SmallGap: Story = {
-  args: { gap: "1" },
-  decorators: [
-    (Story) => (
-      <Box>
-        <Heading>{sampleText}</Heading>
-        <Story />
-        <Text>{sampleLongText}</Text>
-      </Box>
-    ),
-  ],
-};
-
-export const MediumLargeGap: Story = {
-  args: { gap: "8" },
-  decorators: [
-    (Story) => (
-      <Box>
-        <Heading>{sampleText}</Heading>
-        <Story />
-        <Text>{sampleLongText}</Text>
-      </Box>
-    ),
-  ],
-};
-
-export const LargeGap: Story = {
-  args: { gap: "8" },
-  decorators: [
-    (Story) => (
-      <Box>
-        <Heading>{sampleText}</Heading>
-        <Story />
-        <Text>{sampleLongText}</Text>
-      </Box>
-    ),
-  ],
-};
-
-export const ExtraLargeGap: Story = {
-  args: { gap: "16" },
-  decorators: [
-    (Story) => (
-      <Box>
-        <Heading>{sampleText}</Heading>
-        <Story />
-        <Text>{sampleLongText}</Text>
-      </Box>
-    ),
-  ],
+export const Horizontal: Story = {
+  render: () => (
+    <OptionList<Gap>
+      options={GAPS as unknown as Gap[]}
+      renderOption={(gap) => (
+        <Box>
+          <Text>{sampleText}</Text>
+          <Separator orientation="horizontal" gap={gap} />
+          <Text>{sampleText2}</Text>
+        </Box>
+      )}
+    />
+  ),
 };
 
 export const Vertical: Story = {
   render: () => (
-    <Flex align="center" className="h-5">
-      <Text>One</Text>
-      <Separator orientation="vertical" />
-      <Text>Two</Text>
-      <Separator orientation="vertical" />
-      <Text>Three</Text>
-    </Flex>
-  ),
-};
-
-export const VerticalNoGap: Story = {
-  render: () => (
-    <Flex align="center" className="h-5">
-      <Text>One</Text>
-      <Separator orientation="vertical" gap="0" />
-      <Text>Two</Text>
-      <Separator orientation="vertical" gap="0" />
-      <Text>Three</Text>
-    </Flex>
-  ),
-};
-
-export const VerticalSmallGap: Story = {
-  render: () => (
-    <Flex align="center" className="h-5">
-      <Text>One</Text>
-      <Separator orientation="vertical" gap="1" />
-      <Text>Two</Text>
-      <Separator orientation="vertical" gap="1" />
-      <Text>Three</Text>
-    </Flex>
-  ),
-};
-
-export const VerticalMediumLargeGap: Story = {
-  render: () => (
-    <Flex align="center" className="h-5">
-      <Text>One</Text>
-      <Separator orientation="vertical" gap="4" />
-      <Text>Two</Text>
-      <Separator orientation="vertical" gap="4" />
-      <Text>Three</Text>
-    </Flex>
-  ),
-};
-
-export const VerticalLargeGap: Story = {
-  render: () => (
-    <Flex align="center" className="h-5">
-      <Text>One</Text>
-      <Separator orientation="vertical" gap="8" />
-      <Text>Two</Text>
-      <Separator orientation="vertical" gap="8" />
-      <Text>Three</Text>
-    </Flex>
-  ),
-};
-
-export const VerticalExtraLargeGap: Story = {
-  render: () => (
-    <Flex align="center" className="h-5">
-      <Text>One</Text>
-      <Separator orientation="vertical" gap="16" />
-      <Text>Two</Text>
-      <Separator orientation="vertical" gap="16" />
-      <Text>Three</Text>
-    </Flex>
+    <OptionList<Gap>
+      options={GAPS as unknown as Gap[]}
+      gapY="1"
+      renderOption={(gap) => (
+        <Flex align="center" className="h-5">
+          <Text>One</Text>
+          <Separator orientation="vertical" gap={gap} />
+          <Text>Two</Text>
+          <Separator orientation="vertical" gap={gap} />
+          <Text>Three</Text>
+        </Flex>
+      )}
+      withOutline={false}
+    />
   ),
 };
