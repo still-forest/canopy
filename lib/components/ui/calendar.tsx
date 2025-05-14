@@ -1,9 +1,9 @@
-import { Button, buttonVariants } from "@/components/ui/button";
-import { cn } from "@/utils";
 import { differenceInCalendarDays } from "date-fns";
 import { ChevronLeft, ChevronRight } from "lucide-react";
 import * as React from "react";
-import { DayPicker, labelNext, labelPrevious, useDayPicker, type DayPickerProps } from "react-day-picker";
+import { DayPicker, type DayPickerProps, labelNext, labelPrevious, useDayPicker } from "react-day-picker";
+import { Button, buttonVariants } from "@/components/ui/button";
+import { cn } from "@/utils";
 
 export type CalendarProps = DayPickerProps & {
   /**
@@ -79,10 +79,10 @@ function Calendar({
   const _monthsClassName = cn("relative flex", props.monthsClassName);
   const _monthCaptionClassName = cn("relative mx-10 flex h-7 items-center justify-center", props.monthCaptionClassName);
   const _weekdaysClassName = cn("flex flex-row", props.weekdaysClassName);
-  const _weekdayClassName = cn("w-8 text-sm font-normal text-muted-foreground", props.weekdayClassName);
+  const _weekdayClassName = cn("w-8 font-normal text-muted-foreground text-sm", props.weekdayClassName);
   const _monthClassName = cn("w-full", props.monthClassName);
   const _captionClassName = cn("relative flex items-center justify-center pt-1", props.captionClassName);
-  const _captionLabelClassName = cn("truncate text-sm font-medium", props.captionLabelClassName);
+  const _captionLabelClassName = cn("truncate font-medium text-sm", props.captionLabelClassName);
   const buttonNavClassName = buttonVariants({
     variant: "outline",
     className: "absolute h-7 w-7 bg-transparent p-0 opacity-50 hover:opacity-100",
@@ -103,7 +103,7 @@ function Calendar({
   const _rangeStartClassName = cn(buttonRangeClassName, "day-range-start rounded-s-md", props.rangeStartClassName);
   const _rangeEndClassName = cn(buttonRangeClassName, "day-range-end rounded-e-md", props.rangeEndClassName);
   const _rangeMiddleClassName = cn(
-    "bg-accent !text-foreground [&>button]:bg-transparent [&>button]:!text-foreground [&>button]:hover:bg-transparent [&>button]:hover:!text-foreground",
+    "!text-foreground [&>button]:!text-foreground [&>button]:hover:!text-foreground bg-accent [&>button]:bg-transparent [&>button]:hover:bg-transparent",
     props.rangeMiddleClassName,
   );
   const _selectedClassName = cn(
@@ -123,7 +123,7 @@ function Calendar({
       showOutsideDays={showOutsideDays}
       className={cn("p-3", className)}
       style={{
-        width: 248.8 * (columnsDisplayed ?? 1) + "px",
+        width: `${248.8 * (columnsDisplayed ?? 1)}px`,
       }}
       classNames={{
         months: _monthsClassName,
@@ -176,7 +176,6 @@ function Calendar({
         ),
         MonthGrid: ({ className, children, ...props }) => (
           <MonthGrid
-            children={children}
             className={className}
             displayYears={displayYears}
             startMonth={startMonth}
@@ -184,7 +183,9 @@ function Calendar({
             navView={navView}
             setNavView={setNavView}
             {...props}
-          />
+          >
+            {children}
+          </MonthGrid>
         ),
       }}
       numberOfMonths={columnsDisplayed}
@@ -313,12 +314,12 @@ function CaptionLabel({
   if (!showYearSwitcher) return <span {...props}>{children}</span>;
   return (
     <Button
-      className="h-7 w-full truncate text-sm font-medium"
+      className="h-7 w-full truncate font-medium text-sm"
       variant="ghost"
       size="sm"
       onClick={() => setNavView((prev) => (prev === "days" ? "years" : "days"))}
     >
-      {navView === "days" ? children : displayYears.from + " - " + displayYears.to}
+      {navView === "days" ? children : `${displayYears.from} - ${displayYears.to}`}
     </Button>
   );
 }
@@ -391,8 +392,8 @@ function YearGrid({
           <Button
             key={i}
             className={cn(
-              "text-foreground h-7 w-full text-sm font-normal",
-              displayYears.from + i === new Date().getFullYear() && "bg-accent text-accent-foreground font-medium",
+              "h-7 w-full font-normal text-foreground text-sm",
+              displayYears.from + i === new Date().getFullYear() && "bg-accent font-medium text-accent-foreground",
             )}
             variant="ghost"
             onClick={() => {

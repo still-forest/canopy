@@ -1,4 +1,4 @@
-import { fireEvent, render, screen, waitFor, within } from "@testing-library/react";
+import { fireEvent, render, screen, within } from "@testing-library/react";
 import { afterEach, beforeEach, describe, expect, it, vi } from "vitest";
 import { DatePicker } from "@/forms";
 
@@ -42,14 +42,17 @@ describe("DatePicker", () => {
   const EXPECTED_CALENDAR_CLASSES =
     "data-[state=closed]:fade-out-0 data-[state=open]:fade-in-0 data-[state=closed]:zoom-out-95 data-[state=open]:zoom-in-95 data-[side=bottom]:slide-in-from-top-2 data-[side=left]:slide-in-from-right-2 data-[side=right]:slide-in-from-left-2 data-[side=top]:slide-in-from-bottom-2 z-50 origin-(--radix-popover-content-transform-origin) rounded-md border bg-popover text-popover-foreground shadow-md outline-hidden data-[state=closed]:animate-out data-[state=open]:animate-in w-auto p-0";
 
-  const EXPECTED_DATE_BUTTON_CLASSES = "inline-flex items-center justify-center gap-2 whitespace-nowrap text-sm disabled:pointer-events-none disabled:opacity-50 [&_svg]:pointer-events-none [&_svg:not([class*='size-'])]:size-4 shrink-0 [&_svg]:shrink-0 outline-none focus-visible:border-ring focus-visible:ring-ring/50 focus-visible:ring-[3px] aria-invalid:ring-destructive/20 dark:aria-invalid:ring-destructive/40 aria-invalid:border-destructive hover:bg-accent hover:text-accent-foreground dark:hover:bg-accent/50 has-[>svg]:px-3 size-8 rounded-md p-0 font-normal transition-none aria-selected:opacity-100";
-  
+  const EXPECTED_DATE_BUTTON_CLASSES =
+    "inline-flex items-center justify-center gap-2 whitespace-nowrap text-sm disabled:pointer-events-none disabled:opacity-50 [&_svg]:pointer-events-none [&_svg:not([class*='size-'])]:size-4 shrink-0 [&_svg]:shrink-0 outline-none focus-visible:border-ring focus-visible:ring-ring/50 focus-visible:ring-[3px] aria-invalid:ring-destructive/20 dark:aria-invalid:ring-destructive/40 aria-invalid:border-destructive hover:bg-accent hover:text-accent-foreground dark:hover:bg-accent/50 has-[>svg]:px-3 size-8 rounded-md p-0 font-normal transition-none aria-selected:opacity-100";
+
   const EXPECTED_UNSELECTED_DATE_CLASSES = "flex size-8 flex-1 items-center justify-center p-0 text-sm";
 
-  const EXPECTED_CURRENT_DATE_INCREMENTAL_CLASSES = "rdp-focused [&>button]:bg-accent [&>button]:text-accent-foreground";
-  const EXPECTED_SELECTED_DATE_INCREMENTAL_CLASSES = "[&>button]:bg-primary [&>button]:text-primary-foreground [&>button]:hover:bg-primary [&>button]:hover:text-primary-foreground";
+  const EXPECTED_CURRENT_DATE_INCREMENTAL_CLASSES =
+    "rdp-focused [&>button]:bg-accent [&>button]:text-accent-foreground";
+  const EXPECTED_SELECTED_DATE_INCREMENTAL_CLASSES =
+    "[&>button]:bg-primary [&>button]:text-primary-foreground [&>button]:hover:bg-primary [&>button]:hover:text-primary-foreground";
 
-  const EXPECTED_SELECTED_DATE_CLASSES = EXPECTED_UNSELECTED_DATE_CLASSES + ' rdp-focused ' + EXPECTED_SELECTED_DATE_INCREMENTAL_CLASSES;
+  const EXPECTED_SELECTED_DATE_CLASSES = `${EXPECTED_UNSELECTED_DATE_CLASSES} rdp-focused ${EXPECTED_SELECTED_DATE_INCREMENTAL_CLASSES}`;
 
   it("renders with calendar", () => {
     render(<DatePicker onDateSelection={onDateSelection} />);
@@ -122,7 +125,9 @@ describe("DatePicker", () => {
 
     const december29 = findDay(calendar, "29");
     expect(december29.cell).toBeInTheDocument();
-    expect(december29.cell.className).toBe(`${EXPECTED_UNSELECTED_DATE_CLASSES} ${EXPECTED_CURRENT_DATE_INCREMENTAL_CLASSES} ${EXPECTED_SELECTED_DATE_INCREMENTAL_CLASSES}`);
+    expect(december29.cell.className).toBe(
+      `${EXPECTED_UNSELECTED_DATE_CLASSES} ${EXPECTED_CURRENT_DATE_INCREMENTAL_CLASSES} ${EXPECTED_SELECTED_DATE_INCREMENTAL_CLASSES}`,
+    );
   });
 
   it("renders with custom className", () => {
@@ -219,10 +224,8 @@ describe("DatePicker", () => {
 
     const currentMonthButton = within(calendar).getByRole("button", { name: "December 2024" });
     fireEvent.click(currentMonthButton);
-    
-    expect(calendar.textContent).toBe(
-      "2019 - 2030201920202021202220232024202520262027202820292030",
-    );
+
+    expect(calendar.textContent).toBe("2019 - 2030201920202021202220232024202520262027202820292030");
 
     fireEvent.click(within(calendar).getByRole("button", { name: "2023" }));
     expect(calendar.textContent).toBe(
