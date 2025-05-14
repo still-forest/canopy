@@ -49,7 +49,6 @@ const itemSet1 = [
     title: "Home",
     url: "#home",
     icon: Home,
-    active: true,
     onClick: () => {
       window.alert("home");
     },
@@ -59,7 +58,6 @@ const itemSet1 = [
     title: "Summary",
     url: "#summary",
     icon: LayoutDashboard,
-    active: false,
     onClick: () => {
       window.alert("summary");
     },
@@ -69,7 +67,6 @@ const itemSet1 = [
     title: "Details",
     url: "#details",
     icon: FolderTree,
-    active: false,
     onClick: () => {
       window.alert("details");
     },
@@ -82,7 +79,6 @@ const itemSet2 = [
     title: "References",
     url: "#references",
     icon: BookType,
-    active: false,
     onClick: () => {
       window.alert("references");
     },
@@ -98,6 +94,7 @@ const InnerApp = () => {
       bottomContent={<BottomContent />}
       setTheme={setTheme}
       theme={theme}
+      activeSlug="summary"
       itemSets={[{ links: itemSet1 }, { links: itemSet2 }]}
     >
       <Container>Canopy</Container>

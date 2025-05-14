@@ -15,13 +15,13 @@ import {
 import { Sun, Moon } from "lucide-react";
 
 import { Text } from "@/typography";
+import { Fragment, useState } from "react";
 
 interface SideLink {
   key: string;
   title: string;
   url: string;
   icon: React.ElementType;
-  active: boolean;
   onClick?: () => void;
 }
 
@@ -35,6 +35,7 @@ export interface SidebarProps extends React.ComponentProps<typeof BaseSidebar> {
   theme: string;
   brandContent: React.ReactNode;
   bottomContent: React.ReactNode;
+  activeSlug?: string;
 }
 
 export const MenuItemText = ({ children }: { children: React.ReactNode }) => (
@@ -43,23 +44,29 @@ export const MenuItemText = ({ children }: { children: React.ReactNode }) => (
   </Text>
 );
 
-const PrimaryMenu = ({ itemSets }: Pick<SidebarProps, "itemSets">) => {
+interface PrimaryMenuProps extends Pick<SidebarProps, "itemSets" | "activeSlug"> {}
+
+const PrimaryMenu = ({ itemSets, ...props }: PrimaryMenuProps) => {
+  const [activeSlug, setActiveSlug] = useState<string | undefined>(props.activeSlug);
   const setCount = itemSets.length;
+
+  console.log(activeSlug);
 
   return (
     <SidebarMenu>
       {itemSets.map((itemSet, i) => {
         return (
-          <>
+          <Fragment key={`item-set-${i}`}>
             {itemSet.links.map((item) => (
               <SidebarMenuItem
                 key={item.key}
                 onClick={() => {
+                  setActiveSlug(item.key);
                   item.onClick?.();
                 }}
                 className="hover:cursor-pointer"
               >
-                <SidebarMenuButton asChild isActive={item.active}>
+                <SidebarMenuButton asChild isActive={activeSlug === item.key}>
                   <span>
                     <item.icon />
                     <MenuItemText>{item.title}</MenuItemText>
@@ -68,14 +75,22 @@ const PrimaryMenu = ({ itemSets }: Pick<SidebarProps, "itemSets">) => {
               </SidebarMenuItem>
             ))}
             {i < setCount - 1 && <SidebarSeparator />}
-          </>
+          </Fragment>
         );
       })}
     </SidebarMenu>
   );
 };
 
-export const Sidebar = ({ brandContent, bottomContent, itemSets, setTheme, theme, ...props }: SidebarProps) => {
+export const Sidebar = ({
+  brandContent,
+  bottomContent,
+  activeSlug,
+  itemSets,
+  setTheme,
+  theme,
+  ...props
+}: SidebarProps) => {
   return (
     <BaseSidebar collapsible="icon" {...props}>
       <SidebarHeader>
@@ -86,7 +101,7 @@ export const Sidebar = ({ brandContent, bottomContent, itemSets, setTheme, theme
       <SidebarContent>
         <SidebarGroup>
           <SidebarGroupContent>
-            <PrimaryMenu itemSets={itemSets} />
+            <PrimaryMenu activeSlug={activeSlug} itemSets={itemSets} />
           </SidebarGroupContent>
         </SidebarGroup>
       </SidebarContent>
