@@ -2,16 +2,21 @@ import { Tooltip as BaseTooltip, TooltipContent, TooltipProvider, TooltipTrigger
 
 interface TooltipProps {
   children: React.ReactNode;
-  tooltipContent: React.ReactNode;
 }
 
-export const Tooltip = ({ children, tooltipContent }: TooltipProps) => {
+const Tooltip = ({ children }: TooltipProps) => {
   return (
     <TooltipProvider>
-      <BaseTooltip>
-        <TooltipTrigger asChild>{children}</TooltipTrigger>
-        <TooltipContent>{tooltipContent}</TooltipContent>
-      </BaseTooltip>
+      <BaseTooltip>{children}</BaseTooltip>
     </TooltipProvider>
   );
 };
+
+const Trigger = ({ children }: TooltipProps) => <TooltipTrigger asChild>{children}</TooltipTrigger>;
+
+const Content = ({ children }: TooltipProps) => <TooltipContent>{children}</TooltipContent>;
+
+Tooltip.Trigger = Trigger;
+Tooltip.Content = Content;
+
+export { Tooltip };
