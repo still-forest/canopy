@@ -17,11 +17,12 @@ export interface BreadcrumbType {
 
 interface Props {
   breadcrumbs: BreadcrumbType[];
-  linkComponent?: React.ComponentType<{ to?: string; label: string }>;
+  linkComponent?: React.ComponentType<{ to: string; label: string }>;
+  pageComponent?: React.ComponentType<{ label: string }>;
   className?: string;
 }
 
-const BasicLink = ({ to, label }: { to?: string; label: string }) => (
+const BasicLink = ({ to, label }: { to: string; label: string }) => (
   <BreadcrumbLink className="font-display" href={to}>
     {label}
   </BreadcrumbLink>
@@ -30,9 +31,9 @@ const BasicCurrentPage = ({ label }: { label: string }) => (
   <BreadcrumbPage className="font-display">{label}</BreadcrumbPage>
 );
 
-export const Breadcrumbs = ({ breadcrumbs, linkComponent, className }: Props) => {
+export const Breadcrumbs = ({ breadcrumbs, linkComponent, pageComponent, className }: Props) => {
   const Link = linkComponent || BasicLink;
-  const CurrentPage = linkComponent || BasicCurrentPage;
+  const Page = pageComponent || BasicCurrentPage;
 
   return (
     <Breadcrumb className={cn("my-4", className)}>
@@ -45,7 +46,7 @@ export const Breadcrumbs = ({ breadcrumbs, linkComponent, className }: Props) =>
                   <Link to={to} label={label} />
                 </BreadcrumbLink>
               )}
-              {!to && <CurrentPage label={label} />}
+              {!to && <Page label={label} />}
             </BreadcrumbItem>
             {index < breadcrumbs.length - 1 && <BreadcrumbSeparator />}
           </Fragment>

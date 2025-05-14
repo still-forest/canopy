@@ -43,7 +43,7 @@ describe("Breadcrumbs", () => {
   test("renders Breadcrumbs with custom link component", async () => {
     const onLinkClick = vi.fn();
 
-    const CustomLink = ({ to, label }: { to?: string; label: string }) => (
+    const CustomLink = ({ to, label }: { to: string; label: string }) => (
       <button
         type="button"
         onClick={to ? () => onLinkClick(to) : undefined}
@@ -54,7 +54,13 @@ describe("Breadcrumbs", () => {
       </button>
     );
 
-    render(<Breadcrumbs breadcrumbs={breadcrumbs} linkComponent={CustomLink} />);
+    const CustomPage = ({ label }: { label: string }) => (
+      <span className="cursor-default text-black" aria-disabled={true}>
+        {label}
+      </span>
+    );
+
+    render(<Breadcrumbs breadcrumbs={breadcrumbs} linkComponent={CustomLink} pageComponent={CustomPage} />);
 
     const rootLink = screen.getByRole("button", { name: "Root" });
     expect(rootLink).not.toHaveAttribute("aria-disabled", "true");

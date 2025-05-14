@@ -30,7 +30,7 @@ export const SingleLevel: Story = {
   args: { breadcrumbs: [{ label: "Current" }] },
 };
 
-export const WithCustomLinkComponent: Story = {
+export const WithCustomComponents: Story = {
   args: {
     breadcrumbs: defaultBreadcrumbs,
     linkComponent: ({ to, label }: { to: string; label: string }) => (
@@ -42,6 +42,11 @@ export const WithCustomLinkComponent: Story = {
       >
         {label}
       </button>
+    ),
+    pageComponent: ({ label }: { label: string }) => (
+      <span className="cursor-default text-black" aria-disabled={true}>
+        {label}
+      </span>
     ),
   },
 };
