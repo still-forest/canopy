@@ -25,7 +25,7 @@ type Story = StoryObj<typeof meta>;
 
 const defaultProps = {
   onDateSelection: (date: Date) => {
-    window.alert("Date selected: " + date.toString());
+    window.alert(`Date selected: ${date.toString()}`);
   },
 };
 
