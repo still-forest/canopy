@@ -6,7 +6,7 @@ describe("DatePicker", () => {
   const onDateSelection = vi.fn();
 
   beforeEach(() => {
-    vi.setSystemTime(new Date("2024-12-25T16:00:00.000Z"));
+    vi.setSystemTime(new Date("2024-12-29T05:00:00.000Z"));
   });
 
   afterEach(() => {
@@ -21,6 +21,8 @@ describe("DatePicker", () => {
 
   const EXPECTED_UNSELECTED_DATE_CLASSES =
     "rdp-button_reset rdp-button inline-flex items-center justify-center gap-2 whitespace-nowrap rounded-md text-sm transition-all disabled:pointer-events-none disabled:opacity-50 [&_svg]:pointer-events-none [&_svg:not([class*='size-'])]:size-4 shrink-0 [&_svg]:shrink-0 outline-none focus-visible:border-ring focus-visible:ring-ring/50 focus-visible:ring-[3px] aria-invalid:ring-destructive/20 dark:aria-invalid:ring-destructive/40 aria-invalid:border-destructive hover:bg-accent hover:text-accent-foreground dark:hover:bg-accent/50 has-[>svg]:px-3 size-8 p-0 font-normal aria-selected:opacity-100";
+
+  const EXPECTED_CURRENT_DATE_INCREMENTAL_CLASSES = "bg-accent text-accent-foreground";
 
   const EXPECTED_SELECTED_DATE_CLASSES =
     EXPECTED_UNSELECTED_DATE_CLASSES +
@@ -46,18 +48,24 @@ describe("DatePicker", () => {
     const dates = screen.getAllByRole("gridcell");
     expect(dates.length).toBe(35);
 
+    const december29 = dates.find((date) => date.textContent === "29") as HTMLElement;
+    expect(december29).toBeInTheDocument();
+    expect(december29.className).toBe(
+      `${EXPECTED_UNSELECTED_DATE_CLASSES} ${EXPECTED_CURRENT_DATE_INCREMENTAL_CLASSES}`,
+    );
+
     const december25 = dates.find((date) => date.textContent === "25") as HTMLElement;
     expect(december25).toBeInTheDocument();
     expect(december25.className).toBe(EXPECTED_UNSELECTED_DATE_CLASSES);
 
     fireEvent.click(december25);
 
-    expect(onDateSelection).toHaveBeenCalledWith(new Date("2024-12-24T16:00:00.000Z"));
+    expect(onDateSelection).toHaveBeenCalledWith(new Date("2024-12-25T05:00:00.000Z"));
     expect(december25.className).toBe(EXPECTED_SELECTED_DATE_CLASSES);
   });
 
   it("renders with initial value", () => {
-    render(<DatePicker onDateSelection={onDateSelection} initialValue={new Date("2024-12-25")} />);
+    render(<DatePicker onDateSelection={onDateSelection} initialValue={new Date("2024-12-25T05:00:00.000Z")} />);
 
     const trigger = screen.getByRole("button");
     expect(trigger.textContent).toBe("2024-12-25");
@@ -68,6 +76,20 @@ describe("DatePicker", () => {
     const december25 = dates.find((date) => date.textContent === "25") as HTMLElement;
     expect(december25).toBeInTheDocument();
     expect(december25.className).toBe(EXPECTED_SELECTED_DATE_CLASSES);
+  });
+
+  it("renders with initial value that is today", () => {
+    render(<DatePicker onDateSelection={onDateSelection} initialValue={new Date()} />);
+
+    const trigger = screen.getByRole("button");
+    expect(trigger.textContent).toBe("2024-12-29");
+
+    fireEvent.click(trigger);
+
+    const dates = screen.getAllByRole("gridcell");
+    const december29 = dates.find((date) => date.textContent === "29") as HTMLElement;
+    expect(december29).toBeInTheDocument();
+    expect(december29.className).toBe(`${EXPECTED_SELECTED_DATE_CLASSES} ${EXPECTED_CURRENT_DATE_INCREMENTAL_CLASSES}`);
   });
 
   it("renders with custom className", () => {
@@ -111,14 +133,14 @@ describe("DatePicker", () => {
     const dates = screen.getAllByRole("gridcell");
     expect(dates.length).toBe(35);
 
-    const january12 = dates.find((date) => date.textContent === "12") as HTMLElement;
-    expect(january12).toBeInTheDocument();
-    expect(january12.className).toBe(EXPECTED_UNSELECTED_DATE_CLASSES);
+    const november12 = dates.find((date) => date.textContent === "12") as HTMLElement;
+    expect(november12).toBeInTheDocument();
+    expect(november12.className).toBe(EXPECTED_UNSELECTED_DATE_CLASSES);
 
-    fireEvent.click(january12);
+    fireEvent.click(november12);
 
-    expect(onDateSelection).toHaveBeenCalledWith(new Date("2024-11-11T16:00:00.000Z"));
-    expect(january12.className).toBe(EXPECTED_SELECTED_DATE_CLASSES);
+    expect(onDateSelection).toHaveBeenCalledWith(new Date("2024-11-12T05:00:00.000Z"));
+    expect(november12.className).toBe(EXPECTED_SELECTED_DATE_CLASSES);
   });
 
   it("can select from future month", () => {
@@ -146,7 +168,7 @@ describe("DatePicker", () => {
 
     fireEvent.click(january12);
 
-    expect(onDateSelection).toHaveBeenCalledWith(new Date("2025-01-11T16:00:00.000Z"));
+    expect(onDateSelection).toHaveBeenCalledWith(new Date("2025-01-12T05:00:00.000Z"));
     expect(january12.className).toBe(EXPECTED_SELECTED_DATE_CLASSES);
   });
 
@@ -176,7 +198,7 @@ describe("DatePicker", () => {
 
     fireEvent.click(january12);
 
-    expect(onDateSelection).toHaveBeenCalledWith(new Date("2025-01-11T16:00:00.000Z"));
+    expect(onDateSelection).toHaveBeenCalledWith(new Date("2025-01-12T16:00:00.000Z"));
     expect(january12.className).toBe(EXPECTED_SELECTED_DATE_CLASSES);
   });
 });

@@ -37,6 +37,10 @@ export const WithSelection: Story = {
   args: { ...defaultProps, initialValue: new Date("2024-12-25") },
 };
 
+export const WithSelectionToday: Story = {
+  args: { ...defaultProps, initialValue: new Date() },
+};
+
 export const ExtraSmall: Story = {
   args: { ...defaultProps, size: "xs" },
 };
