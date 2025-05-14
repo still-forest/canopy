@@ -31,6 +31,7 @@ const defaultProps = {
     { value: "lisa", label: "Lisa" },
     { value: "maggie", label: "Maggie" },
   ],
+  onValueChange: (value: string) => console.log("Selected:", value),
 };
 
 export const Default: Story = {

@@ -28,12 +28,20 @@ const SelectInput = ({
   placeholder,
   note,
   className,
+  value,
+  onValueChange,
   ...props
 }: SelectInputProps) => {
   return (
     <Flex direction="col" gap="2" className="w-full">
       {label && <Label htmlFor={name}>{label}</Label>}
-      <Select name={name} defaultValue={defaultValue as string | undefined} {...props}>
+      <Select
+        name={name}
+        defaultValue={defaultValue as string | undefined}
+        value={value}
+        onValueChange={onValueChange}
+        {...props}
+      >
         <SelectTrigger data-testid={`select-input-${name}`} className={cn("min-w-[180px]", className)}>
           <SelectValue placeholder={placeholder} />
         </SelectTrigger>
