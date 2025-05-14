@@ -62,7 +62,7 @@ export default defineConfig({
     include: ["tests/**/*.test.ts*"],
     coverage: {
       include: ["lib/**/*"],
-      exclude: ["lib/types/*"],
+      exclude: ["lib/types/*", "lib/components/ui/*"],
       reporter: ["text", "json", "html", "lcov"], // lcov is needed for Codecov
     },
   },
