@@ -1,9 +1,7 @@
 import { TextInput, type TextInputProps } from "@/forms";
 import { cn } from "@/utils";
 
-interface DateInputProps extends Omit<TextInputProps, "type"> {
-  step?: string;
-}
+interface DateInputProps extends Omit<TextInputProps, "type"> {}
 
 const DateInput = ({ name, label, placeholder, note, className, ...props }: DateInputProps) => {
   return (
