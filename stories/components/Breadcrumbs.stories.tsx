@@ -1,0 +1,42 @@
+import type { Meta, StoryObj } from "@storybook/react";
+
+import { Breadcrumbs, type BreadcrumbType } from "@/components";
+
+const meta: Meta<typeof Breadcrumbs> = {
+  title: "Components/Breadcrumbs",
+  component: Breadcrumbs,
+  parameters: {
+    layout: "centered",
+  },
+  tags: ["autodocs"],
+} satisfies Meta<typeof Breadcrumbs>;
+
+export default meta;
+
+type Story = StoryObj<typeof meta>;
+
+const defaultBreadcrumbs: BreadcrumbType[] = [
+  { label: "Root", to: "/" },
+  { label: "Level 1", to: "/level_1" },
+  { label: "Level 2", to: "/level_1/2" },
+  { label: "Current" },
+];
+
+export const Default: Story = {
+  args: { breadcrumbs: defaultBreadcrumbs },
+};
+
+export const SingleLevel: Story = {
+  args: { breadcrumbs: [{ label: "Current" }] },
+};
+
+export const WithCustomLinkComponent: Story = {
+  args: {
+    breadcrumbs: defaultBreadcrumbs,
+    linkComponent: ({ to, label }: { to: string; label: string }) => (
+      <button type="button" onClick={() => window.alert(`Going to ${to}`)} className="cursor-pointer hover:bg-blue-200">
+        {label}
+      </button>
+    ),
+  },
+};
