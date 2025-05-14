@@ -15,8 +15,8 @@ import {
   SidebarSeparator,
   SidebarTrigger,
 } from "@/components/ui/sidebar";
-import { Text } from "@/typography";
 import { Flex } from "@/main";
+import { Text } from "@/typography";
 
 interface SideLink {
   slug: string;
