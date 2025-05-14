@@ -65,3 +65,14 @@ export const WithComplexContent: Story = {
     </Tooltip>
   ),
 };
+
+export const Open: Story = {
+  render: () => (
+    <Tooltip open={true}>
+      <Tooltip.Trigger>
+        <Button>Hover over me</Button>
+      </Tooltip.Trigger>
+      <Tooltip.Content>This is a tooltip</Tooltip.Content>
+    </Tooltip>
+  ),
+};
