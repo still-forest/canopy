@@ -1,4 +1,5 @@
 export * from "./Button";
+export * from "./Checkbox";
 export * from "./InputGroup";
 export * from "./Label";
 export * from "./NumberInput";
