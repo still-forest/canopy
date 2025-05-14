@@ -4,13 +4,21 @@ import { DatePicker } from "@/forms";
 
 describe("DatePicker", () => {
   const onDateSelection = vi.fn();
+  const originalDateTimeFormat = Intl.DateTimeFormat;
 
   beforeEach(() => {
     vi.setSystemTime(new Date("2024-12-25T16:00:00.000Z"));
+
+    // Mock Intl.DateTimeFormat to ensure consistent locale behavior
+    const mockDateTimeFormat = ((_locales: string | string[], options?: Intl.DateTimeFormatOptions) =>
+      new originalDateTimeFormat("en-US", options)) as unknown as typeof Intl.DateTimeFormat;
+    mockDateTimeFormat.supportedLocalesOf = originalDateTimeFormat.supportedLocalesOf;
+    global.Intl.DateTimeFormat = mockDateTimeFormat;
   });
 
   afterEach(() => {
     vi.useRealTimers();
+    global.Intl.DateTimeFormat = originalDateTimeFormat;
   });
 
   const EXPECTED_TRIGGER_CLASSES =
