@@ -1,4 +1,3 @@
-import { useTheme } from "@src/context/useTheme";
 import { Computer, Moon, SquareArrowOutUpRight, Sun } from "lucide-react";
 import { Fragment } from "react";
 import {
@@ -18,7 +17,7 @@ import {
 import { Flex } from "@/main";
 import { Text } from "@/typography";
 
-type Theme = "light" | "dark" | "system";
+export type Theme = "light" | "dark" | "system";
 
 interface SideLink {
   slug: string;
@@ -135,13 +134,9 @@ export const Sidebar = ({
   brandOnClick,
   activeSlug,
   itemSets,
-<<<<<<< HEAD
   bottomItemSets = [],
-=======
-  bottomItemSets,
   theme,
   setTheme,
->>>>>>> ea4b1e1 (Pass them into Sidebar)
   ...props
 }: SidebarProps) => {
   return (
