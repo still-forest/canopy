@@ -1,7 +1,7 @@
 import type { Meta, StoryObj } from "@storybook/react";
 import { Tooltip } from "@/components";
 import { Button } from "@/forms";
-import { Flex } from "@/layout";
+import { Box, Flex } from "@/layout";
 import { Heading, Text } from "@/typography";
 
 const meta: Meta<typeof Tooltip> = {
@@ -33,6 +33,19 @@ export const Default: Story = {
 };
 
 export const WithText: Story = {
+  render: () => (
+    <Text>
+      <Tooltip>
+        <Tooltip.Trigger cursor="arrow">
+          <Box>Hover over me</Box>
+        </Tooltip.Trigger>
+        <Tooltip.Content>This is a tooltip</Tooltip.Content>
+      </Tooltip>
+    </Text>
+  ),
+};
+
+export const WithDecoratedText: Story = {
   render: () => (
     <Text>
       Hover over{" "}
