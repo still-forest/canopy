@@ -51,3 +51,13 @@ export const FewPages: Story = {
     },
   },
 };
+
+export const SinglePage: Story = {
+  args: {
+    pageCount: 1,
+    currentPage: 1,
+    onChange: (page: number) => {
+      console.log("moving to page", page);
+    },
+  },
+};

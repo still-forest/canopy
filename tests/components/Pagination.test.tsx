@@ -140,7 +140,7 @@ describe("Pagination", () => {
     });
   });
 
-  test("calls onChange when the previous/next buttons are clicked", async () => {
+  test("calls onChange when navigating from a middle page", async () => {
     render(<Pagination pageCount={10} currentPage={5} onChange={onPageChange} />);
 
     const previousPage = screen.getByText("Previous");
@@ -156,5 +156,22 @@ describe("Pagination", () => {
     await waitFor(() => {
       expect(onPageChange).toHaveBeenCalledWith(6);
     });
+  });
+
+  test("disables all navigation when there is only one page", async () => {
+    render(<Pagination pageCount={1} currentPage={1} onChange={onPageChange} />);
+
+    const firstPage = screen.getByLabelText("Go to first page");
+    const previousPage = screen.getByLabelText("Go to previous page");
+    const nextPage = screen.getByLabelText("Go to next page");
+    const lastPage = screen.getByLabelText("Go to last page");
+
+    expect(firstPage.getAttribute("aria-disabled")).toBe("true");
+    expect(previousPage.getAttribute("aria-disabled")).toBe("true");
+    expect(nextPage.getAttribute("aria-disabled")).toBe("true");
+    expect(lastPage.getAttribute("aria-disabled")).toBe("true");
+
+    expect(screen.getByText("1")).toBeInTheDocument();
+    expect(screen.queryByText("2")).not.toBeInTheDocument();
   });
 });
