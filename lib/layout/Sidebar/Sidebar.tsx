@@ -35,7 +35,7 @@ export interface SidebarProps extends React.ComponentProps<typeof BaseSidebar> {
   brandOnClick?: () => void;
   activeSlug?: string;
   itemSets: SideLinkSet[];
-  bottomItemSets: SideLinkSet[];
+  bottomItemSets?: SideLinkSet[];
 }
 
 export const MenuItemText = ({ children }: { children: React.ReactNode }) => (
@@ -133,7 +133,7 @@ export const Sidebar = ({
   brandOnClick,
   activeSlug,
   itemSets,
-  bottomItemSets,
+  bottomItemSets = [],
   ...props
 }: SidebarProps) => {
   return (
@@ -170,7 +170,7 @@ export const Sidebar = ({
           <SidebarMenuItem>
             <ThemeSelection />
           </SidebarMenuItem>
-          {bottomItemSets && (
+          {bottomItemSets.length > 0 && (
             <>
               <SidebarSeparator />
               <MenuSection itemSets={bottomItemSets} activeSlug={activeSlug} />
