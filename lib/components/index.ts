@@ -1,4 +1,5 @@
 export * from "./Alert";
+export * from "./Badge";
 export * from "./Breadcrumbs";
 export * from "./Cards";
 export * from "./Modal";
