@@ -2,6 +2,7 @@ import { render, screen, within } from "@testing-library/react";
 import { describe, expect, test } from "vitest";
 import "@testing-library/jest-dom";
 import userEvent from "@testing-library/user-event";
+import { useState } from "react";
 
 import { Modal } from "@/components";
 import { Button } from "@/forms";
@@ -86,5 +87,39 @@ describe("Modal", () => {
     expect(dialog).toHaveTextContent("Modal content");
     expect(dialog).not.toHaveTextContent("Modal title");
     expect(dialog).not.toHaveTextContent("Modal description");
+  });
+
+  test("renders a controlled Modal", async () => {
+    const user = userEvent.setup();
+
+    const DummyApp = () => {
+      const [open, setOpen] = useState(false);
+      return (
+        <>
+          <Button data-testid="external-trigger" onClick={() => setOpen(true)}>
+            Open modal
+          </Button>
+          <Modal open={open} onOpenChange={setOpen}>
+            <p>Modal content</p>
+          </Modal>
+        </>
+      );
+    };
+
+    render(<DummyApp />);
+
+    const externalTrigger = screen.getByTestId("external-trigger");
+    expect(screen.queryByRole("dialog")).not.toBeInTheDocument();
+
+    await user.click(externalTrigger);
+
+    const dialog = screen.getByRole("dialog");
+    expect(dialog).toHaveTextContent("Modal content");
+  });
+
+  test("throws an error if trigger is not provided and modal is uncontrolled", () => {
+    expect(() => render(<Modal>Modal content</Modal>)).toThrow(
+      "Trigger must be provided if modal state is not controlled through open, onOpenChange props.",
+    );
   });
 });

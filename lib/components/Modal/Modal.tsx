@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import {
   Dialog,
   DialogContent,
@@ -9,17 +9,35 @@ import {
 } from "@/components/ui/dialog";
 
 interface Props {
-  trigger: React.ReactNode;
   children: React.ReactNode;
+  trigger?: React.ReactNode;
   title?: string;
   description?: string;
+  open?: boolean;
+  onOpenChange?: (open: boolean) => void;
 }
 
-export const Modal = ({ trigger, children, title, description }: Props) => {
-  const [open, setOpen] = useState(false);
+export const Modal = ({ trigger, children, title, description, open, onOpenChange }: Props) => {
+  const isControlled = open !== undefined;
+  const [openState, setOpenState] = useState<boolean>(isControlled ? open : false);
+
+  useEffect(() => {
+    if (isControlled) {
+      setOpenState(open);
+    }
+  }, [open, isControlled]);
+
+  if (!trigger && !isControlled) {
+    throw new Error("Trigger must be provided if modal state is not controlled through open, onOpenChange props.");
+  }
+
+  const handleOpenChange = (open: boolean) => {
+    setOpenState(open);
+    onOpenChange?.(open);
+  };
 
   return (
-    <Dialog open={open} onOpenChange={setOpen}>
+    <Dialog open={openState} onOpenChange={handleOpenChange}>
       <DialogTrigger asChild>{trigger}</DialogTrigger>
       <DialogContent>
         {(title || description) && (

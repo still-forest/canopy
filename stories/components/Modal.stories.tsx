@@ -1,5 +1,5 @@
 import type { Meta, StoryObj } from "@storybook/react";
-
+import { useState } from "react";
 import { Modal } from "@/components";
 import { Button } from "@/forms";
 import { Flex } from "@/layout";
@@ -64,4 +64,25 @@ export const SimpleTrigger: Story = {
       <Text>Modal content</Text>
     </Modal>
   ),
+};
+
+export const Controlled: Story = {
+  render: () => {
+    const [open, setOpen] = useState(false);
+
+    return (
+      <Flex gap="4">
+        <Button onClick={() => setOpen(true)}>External trigger</Button>
+        <Modal
+          trigger={<Button variant="outline">Internal trigger</Button>}
+          title="Modal title"
+          description="Modal description"
+          open={open}
+          onOpenChange={setOpen}
+        >
+          <Text>Modal content</Text>
+        </Modal>
+      </Flex>
+    );
+  },
 };
