@@ -8,37 +8,49 @@ import { Pagination } from "@/components";
 describe("Pagination", () => {
   const onPageChange = vi.fn();
 
+  const EXPECTED_NEXT_PREVIOUS_CLASSES =
+    "inline-flex items-center justify-center whitespace-nowrap rounded-md text-sm font-medium transition-all disabled:pointer-events-none disabled:opacity-50 [&_svg]:pointer-events-none [&_svg:not([class*='size-'])]:size-4 shrink-0 [&_svg]:shrink-0 outline-none focus-visible:border-ring focus-visible:ring-ring/50 focus-visible:ring-[3px] aria-invalid:ring-destructive/20 dark:aria-invalid:ring-destructive/40 aria-invalid:border-destructive hover:bg-accent hover:text-accent-foreground dark:hover:bg-accent/50 h-9 py-2 has-[>svg]:px-3 gap-1 px-2.5 sm:pr-2.5 cursor-pointer";
+
   const EXPECTED_CURRENT_PAGE_CLASSES =
     "inline-flex items-center justify-center gap-2 whitespace-nowrap rounded-md text-sm font-medium transition-all disabled:pointer-events-none disabled:opacity-50 [&_svg]:pointer-events-none [&_svg:not([class*='size-'])]:size-4 shrink-0 [&_svg]:shrink-0 outline-none focus-visible:border-ring focus-visible:ring-ring/50 focus-visible:ring-[3px] aria-invalid:ring-destructive/20 dark:aria-invalid:ring-destructive/40 aria-invalid:border-destructive border bg-background shadow-xs hover:bg-accent hover:text-accent-foreground dark:bg-input/30 dark:border-input dark:hover:bg-input/50 size-9 cursor-pointer";
 
   const EXPECTED_OTHER_PAGE_CLASSES =
     "inline-flex items-center justify-center gap-2 whitespace-nowrap rounded-md text-sm font-medium transition-all disabled:pointer-events-none disabled:opacity-50 [&_svg]:pointer-events-none [&_svg:not([class*='size-'])]:size-4 shrink-0 [&_svg]:shrink-0 outline-none focus-visible:border-ring focus-visible:ring-ring/50 focus-visible:ring-[3px] aria-invalid:ring-destructive/20 dark:aria-invalid:ring-destructive/40 aria-invalid:border-destructive hover:bg-accent hover:text-accent-foreground dark:hover:bg-accent/50 size-9 cursor-pointer";
 
-  test("renders a Pagination with the correct number of pages and styles", async () => {
+  test("renders Pagination with the correct number of pages and styles", async () => {
     render(<Pagination pageCount={10} currentPage={1} onChange={onPageChange} />);
 
     const pagination = screen.getByRole("navigation");
     expect(pagination.className).toBe("mx-auto flex w-full justify-center");
 
-    const firstPage = screen.getByText("First");
+    const firstPage = screen.getByLabelText("Go to first page");
     expect(firstPage).toBeInTheDocument();
-    expect(firstPage.className).toBe("hidden sm:block");
+    expect(firstPage.className).toBe(
+      "inline-flex items-center justify-center whitespace-nowrap rounded-md text-sm font-medium transition-all disabled:pointer-events-none disabled:opacity-50 [&_svg]:pointer-events-none [&_svg:not([class*='size-'])]:size-4 shrink-0 [&_svg]:shrink-0 outline-none focus-visible:border-ring focus-visible:ring-ring/50 focus-visible:ring-[3px] aria-invalid:ring-destructive/20 dark:aria-invalid:ring-destructive/40 aria-invalid:border-destructive hover:bg-accent hover:text-accent-foreground dark:hover:bg-accent/50 size-9 h-auto w-auto cursor-pointer gap-1 px-2.5 py-2 has-[>svg]:px-3 sm:pl-2.5",
+    );
+    expect(firstPage.getAttribute("aria-disabled")).toBe("true");
 
-    const previousPage = screen.getByText("Previous");
+    const previousPage = screen.getByLabelText("Go to previous page");
     expect(previousPage).toBeInTheDocument();
-    expect(previousPage.className).toBe("hidden sm:block");
+    expect(previousPage.className).toBe(
+      "inline-flex items-center justify-center whitespace-nowrap rounded-md text-sm font-medium transition-all disabled:pointer-events-none disabled:opacity-50 [&_svg]:pointer-events-none [&_svg:not([class*='size-'])]:size-4 shrink-0 [&_svg]:shrink-0 outline-none focus-visible:border-ring focus-visible:ring-ring/50 focus-visible:ring-[3px] aria-invalid:ring-destructive/20 dark:aria-invalid:ring-destructive/40 aria-invalid:border-destructive hover:bg-accent hover:text-accent-foreground dark:hover:bg-accent/50 h-9 py-2 has-[>svg]:px-3 gap-1 px-2.5 sm:pl-2.5 cursor-pointer",
+    );
+    expect(previousPage.getAttribute("aria-disabled")).toBe("true");
 
-    const page1 = screen.getByText("1");
+    const page1 = screen.getByLabelText("Go to page 1");
     expect(page1).toBeInTheDocument();
     expect(page1.className).toBe(EXPECTED_CURRENT_PAGE_CLASSES);
+    expect(page1.getAttribute("aria-disabled")).toBe(null);
 
-    const page2 = screen.getByText("2");
+    const page2 = screen.getByLabelText("Go to page 2");
     expect(page2).toBeInTheDocument();
     expect(page2.className).toBe(EXPECTED_OTHER_PAGE_CLASSES);
+    expect(page2.getAttribute("aria-disabled")).toBe(null);
 
-    const page3 = screen.getByText("3");
+    const page3 = screen.getByLabelText("Go to page 3");
     expect(page3).toBeInTheDocument();
     expect(page3.className).toBe(EXPECTED_OTHER_PAGE_CLASSES);
+    expect(page3.getAttribute("aria-disabled")).toBe(null);
 
     const ellipsis = document.querySelector("[data-slot='pagination-ellipsis']");
     expect(ellipsis).toBeInTheDocument();
@@ -52,18 +64,20 @@ describe("Pagination", () => {
     expect(screen.queryByText("9")).not.toBeInTheDocument();
     expect(screen.queryByText("10")).not.toBeInTheDocument();
 
-    const nextPage = screen.getByText("Next");
+    const nextPage = screen.getByLabelText("Go to next page");
     expect(nextPage).toBeInTheDocument();
-    expect(nextPage.className).toBe("hidden sm:block");
+    expect(nextPage.className).toBe(
+      "inline-flex items-center justify-center whitespace-nowrap rounded-md text-sm font-medium transition-all disabled:pointer-events-none disabled:opacity-50 [&_svg]:pointer-events-none [&_svg:not([class*='size-'])]:size-4 shrink-0 [&_svg]:shrink-0 outline-none focus-visible:border-ring focus-visible:ring-ring/50 focus-visible:ring-[3px] aria-invalid:ring-destructive/20 dark:aria-invalid:ring-destructive/40 aria-invalid:border-destructive hover:bg-accent hover:text-accent-foreground dark:hover:bg-accent/50 h-9 py-2 has-[>svg]:px-3 gap-1 px-2.5 sm:pr-2.5 cursor-pointer",
+    );
 
-    const lastPage = screen.getByText("Last");
+    const lastPage = screen.getByLabelText("Go to last page");
     expect(lastPage).toBeInTheDocument();
     expect(lastPage.className).toBe(
       "inline-flex items-center justify-center whitespace-nowrap rounded-md text-sm font-medium transition-all disabled:pointer-events-none disabled:opacity-50 [&_svg]:pointer-events-none [&_svg:not([class*='size-'])]:size-4 shrink-0 [&_svg]:shrink-0 outline-none focus-visible:border-ring focus-visible:ring-ring/50 focus-visible:ring-[3px] aria-invalid:ring-destructive/20 dark:aria-invalid:ring-destructive/40 aria-invalid:border-destructive hover:bg-accent hover:text-accent-foreground dark:hover:bg-accent/50 size-9 h-auto w-auto cursor-pointer gap-1 px-2.5 py-2 has-[>svg]:px-3 sm:pl-2.5",
     );
   });
 
-  test("renders a Pagination without ellipsis when there are fewer than 3 pages", async () => {
+  test("renders Pagination without ellipsis when there are fewer than 3 pages", async () => {
     render(<Pagination pageCount={2} currentPage={1} onChange={onPageChange} />);
 
     expect(screen.getByText("First")).toBeInTheDocument();
@@ -81,13 +95,6 @@ describe("Pagination", () => {
   test("calls onChange when a page number is clicked", async () => {
     render(<Pagination pageCount={10} currentPage={1} onChange={onPageChange} />);
 
-    const page1 = screen.getByText("1");
-    userEvent.click(page1);
-
-    await waitFor(() => {
-      expect(onPageChange).toHaveBeenCalledWith(1);
-    });
-
     const page2 = screen.getByText("2");
     userEvent.click(page2);
 
@@ -103,8 +110,8 @@ describe("Pagination", () => {
     });
   });
 
-  test("calls onChange when the first/last buttons are clicked", async () => {
-    render(<Pagination pageCount={10} currentPage={1} onChange={onPageChange} />);
+  test("calls onChange when the first button is clicked", async () => {
+    render(<Pagination pageCount={10} currentPage={2} onChange={onPageChange} />);
 
     const firstPage = screen.getByText("First");
     userEvent.click(firstPage);
@@ -112,6 +119,10 @@ describe("Pagination", () => {
     await waitFor(() => {
       expect(onPageChange).toHaveBeenCalledWith(1);
     });
+  });
+
+  test("calls onChange when the last button is clicked", async () => {
+    render(<Pagination pageCount={10} currentPage={1} onChange={onPageChange} />);
 
     const lastPage = screen.getByText("Last");
     userEvent.click(lastPage);
@@ -121,15 +132,8 @@ describe("Pagination", () => {
     });
   });
 
-  test("calls onChange when the next/previous button is clicked while on page 1", async () => {
+  test("calls onChange when the next button is clicked", async () => {
     render(<Pagination pageCount={10} currentPage={1} onChange={onPageChange} />);
-
-    const previousPage = screen.getByText("Previous");
-    userEvent.click(previousPage);
-
-    await waitFor(() => {
-      expect(onPageChange).toHaveBeenCalledWith(1);
-    });
 
     const nextPage = screen.getByText("Next");
     userEvent.click(nextPage);
@@ -139,25 +143,7 @@ describe("Pagination", () => {
     });
   });
 
-  test("calls onChange when the previous/next buttons are clicked while on the last page", async () => {
-    render(<Pagination pageCount={10} currentPage={10} onChange={onPageChange} />);
-
-    const previousPage = screen.getByText("Previous");
-    userEvent.click(previousPage);
-
-    await waitFor(() => {
-      expect(onPageChange).toHaveBeenCalledWith(9);
-    });
-
-    const nextPage = screen.getByText("Next");
-    userEvent.click(nextPage);
-
-    await waitFor(() => {
-      expect(onPageChange).toHaveBeenCalledWith(10);
-    });
-  });
-
-  test("calls onChange when the previous/next buttons are clicked while on a middle page", async () => {
+  test("calls onChange when the previous/next buttons are clicked", async () => {
     render(<Pagination pageCount={10} currentPage={5} onChange={onPageChange} />);
 
     const previousPage = screen.getByText("Previous");

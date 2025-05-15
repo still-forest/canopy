@@ -44,6 +44,9 @@ export const Pagination = ({ pageCount, currentPage, onChange }: Props) => {
           <PaginationLink
             onClick={() => onChange(1)}
             className="h-auto w-auto cursor-pointer gap-1 px-2.5 py-2 has-[>svg]:px-3 sm:pl-2.5"
+            aria-disabled={currentPage === 1}
+            tabIndex={currentPage === 1 ? -1 : undefined}
+            style={{ opacity: currentPage === 1 ? 0.5 : 1, pointerEvents: currentPage === 1 ? "none" : "auto" }}
             aria-label="Go to first page"
           >
             <ChevronFirst />
@@ -54,6 +57,12 @@ export const Pagination = ({ pageCount, currentPage, onChange }: Props) => {
           <PaginationPrevious
             onClick={() => onChange(Math.max(currentPage - 1, 1))}
             className="cursor-pointer"
+            aria-disabled={currentPage === 1}
+            tabIndex={currentPage === 1 ? -1 : undefined}
+            style={{
+              opacity: currentPage === 1 ? 0.5 : 1,
+              pointerEvents: currentPage === 1 ? "none" : "auto",
+            }}
             aria-label="Go to previous page"
           />
         </PaginationItem>
@@ -76,6 +85,12 @@ export const Pagination = ({ pageCount, currentPage, onChange }: Props) => {
           <PaginationNext
             onClick={() => onChange(Math.min(currentPage + 1, pageCount))}
             className="cursor-pointer"
+            aria-disabled={currentPage === pageCount}
+            tabIndex={currentPage === pageCount ? -1 : undefined}
+            style={{
+              opacity: currentPage === pageCount ? 0.5 : 1,
+              pointerEvents: currentPage === pageCount ? "none" : "auto",
+            }}
             aria-label="Go to next page"
           />
         </PaginationItem>
@@ -83,6 +98,12 @@ export const Pagination = ({ pageCount, currentPage, onChange }: Props) => {
           <PaginationLink
             onClick={() => onChange(pageCount)}
             className="h-auto w-auto cursor-pointer gap-1 px-2.5 py-2 has-[>svg]:px-3 sm:pl-2.5"
+            aria-disabled={currentPage === pageCount}
+            tabIndex={currentPage === pageCount ? -1 : undefined}
+            style={{
+              opacity: currentPage === pageCount ? 0.5 : 1,
+              pointerEvents: currentPage === pageCount ? "none" : "auto",
+            }}
             aria-label="Go to last page"
           >
             Last
