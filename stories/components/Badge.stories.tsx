@@ -29,6 +29,18 @@ export const Default: Story = {
   args: defaultArgs,
 };
 
+export const Secondary: Story = {
+  args: { ...defaultArgs, variant: "secondary" },
+};
+
+export const Destructive: Story = {
+  args: { ...defaultArgs, variant: "destructive" },
+};
+
+export const Outline: Story = {
+  args: { ...defaultArgs, variant: "outline" },
+};
+
 export const Clickable: Story = {
   args: { ...defaultArgs, onClick: () => alert("Clicked") },
 };

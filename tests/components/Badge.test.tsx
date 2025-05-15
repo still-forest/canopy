@@ -42,4 +42,40 @@ describe("Badge", () => {
     expect(badge).toBeInTheDocument();
     expect(badge.className).toContain(EXPECTED_DEFAULT_CLASSES + " font-mono");
   });
+
+  test("should render a badge with a secondary variant", () => {
+    render(<Badge label="Badge" variant="secondary" />);
+
+    const badge = screen.getByText("Badge");
+
+    expect(badge).toBeInTheDocument();
+    expect(badge.className).toContain("bg-secondary");
+    expect(badge.className).toContain("text-secondary-foreground");
+    expect(badge.className).not.toContain("bg-primary");
+    expect(badge.className).not.toContain("text-primary-foreground");
+  });
+
+  test("should render a badge with a destructive variant", () => {
+    render(<Badge label="Badge" variant="destructive" />);
+
+    const badge = screen.getByText("Badge");
+
+    expect(badge).toBeInTheDocument();
+    expect(badge.className).toContain("bg-destructive");
+    expect(badge.className).toContain("text-white");
+    expect(badge.className).not.toContain("bg-primary");
+    expect(badge.className).not.toContain("text-primary-foreground");
+  });
+
+  test("should render a badge with an outline variant", () => {
+    render(<Badge label="Badge" variant="outline" />);
+
+    const badge = screen.getByText("Badge");
+
+    expect(badge).toBeInTheDocument();
+    expect(badge.className).toContain("bg-accent");
+    expect(badge.className).toContain("text-accent-foreground");
+    expect(badge.className).not.toContain("bg-primary");
+    expect(badge.className).not.toContain("text-primary-foreground");
+  });
 });
