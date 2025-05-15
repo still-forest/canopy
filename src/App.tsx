@@ -1,7 +1,7 @@
 import ThemeProvider from "@src/context/ThemeProvider";
 import { BookType, FolderTree, Home, LayoutDashboard, LogOut, Settings2, Trees } from "lucide-react";
-import { Container, Flex, SidebarLayout, SidebarTrigger } from "@/layout";
-import { Heading } from "@/typography";
+import { Container, Flex, Footer, SidebarLayout, SidebarTrigger } from "@/layout";
+import { Heading, Text } from "@/typography";
 
 const BrandContent = () => (
   <>
@@ -83,12 +83,19 @@ const InnerApp = () => {
       itemSets={[{ links: itemSet1 }, { links: itemSet2 }]}
       bottomItemSets={[{ links: itemSet3 }]}
     >
-      <Container>
+      <Container className="border-b">
         <SidebarTrigger />
+      </Container>
+      <Container>
         <Heading level="1" className="mt-4">
           Canopy
         </Heading>
       </Container>
+      <Footer>
+        <Text variant="muted" size="sm">
+          © 2025 Still Forest LLC.
+        </Text>
+      </Footer>
     </SidebarLayout>
   );
 };
