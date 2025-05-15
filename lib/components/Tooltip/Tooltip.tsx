@@ -11,9 +11,12 @@ interface ChildProps {
   children: React.ReactNode;
 }
 
+export type CursorType = "arrow" | "pointer" | "text" | "not-allowed";
+
 interface TriggerProps {
   children: React.ReactNode;
-  cursor?: "arrow" | "pointer";
+  cursor?: CursorType;
+  className?: string;
 }
 
 type TooltipComponent = React.FC<TooltipProps> & {
@@ -31,10 +34,16 @@ const Tooltip: TooltipComponent = ({ children, open, onOpenChange }) => {
   );
 };
 
-const Trigger = ({ children, cursor = "pointer" }: TriggerProps) => (
+const Trigger = ({ children, cursor = "pointer", className }: TriggerProps) => (
   <TooltipTrigger
     asChild
-    className={cn(cursor === "arrow" && "cursor-default", cursor === "pointer" && "cursor-pointer")}
+    className={cn(
+      cursor === "arrow" && "cursor-default",
+      cursor === "pointer" && "cursor-pointer",
+      cursor === "text" && "cursor-text",
+      cursor === "not-allowed" && "cursor-not-allowed",
+      className,
+    )}
   >
     {children}
   </TooltipTrigger>

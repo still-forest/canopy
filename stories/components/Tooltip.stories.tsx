@@ -1,8 +1,9 @@
 import type { Meta, StoryObj } from "@storybook/react";
-import { Tooltip } from "@/components";
+import { Tooltip, CursorType } from "@/components";
 import { Button } from "@/forms";
 import { Box, Flex } from "@/layout";
 import { Heading, Text } from "@/typography";
+import OptionList from "../templates/OptionList";
 
 const meta: Meta<typeof Tooltip> = {
   title: "Components/Tooltip",
@@ -32,26 +33,35 @@ export const Default: Story = {
   ),
 };
 
+export const Cursor: Story = {
+  render: () => (
+    <OptionList
+      options={["arrow", "pointer", "text", "not-allowed"] as CursorType[]}
+      gapY="2"
+      renderOption={(option) => (
+        <Tooltip>
+          <Tooltip.Trigger cursor={option}>
+            <Button className="max-w-40">Hover over me</Button>
+          </Tooltip.Trigger>
+          <Tooltip.Content>This is a tooltip</Tooltip.Content>
+        </Tooltip>
+      )}
+    />
+  ),
+};
+
 export const WithText: Story = {
   render: () => (
     <Text>
       <Tooltip>
-        <Tooltip.Trigger cursor="arrow">
-          <Box>Hover over me</Box>
+        <Tooltip.Trigger className="inline-block">
+          <Box>Hover over me.</Box>
         </Tooltip.Trigger>
         <Tooltip.Content>This is a tooltip</Tooltip.Content>
-      </Tooltip>
-    </Text>
-  ),
-};
-
-export const WithDecoratedText: Story = {
-  render: () => (
-    <Text>
-      Hover over{" "}
+      </Tooltip>{" "}
       <Tooltip>
-        <Tooltip.Trigger>
-          <span className="cursor-pointer underline decoration-dotted">this.</span>
+        <Tooltip.Trigger cursor="arrow" className="inline-block">
+          <Box className="underline decoration-dotted">Me too!</Box>
         </Tooltip.Trigger>
         <Tooltip.Content>This is a tooltip</Tooltip.Content>
       </Tooltip>
