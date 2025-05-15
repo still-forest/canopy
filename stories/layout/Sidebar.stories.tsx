@@ -1,6 +1,6 @@
 import type { Meta, StoryObj } from "@storybook/react";
 import { BookType, FolderTree, Home, LayoutDashboard, LogOut, Settings2, Trees } from "lucide-react";
-import { Box, Container, Flex, Footer, Sidebar, SidebarLayout, SidebarTrigger } from "@/layout";
+import { Box, Container, Flex, Footer, Sidebar, SidebarLayout, SidebarTrigger, type Theme } from "@/layout";
 import { Heading, Text } from "@/typography";
 
 const meta: Meta<typeof Sidebar> = {
@@ -110,17 +110,23 @@ const SampleContent = () => (
   </>
 );
 
+const defaultArgs = {
+  brandContent: <BrandContent />,
+  brandOnClick: () => {
+    window.alert("brand");
+  },
+  activeSlug: "summary",
+  itemSets: [{ links: itemSet1 }, { links: itemSet2 }],
+  bottomItemSets: [{ links: itemSet3 }],
+  theme: "light" as Theme,
+  setTheme: (newTheme: Theme) => {
+    window.alert(`New theme: ${newTheme}`);
+  },
+};
+
 export const Default: Story = {
   render: () => (
-    <SidebarLayout
-      brandContent={<BrandContent />}
-      brandOnClick={() => {
-        window.alert("brand");
-      }}
-      activeSlug="summary"
-      itemSets={[{ links: itemSet1 }, { links: itemSet2 }]}
-      bottomItemSets={[{ links: itemSet3 }]}
-    >
+    <SidebarLayout {...defaultArgs}>
       <SampleContent />
     </SidebarLayout>
   ),
@@ -128,14 +134,7 @@ export const Default: Story = {
 
 export const NoBottomSets: Story = {
   render: () => (
-    <SidebarLayout
-      brandContent={<BrandContent />}
-      brandOnClick={() => {
-        window.alert("brand");
-      }}
-      activeSlug="summary"
-      itemSets={[{ links: itemSet1 }, { links: itemSet2 }]}
-    >
+    <SidebarLayout {...defaultArgs} bottomItemSets={undefined}>
       <SampleContent />
     </SidebarLayout>
   ),
@@ -143,14 +142,7 @@ export const NoBottomSets: Story = {
 
 export const OneSection: Story = {
   render: () => (
-    <SidebarLayout
-      brandContent={<BrandContent />}
-      brandOnClick={() => {
-        window.alert("brand");
-      }}
-      activeSlug="summary"
-      itemSets={[{ links: itemSet1 }]}
-    >
+    <SidebarLayout {...defaultArgs} itemSets={[{ links: itemSet1 }]}>
       <SampleContent />
     </SidebarLayout>
   ),

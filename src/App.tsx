@@ -2,6 +2,7 @@ import ThemeProvider from "@src/context/ThemeProvider";
 import { BookType, FolderTree, Home, LayoutDashboard, LogOut, Settings2, Trees } from "lucide-react";
 import { Container, Flex, Footer, SidebarLayout, SidebarTrigger } from "@/layout";
 import { Heading, Text } from "@/typography";
+import { useTheme } from "./context/useTheme";
 
 const BrandContent = () => (
   <>
@@ -43,12 +44,12 @@ const itemSet1 = [
 
 const itemSet2 = [
   {
-    slug: "references",
-    title: "References",
+    slug: "storybook",
+    title: "Storybook",
     icon: BookType,
     external: true,
     onClick: () => {
-      window.alert("references");
+      window.open("https://still-forest.github.io/canopy/", "_blank");
     },
   },
 ];
@@ -73,6 +74,8 @@ const itemSet3 = [
 ];
 
 const InnerApp = () => {
+  const { theme, setTheme } = useTheme();
+
   return (
     <SidebarLayout
       brandContent={<BrandContent />}
@@ -82,6 +85,8 @@ const InnerApp = () => {
       activeSlug="summary"
       itemSets={[{ links: itemSet1 }, { links: itemSet2 }]}
       bottomItemSets={[{ links: itemSet3 }]}
+      theme={theme}
+      setTheme={setTheme}
     >
       <Container className="border-b">
         <SidebarTrigger />

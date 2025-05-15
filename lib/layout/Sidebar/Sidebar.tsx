@@ -1,4 +1,3 @@
-import { useTheme } from "@src/context/useTheme";
 import { Computer, Moon, SquareArrowOutUpRight, Sun } from "lucide-react";
 import { Fragment } from "react";
 import {
@@ -18,6 +17,8 @@ import {
 import { Flex } from "@/main";
 import { Text } from "@/typography";
 
+export type Theme = "light" | "dark" | "system";
+
 interface SideLink {
   slug: string;
   title: string;
@@ -36,6 +37,8 @@ export interface SidebarProps extends React.ComponentProps<typeof BaseSidebar> {
   activeSlug?: string;
   itemSets: SideLinkSet[];
   bottomItemSets?: SideLinkSet[];
+  theme: Theme;
+  setTheme: (theme: Theme) => void;
 }
 
 export const MenuItemText = ({ children }: { children: React.ReactNode }) => (
@@ -92,9 +95,7 @@ const MenuSection = ({ itemSets, activeSlug }: MenuSectionProps) => {
 };
 
 // TODO: This doesn't support selecting system theme
-const ThemeSelection = () => {
-  const { theme, setTheme } = useTheme();
-
+const ThemeSelection = ({ theme, setTheme }: { theme: Theme; setTheme: (theme: Theme) => void }) => {
   return (
     <SidebarMenuButton
       className="cursor-pointer"
@@ -134,6 +135,8 @@ export const Sidebar = ({
   activeSlug,
   itemSets,
   bottomItemSets = [],
+  theme,
+  setTheme,
   ...props
 }: SidebarProps) => {
   return (
@@ -168,7 +171,7 @@ export const Sidebar = ({
             </SidebarMenuButton>
           </SidebarMenuItem>
           <SidebarMenuItem>
-            <ThemeSelection />
+            <ThemeSelection theme={theme} setTheme={setTheme} />
           </SidebarMenuItem>
           {bottomItemSets.length > 0 && (
             <>
