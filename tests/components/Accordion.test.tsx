@@ -2,8 +2,8 @@ import { render, screen } from "@testing-library/react";
 import { describe, expect, test } from "vitest";
 import "@testing-library/jest-dom";
 
-import { Accordion, AccordionContent, AccordionItem, AccordionTrigger, Alert } from "@/components";
 import userEvent from "@testing-library/user-event";
+import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/components";
 
 describe("Accordion", () => {
   test("renders info Alert", async () => {

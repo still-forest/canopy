@@ -10,11 +10,15 @@ const meta: Meta<typeof Accordion> = {
 
 export default meta;
 
-type Story = StoryObj<typeof meta>;
+type Story = StoryObj<typeof Accordion>;
 
 export const Default: Story = {
-  render: () => (
-    <Accordion type="single" collapsible>
+  args: {
+    type: "single",
+    collapsible: true,
+  },
+  render: (args) => (
+    <Accordion {...args}>
       <AccordionItem value="item-1">
         <AccordionTrigger>Are you insane?</AccordionTrigger>
         <AccordionContent>
