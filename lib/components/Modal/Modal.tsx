@@ -19,11 +19,13 @@ interface Props {
 
 export const Modal = ({ trigger, children, title, description, open, onOpenChange }: Props) => {
   const isControlled = open !== undefined;
-  const [openState, setOpenState] = useState(open);
+  const [openState, setOpenState] = useState<boolean>(isControlled ? open : false);
 
   useEffect(() => {
-    setOpenState(open);
-  }, [open]);
+    if (isControlled) {
+      setOpenState(open);
+    }
+  }, [open, isControlled]);
 
   if (!trigger && !isControlled) {
     throw new Error("Trigger must be provided if modal state is not controlled through open, onOpenChange props.");
