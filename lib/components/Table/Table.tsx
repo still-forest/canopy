@@ -1,3 +1,4 @@
+import type * as React from "react";
 import {
   Table as BaseTable,
   TableBody,
@@ -10,7 +11,16 @@ import {
 
 export { TableBody, TableCaption, TableCell, TableHead, TableHeader, TableRow } from "@/components/ui/table";
 
-const Table = ({ children, ...props }: React.ComponentProps<"table">) => {
+type TableComponent = React.FC<React.ComponentProps<"table">> & {
+  Body: typeof TableBody;
+  Caption: typeof TableCaption;
+  Cell: typeof TableCell;
+  Head: typeof TableHead;
+  Header: typeof TableHeader;
+  Row: typeof TableRow;
+};
+
+const Table: TableComponent = ({ children, ...props }: React.ComponentProps<"table">) => {
   return <BaseTable {...props}>{children}</BaseTable>;
 };
 
