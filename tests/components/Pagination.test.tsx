@@ -2,8 +2,8 @@ import { render, screen, waitFor } from "@testing-library/react";
 import { describe, expect, test, vi } from "vitest";
 import "@testing-library/jest-dom";
 
-import { Pagination } from "@/components";
 import userEvent from "@testing-library/user-event";
+import { Pagination } from "@/components";
 
 describe("Pagination", () => {
   const onPageChange = vi.fn();
