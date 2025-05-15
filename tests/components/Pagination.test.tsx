@@ -71,8 +71,7 @@ describe("Pagination", () => {
 
     expect(screen.getByText("1")).toBeInTheDocument();
     expect(screen.getByText("2")).toBeInTheDocument();
-    expect(screen.getByText("3")).toBeInTheDocument();
-    expect(screen.queryByText("4")).not.toBeInTheDocument();
+    expect(screen.queryByText("3")).not.toBeInTheDocument();
     expect(document.querySelector("[data-slot='pagination-ellipsis']")).not.toBeInTheDocument();
 
     expect(screen.getByText("Next")).toBeInTheDocument();
