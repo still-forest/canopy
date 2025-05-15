@@ -15,7 +15,7 @@ type Story = StoryObj<typeof meta>;
 const defaultArgs = {
   type: "info",
   title: "Title",
-  message: "This is a important message.",
+  message: "This is an important message.",
 };
 
 export const Default: Story = {

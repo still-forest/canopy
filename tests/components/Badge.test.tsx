@@ -16,7 +16,7 @@ describe("Badge", () => {
     expect(badge.className).toBe(EXPECTED_DEFAULT_CLASSES);
   });
 
-  test("should render a badge with a clickable badge", async () => {
+  test("should render a clickable badge", async () => {
     const onClick = vi.fn();
 
     render(<Badge label="Badge" onClick={onClick} />);

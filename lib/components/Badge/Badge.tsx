@@ -9,7 +9,7 @@ interface BadgeProps {
 }
 
 export const Badge = ({ label, onClick, className, variant }: BadgeProps) => {
-  const badgeClasses = cn("cursor-default", onClick !== undefined && onClick !== null && "cursor-pointer", className);
+  const badgeClasses = cn("cursor-default", !!onClick && "cursor-pointer", className);
 
   return (
     <BadgeBase onClick={onClick} className={badgeClasses} variant={variant}>
