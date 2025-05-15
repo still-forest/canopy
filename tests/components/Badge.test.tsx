@@ -2,10 +2,11 @@ import { render, screen, waitFor } from "@testing-library/react";
 import userEvent from "@testing-library/user-event";
 import { describe, expect, test, vi } from "vitest";
 import { Badge } from "@/components/Badge";
+import { TAILWIND_COLORS } from "@/types/color";
 
 describe("Badge", () => {
   const EXPECTED_DEFAULT_CLASSES =
-    "inline-flex items-center justify-center rounded-md border px-2 py-0.5 text-xs font-medium w-fit whitespace-nowrap shrink-0 [&>svg]:size-3 gap-1 [&>svg]:pointer-events-none focus-visible:border-ring focus-visible:ring-ring/50 focus-visible:ring-[3px] aria-invalid:ring-destructive/20 dark:aria-invalid:ring-destructive/40 aria-invalid:border-destructive transition-[color,box-shadow] overflow-hidden border-transparent bg-primary text-primary-foreground [a&]:hover:bg-primary/90 cursor-default";
+    "bg-primary text-primary-foreground [a&]:hover:bg-primary/90 cursor-default inline-flex items-center justify-center rounded-md border px-2 py-0.5 text-xs font-medium w-fit whitespace-nowrap shrink-0 [&>svg]:size-3 gap-1 [&>svg]:pointer-events-none focus-visible:border-ring focus-visible:ring-ring/50 focus-visible:ring-[3px] aria-invalid:ring-destructive/20 dark:aria-invalid:ring-destructive/40 aria-invalid:border-destructive transition-[color,box-shadow] overflow-hidden border-transparent";
 
   test("should render a badge", () => {
     render(<Badge label="Badge" />);
@@ -40,7 +41,7 @@ describe("Badge", () => {
     const badge = screen.getByText("Badge");
 
     expect(badge).toBeInTheDocument();
-    expect(badge.className).toContain(`${EXPECTED_DEFAULT_CLASSES} font-mono`);
+    expect(badge.className).toContain("font-mono");
   });
 
   test("should render a badge with a secondary variant", () => {
@@ -77,5 +78,27 @@ describe("Badge", () => {
     expect(badge.className).toContain("text-accent-foreground");
     expect(badge.className).not.toContain("bg-primary");
     expect(badge.className).not.toContain("text-primary-foreground");
+  });
+
+  test("should render a badge with a custom color", () => {
+    for (const color of TAILWIND_COLORS) {
+      render(<Badge label={color} color={color} />);
+      const badge = screen.getByText(color);
+
+      if (color === "white") {
+        expect(badge.className).toContain("bg-white text-black border-1 border-black");
+      } else if (color === "black") {
+        expect(badge.className).toContain("bg-black");
+        expect(badge.className).toContain("text-white");
+      } else {
+        expect(badge.className).toContain(`bg-${color}-500`);
+      }
+    }
+  });
+
+  test("should throw an error if color is used with a non-outline variant", () => {
+    expect(() => render(<Badge label="Badge" color="red" variant="secondary" />)).toThrow(
+      "Color red is not allowed for variant 'secondary'. Only default and outline variants support color.",
+    );
   });
 });
