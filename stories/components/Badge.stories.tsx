@@ -1,7 +1,8 @@
 import type { Meta, StoryObj } from "@storybook/react";
 
 import { Badge } from "@/components";
-import { Flex } from "@/layout";
+import { Flex, Grid } from "@/layout";
+import { TAILWIND_COLORS } from "@/types/color";
 
 const meta: Meta<typeof Badge> = {
   title: "Components/Badge",
@@ -59,5 +60,17 @@ export const CustomClassName: Story = {
       <Badge label="Destructive" variant="destructive" className="font-mono font-thin text-xl uppercase" />
       <Badge label="Outline" variant="outline" className="font-mono font-thin text-xl uppercase" />
     </Flex>
+  ),
+};
+
+export const CustomColor: Story = {
+  render: () => (
+    <Grid cols="4" gap="2">
+      {TAILWIND_COLORS.map((color) => (
+        <Flex key={color} justify="center">
+          <Badge label={color} color={color} />
+        </Flex>
+      ))}
+    </Grid>
   ),
 };

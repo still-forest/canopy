@@ -2,6 +2,7 @@ import { render, screen, waitFor } from "@testing-library/react";
 import userEvent from "@testing-library/user-event";
 import { describe, expect, test, vi } from "vitest";
 import { Badge } from "@/components/Badge";
+import { TAILWIND_COLORS } from "@/types/color";
 
 describe("Badge", () => {
   const EXPECTED_DEFAULT_CLASSES =
@@ -77,5 +78,20 @@ describe("Badge", () => {
     expect(badge.className).toContain("text-accent-foreground");
     expect(badge.className).not.toContain("bg-primary");
     expect(badge.className).not.toContain("text-primary-foreground");
+  });
+
+  test("should render a badge with a custom color", () => {
+    for (const color of TAILWIND_COLORS) {
+      render(<Badge label={color} color={color} />);
+      const badge = screen.getByText(color);
+
+      if (color === "white") {
+        expect(badge.className).toContain(`bg-white text-black border-1 border-black`);
+      } else if (color === "black") {
+        expect(badge.className).toContain(`bg-black text-white`);
+      } else {
+        expect(badge.className).toContain(`bg-${color}-500`);
+      }
+    }
   });
 });

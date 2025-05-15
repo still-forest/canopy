@@ -8,3 +8,31 @@ export const COLOR_VARIANTS = [
   "warning",
   "destructive",
 ] as const;
+
+export const TAILWIND_COLORS = [
+  "red",
+  "orange",
+  "amber",
+  "yellow",
+  "lime",
+  "green",
+  "emerald",
+  "teal",
+  "cyan",
+  "sky",
+  "blue",
+  "indigo",
+  "violet",
+  "purple",
+  "fuchsia",
+  "pink",
+  "rose",
+  "slate",
+  "gray",
+  "zinc",
+  "neutral",
+  "stone",
+  "white",
+  "black",
+] as const;
+export type TailwindColor = (typeof TAILWIND_COLORS)[number];
