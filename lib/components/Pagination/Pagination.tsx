@@ -1,5 +1,5 @@
-import { useMemo } from "react";
 import { ChevronFirst, ChevronLast } from "lucide-react";
+import { useMemo } from "react";
 
 import {
   Pagination as PaginationBase,
