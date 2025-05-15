@@ -3,6 +3,7 @@ import type { Meta, StoryObj } from "@storybook/react";
 import { Badge } from "@/components";
 import { Flex, Grid } from "@/layout";
 import { TAILWIND_COLORS } from "@/types/color";
+import { asOptionalValue, summarizeValues } from "../utils";
 
 const meta: Meta<typeof Badge> = {
   title: "Components/Badge",
@@ -15,6 +16,16 @@ const meta: Meta<typeof Badge> = {
     ),
   ],
   tags: ["autodocs"],
+  argTypes: {
+    color: {
+      control: "select",
+      options: asOptionalValue(TAILWIND_COLORS),
+      description: "Controls background color",
+      table: {
+        type: { summary: summarizeValues(TAILWIND_COLORS, true) },
+      },
+    },
+  },
 } satisfies Meta<typeof Badge>;
 
 export default meta;
@@ -63,12 +74,24 @@ export const CustomClassName: Story = {
   ),
 };
 
-export const CustomColor: Story = {
+export const CustomSolidColor: Story = {
   render: () => (
     <Grid cols="4" gap="2">
       {TAILWIND_COLORS.map((color) => (
         <Flex key={color} justify="center">
           <Badge label={color} color={color} />
+        </Flex>
+      ))}
+    </Grid>
+  ),
+};
+
+export const CustomOutlineColor: Story = {
+  render: () => (
+    <Grid cols="4" gap="2">
+      {TAILWIND_COLORS.map((color) => (
+        <Flex key={color} justify="center">
+          <Badge label={color} color={color} variant="outline" />
         </Flex>
       ))}
     </Grid>
