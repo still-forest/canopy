@@ -1,5 +1,5 @@
-import { render, screen, waitFor, within } from "@testing-library/react";
-import { describe, expect, test, vi } from "vitest";
+import { render, screen, within } from "@testing-library/react";
+import { describe, expect, test } from "vitest";
 import "@testing-library/jest-dom";
 
 import { Alert } from "@/components";

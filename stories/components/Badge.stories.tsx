@@ -1,7 +1,7 @@
 import type { Meta, StoryObj } from "@storybook/react";
 
 import { Badge } from "@/components";
-import { Flex, Grid } from "@/layout";
+import { Flex } from "@/layout";
 
 const meta: Meta<typeof Badge> = {
   title: "Components/Badge",
@@ -54,10 +54,10 @@ export const Clickable: Story = {
 export const CustomClassName: Story = {
   render: () => (
     <Flex gap="2">
-      <Badge label="Default" className="font-mono uppercase font-thin text-xl" />
-      <Badge label="Secondary" variant="secondary" className="font-mono uppercase font-thin text-xl" />
-      <Badge label="Destructive" variant="destructive" className="font-mono uppercase font-thin text-xl" />
-      <Badge label="Outline" variant="outline" className="font-mono uppercase font-thin text-xl" />
+      <Badge label="Default" className="font-mono font-thin text-xl uppercase" />
+      <Badge label="Secondary" variant="secondary" className="font-mono font-thin text-xl uppercase" />
+      <Badge label="Destructive" variant="destructive" className="font-mono font-thin text-xl uppercase" />
+      <Badge label="Outline" variant="outline" className="font-mono font-thin text-xl uppercase" />
     </Flex>
   ),
 };

@@ -1,7 +1,7 @@
-import { Badge } from "@/components/Badge";
 import { render, screen, waitFor } from "@testing-library/react";
 import userEvent from "@testing-library/user-event";
 import { describe, expect, test, vi } from "vitest";
+import { Badge } from "@/components/Badge";
 
 describe("Badge", () => {
   const EXPECTED_DEFAULT_CLASSES =
@@ -40,7 +40,7 @@ describe("Badge", () => {
     const badge = screen.getByText("Badge");
 
     expect(badge).toBeInTheDocument();
-    expect(badge.className).toContain(EXPECTED_DEFAULT_CLASSES + " font-mono");
+    expect(badge.className).toContain(`${EXPECTED_DEFAULT_CLASSES} font-mono`);
   });
 
   test("should render a badge with a secondary variant", () => {
