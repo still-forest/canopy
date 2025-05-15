@@ -7,5 +7,6 @@ export * from "./Modal";
 export * from "./Pagination";
 export * from "./Separator";
 export * from "./Skeleton";
+export * from "./Table";
 export * from "./Tabs";
 export * from "./Tooltip";
