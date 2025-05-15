@@ -1,4 +1,4 @@
-import { render, screen, waitFor } from "@testing-library/react";
+import { render, screen } from "@testing-library/react";
 import { describe, expect, test, vi } from "vitest";
 import "@testing-library/jest-dom";
 
@@ -93,69 +93,55 @@ describe("Pagination", () => {
     render(<Pagination pageCount={10} currentPage={1} onChange={onPageChange} />);
 
     const page2 = screen.getByText("2");
-    userEvent.click(page2);
+    await userEvent.click(page2);
 
-    await waitFor(() => {
-      expect(onPageChange).toHaveBeenCalledWith(2);
-    });
+    expect(onPageChange).toHaveBeenCalledWith(2);
 
     const page3 = screen.getByText("3");
-    userEvent.click(page3);
+    await userEvent.click(page3);
 
-    await waitFor(() => {
-      expect(onPageChange).toHaveBeenCalledWith(3);
-    });
+    expect(onPageChange).toHaveBeenCalledWith(3);
   });
 
   test("calls onChange when the first button is clicked", async () => {
     render(<Pagination pageCount={10} currentPage={2} onChange={onPageChange} />);
 
     const firstPage = screen.getByText("First");
-    userEvent.click(firstPage);
+    await userEvent.click(firstPage);
 
-    await waitFor(() => {
-      expect(onPageChange).toHaveBeenCalledWith(1);
-    });
+    expect(onPageChange).toHaveBeenCalledWith(1);
   });
 
   test("calls onChange when the last button is clicked", async () => {
     render(<Pagination pageCount={10} currentPage={1} onChange={onPageChange} />);
 
     const lastPage = screen.getByText("Last");
-    userEvent.click(lastPage);
+    await userEvent.click(lastPage);
 
-    await waitFor(() => {
-      expect(onPageChange).toHaveBeenCalledWith(10);
-    });
+    expect(onPageChange).toHaveBeenCalledWith(10);
   });
 
   test("calls onChange when the next button is clicked", async () => {
     render(<Pagination pageCount={10} currentPage={1} onChange={onPageChange} />);
 
     const nextPage = screen.getByText("Next");
-    userEvent.click(nextPage);
+    await userEvent.click(nextPage);
 
-    await waitFor(() => {
-      expect(onPageChange).toHaveBeenCalledWith(2);
-    });
+    expect(onPageChange).toHaveBeenCalledWith(2);
   });
 
   test("calls onChange when navigating from a middle page", async () => {
     render(<Pagination pageCount={10} currentPage={5} onChange={onPageChange} />);
 
     const previousPage = screen.getByText("Previous");
-    userEvent.click(previousPage);
+    await userEvent.click(previousPage);
 
-    await waitFor(() => {
-      expect(onPageChange).toHaveBeenCalledWith(4);
-    });
+    expect(onPageChange).toHaveBeenCalledWith(4);
 
     const nextPage = screen.getByText("Next");
-    userEvent.click(nextPage);
+    await userEvent.click(nextPage);
 
-    await waitFor(() => {
-      expect(onPageChange).toHaveBeenCalledWith(6);
-    });
+    expect(onPageChange).toHaveBeenCalledWith(6);
   });
 
   test("disables all navigation when there is only one page", async () => {
