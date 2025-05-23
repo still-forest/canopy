@@ -8,13 +8,6 @@ import { Text } from "@/typography";
 const meta: Meta<typeof Modal> = {
   title: "Components/Modal",
   component: Modal,
-  decorators: [
-    (Story) => (
-      <Flex justify="center">
-        <Story />
-      </Flex>
-    ),
-  ],
   tags: ["autodocs"],
 } satisfies Meta<typeof Modal>;
 

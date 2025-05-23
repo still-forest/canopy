@@ -131,13 +131,6 @@ export const Default: Story = {
   args: {
     children: "This is a Text component",
   },
-  decorators: [
-    (Story) => (
-      <Box className="min-w-[400px]">
-        <Story />
-      </Box>
-    ),
-  ],
 };
 export const WithSampleProps: Story = {
   args: {
@@ -149,13 +142,6 @@ export const WithSampleProps: Story = {
     numeric: false,
     children: "This is a Text component",
   },
-  decorators: [
-    (Story) => (
-      <Box className="min-w-[400px]">
-        <Story />
-      </Box>
-    ),
-  ],
 };
 
 export const Families: Story = {

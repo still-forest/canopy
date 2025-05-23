@@ -1,6 +1,5 @@
 import type { Meta, StoryObj } from "@storybook/react";
 import type { Label } from "@/forms";
-import { Box } from "@/layout";
 import { Text } from "@/typography";
 
 const meta: Meta<typeof Label> = {
@@ -19,11 +18,4 @@ export const Default: Story = {
   args: {
     children: "Some thing",
   },
-  decorators: [
-    (Story) => (
-      <Box className="min-w-[400px]">
-        <Story />
-      </Box>
-    ),
-  ],
 };

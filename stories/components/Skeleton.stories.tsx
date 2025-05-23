@@ -6,13 +6,6 @@ import { Flex } from "@/layout";
 const meta: Meta<typeof Skeleton> = {
   title: "Components/Skeleton",
   component: Skeleton,
-  decorators: [
-    (Story) => (
-      <Flex justify="center" className="w-full">
-        <Story />
-      </Flex>
-    ),
-  ],
   tags: ["autodocs"],
 } satisfies Meta<typeof Skeleton>;
 

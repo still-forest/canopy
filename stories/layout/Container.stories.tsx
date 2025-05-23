@@ -4,9 +4,6 @@ import { Container } from "@/layout";
 const meta: Meta<typeof Container> = {
   title: "Layout/Container",
   component: Container,
-  parameters: {
-    layout: "centered",
-  },
   tags: ["autodocs"],
   argTypes: {
     className: {

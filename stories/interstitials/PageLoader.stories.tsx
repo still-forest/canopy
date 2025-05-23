@@ -2,21 +2,13 @@ import type { Meta, StoryObj } from "@storybook/react";
 import { PiggyBank } from "lucide-react";
 import { motion } from "motion/react";
 import { PageLoader } from "@/interstitials";
-import { Box, Flex } from "@/layout";
+import { Flex } from "@/layout";
+import { INTERSTITIAL_DECORATOR } from "../support/decorators";
 
 const meta: Meta<typeof PageLoader> = {
   title: "Interstitials/PageLoader",
   component: PageLoader,
-  decorators: [
-    (Story) => (
-      <Box width="full" height="full" className="min-h-[400px]">
-        <Story />
-      </Box>
-    ),
-  ],
-  parameters: {
-    layout: "centered",
-  },
+  decorators: [INTERSTITIAL_DECORATOR],
   tags: ["autodocs"],
 } satisfies Meta<typeof PageLoader>;
 

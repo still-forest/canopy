@@ -8,13 +8,6 @@ import { asOptionalValue, summarizeValues } from "../utils";
 const meta: Meta<typeof Badge> = {
   title: "Components/Badge",
   component: Badge,
-  decorators: [
-    (Story) => (
-      <Flex justify="center" className="w-full">
-        <Story />
-      </Flex>
-    ),
-  ],
   tags: ["autodocs"],
   argTypes: {
     color: {

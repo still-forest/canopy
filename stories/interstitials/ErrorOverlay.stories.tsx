@@ -1,21 +1,12 @@
 import type { Meta, StoryObj } from "@storybook/react";
 
 import { ErrorOverlay } from "@/interstitials";
-import { Box } from "@/layout";
+import { INTERSTITIAL_DECORATOR } from "../support/decorators";
 
 const meta: Meta<typeof ErrorOverlay> = {
   title: "Interstitials/ErrorOverlay",
   component: ErrorOverlay,
-  decorators: [
-    (Story) => (
-      <Box width="full" height="full" className="min-h-[400px]">
-        <Story />
-      </Box>
-    ),
-  ],
-  parameters: {
-    layout: "centered",
-  },
+  decorators: [INTERSTITIAL_DECORATOR],
   tags: ["autodocs"],
 } satisfies Meta<typeof ErrorOverlay>;
 

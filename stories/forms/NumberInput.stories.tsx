@@ -1,10 +1,12 @@
 import type { Meta, StoryObj } from "@storybook/react";
 
 import { NumberInput } from "@/forms";
+import { DEFAULT_DECORATOR_WITH_MIN_WIDTH_MD } from "../support/decorators";
 
 const meta: Meta<typeof NumberInput> = {
   title: "Forms/Inputs/NumberInput",
   component: NumberInput,
+  decorators: [DEFAULT_DECORATOR_WITH_MIN_WIDTH_MD],
   tags: ["autodocs"],
 } satisfies Meta<typeof NumberInput>;
 
