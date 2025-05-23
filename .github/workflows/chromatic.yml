@@ -6,6 +6,8 @@ on:
       - main
     paths:
       - "lib/**"
+      - "stories/**"
+      - "pnpm-lock.yaml"
     types: [opened, synchronize, reopened, edited]
   workflow_dispatch:
 
