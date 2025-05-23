@@ -1,5 +1,5 @@
 import type { Meta, StoryObj } from "@storybook/react";
-import { Box, Container, Flex, Footer } from "@/layout";
+import { Container, Flex, Footer } from "@/layout";
 import { Text } from "@/typography";
 import { sampleLongText } from "../support/sampleText";
 
@@ -38,7 +38,6 @@ export const Default: Story = {
     children: "This is a Footer component",
   },
 };
-
 
 export const Styled: Story = {
   args: {

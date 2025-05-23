@@ -2,7 +2,6 @@ import type { Meta, StoryObj } from "@storybook/react";
 import { Mailbox, PiggyBank } from "lucide-react";
 import { Button } from "@/forms";
 import { Interstitial, type InterstitialProps } from "@/interstitials";
-import { Box } from "@/layout";
 import { INTERSTITIAL_DECORATOR } from "../support/decorators";
 
 const meta: Meta<typeof Interstitial> = {

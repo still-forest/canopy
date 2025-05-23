@@ -6,7 +6,8 @@ import { Box, Flex } from "@/layout";
 const meta: Meta<typeof Checkbox> = {
   title: "Forms/Inputs/Checkbox",
   component: Checkbox,
-  decorators: [ // TODO: review this decorator
+  decorators: [
+    // TODO: review this decorator
     (Story) => (
       <Flex gap="2" justify="center">
         <Story />

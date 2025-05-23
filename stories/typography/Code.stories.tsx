@@ -1,6 +1,5 @@
 import { sampleLongText } from "@stories/support/sampleText";
 import type { Meta, StoryObj } from "@storybook/react";
-import { Box } from "@/layout";
 import { Code, Text } from "@/typography";
 
 const meta: Meta<typeof Code> = {

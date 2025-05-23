@@ -2,7 +2,7 @@ import type { Meta, StoryObj } from "@storybook/react";
 import { PiggyBank } from "lucide-react";
 import { motion } from "motion/react";
 import { PageLoader } from "@/interstitials";
-import { Box, Flex } from "@/layout";
+import { Flex } from "@/layout";
 import { INTERSTITIAL_DECORATOR } from "../support/decorators";
 
 const meta: Meta<typeof PageLoader> = {

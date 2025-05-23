@@ -1,7 +1,6 @@
 import type { Meta, StoryObj } from "@storybook/react";
 
 import { ErrorOverlay } from "@/interstitials";
-import { Box } from "@/layout";
 import { INTERSTITIAL_DECORATOR } from "../support/decorators";
 
 const meta: Meta<typeof ErrorOverlay> = {
