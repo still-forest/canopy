@@ -1,18 +1,12 @@
 import type { Meta, StoryObj } from "@storybook/react";
 
 import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from "@/components";
-import { Flex } from "@/layout";
+import { DEFAULT_DECORATOR_WITH_MIN_WIDTH_MD } from "../support/decorators";
 
 const meta: Meta<typeof Card> = {
   title: "Components/Card",
   component: Card,
-  decorators: [
-    (Story) => (
-      <Flex justify="center" className="w-full">
-        <Story />
-      </Flex>
-    ),
-  ],
+  decorators: [DEFAULT_DECORATOR_WITH_MIN_WIDTH_MD],
   tags: ["autodocs"],
 } satisfies Meta<typeof Card>;
 

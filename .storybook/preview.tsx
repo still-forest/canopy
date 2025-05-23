@@ -1,20 +1,14 @@
 import { withThemeByClassName } from "@storybook/addon-themes";
 import type { Preview } from "@storybook/react";
 
-import ThemeProvider from "../src/context/ThemeProvider";
 import { THEMES } from "../src/context/ThemeProviderContext";
+import { DEFAULT_DECORATOR } from "../stories/support/decorators";
 
 import "../src/index.css";
 
 const preview: Preview = {
   decorators: [
-    (Story) => (
-      <ThemeProvider defaultTheme={THEMES.LIGHT} storageKey="canopy-storybook-theme">
-        <div className="w-full bg-background p-1 outline-2 outline-gray-200 ">
-          <Story />
-        </div>
-      </ThemeProvider>
-    ),
+    DEFAULT_DECORATOR,
     withThemeByClassName({
       themes: {
         [THEMES.LIGHT]: "",
