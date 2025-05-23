@@ -6,7 +6,7 @@ import { Flex } from "@/layout";
 const meta: Meta<typeof DatePicker> = {
   title: "Forms/Inputs/DatePicker",
   component: DatePicker,
-  decorators: [
+  decorators: [ // TODO: review this decorator
     (Story) => (
       <Flex gap="2" justify="center">
         <Story />

@@ -144,7 +144,7 @@ export const Default: Story = {
   },
   decorators: [
     (Story) => (
-      <Box className="h-[300px] w-[300px]">
+      <Box className="h-[400px] w-[600px]">
         <Story />
       </Box>
     ),

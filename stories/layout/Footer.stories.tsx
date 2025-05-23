@@ -1,14 +1,19 @@
 import type { Meta, StoryObj } from "@storybook/react";
-import { Box, Footer } from "@/layout";
+import { Box, Container, Flex, Footer } from "@/layout";
+import { Text } from "@/typography";
+import { sampleLongText } from "../support/sampleText";
 
 const meta: Meta<typeof Footer> = {
   title: "Layout/Footer",
   component: Footer,
   decorators: [
     (Story) => (
-      <Box width="full" className="min-h-[400px]">
+      <Flex direction="col" className="min-h-[300px]">
+        <Container className="flex-1">
+          <Text>This is some page content. {sampleLongText}</Text>
+        </Container>
         <Story />
-      </Box>
+      </Flex>
     ),
   ],
   parameters: {
@@ -31,5 +36,13 @@ type Story = StoryObj<typeof Footer>;
 export const Default: Story = {
   args: {
     children: "This is a Footer component",
+  },
+};
+
+
+export const Styled: Story = {
+  args: {
+    children: "This is a Footer component",
+    className: "bg-muted text-muted-foreground border-t-2 border-info",
   },
 };

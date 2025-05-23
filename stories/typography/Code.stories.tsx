@@ -6,13 +6,6 @@ import { Code, Text } from "@/typography";
 const meta: Meta<typeof Code> = {
   title: "Typography/Code",
   component: Code,
-  decorators: [
-    (Story) => (
-      <Box width="full">
-        <Story />
-      </Box>
-    ),
-  ],
   parameters: {
     layout: "centered",
   },

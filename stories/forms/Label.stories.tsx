@@ -19,11 +19,4 @@ export const Default: Story = {
   args: {
     children: "Some thing",
   },
-  decorators: [
-    (Story) => (
-      <Box className="min-w-[400px]">
-        <Story />
-      </Box>
-    ),
-  ],
 };

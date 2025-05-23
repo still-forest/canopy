@@ -1,3 +1,4 @@
+import { Flex } from "@/layout";
 import ThemeProvider from "@root/src/context/ThemeProvider";
 import { THEMES } from "@root/src/context/ThemeProviderContext";
 import { StoryFn } from "@storybook/react";
@@ -16,4 +17,10 @@ export const DEFAULT_DECORATOR_WITH_MIN_WIDTH_MD = (Story: StoryFn) => (
       <Story />
     </div>
   </ThemeProvider>
+)
+
+export const INTERSTITIAL_DECORATOR = (Story: StoryFn) => (
+    <Flex justify="center" align="center" className="w-full min-w-md min-h-[400px]">
+      <Story />
+    </Flex>
 )

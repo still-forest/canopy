@@ -1,10 +1,12 @@
 import type { Meta, StoryObj } from "@storybook/react";
 
 import { Textarea } from "@/forms";
+import { DEFAULT_DECORATOR_WITH_MIN_WIDTH_MD } from "../support/decorators";
 
 const meta: Meta<typeof Textarea> = {
   title: "Forms/Inputs/Textarea",
   component: Textarea,
+  decorators: [DEFAULT_DECORATOR_WITH_MIN_WIDTH_MD],
   tags: ["autodocs"],
 } satisfies Meta<typeof Textarea>;
 

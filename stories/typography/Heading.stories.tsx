@@ -137,13 +137,6 @@ export const Default: Story = {
   args: {
     children: "This is a Heading component",
   },
-  decorators: [
-    (Story) => (
-      <Box className="min-w-[400px]">
-        <Story />
-      </Box>
-    ),
-  ],
 };
 
 export const WithSampleProps: Story = {
@@ -156,13 +149,6 @@ export const WithSampleProps: Story = {
     numeric: false,
     children: "This is a Heading component",
   },
-  decorators: [
-    (Story) => (
-      <Box className="min-w-[400px]">
-        <Story />
-      </Box>
-    ),
-  ],
 };
 
 export const HeadingLevels: Story = {

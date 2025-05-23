@@ -6,15 +6,6 @@ import { Text } from "@/typography";
 const meta: Meta<typeof SelectPicker> = {
   title: "Forms/Inputs/SelectPicker",
   component: SelectPicker,
-  decorators: [
-    (Story) => (
-      <Flex justify="center">
-        <div className="w-[400px]">
-          <Story />
-        </div>
-      </Flex>
-    ),
-  ],
   parameters: {
     layout: "centered",
   },

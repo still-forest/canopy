@@ -6,15 +6,6 @@ import { Box, Flex } from "@/layout";
 const meta: Meta<typeof SelectInput> = {
   title: "Forms/Inputs/SelectInput",
   component: SelectInput,
-  decorators: [
-    (Story) => (
-      <Flex justify="center" className="w-full">
-        <Box className="w-[400px]">
-          <Story />
-        </Box>
-      </Flex>
-    ),
-  ],
   tags: ["autodocs"],
 } satisfies Meta<typeof SelectInput>;
 
