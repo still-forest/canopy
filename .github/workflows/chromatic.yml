@@ -6,6 +6,7 @@ on:
       - main
     paths:
       - "lib/**"
+    types: [opened, synchronize, reopened, edited]
   workflow_dispatch:
 
 jobs:
@@ -13,8 +14,8 @@ jobs:
     runs-on: ubuntu-latest
     timeout-minutes: 4
 
-    # Exclude Renovate PRs
-    if: ${{ !startsWith(github.head_ref, 'renovate/') }}
+    # Exclude Renovate updates and WIP PRs
+    if: ${{ !startsWith(github.head_ref, 'renovate/') && !contains(github.event.pull_request.title, '[WIP]') && !contains(github.event.pull_request.title, '[wip]') && !contains(github.event.pull_request.title, '[Wip]') && !contains(github.event.pull_request.title, '[DRAFT]') && !contains(github.event.pull_request.title, '[draft]') && !contains(github.event.pull_request.title, '[Draft]') }}
 
     steps:
       - name: Checkout code
