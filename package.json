@@ -22,7 +22,6 @@
   "type": "module",
   "scripts": {
     "build": "tsc -b && vite build",
-    "build-storybook": "storybook build",
     "chromatic": "chromatic --exit-zero-on-changes",
     "dev": "vite",
     "format": "biome format --write .",
