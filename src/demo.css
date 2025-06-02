@@ -1,0 +1,13 @@
+@keyframes bounce-y {
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-32px);
+  }
+}
+
+.animate-bounce-y {
+  animation: bounce-y 0.8s ease-in-out infinite;
+}
