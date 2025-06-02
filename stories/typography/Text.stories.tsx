@@ -2,7 +2,7 @@ import { sampleLongText, sampleParagraphText, sampleText } from "@stories/suppor
 import OptionList from "@stories/templates/OptionList";
 import OptionsByFamilyGrid from "@stories/templates/OptionsByFamilyGrid";
 import { asOptionalValue, summarizeValues } from "@stories/utils";
-import type { Meta, StoryObj } from "@storybook/react";
+import type { Meta, StoryObj } from "@storybook/react-vite";
 import { Box, Flex, Grid } from "@/layout";
 import {
   FONT_FAMILIES,

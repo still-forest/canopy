@@ -9,7 +9,7 @@ const icons: Record<AlertProps["type"], React.ElementType> = {
   warning: TriangleAlert,
 };
 
-interface AlertProps {
+export interface AlertProps {
   type: "info" | "success" | "warning" | "error";
   title?: string;
   message: string;

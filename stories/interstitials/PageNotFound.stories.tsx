@@ -1,4 +1,4 @@
-import type { Meta, StoryObj } from "@storybook/react";
+import type { Meta, StoryObj } from "@storybook/react-vite";
 
 import { PageNotFound } from "@/interstitials";
 import { INTERSTITIAL_DECORATOR } from "../support/decorators";

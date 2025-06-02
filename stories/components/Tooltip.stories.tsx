@@ -1,4 +1,4 @@
-import type { Meta, StoryObj } from "@storybook/react";
+import type { Meta, StoryObj } from "@storybook/react-vite";
 import { type CursorType, Tooltip } from "@/components";
 import { Button } from "@/forms";
 import { Box } from "@/layout";

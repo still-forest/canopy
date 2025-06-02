@@ -1,5 +1,5 @@
 import { sampleLongText } from "@stories/support/sampleText";
-import type { Meta, StoryObj } from "@storybook/react";
+import type { Meta, StoryObj } from "@storybook/react-vite";
 import { Code, Text } from "@/typography";
 
 const meta: Meta<typeof Code> = {

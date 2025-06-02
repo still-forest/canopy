@@ -1,4 +1,4 @@
-import type { Meta, StoryObj } from "@storybook/react";
+import type { Meta, StoryObj } from "@storybook/react-vite";
 import { Mailbox, PiggyBank } from "lucide-react";
 import { Button } from "@/forms";
 import { Interstitial, type InterstitialProps } from "@/interstitials";
@@ -27,7 +27,7 @@ export const Default: Story = {
 export const NoIcon: Story = {
   args: {
     ...defaultProps,
-    icon: undefined,
+    iconComponent: undefined,
   },
 };
 

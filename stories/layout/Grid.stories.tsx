@@ -1,5 +1,5 @@
 import { asOptionalValue, summarizeValues } from "@stories/utils";
-import type { Meta, StoryObj } from "@storybook/react";
+import type { Meta, StoryObj } from "@storybook/react-vite";
 
 import { Box, Flex, Grid } from "@/layout";
 import { GAPS, GRID_COLS, GRID_FLOWS, GRID_ROWS, LAYOUT_ELEMENTS } from "@/types";

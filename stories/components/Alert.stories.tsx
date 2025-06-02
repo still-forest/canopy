@@ -1,6 +1,7 @@
-import type { Meta, StoryObj } from "@storybook/react";
+import type { Meta, StoryObj } from "@storybook/react-vite";
 
 import { Alert } from "@/components/Alert";
+import type { AlertProps } from "@/components/Alert";
 
 const meta: Meta<typeof Alert> = {
   title: "Components/Alert",
@@ -12,7 +13,7 @@ export default meta;
 
 type Story = StoryObj<typeof meta>;
 
-const defaultArgs = {
+const defaultArgs: AlertProps = {
   type: "info",
   title: "Title",
   message: "This is an important message.",
