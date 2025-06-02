@@ -26,7 +26,7 @@ export const WithMessage: Story = {
 };
 
 const BouncingPigs = () => {
-  const sharedAnimation = "animate-bounce-y repeat-infinite";
+  const sharedAnimation = "animate-bounce-y";
   return (
     <Flex gap="2">
       <PiggyBank className={sharedAnimation} size="64" />
