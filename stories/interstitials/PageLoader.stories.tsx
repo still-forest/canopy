@@ -1,6 +1,5 @@
 import type { Meta, StoryObj } from "@storybook/react-vite";
 import { PiggyBank } from "lucide-react";
-import { motion } from "motion/react";
 import { PageLoader } from "@/interstitials";
 import { Flex } from "@/layout";
 import { INTERSTITIAL_DECORATOR } from "../support/decorators";
@@ -27,22 +26,12 @@ export const WithMessage: Story = {
 };
 
 const BouncingPigs = () => {
+  const sharedAnimation = "animate-bounce-y";
   return (
     <Flex gap="2">
-      {[...Array(3)].map((_, i) => (
-        <motion.div
-          key={i}
-          animate={{ y: [0, -32, 0] }}
-          transition={{
-            repeat: Number.POSITIVE_INFINITY,
-            duration: 0.8,
-            delay: i * 0.2,
-            ease: "easeInOut",
-          }}
-        >
-          <PiggyBank className="" size="64" />
-        </motion.div>
-      ))}
+      <PiggyBank className={sharedAnimation} size="64" />
+      <PiggyBank className={sharedAnimation} size="64" style={{ animationDelay: "0.2s" }} />
+      <PiggyBank className={sharedAnimation} size="64" style={{ animationDelay: "0.4s" }} />
     </Flex>
   );
 };
