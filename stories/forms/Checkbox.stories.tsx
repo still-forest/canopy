@@ -1,4 +1,4 @@
-import type { Meta, StoryObj } from "@storybook/react";
+import type { Meta, StoryObj } from "@storybook/react-vite";
 
 import { Checkbox, type CheckboxProps } from "@/forms";
 import { Box, Flex } from "@/layout";

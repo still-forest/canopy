@@ -1,6 +1,6 @@
 import { sampleLongText, sampleLongWord, sampleSentences } from "@stories/support/sampleText";
 import { asOptionalValue, summarizeValues } from "@stories/utils";
-import type { Meta, StoryObj } from "@storybook/react";
+import type { Meta, StoryObj } from "@storybook/react-vite";
 import { Box, Flex, Grid } from "@/layout";
 import type { Display as DisplayType, Height as HeightType, Width as WidthType } from "@/types";
 import {

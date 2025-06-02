@@ -1,5 +1,5 @@
 import { withThemeByClassName } from "@storybook/addon-themes";
-import type { Preview } from "@storybook/react";
+import type { Preview } from "@storybook/react-vite";
 
 import { THEMES } from "../src/context/ThemeProviderContext";
 import { DEFAULT_DECORATOR } from "../stories/support/decorators";

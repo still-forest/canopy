@@ -1,5 +1,5 @@
 import { sampleLongText, sampleParagraphText, sampleText } from "@stories/support/sampleText";
-import type { Meta, StoryObj } from "@storybook/react";
+import type { Meta, StoryObj } from "@storybook/react-vite";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components";
 
 const meta: Meta<typeof Tabs> = {

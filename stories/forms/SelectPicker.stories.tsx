@@ -1,4 +1,4 @@
-import type { Meta, StoryObj } from "@storybook/react";
+import type { Meta, StoryObj } from "@storybook/react-vite";
 import { SelectPicker, type SelectPickerOption } from "@/forms";
 import { Flex } from "@/layout";
 import { Text } from "@/typography";

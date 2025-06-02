@@ -1,4 +1,4 @@
-import type { Meta, StoryObj } from "@storybook/react";
+import type { Meta, StoryObj } from "@storybook/react-vite";
 import { Container, Flex, Footer } from "@/layout";
 import { Text } from "@/typography";
 import { sampleLongText } from "../support/sampleText";
