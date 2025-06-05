@@ -18,7 +18,7 @@ describe("Flex", () => {
     render(
       <Flex as="section" data-testid="flex-element">
         Content
-      </Flex>,
+      </Flex>
     );
     const element = screen.getByTestId("flex-element");
     expect(element.tagName).toBe("SECTION");
@@ -30,7 +30,7 @@ describe("Flex", () => {
       const { rerender } = render(
         <Flex direction={direction} data-testid="flex-element">
           Direction {direction}
-        </Flex>,
+        </Flex>
       );
       const element = screen.getByTestId("flex-element");
       expect(element.className).toBe(`flex flex-${direction}`);
@@ -43,7 +43,7 @@ describe("Flex", () => {
       const { rerender } = render(
         <Flex align={align} data-testid="flex-element">
           Align {align}
-        </Flex>,
+        </Flex>
       );
       const element = screen.getByTestId("flex-element");
       expect(element.className).toBe(`flex items-${align}`);
@@ -56,7 +56,7 @@ describe("Flex", () => {
       const { rerender } = render(
         <Flex justify={justify} data-testid="flex-element">
           Justify {justify}
-        </Flex>,
+        </Flex>
       );
       const element = screen.getByTestId("flex-element");
       expect(element.className).toBe(`flex justify-${justify}`);
@@ -72,7 +72,7 @@ describe("Flex", () => {
         const { rerender } = render(
           <Flex grow={grow} data-testid="flex-element">
             Grow {grow}
-          </Flex>,
+          </Flex>
         );
         const element = screen.getByTestId("flex-element");
         expect(element.className).toBe(`flex grow-${grow}`);
@@ -84,7 +84,7 @@ describe("Flex", () => {
       render(
         <Flex grow data-testid="flex-element">
           Grow true
-        </Flex>,
+        </Flex>
       );
       const element = screen.getByTestId("flex-element");
       expect(element.className).toBe("flex grow-1");
@@ -94,7 +94,7 @@ describe("Flex", () => {
       render(
         <Flex grow={false} data-testid="flex-element">
           Grow false
-        </Flex>,
+        </Flex>
       );
       const element = screen.getByTestId("flex-element");
       expect(element.className).toBe("flex grow-0");
@@ -106,7 +106,7 @@ describe("Flex", () => {
       const { rerender } = render(
         <Flex wrap={wrap} data-testid="flex-element">
           Wrap {wrap}
-        </Flex>,
+        </Flex>
       );
       const element = screen.getByTestId("flex-element");
       expect(element.className).toBe(`flex flex-${wrap}`);
@@ -119,7 +119,7 @@ describe("Flex", () => {
       const { rerender } = render(
         <Flex gap={gap} data-testid="flex-element">
           Gap {gap}
-        </Flex>,
+        </Flex>
       );
       const element = screen.getByTestId("flex-element");
       expect(element.className).toBe(`flex gap-${gap}`);
@@ -130,7 +130,7 @@ describe("Flex", () => {
       const { rerender } = render(
         <Flex gapX={gapX} data-testid="flex-element">
           GapX {gapX}
-        </Flex>,
+        </Flex>
       );
       const element = screen.getByTestId("flex-element");
       expect(element.className).toBe(`flex gap-x-${gapX}`);
@@ -141,7 +141,7 @@ describe("Flex", () => {
       const { rerender } = render(
         <Flex gapY={gapY} data-testid="flex-element">
           GapY {gapY}
-        </Flex>,
+        </Flex>
       );
       const element = screen.getByTestId("flex-element");
       expect(element.className).toBe(`flex gap-y-${gapY}`);
@@ -153,7 +153,7 @@ describe("Flex", () => {
     render(
       <Flex gap="2" gapX="4" gapY="8" data-testid="flex-element">
         Mixed gaps
-      </Flex>,
+      </Flex>
     );
 
     const element = screen.getByTestId("flex-element");
@@ -164,7 +164,7 @@ describe("Flex", () => {
     render(
       <Flex data-testid="flex-component" aria-label="flex container">
         Test flex
-      </Flex>,
+      </Flex>
     );
     const element = screen.getByTestId("flex-component");
     expect(element).toHaveAttribute("aria-label", "flex container");
@@ -174,7 +174,7 @@ describe("Flex", () => {
     render(
       <Flex className="custom-class" data-testid="flex-element">
         With custom class
-      </Flex>,
+      </Flex>
     );
     const element = screen.getByTestId("flex-element");
     expect(element.className).toBe("flex custom-class");
@@ -185,7 +185,7 @@ describe("Flex", () => {
     render(
       <Flex ref={ref} data-testid="flex-element">
         Ref test
-      </Flex>,
+      </Flex>
     );
 
     expect(ref.current).not.toBeNull();
@@ -196,7 +196,7 @@ describe("Flex", () => {
     render(
       <Flex direction="col" align="center" justify="between" wrap="wrap" gap="4" data-testid="flex-element">
         Combined props
-      </Flex>,
+      </Flex>
     );
 
     const element = screen.getByTestId("flex-element");
@@ -208,7 +208,7 @@ describe("Flex", () => {
     render(
       <Flex>
         <div data-testid="child-element">Child content</div>
-      </Flex>,
+      </Flex>
     );
 
     expect(screen.getByTestId("child-element")).toBeInTheDocument();
@@ -231,7 +231,7 @@ describe("Flex", () => {
         <Flex.Item data-testid="flex-item-5" flex="initial">
           Item 5
         </Flex.Item>
-      </Flex>,
+      </Flex>
     );
 
     expect(screen.getByText("Item 1")).toBeInTheDocument();

@@ -14,7 +14,7 @@ describe("Modal", () => {
     render(
       <Modal trigger={<Button>Open modal</Button>} title="Modal title" description="Modal description">
         <p>Modal content</p>
-      </Modal>,
+      </Modal>
     );
 
     const trigger = screen.getByRole("button");
@@ -26,7 +26,7 @@ describe("Modal", () => {
 
     const dialog = screen.getByRole("dialog");
     expect(dialog.className).toBe(
-      "data-[state=closed]:fade-out-0 data-[state=open]:fade-in-0 data-[state=closed]:zoom-out-95 data-[state=open]:zoom-in-95 fixed top-[50%] left-[50%] z-50 grid w-full max-w-[calc(100%-2rem)] translate-x-[-50%] translate-y-[-50%] gap-4 rounded-lg border bg-background p-6 shadow-lg duration-200 data-[state=closed]:animate-out data-[state=open]:animate-in sm:max-w-lg",
+      "data-[state=closed]:fade-out-0 data-[state=open]:fade-in-0 data-[state=closed]:zoom-out-95 data-[state=open]:zoom-in-95 fixed top-[50%] left-[50%] z-50 grid w-full max-w-[calc(100%-2rem)] translate-x-[-50%] translate-y-[-50%] gap-4 rounded-lg border bg-background p-6 shadow-lg duration-200 data-[state=closed]:animate-out data-[state=open]:animate-in sm:max-w-lg"
     );
 
     const title = within(dialog).getByText("Modal title");
@@ -45,7 +45,7 @@ describe("Modal", () => {
     render(
       <Modal trigger={<Button>Open modal</Button>} description="Modal description">
         Modal content
-      </Modal>,
+      </Modal>
     );
 
     const trigger = screen.getByRole("button");
@@ -63,7 +63,7 @@ describe("Modal", () => {
     render(
       <Modal trigger={<Button>Open modal</Button>} title="Modal title">
         Modal content
-      </Modal>,
+      </Modal>
     );
 
     const trigger = screen.getByRole("button");
@@ -119,7 +119,7 @@ describe("Modal", () => {
 
   test("throws an error if trigger is not provided and modal is uncontrolled", () => {
     expect(() => render(<Modal>Modal content</Modal>)).toThrow(
-      "Trigger must be provided if modal state is not controlled through open, onOpenChange props.",
+      "Trigger must be provided if modal state is not controlled through open, onOpenChange props."
     );
   });
 });

@@ -46,7 +46,7 @@ describe("Heading", () => {
       render(
         <Heading level="3" size={size}>
           Heading {size}
-        </Heading>,
+        </Heading>
       );
       const element = screen.getByText(`Heading ${size}`);
 
@@ -89,7 +89,7 @@ describe("Heading", () => {
         render(
           <Heading variant={variant as TypographyVariant} asForeground>
             Variant {variant}
-          </Heading>,
+          </Heading>
         );
         const element = screen.getByText(`Variant ${variant}`);
 
@@ -120,7 +120,7 @@ describe("Heading", () => {
       render(<Heading tracking={tracking}>Tracking {tracking}</Heading>);
       const element = screen.getByText(`Tracking ${tracking}`);
       expect(element.className).toBe(
-        `text-3xl font-bold text-foreground tracking-${tracking} font-display scroll-m-20`,
+        `text-3xl font-bold text-foreground tracking-${tracking} font-display scroll-m-20`
       );
     }
   });
@@ -191,14 +191,14 @@ describe("Heading", () => {
         numeric
       >
         Combined props
-      </Heading>,
+      </Heading>
     );
 
     const element = screen.getByText("Combined props");
 
     expect(element.tagName).toBe("H1");
     expect(element.className).toBe(
-      "text-5xl font-extrabold text-accent-foreground text-center tracking-wide font-serif tabular-nums scroll-m-20",
+      "text-5xl font-extrabold text-accent-foreground text-center tracking-wide font-serif tabular-nums scroll-m-20"
     );
   });
 });

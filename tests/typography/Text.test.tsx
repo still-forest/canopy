@@ -80,7 +80,7 @@ describe("Text", () => {
         render(
           <Text variant={variant} asForeground>
             Variant {variant}
-          </Text>,
+          </Text>
         );
         const element = screen.getByText(`Variant ${variant}`);
 

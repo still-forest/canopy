@@ -19,7 +19,7 @@ describe("Container", () => {
     render(
       <Container data-testid="container-element" className="p-8">
         Content
-      </Container>,
+      </Container>
     );
     const element = screen.getByTestId("container-element");
     expect(element.className).toBe("w-full max-w-6xl md:px-8 md:py-4 lg:px-12 lg:py-6 p-8");
@@ -29,7 +29,7 @@ describe("Container", () => {
     render(
       <Container as="section" data-testid="container-element">
         Content
-      </Container>,
+      </Container>
     );
     const element = screen.getByTestId("container-element");
     expect(element.tagName).toBe("SECTION");

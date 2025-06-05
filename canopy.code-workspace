@@ -6,15 +6,15 @@
       "**/coverage": true,
       "**/node_modules": true,
       "**/storybook-static": true,
-      "build-storybook.log": true
+      "build-storybook.log": true,
     },
     "terminal.integrated.env.linux": {
       "NODE_ENV": "development",
-      "ENV": "development"
+      "ENV": "development",
     },
     "terminal.integrated.env.osx": {
       "NODE_ENV": "development",
-      "ENV": "development"
-    }
+      "ENV": "development",
+    },
   },
 }

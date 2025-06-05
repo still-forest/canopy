@@ -23,13 +23,13 @@ describe("Tabs", () => {
         <TabsContent value="tab_1">This is tab 1</TabsContent>
         <TabsContent value="tab_2">Tab 2, this is</TabsContent>
         <TabsContent value="tab_3">Tab the 3rd, at your service</TabsContent>
-      </Tabs>,
+      </Tabs>
     );
 
     const tabs = screen.getByRole("tablist");
     expect(tabs).toBeInTheDocument();
     expect(tabs.className).toBe(
-      "inline-flex h-9 w-fit items-center justify-center rounded-lg bg-muted p-[3px] text-muted-foreground",
+      "inline-flex h-9 w-fit items-center justify-center rounded-lg bg-muted p-[3px] text-muted-foreground"
     );
 
     const tab1 = screen.getByRole("tab", { name: "Tab 1" });
@@ -76,13 +76,13 @@ describe("Tabs", () => {
         <TabsContent value="tab_1">This is tab 1</TabsContent>
         <TabsContent value="tab_2">Tab 2, this is</TabsContent>
         <TabsContent value="tab_3">Tab the 3rd, at your service</TabsContent>
-      </Tabs>,
+      </Tabs>
     );
 
     const tabs = screen.getByRole("tablist");
     expect(tabs).toBeInTheDocument();
     expect(tabs.className).toBe(
-      "inline-flex h-9 w-fit items-center justify-center rounded-lg bg-muted p-[3px] text-muted-foreground",
+      "inline-flex h-9 w-fit items-center justify-center rounded-lg bg-muted p-[3px] text-muted-foreground"
     );
 
     const tab1 = screen.getByRole("tab", { name: "Tab 1" });

@@ -53,7 +53,7 @@ export default function ThemeProvider({
       }
       setTheme(theme);
     },
-    [storageKey],
+    [storageKey]
   );
 
   const value = {

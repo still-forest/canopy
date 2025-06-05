@@ -34,7 +34,7 @@ export const Interstitial = ({ variant, iconComponent, message, children }: Inte
                 variant === "error" && "text-destructive",
                 variant === "success" && "text-success",
                 variant === "warning" && "text-warning",
-                variant === "info" && "text-info",
+                variant === "info" && "text-info"
               )}
               size={128}
               aria-hidden={!!message} // Hide from screen readers if there's a text message

@@ -53,7 +53,7 @@ export const Separator = ({ className, orientation = "horizontal", gap, ...props
           "mx-15": effectiveGap === "15",
           "mx-16": effectiveGap === "16",
         },
-        className,
+        className
       )}
       role="separator"
       orientation={orientation}

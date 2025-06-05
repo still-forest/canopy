@@ -98,7 +98,7 @@ describe("Badge", () => {
 
   test("should throw an error if color is used with a non-outline variant", () => {
     expect(() => render(<Badge label="Badge" color="red" variant="secondary" />)).toThrow(
-      "Color red is not allowed for variant 'secondary'. Only default and outline variants support color.",
+      "Color red is not allowed for variant 'secondary'. Only default and outline variants support color."
     );
   });
 });

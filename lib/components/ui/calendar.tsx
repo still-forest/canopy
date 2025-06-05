@@ -69,7 +69,7 @@ function Calendar({
         from: currentYear - Math.floor(yearRange / 2 - 1),
         to: currentYear + Math.ceil(yearRange / 2),
       };
-    }, [yearRange]),
+    }, [yearRange])
   );
 
   const { onPrevClick, startMonth, endMonth } = props;
@@ -96,7 +96,7 @@ function Calendar({
   const _dayButtonClassName = cn(
     buttonVariants({ variant: "ghost" }),
     "size-8 rounded-md p-0 font-normal transition-none aria-selected:opacity-100",
-    props.dayButtonClassName,
+    props.dayButtonClassName
   );
   const buttonRangeClassName =
     "bg-accent [&>button]:bg-primary [&>button]:text-primary-foreground [&>button]:hover:bg-primary [&>button]:hover:text-primary-foreground";
@@ -104,16 +104,16 @@ function Calendar({
   const _rangeEndClassName = cn(buttonRangeClassName, "day-range-end rounded-e-md", props.rangeEndClassName);
   const _rangeMiddleClassName = cn(
     "!text-foreground [&>button]:!text-foreground [&>button]:hover:!text-foreground bg-accent [&>button]:bg-transparent [&>button]:hover:bg-transparent",
-    props.rangeMiddleClassName,
+    props.rangeMiddleClassName
   );
   const _selectedClassName = cn(
     "[&>button]:bg-primary [&>button]:text-primary-foreground [&>button]:hover:bg-primary [&>button]:hover:text-primary-foreground",
-    props.selectedClassName,
+    props.selectedClassName
   );
   const _todayClassName = cn("[&>button]:bg-accent [&>button]:text-accent-foreground", props.todayClassName);
   const _outsideClassName = cn(
     "day-outside text-muted-foreground opacity-50 aria-selected:bg-accent/50 aria-selected:text-muted-foreground aria-selected:opacity-30",
-    props.outsideClassName,
+    props.outsideClassName
   );
   const _disabledClassName = cn("text-muted-foreground opacity-50", props.disabledClassName);
   const _hiddenClassName = cn("invisible flex-1", props.hiddenClassName);
@@ -393,7 +393,7 @@ function YearGrid({
             key={i}
             className={cn(
               "h-7 w-full font-normal text-foreground text-sm",
-              displayYears.from + i === new Date().getFullYear() && "bg-accent font-medium text-accent-foreground",
+              displayYears.from + i === new Date().getFullYear() && "bg-accent font-medium text-accent-foreground"
             )}
             variant="ghost"
             onClick={() => {

@@ -68,7 +68,7 @@ describe("DatePicker", () => {
     expect(calendar.tagName).toBe("DIV");
     expect(calendar.className).toBe(EXPECTED_CALENDAR_CLASSES);
     expect(calendar.textContent).toBe(
-      "December 2024SuMoTuWeThFrSa123456789101112131415161718192021222324252627282930311234",
+      "December 2024SuMoTuWeThFrSa123456789101112131415161718192021222324252627282930311234"
     );
 
     const dates = within(calendar).getAllByRole("gridcell");
@@ -77,7 +77,7 @@ describe("DatePicker", () => {
     const december29 = findDay(calendar, "29");
     expect(december29.cell).toBeInTheDocument();
     expect(december29.cell.className).toBe(
-      `${EXPECTED_UNSELECTED_DATE_CLASSES} ${EXPECTED_CURRENT_DATE_INCREMENTAL_CLASSES}`,
+      `${EXPECTED_UNSELECTED_DATE_CLASSES} ${EXPECTED_CURRENT_DATE_INCREMENTAL_CLASSES}`
     );
     expect(december29.button).toBeInTheDocument();
     expect(december29.button.className).toBe(EXPECTED_DATE_BUTTON_CLASSES);
@@ -126,7 +126,7 @@ describe("DatePicker", () => {
     const december29 = findDay(calendar, "29");
     expect(december29.cell).toBeInTheDocument();
     expect(december29.cell.className).toBe(
-      `${EXPECTED_UNSELECTED_DATE_CLASSES} ${EXPECTED_CURRENT_DATE_INCREMENTAL_CLASSES} ${EXPECTED_SELECTED_DATE_INCREMENTAL_CLASSES}`,
+      `${EXPECTED_UNSELECTED_DATE_CLASSES} ${EXPECTED_CURRENT_DATE_INCREMENTAL_CLASSES} ${EXPECTED_SELECTED_DATE_INCREMENTAL_CLASSES}`
     );
   });
 
@@ -148,7 +148,7 @@ describe("DatePicker", () => {
 
     const trigger = screen.getByRole("button");
     expect(trigger.className).toBe(
-      "inline-flex items-center whitespace-nowrap text-sm transition-all disabled:pointer-events-none disabled:opacity-50 [&_svg]:pointer-events-none [&_svg:not([class*='size-'])]:size-4 shrink-0 [&_svg]:shrink-0 outline-none focus-visible:border-ring focus-visible:ring-ring/50 focus-visible:ring-[3px] aria-invalid:ring-destructive/20 dark:aria-invalid:ring-destructive/40 aria-invalid:border-destructive border bg-background shadow-xs hover:bg-accent hover:text-accent-foreground dark:bg-input/30 dark:border-input dark:hover:bg-input/50 h-8 rounded-md gap-1.5 px-3 has-[>svg]:px-2.5 w-[280px] justify-start text-left font-normal text-muted-foreground",
+      "inline-flex items-center whitespace-nowrap text-sm transition-all disabled:pointer-events-none disabled:opacity-50 [&_svg]:pointer-events-none [&_svg:not([class*='size-'])]:size-4 shrink-0 [&_svg]:shrink-0 outline-none focus-visible:border-ring focus-visible:ring-ring/50 focus-visible:ring-[3px] aria-invalid:ring-destructive/20 dark:aria-invalid:ring-destructive/40 aria-invalid:border-destructive border bg-background shadow-xs hover:bg-accent hover:text-accent-foreground dark:bg-input/30 dark:border-input dark:hover:bg-input/50 h-8 rounded-md gap-1.5 px-3 has-[>svg]:px-2.5 w-[280px] justify-start text-left font-normal text-muted-foreground"
     );
   });
 
@@ -165,7 +165,7 @@ describe("DatePicker", () => {
     fireEvent.click(previousMonthButton);
 
     expect(calendar.textContent).toBe(
-      "November 2024SuMoTuWeThFrSa2728293031123456789101112131415161718192021222324252627282930",
+      "November 2024SuMoTuWeThFrSa2728293031123456789101112131415161718192021222324252627282930"
     );
 
     const dates = screen.getAllByRole("gridcell");
@@ -196,7 +196,7 @@ describe("DatePicker", () => {
     fireEvent.click(nextMonthButton);
 
     expect(calendar.textContent).toBe(
-      "January 2025SuMoTuWeThFrSa293031123456789101112131415161718192021222324252627282930311",
+      "January 2025SuMoTuWeThFrSa293031123456789101112131415161718192021222324252627282930311"
     );
 
     const dates = screen.getAllByRole("gridcell");
@@ -229,7 +229,7 @@ describe("DatePicker", () => {
 
     fireEvent.click(within(calendar).getByRole("button", { name: "2023" }));
     expect(calendar.textContent).toBe(
-      "January 2023SuMoTuWeThFrSa123456789101112131415161718192021222324252627282930311234",
+      "January 2023SuMoTuWeThFrSa123456789101112131415161718192021222324252627282930311234"
     );
 
     const dates = screen.getAllByRole("gridcell");

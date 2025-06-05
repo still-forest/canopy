@@ -15,7 +15,7 @@ describe("Tooltip", () => {
           <button type="button">Hover over me</button>
         </Tooltip.Trigger>
         <Tooltip.Content>This is a tooltip</Tooltip.Content>
-      </Tooltip>,
+      </Tooltip>
     );
 
     const trigger = screen.getByRole("button");
@@ -37,7 +37,7 @@ describe("Tooltip", () => {
           <button type="button">Hover over me</button>
         </Tooltip.Trigger>
         <Tooltip.Content>This is a tooltip</Tooltip.Content>
-      </Tooltip>,
+      </Tooltip>
     );
 
     const trigger = screen.getByRole("button");
@@ -51,7 +51,7 @@ describe("Tooltip", () => {
           <button type="button">Hover over me</button>
         </Tooltip.Trigger>
         <Tooltip.Content>This is a tooltip</Tooltip.Content>
-      </Tooltip>,
+      </Tooltip>
     );
 
     const trigger = screen.getByRole("button");
@@ -65,7 +65,7 @@ describe("Tooltip", () => {
           <button type="button">Hover over me</button>
         </Tooltip.Trigger>
         <Tooltip.Content>This is a tooltip</Tooltip.Content>
-      </Tooltip>,
+      </Tooltip>
     );
 
     const trigger = screen.getByRole("button");
@@ -79,7 +79,7 @@ describe("Tooltip", () => {
           <button type="button">Hover over me</button>
         </Tooltip.Trigger>
         <Tooltip.Content>This is a tooltip</Tooltip.Content>
-      </Tooltip>,
+      </Tooltip>
     );
 
     const trigger = screen.getByRole("button");
@@ -94,7 +94,7 @@ describe("Tooltip", () => {
           <button type="button">Hover over me</button>
         </Tooltip.Trigger>
         <Tooltip.Content>This is a tooltip</Tooltip.Content>
-      </Tooltip>,
+      </Tooltip>
     );
 
     const trigger = screen.getByRole("button");
@@ -115,7 +115,7 @@ describe("Tooltip", () => {
           <button type="button">Hover over me</button>
         </Tooltip.Trigger>
         <Tooltip.Content>This is a tooltip</Tooltip.Content>
-      </Tooltip>,
+      </Tooltip>
     );
 
     const trigger = screen.getByRole("button");

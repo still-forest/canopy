@@ -32,7 +32,7 @@ describe("ErrorOverlay", () => {
         <Button variant="primary" icon={<Home />} onClick={goHome}>
           Home
         </Button>
-      </ErrorOverlay>,
+      </ErrorOverlay>
     );
 
     const goHomeButton = screen.getByRole("button", { name: "Home" });
