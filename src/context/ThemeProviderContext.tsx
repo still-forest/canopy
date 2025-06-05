@@ -5,9 +5,8 @@ export const THEMES = {
   DARK: "dark",
   SYSTEM: "system",
 } as const;
-const themeValues = Object.values(THEMES);
 
-export type Theme = (typeof themeValues)[number];
+export type Theme = (typeof THEMES)[keyof typeof THEMES];
 
 type ThemeProviderState = {
   theme: Theme;
