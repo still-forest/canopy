@@ -35,8 +35,8 @@ export default function OptionList<T extends OptionTypes>({
             gap="4"
             gapY={gapY}
             className={cn(
-              "-col-end-1 col-start-2 rounded p-1",
-              withOutline && "border-1 border-gray-300 border-dotted"
+              "col-start-2 -col-end-1 rounded p-1",
+              withOutline && "border-1 border-dotted border-gray-300"
             )}
           >
             {renderOption(option)}

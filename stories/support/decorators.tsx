@@ -5,7 +5,7 @@ import { Flex } from "@/layout";
 
 export const DEFAULT_DECORATOR = (Story: (props: unknown) => ReactNode | Promise<ReactNode>) => (
   <ThemeProvider defaultTheme={THEMES.LIGHT} storageKey="canopy-storybook-theme">
-    <div className="w-full bg-background p-1 outline-2 outline-gray-200 ">
+    <div className="bg-background w-full p-1 outline-2 outline-gray-200">
       <Story />
     </div>
   </ThemeProvider>
@@ -13,7 +13,7 @@ export const DEFAULT_DECORATOR = (Story: (props: unknown) => ReactNode | Promise
 
 export const DEFAULT_DECORATOR_WITH_MIN_WIDTH_MD = (Story: (props: unknown) => ReactNode | Promise<ReactNode>) => (
   <ThemeProvider defaultTheme={THEMES.LIGHT} storageKey="canopy-storybook-theme">
-    <div className="w-full min-w-md bg-background p-1 outline-2 outline-gray-200 ">
+    <div className="bg-background w-full min-w-md p-1 outline-2 outline-gray-200">
       <Story />
     </div>
   </ThemeProvider>

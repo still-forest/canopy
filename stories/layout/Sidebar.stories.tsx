@@ -25,7 +25,7 @@ type Story = StoryObj<typeof meta>;
 
 const BrandContent = () => (
   <>
-    <Flex align="center" justify="center" className="aspect-square size-8 rounded-lg bg-info text-sidebar">
+    <Flex align="center" justify="center" className="bg-info text-sidebar aspect-square size-8 rounded-lg">
       <Trees className="size-6" />
     </Flex>
     <Heading level="3" className="ml-2">

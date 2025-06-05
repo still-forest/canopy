@@ -314,7 +314,7 @@ function CaptionLabel({
   if (!showYearSwitcher) return <span {...props}>{children}</span>;
   return (
     <Button
-      className="h-7 w-full truncate font-medium text-sm"
+      className="h-7 w-full truncate text-sm font-medium"
       variant="ghost"
       size="sm"
       onClick={() => setNavView((prev) => (prev === "days" ? "years" : "days"))}
@@ -392,8 +392,8 @@ function YearGrid({
           <Button
             key={i}
             className={cn(
-              "h-7 w-full font-normal text-foreground text-sm",
-              displayYears.from + i === new Date().getFullYear() && "bg-accent font-medium text-accent-foreground"
+              "text-foreground h-7 w-full text-sm font-normal",
+              displayYears.from + i === new Date().getFullYear() && "bg-accent text-accent-foreground font-medium"
             )}
             variant="ghost"
             onClick={() => {

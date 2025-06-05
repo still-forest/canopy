@@ -12,7 +12,7 @@ export interface LabelProps extends ComponentProps<"label"> {
 
 const Label = ({ htmlFor, value, children, className = "", ...props }: LabelProps) => (
   <BaseLabel
-    className={cn("font-display font-normal text-base text-foreground", className)}
+    className={cn("font-display text-foreground text-base font-normal", className)}
     htmlFor={htmlFor}
     {...props}
   >

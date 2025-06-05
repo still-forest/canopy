@@ -59,10 +59,10 @@ export const Clickable: Story = {
 export const CustomClassName: Story = {
   render: () => (
     <Flex gap="2">
-      <Badge label="Default" className="font-mono font-thin text-xl uppercase" />
-      <Badge label="Secondary" variant="secondary" className="font-mono font-thin text-xl uppercase" />
-      <Badge label="Destructive" variant="destructive" className="font-mono font-thin text-xl uppercase" />
-      <Badge label="Outline" variant="outline" className="font-mono font-thin text-xl uppercase" />
+      <Badge label="Default" className="font-mono text-xl font-thin uppercase" />
+      <Badge label="Secondary" variant="secondary" className="font-mono text-xl font-thin uppercase" />
+      <Badge label="Destructive" variant="destructive" className="font-mono text-xl font-thin uppercase" />
+      <Badge label="Outline" variant="outline" className="font-mono text-xl font-thin uppercase" />
     </Flex>
   ),
 };

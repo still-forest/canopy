@@ -114,13 +114,13 @@ export default meta;
 type Story = StoryObj<typeof Flex>;
 
 const FlexItem = ({ children }: { children: React.ReactNode }) => (
-  <Flex.Item as="span" className="rounded-md bg-info px-1 py-0.5 text-info-foreground">
+  <Flex.Item as="span" className="bg-info text-info-foreground rounded-md px-1 py-0.5">
     {children}
   </Flex.Item>
 );
 
 const FlexItemAsFlex = ({ children, className = "", ...rest }: FlexProps) => (
-  <Flex.Item className={`flex rounded-md bg-info px-1 py-0.5 text-info-foreground ${className}`} {...rest}>
+  <Flex.Item className={`bg-info text-info-foreground flex rounded-md px-1 py-0.5 ${className}`} {...rest}>
     {children}
   </Flex.Item>
 );
@@ -178,7 +178,7 @@ export const Alignment: Story = {
             direction="row"
             align={align}
             gap="1"
-            className="h-24 w-full min-w-[200px] rounded-md border-1 border-gray-300 border-dashed p-2"
+            className="h-24 w-full min-w-[200px] rounded-md border-1 border-dashed border-gray-300 p-2"
           >
             <FlexItem>{align} 1</FlexItem>
             <FlexItem>{align} 2</FlexItem>
@@ -195,7 +195,7 @@ export const Alignment: Story = {
             direction="col"
             align={align}
             gap="1"
-            className="h-24 w-full min-w-[200px] rounded-md border-1 border-gray-300 border-dashed p-2"
+            className="h-24 w-full min-w-[200px] rounded-md border-1 border-dashed border-gray-300 p-2"
           >
             <FlexItem>{align} 1</FlexItem>
             <FlexItem>{align} 2</FlexItem>
@@ -219,7 +219,7 @@ export const Justification: Story = {
             direction="row"
             justify={justify}
             gap="1"
-            className="w-full min-w-[200px] rounded-md border-1 border-gray-300 border-dashed p-2"
+            className="w-full min-w-[200px] rounded-md border-1 border-dashed border-gray-300 p-2"
           >
             <FlexItem>{justify} 1</FlexItem>
             <FlexItem>{justify} 2</FlexItem>
@@ -236,7 +236,7 @@ export const Justification: Story = {
             direction="col"
             justify={justify}
             gap="1"
-            className="h-24 w-full min-w-[200px] rounded-md border-1 border-gray-300 border-dashed p-2"
+            className="h-24 w-full min-w-[200px] rounded-md border-1 border-dashed border-gray-300 p-2"
           >
             <FlexItem>{justify} 1</FlexItem>
             <FlexItem>{justify} 2</FlexItem>
@@ -307,12 +307,12 @@ export const Wrapping: Story = {
             direction="row"
             wrap={wrap}
             gap="2"
-            className="w-full overflow-x-auto rounded-md border-1 border-gray-300 border-dashed bg-background p-2"
+            className="bg-background w-full overflow-x-auto rounded-md border-1 border-dashed border-gray-300 p-2"
           >
             {Array.from({ length: 10 }).map((_, i) => (
               <Box
                 key={`flex-wrap-item-${i}`}
-                className="whitespace-nowrap rounded-md bg-muted p-4 text-muted-foreground"
+                className="bg-muted text-muted-foreground rounded-md p-4 whitespace-nowrap"
               >
                 Item {i + 1}
               </Box>
