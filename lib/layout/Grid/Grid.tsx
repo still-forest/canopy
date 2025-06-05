@@ -126,13 +126,13 @@ const Grid = React.forwardRef<HTMLDivElement, GridProps>(
             "grid-flow-row-dense": flow === "row-dense",
             "grid-flow-col-dense": flow === "col-dense",
           },
-          className,
+          className
         )}
         ref={ref}
         {...props}
       />
     );
-  },
+  }
 );
 Grid.displayName = "Grid";
 

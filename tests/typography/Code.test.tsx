@@ -9,7 +9,7 @@ describe("Code", () => {
 
     expect(element.tagName).toBe("P");
     expect(element.className).toBe(
-      "text-sm text-accent-foreground font-mono inline-block w-fit rounded bg-accent px-2",
+      "text-sm text-accent-foreground font-mono inline-block w-fit rounded bg-accent px-2"
     );
   });
 
@@ -18,7 +18,7 @@ describe("Code", () => {
     const element = screen.getByText("Does not compute");
 
     expect(element.className).toBe(
-      "text-2xl text-accent-foreground font-mono inline-block w-fit rounded bg-accent px-2",
+      "text-2xl text-accent-foreground font-mono inline-block w-fit rounded bg-accent px-2"
     );
   });
 

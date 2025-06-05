@@ -89,7 +89,7 @@ type Story = StoryObj<typeof meta>;
 
 const GridItem = ({ children }: { children: React.ReactNode }) => (
   <Box className="bg-background">
-    <Flex align="center" justify="center" className="h-16 w-16 rounded-md bg-info text-info-foreground">
+    <Flex align="center" justify="center" className="bg-info text-info-foreground h-16 w-16 rounded-md">
       {children}
     </Flex>
   </Box>

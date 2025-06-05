@@ -31,7 +31,7 @@ export const Pagination = ({ pageCount, currentPage, onChange }: Props) => {
     if (validCurrentPage >= validPageCount - 2) {
       return Array.from(
         { length: Math.min(3, validPageCount) },
-        (_, i) => validPageCount - Math.min(3, validPageCount) + i + 1,
+        (_, i) => validPageCount - Math.min(3, validPageCount) + i + 1
       );
     }
     return [validCurrentPage - 1, validCurrentPage, validCurrentPage + 1];

@@ -17,7 +17,7 @@ type Story = StoryObj<typeof meta>;
 export const Default: Story = {
   args: {
     error: Error(
-      "Critical Synergy Failure: Our core competencies failed to leverage key deliverables. Please pivot and circle back later.",
+      "Critical Synergy Failure: Our core competencies failed to leverage key deliverables. Please pivot and circle back later."
     ),
   },
 };

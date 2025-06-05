@@ -20,7 +20,7 @@ const alertVariants = cva(
     defaultVariants: {
       variant: "info",
     },
-  },
+  }
 );
 
 function Alert({ className, variant, ...props }: React.ComponentProps<"div"> & VariantProps<typeof alertVariants>) {

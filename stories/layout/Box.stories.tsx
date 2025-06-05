@@ -147,7 +147,7 @@ export const Default: Story = {
   },
   decorators: [
     (Story) => (
-      <Box className="h-[400px] w-[600px] border-1 border-gray-300 border-dashed p-1">
+      <Box className="h-[400px] w-[600px] border-1 border-dashed border-gray-300 p-1">
         <Story />
       </Box>
     ),
@@ -194,8 +194,8 @@ export const Size: Story = {
   render: () => (
     <Grid cols="3" gap="4" className="m-4">
       {SIZE_EXAMPLES.map((size) => (
-        <Box key={`box-size-${size}`} className="size-[128px] border-1 border-gray-300 border-dashed p-2">
-          <Box size={size} className="border-1 border-gray-300 bg-muted">
+        <Box key={`box-size-${size}`} className="size-[128px] border-1 border-dashed border-gray-300 p-2">
+          <Box size={size} className="bg-muted border-1 border-gray-300">
             {size}
           </Box>
         </Box>
@@ -230,8 +230,8 @@ export const Width: Story = {
   render: () => (
     <Grid cols="1" gap="2" className="m-4 w-[600px]">
       {WIDTH_EXAMPLES.map((width) => (
-        <Box key={`box-width-${width}`} className="border-1 border-gray-300 border-dashed p-1">
-          <Box width={width} className="border-1 border-gray-300 bg-muted">
+        <Box key={`box-width-${width}`} className="border-1 border-dashed border-gray-300 p-1">
+          <Box width={width} className="bg-muted border-1 border-gray-300">
             {width}
           </Box>
         </Box>
@@ -245,8 +245,8 @@ export const Height: Story = {
   render: () => (
     <Grid cols="6" gap="2" className="m-4">
       {HEIGHT_EXAMPLES.map((height) => (
-        <Box key={`box-height-${height}`} className="h-[300px] w-[48px] border-1 border-gray-300 border-dashed p-1">
-          <Box height={height} className="border-1 border-gray-300 bg-muted">
+        <Box key={`box-height-${height}`} className="h-[300px] w-[48px] border-1 border-dashed border-gray-300 p-1">
+          <Box height={height} className="bg-muted border-1 border-gray-300">
             {height}
           </Box>
         </Box>
@@ -261,7 +261,7 @@ export const Display: Story = {
   render: () => (
     <Flex direction="col" gap="4" className="max-w-[600px]">
       {DISPLAY_EXAMPLES.map((display) => (
-        <Box key={`box-display-${display}`} className="border-1 border-gray-300 border-dashed p-1">
+        <Box key={`box-display-${display}`} className="border-1 border-dashed border-gray-300 p-1">
           <Text>
             {sampleSentences.slice(0, 2).join(".")}.{" "}
             <Box display={display} className="bg-foreground/10 font-mono">
@@ -282,9 +282,9 @@ export const BoxSizing: Story = {
         <Box
           key={`box-sizing-${sizing}`}
           sizing={sizing}
-          className="size-[128px] border-4 border-gray-300 border-dashed p-4"
+          className="size-[128px] border-4 border-dashed border-gray-300 p-4"
         >
-          <Flex align="center" justify="center" className="h-full w-full bg-muted">
+          <Flex align="center" justify="center" className="bg-muted h-full w-full">
             {sizing}
           </Flex>
         </Box>
@@ -296,17 +296,17 @@ export const BoxSizing: Story = {
 export const Position: Story = {
   render: () => (
     <Box>
-      <Box position="relative" width="xl" height="full" className="rounded bg-info/10 p-4">
+      <Box position="relative" width="xl" height="full" className="bg-info/10 rounded p-4">
         <Text>Relative parent</Text>
-        <Box position="static" className="rounded bg-info/20 p-4 ">
+        <Box position="static" className="bg-info/20 rounded p-4">
           <Text>Static parent</Text>
-          <Box position="static" className="inline-block rounded bg-info/20 p-4">
+          <Box position="static" className="bg-info/20 inline-block rounded p-4">
             <Text>Static child 1</Text>
           </Box>
-          <Box position="static" className="ml-2 inline-block rounded bg-info/20 p-4">
+          <Box position="static" className="bg-info/20 ml-2 inline-block rounded p-4">
             <Text>Static child 2</Text>
           </Box>
-          <Box position="absolute" className="top-0 right-0 rounded bg-info/60 p-4">
+          <Box position="absolute" className="bg-info/60 top-0 right-0 rounded p-4">
             <Text>Absolute child</Text>
           </Box>
         </Box>
@@ -323,7 +323,7 @@ export const Overflow: Story = {
           key={`box-overflow-${overflow}`}
           overflow={overflow}
           width="xs"
-          className="h-[96px] border-1 border-gray-300 border-dashed p-2"
+          className="h-[96px] border-1 border-dashed border-gray-300 p-2"
         >
           <Text size="sm">
             <span className="bg-muted font-mono">{overflow}</span> {sampleLongText}
@@ -343,7 +343,7 @@ export const OverflowX: Story = {
           overflowX={overflow}
           overflowY="clip"
           width="xs"
-          className="h-[56px] border-1 border-gray-300 border-dashed p-2"
+          className="h-[56px] border-1 border-dashed border-gray-300 p-2"
         >
           <Text size="sm" className="whitespace-nowrap">
             <span className="bg-muted font-mono">{overflow}</span> {sampleLongWord}
@@ -362,7 +362,7 @@ export const OverflowY: Story = {
           key={`box-overflow-y-${overflow}`}
           overflowY={overflow}
           width="xs"
-          className="h-[96px] border-1 border-gray-300 border-dashed p-2"
+          className="h-[96px] border-1 border-dashed border-gray-300 p-2"
         >
           <Text size="sm">
             <span className="bg-muted font-mono">{overflow}</span> {sampleLongText}
@@ -392,12 +392,12 @@ export const RoundedCorners: Story = {
 export const StyleExamples: Story = {
   render: () => (
     <Grid cols="2" gap="4" className="m-4">
-      <Box className="border-1 border-gray-300 border-dashed p-4 text-foreground">padding</Box>
-      <Box className="border-1 border-gray-300 border-dashed p-4 text-foreground">centered</Box>
-      <Box className="rounded-md bg-muted p-4 text-muted-foreground">rounded background</Box>
-      <Box className="rounded-md bg-card p-4 text-card-foreground shadow-md">shadow</Box>
-      <Box className="rounded-md border-1 bg-card p-4 text-card-foreground shadow">rounded border</Box>
-      <Box className="rounded-md bg-muted p-4 text-card-foreground outline-2 outline-gray-300 outline-offset-2">
+      <Box className="text-foreground border-1 border-dashed border-gray-300 p-4">padding</Box>
+      <Box className="text-foreground border-1 border-dashed border-gray-300 p-4">centered</Box>
+      <Box className="bg-muted text-muted-foreground rounded-md p-4">rounded background</Box>
+      <Box className="bg-card text-card-foreground rounded-md p-4 shadow-md">shadow</Box>
+      <Box className="bg-card text-card-foreground rounded-md border-1 p-4 shadow">rounded border</Box>
+      <Box className="bg-muted text-card-foreground rounded-md p-4 outline-2 outline-offset-2 outline-gray-300">
         outline, background
       </Box>
     </Grid>
@@ -408,7 +408,7 @@ export const AlternateElements: Story = {
   render: () => (
     <Grid cols="2" gap="4">
       {LAYOUT_ELEMENTS.map((as, i) => (
-        <Box key={i} as={as} className="rounded-md border-1 border-gray-300 p-4 text-center text-foreground">
+        <Box key={i} as={as} className="text-foreground rounded-md border-1 border-gray-300 p-4 text-center">
           {"<"}
           {as}
           {">"}

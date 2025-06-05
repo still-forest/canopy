@@ -16,7 +16,7 @@ const FlexItem = ({ flex, className, children, ...props }: FlexItemProps) => (
         "flex-initial": flex === "initial",
         "flex-none": flex === "none",
       },
-      className,
+      className
     )}
     {...props}
   >

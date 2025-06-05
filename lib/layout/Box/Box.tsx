@@ -36,7 +36,7 @@ const Box = React.forwardRef<HTMLDivElement, BoxProps>(
       rounded,
       ...props
     },
-    ref,
+    ref
   ) => {
     return (
       <Component
@@ -257,13 +257,13 @@ const Box = React.forwardRef<HTMLDivElement, BoxProps>(
             "rounded-3xl": rounded === "3xl",
             "rounded-full": rounded === "full",
           },
-          className,
+          className
         )}
         ref={ref}
         {...props}
       />
     );
-  },
+  }
 );
 Box.displayName = "Box";
 

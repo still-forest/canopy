@@ -159,5 +159,5 @@ export const badgeColorVariants = cva(
         className: "border-black bg-transparent text-black",
       },
     ],
-  },
+  }
 );

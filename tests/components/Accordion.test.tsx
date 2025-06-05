@@ -17,7 +17,7 @@ describe("Accordion", () => {
           <AccordionTrigger>This second thing</AccordionTrigger>
           <AccordionContent>And here's more content</AccordionContent>
         </AccordionItem>
-      </Accordion>,
+      </Accordion>
     );
 
     const trigger1 = screen.getByRole("button", { name: "This first thing" });

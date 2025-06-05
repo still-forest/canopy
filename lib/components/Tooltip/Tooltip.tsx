@@ -42,7 +42,7 @@ const Trigger = ({ children, cursor = "pointer", className }: TriggerProps) => (
       cursor === "pointer" && "cursor-pointer",
       cursor === "text" && "cursor-text",
       cursor === "not-allowed" && "cursor-not-allowed",
-      className,
+      className
     )}
   >
     {children}

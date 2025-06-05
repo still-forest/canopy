@@ -29,7 +29,7 @@ describe("Box", () => {
     render(
       <Box as="section" data-testid="box-element">
         Content
-      </Box>,
+      </Box>
     );
     const element = screen.getByTestId("box-element");
     expect(element.tagName).toBe("SECTION");
@@ -43,7 +43,7 @@ describe("Box", () => {
         const { rerender } = render(
           <Box variant={variant} data-testid="box-element">
             Variant {variant}
-          </Box>,
+          </Box>
         );
         const element = screen.getByTestId("box-element");
         expect(element.className).toBe(`bg-${variant} text-${variant}-foreground`);
@@ -55,7 +55,7 @@ describe("Box", () => {
       render(
         <Box variant={"default"} data-testid="box-element">
           Default variant
-        </Box>,
+        </Box>
       );
       const element = screen.getByTestId("box-element");
       expect(element.className).toBe("");
@@ -67,7 +67,7 @@ describe("Box", () => {
       const { rerender } = render(
         <Box size={size} data-testid="box-element">
           Size {size}
-        </Box>,
+        </Box>
       );
       const element = screen.getByTestId("box-element");
       expect(element.className).toBe(`size-${size}`);
@@ -80,7 +80,7 @@ describe("Box", () => {
       const { rerender } = render(
         <Box width={width} data-testid="box-element">
           Width {width}
-        </Box>,
+        </Box>
       );
       const element = screen.getByTestId("box-element");
       expect(element.className).toBe(`w-${width}`);
@@ -93,7 +93,7 @@ describe("Box", () => {
       const { rerender } = render(
         <Box height={height} data-testid="box-element">
           Height {height}
-        </Box>,
+        </Box>
       );
       const element = screen.getByTestId("box-element");
       expect(element.className).toBe(`h-${height}`);
@@ -106,7 +106,7 @@ describe("Box", () => {
       const { rerender } = render(
         <Box display={display} data-testid="box-element">
           Display {display}
-        </Box>,
+        </Box>
       );
       const element = screen.getByTestId("box-element");
       expect(element.className).toBe(display);
@@ -119,7 +119,7 @@ describe("Box", () => {
       const { rerender } = render(
         <Box sizing={sizing} data-testid="box-element">
           Sizing {sizing}
-        </Box>,
+        </Box>
       );
       const element = screen.getByTestId("box-element");
       expect(element.className).toBe(`box-${sizing}`);
@@ -132,7 +132,7 @@ describe("Box", () => {
       const { rerender } = render(
         <Box position={position} data-testid="box-element">
           Position {position}
-        </Box>,
+        </Box>
       );
       const element = screen.getByTestId("box-element");
       expect(element.className).toBe(position);
@@ -145,7 +145,7 @@ describe("Box", () => {
       const { rerender } = render(
         <Box overflow={overflow} data-testid="box-element">
           Overflow {overflow}
-        </Box>,
+        </Box>
       );
       const element = screen.getByTestId("box-element");
       expect(element.className).toBe(`overflow-${overflow}`);
@@ -156,7 +156,7 @@ describe("Box", () => {
       const { rerender } = render(
         <Box overflowX={overflow} data-testid="box-element">
           OverflowX {overflow}
-        </Box>,
+        </Box>
       );
       const element = screen.getByTestId("box-element");
       expect(element.className).toBe(`overflow-x-${overflow}`);
@@ -167,7 +167,7 @@ describe("Box", () => {
       const { rerender } = render(
         <Box overflowY={overflow} data-testid="box-element">
           OverflowY {overflow}
-        </Box>,
+        </Box>
       );
       const element = screen.getByTestId("box-element");
       expect(element.className).toBe(`overflow-y-${overflow}`);
@@ -183,7 +183,7 @@ describe("Box", () => {
         const { rerender } = render(
           <Box rounded={roundedSize} data-testid="box-element">
             Rounded size {roundedSize}
-          </Box>,
+          </Box>
         );
         const element = screen.getByTestId("box-element");
         expect(element.className).toBe(`rounded-${roundedSize}`);
@@ -195,7 +195,7 @@ describe("Box", () => {
       render(
         <Box rounded data-testid="box-element">
           Default rounded size
-        </Box>,
+        </Box>
       );
       const element = screen.getByTestId("box-element");
       expect(element.className).toBe("rounded");
@@ -205,7 +205,7 @@ describe("Box", () => {
       render(
         <Box rounded={false} data-testid="box-element">
           No rounded corners
-        </Box>,
+        </Box>
       );
       const element = screen.getByTestId("box-element");
       expect(element.className).toBe("");
@@ -216,7 +216,7 @@ describe("Box", () => {
     render(
       <Box className="custom-class" data-testid="box-element">
         With custom class
-      </Box>,
+      </Box>
     );
     const element = screen.getByTestId("box-element");
     expect(element.className).toBe("custom-class");
@@ -227,7 +227,7 @@ describe("Box", () => {
       const { rerender } = render(
         <Box as={elementType} data-testid="box-element">
           {elementType} box
-        </Box>,
+        </Box>
       );
       const element = screen.getByTestId("box-element");
       expect(element.tagName).toBe(elementType.toUpperCase());
@@ -240,7 +240,7 @@ describe("Box", () => {
       // biome-ignore lint/a11y/useSemanticElements: Testing custom elements, up to the user to ensure accessibility
       <Box as="section" data-testid="box-component" aria-label="box container" role="region">
         Test box
-      </Box>,
+      </Box>
     );
     const element = screen.getByTestId("box-component");
     expect(element).toHaveAttribute("aria-label", "box container");
@@ -252,7 +252,7 @@ describe("Box", () => {
     render(
       <Box ref={ref} data-testid="box-element">
         Ref test
-      </Box>,
+      </Box>
     );
 
     expect(ref.current).not.toBeNull();
@@ -263,7 +263,7 @@ describe("Box", () => {
     render(
       <Box>
         <div data-testid="child-element">Child content</div>
-      </Box>,
+      </Box>
     );
 
     expect(screen.getByTestId("child-element")).toBeInTheDocument();
@@ -276,7 +276,7 @@ describe("Box", () => {
         <Box data-testid="child-box">
           <Box data-testid="grandchild-box">Nested content</Box>
         </Box>
-      </Box>,
+      </Box>
     );
 
     expect(screen.getByTestId("parent-box")).toBeInTheDocument();
@@ -289,7 +289,7 @@ describe("Box", () => {
     render(
       <Box className="class1 class2 class3" data-testid="box-element">
         Multiple classes
-      </Box>,
+      </Box>
     );
 
     const element = screen.getByTestId("box-element");
@@ -300,7 +300,7 @@ describe("Box", () => {
     render(
       <Box style={{ padding: "10px" }} data-testid="box-element">
         Styled box
-      </Box>,
+      </Box>
     );
 
     const element = screen.getByTestId("box-element");

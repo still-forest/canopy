@@ -36,5 +36,5 @@
       "@stories/*": ["./stories/*"]
     }
   },
-  "include": ["lib", "src", "stories", "tests"]
+  "include": ["lib", "src", "stories", "tests", "*.ts"]
 }

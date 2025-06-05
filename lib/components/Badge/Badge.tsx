@@ -14,7 +14,7 @@ interface BadgeProps {
 export const Badge = ({ label, onClick, className, variant = "default", color }: BadgeProps) => {
   if (color && !(variant === "default" || variant === "outline")) {
     throw new Error(
-      `Color ${color} is not allowed for variant '${variant}'. Only default and outline variants support color.`,
+      `Color ${color} is not allowed for variant '${variant}'. Only default and outline variants support color.`
     );
   }
 
@@ -29,7 +29,7 @@ export const Badge = ({ label, onClick, className, variant = "default", color }:
     {
       "border-1 border-black": color === "white",
     },
-    className,
+    className
   );
 
   return (

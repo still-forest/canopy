@@ -318,7 +318,7 @@ export const PolymorphicText: Story = {
     <Grid cols="2" gap="2" className="w-full max-w-4xl">
       {TYPOGRAPHY_ELEMENTS.map((element, e) => (
         <Flex key={e} justify="center" className="w-16 p-1">
-          <Text key={e} as={element} align="center" className="rounded border-1 border-accent border-dotted">
+          <Text key={e} as={element} align="center" className="border-accent rounded border-1 border-dotted">
             {"<"}
             {element}
             {">"}
