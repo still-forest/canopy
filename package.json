@@ -54,7 +54,7 @@
     "@radix-ui/react-tooltip": "^1.2.6",
     "cmdk": "^1.1.1",
     "date-fns": "^4.1.0",
-    "lucide-react": "^0.513.0",
+    "lucide-react": "^0.515.0",
     "react-day-picker": "^9.6.7"
   },
   "devDependencies": {
