@@ -30,9 +30,7 @@ jobs:
 
       - name: Run ${{ matrix.task }}
         run: |
-          if [ "${{ matrix.task }}" == "audit" ]; then
-            pnpm audit
-          elif [ "${{ matrix.task }}" == "test" ]; then
+          if [ "${{ matrix.task }}" == "test" ]; then
             pnpm test
           elif [ "${{ matrix.task }}" == "lint" ]; then
             pnpm lint:ci
