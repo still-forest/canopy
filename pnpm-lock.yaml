@@ -77,8 +77,8 @@ importers:
         specifier: 3.2.3
         version: 3.2.3(@vitest/browser@3.2.3)(vitest@3.2.3)
       chromatic:
-        specifier: 12.1.1
-        version: 12.1.1
+        specifier: 12.2.0
+        version: 12.2.0
       class-variance-authority:
         specifier: 0.7.1
         version: 0.7.1
@@ -2108,8 +2108,8 @@ packages:
     resolution: {integrity: sha512-+IxzY9BZOQd/XuYPRmrvEVjF/nqj5kgT4kEq7VofrDoM1MxoRjEWkrCC3EtLi59TVawxTAn+orJwFQcrqEN1+g==}
     engines: {node: '>=18'}
 
-  chromatic@12.1.1:
-    resolution: {integrity: sha512-vNe/PU4EvPN4V+d03Ym2mWBxqEkfbTCSfd0Z+PUMir0S/gKjbFK72FgTYz64j3k31UtrzMarB8EIzwFMxsDbjg==}
+  chromatic@12.2.0:
+    resolution: {integrity: sha512-GswmBW9ZptAoTns1BMyjbm55Z7EsIJnUvYKdQqXIBZIKbGErmpA+p4c0BYA+nzw5B0M+rb3Iqp1IaH8TFwIQew==}
     hasBin: true
     peerDependencies:
       '@chromatic-com/cypress': ^0.*.* || ^1.0.0
@@ -5610,7 +5610,7 @@ snapshots:
 
   chownr@3.0.0: {}
 
-  chromatic@12.1.1: {}
+  chromatic@12.2.0: {}
 
   ci-info@4.2.0: {}
 
