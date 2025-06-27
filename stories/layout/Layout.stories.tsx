@@ -8,7 +8,7 @@ const meta: Meta<typeof Layout> = {
   component: Layout,
   decorators: [
     (Story) => (
-      <Flex direction="col" className="min-h-[500px] w-[600px]">
+      <Flex className="min-h-[500px] w-[600px]">
         <Story />
       </Flex>
     ),
@@ -56,6 +56,22 @@ export const WithBodyContainer: Story = {
       <Layout.Header>
         <Heading level="1">Header</Heading>
       </Layout.Header>
+      <Layout.Body withContainer>
+        {sampleParagraphText.map((paragraph, i) => (
+          <Paragraph key={`paragraph-${i}`}>{paragraph}</Paragraph>
+        ))}
+      </Layout.Body>
+      <Layout.Footer>
+        <Text variant="muted" size="sm">
+          © 2025 Still Forest LLC.
+        </Text>
+        </Layout.Footer>
+    </Layout>
+  ),
+};
+export const NoHeader: Story = {
+  render: () => (
+    <Layout>
       <Layout.Body withContainer>
         {sampleParagraphText.map((paragraph, i) => (
           <Paragraph key={`paragraph-${i}`}>{paragraph}</Paragraph>
