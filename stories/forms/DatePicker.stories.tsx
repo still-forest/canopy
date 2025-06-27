@@ -53,3 +53,7 @@ export const Small: Story = {
 export const Large: Story = {
   args: { ...defaultProps, size: "lg" },
 };
+
+export const WithError: Story = {
+  args: { ...defaultProps, error: "What'd you do?!"}
+}

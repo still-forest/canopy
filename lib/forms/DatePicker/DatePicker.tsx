@@ -2,7 +2,8 @@ import { Calendar as CalendarIcon } from "lucide-react";
 import { useState } from "react";
 import { Calendar } from "@/components/ui/calendar";
 import { Popover, PopoverContent, PopoverTrigger } from "@/components/ui/popover";
-import { Button } from "@/forms";
+import { Button, InputError } from "@/forms";
+import { Flex } from "@/layout";
 import { cn } from "@/utils";
 
 interface DatePickerProps {
@@ -10,9 +11,10 @@ interface DatePickerProps {
   initialValue?: Date;
   className?: string;
   size?: "default" | "xs" | "sm" | "lg";
+  error?: string;
 }
 
-export const DatePicker = ({ onDateSelection, initialValue, className, size = "default" }: DatePickerProps) => {
+export const DatePicker = ({ onDateSelection, initialValue, className, size = "default", error }: DatePickerProps) => {
   const [date, setDate] = useState<Date | undefined>(initialValue);
 
   const handleSelect = (date: Date | undefined) => {
@@ -23,6 +25,7 @@ export const DatePicker = ({ onDateSelection, initialValue, className, size = "d
   };
 
   return (
+    <Flex direction="col" gap="2">
     <Popover>
       <PopoverTrigger asChild>
         <Button
@@ -38,5 +41,7 @@ export const DatePicker = ({ onDateSelection, initialValue, className, size = "d
         <Calendar mode="single" selected={date} onSelect={handleSelect} autoFocus />
       </PopoverContent>
     </Popover>
+    {error && <InputError message={error} />}
+    </Flex>
   );
 };
