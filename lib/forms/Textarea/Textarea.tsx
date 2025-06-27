@@ -29,7 +29,7 @@ export function Textarea({ label, name, note, placeholder, className, error, ...
           {note}
         </Text>
       )}
-      {error && <InputError message={error} />} 
+      {error && <InputError message={error} />}
     </Flex>
   );
 }

@@ -102,7 +102,6 @@ export const WithMinMax: Story = {
   },
 };
 
-
 export const WithError: Story = {
   args: {
     ...defaultProps,

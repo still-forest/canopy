@@ -46,11 +46,10 @@ export const WithEverything: Story = {
   },
 };
 
-
 export const WithError: Story = {
   args: {
     ...defaultProps,
     label: "Your message:",
-    error: "What'd you do?!"
+    error: "What'd you do?!",
   },
 };

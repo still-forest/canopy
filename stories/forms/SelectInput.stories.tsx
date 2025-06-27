@@ -70,6 +70,6 @@ export const WithEverything: Story = {
 export const WithError: Story = {
   args: {
     ...defaultProps,
-    error: "What'd you do?!"
-  }
-}
+    error: "What'd you do?!",
+  },
+};

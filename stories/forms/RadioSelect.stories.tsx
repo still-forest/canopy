@@ -45,7 +45,6 @@ export const WithLabel: Story = {
   },
 };
 
-
 export const WithError: Story = {
   args: {
     ...defaultProps,
