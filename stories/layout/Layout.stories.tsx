@@ -45,7 +45,7 @@ export const Default: Story = {
         <Text variant="muted" size="sm">
           © 2025 Still Forest LLC.
         </Text>
-        </Layout.Footer>
+      </Layout.Footer>
     </Layout>
   ),
 };
@@ -65,7 +65,7 @@ export const WithBodyContainer: Story = {
         <Text variant="muted" size="sm">
           © 2025 Still Forest LLC.
         </Text>
-        </Layout.Footer>
+      </Layout.Footer>
     </Layout>
   ),
 };
@@ -81,7 +81,7 @@ export const NoHeader: Story = {
         <Text variant="muted" size="sm">
           © 2025 Still Forest LLC.
         </Text>
-        </Layout.Footer>
+      </Layout.Footer>
     </Layout>
   ),
 };

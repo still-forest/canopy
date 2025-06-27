@@ -56,12 +56,9 @@ export const NonSticky: Story = {
   },
 };
 
-
 export const SingleItem: Story = {
   args: {
-    children: 
-        <Heading level="1">Header</Heading>
-    ,
+    children: <Heading level="1">Header</Heading>,
     sticky: false,
   },
 };
