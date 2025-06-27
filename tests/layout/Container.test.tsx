@@ -16,7 +16,11 @@ describe("Container", () => {
   });
 
   it("renders as block if specified", () => {
-    render(<Container display="block" data-testid="container-element">Content</Container>);
+    render(
+      <Container display="block" data-testid="container-element">
+        Content
+      </Container>,
+    );
     const element = screen.getByTestId("container-element");
 
     expect(element.tagName).toBe("DIV");

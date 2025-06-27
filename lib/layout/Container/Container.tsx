@@ -1,7 +1,7 @@
 import { Box, Flex, type FlexProps } from "@/layout";
 import { cn } from "@/utils";
 
-type Display = "block" |"flex";
+type Display = "block" | "flex";
 
 export interface ContainerProps extends FlexProps {
   children: React.ReactNode;
