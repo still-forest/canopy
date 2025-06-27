@@ -11,7 +11,7 @@ export const Body = ({ children, className, withContainer = false, ...props }: B
 
   return (
     <BodyComponent
-      as="section"
+      as="main"
       className={cn("flex-1 grow", layoutClasses, withContainer && "mx-auto", className)}
       {...props}
     >
