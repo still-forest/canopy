@@ -91,6 +91,6 @@ export const WithError: Story = {
   args: {
     ...defaultProps,
     label: "Error input:",
-    error: "This is an error message",
+    error: "What'd you do?!"
   },
 };

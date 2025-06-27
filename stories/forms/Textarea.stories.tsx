@@ -45,3 +45,12 @@ export const WithEverything: Story = {
     note: "Your message will self destruct in 5 seconds",
   },
 };
+
+
+export const WithError: Story = {
+  args: {
+    ...defaultProps,
+    label: "Your message:",
+    error: "What'd you do?!"
+  },
+};
