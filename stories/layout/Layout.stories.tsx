@@ -36,11 +36,31 @@ export const Default: Story = {
       <Layout.Header>
         <Heading level="1">Header</Heading>
       </Layout.Header>
-      <Layout.Content>
+      <Layout.Body>
         {sampleParagraphText.map((paragraph, i) => (
           <Text key={`paragraph-${i}`}>{paragraph}</Text>
         ))}
-      </Layout.Content>
+      </Layout.Body>
+      <Layout.Footer>
+        <Text variant="muted" size="sm">
+          © 2025 Still Forest LLC.
+        </Text>
+        </Layout.Footer>
+    </Layout>
+  ),
+};
+
+export const WithBodyContainer: Story = {
+  render: () => (
+    <Layout>
+      <Layout.Header>
+        <Heading level="1">Header</Heading>
+      </Layout.Header>
+      <Layout.Body withContainer>
+        {sampleParagraphText.map((paragraph, i) => (
+          <Text key={`paragraph-${i}`}>{paragraph}</Text>
+        ))}
+      </Layout.Body>
       <Layout.Footer>
         <Text variant="muted" size="sm">
           © 2025 Still Forest LLC.

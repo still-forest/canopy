@@ -1,0 +1,1 @@
+export const layoutClasses = "mx-auto h-full w-full max-w-screen-lg"

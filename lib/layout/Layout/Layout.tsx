@@ -1,25 +1,24 @@
 import React from "react";
 import { Flex, type FlexProps, Footer, Header } from "@/layout";
-
-const Content = ({ children }: { children: React.ReactNode }) => {
-  return <Flex.Item className="flex-1">{children}</Flex.Item>;
-};
+import { Body } from "@/layout/Layout/Body";
+import { layoutClasses } from "@/layout/style";
+import { cn } from "@/utils";
 
 interface LayoutProps extends FlexProps {
   children: React.ReactNode;
 }
 
-const LayoutComponent = React.forwardRef<HTMLDivElement, LayoutProps>(({ children, ...props }, ref) => {
+const LayoutComponent = React.forwardRef<HTMLDivElement, LayoutProps>(({ children, className, ...props }, ref) => {
   return (
-    <Flex direction="col" className="mx-auto h-full w-full max-w-screen-lg" ref={ref} {...props}>
+    <Flex direction="col" className={cn(layoutClasses, className)} ref={ref} {...props}>
       {children}
     </Flex>
   );
 });
 
-const Layout = Object.assign(LayoutComponent, { Header, Content, Footer }) as typeof LayoutComponent & {
+const Layout = Object.assign(LayoutComponent, { Header, Body, Footer }) as typeof LayoutComponent & {
   Header: typeof Header;
-  Content: typeof Content;
+  Body: typeof Body;
   Footer: typeof Footer;
 };
 
