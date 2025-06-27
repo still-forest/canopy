@@ -125,4 +125,11 @@ describe("RadioSelect", () => {
     fireEvent.click(radioButtons[2]);
     expect(onChange).toHaveBeenCalledWith("maggie");
   });
+
+  it("renders an error message", () => {
+    render(<RadioSelect options={OPTIONS} name="test" label="Test label" error="What'd you do?!" />);
+
+    const error = screen.getByText("What'd you do?!");
+    expect(error).toBeInTheDocument();
+  });
 });
