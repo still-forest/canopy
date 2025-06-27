@@ -1,7 +1,7 @@
 import { sampleParagraphText } from "@stories/support/sampleText";
 import type { Meta, StoryObj } from "@storybook/react-vite";
 import { Flex, type Header, Layout } from "@/layout";
-import { Heading, Text } from "@/typography";
+import { Heading, Paragraph, Text } from "@/typography";
 
 const meta: Meta<typeof Layout> = {
   title: "Layout/Layout",
@@ -38,7 +38,7 @@ export const Default: Story = {
       </Layout.Header>
       <Layout.Body>
         {sampleParagraphText.map((paragraph, i) => (
-          <Text key={`paragraph-${i}`}>{paragraph}</Text>
+          <Paragraph key={`paragraph-${i}`}>{paragraph}</Paragraph>
         ))}
       </Layout.Body>
       <Layout.Footer>
@@ -58,7 +58,7 @@ export const WithBodyContainer: Story = {
       </Layout.Header>
       <Layout.Body withContainer>
         {sampleParagraphText.map((paragraph, i) => (
-          <Text key={`paragraph-${i}`}>{paragraph}</Text>
+          <Paragraph key={`paragraph-${i}`}>{paragraph}</Paragraph>
         ))}
       </Layout.Body>
       <Layout.Footer>
