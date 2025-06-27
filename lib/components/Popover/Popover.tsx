@@ -6,10 +6,14 @@ type PopoverComponent = React.FC<React.ComponentProps<typeof PopoverBase>> & {
 };
 
 const Popover: PopoverComponent = ({ children, open, onOpenChange }) => {
-  return <PopoverBase open={open} onOpenChange={onOpenChange} >{children}</PopoverBase>;
+  return (
+    <PopoverBase open={open} onOpenChange={onOpenChange}>
+      {children}
+    </PopoverBase>
+  );
 };
 
-Popover.Trigger = PopoverTrigger
-Popover.Content = PopoverContent
+Popover.Trigger = PopoverTrigger;
+Popover.Content = PopoverContent;
 
 export { Popover };
