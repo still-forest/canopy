@@ -8,7 +8,7 @@ interface ErrorOverlayProps {
 
 export const ErrorOverlay = ({ message = "Something went wrong.", children }: ErrorOverlayProps) => {
   return (
-    <Interstitial variant="error" iconComponent={CircleX} message={message}>
+    <Interstitial iconComponent={CircleX} message={message} variant="error">
       {children}
     </Interstitial>
   );

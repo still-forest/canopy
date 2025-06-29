@@ -8,7 +8,7 @@ describe("Checkbox", () => {
   const handleClick = vi.fn();
 
   test("renders a Checkbox", async () => {
-    render(<Checkbox label="Test Checkbox" name="test-checkbox" checked={false} />);
+    render(<Checkbox checked={false} label="Test Checkbox" name="test-checkbox" />);
 
     const checkbox = screen.getByRole("checkbox");
 
@@ -35,7 +35,7 @@ describe("Checkbox", () => {
   });
 
   test("renders a Checkbox with value", async () => {
-    render(<Checkbox label="Test Checkbox" name="test-checkbox" checked={false} value="abc1" />);
+    render(<Checkbox checked={false} label="Test Checkbox" name="test-checkbox" value="abc1" />);
 
     const checkbox = screen.getByRole("checkbox");
 
@@ -52,7 +52,7 @@ describe("Checkbox", () => {
   });
 
   test("renders a Checkbox with change handler", async () => {
-    render(<Checkbox label="Test Checkbox" name="test-checkbox" checked={false} onCheckedChange={handleClick} />);
+    render(<Checkbox checked={false} label="Test Checkbox" name="test-checkbox" onCheckedChange={handleClick} />);
 
     const checkbox = screen.getByRole("checkbox");
 

@@ -62,13 +62,13 @@ export const Button = ({
 
   return (
     <BaseButton
-      variant={getBaseVariant()}
-      onClick={onClick}
-      disabled={disabled}
-      size={getBaseSize()}
-      className={className}
-      type={type}
       asChild={asChild}
+      className={className}
+      disabled={disabled}
+      onClick={onClick}
+      size={getBaseSize()}
+      type={type}
+      variant={getBaseVariant()}
       {...rest}
     >
       {icon && children ? (

@@ -28,7 +28,7 @@ describe("Flex", () => {
   it("applies the correct flex direction classes", () => {
     for (const direction of FLEX_DIRECTIONS) {
       const { rerender } = render(
-        <Flex direction={direction} data-testid="flex-element">
+        <Flex data-testid="flex-element" direction={direction}>
           Direction {direction}
         </Flex>,
       );
@@ -54,7 +54,7 @@ describe("Flex", () => {
   it("applies the correct justify content classes", () => {
     for (const justify of FLEX_JUSTIFIES) {
       const { rerender } = render(
-        <Flex justify={justify} data-testid="flex-element">
+        <Flex data-testid="flex-element" justify={justify}>
           Justify {justify}
         </Flex>,
       );
@@ -70,7 +70,7 @@ describe("Flex", () => {
 
       for (const grow of STRING_FLEX_GROWS) {
         const { rerender } = render(
-          <Flex grow={grow} data-testid="flex-element">
+          <Flex data-testid="flex-element" grow={grow}>
             Grow {grow}
           </Flex>,
         );
@@ -82,7 +82,7 @@ describe("Flex", () => {
 
     it("aliases true as grow-1", () => {
       render(
-        <Flex grow data-testid="flex-element">
+        <Flex data-testid="flex-element" grow>
           Grow true
         </Flex>,
       );
@@ -92,7 +92,7 @@ describe("Flex", () => {
 
     it("aliases false as grow-0", () => {
       render(
-        <Flex grow={false} data-testid="flex-element">
+        <Flex data-testid="flex-element" grow={false}>
           Grow false
         </Flex>,
       );
@@ -104,7 +104,7 @@ describe("Flex", () => {
   it("applies the correct flex wrap classes", () => {
     for (const wrap of FLEX_WRAPS) {
       const { rerender } = render(
-        <Flex wrap={wrap} data-testid="flex-element">
+        <Flex data-testid="flex-element" wrap={wrap}>
           Wrap {wrap}
         </Flex>,
       );
@@ -117,7 +117,7 @@ describe("Flex", () => {
   it("applies the correct gap classes", () => {
     for (const gap of GAPS) {
       const { rerender } = render(
-        <Flex gap={gap} data-testid="flex-element">
+        <Flex data-testid="flex-element" gap={gap}>
           Gap {gap}
         </Flex>,
       );
@@ -128,7 +128,7 @@ describe("Flex", () => {
 
     for (const gapX of GAPS) {
       const { rerender } = render(
-        <Flex gapX={gapX} data-testid="flex-element">
+        <Flex data-testid="flex-element" gapX={gapX}>
           GapX {gapX}
         </Flex>,
       );
@@ -139,7 +139,7 @@ describe("Flex", () => {
 
     for (const gapY of GAPS) {
       const { rerender } = render(
-        <Flex gapY={gapY} data-testid="flex-element">
+        <Flex data-testid="flex-element" gapY={gapY}>
           GapY {gapY}
         </Flex>,
       );
@@ -151,7 +151,7 @@ describe("Flex", () => {
 
   it("combines gap, gapX, and gapY correctly", () => {
     render(
-      <Flex gap="2" gapX="4" gapY="8" data-testid="flex-element">
+      <Flex data-testid="flex-element" gap="2" gapX="4" gapY="8">
         Mixed gaps
       </Flex>,
     );
@@ -162,7 +162,7 @@ describe("Flex", () => {
 
   it("passes additional props to the element", () => {
     render(
-      <Flex data-testid="flex-component" aria-label="flex container">
+      <Flex aria-label="flex container" data-testid="flex-component">
         Test flex
       </Flex>,
     );
@@ -183,7 +183,7 @@ describe("Flex", () => {
   it("forwards ref correctly", () => {
     const ref = { current: null };
     render(
-      <Flex ref={ref} data-testid="flex-element">
+      <Flex data-testid="flex-element" ref={ref}>
         Ref test
       </Flex>,
     );
@@ -194,7 +194,7 @@ describe("Flex", () => {
 
   it("applies different combinations of props correctly", () => {
     render(
-      <Flex direction="col" align="center" justify="between" wrap="wrap" gap="4" data-testid="flex-element">
+      <Flex align="center" data-testid="flex-element" direction="col" gap="4" justify="between" wrap="wrap">
         Combined props
       </Flex>,
     );

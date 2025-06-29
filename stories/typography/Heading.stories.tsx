@@ -153,7 +153,7 @@ export const WithSampleProps: Story = {
 
 export const HeadingLevels: Story = {
   render: () => (
-    <Flex direction="col" gap="4" className="max-w-2xl">
+    <Flex className="max-w-2xl" direction="col" gap="4">
       {HEADING_LEVELS.map((level) => (
         <Heading key={level} level={level}>
           Heading Level {level} (h{level})
@@ -168,7 +168,7 @@ export const Families: Story = {
     <OptionList<FontFamily>
       options={FONT_FAMILIES as unknown as FontFamily[]}
       renderOption={(family: FontFamily) => (
-        <Heading level="4" family={family}>
+        <Heading family={family} level="4">
           {sampleHeading}
         </Heading>
       )}
@@ -183,14 +183,14 @@ export const Sizes: Story = {
         options={FONT_SIZES.slice(0, 6) as unknown as FontSize[]}
         propKey="size"
         renderOption={(family, option) => (
-          <Heading level="4" align="center" family={family} size={option}>
+          <Heading align="center" family={family} level="4" size={option}>
             {sampleHeading}
           </Heading>
         )}
       />
-      <Text variant="muted" className="mt-8">
+      <Text className="mt-8" variant="muted">
         Note: Options for{" "}
-        <Text as="span" variant="muted" family="mono">
+        <Text as="span" family="mono" variant="muted">
           {FONT_SIZES.slice(6).join(", ")}
         </Text>{" "}
         are not displayed.
@@ -206,12 +206,12 @@ export const Weights: Story = {
         options={FONT_WEIGHTS as unknown as FontWeight[]}
         propKey="weight"
         renderOption={(family, option) => (
-          <Heading level="4" align="center" family={family} weight={option}>
+          <Heading align="center" family={family} level="4" weight={option}>
             {sampleHeading}
           </Heading>
         )}
       />
-      <Text variant="muted" className="mt-8">
+      <Text className="mt-8" variant="muted">
         Note: Certain fonts may not support all weights.
       </Text>
     </>
@@ -225,7 +225,7 @@ export const Variants: Story = {
       propKey="variant"
       renderOption={(family, option) => {
         const Component = () => (
-          <Heading level="4" align="center" family={family} variant={option}>
+          <Heading align="center" family={family} level="4" variant={option}>
             {sampleHeading}
           </Heading>
         );
@@ -234,7 +234,7 @@ export const Variants: Story = {
           return (
             <Box className="text-violet-400">
               <Component />{" "}
-              <Text variant="muted" size="xs" className="italic">
+              <Text className="italic" size="xs" variant="muted">
                 (container text color = violet-400)
               </Text>
             </Box>
@@ -253,7 +253,7 @@ export const VariantsAsForeground: Story = {
       propKey="variant"
       renderOption={(family, option) => {
         const Component = () => (
-          <Heading level="4" align="center" family={family} variant={option} asForeground>
+          <Heading align="center" asForeground family={family} level="4" variant={option}>
             {sampleHeading}
           </Heading>
         );
@@ -262,7 +262,7 @@ export const VariantsAsForeground: Story = {
           return (
             <Box className="text-violet-400">
               <Component />{" "}
-              <Text variant="muted" size="xs" className="italic">
+              <Text className="italic" size="xs" variant="muted">
                 (container text color = violet-400)
               </Text>
             </Box>
@@ -277,20 +277,20 @@ export const VariantsAsForeground: Story = {
 export const Leading: Story = {
   render: () => (
     <OptionList<TextLeading>
-      options={[undefined, ...TEXT_LEADINGS] as unknown as TextLeading[]}
       gapY="0"
+      options={[undefined, ...TEXT_LEADINGS] as unknown as TextLeading[]}
+      renderOption={(leading: TextLeading) => (
+        <>
+          <Heading leading={leading}>{sampleHeading}</Heading>
+          <Text size="sm" variant="muted">
+            {sampleLongText}
+          </Text>
+        </>
+      )}
       renderRowTitle={(option) => (
         <>
           {option === undefined && <Text>{"<no value"}</Text>}
           <Code>{option}</Code>
-        </>
-      )}
-      renderOption={(leading: TextLeading) => (
-        <>
-          <Heading leading={leading}>{sampleHeading}</Heading>
-          <Text variant="muted" size="sm">
-            {sampleLongText}
-          </Text>
         </>
       )}
     />
@@ -303,7 +303,7 @@ export const Tracking: Story = {
       options={TEXT_TRACKINGS as unknown as TextTracking[]}
       propKey="tracking"
       renderOption={(family, option) => (
-        <Heading level="4" align="center" family={family} tracking={option}>
+        <Heading align="center" family={family} level="4" tracking={option}>
           {sampleHeading}
         </Heading>
       )}
@@ -316,8 +316,8 @@ export const Truncation: Story = {
     <Box className="max-w-[600px]">
       <OptionList<boolean>
         options={[true, false]}
-        renderRowTitle={(option) => <Text align="right">{option ? "Truncated" : "Not truncated"}</Text>}
         renderOption={(truncated) => <Heading truncate={truncated}>{sampleLongHeading}</Heading>}
+        renderRowTitle={(option) => <Text align="right">{option ? "Truncated" : "Not truncated"}</Text>}
       />
     </Box>
   ),
@@ -326,12 +326,12 @@ export const Truncation: Story = {
 export const Alignments: Story = {
   render: () => (
     <OptionList<TextAlign>
-      options={TEXT_ALIGNS as unknown as TextAlign[]}
       gapY="0"
+      options={TEXT_ALIGNS as unknown as TextAlign[]}
       renderOption={(align: TextAlign) => (
         <>
           <Heading align={align}>{sampleHeading}</Heading>
-          <Text variant="muted" align={align} size="sm">
+          <Text align={align} size="sm" variant="muted">
             {sampleLongText}
           </Text>
         </>

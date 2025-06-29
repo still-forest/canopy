@@ -35,7 +35,7 @@ describe("SelectPicker", () => {
   const onSelect = vi.fn();
 
   it("renders with default props", () => {
-    render(<SelectPicker options={OPTIONS} onSelect={onSelect} />);
+    render(<SelectPicker onSelect={onSelect} options={OPTIONS} />);
 
     const trigger = screen.getByRole("combobox") as HTMLButtonElement;
     expect(trigger.tagName).toBe("BUTTON");
@@ -73,7 +73,7 @@ describe("SelectPicker", () => {
   });
 
   it("renders with no icons", () => {
-    render(<SelectPicker options={OPTIONS.map((option) => ({ ...option, icon: undefined }))} onSelect={onSelect} />);
+    render(<SelectPicker onSelect={onSelect} options={OPTIONS.map((option) => ({ ...option, icon: undefined }))} />);
 
     const trigger = screen.getByRole("combobox") as HTMLButtonElement;
     expect(trigger).toHaveTextContent("Select a value...");
@@ -91,7 +91,7 @@ describe("SelectPicker", () => {
   });
 
   it("renders with a selected value", () => {
-    render(<SelectPicker options={OPTIONS} onSelect={onSelect} value={OPTIONS[0].value} />);
+    render(<SelectPicker onSelect={onSelect} options={OPTIONS} value={OPTIONS[0].value} />);
 
     const trigger = screen.getByRole("combobox") as HTMLButtonElement;
     expect(trigger).toHaveTextContent("Earth");
@@ -100,7 +100,7 @@ describe("SelectPicker", () => {
   it("renders with a custom renderSelected function", () => {
     const renderSelected = ({ label }: SelectPickerOption) => `The thing is ${label}`;
     render(
-      <SelectPicker options={OPTIONS} onSelect={onSelect} value={OPTIONS[0].value} renderSelected={renderSelected} />,
+      <SelectPicker onSelect={onSelect} options={OPTIONS} renderSelected={renderSelected} value={OPTIONS[0].value} />,
     );
 
     const trigger = screen.getByRole("combobox") as HTMLButtonElement;

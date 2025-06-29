@@ -41,7 +41,7 @@ describe("Grid", () => {
   it("applies the correct grid rows classes", () => {
     for (const rows of GRID_ROWS) {
       const { rerender } = render(
-        <Grid rows={rows} data-testid="grid-element">
+        <Grid data-testid="grid-element" rows={rows}>
           Rows {rows}
         </Grid>,
       );
@@ -54,7 +54,7 @@ describe("Grid", () => {
   it("applies the correct grid flow classes", () => {
     for (const flow of GRID_FLOWS) {
       const { rerender } = render(
-        <Grid flow={flow} data-testid="grid-element">
+        <Grid data-testid="grid-element" flow={flow}>
           Flow {flow}
         </Grid>,
       );
@@ -67,7 +67,7 @@ describe("Grid", () => {
   it("applies the correct gap classes", () => {
     for (const gap of GAPS) {
       const { rerender } = render(
-        <Grid gap={gap} data-testid="grid-element">
+        <Grid data-testid="grid-element" gap={gap}>
           Gap {gap}
         </Grid>,
       );
@@ -78,7 +78,7 @@ describe("Grid", () => {
 
     for (const gapX of GAPS) {
       const { rerender } = render(
-        <Grid gapX={gapX} data-testid="grid-element">
+        <Grid data-testid="grid-element" gapX={gapX}>
           GapX {gapX}
         </Grid>,
       );
@@ -89,7 +89,7 @@ describe("Grid", () => {
 
     for (const gapY of GAPS) {
       const { rerender } = render(
-        <Grid gapY={gapY} data-testid="grid-element">
+        <Grid data-testid="grid-element" gapY={gapY}>
           GapY {gapY}
         </Grid>,
       );
@@ -101,7 +101,7 @@ describe("Grid", () => {
 
   it("combines gap, gapX, and gapY correctly", () => {
     render(
-      <Grid gap="2" gapX="4" gapY="8" data-testid="grid-element">
+      <Grid data-testid="grid-element" gap="2" gapX="4" gapY="8">
         Mixed gaps
       </Grid>,
     );
@@ -112,7 +112,7 @@ describe("Grid", () => {
 
   it("passes additional props to the element", () => {
     render(
-      <Grid data-testid="grid-component" aria-label="grid container">
+      <Grid aria-label="grid container" data-testid="grid-component">
         Test grid
       </Grid>,
     );
@@ -133,7 +133,7 @@ describe("Grid", () => {
   it("forwards ref correctly", () => {
     const ref = { current: null };
     render(
-      <Grid ref={ref} data-testid="grid-element">
+      <Grid data-testid="grid-element" ref={ref}>
         Ref test
       </Grid>,
     );
@@ -155,7 +155,7 @@ describe("Grid", () => {
 
   it("applies multiple grid properties simultaneously", () => {
     render(
-      <Grid cols="3" rows="2" flow="row-dense" gap="4" data-testid="grid-element">
+      <Grid cols="3" data-testid="grid-element" flow="row-dense" gap="4" rows="2">
         Combined grid properties
       </Grid>,
     );

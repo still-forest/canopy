@@ -41,7 +41,7 @@ describe("Box", () => {
 
       for (const variant of NON_DEFAULT_VARIANTS) {
         const { rerender } = render(
-          <Box variant={variant} data-testid="box-element">
+          <Box data-testid="box-element" variant={variant}>
             Variant {variant}
           </Box>,
         );
@@ -53,7 +53,7 @@ describe("Box", () => {
 
     it("does not apply classes with default variant", () => {
       render(
-        <Box variant={"default"} data-testid="box-element">
+        <Box data-testid="box-element" variant={"default"}>
           Default variant
         </Box>,
       );
@@ -65,7 +65,7 @@ describe("Box", () => {
   it("applies the correct size classes", () => {
     for (const size of SIZES) {
       const { rerender } = render(
-        <Box size={size} data-testid="box-element">
+        <Box data-testid="box-element" size={size}>
           Size {size}
         </Box>,
       );
@@ -78,7 +78,7 @@ describe("Box", () => {
   it("applies the correct width classes", () => {
     for (const width of WIDTHS) {
       const { rerender } = render(
-        <Box width={width} data-testid="box-element">
+        <Box data-testid="box-element" width={width}>
           Width {width}
         </Box>,
       );
@@ -91,7 +91,7 @@ describe("Box", () => {
   it("applies the correct height classes", () => {
     for (const height of HEIGHTS) {
       const { rerender } = render(
-        <Box height={height} data-testid="box-element">
+        <Box data-testid="box-element" height={height}>
           Height {height}
         </Box>,
       );
@@ -104,7 +104,7 @@ describe("Box", () => {
   it("applies the correct box display classes", () => {
     for (const display of DISPLAYS) {
       const { rerender } = render(
-        <Box display={display} data-testid="box-element">
+        <Box data-testid="box-element" display={display}>
           Display {display}
         </Box>,
       );
@@ -117,7 +117,7 @@ describe("Box", () => {
   it("applies the correct box sizing classes", () => {
     for (const sizing of BOX_SIZINGS) {
       const { rerender } = render(
-        <Box sizing={sizing} data-testid="box-element">
+        <Box data-testid="box-element" sizing={sizing}>
           Sizing {sizing}
         </Box>,
       );
@@ -130,7 +130,7 @@ describe("Box", () => {
   it("applies the correct position classes", () => {
     for (const position of POSITIONS) {
       const { rerender } = render(
-        <Box position={position} data-testid="box-element">
+        <Box data-testid="box-element" position={position}>
           Position {position}
         </Box>,
       );
@@ -143,7 +143,7 @@ describe("Box", () => {
   it("applies the correct overflow classes", () => {
     for (const overflow of OVERFLOWS) {
       const { rerender } = render(
-        <Box overflow={overflow} data-testid="box-element">
+        <Box data-testid="box-element" overflow={overflow}>
           Overflow {overflow}
         </Box>,
       );
@@ -154,7 +154,7 @@ describe("Box", () => {
 
     for (const overflow of OVERFLOWS) {
       const { rerender } = render(
-        <Box overflowX={overflow} data-testid="box-element">
+        <Box data-testid="box-element" overflowX={overflow}>
           OverflowX {overflow}
         </Box>,
       );
@@ -165,7 +165,7 @@ describe("Box", () => {
 
     for (const overflow of OVERFLOWS) {
       const { rerender } = render(
-        <Box overflowY={overflow} data-testid="box-element">
+        <Box data-testid="box-element" overflowY={overflow}>
           OverflowY {overflow}
         </Box>,
       );
@@ -181,7 +181,7 @@ describe("Box", () => {
 
       for (const roundedSize of STRING_ROUNDED_SIZES) {
         const { rerender } = render(
-          <Box rounded={roundedSize} data-testid="box-element">
+          <Box data-testid="box-element" rounded={roundedSize}>
             Rounded size {roundedSize}
           </Box>,
         );
@@ -193,7 +193,7 @@ describe("Box", () => {
 
     it("applies default rounding with a true value", () => {
       render(
-        <Box rounded data-testid="box-element">
+        <Box data-testid="box-element" rounded>
           Default rounded size
         </Box>,
       );
@@ -203,7 +203,7 @@ describe("Box", () => {
 
     it("does not rounding with a false value", () => {
       render(
-        <Box rounded={false} data-testid="box-element">
+        <Box data-testid="box-element" rounded={false}>
           No rounded corners
         </Box>,
       );
@@ -238,7 +238,7 @@ describe("Box", () => {
   it("passes additional props to the element", () => {
     render(
       // biome-ignore lint/a11y/useSemanticElements: Testing custom elements, up to the user to ensure accessibility
-      <Box as="section" data-testid="box-component" aria-label="box container" role="region">
+      <Box aria-label="box container" as="section" data-testid="box-component" role="region">
         Test box
       </Box>,
     );
@@ -250,7 +250,7 @@ describe("Box", () => {
   it("forwards ref correctly", () => {
     const ref = { current: null };
     render(
-      <Box ref={ref} data-testid="box-element">
+      <Box data-testid="box-element" ref={ref}>
         Ref test
       </Box>,
     );
@@ -298,7 +298,7 @@ describe("Box", () => {
 
   it("can be styled with inline styles", () => {
     render(
-      <Box style={{ padding: "10px" }} data-testid="box-element">
+      <Box data-testid="box-element" style={{ padding: "10px" }}>
         Styled box
       </Box>,
     );

@@ -35,16 +35,16 @@ export const WithCustomComponents: Story = {
     breadcrumbs: defaultBreadcrumbs,
     linkComponent: ({ to, label }: { to: string; label: string }) => (
       <button
-        type="button"
-        onClick={to ? () => window.alert(`Going to ${to}`) : undefined}
-        className={to ? "cursor-pointer hover:bg-blue-200" : "cursor-default text-black"}
         aria-disabled={!to}
+        className={to ? "cursor-pointer hover:bg-blue-200" : "cursor-default text-black"}
+        onClick={to ? () => window.alert(`Going to ${to}`) : undefined}
+        type="button"
       >
         {label}
       </button>
     ),
     pageComponent: ({ label }: { label: string }) => (
-      <span className="cursor-default text-black" aria-disabled={true}>
+      <span aria-disabled={true} className="cursor-default text-black">
         {label}
       </span>
     ),

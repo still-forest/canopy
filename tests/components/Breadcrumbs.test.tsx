@@ -45,17 +45,17 @@ describe("Breadcrumbs", () => {
 
     const CustomLink = ({ to, label }: { to: string; label: string }) => (
       <button
-        type="button"
-        onClick={to ? () => onLinkClick(to) : undefined}
-        className={to ? "cursor-pointer hover:bg-blue-200" : "cursor-default text-black"}
         aria-disabled={!to}
+        className={to ? "cursor-pointer hover:bg-blue-200" : "cursor-default text-black"}
+        onClick={to ? () => onLinkClick(to) : undefined}
+        type="button"
       >
         {label}
       </button>
     );
 
     const CustomPage = ({ label }: { label: string }) => (
-      <span className="cursor-default text-black" aria-disabled={true}>
+      <span aria-disabled={true} className="cursor-default text-black">
         {label}
       </span>
     );

@@ -37,7 +37,7 @@ export const Horizontal: Story = {
       renderOption={(gap) => (
         <Box>
           <Text>{sampleText}</Text>
-          <Separator orientation="horizontal" gap={gap} />
+          <Separator gap={gap} orientation="horizontal" />
           <Text>{sampleText2}</Text>
         </Box>
       )}
@@ -48,14 +48,14 @@ export const Horizontal: Story = {
 export const Vertical: Story = {
   render: () => (
     <OptionList<Gap>
-      options={GAPS as unknown as Gap[]}
       gapY="1"
+      options={GAPS as unknown as Gap[]}
       renderOption={(gap) => (
         <Flex align="center" className="h-5">
           <Text>One</Text>
-          <Separator orientation="vertical" gap={gap} />
+          <Separator gap={gap} orientation="vertical" />
           <Text>Two</Text>
-          <Separator orientation="vertical" gap={gap} />
+          <Separator gap={gap} orientation="vertical" />
           <Text>Three</Text>
         </Flex>
       )}

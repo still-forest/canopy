@@ -29,7 +29,7 @@ export const Default: Story = {
 
 export const OtherDefaultTab: Story = {
   render: () => (
-    <Tabs orientation="vertical" defaultValue="tab_3">
+    <Tabs defaultValue="tab_3" orientation="vertical">
       <TabsList>
         <TabsTrigger value="tab_1">Tab 1</TabsTrigger>
         <TabsTrigger value="tab_2">Tab 2</TabsTrigger>

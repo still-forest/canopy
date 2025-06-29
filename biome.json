@@ -18,8 +18,7 @@
   "assist": {
     "actions": {
       "source": {
-        "useSortedKeys": "off",
-        "useSortedAttributes": "off"
+        "useSortedKeys": "off"
       }
     }
   }

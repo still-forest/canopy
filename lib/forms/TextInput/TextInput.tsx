@@ -26,19 +26,19 @@ const TextInput = ({
   ...props
 }: TextInputProps) => {
   return (
-    <Flex direction={labelOrientation === "left" ? "row" : "col"} gap="2" className="w-full">
+    <Flex className="w-full" direction={labelOrientation === "left" ? "row" : "col"} gap="2">
       {label && (
-        <Label htmlFor={name} className={labelOrientation === "left" ? "text-nowrap" : ""}>
+        <Label className={labelOrientation === "left" ? "text-nowrap" : ""} htmlFor={name}>
           {label}
         </Label>
       )}
       <Input
+        aria-label={label || name}
+        className={className}
         id={name}
         name={name}
-        type={type}
         placeholder={placeholder}
-        className={className}
-        aria-label={label || name}
+        type={type}
         {...props}
       />
       {note && (

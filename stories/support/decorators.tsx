@@ -20,7 +20,7 @@ export const DEFAULT_DECORATOR_WITH_MIN_WIDTH_MD = (Story: (props: any) => React
 );
 
 export const INTERSTITIAL_DECORATOR = (Story: (props: any) => ReactNode | Promise<ReactNode>) => (
-  <Flex justify="center" align="center" className="min-h-[400px] w-full min-w-md">
+  <Flex align="center" className="min-h-[400px] w-full min-w-md" justify="center">
     <Story />
   </Flex>
 );

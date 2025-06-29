@@ -41,11 +41,11 @@ export const InitiallyChecked: Story = {
 export const AsList: Story = {
   render: () => (
     <Box>
-      <Checkbox label="Thing 1" name="something" checked={false} value="thing-1" />
-      <Checkbox label="Thing 2" name="something" checked={false} value="thing-2" />
-      <Checkbox label="Thing 3" name="something" checked={false} value="thing-3" />
-      <Checkbox label="Thing 4" name="something" checked={false} value="thing-4" />
-      <Checkbox label="Extra thing" name="something" checked={false} value="thing-5" />
+      <Checkbox checked={false} label="Thing 1" name="something" value="thing-1" />
+      <Checkbox checked={false} label="Thing 2" name="something" value="thing-2" />
+      <Checkbox checked={false} label="Thing 3" name="something" value="thing-3" />
+      <Checkbox checked={false} label="Thing 4" name="something" value="thing-4" />
+      <Checkbox checked={false} label="Extra thing" name="something" value="thing-5" />
     </Box>
   ),
 };

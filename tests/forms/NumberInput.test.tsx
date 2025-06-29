@@ -16,7 +16,7 @@ describe("NumberInput", () => {
   });
 
   it("renders with label", () => {
-    render(<NumberInput name="some_input" label="Some thing" />);
+    render(<NumberInput label="Some thing" name="some_input" />);
 
     const label = screen.getByText("Some thing");
     expect(label.tagName).toBe("LABEL");
@@ -28,7 +28,7 @@ describe("NumberInput", () => {
   });
 
   it("renders with left-oriented label", () => {
-    render(<NumberInput name="some_input" label="Some thing" labelOrientation="left" />);
+    render(<NumberInput label="Some thing" labelOrientation="left" name="some_input" />);
 
     const label = screen.getByText("Some thing");
     expect(label.tagName).toBe("LABEL");
@@ -71,7 +71,7 @@ describe("NumberInput", () => {
   });
 
   it("combines custom className with generated classes", () => {
-    render(<NumberInput name="some_input" className="custom-class" />);
+    render(<NumberInput className="custom-class" name="some_input" />);
 
     const input = screen.getByRole("spinbutton", { name: "some_input" }) as HTMLInputElement;
     expect(input.tagName).toBe("INPUT");

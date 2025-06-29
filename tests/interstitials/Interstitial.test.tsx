@@ -23,7 +23,7 @@ describe("Interstitial", () => {
   });
 
   it("renders with icon and info variant", () => {
-    render(<Interstitial variant="info" iconComponent={Mailbox} message="This is an Interstitial" />);
+    render(<Interstitial iconComponent={Mailbox} message="This is an Interstitial" variant="info" />);
 
     expect(screen.getByText("This is an Interstitial")).toBeInTheDocument();
 
@@ -33,7 +33,7 @@ describe("Interstitial", () => {
   });
 
   it("renders with icon and success variant", () => {
-    render(<Interstitial variant="success" iconComponent={Mailbox} message="This is an Interstitial" />);
+    render(<Interstitial iconComponent={Mailbox} message="This is an Interstitial" variant="success" />);
 
     expect(screen.getByText("This is an Interstitial")).toBeInTheDocument();
 
@@ -43,7 +43,7 @@ describe("Interstitial", () => {
   });
 
   it("renders with icon and warning variant", () => {
-    render(<Interstitial variant="warning" iconComponent={Mailbox} message="This is an Interstitial" />);
+    render(<Interstitial iconComponent={Mailbox} message="This is an Interstitial" variant="warning" />);
 
     expect(screen.getByText("This is an Interstitial")).toBeInTheDocument();
 
@@ -53,7 +53,7 @@ describe("Interstitial", () => {
   });
 
   it("renders with icon and error variant", () => {
-    render(<Interstitial variant="error" iconComponent={Mailbox} message="This is an Interstitial" />);
+    render(<Interstitial iconComponent={Mailbox} message="This is an Interstitial" variant="error" />);
 
     expect(screen.getByText("This is an Interstitial")).toBeInTheDocument();
 

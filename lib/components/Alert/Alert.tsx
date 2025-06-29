@@ -20,7 +20,7 @@ export const Alert = ({ type, title, message, className = "" }: AlertProps) => {
   const IconComponent = icons[type];
 
   return (
-    <AlertBase variant={type} className={className}>
+    <AlertBase className={className} variant={type}>
       <IconComponent className="h-4 w-4" data-testid={`alert-icon-${type}`} />
       {title ? <AlertTitle>{title}</AlertTitle> : null}
       <AlertDescription>{message}</AlertDescription>

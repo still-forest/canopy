@@ -17,7 +17,7 @@ describe("Container", () => {
 
   it("renders with custom classes", () => {
     render(
-      <Container data-testid="container-element" className="p-8">
+      <Container className="p-8" data-testid="container-element">
         Content
       </Container>,
     );

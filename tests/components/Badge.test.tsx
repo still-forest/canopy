@@ -36,7 +36,7 @@ describe("Badge", () => {
   });
 
   test("should render a badge with a custom className", () => {
-    render(<Badge label="Badge" className="font-mono" />);
+    render(<Badge className="font-mono" label="Badge" />);
 
     const badge = screen.getByText("Badge");
 
@@ -82,7 +82,7 @@ describe("Badge", () => {
 
   test("should render a badge with a custom color", () => {
     for (const color of TAILWIND_COLORS) {
-      render(<Badge label={color} color={color} />);
+      render(<Badge color={color} label={color} />);
       const badge = screen.getByText(color);
 
       if (color === "white") {
@@ -97,7 +97,7 @@ describe("Badge", () => {
   });
 
   test("should throw an error if color is used with a non-outline variant", () => {
-    expect(() => render(<Badge label="Badge" color="red" variant="secondary" />)).toThrow(
+    expect(() => render(<Badge color="red" label="Badge" variant="secondary" />)).toThrow(
       "Color red is not allowed for variant 'secondary'. Only default and outline variants support color.",
     );
   });

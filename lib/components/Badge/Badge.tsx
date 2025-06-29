@@ -33,7 +33,7 @@ export const Badge = ({ label, onClick, className, variant = "default", color }:
   );
 
   return (
-    <BadgeBase onClick={onClick} className={badgeClasses} variant={variant}>
+    <BadgeBase className={badgeClasses} onClick={onClick} variant={variant}>
       {label}
     </BadgeBase>
   );

@@ -8,7 +8,7 @@ const meta: Meta<typeof Footer> = {
   component: Footer,
   decorators: [
     (Story) => (
-      <Flex direction="col" className="min-h-[300px]">
+      <Flex className="min-h-[300px]" direction="col">
         <Container className="flex-1">
           <Text>This is some page content. {sampleLongText}</Text>
         </Container>

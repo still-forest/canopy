@@ -25,10 +25,10 @@ type Story = StoryObj<typeof meta>;
 
 const BrandContent = () => (
   <>
-    <Flex align="center" justify="center" className="aspect-square size-8 rounded-lg bg-info text-sidebar">
+    <Flex align="center" className="aspect-square size-8 rounded-lg bg-info text-sidebar" justify="center">
       <Trees className="size-6" />
     </Flex>
-    <Heading level="3" className="ml-2">
+    <Heading className="ml-2" level="3">
       Canopy
     </Heading>
   </>
@@ -98,12 +98,12 @@ const SampleContent = () => (
       <SidebarTrigger />
     </Container>
     <Container>
-      <Heading level="1" className="mt-4">
+      <Heading className="mt-4" level="1">
         Canopy
       </Heading>
     </Container>
     <Footer>
-      <Text variant="muted" size="sm">
+      <Text size="sm" variant="muted">
         © 2025 Still Forest LLC.
       </Text>
     </Footer>

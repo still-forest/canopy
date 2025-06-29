@@ -15,7 +15,7 @@ describe("Pagination", () => {
     "inline-flex items-center justify-center gap-2 whitespace-nowrap rounded-md text-sm font-medium transition-all disabled:pointer-events-none disabled:opacity-50 [&_svg]:pointer-events-none [&_svg:not([class*='size-'])]:size-4 shrink-0 [&_svg]:shrink-0 outline-none focus-visible:border-ring focus-visible:ring-ring/50 focus-visible:ring-[3px] aria-invalid:ring-destructive/20 dark:aria-invalid:ring-destructive/40 aria-invalid:border-destructive hover:bg-accent hover:text-accent-foreground dark:hover:bg-accent/50 size-9 cursor-pointer";
 
   test("renders Pagination with the correct number of pages and styles", async () => {
-    render(<Pagination pageCount={10} currentPage={1} onChange={onPageChange} />);
+    render(<Pagination currentPage={1} onChange={onPageChange} pageCount={10} />);
 
     const pagination = screen.getByRole("navigation");
     expect(pagination.className).toBe("mx-auto flex w-full justify-center");
@@ -75,7 +75,7 @@ describe("Pagination", () => {
   });
 
   test("renders Pagination without ellipsis when there are fewer than 3 pages", async () => {
-    render(<Pagination pageCount={2} currentPage={1} onChange={onPageChange} />);
+    render(<Pagination currentPage={1} onChange={onPageChange} pageCount={2} />);
 
     expect(screen.getByText("First")).toBeInTheDocument();
     expect(screen.getByText("Previous")).toBeInTheDocument();
@@ -90,7 +90,7 @@ describe("Pagination", () => {
   });
 
   test("calls onChange when a page number is clicked", async () => {
-    render(<Pagination pageCount={10} currentPage={1} onChange={onPageChange} />);
+    render(<Pagination currentPage={1} onChange={onPageChange} pageCount={10} />);
 
     const page2 = screen.getByText("2");
     await userEvent.click(page2);
@@ -104,7 +104,7 @@ describe("Pagination", () => {
   });
 
   test("calls onChange when the first button is clicked", async () => {
-    render(<Pagination pageCount={10} currentPage={2} onChange={onPageChange} />);
+    render(<Pagination currentPage={2} onChange={onPageChange} pageCount={10} />);
 
     const firstPage = screen.getByText("First");
     await userEvent.click(firstPage);
@@ -113,7 +113,7 @@ describe("Pagination", () => {
   });
 
   test("calls onChange when the last button is clicked", async () => {
-    render(<Pagination pageCount={10} currentPage={1} onChange={onPageChange} />);
+    render(<Pagination currentPage={1} onChange={onPageChange} pageCount={10} />);
 
     const lastPage = screen.getByText("Last");
     await userEvent.click(lastPage);
@@ -122,7 +122,7 @@ describe("Pagination", () => {
   });
 
   test("calls onChange when the next button is clicked", async () => {
-    render(<Pagination pageCount={10} currentPage={1} onChange={onPageChange} />);
+    render(<Pagination currentPage={1} onChange={onPageChange} pageCount={10} />);
 
     const nextPage = screen.getByText("Next");
     await userEvent.click(nextPage);
@@ -131,7 +131,7 @@ describe("Pagination", () => {
   });
 
   test("calls onChange when navigating from a middle page", async () => {
-    render(<Pagination pageCount={10} currentPage={5} onChange={onPageChange} />);
+    render(<Pagination currentPage={5} onChange={onPageChange} pageCount={10} />);
 
     const previousPage = screen.getByText("Previous");
     await userEvent.click(previousPage);
@@ -145,7 +145,7 @@ describe("Pagination", () => {
   });
 
   test("disables all navigation when there is only one page", async () => {
-    render(<Pagination pageCount={1} currentPage={1} onChange={onPageChange} />);
+    render(<Pagination currentPage={1} onChange={onPageChange} pageCount={1} />);
 
     const firstPage = screen.getByLabelText("Go to first page");
     const previousPage = screen.getByLabelText("Go to previous page");

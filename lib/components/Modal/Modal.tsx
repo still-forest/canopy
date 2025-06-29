@@ -37,7 +37,7 @@ export const Modal = ({ trigger, children, title, description, open, onOpenChang
   };
 
   return (
-    <Dialog open={openState} onOpenChange={handleOpenChange}>
+    <Dialog onOpenChange={handleOpenChange} open={openState}>
       <DialogTrigger asChild>{trigger}</DialogTrigger>
       <DialogContent>
         {(title || description) && (
