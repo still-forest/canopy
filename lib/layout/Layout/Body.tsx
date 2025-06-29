@@ -7,11 +7,19 @@ interface BodyProps extends FlexProps {
 }
 
 export const Body = ({ children, className, withContainer = false, ...props }: BodyProps) => {
-  const BodyComponent = withContainer ? Container : Flex.Item;
+  const classes = cn("flex-1 grow", layoutClasses, className);
+
+  if (withContainer) {
+    return (
+      <Container as="main" className={classes} display="block" {...props}>
+        {children}
+      </Container>
+    );
+  }
 
   return (
-    <BodyComponent as="main" className={cn("flex-1 grow", layoutClasses, className)} {...props}>
+    <Flex.Item as="main" className={classes} {...props}>
       {children}
-    </BodyComponent>
+    </Flex.Item>
   );
 };
