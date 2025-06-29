@@ -1,13 +1,15 @@
-import { Box, Flex, type FlexProps } from "@/layout";
+import { Box, type BoxProps, Flex, type FlexProps } from "@/layout";
 import { cn } from "@/utils";
 
 type Display = "block" | "flex";
 
-export interface ContainerProps extends FlexProps {
+interface BaseContainerProps {
   children: React.ReactNode;
   display?: Display;
   className?: string;
 }
+
+export type ContainerProps = BaseContainerProps & (FlexProps | BoxProps);
 
 export const Container = ({ children, className, ...props }: ContainerProps) => {
   const { display = "flex", ...rest } = props;
