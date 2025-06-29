@@ -17,7 +17,7 @@ describe("Container", () => {
 
   it("renders as block if specified", () => {
     render(
-      <Container display="block" data-testid="container-element">
+      <Container data-testid="container-element" display="block">
         Content
       </Container>,
     );
