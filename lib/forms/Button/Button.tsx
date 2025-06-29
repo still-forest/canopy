@@ -41,11 +41,11 @@ export const Button = ({
   const getBaseVariant = (): BaseButtonVariant => {
     if (variant === "primary") {
       return "default";
-    } else if (variant === "subtle") {
-      return "secondary";
-    } else {
-      return variant;
     }
+    if (variant === "subtle") {
+      return "secondary";
+    }
+    return variant;
   };
 
   const getBaseSize = (): BaseButtonSize => {
