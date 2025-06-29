@@ -90,6 +90,14 @@ describe("SelectInput", () => {
     expect(note.className).toBe("text-sm text-muted-foreground font-display");
   });
 
+  it("renders with an error message", () => {
+    render(<SelectInput name="some_input" options={OPTIONS} onValueChange={onSelect} error="What'd you do?" />);
+
+    const error = screen.getByText("What'd you do?");
+    expect(error.tagName).toBe("P");
+    expect(error.className).toBe("text-xs text-destructive font-display");
+  });
+
   it("combines custom className with generated classes", () => {
     render(<SelectInput name="some_input" options={OPTIONS} onValueChange={onSelect} className="custom-class" />);
 

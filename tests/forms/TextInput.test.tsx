@@ -58,6 +58,18 @@ describe("TextInput", () => {
     expect(input.className).toBe(EXPECTED_BASE_INPUT_CLASSES);
   });
 
+  it("renders with an error message", () => {
+    render(<TextInput name="some_input" error="What'd you do?" />);
+
+    const error = screen.getByText("What'd you do?");
+    expect(error.tagName).toBe("P");
+    expect(error.className).toBe("text-xs text-destructive font-display");
+
+    const input = screen.getByRole("textbox", { name: "some_input" }) as HTMLInputElement;
+    expect(input.tagName).toBe("INPUT");
+    expect(input.className).toBe(EXPECTED_BASE_INPUT_CLASSES);
+  });
+
   it("renders with custom type", () => {
     render(<TextInput name="some_input" type="email" />);
 

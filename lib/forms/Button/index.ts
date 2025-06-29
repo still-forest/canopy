@@ -3,4 +3,4 @@ export { Button } from "./Button";
 export type { ButtonGroupProps } from "./ButtonGroup";
 export { ButtonGroup } from "./ButtonGroup";
 export { DeleteButton } from "./DeleteButton";
-export { SaveButton } from "./SaveButton";
+export { SubmitButton } from "./SubmitButton";

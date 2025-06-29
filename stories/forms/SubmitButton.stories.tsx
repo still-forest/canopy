@@ -1,13 +1,13 @@
 import type { Meta, StoryObj } from "@storybook/react-vite";
 import { PiggyBank } from "lucide-react";
 
-import { SaveButton } from "@/forms";
+import { SubmitButton } from "@/forms";
 
-const meta: Meta<typeof SaveButton> = {
-  title: "Forms/Buttons/Save",
-  component: SaveButton,
+const meta: Meta<typeof SubmitButton> = {
+  title: "Forms/Buttons/Submit",
+  component: SubmitButton,
   tags: ["autodocs"],
-} satisfies Meta<typeof SaveButton>;
+} satisfies Meta<typeof SubmitButton>;
 
 export default meta;
 
@@ -65,6 +65,34 @@ export const Disabled: Story = {
   args: {
     ...defaultProps,
     disabled: true,
+  },
+};
+
+export const Submit: Story = {
+  args: {
+    ...defaultProps,
+    action: "submit",
+  },
+};
+
+export const Save: Story = {
+  args: {
+    ...defaultProps,
+    action: "save",
+  },
+};
+
+export const Send: Story = {
+  args: {
+    ...defaultProps,
+    action: "send",
+  },
+};
+
+export const NoIcon: Story = {
+  args: {
+    ...defaultProps,
+    noIcon: true,
   },
 };
 
