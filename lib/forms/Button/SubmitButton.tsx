@@ -36,10 +36,10 @@ const SubmitButton = ({
 
   return (
     <Button
-      type="submit"
-      variant="primary"
       disabled={disabled || submitting}
       icon={!noIcon ? labelIcon : undefined}
+      type="submit"
+      variant="primary"
       {...rest}
     >
       {submitting ? submittingLabel : label}

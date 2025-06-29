@@ -165,9 +165,9 @@ export const Sizes: Story = {
           </Text>
         )}
       />
-      <Text variant="muted" className="mt-8">
+      <Text className="mt-8" variant="muted">
         Note: Options for{" "}
-        <Text as="span" variant="muted" family="mono">
+        <Text as="span" family="mono" variant="muted">
           {FONT_SIZES.slice(6).join(", ")}
         </Text>{" "}
         are not displayed.
@@ -188,7 +188,7 @@ export const Weights: Story = {
           </Text>
         )}
       />
-      <Text variant="muted" className="mt-8">
+      <Text className="mt-8" variant="muted">
         Note: Certain fonts may not support all weights.
       </Text>
     </>
@@ -210,7 +210,7 @@ export const Variants: Story = {
           return (
             <Box className="text-violet-400">
               <Component />{" "}
-              <Text variant="muted" size="xs" className="italic">
+              <Text className="italic" size="xs" variant="muted">
                 (container text color = violet-400)
               </Text>
             </Box>
@@ -229,7 +229,7 @@ export const VariantsAsForeground: Story = {
       propKey="variant"
       renderOption={(family, option) => {
         const Component = () => (
-          <Text family={family} variant={option} asForeground>
+          <Text asForeground family={family} variant={option}>
             {sampleText}
           </Text>
         );
@@ -237,7 +237,7 @@ export const VariantsAsForeground: Story = {
           return (
             <Box className="text-violet-400">
               <Component />{" "}
-              <Text variant="muted" size="xs" className="italic">
+              <Text className="italic" size="xs" variant="muted">
                 (container text color = violet-400)
               </Text>
             </Box>
@@ -256,7 +256,7 @@ export const Alignments: Story = {
       renderOption={(align: TextAlign) => (
         <>
           {sampleParagraphText.map((text, t) => (
-            <Text align={align} size="sm" key={t}>
+            <Text align={align} key={t} size="sm">
               {text}
             </Text>
           ))}
@@ -270,16 +270,16 @@ export const Leading: Story = {
   render: () => (
     <OptionList<TextLeading>
       options={[undefined, ...TEXT_LEADINGS] as unknown as TextLeading[]}
+      renderOption={(leading: TextLeading) => (
+        <Text leading={leading} size="sm">
+          {sampleLongText}
+        </Text>
+      )}
       renderRowTitle={(option) => (
         <>
           {option === undefined && <Text>{"<no value"}</Text>}
           <Code>{option}</Code>
         </>
-      )}
-      renderOption={(leading: TextLeading) => (
-        <Text leading={leading} size="sm">
-          {sampleLongText}
-        </Text>
       )}
     />
   ),
@@ -303,22 +303,22 @@ export const Truncation: Story = {
   render: () => (
     <OptionList<boolean>
       options={[true, false]}
-      renderRowTitle={(option) => <Text>{option ? "Truncated" : "Not truncated"}</Text>}
       renderOption={(truncated) => (
-        <Text truncate={truncated} size="sm">
+        <Text size="sm" truncate={truncated}>
           {sampleLongText}
         </Text>
       )}
+      renderRowTitle={(option) => <Text>{option ? "Truncated" : "Not truncated"}</Text>}
     />
   ),
 };
 
 export const PolymorphicText: Story = {
   render: () => (
-    <Grid cols="2" gap="2" className="w-full max-w-4xl">
+    <Grid className="w-full max-w-4xl" cols="2" gap="2">
       {TYPOGRAPHY_ELEMENTS.map((element, e) => (
-        <Flex key={e} justify="center" className="w-16 p-1">
-          <Text key={e} as={element} align="center" className="rounded border-1 border-accent border-dotted">
+        <Flex className="w-16 p-1" justify="center" key={e}>
+          <Text align="center" as={element} className="rounded border-1 border-accent border-dotted" key={e}>
             {"<"}
             {element}
             {">"}

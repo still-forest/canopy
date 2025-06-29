@@ -86,7 +86,7 @@ export const WithCustomRenderSelectedAndInitialValue: Story = {
       return (
         <>
           <Text>Thing:</Text>
-          <Flex align="center" justify="start" gap="2">
+          <Flex align="center" gap="2" justify="start">
             {icon}
             {value && <Text variant="info">{label}</Text>}
             {!value && <Text variant="muted">Select</Text>}

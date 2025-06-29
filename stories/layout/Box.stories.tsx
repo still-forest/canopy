@@ -156,11 +156,11 @@ export const Default: Story = {
 
 export const Variants: Story = {
   render: () => (
-    <Grid cols="3" gap="4" className="m-4">
+    <Grid className="m-4" cols="3" gap="4">
       {LAYOUT_VARIANTS.map((variant) => (
-        <Box key={`box-variant-${variant}`} variant={variant} size="36" className="p-2">
-          <Flex align="center" justify="center" className="h-full w-full">
-            <Text variant="inherit" family="mono" align="center" className="bg-background/10 px-2">
+        <Box className="p-2" key={`box-variant-${variant}`} size="36" variant={variant}>
+          <Flex align="center" className="h-full w-full" justify="center">
+            <Text align="center" className="bg-background/10 px-2" family="mono" variant="inherit">
               {variant}
             </Text>
           </Flex>
@@ -192,10 +192,10 @@ const SIZE_EXAMPLES: WidthType[] = [
 ];
 export const Size: Story = {
   render: () => (
-    <Grid cols="3" gap="4" className="m-4">
+    <Grid className="m-4" cols="3" gap="4">
       {SIZE_EXAMPLES.map((size) => (
-        <Box key={`box-size-${size}`} className="size-[128px] border-1 border-gray-300 border-dashed p-2">
-          <Box size={size} className="border-1 border-gray-300 bg-muted">
+        <Box className="size-[128px] border-1 border-gray-300 border-dashed p-2" key={`box-size-${size}`}>
+          <Box className="border-1 border-gray-300 bg-muted" size={size}>
             {size}
           </Box>
         </Box>
@@ -228,10 +228,10 @@ const WIDTH_EXAMPLES: WidthType[] = [
 ];
 export const Width: Story = {
   render: () => (
-    <Grid cols="1" gap="2" className="m-4 w-[600px]">
+    <Grid className="m-4 w-[600px]" cols="1" gap="2">
       {WIDTH_EXAMPLES.map((width) => (
-        <Box key={`box-width-${width}`} className="border-1 border-gray-300 border-dashed p-1">
-          <Box width={width} className="border-1 border-gray-300 bg-muted">
+        <Box className="border-1 border-gray-300 border-dashed p-1" key={`box-width-${width}`}>
+          <Box className="border-1 border-gray-300 bg-muted" width={width}>
             {width}
           </Box>
         </Box>
@@ -243,10 +243,10 @@ export const Width: Story = {
 const HEIGHT_EXAMPLES: HeightType[] = ["1", "6", "12", "24", "36", "48", "auto", "full", "min", "max", "fit", "px"];
 export const Height: Story = {
   render: () => (
-    <Grid cols="6" gap="2" className="m-4">
+    <Grid className="m-4" cols="6" gap="2">
       {HEIGHT_EXAMPLES.map((height) => (
-        <Box key={`box-height-${height}`} className="h-[300px] w-[48px] border-1 border-gray-300 border-dashed p-1">
-          <Box height={height} className="border-1 border-gray-300 bg-muted">
+        <Box className="h-[300px] w-[48px] border-1 border-gray-300 border-dashed p-1" key={`box-height-${height}`}>
+          <Box className="border-1 border-gray-300 bg-muted" height={height}>
             {height}
           </Box>
         </Box>
@@ -259,12 +259,12 @@ const DISPLAY_EXAMPLES: DisplayType[] = ["inline", "inline-block", "block", "hid
 
 export const Display: Story = {
   render: () => (
-    <Flex direction="col" gap="4" className="max-w-[600px]">
+    <Flex className="max-w-[600px]" direction="col" gap="4">
       {DISPLAY_EXAMPLES.map((display) => (
-        <Box key={`box-display-${display}`} className="border-1 border-gray-300 border-dashed p-1">
+        <Box className="border-1 border-gray-300 border-dashed p-1" key={`box-display-${display}`}>
           <Text>
             {sampleSentences.slice(0, 2).join(".")}.{" "}
-            <Box display={display} className="bg-foreground/10 font-mono">
+            <Box className="bg-foreground/10 font-mono" display={display}>
               This is display: {display}.
             </Box>{" "}
             {sampleSentences.slice(2).join(".")}
@@ -277,14 +277,14 @@ export const Display: Story = {
 
 export const BoxSizing: Story = {
   render: () => (
-    <Flex align="center" gap="4" className="m-4">
+    <Flex align="center" className="m-4" gap="4">
       {BOX_SIZINGS.map((sizing) => (
         <Box
+          className="size-[128px] border-4 border-gray-300 border-dashed p-4"
           key={`box-sizing-${sizing}`}
           sizing={sizing}
-          className="size-[128px] border-4 border-gray-300 border-dashed p-4"
         >
-          <Flex align="center" justify="center" className="h-full w-full bg-muted">
+          <Flex align="center" className="h-full w-full bg-muted" justify="center">
             {sizing}
           </Flex>
         </Box>
@@ -296,17 +296,17 @@ export const BoxSizing: Story = {
 export const Position: Story = {
   render: () => (
     <Box>
-      <Box position="relative" width="xl" height="full" className="rounded bg-info/10 p-4">
+      <Box className="rounded bg-info/10 p-4" height="full" position="relative" width="xl">
         <Text>Relative parent</Text>
-        <Box position="static" className="rounded bg-info/20 p-4 ">
+        <Box className="rounded bg-info/20 p-4 " position="static">
           <Text>Static parent</Text>
-          <Box position="static" className="inline-block rounded bg-info/20 p-4">
+          <Box className="inline-block rounded bg-info/20 p-4" position="static">
             <Text>Static child 1</Text>
           </Box>
-          <Box position="static" className="ml-2 inline-block rounded bg-info/20 p-4">
+          <Box className="ml-2 inline-block rounded bg-info/20 p-4" position="static">
             <Text>Static child 2</Text>
           </Box>
-          <Box position="absolute" className="top-0 right-0 rounded bg-info/60 p-4">
+          <Box className="top-0 right-0 rounded bg-info/60 p-4" position="absolute">
             <Text>Absolute child</Text>
           </Box>
         </Box>
@@ -317,13 +317,13 @@ export const Position: Story = {
 
 export const Overflow: Story = {
   render: () => (
-    <Grid cols="2" gap="4" className="m-4">
+    <Grid className="m-4" cols="2" gap="4">
       {OVERFLOWS.map((overflow) => (
         <Box
+          className="h-[96px] border-1 border-gray-300 border-dashed p-2"
           key={`box-overflow-${overflow}`}
           overflow={overflow}
           width="xs"
-          className="h-[96px] border-1 border-gray-300 border-dashed p-2"
         >
           <Text size="sm">
             <span className="bg-muted font-mono">{overflow}</span> {sampleLongText}
@@ -336,16 +336,16 @@ export const Overflow: Story = {
 
 export const OverflowX: Story = {
   render: () => (
-    <Grid cols="2" gap="4" className="m-4">
+    <Grid className="m-4" cols="2" gap="4">
       {OVERFLOWS.map((overflow) => (
         <Box
+          className="h-[56px] border-1 border-gray-300 border-dashed p-2"
           key={`box-overflow-x-${overflow}`}
           overflowX={overflow}
           overflowY="clip"
           width="xs"
-          className="h-[56px] border-1 border-gray-300 border-dashed p-2"
         >
-          <Text size="sm" className="whitespace-nowrap">
+          <Text className="whitespace-nowrap" size="sm">
             <span className="bg-muted font-mono">{overflow}</span> {sampleLongWord}
           </Text>
         </Box>
@@ -356,13 +356,13 @@ export const OverflowX: Story = {
 
 export const OverflowY: Story = {
   render: () => (
-    <Grid cols="2" gap="4" className="m-4">
+    <Grid className="m-4" cols="2" gap="4">
       {OVERFLOWS.map((overflow) => (
         <Box
+          className="h-[96px] border-1 border-gray-300 border-dashed p-2"
           key={`box-overflow-y-${overflow}`}
           overflowY={overflow}
           width="xs"
-          className="h-[96px] border-1 border-gray-300 border-dashed p-2"
         >
           <Text size="sm">
             <span className="bg-muted font-mono">{overflow}</span> {sampleLongText}
@@ -375,11 +375,11 @@ export const OverflowY: Story = {
 
 export const RoundedCorners: Story = {
   render: () => (
-    <Grid cols="3" gap="4" className="m-4">
+    <Grid className="m-4" cols="3" gap="4">
       {ROUNDED_SIZES.map((roundedSize) => (
-        <Box key={`box-rounded-${roundedSize}`} rounded={roundedSize} size="24" className="bg-info p-2">
-          <Flex align="center" justify="center" className="h-full w-full">
-            <Text family="mono" align="center" className="bg-background/20 px-2">
+        <Box className="bg-info p-2" key={`box-rounded-${roundedSize}`} rounded={roundedSize} size="24">
+          <Flex align="center" className="h-full w-full" justify="center">
+            <Text align="center" className="bg-background/20 px-2" family="mono">
               {roundedSize.toString()}
             </Text>
           </Flex>
@@ -391,7 +391,7 @@ export const RoundedCorners: Story = {
 
 export const StyleExamples: Story = {
   render: () => (
-    <Grid cols="2" gap="4" className="m-4">
+    <Grid className="m-4" cols="2" gap="4">
       <Box className="border-1 border-gray-300 border-dashed p-4 text-foreground">padding</Box>
       <Box className="border-1 border-gray-300 border-dashed p-4 text-foreground">centered</Box>
       <Box className="rounded-md bg-muted p-4 text-muted-foreground">rounded background</Box>
@@ -408,7 +408,7 @@ export const AlternateElements: Story = {
   render: () => (
     <Grid cols="2" gap="4">
       {LAYOUT_ELEMENTS.map((as, i) => (
-        <Box key={i} as={as} className="rounded-md border-1 border-gray-300 p-4 text-center text-foreground">
+        <Box as={as} className="rounded-md border-1 border-gray-300 p-4 text-center text-foreground" key={i}>
           {"<"}
           {as}
           {">"}

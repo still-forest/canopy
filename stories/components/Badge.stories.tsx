@@ -49,9 +49,9 @@ export const Clickable: Story = {
   render: () => (
     <Flex gap="2">
       <Badge label="Default" onClick={() => alert("Default")} />
-      <Badge label="Secondary" variant="secondary" onClick={() => alert("Secondary")} />
-      <Badge label="Destructive" variant="destructive" onClick={() => alert("Destructive")} />
-      <Badge label="Outline" variant="outline" onClick={() => alert("Outline")} />
+      <Badge label="Secondary" onClick={() => alert("Secondary")} variant="secondary" />
+      <Badge label="Destructive" onClick={() => alert("Destructive")} variant="destructive" />
+      <Badge label="Outline" onClick={() => alert("Outline")} variant="outline" />
     </Flex>
   ),
 };
@@ -59,10 +59,10 @@ export const Clickable: Story = {
 export const CustomClassName: Story = {
   render: () => (
     <Flex gap="2">
-      <Badge label="Default" className="font-mono font-thin text-xl uppercase" />
-      <Badge label="Secondary" variant="secondary" className="font-mono font-thin text-xl uppercase" />
-      <Badge label="Destructive" variant="destructive" className="font-mono font-thin text-xl uppercase" />
-      <Badge label="Outline" variant="outline" className="font-mono font-thin text-xl uppercase" />
+      <Badge className="font-mono font-thin text-xl uppercase" label="Default" />
+      <Badge className="font-mono font-thin text-xl uppercase" label="Secondary" variant="secondary" />
+      <Badge className="font-mono font-thin text-xl uppercase" label="Destructive" variant="destructive" />
+      <Badge className="font-mono font-thin text-xl uppercase" label="Outline" variant="outline" />
     </Flex>
   ),
 };
@@ -71,8 +71,8 @@ export const CustomSolidColor: Story = {
   render: () => (
     <Grid cols="4" gap="2">
       {TAILWIND_COLORS.map((color) => (
-        <Flex key={color} justify="center">
-          <Badge label={color} color={color} />
+        <Flex justify="center" key={color}>
+          <Badge color={color} label={color} />
         </Flex>
       ))}
     </Grid>
@@ -83,8 +83,8 @@ export const CustomOutlineColor: Story = {
   render: () => (
     <Grid cols="4" gap="2">
       {TAILWIND_COLORS.map((color) => (
-        <Flex key={color} justify="center">
-          <Badge label={color} color={color} variant="outline" />
+        <Flex justify="center" key={color}>
+          <Badge color={color} label={color} variant="outline" />
         </Flex>
       ))}
     </Grid>

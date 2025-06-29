@@ -23,21 +23,21 @@ export default function OptionList<T extends OptionTypes>({
   withOutline = true,
 }: Props<T>) {
   return (
-    <Grid cols="6" gap="4" className="w-full max-w-4xl" gapY={gapY}>
+    <Grid className="w-full max-w-4xl" cols="6" gap="4" gapY={gapY}>
       {options.map((option, f) => (
         <Fragment key={f}>
-          <Flex justify="end" align="center" className="col-start-1">
+          <Flex align="center" className="col-start-1" justify="end">
             {renderRowTitle(option)}
           </Flex>
 
           <Flex
-            direction="col"
-            gap="4"
-            gapY={gapY}
             className={cn(
               "-col-end-1 col-start-2 rounded p-1",
               withOutline && "border-1 border-gray-300 border-dotted",
             )}
+            direction="col"
+            gap="4"
+            gapY={gapY}
           >
             {renderOption(option)}
           </Flex>

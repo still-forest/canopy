@@ -67,7 +67,7 @@ describe("Tabs", () => {
   test("renders Tabs with different default tab", async () => {
     const user = userEvent.setup();
     render(
-      <Tabs orientation="vertical" defaultValue="tab_2">
+      <Tabs defaultValue="tab_2" orientation="vertical">
         <TabsList>
           <TabsTrigger value="tab_1">Tab 1</TabsTrigger>
           <TabsTrigger value="tab_2">Tab 2</TabsTrigger>

@@ -11,7 +11,7 @@ describe("RadioSelect", () => {
   ];
 
   it("renders a set of options", () => {
-    render(<RadioSelect options={OPTIONS} name="test" />);
+    render(<RadioSelect name="test" options={OPTIONS} />);
 
     const radioButtons = screen.getAllByRole("radio");
     expect(radioButtons).toHaveLength(OPTIONS.length);
@@ -61,7 +61,7 @@ describe("RadioSelect", () => {
   });
 
   it("renders a label", () => {
-    render(<RadioSelect options={OPTIONS} name="test" label="Test label" />);
+    render(<RadioSelect label="Test label" name="test" options={OPTIONS} />);
 
     const label = screen.getByText("Test label");
     expect(label).toBeInTheDocument();
@@ -76,7 +76,7 @@ describe("RadioSelect", () => {
   });
 
   it("renders with a selected option", () => {
-    render(<RadioSelect options={OPTIONS} name="test" label="Test label" value="bart" />);
+    render(<RadioSelect label="Test label" name="test" options={OPTIONS} value="bart" />);
 
     const label = screen.getByText("Test label");
     expect(label).toBeInTheDocument();
@@ -94,7 +94,7 @@ describe("RadioSelect", () => {
 
   it("calls onChange when an option is selected", () => {
     const onChange = vi.fn();
-    render(<RadioSelect options={OPTIONS} name="test" label="Test label" onChange={onChange} />);
+    render(<RadioSelect label="Test label" name="test" onChange={onChange} options={OPTIONS} />);
 
     const radioButtons = screen.getAllByRole("radio");
     expect(radioButtons).toHaveLength(OPTIONS.length);
@@ -111,7 +111,7 @@ describe("RadioSelect", () => {
 
   it("does not call onChange when an option is already selected", () => {
     const onChange = vi.fn();
-    render(<RadioSelect options={OPTIONS} name="test" label="Test label" onChange={onChange} value="bart" />);
+    render(<RadioSelect label="Test label" name="test" onChange={onChange} options={OPTIONS} value="bart" />);
 
     const radioButtons = screen.getAllByRole("radio");
     expect(radioButtons).toHaveLength(OPTIONS.length);
@@ -127,7 +127,7 @@ describe("RadioSelect", () => {
   });
 
   it("renders an error message", () => {
-    render(<RadioSelect options={OPTIONS} name="test" label="Test label" error="What'd you do?!" />);
+    render(<RadioSelect error="What'd you do?!" label="Test label" name="test" options={OPTIONS} />);
 
     const error = screen.getByText("What'd you do?!");
     expect(error).toBeInTheDocument();

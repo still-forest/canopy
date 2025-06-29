@@ -16,7 +16,7 @@ export const Interstitial = ({ variant, iconComponent, message, children }: Inte
       throw new Error("Interstitial requires at least one of icon, iconComponent, message, or children");
     }
     return (
-      <Flex align="center" justify="center" className="h-full w-full">
+      <Flex align="center" className="h-full w-full" justify="center">
         Content missing
       </Flex>
     );
@@ -25,28 +25,28 @@ export const Interstitial = ({ variant, iconComponent, message, children }: Inte
   const IconComponent = iconComponent ? iconComponent : null;
 
   return (
-    <Flex align="center" justify="center" className="h-full w-full">
+    <Flex align="center" className="h-full w-full" justify="center">
       <Flex direction="col" justify="center">
         {IconComponent && (
-          <Flex align="center" justify="center" gapX="4" className="my-6">
+          <Flex align="center" className="my-6" gapX="4" justify="center">
             <IconComponent
+              aria-hidden={!!message}
+              aria-label={!message ? `${variant || "info"} icon` : undefined}
               className={cn(
                 variant === "error" && "text-destructive",
                 variant === "success" && "text-success",
                 variant === "warning" && "text-warning",
                 variant === "info" && "text-info",
-              )}
+              )} // Hide from screen readers if there's a text message
+              data-testid="icon" // Add role if no message explains the icon
+              role={!message ? "img" : undefined} // Add label if no message
               size={128}
-              aria-hidden={!!message} // Hide from screen readers if there's a text message
-              role={!message ? "img" : undefined} // Add role if no message explains the icon
-              aria-label={!message ? `${variant || "info"} icon` : undefined} // Add label if no message
-              data-testid="icon"
             />
           </Flex>
         )}
-        <Flex direction="col" justify="center" className="max-w-[500px]">
+        <Flex className="max-w-[500px]" direction="col" justify="center">
           {message ? (
-            <Heading level="4" align="center" weight="normal">
+            <Heading align="center" level="4" weight="normal">
               {message}
             </Heading>
           ) : null}

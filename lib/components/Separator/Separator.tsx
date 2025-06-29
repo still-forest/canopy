@@ -55,8 +55,8 @@ export const Separator = ({ className, orientation = "horizontal", gap, ...props
         },
         className,
       )}
-      role="separator"
       orientation={orientation}
+      role="separator"
       {...props}
     />
   );

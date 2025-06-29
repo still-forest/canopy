@@ -29,16 +29,16 @@ export const DatePicker = ({ onDateSelection, initialValue, className, size = "d
       <Popover>
         <PopoverTrigger asChild>
           <Button
-            variant="outline"
-            size={size}
             className={cn("w-[280px] justify-start text-left font-normal", !date && "text-muted-foreground", className)}
+            size={size}
+            variant="outline"
           >
             <CalendarIcon className="mr-2 h-4 w-4" />
             {date ? date.toISOString().split("T")[0] : <span>Select a date</span>}
           </Button>
         </PopoverTrigger>
         <PopoverContent className="w-auto p-0">
-          <Calendar mode="single" selected={date} onSelect={handleSelect} autoFocus />
+          <Calendar autoFocus mode="single" onSelect={handleSelect} selected={date} />
         </PopoverContent>
       </Popover>
       {error && <InputError message={error} />}

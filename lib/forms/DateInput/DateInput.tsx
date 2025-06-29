@@ -6,12 +6,12 @@ interface DateInputProps extends Omit<TextInputProps, "type"> {}
 const DateInput = ({ name, label, placeholder, note, className, ...props }: DateInputProps) => {
   return (
     <TextInput
-      name={name}
-      type="date"
-      label={label}
-      placeholder={placeholder}
-      note={note}
       className={cn("max-w-[150px]", className)}
+      label={label}
+      name={name}
+      note={note}
+      placeholder={placeholder}
+      type="date"
       {...props}
     />
   );

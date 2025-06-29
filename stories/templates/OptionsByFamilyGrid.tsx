@@ -16,11 +16,11 @@ interface Props<T extends OptionTypes> {
 export default function OptionsByFamilyGrid<T extends OptionTypes>({ options, renderOption, propKey }: Props<T>) {
   return (
     <>
-      <Grid cols="5" gapX="4" className="w-full divide-y divide-dotted divide-gray-300">
+      <Grid className="w-full divide-y divide-dotted divide-gray-300" cols="5" gapX="4">
         <Box />
         {FONT_FAMILIES.map((family, f) => (
           <Fragment key={f}>
-            <Text weight="medium" align="center" variant="accent">
+            <Text align="center" variant="accent" weight="medium">
               {family.charAt(0).toUpperCase() + family.slice(1)}
             </Text>
           </Fragment>
@@ -33,7 +33,7 @@ export default function OptionsByFamilyGrid<T extends OptionTypes>({ options, re
               </Code>
             </Flex>
             {FONT_FAMILIES.map((family, f) => (
-              <Flex key={f} align="center">
+              <Flex align="center" key={f}>
                 {renderOption(family, option)}
               </Flex>
             ))}

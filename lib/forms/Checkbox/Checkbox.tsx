@@ -35,13 +35,13 @@ const Checkbox = ({ label, name, value, checked, onCheckedChange }: CheckboxProp
   return (
     <Flex align="center" gap="2">
       <BaseCheckbox
+        checked={checkedState}
         id={fullId}
         name={name}
-        checked={checkedState}
         onCheckedChange={handleChange}
         value={effectiveValue}
       />
-      <Label htmlFor={fullId} className="cursor-pointer">
+      <Label className="cursor-pointer" htmlFor={fullId}>
         {label}
       </Label>
     </Flex>

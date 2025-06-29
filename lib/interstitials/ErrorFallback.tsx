@@ -23,13 +23,13 @@ const defaultOnRetry = () => {
 export const ErrorFallback = ({ error, onRetry = defaultOnRetry }: ErrorFallbackProps) => {
   return (
     <ErrorOverlay>
-      <Flex direction="col" align="center" className="mt-8">
-        <Box variant="muted" width="full" className="mb-8 p-4">
-          <Code variant="inherit" align="center" size="xs">
+      <Flex align="center" className="mt-8" direction="col">
+        <Box className="mb-8 p-4" variant="muted" width="full">
+          <Code align="center" size="xs" variant="inherit">
             {error.message || "Unknown error occurred"}
           </Code>
         </Box>
-        <Button variant="primary" icon={<RotateCcw />} onClick={onRetry}>
+        <Button icon={<RotateCcw />} onClick={onRetry} variant="primary">
           Reload
         </Button>
       </Flex>

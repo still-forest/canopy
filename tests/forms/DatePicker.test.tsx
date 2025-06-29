@@ -100,7 +100,7 @@ describe("DatePicker", () => {
   });
 
   it("renders with initial value", () => {
-    render(<DatePicker onDateSelection={onDateSelection} initialValue={new Date("2024-12-25T05:00:00.000Z")} />);
+    render(<DatePicker initialValue={new Date("2024-12-25T05:00:00.000Z")} onDateSelection={onDateSelection} />);
 
     const trigger = screen.getByRole("button");
     expect(trigger.textContent).toBe("2024-12-25");
@@ -114,7 +114,7 @@ describe("DatePicker", () => {
   });
 
   it("renders with initial value that is today", () => {
-    render(<DatePicker onDateSelection={onDateSelection} initialValue={new Date()} />);
+    render(<DatePicker initialValue={new Date()} onDateSelection={onDateSelection} />);
 
     const trigger = screen.getByRole("button");
     expect(trigger.textContent).toBe("2024-12-29");
@@ -131,14 +131,14 @@ describe("DatePicker", () => {
   });
 
   it("renders with an error message", () => {
-    render(<DatePicker onDateSelection={onDateSelection} error="What'd you do?!" />);
+    render(<DatePicker error="What'd you do?!" onDateSelection={onDateSelection} />);
 
     const error = screen.getByText("What'd you do?!");
     expect(error).toBeInTheDocument();
   });
 
   it("renders with custom className", () => {
-    render(<DatePicker onDateSelection={onDateSelection} className="custom-class" />);
+    render(<DatePicker className="custom-class" onDateSelection={onDateSelection} />);
 
     const trigger = screen.getByRole("button");
     expect(trigger.className).toBe(`${EXPECTED_TRIGGER_CLASSES} custom-class`);

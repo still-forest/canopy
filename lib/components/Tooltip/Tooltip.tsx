@@ -27,7 +27,7 @@ type TooltipComponent = React.FC<TooltipProps> & {
 const Tooltip: TooltipComponent = ({ children, open, onOpenChange }) => {
   return (
     <TooltipProvider>
-      <BaseTooltip open={open} onOpenChange={onOpenChange}>
+      <BaseTooltip onOpenChange={onOpenChange} open={open}>
         {children}
       </BaseTooltip>
     </TooltipProvider>

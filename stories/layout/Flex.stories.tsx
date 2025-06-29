@@ -155,7 +155,7 @@ export const Direction: Story = {
   render: () => (
     <Grid cols="1" gap="4">
       {FLEX_DIRECTIONS.map((direction) => (
-        <Flex key={`flex-direction-${direction}`} direction={direction} gap="1" className="w-full">
+        <Flex className="w-full" direction={direction} gap="1" key={`flex-direction-${direction}`}>
           <FlexItem>{direction} 1</FlexItem>
           <FlexItem>{direction} 2</FlexItem>
           <FlexItem>{direction} 3</FlexItem>
@@ -168,34 +168,34 @@ export const Direction: Story = {
 export const Alignment: Story = {
   render: () => (
     <>
-      <Heading level="4" family="mono" weight="medium" className="mb-2">
+      <Heading className="mb-2" family="mono" level="4" weight="medium">
         flex-row
       </Heading>
       <Grid cols="2" gap="4">
         {FLEX_ALIGNS.map((align) => (
           <Flex
-            key={`flex-align-${align}`}
-            direction="row"
             align={align}
-            gap="1"
             className="h-24 w-full min-w-[200px] rounded-md border-1 border-gray-300 border-dashed p-2"
+            direction="row"
+            gap="1"
+            key={`flex-align-${align}`}
           >
             <FlexItem>{align} 1</FlexItem>
             <FlexItem>{align} 2</FlexItem>
           </Flex>
         ))}
       </Grid>
-      <Heading level="4" family="mono" weight="medium" className="mt-4 mb-2">
+      <Heading className="mt-4 mb-2" family="mono" level="4" weight="medium">
         flex-col
       </Heading>
       <Grid cols="2" gap="4">
         {FLEX_ALIGNS.map((align) => (
           <Flex
-            key={`flex-align-${align}`}
-            direction="col"
             align={align}
-            gap="1"
             className="h-24 w-full min-w-[200px] rounded-md border-1 border-gray-300 border-dashed p-2"
+            direction="col"
+            gap="1"
+            key={`flex-align-${align}`}
           >
             <FlexItem>{align} 1</FlexItem>
             <FlexItem>{align} 2</FlexItem>
@@ -209,34 +209,34 @@ export const Alignment: Story = {
 export const Justification: Story = {
   render: () => (
     <>
-      <Heading level="4" family="mono" weight="medium" className="mb-2">
+      <Heading className="mb-2" family="mono" level="4" weight="medium">
         flex-row
       </Heading>
       <Grid cols="2" gap="4">
         {FLEX_JUSTIFIES.map((justify) => (
           <Flex
-            key={`flex-justify-${justify}`}
-            direction="row"
-            justify={justify}
-            gap="1"
             className="w-full min-w-[200px] rounded-md border-1 border-gray-300 border-dashed p-2"
+            direction="row"
+            gap="1"
+            justify={justify}
+            key={`flex-justify-${justify}`}
           >
             <FlexItem>{justify} 1</FlexItem>
             <FlexItem>{justify} 2</FlexItem>
           </Flex>
         ))}
       </Grid>
-      <Heading level="4" family="mono" weight="medium" className="mt-4 mb-2">
+      <Heading className="mt-4 mb-2" family="mono" level="4" weight="medium">
         flex-col
       </Heading>
       <Grid cols="2" gap="4">
         {FLEX_JUSTIFIES.map((justify) => (
           <Flex
-            key={`flex-justify-${justify}`}
-            direction="col"
-            justify={justify}
-            gap="1"
             className="h-24 w-full min-w-[200px] rounded-md border-1 border-gray-300 border-dashed p-2"
+            direction="col"
+            gap="1"
+            justify={justify}
+            key={`flex-justify-${justify}`}
           >
             <FlexItem>{justify} 1</FlexItem>
             <FlexItem>{justify} 2</FlexItem>
@@ -262,16 +262,16 @@ const FLEX_GROW_EXAMPLES: [FlexGrow, FlexGrow][] = [
 export const Grow: Story = {
   render: () => (
     <>
-      <Heading level="4" family="mono" weight="medium" className="mb-2">
+      <Heading className="mb-2" family="mono" level="4" weight="medium">
         flex-grow
       </Heading>
-      <Flex direction="col" gap="2" className="min-w-[600px]">
+      <Flex className="min-w-[600px]" direction="col" gap="2">
         {FLEX_GROW_EXAMPLES.map(([grow1, grow2]) => (
           <Flex gap="2" key={`grow-${grow1}-${grow2}`}>
-            <FlexItemAsFlex grow={grow1} justify="center" className="min-w-[40px]">
+            <FlexItemAsFlex className="min-w-[40px]" grow={grow1} justify="center">
               {grow1 === undefined || grow1 === null ? "<>" : grow1.toString()}
             </FlexItemAsFlex>
-            <FlexItemAsFlex grow={grow2} justify="center" className="min-w-[40px]">
+            <FlexItemAsFlex className="min-w-[40px]" grow={grow2} justify="center">
               {grow2 === undefined || grow2 === null ? "<>" : grow2.toString()}
             </FlexItemAsFlex>
           </Flex>
@@ -283,9 +283,9 @@ export const Grow: Story = {
 
 export const Gap: Story = {
   render: () => (
-    <Flex direction="col" gap="2" className="w-full">
+    <Flex className="w-full" direction="col" gap="2">
       {GAPS.map((gap) => (
-        <Flex key={`flex-gap-${gap}`} direction="row" gap={gap} className="w-full">
+        <Flex className="w-full" direction="row" gap={gap} key={`flex-gap-${gap}`}>
           <FlexItem>gap="{gap}"</FlexItem>
           <FlexItem>Two</FlexItem>
           <FlexItem>Three</FlexItem>
@@ -297,22 +297,22 @@ export const Gap: Story = {
 
 export const Wrapping: Story = {
   render: () => (
-    <Flex direction="col" gap="8" className="w-full max-w-lg">
+    <Flex className="w-full max-w-lg" direction="col" gap="8">
       {FLEX_WRAPS.map((wrap) => (
         <Box key={`flex-wrap-${wrap}`}>
-          <Heading level="4" family="mono" weight="medium" className="mb-2">
+          <Heading className="mb-2" family="mono" level="4" weight="medium">
             wrap = "{wrap}"
           </Heading>
           <Flex
-            direction="row"
-            wrap={wrap}
-            gap="2"
             className="w-full overflow-x-auto rounded-md border-1 border-gray-300 border-dashed bg-background p-2"
+            direction="row"
+            gap="2"
+            wrap={wrap}
           >
             {Array.from({ length: 10 }).map((_, i) => (
               <Box
-                key={`flex-wrap-item-${i}`}
                 className="whitespace-nowrap rounded-md bg-muted p-4 text-muted-foreground"
+                key={`flex-wrap-item-${i}`}
               >
                 Item {i + 1}
               </Box>

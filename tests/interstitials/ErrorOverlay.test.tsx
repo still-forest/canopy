@@ -29,7 +29,7 @@ describe("ErrorOverlay", () => {
     const goHome = vi.fn();
     render(
       <ErrorOverlay>
-        <Button variant="primary" icon={<Home />} onClick={goHome}>
+        <Button icon={<Home />} onClick={goHome} variant="primary">
           Home
         </Button>
       </ErrorOverlay>,

@@ -14,14 +14,14 @@ export interface TextareaProps extends React.ComponentProps<"textarea"> {
 
 export function Textarea({ label, name, note, placeholder, className, error, ...props }: TextareaProps) {
   return (
-    <Flex direction="col" gap="2" className="w-full">
+    <Flex className="w-full" direction="col" gap="2">
       {label && <Label htmlFor={name}>{label}</Label>}
       <BaseTextarea
-        placeholder={placeholder}
-        id={name}
-        name={name}
         aria-label={label || name}
         className={className}
+        id={name}
+        name={name}
+        placeholder={placeholder}
         {...props}
       />
       {note && (

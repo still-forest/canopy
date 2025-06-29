@@ -8,7 +8,7 @@ const meta: Meta<typeof Header> = {
   component: Header,
   decorators: [
     (Story) => (
-      <Flex direction="col" className="min-h-[300px]">
+      <Flex className="min-h-[300px]" direction="col">
         <Story />
         <Container className="flex-1">
           <Text>This is some page content. {sampleLongText}</Text>

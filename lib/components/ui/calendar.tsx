@@ -120,11 +120,7 @@ function Calendar({
 
   return (
     <DayPicker
-      showOutsideDays={showOutsideDays}
       className={cn("p-3", className)}
-      style={{
-        width: `${248.8 * (columnsDisplayed ?? 1)}px`,
-      }}
       classNames={{
         months: _monthsClassName,
         month_caption: _monthCaptionClassName,
@@ -158,19 +154,19 @@ function Calendar({
           <Nav
             className={className}
             displayYears={displayYears}
+            endMonth={endMonth}
             navView={navView}
+            onPrevClick={onPrevClick}
             setDisplayYears={setDisplayYears}
             startMonth={startMonth}
-            endMonth={endMonth}
-            onPrevClick={onPrevClick}
           />
         ),
         CaptionLabel: (props) => (
           <CaptionLabel
-            showYearSwitcher={showYearSwitcher}
+            displayYears={displayYears}
             navView={navView}
             setNavView={setNavView}
-            displayYears={displayYears}
+            showYearSwitcher={showYearSwitcher}
             {...props}
           />
         ),
@@ -178,10 +174,10 @@ function Calendar({
           <MonthGrid
             className={className}
             displayYears={displayYears}
-            startMonth={startMonth}
             endMonth={endMonth}
             navView={navView}
             setNavView={setNavView}
+            startMonth={startMonth}
             {...props}
           >
             {children}
@@ -189,6 +185,10 @@ function Calendar({
         ),
       }}
       numberOfMonths={columnsDisplayed}
+      showOutsideDays={showOutsideDays}
+      style={{
+        width: `${248.8 * (columnsDisplayed ?? 1)}px`,
+      }}
       {...props}
     />
   );
@@ -266,31 +266,31 @@ function Nav({
   return (
     <nav className={cn("flex items-center", className)}>
       <Button
-        variant="outline"
-        className="absolute left-0 h-7 w-7 bg-transparent p-0 opacity-80 hover:opacity-100"
-        type="button"
-        tabIndex={isPreviousDisabled ? undefined : -1}
-        disabled={isPreviousDisabled}
         aria-label={
           navView === "years"
             ? `Go to the previous ${displayYears.to - displayYears.from + 1} years`
             : labelPrevious(previousMonth)
         }
+        className="absolute left-0 h-7 w-7 bg-transparent p-0 opacity-80 hover:opacity-100"
+        disabled={isPreviousDisabled}
         onClick={handlePreviousClick}
+        tabIndex={isPreviousDisabled ? undefined : -1}
+        type="button"
+        variant="outline"
       >
         <ChevronLeft className="h-4 w-4" />
       </Button>
 
       <Button
-        variant="outline"
-        className="absolute right-0 h-7 w-7 bg-transparent p-0 opacity-80 hover:opacity-100"
-        type="button"
-        tabIndex={isNextDisabled ? undefined : -1}
-        disabled={isNextDisabled}
         aria-label={
           navView === "years" ? `Go to the next ${displayYears.to - displayYears.from + 1} years` : labelNext(nextMonth)
         }
+        className="absolute right-0 h-7 w-7 bg-transparent p-0 opacity-80 hover:opacity-100"
+        disabled={isNextDisabled}
         onClick={handleNextClick}
+        tabIndex={isNextDisabled ? undefined : -1}
+        type="button"
+        variant="outline"
       >
         <ChevronRight className="h-4 w-4" />
       </Button>
@@ -315,9 +315,9 @@ function CaptionLabel({
   return (
     <Button
       className="h-7 w-full truncate font-medium text-sm"
-      variant="ghost"
-      size="sm"
       onClick={() => setNavView((prev) => (prev === "days" ? "years" : "days"))}
+      size="sm"
+      variant="ghost"
     >
       {navView === "days" ? children : `${displayYears.from} - ${displayYears.to}`}
     </Button>
@@ -345,12 +345,12 @@ function MonthGrid({
   if (navView === "years") {
     return (
       <YearGrid
-        displayYears={displayYears}
-        startMonth={startMonth}
-        endMonth={endMonth}
-        setNavView={setNavView}
-        navView={navView}
         className={className}
+        displayYears={displayYears}
+        endMonth={endMonth}
+        navView={navView}
+        setNavView={setNavView}
+        startMonth={startMonth}
         {...props}
       />
     );
@@ -390,17 +390,17 @@ function YearGrid({
         const isDisabled = isBefore || isAfter;
         return (
           <Button
-            key={i}
             className={cn(
               "h-7 w-full font-normal text-foreground text-sm",
               displayYears.from + i === new Date().getFullYear() && "bg-accent font-medium text-accent-foreground",
             )}
-            variant="ghost"
+            disabled={navView === "years" ? isDisabled : undefined}
+            key={i}
             onClick={() => {
               setNavView("days");
               goToMonth(new Date(displayYears.from + i, (selected as Date | undefined)?.getMonth() ?? 0));
             }}
-            disabled={navView === "years" ? isDisabled : undefined}
+            variant="ghost"
           >
             {displayYears.from + i}
           </Button>

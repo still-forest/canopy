@@ -42,8 +42,8 @@ export const Breadcrumbs = ({ breadcrumbs, linkComponent, pageComponent, classNa
           <Fragment key={label}>
             <BreadcrumbItem>
               {to && (
-                <BreadcrumbLink className="font-display" asChild>
-                  <Link to={to} label={label} />
+                <BreadcrumbLink asChild className="font-display">
+                  <Link label={label} to={to} />
                 </BreadcrumbLink>
               )}
               {!to && <Page label={label} />}
