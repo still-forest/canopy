@@ -10,7 +10,7 @@ export const Header = ({ children, sticky = true, className, ...props }: HeaderP
   return (
     <Container
       as="header"
-      className={cn("sticky top-0 z-50 flex items-center justify-between", sticky && "sticky", className)}
+      className={cn("top-0 z-50 flex items-center justify-between", sticky && "sticky", className)}
       {...props}
     >
       {children}

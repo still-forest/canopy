@@ -10,11 +10,7 @@ export const Body = ({ children, className, withContainer = false, ...props }: B
   const BodyComponent = withContainer ? Container : Flex.Item;
 
   return (
-    <BodyComponent
-      as="main"
-      className={cn("flex-1 grow", layoutClasses, withContainer && "mx-auto", className)}
-      {...props}
-    >
+    <BodyComponent as="main" className={cn("flex-1 grow", layoutClasses, className)} {...props}>
       {children}
     </BodyComponent>
   );

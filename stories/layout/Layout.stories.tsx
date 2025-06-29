@@ -1,6 +1,6 @@
 import { sampleParagraphText } from "@stories/support/sampleText";
 import type { Meta, StoryObj } from "@storybook/react-vite";
-import { Flex, type Header, Layout } from "@/layout";
+import { Flex, Layout } from "@/layout";
 import { Heading, Paragraph, Text } from "@/typography";
 
 const meta: Meta<typeof Layout> = {
@@ -28,7 +28,7 @@ const meta: Meta<typeof Layout> = {
 };
 
 export default meta;
-type Story = StoryObj<typeof Header>;
+type Story = StoryObj<typeof Layout>;
 
 export const Default: Story = {
   render: () => (
