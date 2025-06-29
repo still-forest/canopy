@@ -44,3 +44,10 @@ export const WithLabel: Story = {
     label: "Favorite Simpson:",
   },
 };
+
+export const WithError: Story = {
+  args: {
+    ...defaultProps,
+    error: "What'd you do?!",
+  },
+};

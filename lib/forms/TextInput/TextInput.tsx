@@ -1,5 +1,5 @@
 import { Input } from "@/components/ui/input";
-import { Label } from "@/forms";
+import { InputError, Label } from "@/forms";
 import { Flex } from "@/layout";
 import { Text } from "@/typography";
 
@@ -11,6 +11,7 @@ export interface TextInputProps extends React.ComponentProps<"input"> {
   labelOrientation?: "top" | "left";
   note?: string;
   className?: string;
+  error?: string;
 }
 
 const TextInput = ({
@@ -21,6 +22,7 @@ const TextInput = ({
   labelOrientation = "top",
   note,
   className,
+  error,
   ...props
 }: TextInputProps) => {
   return (
@@ -44,6 +46,7 @@ const TextInput = ({
           {note}
         </Text>
       )}
+      {error && <InputError message={error} />}
     </Flex>
   );
 };

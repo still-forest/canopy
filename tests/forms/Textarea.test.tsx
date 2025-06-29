@@ -48,6 +48,18 @@ describe("Textarea", () => {
     expect(input.className).toBe(EXPECTED_BASE_TEXTAREA_CLASSES);
   });
 
+  it("renders with an error message", () => {
+    render(<Textarea name="some_input" error="What'd you do?" />);
+
+    const error = screen.getByText("What'd you do?");
+    expect(error.tagName).toBe("P");
+    expect(error.className).toBe("text-xs text-destructive font-display");
+
+    const input = screen.getByRole("textbox", { name: "some_input" }) as HTMLTextAreaElement;
+    expect(input.tagName).toBe("TEXTAREA");
+    expect(input.className).toBe(EXPECTED_BASE_TEXTAREA_CLASSES);
+  });
+
   it("combines custom className with generated classes", () => {
     render(<Textarea name="some_input" className="custom-class" />);
 

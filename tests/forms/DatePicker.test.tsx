@@ -130,6 +130,13 @@ describe("DatePicker", () => {
     );
   });
 
+  it("renders with an error message", () => {
+    render(<DatePicker onDateSelection={onDateSelection} error="What'd you do?!" />);
+
+    const error = screen.getByText("What'd you do?!");
+    expect(error).toBeInTheDocument();
+  });
+
   it("renders with custom className", () => {
     render(<DatePicker onDateSelection={onDateSelection} className="custom-class" />);
 
