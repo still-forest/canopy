@@ -4,7 +4,7 @@
   "linter": {
     "rules": {
       "suspicious": {
-        "noArrayIndexKey": "warn"
+        "noArrayIndexKey": "off"
       },
       "a11y": {
         "useSemanticElements": "warn",
