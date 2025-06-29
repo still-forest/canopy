@@ -56,7 +56,7 @@ const MenuSubSection = ({ itemSet, activeSlug }: MenuSubSectionProps) => {
   return (
     <>
       {itemSet.links.map((item) => (
-        <SidebarMenuItem key={item.slug} onClick={item.onClick} className="hover:cursor-pointer">
+        <SidebarMenuItem className="hover:cursor-pointer" key={item.slug} onClick={item.onClick}>
           <SidebarMenuButton asChild isActive={activeSlug === item.slug}>
             <span>
               <item.icon />
@@ -85,7 +85,7 @@ const MenuSection = ({ itemSets, activeSlug }: MenuSectionProps) => {
       {itemSets.map((itemSet, i) => {
         return (
           <Fragment key={`item-set-${i}`}>
-            <MenuSubSection itemSet={itemSet} activeSlug={activeSlug} />
+            <MenuSubSection activeSlug={activeSlug} itemSet={itemSet} />
             {i < itemSets.length - 1 && <SidebarSeparator />}
           </Fragment>
         );
@@ -98,12 +98,12 @@ const MenuSection = ({ itemSets, activeSlug }: MenuSectionProps) => {
 const ThemeSelection = ({ theme, setTheme }: { theme: Theme; setTheme: (theme: Theme) => void }) => {
   return (
     <SidebarMenuButton
+      asChild
       className="cursor-pointer"
       onClick={() => {
         const newTheme = theme === "light" ? "dark" : "light";
         setTheme(newTheme);
       }}
-      asChild
     >
       <span>
         {theme === "light" && (
@@ -145,9 +145,9 @@ export const Sidebar = ({
         <SidebarMenu>
           <SidebarMenuItem>
             <SidebarMenuButton
-              size="lg"
               className={brandOnClick ? "cursor-pointer" : "cursor-default"}
               onClick={brandOnClick}
+              size="lg"
             >
               {brandContent}
             </SidebarMenuButton>
@@ -157,7 +157,7 @@ export const Sidebar = ({
       <SidebarContent>
         <SidebarGroup>
           <SidebarGroupContent>
-            <MenuSection itemSets={itemSets} activeSlug={activeSlug} />
+            <MenuSection activeSlug={activeSlug} itemSets={itemSets} />
           </SidebarGroupContent>
         </SidebarGroup>
       </SidebarContent>
@@ -171,12 +171,12 @@ export const Sidebar = ({
             </SidebarMenuButton>
           </SidebarMenuItem>
           <SidebarMenuItem>
-            <ThemeSelection theme={theme} setTheme={setTheme} />
+            <ThemeSelection setTheme={setTheme} theme={theme} />
           </SidebarMenuItem>
           {bottomItemSets.length > 0 && (
             <>
               <SidebarSeparator />
-              <MenuSection itemSets={bottomItemSets} activeSlug={activeSlug} />
+              <MenuSection activeSlug={activeSlug} itemSets={bottomItemSets} />
             </>
           )}
         </SidebarMenu>

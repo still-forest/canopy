@@ -24,7 +24,7 @@ describe("DateInput", () => {
   });
 
   it("renders with label", () => {
-    render(<DateInput name="some_input" label="Some thing" />);
+    render(<DateInput label="Some thing" name="some_input" />);
 
     const label = screen.getByText("Some thing");
     expect(label.tagName).toBe("LABEL");
@@ -35,7 +35,7 @@ describe("DateInput", () => {
   });
 
   it("renders with left-oriented label", () => {
-    render(<DateInput name="some_input" label="Some thing" labelOrientation="left" />);
+    render(<DateInput label="Some thing" labelOrientation="left" name="some_input" />);
 
     const label = screen.getByText("Some thing");
     expect(label.tagName).toBe("LABEL");
@@ -57,7 +57,7 @@ describe("DateInput", () => {
   });
 
   it("combines custom className with generated classes", () => {
-    render(<DateInput name="some_input" className="custom-class" />);
+    render(<DateInput className="custom-class" name="some_input" />);
 
     const input = screen.getByLabelText("some_input") as HTMLInputElement;
     expect(input.tagName).toBe("INPUT");

@@ -12,7 +12,7 @@ describe("Modal", () => {
     const user = userEvent.setup();
 
     render(
-      <Modal trigger={<Button>Open modal</Button>} title="Modal title" description="Modal description">
+      <Modal description="Modal description" title="Modal title" trigger={<Button>Open modal</Button>}>
         <p>Modal content</p>
       </Modal>,
     );
@@ -43,7 +43,7 @@ describe("Modal", () => {
     const user = userEvent.setup();
 
     render(
-      <Modal trigger={<Button>Open modal</Button>} description="Modal description">
+      <Modal description="Modal description" trigger={<Button>Open modal</Button>}>
         Modal content
       </Modal>,
     );
@@ -61,7 +61,7 @@ describe("Modal", () => {
     const user = userEvent.setup();
 
     render(
-      <Modal trigger={<Button>Open modal</Button>} title="Modal title">
+      <Modal title="Modal title" trigger={<Button>Open modal</Button>}>
         Modal content
       </Modal>,
     );
@@ -99,7 +99,7 @@ describe("Modal", () => {
           <Button data-testid="external-trigger" onClick={() => setOpen(true)}>
             Open modal
           </Button>
-          <Modal open={open} onOpenChange={setOpen}>
+          <Modal onOpenChange={setOpen} open={open}>
             <p>Modal content</p>
           </Modal>
         </>

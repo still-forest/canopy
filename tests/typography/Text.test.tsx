@@ -78,7 +78,7 @@ describe("Text", () => {
     it("applies the correct variant classes for foreground variants", () => {
       for (const variant of TYPOGRAPHY_VARIANTS) {
         render(
-          <Text variant={variant} asForeground>
+          <Text asForeground variant={variant}>
             Variant {variant}
           </Text>,
         );

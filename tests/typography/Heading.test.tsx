@@ -87,7 +87,7 @@ describe("Heading", () => {
     it("applies the correct variant classes for foreground variants", () => {
       for (const variant of TYPOGRAPHY_VARIANTS) {
         render(
-          <Heading variant={variant as TypographyVariant} asForeground>
+          <Heading asForeground variant={variant as TypographyVariant}>
             Variant {variant}
           </Heading>,
         );
@@ -181,14 +181,14 @@ describe("Heading", () => {
   it("applies different combinations of props correctly", () => {
     render(
       <Heading
-        level="1"
-        size="5xl"
-        weight="extrabold"
-        variant="accent"
         align="center"
-        tracking="wide"
         family="serif"
+        level="1"
         numeric
+        size="5xl"
+        tracking="wide"
+        variant="accent"
+        weight="extrabold"
       >
         Combined props
       </Heading>,

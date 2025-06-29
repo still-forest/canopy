@@ -12,10 +12,10 @@ interface PageNotFoundProps {
 
 export const PageNotFound = ({ goHome, message = "404: Not found" }: PageNotFoundProps) => {
   return (
-    <Interstitial variant="warning" iconComponent={FileQuestion} message={message}>
-      <Flex direction="col" align="center" className="mt-8">
+    <Interstitial iconComponent={FileQuestion} message={message} variant="warning">
+      <Flex align="center" className="mt-8" direction="col">
         {goHome && (
-          <Button variant="primary" icon={<Home />} onClick={goHome}>
+          <Button icon={<Home />} onClick={goHome} variant="primary">
             Home
           </Button>
         )}

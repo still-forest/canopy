@@ -37,7 +37,7 @@ const Trigger = ({
 }: TriggerProps) => {
   return (
     <PopoverTrigger asChild>
-      <Button variant="outline" role="combobox" aria-expanded={open} className={`justify-between ${className}`}>
+      <Button aria-expanded={open} className={`justify-between ${className}`} role="combobox" variant="outline">
         {renderSelected(selected || { label: placeholder, value: "" })}
         <ChevronsUpDown className="ml-2 h-4 w-4 shrink-0 opacity-50" />
       </Button>
@@ -58,28 +58,28 @@ export const SelectPicker = ({
   const selectedOption = useMemo(() => options.find((option) => option.value === value), [options, value]);
 
   return (
-    <Popover open={open} onOpenChange={setOpen}>
+    <Popover onOpenChange={setOpen} open={open}>
       <Trigger
-        selected={selectedOption}
-        placeholder={placeholder}
-        open={open}
         className={`w-full ${className}`}
+        open={open}
+        placeholder={placeholder}
         renderSelected={renderSelected}
+        selected={selectedOption}
       />
       <PopoverContent className="w-full p-0">
         <Command value={value}>
-          <CommandInput placeholder="Search" className="h-9" aria-label="Search options" />
+          <CommandInput aria-label="Search options" className="h-9" placeholder="Search" />
           <CommandList>
             <CommandEmpty>No results found</CommandEmpty>
             <CommandGroup>
               {options.map((option) => (
                 <CommandItem
-                  value={option.value}
                   key={option.value}
                   onSelect={() => {
                     setOpen(false);
                     onSelect(option.value);
                   }}
+                  value={option.value}
                 >
                   {option.icon ? <span className="mr-2">{option.icon}</span> : ""}
                   {option.label}

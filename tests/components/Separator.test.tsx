@@ -33,7 +33,7 @@ describe("Separator", () => {
   });
 
   test("renders a vertical Separator with custom gap", async () => {
-    render(<Separator orientation="vertical" gap="4" />);
+    render(<Separator gap="4" orientation="vertical" />);
 
     const separator = screen.getByRole("separator");
     expect(separator).toBeInTheDocument();

@@ -28,7 +28,7 @@ describe("SelectInput", () => {
   const onSelect = vi.fn();
 
   it("renders with default props", () => {
-    render(<SelectInput name="some_input" options={OPTIONS} onValueChange={onSelect} />);
+    render(<SelectInput name="some_input" onValueChange={onSelect} options={OPTIONS} />);
 
     const trigger = screen.getByRole("combobox") as HTMLButtonElement;
     expect(trigger.tagName).toBe("BUTTON");
@@ -61,14 +61,14 @@ describe("SelectInput", () => {
   });
 
   it("renders with a selected value", () => {
-    render(<SelectInput name="some_input" options={OPTIONS} onValueChange={onSelect} value={OPTIONS[0].value} />);
+    render(<SelectInput name="some_input" onValueChange={onSelect} options={OPTIONS} value={OPTIONS[0].value} />);
 
     const trigger = screen.getByRole("combobox") as HTMLButtonElement;
     expect(trigger).toHaveTextContent("Earth");
   });
 
   it("renders with a label", () => {
-    render(<SelectInput name="some_input" options={OPTIONS} onValueChange={onSelect} label="Some label" />);
+    render(<SelectInput label="Some label" name="some_input" onValueChange={onSelect} options={OPTIONS} />);
 
     const label = screen.getByText("Some label") as HTMLLabelElement;
     expect(label.tagName).toBe("LABEL");
@@ -76,22 +76,30 @@ describe("SelectInput", () => {
   });
 
   it("renders with a placeholder", () => {
-    render(<SelectInput name="some_input" options={OPTIONS} onValueChange={onSelect} placeholder="Some placeholder" />);
+    render(<SelectInput name="some_input" onValueChange={onSelect} options={OPTIONS} placeholder="Some placeholder" />);
 
     const trigger = screen.getByRole("combobox") as HTMLButtonElement;
     expect(trigger).toHaveTextContent("Some placeholder");
   });
 
   it("renders with a note", () => {
-    render(<SelectInput name="some_input" options={OPTIONS} onValueChange={onSelect} note="Some note" />);
+    render(<SelectInput name="some_input" note="Some note" onValueChange={onSelect} options={OPTIONS} />);
 
     const note = screen.getByText("Some note") as HTMLParagraphElement;
     expect(note.tagName).toBe("P");
     expect(note.className).toBe("text-sm text-muted-foreground font-display");
   });
 
+  it("renders with an error message", () => {
+    render(<SelectInput error="What'd you do?" name="some_input" onValueChange={onSelect} options={OPTIONS} />);
+
+    const error = screen.getByText("What'd you do?");
+    expect(error.tagName).toBe("P");
+    expect(error.className).toBe("text-xs text-destructive font-display");
+  });
+
   it("combines custom className with generated classes", () => {
-    render(<SelectInput name="some_input" options={OPTIONS} onValueChange={onSelect} className="custom-class" />);
+    render(<SelectInput className="custom-class" name="some_input" onValueChange={onSelect} options={OPTIONS} />);
 
     const trigger = screen.getByRole("combobox") as HTMLButtonElement;
     expect(trigger.className).toBe(`${EXPECTED_BASE_BUTTON_CLASSES} custom-class`);

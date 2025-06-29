@@ -1,5 +1,5 @@
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
-import { Label } from "@/forms";
+import { InputError, Label } from "@/forms";
 import { Flex } from "@/layout";
 import { Text } from "@/typography";
 import { cn } from "@/utils";
@@ -18,6 +18,7 @@ export interface SelectInputProps extends Omit<React.ComponentProps<"select">, "
   placeholder?: string;
   note?: string;
   className?: string;
+  error?: string;
 }
 
 const SelectInput = ({
@@ -30,19 +31,20 @@ const SelectInput = ({
   className,
   value,
   onValueChange,
+  error,
   ...props
 }: SelectInputProps) => {
   return (
-    <Flex direction="col" gap="2" className="w-full">
+    <Flex className="w-full" direction="col" gap="2">
       {label && <Label htmlFor={name}>{label}</Label>}
       <Select
-        name={name}
         defaultValue={defaultValue as string | undefined}
-        value={value}
+        name={name}
         onValueChange={onValueChange}
+        value={value}
         {...props}
       >
-        <SelectTrigger data-testid={`select-input-${name}`} className={cn("min-w-[180px]", className)}>
+        <SelectTrigger className={cn("min-w-[180px]", className)} data-testid={`select-input-${name}`}>
           <SelectValue placeholder={placeholder} />
         </SelectTrigger>
         <SelectContent>
@@ -58,6 +60,7 @@ const SelectInput = ({
           {note}
         </Text>
       )}
+      {error && <InputError message={error} />}
     </Flex>
   );
 };

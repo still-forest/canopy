@@ -29,8 +29,8 @@ export const Default: Story = {
 export const Cursor: Story = {
   render: () => (
     <OptionList
-      options={["arrow", "pointer", "text", "not-allowed"] as CursorType[]}
       gapY="2"
+      options={["arrow", "pointer", "text", "not-allowed"] as CursorType[]}
       renderOption={(option) => (
         <Tooltip>
           <Tooltip.Trigger cursor={option}>
@@ -53,7 +53,7 @@ export const WithText: Story = {
         <Tooltip.Content>This is a tooltip</Tooltip.Content>
       </Tooltip>{" "}
       <Tooltip>
-        <Tooltip.Trigger cursor="arrow" className="inline-block">
+        <Tooltip.Trigger className="inline-block" cursor="arrow">
           <Box className="underline decoration-dotted">Me too!</Box>
         </Tooltip.Trigger>
         <Tooltip.Content>This is a tooltip</Tooltip.Content>
@@ -69,11 +69,11 @@ export const WithComplexContent: Story = {
         <Button>Hover over me</Button>
       </Tooltip.Trigger>
       <Tooltip.Content>
-        <Heading variant="primary" level="4">
+        <Heading level="4" variant="primary">
           This is a heading
         </Heading>
         <hr />
-        <Text variant="primary" size="sm">
+        <Text size="sm" variant="primary">
           Here's the complex content
         </Text>
       </Tooltip.Content>

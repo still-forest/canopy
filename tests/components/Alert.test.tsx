@@ -6,7 +6,7 @@ import { Alert } from "@/components";
 
 describe("Alert", () => {
   test("renders info Alert", async () => {
-    render(<Alert type="info" title="Important Information" message="This is an important message." />);
+    render(<Alert message="This is an important message." title="Important Information" type="info" />);
 
     const alert = screen.getByRole("alert");
     expect(alert).toBeInTheDocument();
@@ -20,7 +20,7 @@ describe("Alert", () => {
   });
 
   test("renders success Alert", async () => {
-    render(<Alert type="success" title="Important Information" message="This is an important message." />);
+    render(<Alert message="This is an important message." title="Important Information" type="success" />);
 
     const alert = screen.getByRole("alert");
     expect(alert).toBeInTheDocument();
@@ -33,7 +33,7 @@ describe("Alert", () => {
   });
 
   test("renders warning Alert", async () => {
-    render(<Alert type="warning" title="Important Information" message="This is an important message." />);
+    render(<Alert message="This is an important message." title="Important Information" type="warning" />);
 
     const alert = screen.getByRole("alert");
     expect(alert).toBeInTheDocument();
@@ -46,7 +46,7 @@ describe("Alert", () => {
   });
 
   test("renders error Alert", async () => {
-    render(<Alert type="error" title="Important Information" message="This is an important message." />);
+    render(<Alert message="This is an important message." title="Important Information" type="error" />);
 
     const alert = screen.getByRole("alert");
     expect(alert).toBeInTheDocument();

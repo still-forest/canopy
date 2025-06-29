@@ -17,7 +17,7 @@ type Story = StoryObj<typeof meta>;
 
 export const Default: Story = {
   render: () => (
-    <Modal trigger={<Button>Open modal</Button>} title="Modal title" description="Modal description">
+    <Modal description="Modal description" title="Modal title" trigger={<Button>Open modal</Button>}>
       <Text>Modal content</Text>
     </Modal>
   ),
@@ -25,7 +25,7 @@ export const Default: Story = {
 
 export const NoTitle: Story = {
   render: () => (
-    <Modal trigger={<Button>Open modal</Button>} description="Modal description">
+    <Modal description="Modal description" trigger={<Button>Open modal</Button>}>
       <Text>Modal content</Text>
     </Modal>
   ),
@@ -33,7 +33,7 @@ export const NoTitle: Story = {
 
 export const NoDescription: Story = {
   render: () => (
-    <Modal trigger={<Button>Open modal</Button>} title="Modal title">
+    <Modal title="Modal title" trigger={<Button>Open modal</Button>}>
       <Text>Modal content</Text>
     </Modal>
   ),
@@ -50,9 +50,9 @@ export const NoTitleOrDescription: Story = {
 export const SimpleTrigger: Story = {
   render: () => (
     <Modal
-      trigger={<Text className="cursor-pointer hover:underline">Open modal</Text>}
-      title="Modal title"
       description="Modal description"
+      title="Modal title"
+      trigger={<Text className="cursor-pointer hover:underline">Open modal</Text>}
     >
       <Text>Modal content</Text>
     </Modal>
@@ -67,11 +67,11 @@ export const Controlled: Story = {
       <Flex gap="4">
         <Button onClick={() => setOpen(true)}>External trigger</Button>
         <Modal
-          trigger={<Button variant="outline">Internal trigger</Button>}
-          title="Modal title"
           description="Modal description"
-          open={open}
           onOpenChange={setOpen}
+          open={open}
+          title="Modal title"
+          trigger={<Button variant="outline">Internal trigger</Button>}
         >
           <Text>Modal content</Text>
         </Modal>

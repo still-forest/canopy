@@ -66,3 +66,10 @@ export const WithEverything: Story = {
     note: "I don't agree to that.",
   },
 };
+
+export const WithError: Story = {
+  args: {
+    ...defaultProps,
+    error: "What'd you do?!",
+  },
+};

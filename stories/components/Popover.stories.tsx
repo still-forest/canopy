@@ -31,7 +31,7 @@ export const Styled: Story = {
         <Text className="hover:underline">Click me</Text>
       </Popover.Trigger>
       <Popover.Content>
-        <Flex direction="col" className="min-h-[150px]">
+        <Flex className="min-h-[150px]" direction="col">
           <Heading level="3">Popover</Heading>
           <Separator />
           <Text>This is a Popover</Text>

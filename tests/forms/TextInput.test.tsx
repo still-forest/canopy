@@ -15,7 +15,7 @@ describe("TextInput", () => {
   });
 
   it("renders with label", () => {
-    render(<TextInput name="some_input" label="Some thing" />);
+    render(<TextInput label="Some thing" name="some_input" />);
 
     const label = screen.getByText("Some thing");
     expect(label.tagName).toBe("LABEL");
@@ -27,7 +27,7 @@ describe("TextInput", () => {
   });
 
   it("renders with left-oriented label", () => {
-    render(<TextInput name="some_input" label="Some thing" labelOrientation="left" />);
+    render(<TextInput label="Some thing" labelOrientation="left" name="some_input" />);
 
     const label = screen.getByText("Some thing");
     expect(label.tagName).toBe("LABEL");
@@ -58,6 +58,18 @@ describe("TextInput", () => {
     expect(input.className).toBe(EXPECTED_BASE_INPUT_CLASSES);
   });
 
+  it("renders with an error message", () => {
+    render(<TextInput error="What'd you do?" name="some_input" />);
+
+    const error = screen.getByText("What'd you do?");
+    expect(error.tagName).toBe("P");
+    expect(error.className).toBe("text-xs text-destructive font-display");
+
+    const input = screen.getByRole("textbox", { name: "some_input" }) as HTMLInputElement;
+    expect(input.tagName).toBe("INPUT");
+    expect(input.className).toBe(EXPECTED_BASE_INPUT_CLASSES);
+  });
+
   it("renders with custom type", () => {
     render(<TextInput name="some_input" type="email" />);
 
@@ -67,7 +79,7 @@ describe("TextInput", () => {
   });
 
   it("combines custom className with generated classes", () => {
-    render(<TextInput name="some_input" className="custom-class" />);
+    render(<TextInput className="custom-class" name="some_input" />);
 
     const input = screen.getByRole("textbox", { name: "some_input" }) as HTMLInputElement;
     expect(input.tagName).toBe("INPUT");

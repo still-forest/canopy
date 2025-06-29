@@ -20,13 +20,13 @@ export const NumberInput = ({
 }: NumberInputProps) => {
   return (
     <TextInput
-      name={name}
-      type="number"
-      step={step}
-      label={label}
-      placeholder={placeholder}
-      note={note}
       className={className}
+      label={label}
+      name={name}
+      note={note}
+      placeholder={placeholder}
+      step={step}
+      type="number"
       {...props}
     />
   );

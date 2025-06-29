@@ -101,3 +101,10 @@ export const WithMinMax: Story = {
     max: 100,
   },
 };
+
+export const WithError: Story = {
+  args: {
+    ...defaultProps,
+    error: "What'd you do?!",
+  },
+};

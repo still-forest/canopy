@@ -49,3 +49,10 @@ export const WithLeftLabelOrientation: Story = {
     labelOrientation: "left",
   },
 };
+
+export const WithError: Story = {
+  args: {
+    ...defaultProps,
+    error: "What'd you do?!",
+  },
+};

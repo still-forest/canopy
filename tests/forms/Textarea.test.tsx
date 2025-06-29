@@ -17,7 +17,7 @@ describe("Textarea", () => {
   });
 
   it("renders with label", () => {
-    render(<Textarea name="some_input" label="Some thing" />);
+    render(<Textarea label="Some thing" name="some_input" />);
 
     const label = screen.getByText("Some thing");
     expect(label.tagName).toBe("LABEL");
@@ -48,8 +48,20 @@ describe("Textarea", () => {
     expect(input.className).toBe(EXPECTED_BASE_TEXTAREA_CLASSES);
   });
 
+  it("renders with an error message", () => {
+    render(<Textarea error="What'd you do?" name="some_input" />);
+
+    const error = screen.getByText("What'd you do?");
+    expect(error.tagName).toBe("P");
+    expect(error.className).toBe("text-xs text-destructive font-display");
+
+    const input = screen.getByRole("textbox", { name: "some_input" }) as HTMLTextAreaElement;
+    expect(input.tagName).toBe("TEXTAREA");
+    expect(input.className).toBe(EXPECTED_BASE_TEXTAREA_CLASSES);
+  });
+
   it("combines custom className with generated classes", () => {
-    render(<Textarea name="some_input" className="custom-class" />);
+    render(<Textarea className="custom-class" name="some_input" />);
 
     const input = screen.getByRole("textbox", { name: "some_input" }) as HTMLTextAreaElement;
     expect(input.tagName).toBe("TEXTAREA");
@@ -57,7 +69,7 @@ describe("Textarea", () => {
   });
 
   it("renders in disabled state correctly", () => {
-    render(<Textarea name="some_input" disabled />);
+    render(<Textarea disabled name="some_input" />);
 
     const input = screen.getByRole("textbox", { name: "some_input" }) as HTMLTextAreaElement;
     expect(input.disabled).toBe(true);

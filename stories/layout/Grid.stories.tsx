@@ -89,7 +89,7 @@ type Story = StoryObj<typeof meta>;
 
 const GridItem = ({ children }: { children: React.ReactNode }) => (
   <Box className="bg-background">
-    <Flex align="center" justify="center" className="h-16 w-16 rounded-md bg-info text-info-foreground">
+    <Flex align="center" className="h-16 w-16 rounded-md bg-info text-info-foreground" justify="center">
       {children}
     </Flex>
   </Box>
@@ -122,7 +122,7 @@ export const ColumnVariants: Story = {
         <Heading level="4" weight="medium">
           2 Columns
         </Heading>
-        <Grid cols="2" gap="4" className="bg-muted">
+        <Grid className="bg-muted" cols="2" gap="4">
           {Array.from({ length: 4 }).map((_, i) => (
             <GridItem key={`grid-item-${i}`}>Item {i + 1}</GridItem>
           ))}
@@ -132,7 +132,7 @@ export const ColumnVariants: Story = {
         <Heading level="4" weight="medium">
           4 Columns
         </Heading>
-        <Grid cols="4" gap="4" className="bg-muted">
+        <Grid className="bg-muted" cols="4" gap="4">
           {Array.from({ length: 8 }).map((_, i) => (
             <GridItem key={`grid-item-${i}`}>Item {i + 1}</GridItem>
           ))}
@@ -142,7 +142,7 @@ export const ColumnVariants: Story = {
         <Heading level="4" weight="medium">
           6 Columns
         </Heading>
-        <Grid cols="6" gap="4" className="bg-muted">
+        <Grid className="bg-muted" cols="6" gap="4">
           {Array.from({ length: 12 }).map((_, i) => (
             <GridItem key={`grid-item-${i}`}>Item {i + 1}</GridItem>
           ))}
@@ -163,7 +163,7 @@ export const GapVariants: Story = {
         <Heading level="4" weight="medium">
           Small Gap (2)
         </Heading>
-        <Grid cols="3" gap="2" className="bg-muted">
+        <Grid className="bg-muted" cols="3" gap="2">
           {Array.from({ length: 6 }).map((_, i) => (
             <GridItem key={`grid-item-${i}`}>Item {i + 1}</GridItem>
           ))}
@@ -173,7 +173,7 @@ export const GapVariants: Story = {
         <Heading level="4" weight="medium">
           Medium Gap (4)
         </Heading>
-        <Grid cols="3" gap="4" className="bg-muted">
+        <Grid className="bg-muted" cols="3" gap="4">
           {Array.from({ length: 6 }).map((_, i) => (
             <GridItem key={`grid-item-${i}`}>Item {i + 1}</GridItem>
           ))}
@@ -183,7 +183,7 @@ export const GapVariants: Story = {
         <Heading level="4" weight="medium">
           Large Gap (8)
         </Heading>
-        <Grid cols="3" gap="8" className="bg-muted">
+        <Grid className="bg-muted" cols="3" gap="8">
           {Array.from({ length: 6 }).map((_, i) => (
             <GridItem key={`grid-item-${i}`}>Item {i + 1}</GridItem>
           ))}
@@ -201,39 +201,39 @@ export const DirectionalGaps: Story = {
   render: () => (
     <Flex direction="col" gapY="4">
       <div>
-        <Heading level="4" weight="medium" leading="none">
+        <Heading leading="none" level="4" weight="medium">
           Horizontal Gap Only
         </Heading>
-        <Heading level="6" weight="medium" variant="muted">
+        <Heading level="6" variant="muted" weight="medium">
           (gapX="6")
         </Heading>
-        <Grid cols="3" gapX="6" gapY="0" className="bg-muted">
+        <Grid className="bg-muted" cols="3" gapX="6" gapY="0">
           {Array.from({ length: 6 }).map((_, i) => (
             <GridItem key={i}>Item {i + 1}</GridItem>
           ))}
         </Grid>
       </div>
       <div>
-        <Heading level="4" weight="medium" leading="none">
+        <Heading leading="none" level="4" weight="medium">
           Vertical Gap Only
         </Heading>
-        <Heading level="6" weight="medium" variant="muted">
+        <Heading level="6" variant="muted" weight="medium">
           (gapY="6")
         </Heading>
-        <Grid cols="3" gapY="6" gapX="0" className="bg-muted">
+        <Grid className="bg-muted" cols="3" gapX="0" gapY="6">
           {Array.from({ length: 6 }).map((_, i) => (
             <GridItem key={i}>Item {i + 1}</GridItem>
           ))}
         </Grid>
       </div>
       <div>
-        <Heading level="4" weight="medium" leading="none">
+        <Heading leading="none" level="4" weight="medium">
           Different Gaps
         </Heading>
-        <Heading level="6" weight="medium" variant="muted">
+        <Heading level="6" variant="muted" weight="medium">
           (gapX="2", gapY="8")
         </Heading>
-        <Grid cols="3" gapX="2" gapY="8" className="bg-muted">
+        <Grid className="bg-muted" cols="3" gapX="2" gapY="8">
           {Array.from({ length: 6 }).map((_, i) => (
             <GridItem key={i}>Item {i + 1}</GridItem>
           ))}
@@ -253,7 +253,7 @@ export const FlowVariants: Story = {
         <Heading level="4" weight="medium">
           Row Flow (default)
         </Heading>
-        <Grid cols="3" rows="3" gap="4" flow="row" className="bg-muted">
+        <Grid className="bg-muted" cols="3" flow="row" gap="4" rows="3">
           {Array.from({ length: 7 }).map((_, i) => (
             <GridItem key={i}>Item {i + 1}</GridItem>
           ))}
@@ -263,7 +263,7 @@ export const FlowVariants: Story = {
         <Heading level="4" weight="medium">
           Column Flow
         </Heading>
-        <Grid cols="3" rows="3" gap="4" flow="col" className="bg-muted">
+        <Grid className="bg-muted" cols="3" flow="col" gap="4" rows="3">
           {Array.from({ length: 7 }).map((_, i) => (
             <GridItem key={i}>Item {i + 1}</GridItem>
           ))}
@@ -273,7 +273,7 @@ export const FlowVariants: Story = {
         <Heading level="4" weight="medium">
           Dense Flow
         </Heading>
-        <Grid cols="3" rows="3" gap="4" flow="dense" className="bg-muted">
+        <Grid className="bg-muted" cols="3" flow="dense" gap="4" rows="3">
           {Array.from({ length: 7 }).map((_, i) => (
             <GridItem key={i}>Item {i + 1}</GridItem>
           ))}
@@ -292,7 +292,7 @@ export const CustomElement: Story = {
   },
   render: (args) => (
     <>
-      <Heading level="4" weight="medium" className="mb-2">
+      <Heading className="mb-2" level="4" weight="medium">
         As a{" "}
         <span className="bg-muted font-mono">
           {"<"}section{">"}
