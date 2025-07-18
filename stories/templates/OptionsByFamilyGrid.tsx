@@ -15,31 +15,29 @@ interface Props<T extends OptionTypes> {
 
 export default function OptionsByFamilyGrid<T extends OptionTypes>({ options, renderOption, propKey }: Props<T>) {
   return (
-    <>
-      <Grid className="w-full divide-y divide-dotted divide-gray-300" cols="5" gapX="4">
-        <Box />
-        {FONT_FAMILIES.map((family, f) => (
-          <Fragment key={f}>
-            <Text align="center" variant="accent" weight="medium">
-              {family.charAt(0).toUpperCase() + family.slice(1)}
-            </Text>
-          </Fragment>
-        ))}
-        {options.map((option, w) => (
-          <Fragment key={w}>
-            <Flex align="center" justify="end">
-              <Code>
-                {propKey}="{option as string}"
-              </Code>
+    <Grid className="w-full divide-y divide-dotted divide-gray-300" cols="5" gapX="4">
+      <Box />
+      {FONT_FAMILIES.map((family, f) => (
+        <Fragment key={f}>
+          <Text align="center" variant="accent" weight="medium">
+            {family.charAt(0).toUpperCase() + family.slice(1)}
+          </Text>
+        </Fragment>
+      ))}
+      {options.map((option, w) => (
+        <Fragment key={w}>
+          <Flex align="center" justify="end">
+            <Code>
+              {propKey}="{option as string}"
+            </Code>
+          </Flex>
+          {FONT_FAMILIES.map((family, f) => (
+            <Flex align="center" key={f}>
+              {renderOption(family, option)}
             </Flex>
-            {FONT_FAMILIES.map((family, f) => (
-              <Flex align="center" key={f}>
-                {renderOption(family, option)}
-              </Flex>
-            ))}
-          </Fragment>
-        ))}
-      </Grid>
-    </>
+          ))}
+        </Fragment>
+      ))}
+    </Grid>
   );
 }

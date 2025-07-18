@@ -48,7 +48,7 @@
     "react-day-picker": "^9.6.7"
   },
   "devDependencies": {
-    "@biomejs/biome": "2.0.4",
+    "@biomejs/biome": "2.1.2",
     "@still-forest/biomejs-config": "2.0.0",
     "@storybook/addon-docs": "^9.0.15",
     "@storybook/addon-themes": "9.0.16",
