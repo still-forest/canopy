@@ -11,7 +11,7 @@ describe("Container", () => {
 
     expect(element.tagName).toBe("DIV");
     expect(element).toBeInTheDocument();
-    expect(element.className).toBe("flex w-full max-w-6xl px-4 py-2 md:px-8 md:py-4 lg:px-12 lg:py-6");
+    expect(element.className).toBe("flex flex-col w-full max-w-6xl px-4 py-2 md:px-8 md:py-4 lg:px-12 lg:py-6");
     expect(element).toHaveTextContent("Content");
   });
 
@@ -36,7 +36,7 @@ describe("Container", () => {
       </Container>,
     );
     const element = screen.getByTestId("container-element");
-    expect(element.className).toBe("flex w-full max-w-6xl md:px-8 md:py-4 lg:px-12 lg:py-6 p-8");
+    expect(element.className).toBe("flex flex-col w-full max-w-6xl md:px-8 md:py-4 lg:px-12 lg:py-6 p-8");
   });
 
   it("renders with custom element type", () => {

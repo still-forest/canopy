@@ -9,7 +9,7 @@ export interface ContainerProps extends FlexProps {
   className?: string;
 }
 
-export const Container = ({ children, className, ...props }: ContainerProps) => {
+export const Container = ({ children, className, direction = "col", ...props }: ContainerProps) => {
   const { display = "flex", ...rest } = props;
 
   const classes = cn("w-full max-w-6xl px-4 py-2 md:px-8 md:py-4 lg:px-12 lg:py-6", className);
@@ -23,7 +23,7 @@ export const Container = ({ children, className, ...props }: ContainerProps) => 
   }
 
   return (
-    <Flex className={classes} {...rest}>
+    <Flex className={classes} direction={direction} {...rest}>
       {children}
     </Flex>
   );
