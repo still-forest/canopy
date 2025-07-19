@@ -12,7 +12,7 @@ import type {
 } from "@/types";
 import { cn } from "@/utils";
 
-interface TextBaseProps {
+export interface TextBaseProps {
   size?: FontSize;
   weight?: FontWeight;
   variant?: TypographyVariant;
