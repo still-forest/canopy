@@ -1,7 +1,7 @@
-import { Text, type TextBaseProps } from "@/typography";
+import { Text, type TextProps } from "@/typography";
 import { cn } from "@/utils";
 
-export const Paragraph = ({ children, className, as = "p", ...props }: TextBaseProps) => {
+export const Paragraph = ({ children, className, as = "p", ...props }: TextProps) => {
   return (
     <Text as={as} className={cn("mb-4", className)} {...props}>
       {children}

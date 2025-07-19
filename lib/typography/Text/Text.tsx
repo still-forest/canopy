@@ -12,7 +12,7 @@ import type {
 } from "@/types";
 import { cn } from "@/utils";
 
-export interface TextBaseProps {
+interface TextBaseProps {
   size?: FontSize;
   weight?: FontWeight;
   variant?: TypographyVariant;
@@ -30,12 +30,12 @@ export interface TextBaseProps {
   as?: TypographyElement;
 }
 
-export type TextProps<E extends React.ElementType = "p"> = TextBaseProps & {
+export type TextProps<E extends React.ElementType = TypographyElement> = TextBaseProps & {
   as?: E;
 } & React.ComponentPropsWithRef<E>;
 
 const Text = React.forwardRef(
-  <E extends React.ElementType = "p">(
+  <E extends React.ElementType = TypographyElement>(
     {
       className,
       as,
