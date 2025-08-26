@@ -1,3 +1,5 @@
+"use client";
+
 import { Computer, Moon, SquareArrowOutUpRight, Sun } from "lucide-react";
 import { Fragment } from "react";
 import {

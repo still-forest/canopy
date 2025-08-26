@@ -1,6 +1,7 @@
 import ThemeProvider from "@src/context/ThemeProvider";
 import { BookType, FolderTree, Home, LayoutDashboard, LogOut, Settings2, Trees } from "lucide-react";
-import { Container, Flex, Footer, SidebarLayout, SidebarTrigger } from "@/layout";
+import { Container, Flex, Footer } from "@/layout";
+import { SidebarLayout, SidebarTrigger } from "@/navigation";
 import { Heading, Text } from "@/typography";
 import { useTheme } from "./context/useTheme";
 

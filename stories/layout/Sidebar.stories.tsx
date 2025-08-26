@@ -1,6 +1,7 @@
 import type { Meta, StoryObj } from "@storybook/react-vite";
 import { BookType, FolderTree, Home, LayoutDashboard, LogOut, Settings2, Trees } from "lucide-react";
-import { Box, Container, Flex, Footer, Sidebar, SidebarLayout, SidebarTrigger, type Theme } from "@/layout";
+import { Box, Container, Flex, Footer } from "@/layout";
+import { Sidebar, SidebarLayout, SidebarTrigger, type Theme } from "@/navigation";
 import { Heading, Text } from "@/typography";
 
 const meta: Meta<typeof Sidebar> = {

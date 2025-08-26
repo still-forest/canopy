@@ -1,4 +1,4 @@
-import { Text, type TextProps } from "@/typography";
+import { Text, type TextProps } from "@/typography/Text";
 
 export const Code = ({ children, ...props }: TextProps) => {
   return (

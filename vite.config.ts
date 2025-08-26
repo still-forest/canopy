@@ -20,7 +20,14 @@ export default defineConfig(
       ],
       build: {
         lib: {
-          entry: resolve(__dirname, "lib/main.ts"),
+          entry: {
+            index: "lib/main.ts",
+            layout: "lib/layout/index.ts",
+            navigation: "lib/navigation/index.ts",
+            forms: "lib/forms/index.ts",
+            interstitials: "lib/interstitials/index.ts",
+            typography: "lib/typography/index.ts",
+          },
           name: "Canopy",
           fileName: "index",
           formats: ["es"],
