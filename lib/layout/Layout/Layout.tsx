@@ -2,7 +2,7 @@ import React from "react";
 import { Flex, type FlexProps, Footer, Header } from "@/layout";
 import { Body } from "@/layout/Layout/Body";
 import { layoutClasses } from "@/layout/style";
-import { cn } from "@/utils";
+import { cn } from "@/utils/cn";
 
 interface LayoutProps extends FlexProps {
   children: React.ReactNode;

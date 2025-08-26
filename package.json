@@ -37,6 +37,11 @@
       "types": "./dist/typography.d.ts",
       "import": "./dist/typography.js",
       "require": "./dist/typography.cjs"
+    },
+    "./utilities": {
+      "types": "./dist/utilities.d.ts",
+      "import": "./dist/utilities.js",
+      "require": "./dist/utilities.cjs"
     }
   },
   "files": [

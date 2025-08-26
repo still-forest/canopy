@@ -1,6 +1,6 @@
 import { Container, Flex, type FlexProps } from "@/layout";
 import { layoutClasses } from "@/layout/style";
-import { cn } from "@/utils";
+import { cn } from "@/utils/cn";
 
 interface BodyProps extends FlexProps {
   withContainer?: boolean;

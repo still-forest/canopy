@@ -1,7 +1,7 @@
 import React from "react";
 
 import type { FlexAlign, FlexDirection, FlexGrow, FlexJustify, FlexWrap, Gap } from "@/types";
-import { cn } from "@/utils";
+import { cn } from "@/utils/cn";
 import { FlexItem } from "./FlexItem";
 
 export interface FlexProps extends React.HTMLAttributes<HTMLDivElement> {

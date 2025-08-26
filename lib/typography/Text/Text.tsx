@@ -10,7 +10,7 @@ import type {
   TypographyElement,
   TypographyVariant,
 } from "@/types";
-import { cn } from "@/utils";
+import { cn } from "@/utils/cn";
 
 interface TextBaseProps {
   size?: FontSize;

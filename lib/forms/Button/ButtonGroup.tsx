@@ -1,6 +1,6 @@
 import type React from "react";
 import { Flex } from "@/layout";
-import { cn } from "@/utils";
+import { cn } from "@/utils/cn";
 import { Button, type ButtonProps } from "./Button";
 
 export interface ButtonGroupProps {

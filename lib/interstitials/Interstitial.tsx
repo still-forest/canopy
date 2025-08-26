@@ -1,7 +1,7 @@
 import type React from "react";
 import { Flex } from "@/layout";
 import { Heading } from "@/typography";
-import { cn } from "@/utils";
+import { cn } from "@/utils/cn";
 
 export interface InterstitialProps {
   variant?: "error" | "info" | "success" | "warning";
