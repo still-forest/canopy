@@ -1,7 +1,7 @@
 import type { ComponentProps } from "react";
 import { Label as BaseLabel } from "@/components/ui/label";
 
-import { cn } from "@/utils/cn";
+import { cn } from "@/utils";
 
 export interface LabelProps extends ComponentProps<"label"> {
   htmlFor?: string;

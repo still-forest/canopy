@@ -9,7 +9,7 @@ import type {
   TextTracking,
   TypographyVariant,
 } from "@/types";
-import { cn } from "@/utils/cn";
+import { cn } from "@/utils";
 
 export interface HeadingProps extends React.HTMLAttributes<HTMLHeadingElement> {
   level?: HeadingSize;

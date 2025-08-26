@@ -1,6 +1,6 @@
 import { Badge as BadgeBase } from "@/components/ui/badge";
 import type { TailwindColor } from "@/types/color";
-import { cn } from "@/utils/cn";
+import { cn } from "@/utils";
 import { badgeColorVariants } from "./colorVariants";
 
 interface BadgeProps {

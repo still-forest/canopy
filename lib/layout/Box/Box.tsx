@@ -1,7 +1,7 @@
 import React from "react";
 
 import type { BoxSizing, Display, Height, LayoutVariant, Overflow, Position, RoundedSize, Size, Width } from "@/types";
-import { cn } from "@/utils/cn";
+import { cn } from "@/utils";
 
 export interface BoxProps extends React.HTMLAttributes<HTMLDivElement> {
   as?: React.ElementType;

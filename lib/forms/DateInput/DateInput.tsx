@@ -1,5 +1,5 @@
 import { TextInput, type TextInputProps } from "@/forms";
-import { cn } from "@/utils/cn";
+import { cn } from "@/utils";
 
 interface DateInputProps extends Omit<TextInputProps, "type"> {}
 

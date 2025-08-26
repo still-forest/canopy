@@ -1,5 +1,5 @@
 import { Text, type TextProps } from "@/typography";
-import { cn } from "@/utils/cn";
+import { cn } from "@/utils";
 
 export const Paragraph = ({ children, className, as = "p", ...props }: TextProps) => {
   return (

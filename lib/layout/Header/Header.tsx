@@ -1,5 +1,5 @@
 import { Container, type ContainerProps } from "@/layout";
-import { cn } from "@/utils/cn";
+import { cn } from "@/utils";
 
 interface HeaderProps extends ContainerProps {
   children: React.ReactNode;

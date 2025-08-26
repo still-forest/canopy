@@ -1,4 +1,4 @@
-import { cn } from "@/utils/cn";
+import { cn } from "@/utils";
 
 type FlexType = "1" | "auto" | "initial" | "none";
 

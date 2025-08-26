@@ -1,5 +1,5 @@
 import { Tooltip as BaseTooltip, TooltipContent, TooltipProvider, TooltipTrigger } from "@/components/ui/tooltip";
-import { cn } from "@/utils/cn";
+import { cn } from "@/utils";
 
 interface TooltipProps {
   children: React.ReactNode;

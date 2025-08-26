@@ -1,5 +1,5 @@
 import { Box, Flex, type FlexProps } from "@/layout";
-import { cn } from "@/utils/cn";
+import { cn } from "@/utils";
 
 type Display = "block" | "flex";
 

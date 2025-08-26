@@ -1,6 +1,6 @@
 import { Separator as BaseSeparator } from "@/components/ui/separator";
 import type { Gap } from "@/types";
-import { cn } from "@/utils/cn";
+import { cn } from "@/utils";
 
 interface SeparatorProps extends React.HTMLAttributes<HTMLDivElement> {
   orientation?: "horizontal" | "vertical";
