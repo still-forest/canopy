@@ -4,4 +4,4 @@ export * from "./interstitials";
 export * from "./layout";
 export * from "./navigation";
 export * from "./typography";
-export * from "./utils/cn";
+export * from "./utils";
