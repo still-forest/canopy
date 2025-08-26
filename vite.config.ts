@@ -27,6 +27,7 @@ export default defineConfig(
             forms: "lib/forms/index.ts",
             interstitials: "lib/interstitials/index.ts",
             typography: "lib/typography/index.ts",
+            utilities: "lib/utils/index.ts",
           },
           name: "Canopy",
           fileName: "index",
