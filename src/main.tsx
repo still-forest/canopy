@@ -6,7 +6,8 @@ import "./index.css";
 
 import App from "./App.tsx";
 import ThemeProvider from "./context/ThemeProvider.tsx";
-import SidebarApp from "./SidebarApp.tsx";
+import LayoutApp from "./LayoutApp.tsx";
+import SidebarLayoutApp from "./SidebarLayoutApp.tsx";
 
 createRoot(document.getElementById("root")!).render(
   <StrictMode>
@@ -14,7 +15,8 @@ createRoot(document.getElementById("root")!).render(
       <BrowserRouter>
         <Routes>
           <Route element={<App />} path="/" />
-          <Route element={<SidebarApp />} path="/sidebar" />
+          <Route element={<LayoutApp />} path="/layout" />
+          <Route element={<SidebarLayoutApp />} path="/sidebar" />
         </Routes>
       </BrowserRouter>
     </ThemeProvider>

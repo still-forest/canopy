@@ -1,21 +1,12 @@
-import { BookType, FolderTree, Home, LayoutDashboard, LogOut, Settings2, Trees } from "lucide-react";
+import { BookType, FolderTree, Home, LayoutDashboard, LogOut, Settings2 } from "lucide-react";
 import { Link } from "react-router";
 import { Button } from "@/forms";
-import { Container, Flex, Footer } from "@/layout";
+import { Container, Footer } from "@/layout";
 import { SidebarLayout, SidebarTrigger } from "@/navigation";
-import { Heading, Text } from "@/typography";
+import { Heading } from "@/typography";
+import { Brand } from "./components/Brand";
+import { FooterContent } from "./components/FooterContent";
 import { useTheme } from "./context/useTheme";
-
-const BrandContent = () => (
-  <>
-    <Flex align="center" className="aspect-square size-8 rounded-lg bg-info text-sidebar" justify="center">
-      <Trees className="size-6" />
-    </Flex>
-    <Heading className="ml-2" level="3">
-      Canopy
-    </Heading>
-  </>
-);
 
 const itemSet1 = [
   {
@@ -75,14 +66,14 @@ const itemSet3 = [
   },
 ];
 
-export default function SidebarApp() {
+export default function App() {
   const { theme, setTheme } = useTheme();
 
   return (
     <SidebarLayout
       activeSlug="summary"
       bottomItemSets={[{ links: itemSet3 }]}
-      brandContent={<BrandContent />}
+      brandContent={<Brand />}
       brandOnClick={() => {
         window.alert("brand");
       }}
@@ -104,9 +95,7 @@ export default function SidebarApp() {
         </Button>
       </Container>
       <Footer>
-        <Text size="sm" variant="muted">
-          © 2025 Still Forest LLC.
-        </Text>
+        <FooterContent />
       </Footer>
     </SidebarLayout>
   );

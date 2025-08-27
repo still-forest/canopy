@@ -25,6 +25,7 @@ export interface ButtonProps extends React.ComponentProps<"button"> {
   className?: string;
   type?: "button" | "submit" | "reset";
   fit?: boolean;
+  full?: boolean;
   asChild?: boolean;
 }
 
@@ -38,6 +39,7 @@ export const Button = ({
   className = "",
   type = "button",
   asChild = false,
+  full = false,
   fit = false,
   ...rest
 }: ButtonProps) => {
@@ -66,7 +68,7 @@ export const Button = ({
   return (
     <BaseButton
       asChild={asChild}
-      className={cn(className, fit && "w-fit")}
+      className={cn(className, fit && "w-fit", full && "w-full")}
       disabled={disabled}
       onClick={onClick}
       size={getBaseSize()}

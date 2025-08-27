@@ -188,6 +188,13 @@ export const Fit: Story = {
   },
 };
 
+export const Full: Story = {
+  args: {
+    ...defaultProps,
+    full: true,
+  },
+};
+
 export const FlexContainerDefault: Story = {
   args: {
     ...defaultProps,
@@ -205,6 +212,20 @@ export const FlexContainerFit: Story = {
   args: {
     ...defaultProps,
     fit: true,
+  },
+  decorators: [
+    (Story) => (
+      <Flex className="w-full" direction="col" gap="4">
+        <Story />
+      </Flex>
+    ),
+  ],
+};
+
+export const FlexContainerFull: Story = {
+  args: {
+    ...defaultProps,
+    full: true,
   },
   decorators: [
     (Story) => (
