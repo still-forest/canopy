@@ -55,3 +55,9 @@ pnpm build --watch
 ```bash
 pnpm add ~/Devolment/canopy
 ```
+
+**Alternatively**, directly copy the built version periodically:
+
+```bash
+cp -r ~/Development/canopy/dist ./node_modules/@still-forest/canopy/dist
+```
