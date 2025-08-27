@@ -1,12 +1,15 @@
 import { useState } from "react";
 import { Link } from "react-router";
+import { ThemeSelector } from "@/components/ThemeSelector/ThemeSelector";
 import { Button } from "@/forms";
 import { Container, Layout } from "@/layout";
 import { cn } from "@/utils";
 import { Brand } from "./components/Brand";
 import { FooterContent } from "./components/FooterContent";
+import { useTheme } from "./context/useTheme";
 
 export default function App() {
+  const { theme, setTheme } = useTheme();
   const [showDimensions, setShowDimensions] = useState(true);
 
   return (
@@ -27,7 +30,9 @@ export default function App() {
         </Container>
       </Layout.Body>
       <Layout.Footer className={cn(showDimensions && "bg-green-500/10 inset-shadow-sm inset-shadow-green-500")}>
-        <FooterContent />
+        <FooterContent>
+          <ThemeSelector setTheme={setTheme} theme={theme} />
+        </FooterContent>
       </Layout.Footer>
     </Layout>
   );

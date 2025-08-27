@@ -3,8 +3,8 @@ import { Button as BaseButton } from "@/components/ui/button";
 import { Flex } from "@/layout";
 import { cn } from "@/utils";
 
-export type BaseButtonVariant = "default" | "secondary" | "destructive" | "outline" | "ghost" | "link";
-export type BaseButtonSize = "default" | "sm" | "lg" | "icon";
+export type BaseButtonVariant = "default" | "secondary" | "destructive" | "outline" | "ghost" | "link" | "unstyled";
+export type BaseButtonSize = "default" | "sm" | "lg" | "icon" | "unstyled";
 
 export interface ButtonProps extends React.ComponentProps<"button"> {
   children?: React.ReactNode;
@@ -17,6 +17,7 @@ export interface ButtonProps extends React.ComponentProps<"button"> {
     | "outline"
     | "ghost"
     | "link"
+    | "unstyled"
     // deprecated
     | "subtle";
   size?: "default" | "xs" | "sm" | "md" | "lg";
@@ -62,13 +63,17 @@ export const Button = ({
       return "sm";
     }
 
+    if (variant === "unstyled") {
+      return "unstyled";
+    }
+
     return size;
   };
 
   return (
     <BaseButton
       asChild={asChild}
-      className={cn(className, fit && "w-fit", full && "w-full")}
+      className={cn(className, fit && "w-fit", full && "w-full", variant === "unstyled" && "justify-start")}
       disabled={disabled}
       onClick={onClick}
       size={getBaseSize()}
