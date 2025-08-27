@@ -14,17 +14,8 @@ export default meta;
 
 type Story = StoryObj<typeof meta>;
 
-let theme: Theme = "system";
-
-const defaultArgs: ThemeSelectorProps = {
-  theme,
-  setTheme: (prospectiveTheme: Theme) => {
-    theme = prospectiveTheme;
-  },
-};
-
-const DecoratedThemeSelector = (props: ThemeSelectorProps) => {
-  const [theme, setTheme] = useState<Theme>(props.theme);
+const DecoratedThemeSelector = (props: Partial<ThemeSelectorProps>) => {
+  const [theme, setTheme] = useState<Theme>("system");
 
   return (
     <Box className="w-48">
@@ -34,23 +25,19 @@ const DecoratedThemeSelector = (props: ThemeSelectorProps) => {
 };
 
 export const Default: Story = {
-  render: () => <DecoratedThemeSelector {...defaultArgs} />,
+  render: () => <DecoratedThemeSelector />,
 };
 
 export const Horizontal: Story = {
-  render: () => <DecoratedThemeSelector {...defaultArgs} variant="horizontal" />,
+  render: () => <DecoratedThemeSelector variant="horizontal" />,
 };
 
 export const Stacked: Story = {
-  render: () => <DecoratedThemeSelector {...defaultArgs} variant="stacked" />,
+  render: () => <DecoratedThemeSelector variant="stacked" />,
 };
 
 export const StackedWithButtonStyle: Story = {
   render: () => (
-    <DecoratedThemeSelector
-      {...defaultArgs}
-      buttonClassName="bg-purple-100 hover:bg-purple-200 px-6 w-45"
-      variant="stacked"
-    />
+    <DecoratedThemeSelector buttonClassName="bg-purple-100 hover:bg-purple-200 px-6 w-45" variant="stacked" />
   ),
 };
