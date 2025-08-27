@@ -1,9 +1,11 @@
 import { BookType, FolderTree, Home, LayoutDashboard, LogOut, Settings2 } from "lucide-react";
+import { useState } from "react";
 import { Link } from "react-router";
 import { Button } from "@/forms";
-import { Container, Footer } from "@/layout";
+import { Container, Flex, Footer } from "@/layout";
 import { SidebarLayout, SidebarTrigger } from "@/navigation";
 import { Heading } from "@/typography";
+import { cn } from "@/utils";
 import { Brand } from "./components/Brand";
 import { FooterContent } from "./components/FooterContent";
 import { useTheme } from "./context/useTheme";
@@ -68,6 +70,7 @@ const itemSet3 = [
 
 export default function App() {
   const { theme, setTheme } = useTheme();
+  const [showDimensions, setShowDimensions] = useState(true);
 
   return (
     <SidebarLayout
@@ -81,20 +84,25 @@ export default function App() {
       setTheme={setTheme}
       theme={theme}
     >
-      <Container className="border-b">
+      <Container className={cn(showDimensions && "bg-red-500/5 inset-shadow-sm inset-shadow-red-500", "border-b")}>
         <SidebarTrigger />
       </Container>
-      <Container>
+      <Container className={cn(showDimensions && "bg-yellow-500/5 inset-shadow-sm inset-shadow-yellow-500")}>
         <Heading className="mt-4" level="1">
           Canopy
         </Heading>
       </Container>
-      <Container>
-        <Button asChild fit>
-          <Link to="/">Home</Link>
-        </Button>
+      <Container className={cn(showDimensions && "bg-green-500/5 inset-shadow-sm inset-shadow-green-500")}>
+        <Flex direction="col" gap="8">
+          <Button asChild fit>
+            <Link to="/">Home</Link>
+          </Button>
+          <Button fit onClick={() => setShowDimensions(!showDimensions)} variant="outline">
+            {showDimensions ? "Hide " : "Show "} dimensions
+          </Button>
+        </Flex>
       </Container>
-      <Footer>
+      <Footer className={cn(showDimensions && "bg-blue-500/10 inset-shadow-sm inset-shadow-blue-500")}>
         <FooterContent />
       </Footer>
     </SidebarLayout>
