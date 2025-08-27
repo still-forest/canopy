@@ -1,5 +1,4 @@
 import { Container, Flex, type FlexProps } from "@/layout";
-import { layoutClasses } from "@/layout/style";
 import { cn } from "@/utils";
 
 interface BodyProps extends FlexProps {
@@ -7,7 +6,7 @@ interface BodyProps extends FlexProps {
 }
 
 export const Body = ({ children, className, withContainer = false, ...props }: BodyProps) => {
-  const classes = cn("flex-1 grow", layoutClasses, className);
+  const classes = cn("flex-1 grow", className);
 
   if (withContainer) {
     return (
