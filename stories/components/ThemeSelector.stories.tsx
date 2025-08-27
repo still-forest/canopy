@@ -1,5 +1,7 @@
 import type { Meta, StoryObj } from "@storybook/react-vite";
+import { useState } from "react";
 import { type Theme, ThemeSelector, type ThemeSelectorProps } from "@/components";
+import { Box } from "@/layout";
 
 const meta: Meta<typeof ThemeSelector> = {
   title: "Components/ThemeSelector",
@@ -11,21 +13,33 @@ export default meta;
 
 type Story = StoryObj<typeof meta>;
 
+let theme: Theme = "system";
+
 const defaultArgs: ThemeSelectorProps = {
-  theme: "system",
-  setTheme: (prospectTheme: Theme) => {
-    window.alert(`Setting theme to ${prospectTheme}`);
+  theme,
+  setTheme: (prospectiveTheme: Theme) => {
+    theme = prospectiveTheme;
   },
 };
 
+const DecoratedThemeSelector = (props: ThemeSelectorProps) => {
+  const [theme, setTheme] = useState<Theme>(props.theme);
+
+  return (
+    <Box className="w-48">
+      <ThemeSelector {...props} setTheme={setTheme} theme={theme} />
+    </Box>
+  );
+};
+
 export const Default: Story = {
-  render: () => <ThemeSelector {...defaultArgs} />,
+  render: () => <DecoratedThemeSelector {...defaultArgs} />,
 };
 
 export const Horizontal: Story = {
-  render: () => <ThemeSelector {...defaultArgs} variant="horizontal" />,
+  render: () => <DecoratedThemeSelector {...defaultArgs} variant="horizontal" />,
 };
 
 export const Stacked: Story = {
-  render: () => <ThemeSelector {...defaultArgs} variant="stacked" />,
+  render: () => <DecoratedThemeSelector {...defaultArgs} variant="stacked" />,
 };
