@@ -177,7 +177,7 @@ export const Sidebar = ({
           </SidebarMenuItem>
           <SidebarMenuItem>
             <SidebarMenuButton asChild>
-              <ThemeSelector setTheme={setTheme} theme={theme} variant="stacked" />
+              <ThemeSelector buttonClassName="p-0" setTheme={setTheme} theme={theme} variant="stacked" />
             </SidebarMenuButton>
           </SidebarMenuItem>
           {bottomItemSets.length > 0 && (

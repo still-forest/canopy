@@ -3,6 +3,7 @@ import { Tooltip } from "@/components";
 import { Button } from "@/forms";
 import { Flex } from "@/layout";
 import { Text } from "@/typography";
+import { cn } from "@/utils";
 
 export type Theme = "system" | "light" | "dark";
 
@@ -11,6 +12,7 @@ export interface ThemeSelectorProps {
   theme: Theme;
   setTheme: (theme: Theme) => void;
   className?: string;
+  buttonClassName?: string;
 }
 
 const StackedThemes = [
@@ -31,32 +33,48 @@ const StackedThemes = [
   },
 ];
 
-const StackedThemeSelector = ({ theme, setTheme, className }: ThemeSelectorProps) => {
+const StackedThemeSelector = ({ theme, setTheme, className, buttonClassName, ...props }: ThemeSelectorProps) => {
   const toggleTheme = () => {
     const nextTheme = theme === "light" ? "dark" : theme === "dark" ? "system" : "light";
     setTheme(nextTheme);
   };
   const icon = StackedThemes.find((t) => t.theme === theme)?.icon;
   const label = StackedThemes.find((t) => t.theme === theme)?.label;
-  console.log(className);
 
   return (
-    <Button className={className} onClick={toggleTheme} variant="unstyled">
-      {icon}
-      <Text size="base" truncate>
-        {label}
-      </Text>
-    </Button>
+    <span className={cn(className)} {...props}>
+      <Button className={cn("p-1", buttonClassName)} onClick={toggleTheme} variant="unstyled">
+        {icon}
+        <Text size="base" truncate>
+          {label}
+        </Text>
+      </Button>
+    </span>
   );
 };
 
-export const ThemeSelector = ({ variant = "horizontal", theme, setTheme, className }: ThemeSelectorProps) => {
+export const ThemeSelector = ({
+  variant = "horizontal",
+  theme,
+  setTheme,
+  className,
+  buttonClassName,
+  ...props
+}: ThemeSelectorProps) => {
   const getClassName = (prospectiveTheme: Theme) => {
     return theme === prospectiveTheme ? "text-primary/75" : "text-primary/25 hover:text-primary";
   };
 
   if (variant === "stacked") {
-    return <StackedThemeSelector className={className} setTheme={setTheme} theme={theme} />;
+    return (
+      <StackedThemeSelector
+        buttonClassName={buttonClassName}
+        className={className}
+        setTheme={setTheme}
+        theme={theme}
+        {...props}
+      />
+    );
   }
 
   return (

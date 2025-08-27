@@ -43,3 +43,13 @@ export const Horizontal: Story = {
 export const Stacked: Story = {
   render: () => <DecoratedThemeSelector {...defaultArgs} variant="stacked" />,
 };
+
+export const StackedWithButtonStyle: Story = {
+  render: () => (
+    <DecoratedThemeSelector
+      {...defaultArgs}
+      buttonClassName="bg-purple-100 hover:bg-purple-200 px-6 w-45"
+      variant="stacked"
+    />
+  ),
+};
