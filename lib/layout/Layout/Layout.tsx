@@ -10,7 +10,7 @@ interface LayoutProps extends FlexProps {
 const LayoutComponent = React.forwardRef<HTMLDivElement, LayoutProps>(({ children, className, ...props }, ref) => {
   return (
     <Flex
-      className={cn("mx-auto w-full max-w-screen-lg h-screen flex-1", className)}
+      className={cn("mx-auto w-full max-w-screen-xl h-screen flex-1", className)}
       direction="col"
       ref={ref}
       {...props}

@@ -12,7 +12,7 @@ export const SidebarLayout = ({ children, ...props }: Props) => {
   return (
     <SidebarProvider>
       <Sidebar {...props} />
-      <SidebarInset className="max-w-screen-lg">{children}</SidebarInset>
+      <SidebarInset className="max-w-screen-xl">{children}</SidebarInset>
     </SidebarProvider>
   );
 };
