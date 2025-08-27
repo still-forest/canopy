@@ -2,10 +2,9 @@ import { Computer, MonitorCog, Moon, Sun } from "lucide-react";
 import { Tooltip } from "@/components";
 import { Button } from "@/forms";
 import { Flex } from "@/layout";
+import type { Theme } from "@/types";
 import { Text } from "@/typography";
 import { cn } from "@/utils";
-
-export type Theme = "system" | "light" | "dark";
 
 export interface ThemeSelectorProps {
   variant?: "horizontal" | "stacked";

@@ -1,7 +1,8 @@
 import type { Meta, StoryObj } from "@storybook/react-vite";
 import { useState } from "react";
-import { type Theme, ThemeSelector, type ThemeSelectorProps } from "@/components";
+import { ThemeSelector, type ThemeSelectorProps } from "@/components";
 import { Box } from "@/layout";
+import type { Theme } from "@/types";
 
 const meta: Meta<typeof ThemeSelector> = {
   title: "Components/ThemeSelector",

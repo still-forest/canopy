@@ -2,7 +2,7 @@
 
 import { SquareArrowOutUpRight } from "lucide-react";
 import { Fragment } from "react";
-import { type Theme, ThemeSelector } from "@/components/ThemeSelector/ThemeSelector";
+import { ThemeSelector } from "@/components/ThemeSelector/ThemeSelector";
 import {
   Sidebar as BaseSidebar,
   SidebarContent,
@@ -18,6 +18,7 @@ import {
   SidebarTrigger,
 } from "@/components/ui/sidebar";
 import { Flex } from "@/layout";
+import type { Theme } from "@/types";
 import { Text } from "@/typography";
 
 interface SideLink {
