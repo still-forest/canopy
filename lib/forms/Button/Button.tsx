@@ -17,6 +17,7 @@ export interface ButtonProps extends React.ComponentProps<"button"> {
     | "outline"
     | "ghost"
     | "link"
+    | "unstyled"
     // deprecated
     | "subtle";
   size?: "default" | "xs" | "sm" | "md" | "lg";

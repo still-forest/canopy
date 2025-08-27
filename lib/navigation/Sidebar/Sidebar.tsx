@@ -16,7 +16,7 @@ import {
   SidebarSeparator,
   SidebarTrigger,
 } from "@/components/ui/sidebar";
-import { Flex } from "@/main";
+import { Flex, ThemeSelector } from "@/main";
 import { Text } from "@/typography";
 
 export type Theme = "light" | "dark" | "system";
@@ -174,6 +174,11 @@ export const Sidebar = ({
           </SidebarMenuItem>
           <SidebarMenuItem>
             <ThemeSelection setTheme={setTheme} theme={theme} />
+          </SidebarMenuItem>
+          <SidebarMenuItem>
+            <SidebarMenuButton asChild>
+              <ThemeSelector setTheme={setTheme} theme={theme} variant="stacked" />
+            </SidebarMenuButton>
           </SidebarMenuItem>
           {bottomItemSets.length > 0 && (
             <>

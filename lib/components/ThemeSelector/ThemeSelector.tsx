@@ -2,7 +2,7 @@ import { Computer, MonitorCog, Moon, Sun } from "lucide-react";
 import { Tooltip } from "@/components";
 import { Button } from "@/forms";
 import { Flex } from "@/layout";
-import { cn } from "@/utils";
+import { Text } from "@/typography";
 
 export type Theme = "system" | "light" | "dark";
 
@@ -10,6 +10,7 @@ export interface ThemeSelectorProps {
   variant?: "horizontal" | "stacked";
   theme: Theme;
   setTheme: (theme: Theme) => void;
+  className?: string;
 }
 
 const StackedThemes = [
@@ -30,36 +31,32 @@ const StackedThemes = [
   },
 ];
 
-const StackedThemeSelector = ({ theme, setTheme }: ThemeSelectorProps) => {
+const StackedThemeSelector = ({ theme, setTheme, className }: ThemeSelectorProps) => {
   const toggleTheme = () => {
     const nextTheme = theme === "light" ? "dark" : theme === "dark" ? "system" : "light";
     setTheme(nextTheme);
   };
+  const icon = StackedThemes.find((t) => t.theme === theme)?.icon;
+  const label = StackedThemes.find((t) => t.theme === theme)?.label;
+  console.log(className);
 
   return (
-    <Flex gap="4">
-      {StackedThemes.map((t) => (
-        <Button
-          className={cn("hidden", t.theme === theme && "block")}
-          icon={t.icon}
-          key={t.theme}
-          onClick={toggleTheme}
-          variant="ghost"
-        >
-          {t.label}
-        </Button>
-      ))}
-    </Flex>
+    <Button className={className} onClick={toggleTheme} variant="unstyled">
+      {icon}
+      <Text size="base" truncate>
+        {label}
+      </Text>
+    </Button>
   );
 };
 
-export const ThemeSelector = ({ variant = "horizontal", theme, setTheme }: ThemeSelectorProps) => {
+export const ThemeSelector = ({ variant = "horizontal", theme, setTheme, className }: ThemeSelectorProps) => {
   const getClassName = (prospectiveTheme: Theme) => {
     return theme === prospectiveTheme ? "text-primary/75" : "text-primary/25 hover:text-primary";
   };
 
   if (variant === "stacked") {
-    return <StackedThemeSelector setTheme={setTheme} theme={theme} />;
+    return <StackedThemeSelector className={className} setTheme={setTheme} theme={theme} />;
   }
 
   return (
