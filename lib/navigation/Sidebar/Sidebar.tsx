@@ -1,7 +1,8 @@
 "use client";
 
-import { Computer, Moon, SquareArrowOutUpRight, Sun } from "lucide-react";
+import { SquareArrowOutUpRight } from "lucide-react";
 import { Fragment } from "react";
+import { type Theme, ThemeSelector } from "@/components/ThemeSelector/ThemeSelector";
 import {
   Sidebar as BaseSidebar,
   SidebarContent,
@@ -16,10 +17,8 @@ import {
   SidebarSeparator,
   SidebarTrigger,
 } from "@/components/ui/sidebar";
-import { Flex, ThemeSelector } from "@/main";
+import { Flex } from "@/layout";
 import { Text } from "@/typography";
-
-export type Theme = "light" | "dark" | "system";
 
 interface SideLink {
   slug: string;
@@ -96,41 +95,6 @@ const MenuSection = ({ itemSets, activeSlug }: MenuSectionProps) => {
   );
 };
 
-// TODO: This doesn't support selecting system theme
-const ThemeSelection = ({ theme, setTheme }: { theme: Theme; setTheme: (theme: Theme) => void }) => {
-  return (
-    <SidebarMenuButton
-      asChild
-      className="cursor-pointer"
-      onClick={() => {
-        const newTheme = theme === "light" ? "dark" : "light";
-        setTheme(newTheme);
-      }}
-    >
-      <span>
-        {theme === "light" && (
-          <>
-            <Moon />
-            <MenuItemText>Dark mode</MenuItemText>
-          </>
-        )}
-        {theme === "dark" && (
-          <>
-            <Sun />
-            <MenuItemText>Light mode</MenuItemText>
-          </>
-        )}
-        {theme === "system" && (
-          <>
-            <Computer />
-            <MenuItemText>System theme</MenuItemText>
-          </>
-        )}
-      </span>
-    </SidebarMenuButton>
-  );
-};
-
 export const Sidebar = ({
   brandContent,
   brandOnClick,
@@ -171,9 +135,6 @@ export const Sidebar = ({
                 <MenuItemText>Collapse menu</MenuItemText>
               </SidebarTrigger>
             </SidebarMenuButton>
-          </SidebarMenuItem>
-          <SidebarMenuItem>
-            <ThemeSelection setTheme={setTheme} theme={theme} />
           </SidebarMenuItem>
           <SidebarMenuItem>
             <SidebarMenuButton asChild>
