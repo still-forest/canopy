@@ -22,6 +22,7 @@ export default defineConfig(
         lib: {
           entry: {
             index: "lib/main.ts",
+            next: "lib/next.ts",
             layout: "lib/layout/index.ts",
             navigation: "lib/navigation/index.ts",
             forms: "lib/forms/index.ts",
