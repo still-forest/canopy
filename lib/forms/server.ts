@@ -7,5 +7,4 @@ export * from "./InputGroup";
 export * from "./Label";
 export * from "./NumberInput";
 export * from "./RadioSelect";
-export * from "./SelectInput";
 export * from "./TextInput";

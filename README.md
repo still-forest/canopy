@@ -41,3 +41,23 @@ Example `index.css`:
   /* your usual CSS definitions */
 }
 ```
+
+## Testing locally
+
+1. In this package, run build in watch mode:
+
+```bash
+pnpm build --watch
+```
+
+2. In the consuming package, point package.json to the locally built version:
+
+```bash
+pnpm add ~/Devolment/canopy
+```
+
+**Alternatively**, directly copy the built version periodically:
+
+```bash
+cp -r ~/Development/canopy/dist ./node_modules/@still-forest/canopy/dist
+```
