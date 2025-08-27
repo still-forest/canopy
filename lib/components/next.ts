@@ -5,7 +5,6 @@ export * from "./Breadcrumbs";
 export * from "./Cards";
 export * from "./Modal";
 export * from "./Pagination";
-export * from "./Popover";
 export * from "./Separator";
 export * from "./Skeleton";
 export * from "./Table";
