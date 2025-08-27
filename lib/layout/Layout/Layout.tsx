@@ -1,7 +1,6 @@
 import React from "react";
 import { Flex, type FlexProps, Footer, Header } from "@/layout";
 import { Body } from "@/layout/Layout/Body";
-import { layoutClasses } from "@/layout/style";
 import { cn } from "@/utils";
 
 interface LayoutProps extends FlexProps {
@@ -10,7 +9,12 @@ interface LayoutProps extends FlexProps {
 
 const LayoutComponent = React.forwardRef<HTMLDivElement, LayoutProps>(({ children, className, ...props }, ref) => {
   return (
-    <Flex className={cn(layoutClasses, "h-screen flex-1", className)} direction="col" ref={ref} {...props}>
+    <Flex
+      className={cn("mx-auto w-full max-w-screen-xl h-screen flex-1", className)}
+      direction="col"
+      ref={ref}
+      {...props}
+    >
       {children}
     </Flex>
   );
