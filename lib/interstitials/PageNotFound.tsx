@@ -1,7 +1,7 @@
 import { FileQuestion, Home } from "lucide-react";
 
-import { Button } from "@/forms";
-import { Flex } from "@/layout";
+import { Button } from "@/forms/Button";
+import { Flex } from "@/layout/Flex";
 
 import { Interstitial } from "./Interstitial";
 

@@ -10,38 +10,35 @@
   "exports": {
     ".": {
       "types": "./dist/index.d.ts",
-      "import": "./dist/index.js",
-      "require": "./dist/index.cjs"
+      "import": "./dist/index.js"
+    },
+    "./next": {
+      "types": "./dist/next.d.ts",
+      "import": "./dist/next.js"
     },
     "./layout": {
       "types": "./dist/layout.d.ts",
-      "import": "./dist/layout.js",
-      "require": "./dist/layout.cjs"
+      "import": "./dist/layout.js"
     },
     "./navigation": {
       "types": "./dist/navigation.d.ts",
-      "import": "./dist/navigation.js",
-      "require": "./dist/navigation.cjs"
+      "import": "./dist/navigation.js"
     },
     "./forms": {
       "types": "./dist/forms.d.ts",
-      "import": "./dist/forms.js",
-      "require": "./dist/forms.cjs"
+      "import": "./dist/forms.js"
     },
     "./interstitials": {
       "types": "./dist/interstitials.d.ts",
-      "import": "./dist/interstitials.js",
-      "require": "./dist/interstitials.cjs"
+      "import": "./dist/interstitials.js"
     },
     "./typography": {
       "types": "./dist/typography.d.ts",
-      "import": "./dist/typography.js",
-      "require": "./dist/typography.cjs"
+      "import": "./dist/typography.js"
     },
     "./utilities": {
       "types": "./dist/utilities.d.ts",
-      "import": "./dist/utilities.js",
-      "require": "./dist/utilities.cjs"
+      "import": "./dist/utilities.js"
     }
   },
   "files": [
