@@ -22,7 +22,7 @@ export default defineConfig(
         lib: {
           entry: {
             index: "lib/main.ts",
-            next: "lib/next.ts",
+            server: "lib/server.ts",
             layout: "lib/layout/index.ts",
             navigation: "lib/navigation/index.ts",
             forms: "lib/forms/index.ts",
@@ -38,8 +38,10 @@ export default defineConfig(
           output: {
             entryFileNames: "[name].js",
             chunkFileNames: "[name].js",
+            dir: "dist",
+            preserveModules: true,
+            preserveModulesRoot: "lib",
           },
-          external: ["react", "react-dom", "tailwindcss"],
         },
         minify: true,
         sourcemap: false,
@@ -69,9 +71,9 @@ export default defineConfig(
             "lib/types/*",
             "lib/components/ui/*",
             "lib/main.ts",
-            "lib/next.ts",
+            "lib/server.ts",
             "lib/**/index.ts",
-            "lib/**/next.ts",
+            "lib/**/server.ts",
           ],
           reporter: ["text", "json", "html", "lcov"], // lcov is needed for Codecov
         },
