@@ -2,11 +2,19 @@ import type { Meta, StoryObj } from "@storybook/react-vite";
 import { Armchair as SampleIcon } from "lucide-react";
 
 import { Button } from "@/forms";
+import { Flex } from "@/layout";
 
 const meta: Meta<typeof Button> = {
   title: "Forms/Buttons/Default",
   component: Button,
   tags: ["autodocs"],
+  decorators: [
+    (Story) => (
+      <div className="min-w-48">
+        <Story />
+      </div>
+    ),
+  ],
 } satisfies Meta<typeof Button>;
 
 export default meta;
@@ -171,4 +179,59 @@ export const NoTextGhost: Story = {
     children: <SampleIcon />,
     variant: "ghost",
   },
+};
+
+export const Fit: Story = {
+  args: {
+    ...defaultProps,
+    fit: true,
+  },
+};
+
+export const Full: Story = {
+  args: {
+    ...defaultProps,
+    full: true,
+  },
+};
+
+export const FlexContainerDefault: Story = {
+  args: {
+    ...defaultProps,
+  },
+  decorators: [
+    (Story) => (
+      <Flex className="w-full" direction="col" gap="4">
+        <Story />
+      </Flex>
+    ),
+  ],
+};
+
+export const FlexContainerFit: Story = {
+  args: {
+    ...defaultProps,
+    fit: true,
+  },
+  decorators: [
+    (Story) => (
+      <Flex className="w-full" direction="col" gap="4">
+        <Story />
+      </Flex>
+    ),
+  ],
+};
+
+export const FlexContainerFull: Story = {
+  args: {
+    ...defaultProps,
+    full: true,
+  },
+  decorators: [
+    (Story) => (
+      <Flex className="w-full" direction="col" gap="4">
+        <Story />
+      </Flex>
+    ),
+  ],
 };

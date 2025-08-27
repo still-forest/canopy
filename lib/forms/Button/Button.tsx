@@ -1,6 +1,7 @@
 import type React from "react";
 import { Button as BaseButton } from "@/components/ui/button";
 import { Flex } from "@/layout";
+import { cn } from "@/utils";
 
 export type BaseButtonVariant = "default" | "secondary" | "destructive" | "outline" | "ghost" | "link";
 export type BaseButtonSize = "default" | "sm" | "lg" | "icon";
@@ -23,6 +24,8 @@ export interface ButtonProps extends React.ComponentProps<"button"> {
   disabled?: boolean;
   className?: string;
   type?: "button" | "submit" | "reset";
+  fit?: boolean;
+  full?: boolean;
   asChild?: boolean;
 }
 
@@ -36,6 +39,8 @@ export const Button = ({
   className = "",
   type = "button",
   asChild = false,
+  full = false,
+  fit = false,
   ...rest
 }: ButtonProps) => {
   const getBaseVariant = (): BaseButtonVariant => {
@@ -63,7 +68,7 @@ export const Button = ({
   return (
     <BaseButton
       asChild={asChild}
-      className={className}
+      className={cn(className, fit && "w-fit", full && "w-full")}
       disabled={disabled}
       onClick={onClick}
       size={getBaseSize()}
