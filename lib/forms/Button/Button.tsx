@@ -83,8 +83,8 @@ export const Button = ({
     >
       {icon && children ? (
         <Flex align="center" gap="2">
-          {icon}
-          {children}
+          <span key="icon">{icon}</span>
+          <span key="children">{children}</span>
         </Flex>
       ) : (
         icon || children
