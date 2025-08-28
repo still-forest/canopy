@@ -10,10 +10,10 @@ export interface SubmitButtonProps extends ButtonProps {
 }
 
 const BUTTON_TEXT_MAP = {
-  default: { label: "Submit", submittingLabel: "Submitting", icon: <Send /> },
-  submit: { label: "Submit", submittingLabel: "Submitting", icon: <Send /> },
-  save: { label: "Save", submittingLabel: "Saving", icon: <Save /> },
-  send: { label: "Send", submittingLabel: "Sending", icon: <Send /> },
+  default: { label: "Submit", submittingLabel: "Submitting", IconComponent: Send },
+  submit: { label: "Submit", submittingLabel: "Submitting", IconComponent: Send },
+  save: { label: "Save", submittingLabel: "Saving", IconComponent: Save },
+  send: { label: "Send", submittingLabel: "Sending", IconComponent: Send },
 };
 
 const SubmitButton = ({
@@ -30,9 +30,9 @@ const SubmitButton = ({
     throw new Error(`Invalid action: ${action}`);
   }
 
-  const { label, submittingLabel, icon } = BUTTON_TEXT_MAP[action];
+  const { label, submittingLabel, IconComponent } = BUTTON_TEXT_MAP[action];
 
-  const labelIcon = submitting ? <SubmitIcon className="animate-spin" /> : icon;
+  const labelIcon = submitting ? <SubmitIcon className="animate-spin" /> : <IconComponent />;
 
   return (
     <Button
