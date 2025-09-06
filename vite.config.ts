@@ -22,7 +22,7 @@ export default defineConfig(
         lib: {
           entry: {
             index: "lib/main.ts",
-            next: "lib/next.ts",
+            server: "lib/server.ts",
             layout: "lib/layout/index.ts",
             navigation: "lib/navigation/index.ts",
             forms: "lib/forms/index.ts",
@@ -35,11 +35,21 @@ export default defineConfig(
           formats: ["es"],
         },
         rollupOptions: {
+          // Externalize all dependencies
+          external: (id) => {
+            // Always bundle local files
+            if (id.startsWith(".") || id.startsWith("/") || id.startsWith(resolve(__dirname, "lib"))) {
+              return false;
+            }
+            // Externalize everything else (node_modules)
+            return true;
+          },
           output: {
             entryFileNames: "[name].js",
-            chunkFileNames: "[name].js",
+            chunkFileNames: "chunks/[name]-[hash].js",
+            preserveModules: false,
+            manualChunks: undefined, // Prevent automatic code splitting between your entries
           },
-          external: ["react", "react-dom", "tailwindcss"],
         },
         minify: true,
         sourcemap: false,
@@ -69,9 +79,9 @@ export default defineConfig(
             "lib/types/*",
             "lib/components/ui/*",
             "lib/main.ts",
-            "lib/next.ts",
+            "lib/server.ts",
             "lib/**/index.ts",
-            "lib/**/next.ts",
+            "lib/**/server.ts",
           ],
           reporter: ["text", "json", "html", "lcov"], // lcov is needed for Codecov
         },
