@@ -22,7 +22,6 @@ export default defineConfig(
         lib: {
           entry: {
             index: "lib/main.ts",
-            server: "lib/server.ts",
             layout: "lib/layout/index.ts",
             navigation: "lib/navigation/index.ts",
             forms: "lib/forms/index.ts",
@@ -75,14 +74,7 @@ export default defineConfig(
         include: ["tests/**/*.test.ts*"],
         coverage: {
           include: ["lib/**/*"],
-          exclude: [
-            "lib/types/*",
-            "lib/components/ui/*",
-            "lib/main.ts",
-            "lib/server.ts",
-            "lib/**/index.ts",
-            "lib/**/server.ts",
-          ],
+          exclude: ["lib/types/*", "lib/components/ui/*", "lib/main.ts", "lib/**/index.ts"],
           reporter: ["text", "json", "html", "lcov"], // lcov is needed for Codecov
         },
       },
