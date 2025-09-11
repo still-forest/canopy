@@ -19,6 +19,14 @@ export const DEFAULT_DECORATOR_WITH_MIN_WIDTH_MD = (Story: (props: any) => React
   </ThemeProvider>
 );
 
+export const DEFAULT_DECORATOR_WITH_WIDTH_MD = (Story: (props: any) => ReactNode | Promise<ReactNode>) => (
+  <ThemeProvider defaultTheme={THEMES.LIGHT} storageKey="canopy-storybook-theme">
+    <div className="w-md bg-background p-1 outline-2 outline-gray-200 ">
+      <Story />
+    </div>
+  </ThemeProvider>
+);
+
 export const INTERSTITIAL_DECORATOR = (Story: (props: any) => ReactNode | Promise<ReactNode>) => (
   <Flex align="center" className="min-h-[400px] w-full min-w-md" justify="center">
     <Story />

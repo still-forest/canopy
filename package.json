@@ -60,7 +60,7 @@
     "dev": "vite",
     "format": "biome format --write .",
     "lint": "biome check .",
-    "lint:ci": "biome ci .",
+    "lint:ci": "biome ci . && tsc --noEmit",
     "lint:fix": "biome check --write --unsafe .",
     "prepublishOnly": "pnpm build",
     "preview": "vite preview",
@@ -75,6 +75,7 @@
     "release:dry-run": "release-it --dry-run"
   },
   "dependencies": {
+    "@radix-ui/react-collapsible": "^1.1.12",
     "cmdk": "^1.1.1",
     "date-fns": "^4.1.0",
     "lucide-react": "^0.525.0",
