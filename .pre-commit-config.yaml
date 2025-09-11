@@ -21,13 +21,13 @@ repos:
         name: TypeScript Lint Fix
         entry: bash -c 'pnpm lint:fix;'
         language: system
-        files: .*\.(ts|tsx)$
+        files: .*\.(ts|tsx|js|jsx|json)$
         pass_filenames: true
         always_run: false
       - id: ts-format
         name: TypeScript Format
         entry: bash -c 'pnpm format;'
         language: system
-        files: .*\.(ts|tsx)$
+        files: .*\.(ts|tsx|js|jsx|json)$
         pass_filenames: true
         always_run: false
