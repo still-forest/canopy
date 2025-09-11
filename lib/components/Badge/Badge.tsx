@@ -3,7 +3,7 @@ import type { TailwindColor } from "@/types/color";
 import { cn } from "@/utils";
 import { badgeColorVariants } from "./colorVariants";
 
-interface BadgeProps {
+export interface BadgeProps {
   variant?: "default" | "secondary" | "destructive" | "outline";
   color?: TailwindColor;
   label: string;
