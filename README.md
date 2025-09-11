@@ -41,3 +41,54 @@ Example `index.css`:
   /* your usual CSS definitions */
 }
 ```
+
+## Testing locally
+
+### Using pnpm link
+
+1. In this package, run build in watch mode:
+
+```bash
+pnpm build --watch
+```
+
+Then expose it locally for linking:
+
+```bash
+pnpm link
+```
+
+2. In the consuming package, link package.json to the locally built version:
+
+```bash
+pnpm link @still-forest/canopy
+```
+
+3. When done, cleanup:
+
+```bash
+pnpm unlink @still-forest/canopy
+pnpm store prune # clear pnpm's global store
+```
+
+### Using pnpm add
+
+1. In this package, run build in watch mode:
+
+```bash
+pnpm build --watch
+```
+
+2. In the consuming package, point package.json to the locally built version:
+
+```bash
+pnpm add ~/Development/canopy
+```
+
+### Direct file copy
+
+**Alternatively**, directly copy the built version periodically:
+
+```bash
+rm -rf ./node_modules/@still-forest/canopy/dist && cp -r ~/Development/canopy/dist ./node_modules/@still-forest/canopy/dist
+```

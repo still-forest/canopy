@@ -22,7 +22,6 @@ export default defineConfig(
         lib: {
           entry: {
             index: "lib/main.ts",
-            next: "lib/next.ts",
             layout: "lib/layout/index.ts",
             navigation: "lib/navigation/index.ts",
             forms: "lib/forms/index.ts",
@@ -35,11 +34,23 @@ export default defineConfig(
           formats: ["es"],
         },
         rollupOptions: {
+          // Externalize non-local deps; keep project and virtual modules bundled
+          external: (id) => {
+            // Keep Vite/Rollup virtual modules and project-relative imports bundled
+            if (id.startsWith("\0") || id.startsWith("virtual:") || id.startsWith(".")) return false;
+            const libRoot = resolve(__dirname, "lib");
+            // Treat absolute paths as internal only if they point inside our lib dir
+            const isAbs = id.startsWith("/") || /^[A-Za-z]:[\\/]/.test(id); // posix + win
+            if (isAbs) return !id.startsWith(libRoot);
+            // Bare specifiers (react, react-dom, tailwindcss, node:, etc.) are externals
+            return true;
+          },
           output: {
             entryFileNames: "[name].js",
-            chunkFileNames: "[name].js",
+            chunkFileNames: "chunks/[name]-[hash].js",
+            preserveModules: false,
+            manualChunks: undefined, // Use Rollup defaults
           },
-          external: ["react", "react-dom", "tailwindcss"],
         },
         minify: true,
         sourcemap: false,
@@ -65,14 +76,7 @@ export default defineConfig(
         include: ["tests/**/*.test.ts*"],
         coverage: {
           include: ["lib/**/*"],
-          exclude: [
-            "lib/types/*",
-            "lib/components/ui/*",
-            "lib/main.ts",
-            "lib/next.ts",
-            "lib/**/index.ts",
-            "lib/**/next.ts",
-          ],
+          exclude: ["lib/types/*", "lib/components/ui/*", "lib/main.ts", "lib/**/index.ts"],
           reporter: ["text", "json", "html", "lcov"], // lcov is needed for Codecov
         },
       },
