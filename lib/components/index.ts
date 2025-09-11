@@ -3,6 +3,7 @@ export * from "./Alert";
 export * from "./Badge";
 export * from "./Breadcrumbs";
 export * from "./Cards";
+export * from "./Collapsible";
 export * from "./Modal";
 export * from "./Pagination";
 export * from "./Popover";

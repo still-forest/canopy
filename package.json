@@ -75,6 +75,7 @@
     "release:dry-run": "release-it --dry-run"
   },
   "dependencies": {
+    "@radix-ui/react-collapsible": "^1.1.12",
     "cmdk": "^1.1.1",
     "date-fns": "^4.1.0",
     "lucide-react": "^0.525.0",

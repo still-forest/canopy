@@ -6,7 +6,7 @@ import userEvent from "@testing-library/user-event";
 import { Accordion } from "@/components";
 
 describe("Accordion", () => {
-  test("renders info Alert", async () => {
+  test("renders an Accordion", async () => {
     render(
       <Accordion collapsible type="single">
         <Accordion.Item value="item-1">
