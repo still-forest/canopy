@@ -40,6 +40,7 @@ export default defineConfig(
             preserveModules: false,
             manualChunks: undefined, // Use Rollup defaults
           },
+          external: ["react", "react-dom", "tailwindcss", "tw-animate-css"],
         },
         minify: true,
         sourcemap: false,
