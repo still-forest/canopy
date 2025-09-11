@@ -34,13 +34,15 @@ export default defineConfig(
           formats: ["es"],
         },
         rollupOptions: {
-          // Externalize all dependencies
+          // Externalize non-local deps; keep project and virtual modules bundled
           external: (id) => {
-            // Always bundle local files
-            if (id.startsWith(".") || id.startsWith("/") || id.startsWith(resolve(__dirname, "lib"))) {
-              return false;
-            }
-            // Externalize everything else (e.g., node_modules)
+            // Keep Vite/Rollup virtual modules and project-relative imports bundled
+            if (id.startsWith("\0") || id.startsWith("virtual:") || id.startsWith(".")) return false;
+            const libRoot = resolve(__dirname, "lib");
+            // Treat absolute paths as internal only if they point inside our lib dir
+            const isAbs = id.startsWith("/") || /^[A-Za-z]:[\\/]/.test(id); // posix + win
+            if (isAbs) return !id.startsWith(libRoot);
+            // Bare specifiers (react, react-dom, tailwindcss, node:, etc.) are externals
             return true;
           },
           output: {
