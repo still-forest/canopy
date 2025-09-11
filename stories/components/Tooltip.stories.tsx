@@ -1,5 +1,5 @@
 import type { Meta, StoryObj } from "@storybook/react-vite";
-import { type CursorType, Tooltip } from "@/components";
+import { type CursorType, SimpleTooltip, Tooltip } from "@/components";
 import { Button } from "@/forms";
 import { Box } from "@/layout";
 import { Heading, Text } from "@/typography";
@@ -112,5 +112,23 @@ export const WithLongText: Story = {
       </Tooltip.Trigger>
       <Tooltip.Content className="max-w-sm">{sampleLongText}</Tooltip.Content>
     </Tooltip>
+  ),
+};
+
+export const AsSimpleTooltip: Story = {
+  render: () => <SimpleTooltip content="This is a tooltip">Hover over me</SimpleTooltip>,
+};
+
+export const AsSimpleTooltipWithComponents: Story = {
+  render: () => (
+    <SimpleTooltip
+      content={
+        <Heading level="4" variant="primary">
+          This is a tooltip
+        </Heading>
+      }
+    >
+      <Button>Hover over me</Button>
+    </SimpleTooltip>
   ),
 };

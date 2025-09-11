@@ -1,7 +1,7 @@
 import { Tooltip as BaseTooltip, TooltipContent, TooltipProvider, TooltipTrigger } from "@/components/ui/tooltip";
 import { cn } from "@/utils";
 
-type CursorType = "arrow" | "pointer" | "text" | "not-allowed";
+export type CursorType = "arrow" | "pointer" | "text" | "not-allowed";
 
 type TooltipProps = React.ComponentProps<typeof BaseTooltip>;
 type TooltipTriggerProps = React.ComponentProps<typeof TooltipTrigger> & {
@@ -46,4 +46,16 @@ const Content = ({ className, children }: TooltipContentProps) => (
 Tooltip.Trigger = Trigger;
 Tooltip.Content = Content;
 
-export { Tooltip };
+interface SimpleTooltipProps {
+  children: string | React.ReactNode;
+  content: string | React.ReactNode;
+}
+
+const SimpleTooltip = ({ children, content }: SimpleTooltipProps) => (
+  <Tooltip>
+    <Tooltip.Trigger>{typeof children === "string" ? <span>{children}</span> : children}</Tooltip.Trigger>
+    <Tooltip.Content>{content}</Tooltip.Content>
+  </Tooltip>
+);
+
+export { Tooltip, SimpleTooltip };
