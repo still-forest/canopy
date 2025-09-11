@@ -1,27 +1,17 @@
 import { Tooltip as BaseTooltip, TooltipContent, TooltipProvider, TooltipTrigger } from "@/components/ui/tooltip";
 import { cn } from "@/utils";
 
-interface TooltipProps {
-  children: React.ReactNode;
-  open?: boolean;
-  onOpenChange?: (open: boolean) => void;
-}
+type CursorType = "arrow" | "pointer" | "text" | "not-allowed";
 
-interface ChildProps {
-  children: React.ReactNode;
-}
-
-export type CursorType = "arrow" | "pointer" | "text" | "not-allowed";
-
-interface TriggerProps {
-  children: React.ReactNode;
+type TooltipProps = React.ComponentProps<typeof BaseTooltip>;
+type TooltipTriggerProps = React.ComponentProps<typeof TooltipTrigger> & {
   cursor?: CursorType;
-  className?: string;
-}
+};
+type TooltipContentProps = React.ComponentProps<typeof TooltipContent>;
 
 type TooltipComponent = React.FC<TooltipProps> & {
-  Trigger: React.FC<TriggerProps>;
-  Content: React.FC<ChildProps>;
+  Trigger: React.FC<TooltipTriggerProps>;
+  Content: React.FC<TooltipContentProps>;
 };
 
 const Tooltip: TooltipComponent = ({ children, open, onOpenChange }) => {
@@ -34,7 +24,7 @@ const Tooltip: TooltipComponent = ({ children, open, onOpenChange }) => {
   );
 };
 
-const Trigger = ({ children, cursor = "pointer", className }: TriggerProps) => (
+const Trigger = ({ children, cursor = "pointer", className }: TooltipTriggerProps) => (
   <TooltipTrigger
     asChild
     className={cn(
@@ -49,7 +39,9 @@ const Trigger = ({ children, cursor = "pointer", className }: TriggerProps) => (
   </TooltipTrigger>
 );
 
-const Content = ({ children }: ChildProps) => <TooltipContent>{children}</TooltipContent>;
+const Content = ({ className, children }: TooltipContentProps) => (
+  <TooltipContent className={className}>{children}</TooltipContent>
+);
 
 Tooltip.Trigger = Trigger;
 Tooltip.Content = Content;
