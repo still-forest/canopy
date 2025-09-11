@@ -34,11 +34,20 @@ export default defineConfig(
           formats: ["es"],
         },
         rollupOptions: {
+          // Externalize all dependencies
+          external: (id) => {
+            // Always bundle local files
+            if (id.startsWith(".") || id.startsWith("/") || id.startsWith(resolve(__dirname, "lib"))) {
+              return false;
+            }
+            // Externalize everything else (e.g., node_modules)
+            return true;
+          },
           output: {
             entryFileNames: "[name].js",
             chunkFileNames: "chunks/[name]-[hash].js",
             preserveModules: false,
-            manualChunks: undefined, // Prevent automatic code splitting between entries
+            manualChunks: undefined, // Use Rollup defaults
           },
         },
         minify: true,
