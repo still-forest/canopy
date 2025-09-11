@@ -6,7 +6,7 @@ import {
   Accordion as BaseAccordion,
 } from "@/components/ui/accordion";
 
-type AccordionProps = React.ComponentProps<typeof BaseAccordion> & {
+export type AccordionProps = React.ComponentProps<typeof BaseAccordion> & {
   children: ReactNode;
 };
 type AccordionItemProps = React.ComponentProps<typeof AccordionItem>;
