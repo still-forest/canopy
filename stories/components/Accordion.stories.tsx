@@ -1,6 +1,6 @@
 import type { Meta, StoryObj } from "@storybook/react-vite";
 
-import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/components/Accordion";
+import { Accordion } from "@/components/Accordion";
 
 const meta: Meta<typeof Accordion> = {
   title: "Components/Accordion",
@@ -19,25 +19,25 @@ export const Default: Story = {
   },
   render: (args) => (
     <Accordion {...args}>
-      <AccordionItem value="item-1">
-        <AccordionTrigger>Are you insane?</AccordionTrigger>
-        <AccordionContent>
+      <Accordion.Item value="item-1">
+        <Accordion.Trigger>Are you insane?</Accordion.Trigger>
+        <Accordion.Content>
           Now I... I finally have time to do what I've always wanted: write the great American novel. Mine is about a
           futuristic amusement park where dinosaurs are brought to life through advanced cloning techniques. I call it
           "Billy and the Cloneasaurus."
-        </AccordionContent>
-      </AccordionItem>
-      <AccordionItem value="item-2">
-        <AccordionTrigger>Are you sure it's on!?</AccordionTrigger>
-        <AccordionContent>I can't hear a thing!</AccordionContent>
-      </AccordionItem>
-      <AccordionItem value="item-3">
-        <AccordionTrigger>Want me to zinc your sniffer?</AccordionTrigger>
-        <AccordionContent>
+        </Accordion.Content>
+      </Accordion.Item>
+      <Accordion.Item value="item-2">
+        <Accordion.Trigger>Are you sure it's on!?</Accordion.Trigger>
+        <Accordion.Content>I can't hear a thing!</Accordion.Content>
+      </Accordion.Item>
+      <Accordion.Item value="item-3">
+        <Accordion.Trigger>Want me to zinc your sniffer?</Accordion.Trigger>
+        <Accordion.Content>
           I'll have a Shirley... No, a virgin... No, a children's... Oh, what the heck? You only live once. Give me a
           white wine spritzer!
-        </AccordionContent>
-      </AccordionItem>
+        </Accordion.Content>
+      </Accordion.Item>
     </Accordion>
   ),
 };
