@@ -3,20 +3,20 @@ import { describe, expect, test } from "vitest";
 import "@testing-library/jest-dom";
 
 import userEvent from "@testing-library/user-event";
-import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/components";
+import { Accordion } from "@/components";
 
 describe("Accordion", () => {
   test("renders info Alert", async () => {
     render(
       <Accordion collapsible type="single">
-        <AccordionItem value="item-1">
-          <AccordionTrigger>This first thing</AccordionTrigger>
-          <AccordionContent>And here's the content</AccordionContent>
-        </AccordionItem>
-        <AccordionItem value="item-2">
-          <AccordionTrigger>This second thing</AccordionTrigger>
-          <AccordionContent>And here's more content</AccordionContent>
-        </AccordionItem>
+        <Accordion.Item value="item-1">
+          <Accordion.Trigger>This first thing</Accordion.Trigger>
+          <Accordion.Content>And here's the content</Accordion.Content>
+        </Accordion.Item>
+        <Accordion.Item value="item-2">
+          <Accordion.Trigger>This second thing</Accordion.Trigger>
+          <Accordion.Content>And here's more content</Accordion.Content>
+        </Accordion.Item>
       </Accordion>,
     );
 

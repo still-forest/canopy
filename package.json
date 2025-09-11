@@ -60,7 +60,7 @@
     "dev": "vite",
     "format": "biome format --write .",
     "lint": "biome check .",
-    "lint:ci": "biome ci .",
+    "lint:ci": "biome ci . && tsc --noEmit",
     "lint:fix": "biome check --write --unsafe .",
     "prepublishOnly": "pnpm build",
     "preview": "vite preview",
