@@ -2,7 +2,7 @@ export * from "./Accordion";
 export * from "./Alert";
 export * from "./Badge";
 export * from "./Breadcrumbs";
-export * from "./Cards";
+export * from "./Card";
 export * from "./Collapsible";
 export * from "./Modal";
 export * from "./Pagination";

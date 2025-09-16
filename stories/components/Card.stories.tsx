@@ -1,6 +1,6 @@
 import type { Meta, StoryObj } from "@storybook/react-vite";
 
-import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from "@/components";
+import { Card } from "@/components";
 import { DEFAULT_DECORATOR_WITH_MIN_WIDTH_MD } from "../support/decorators";
 
 const meta: Meta<typeof Card> = {
@@ -17,16 +17,16 @@ type Story = StoryObj<typeof meta>;
 export const Default: Story = {
   render: () => (
     <Card>
-      <CardHeader>
-        <CardTitle>Card Title</CardTitle>
-        <CardDescription>Card Description</CardDescription>
-      </CardHeader>
-      <CardContent>
+      <Card.Header>
+        <Card.Title>Card Title</Card.Title>
+        <Card.Description>Card Description</Card.Description>
+      </Card.Header>
+      <Card.Content>
         <p>Card Content</p>
-      </CardContent>
-      <CardFooter>
+      </Card.Content>
+      <Card.Footer>
         <p>Card Footer</p>
-      </CardFooter>
+      </Card.Footer>
     </Card>
   ),
 };
