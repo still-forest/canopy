@@ -36,3 +36,45 @@ export const WithPadding: Story = {
     className: "p-8",
   },
 };
+
+export const WithNoVerticalPadding: Story = {
+  args: {
+    children: "This is a Container component",
+    verticalPadding: "none",
+  },
+};
+
+export const WithExtraSmallVerticalPadding: Story = {
+  args: {
+    children: "This is a Container component",
+    verticalPadding: "xs",
+  },
+};
+
+export const WithSmallVerticalPadding: Story = {
+  args: {
+    children: "This is a Container component",
+    verticalPadding: "sm",
+  },
+};
+
+export const WithMediumVerticalPadding: Story = {
+  args: {
+    children: "This is a Container component",
+    verticalPadding: "md",
+  },
+};
+
+export const WithLargeVerticalPadding: Story = {
+  args: {
+    children: "This is a Container component",
+    verticalPadding: "lg",
+  },
+};
+
+export const WithExtraLargeVerticalPadding: Story = {
+  args: {
+    children: "This is a Container component",
+    verticalPadding: "xl",
+  },
+};
