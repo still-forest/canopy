@@ -40,41 +40,41 @@ export const WithPadding: Story = {
 export const WithNoVerticalPadding: Story = {
   args: {
     children: "This is a Container component",
-    verticalPadding: "none",
+    separation: "none",
   },
 };
 
 export const WithExtraSmallVerticalPadding: Story = {
   args: {
     children: "This is a Container component",
-    verticalPadding: "xs",
+    separation: "xs",
   },
 };
 
 export const WithSmallVerticalPadding: Story = {
   args: {
     children: "This is a Container component",
-    verticalPadding: "sm",
+    separation: "sm",
   },
 };
 
 export const WithMediumVerticalPadding: Story = {
   args: {
     children: "This is a Container component",
-    verticalPadding: "md",
+    separation: "md",
   },
 };
 
 export const WithLargeVerticalPadding: Story = {
   args: {
     children: "This is a Container component",
-    verticalPadding: "lg",
+    separation: "lg",
   },
 };
 
 export const WithExtraLargeVerticalPadding: Story = {
   args: {
     children: "This is a Container component",
-    verticalPadding: "xl",
+    separation: "xl",
   },
 };

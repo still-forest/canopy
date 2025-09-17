@@ -17,7 +17,7 @@ describe("Container", () => {
 
   it("renders with no vertical padding", () => {
     render(
-      <Container data-testid="container-element" verticalPadding="none">
+      <Container data-testid="container-element" separation="none">
         Content
       </Container>,
     );
@@ -27,7 +27,7 @@ describe("Container", () => {
 
   it("renders with extra small vertical padding", () => {
     render(
-      <Container data-testid="container-element" verticalPadding="xs">
+      <Container data-testid="container-element" separation="xs">
         Content
       </Container>,
     );
@@ -37,7 +37,7 @@ describe("Container", () => {
 
   it("renders with small vertical padding", () => {
     render(
-      <Container data-testid="container-element" verticalPadding="sm">
+      <Container data-testid="container-element" separation="sm">
         Content
       </Container>,
     );
@@ -47,7 +47,7 @@ describe("Container", () => {
 
   it("renders with medium vertical padding", () => {
     render(
-      <Container data-testid="container-element" verticalPadding="md">
+      <Container data-testid="container-element" separation="md">
         Content
       </Container>,
     );
@@ -57,7 +57,7 @@ describe("Container", () => {
 
   it("renders with large vertical padding", () => {
     render(
-      <Container data-testid="container-element" verticalPadding="lg">
+      <Container data-testid="container-element" separation="lg">
         Content
       </Container>,
     );
