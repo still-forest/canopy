@@ -37,42 +37,42 @@ export const WithPadding: Story = {
   },
 };
 
-export const WithNoVerticalPadding: Story = {
+export const WithNoSeparation: Story = {
   args: {
     children: "This is a Container component",
     separation: "none",
   },
 };
 
-export const WithExtraSmallVerticalPadding: Story = {
+export const WithExtraSmallSeparation: Story = {
   args: {
     children: "This is a Container component",
     separation: "xs",
   },
 };
 
-export const WithSmallVerticalPadding: Story = {
+export const WithSmallSeparation: Story = {
   args: {
     children: "This is a Container component",
     separation: "sm",
   },
 };
 
-export const WithMediumVerticalPadding: Story = {
+export const WithMediumSeparation: Story = {
   args: {
     children: "This is a Container component",
     separation: "md",
   },
 };
 
-export const WithLargeVerticalPadding: Story = {
+export const WithLargeSeparation: Story = {
   args: {
     children: "This is a Container component",
     separation: "lg",
   },
 };
 
-export const WithExtraLargeVerticalPadding: Story = {
+export const WithExtraLargeSeparation: Story = {
   args: {
     children: "This is a Container component",
     separation: "xl",

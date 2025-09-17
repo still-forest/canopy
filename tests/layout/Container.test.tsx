@@ -15,7 +15,7 @@ describe("Container", () => {
     expect(element).toHaveTextContent("Content");
   });
 
-  it("renders with no vertical padding", () => {
+  it("renders with no separation", () => {
     render(
       <Container data-testid="container-element" separation="none">
         Content
@@ -25,7 +25,7 @@ describe("Container", () => {
     expect(element.className).toBe("flex flex-col w-full px-4 md:px-8 lg:px-12 py-0");
   });
 
-  it("renders with extra small vertical padding", () => {
+  it("renders with extra small separation", () => {
     render(
       <Container data-testid="container-element" separation="xs">
         Content
@@ -35,7 +35,7 @@ describe("Container", () => {
     expect(element.className).toBe("flex flex-col w-full px-4 md:px-8 lg:px-12 py-0.5 md:py-1");
   });
 
-  it("renders with small vertical padding", () => {
+  it("renders with small separation", () => {
     render(
       <Container data-testid="container-element" separation="sm">
         Content
@@ -45,7 +45,7 @@ describe("Container", () => {
     expect(element.className).toBe("flex flex-col w-full px-4 md:px-8 lg:px-12 py-1 md:py-2");
   });
 
-  it("renders with medium vertical padding", () => {
+  it("renders with medium separation", () => {
     render(
       <Container data-testid="container-element" separation="md">
         Content
@@ -55,7 +55,7 @@ describe("Container", () => {
     expect(element.className).toBe("flex flex-col w-full px-4 md:px-8 lg:px-12 py-2 md:py-4");
   });
 
-  it("renders with large vertical padding", () => {
+  it("renders with large separation", () => {
     render(
       <Container data-testid="container-element" separation="lg">
         Content
