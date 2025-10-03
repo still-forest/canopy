@@ -88,7 +88,7 @@ export default function App() {
         <SidebarTrigger />
       </Container>
       <Container className={cn(showDimensions && "bg-yellow-500/5 inset-shadow-sm inset-shadow-yellow-500")}>
-        <Heading className="mt-4" level="1">
+        <Heading className="mt-4" family="brand" level="1">
           Canopy
         </Heading>
       </Container>
