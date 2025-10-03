@@ -1,10 +1,13 @@
 import { Loader, Save, Send } from "lucide-react";
 import { Button, type ButtonProps } from "@/forms";
 
-export interface SubmitButtonProps extends ButtonProps {
+export interface SubmitButtonProps extends Omit<ButtonProps, "icon"> {
   action?: "default" | "submit" | "save" | "send";
+  label?: string;
+  submittingLabel?: string;
   submitting?: boolean;
   disabled?: boolean;
+  icon?: React.ComponentType<React.SVGProps<SVGSVGElement>>;
   submittingIcon?: React.ComponentType<React.SVGProps<SVGSVGElement>>;
   noIcon?: boolean;
 }
@@ -21,6 +24,9 @@ const SubmitButton = ({
   disabled = false,
   submittingIcon,
   action = "default",
+  label: customLabel,
+  submittingLabel: customSubmittingLabel,
+  icon: customIcon,
   noIcon = false,
   ...rest
 }: SubmitButtonProps) => {
@@ -30,7 +36,10 @@ const SubmitButton = ({
     throw new Error(`Invalid action: ${action}`);
   }
 
-  const { label, submittingLabel, IconComponent } = BUTTON_TEXT_MAP[action];
+  const defaultActionMap = BUTTON_TEXT_MAP[action];
+  const label = customLabel || defaultActionMap.label;
+  const submittingLabel = customSubmittingLabel || defaultActionMap.submittingLabel;
+  const IconComponent = customIcon || defaultActionMap.IconComponent;
 
   const labelIcon = submitting ? <SubmitIcon className="animate-spin" /> : <IconComponent />;
 
