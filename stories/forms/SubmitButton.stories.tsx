@@ -100,3 +100,20 @@ export const WithCustomSubmittingIcon: Story = {
     submitting: true,
   },
 };
+
+export const WithCustomLabels: Story = {
+  args: {
+    ...defaultProps,
+    label: "Do the thing",
+    submittingLabel: "Doing it",
+  },
+};
+
+export const WithCustomLabelsSubmitting: Story = {
+  args: {
+    ...defaultProps,
+    label: "Do the thing",
+    submittingLabel: "Doing it",
+    submitting: true,
+  },
+};
