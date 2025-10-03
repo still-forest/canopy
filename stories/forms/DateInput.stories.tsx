@@ -61,6 +61,7 @@ export const WithError: Story = {
 export const WithSize: Story = {
   render: () => (
     <Flex direction="col" gap="4">
+      <DateInput {...defaultProps} size="xs" />
       <DateInput {...defaultProps} size="sm" />
       <DateInput {...defaultProps} size="md" />
       <DateInput {...defaultProps} size="lg" />

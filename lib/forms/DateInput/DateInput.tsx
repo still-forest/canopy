@@ -7,6 +7,7 @@ const DateInput = ({ name, label, placeholder, note, className, size = "md", ...
   return (
     <TextInput
       className={cn(
+        size === "xs" && "max-w-[140px] md:max-w-[135px]",
         size === "sm" && "max-w-[150px] md:max-w-[140px]",
         size === "md" && "max-w-[170px] md:max-w-[150px]",
         size === "lg" && "max-w-[180px] md:max-w-[170px]",

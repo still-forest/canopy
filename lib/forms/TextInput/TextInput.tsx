@@ -10,7 +10,7 @@ export interface TextInputProps extends Omit<React.ComponentProps<"input">, "siz
   label?: string;
   labelOrientation?: "top" | "left";
   note?: string;
-  size?: "sm" | "md" | "lg" | "xl";
+  size?: "xs" | "sm" | "md" | "lg" | "xl";
   className?: string;
   error?: string;
 }
@@ -34,6 +34,7 @@ const TextInput = ({
     "placeholder:text-muted-foreground disabled:pointer-events-none disabled:cursor-not-allowed disabled:opacity-50",
     "dark:bg-input/30 focus-visible:border-ring focus-visible:ring-[3px] focus-visible:ring-ring/50",
     "aria-invalid:border-destructive aria-invalid:ring-destructive/20 dark:aria-invalid:ring-destructive/40",
+    size === "xs" && "h-7 text-xs md:text-xs",
     size === "sm" && "h-8 text-sm md:text-xs",
     size === "md" && "h-9 text-base md:text-sm",
     size === "lg" && "h-10 text-lg md:text-base",
