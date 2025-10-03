@@ -1,6 +1,7 @@
 @layer base {
   :root {
     --brand: rgb(39, 80, 45);
+    --brand-foreground: oklch(0.96 0.04 157);
 
     --info: oklch(0.62 0.19 260); /* blue-500 */
     --info-foreground: oklch(0.93 0.03 256); /* blue-100 */
@@ -13,6 +14,7 @@
 
 @theme {
   --color-brand: var(--brand);
+  --color-brand-foreground: var(--brand-foreground);
 
   --color-info: var(--info);
   --color-info-foreground: var(--info-foreground);

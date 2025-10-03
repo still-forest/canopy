@@ -51,6 +51,7 @@ const Box = React.forwardRef<HTMLDivElement, BoxProps>(
             "bg-success text-success-foreground": variant === "success",
             "bg-warning text-warning-foreground": variant === "warning",
             "bg-destructive text-destructive-foreground": variant === "destructive",
+            "bg-brand text-brand-foreground": variant === "brand",
           },
           // Size
           {

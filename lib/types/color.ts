@@ -7,6 +7,7 @@ export const COLOR_VARIANTS = [
   "success",
   "warning",
   "destructive",
+  "brand",
 ] as const;
 
 export const TAILWIND_COLORS = [
