@@ -1,6 +1,7 @@
 import type { Meta, StoryObj } from "@storybook/react-vite";
 
-import { NumberInput } from "@/forms";
+import { NumberInput, TextInput } from "@/forms";
+import { Flex } from "@/layout";
 import { DEFAULT_DECORATOR_WITH_MIN_WIDTH_MD } from "../support/decorators";
 
 const meta: Meta<typeof NumberInput> = {
@@ -107,4 +108,15 @@ export const WithError: Story = {
     ...defaultProps,
     error: "What'd you do?!",
   },
+};
+
+export const WithSize: Story = {
+  render: () => (
+    <Flex direction="col" gap="4">
+      <TextInput {...defaultProps} placeholder="123.45" size="sm" />
+      <TextInput {...defaultProps} placeholder="123.45" size="md" />
+      <TextInput {...defaultProps} placeholder="123.45" size="lg" />
+      <TextInput {...defaultProps} placeholder="123.45" size="xl" />
+    </Flex>
+  ),
 };
