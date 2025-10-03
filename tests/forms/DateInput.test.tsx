@@ -9,7 +9,7 @@ describe("DateInput", () => {
 
     const input = screen.getByLabelText("some_input") as HTMLInputElement;
     expect(input.tagName).toBe("INPUT");
-    expect(input.className).toBe(`${EXPECTED_BASE_INPUT_CLASSES} max-w-[150px]`);
+    expect(input.className).toBe(`${EXPECTED_BASE_INPUT_CLASSES} max-w-[170px] md:max-w-[150px]`);
     expect(input.placeholder).toBe("");
     expect(input.type).toBe("date");
     expect(input.value).toBe("");
@@ -61,6 +61,6 @@ describe("DateInput", () => {
 
     const input = screen.getByLabelText("some_input") as HTMLInputElement;
     expect(input.tagName).toBe("INPUT");
-    expect(input.className).toBe(`${EXPECTED_BASE_INPUT_CLASSES} max-w-[150px] custom-class`);
+    expect(input.className).toBe(`${EXPECTED_BASE_INPUT_CLASSES} max-w-[170px] md:max-w-[150px] custom-class`);
   });
 });
