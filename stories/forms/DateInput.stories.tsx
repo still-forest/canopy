@@ -1,6 +1,7 @@
 import type { Meta, StoryObj } from "@storybook/react-vite";
 
 import { DateInput } from "@/forms";
+import { Flex } from "@/layout";
 
 const meta: Meta<typeof DateInput> = {
   title: "Forms/Inputs/DateInput",
@@ -55,4 +56,15 @@ export const WithError: Story = {
     ...defaultProps,
     error: "What'd you do?!",
   },
+};
+
+export const WithSize: Story = {
+  render: () => (
+    <Flex direction="col" gap="4">
+      <DateInput {...defaultProps} size="sm" />
+      <DateInput {...defaultProps} size="md" />
+      <DateInput {...defaultProps} size="lg" />
+      <DateInput {...defaultProps} size="xl" />
+    </Flex>
+  ),
 };

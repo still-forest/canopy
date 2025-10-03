@@ -99,7 +99,6 @@ export const WithError: Story = {
 export const WithSize: Story = {
   render: () => (
     <Flex direction="col" gap="4">
-      <TextInput {...defaultProps} placeholder="This input is extra small" size="xs" />
       <TextInput {...defaultProps} placeholder="This input is small" size="sm" />
       <TextInput {...defaultProps} placeholder="This input is medium (default size)" size="md" />
       <TextInput {...defaultProps} placeholder="This input is large" size="lg" />
