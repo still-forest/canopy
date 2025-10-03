@@ -8,7 +8,7 @@ describe("Paragraph", () => {
     const element = screen.getByText("Hello world");
 
     expect(element.tagName).toBe("P");
-    expect(element.className).toBe("text-foreground font-display mb-4");
+    expect(element.className).toBe("text-foreground font-body mb-4");
   });
 
   it("renders with custom element type", () => {
@@ -16,6 +16,6 @@ describe("Paragraph", () => {
     const element = screen.getByText("Hello world");
 
     expect(element.tagName).toBe("DIV");
-    expect(element.className).toBe("text-foreground font-display mb-4");
+    expect(element.className).toBe("text-foreground font-body mb-4");
   });
 });

@@ -17,7 +17,7 @@ describe("Text", () => {
     const element = screen.getByText("Hello world");
 
     expect(element.tagName).toBe("P");
-    expect(element.className).toBe("text-foreground font-display");
+    expect(element.className).toBe("text-foreground font-body");
   });
 
   it("renders with custom element type", () => {
@@ -42,7 +42,7 @@ describe("Text", () => {
       const element = screen.getByText(`Text ${size}`);
 
       const expectedCssClass = size === "md" ? "text-base" : `text-${size}`;
-      expect(element.className).toBe(`${expectedCssClass} text-foreground font-display`);
+      expect(element.className).toBe(`${expectedCssClass} text-foreground font-body`);
     }
   });
 
@@ -50,7 +50,7 @@ describe("Text", () => {
     for (const weight of FONT_WEIGHTS) {
       render(<Text weight={weight}>Weight {weight}</Text>);
       const element = screen.getByText(`Weight ${weight}`);
-      expect(element.className).toBe(`font-${weight} text-foreground font-display`);
+      expect(element.className).toBe(`font-${weight} text-foreground font-body`);
     }
   });
 
@@ -71,7 +71,7 @@ describe("Text", () => {
           expectedCssClass = `text-${variant}`;
         }
 
-        expect(element.className).toBe(`${expectedCssClass} font-display`);
+        expect(element.className).toBe(`${expectedCssClass} font-body`);
       }
     });
 
@@ -93,7 +93,7 @@ describe("Text", () => {
           expectedCssClass = `text-${variant}-foreground`;
         }
 
-        expect(element.className).toBe(`${expectedCssClass} font-display`);
+        expect(element.className).toBe(`${expectedCssClass} font-body`);
       }
     });
   });
@@ -102,7 +102,7 @@ describe("Text", () => {
     for (const align of TEXT_ALIGNS) {
       render(<Text align={align}>Align {align}</Text>);
       const element = screen.getByText(`Align ${align}`);
-      expect(element.className).toBe(`text-foreground text-${align} font-display`);
+      expect(element.className).toBe(`text-foreground text-${align} font-body`);
     }
   });
 
@@ -110,7 +110,7 @@ describe("Text", () => {
     for (const tracking of TEXT_TRACKINGS) {
       render(<Text tracking={tracking}>Tracking {tracking}</Text>);
       const element = screen.getByText(`Tracking ${tracking}`);
-      expect(element.className).toBe(`text-foreground tracking-${tracking} font-display`);
+      expect(element.className).toBe(`text-foreground tracking-${tracking} font-body`);
     }
   });
 
@@ -118,7 +118,7 @@ describe("Text", () => {
     for (const leading of TEXT_LEADINGS) {
       render(<Text leading={leading}>Leading {leading}</Text>);
       const element = screen.getByText(`Leading ${leading}`);
-      expect(element.className).toBe(`text-foreground leading-${leading} font-display`);
+      expect(element.className).toBe(`text-foreground leading-${leading} font-body`);
     }
   });
 
@@ -133,7 +133,7 @@ describe("Text", () => {
   it("applies truncate class when truncate is true", () => {
     render(<Text truncate>Truncated text</Text>);
     const element = screen.getByText("Truncated text");
-    expect(element.className).toBe("text-foreground font-display truncate");
+    expect(element.className).toBe("text-foreground font-body truncate");
   });
 
   it("does not apply truncate class when truncate is false", () => {
@@ -145,7 +145,7 @@ describe("Text", () => {
   it("applies tabular-nums class when numeric is true", () => {
     render(<Text numeric>123456</Text>);
     const element = screen.getByText("123456");
-    expect(element.className).toBe("text-foreground font-display tabular-nums");
+    expect(element.className).toBe("text-foreground font-body tabular-nums");
   });
 
   it("does not apply tabular-nums class when numeric is false", () => {
@@ -162,7 +162,7 @@ describe("Text", () => {
   it("combines custom className with generated classes", () => {
     render(<Text className="custom-class">With custom class</Text>);
     const element = screen.getByText("With custom class");
-    expect(element.className).toBe("text-foreground font-display custom-class");
+    expect(element.className).toBe("text-foreground font-body custom-class");
   });
 
   it("forwards ref correctly", () => {

@@ -40,7 +40,7 @@ const Heading = React.forwardRef<HTMLHeadingElement, HeadingProps>(
       align,
       leading, // No default: Tailwind applies a default from text size classes
       tracking,
-      family = "display",
+      family = "heading",
       asForeground = false,
       truncate = false,
       numeric = false,
@@ -143,6 +143,9 @@ const Heading = React.forwardRef<HTMLHeadingElement, HeadingProps>(
           },
           // Font family
           {
+            "font-brand": family === "brand",
+            "font-heading": family === "heading",
+            "font-body": family === "body",
             "font-display": family === "display",
             "font-sans": family === "sans",
             "font-serif": family === "serif",

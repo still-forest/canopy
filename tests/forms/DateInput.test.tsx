@@ -50,7 +50,7 @@ describe("DateInput", () => {
 
     const note = screen.getByText("My cat's breath smells like cat food");
     expect(note.tagName).toBe("P");
-    expect(note.className).toBe("text-sm text-muted-foreground font-display");
+    expect(note.className).toBe("text-sm text-muted-foreground font-body");
 
     const input = screen.getByLabelText("some_input") as HTMLInputElement;
     expect(input.tagName).toBe("INPUT");
