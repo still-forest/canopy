@@ -95,6 +95,9 @@ const Text = React.forwardRef(
             // Action colors
             "text-primary-foreground": variant === "primary",
             "text-secondary-foreground": variant === "secondary",
+            // Brand color
+            "text-brand": variant === "brand",
+            "text-brand-foreground": asForeground && variant === "brand",
             // Accent colors (rich color variants)
             "text-info": !asForeground && variant === "info",
             "text-warning": !asForeground && variant === "warning",
