@@ -4,9 +4,10 @@ import { Flex } from "@/layout";
 import { cn } from "@/utils";
 
 export type BaseButtonVariant = "default" | "secondary" | "destructive" | "outline" | "ghost" | "link" | "unstyled";
-export type BaseButtonSize = "default" | "sm" | "lg" | "icon" | "unstyled";
+export type BaseButtonSize = "xs" | "sm" | "md" | "lg" | "xl" | "icon" | "unstyled";
 
 export interface ButtonProps extends React.ComponentProps<"button"> {
+  label?: string;
   children?: React.ReactNode;
   onClick?: () => void;
   variant?:
@@ -20,7 +21,7 @@ export interface ButtonProps extends React.ComponentProps<"button"> {
     | "unstyled"
     // deprecated
     | "subtle";
-  size?: "default" | "xs" | "sm" | "md" | "lg";
+  size?: "default" | "xs" | "sm" | "md" | "lg" | "xl";
   icon?: React.ReactElement;
   disabled?: boolean;
   className?: string;
@@ -31,6 +32,7 @@ export interface ButtonProps extends React.ComponentProps<"button"> {
 }
 
 export const Button = ({
+  label,
   children,
   onClick,
   variant = "default",
@@ -55,16 +57,12 @@ export const Button = ({
   };
 
   const getBaseSize = (): BaseButtonSize => {
-    if (size === "md") {
-      return "default";
-    }
-
-    if (size === "xs") {
-      return "sm";
-    }
-
     if (variant === "unstyled") {
       return "unstyled";
+    }
+
+    if (size === "default") {
+      return "md";
     }
 
     return size;
@@ -87,7 +85,7 @@ export const Button = ({
           <span key="children">{children}</span>
         </Flex>
       ) : (
-        icon || children
+        icon || children || label
       )}
     </BaseButton>
   );

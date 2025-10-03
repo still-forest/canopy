@@ -88,31 +88,17 @@ export const Disabled: Story = {
     disabled: true,
   },
 };
-export const ExtraSmall: Story = {
-  args: {
-    ...defaultProps,
-    size: "xs",
-  },
-};
 
-export const Small: Story = {
-  args: {
-    ...defaultProps,
-    size: "sm",
-  },
-};
-
-export const Medium: Story = {
-  args: {
-    ...defaultProps,
-    size: "md",
-  },
-};
-export const Large: Story = {
-  args: {
-    ...defaultProps,
-    size: "lg",
-  },
+export const Sizes: Story = {
+  render: () => (
+    <Flex direction="col" gap="4">
+      <Button label="Extra small" size="xs" />
+      <Button label="Small" size="sm" />
+      <Button label="Medium" size="md" />
+      <Button label="Large" size="lg" />
+      <Button label="Extra large" size="xl" />
+    </Flex>
+  ),
 };
 
 export const WithIcon: Story = {
