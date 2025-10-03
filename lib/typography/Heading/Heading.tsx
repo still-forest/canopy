@@ -105,6 +105,7 @@ const Heading = React.forwardRef<HTMLHeadingElement, HeadingProps>(
             "text-secondary-foreground": variant === "secondary",
             // Brand color
             "text-brand": variant === "brand",
+            "text-brand-foreground": asForeground && variant === "brand",
             // Accent colors (rich color variants)
             "text-info": !asForeground && variant === "info",
             "text-warning": !asForeground && variant === "warning",
