@@ -1,0 +1,44 @@
+@theme inline {
+  --font-sans-family: "Arial", sans-serif;
+  --font-serif-family: "Georgia", serif;
+  --font-mono-family: "Courier New", monospace;
+
+  --font-brand-family: "SignPainter", cursive;
+  --font-brand-weight: 300;
+
+  --font-display-family: var(--font-sans-family);
+  --font-display-weight: 300;
+
+  --font-heading-family: var(--font-serif-family);
+  --font-heading-weight: 300;
+
+  --font-body-family: var(--font-sans-family);
+  --font-body-weight: 300;
+
+  --font-mono-weight: 300;
+}
+
+@utility font-brand {
+  font-family: var(--font-brand-family);
+  font-weight: var(--font-brand-weight);
+}
+
+@utility font-display {
+  font-family: var(--font-display-family);
+  font-weight: var(--font-display-weight);
+}
+
+@utility font-heading {
+  font-family: var(--font-heading-family);
+  font-weight: var(--font-heading-weight);
+}
+
+@utility font-body {
+  font-family: var(--font-body-family);
+  font-weight: var(--font-body-weight);
+}
+
+@utility font-mono {
+  font-family: var(--font-mono-family);
+  font-weight: var(--font-mono-weight);
+}

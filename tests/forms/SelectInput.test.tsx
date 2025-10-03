@@ -87,7 +87,7 @@ describe("SelectInput", () => {
 
     const note = screen.getByText("Some note") as HTMLParagraphElement;
     expect(note.tagName).toBe("P");
-    expect(note.className).toBe("text-sm text-muted-foreground font-display");
+    expect(note.className).toBe("text-sm text-muted-foreground font-body");
   });
 
   it("renders with an error message", () => {
@@ -95,7 +95,7 @@ describe("SelectInput", () => {
 
     const error = screen.getByText("What'd you do?");
     expect(error.tagName).toBe("P");
-    expect(error.className).toBe("text-xs text-destructive font-display");
+    expect(error.className).toBe("text-xs text-destructive font-body");
   });
 
   it("combines custom className with generated classes", () => {

@@ -20,7 +20,7 @@ describe("Heading", () => {
     const element = screen.getByText("Hello world");
 
     expect(element.tagName).toBe("H2");
-    expect(element.className).toBe("text-3xl font-bold text-foreground font-display scroll-m-20");
+    expect(element.className).toBe("text-3xl font-bold text-foreground font-heading scroll-m-20");
   });
 
   it("renders headings with different levels", () => {
@@ -37,7 +37,7 @@ describe("Heading", () => {
       render(<Heading level={level}>Heading {level}</Heading>);
       const element = screen.getByText(`Heading ${level}`);
       expect(element.tagName).toBe(`H${level}`);
-      expect(element.className).toBe(`${levelSizeMap[level]} font-bold text-foreground font-display scroll-m-20`);
+      expect(element.className).toBe(`${levelSizeMap[level]} font-bold text-foreground font-heading scroll-m-20`);
     }
   });
 
@@ -51,7 +51,7 @@ describe("Heading", () => {
       const element = screen.getByText(`Heading ${size}`);
 
       const expectedCssClass = size === "md" ? "text-base" : `text-${size}`;
-      expect(element.className).toBe(`${expectedCssClass} font-bold text-foreground font-display scroll-m-20`);
+      expect(element.className).toBe(`${expectedCssClass} font-bold text-foreground font-heading scroll-m-20`);
     }
   });
 
@@ -59,7 +59,7 @@ describe("Heading", () => {
     for (const weight of FONT_WEIGHTS) {
       render(<Heading weight={weight as FontWeight}>Weight {weight}</Heading>);
       const element = screen.getByText(`Weight ${weight}`);
-      expect(element.className).toBe(`text-3xl font-${weight} text-foreground font-display scroll-m-20`);
+      expect(element.className).toBe(`text-3xl font-${weight} text-foreground font-heading scroll-m-20`);
     }
   });
 
@@ -80,7 +80,7 @@ describe("Heading", () => {
           expectedCssClass = `text-${variant}`;
         }
 
-        expect(element.className).toBe(`text-3xl font-bold ${expectedCssClass} font-display scroll-m-20`);
+        expect(element.className).toBe(`text-3xl font-bold ${expectedCssClass} font-heading scroll-m-20`);
       }
     });
 
@@ -102,7 +102,7 @@ describe("Heading", () => {
           expectedCssClass = `text-${variant}-foreground`;
         }
 
-        expect(element.className).toBe(`text-3xl font-bold ${expectedCssClass} font-display scroll-m-20`);
+        expect(element.className).toBe(`text-3xl font-bold ${expectedCssClass} font-heading scroll-m-20`);
       }
     });
   });
@@ -111,7 +111,7 @@ describe("Heading", () => {
     for (const align of TEXT_ALIGNS) {
       render(<Heading align={align}>Align {align}</Heading>);
       const element = screen.getByText(`Align ${align}`);
-      expect(element.className).toBe(`text-3xl font-bold text-foreground text-${align} font-display scroll-m-20`);
+      expect(element.className).toBe(`text-3xl font-bold text-foreground text-${align} font-heading scroll-m-20`);
     }
   });
 
@@ -120,7 +120,7 @@ describe("Heading", () => {
       render(<Heading tracking={tracking}>Tracking {tracking}</Heading>);
       const element = screen.getByText(`Tracking ${tracking}`);
       expect(element.className).toBe(
-        `text-3xl font-bold text-foreground tracking-${tracking} font-display scroll-m-20`,
+        `text-3xl font-bold text-foreground tracking-${tracking} font-heading scroll-m-20`,
       );
     }
   });
@@ -129,7 +129,7 @@ describe("Heading", () => {
     for (const leading of TEXT_LEADINGS) {
       render(<Heading leading={leading}>Leading {leading}</Heading>);
       const element = screen.getByText(`Leading ${leading}`);
-      expect(element.className).toBe(`text-3xl font-bold text-foreground leading-${leading} font-display scroll-m-20`);
+      expect(element.className).toBe(`text-3xl font-bold text-foreground leading-${leading} font-heading scroll-m-20`);
     }
   });
 
@@ -144,7 +144,7 @@ describe("Heading", () => {
   it("applies tabular-nums class when numeric is true", () => {
     render(<Heading numeric>123456</Heading>);
     const element = screen.getByText("123456");
-    expect(element.className).toBe("text-3xl font-bold text-foreground font-display tabular-nums scroll-m-20");
+    expect(element.className).toBe("text-3xl font-bold text-foreground font-heading tabular-nums scroll-m-20");
   });
 
   it("does not apply tabular-nums class when numeric is false", () => {
@@ -161,7 +161,7 @@ describe("Heading", () => {
   it("combines custom className with generated classes", () => {
     render(<Heading className="custom-class">With custom class</Heading>);
     const element = screen.getByText("With custom class");
-    expect(element.className).toBe("text-3xl font-bold text-foreground font-display scroll-m-20 custom-class");
+    expect(element.className).toBe("text-3xl font-bold text-foreground font-heading scroll-m-20 custom-class");
   });
 
   it("forwards ref correctly", () => {
@@ -175,7 +175,7 @@ describe("Heading", () => {
   it("should always add scroll-m-20 class for better anchor navigation", () => {
     render(<Heading>Heading with scroll margin</Heading>);
     const element = screen.getByText("Heading with scroll margin");
-    expect(element.className).toBe("text-3xl font-bold text-foreground font-display scroll-m-20");
+    expect(element.className).toBe("text-3xl font-bold text-foreground font-heading scroll-m-20");
   });
 
   it("applies different combinations of props correctly", () => {

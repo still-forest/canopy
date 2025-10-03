@@ -45,7 +45,7 @@ const Text = React.forwardRef(
       align,
       leading, // No default: Tailwind applies a default from text size classes
       tracking,
-      family = "display",
+      family = "body",
       asForeground = false,
       truncate = false,
       numeric = false,
@@ -136,6 +136,9 @@ const Text = React.forwardRef(
           // Font family
           {
             "font-display": family === "display",
+            "font-heading": family === "heading",
+            "font-body": family === "body",
+            "font-brand": family === "brand",
             "font-sans": family === "sans",
             "font-serif": family === "serif",
             "font-mono": family === "mono",

@@ -51,7 +51,7 @@ describe("TextInput", () => {
 
     const note = screen.getByText("My cat's breath smells like cat food");
     expect(note.tagName).toBe("P");
-    expect(note.className).toBe("text-sm text-muted-foreground font-display");
+    expect(note.className).toBe("text-sm text-muted-foreground font-body");
 
     const input = screen.getByRole("textbox", { name: "some_input" }) as HTMLInputElement;
     expect(input.tagName).toBe("INPUT");
@@ -63,7 +63,7 @@ describe("TextInput", () => {
 
     const error = screen.getByText("What'd you do?");
     expect(error.tagName).toBe("P");
-    expect(error.className).toBe("text-xs text-destructive font-display");
+    expect(error.className).toBe("text-xs text-destructive font-body");
 
     const input = screen.getByRole("textbox", { name: "some_input" }) as HTMLInputElement;
     expect(input.tagName).toBe("INPUT");
