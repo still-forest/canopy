@@ -98,8 +98,6 @@ describe("Heading", () => {
           expectedCssClass = "text-foreground";
         } else if (variant === "inherit") {
           expectedCssClass = "text-inherit";
-        } else if (variant === "brand") {
-          expectedCssClass = "text-brand";
         } else {
           expectedCssClass = `text-${variant}-foreground`;
         }
