@@ -4,6 +4,7 @@ export * from "./Badge";
 export * from "./Breadcrumbs";
 export * from "./Card";
 export * from "./Collapsible";
+export * from "./Item";
 export * from "./Loader";
 export * from "./Modal";
 export * from "./Pagination";
