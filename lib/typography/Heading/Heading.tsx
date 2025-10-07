@@ -40,7 +40,7 @@ const Heading = React.forwardRef<HTMLHeadingElement, HeadingProps>(
       align,
       leading, // No default: Tailwind applies a default from text size classes
       tracking,
-      family = "heading",
+      family: familyProp,
       asForeground = false,
       truncate = false,
       numeric = false,
@@ -48,6 +48,8 @@ const Heading = React.forwardRef<HTMLHeadingElement, HeadingProps>(
     },
     ref,
   ) => {
+    const family = familyProp || (variant === "brand" ? "brand" : "heading");
+
     // Map level to component
     const Component = `h${level}` as React.ElementType;
 

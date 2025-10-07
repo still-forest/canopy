@@ -157,8 +157,8 @@ export const Sizes: Story = {
   render: () => (
     <>
       <OptionsByFamilyGrid<FontSize>
+        optionLabel="Size"
         options={FONT_SIZES.slice(0, 6) as unknown as FontSize[]}
-        propKey="size"
         renderOption={(family, option) => (
           <Text family={family} size={option}>
             {sampleText}
@@ -180,8 +180,8 @@ export const Weights: Story = {
   render: () => (
     <>
       <OptionsByFamilyGrid<FontWeight>
+        optionLabel="Weight"
         options={FONT_WEIGHTS as unknown as FontWeight[]}
-        propKey="weight"
         renderOption={(family, option) => (
           <Text family={family} weight={option}>
             {sampleText}
@@ -198,8 +198,8 @@ export const Weights: Story = {
 export const Variants: Story = {
   render: () => (
     <OptionsByFamilyGrid<TypographyVariant>
+      optionLabel="Variant"
       options={TYPOGRAPHY_VARIANTS as unknown as TypographyVariant[]}
-      propKey="variant"
       renderOption={(family, option) => {
         const Component = () => (
           <Text family={family} variant={option}>
@@ -225,8 +225,8 @@ export const Variants: Story = {
 export const VariantsAsForeground: Story = {
   render: () => (
     <OptionsByFamilyGrid<TypographyVariant>
+      optionLabel="Variant"
       options={TYPOGRAPHY_VARIANTS as unknown as TypographyVariant[]}
-      propKey="variant"
       renderOption={(family, option) => {
         const Component = () => (
           <Text asForeground family={family} variant={option}>
@@ -288,8 +288,8 @@ export const Leading: Story = {
 export const Tracking: Story = {
   render: () => (
     <OptionsByFamilyGrid<TextTracking>
+      optionLabel="Tracking"
       options={TEXT_TRACKINGS as unknown as TextTracking[]}
-      propKey="tracking"
       renderOption={(family, option) => (
         <Text align="center" family={family} tracking={option}>
           {sampleText}

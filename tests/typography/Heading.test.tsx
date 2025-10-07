@@ -80,7 +80,14 @@ describe("Heading", () => {
           expectedCssClass = `text-${variant}`;
         }
 
-        expect(element.className).toBe(`text-3xl font-bold ${expectedCssClass} font-heading scroll-m-20`);
+        let expectedFontClass = "";
+        if (variant === "brand") {
+          expectedFontClass = "font-brand";
+        } else {
+          expectedFontClass = "font-heading";
+        }
+
+        expect(element.className).toBe(`text-3xl font-bold ${expectedCssClass} ${expectedFontClass} scroll-m-20`);
       }
     });
 
@@ -102,7 +109,14 @@ describe("Heading", () => {
           expectedCssClass = `text-${variant}-foreground`;
         }
 
-        expect(element.className).toBe(`text-3xl font-bold ${expectedCssClass} font-heading scroll-m-20`);
+        let expectedFontClass = "";
+        if (variant === "brand") {
+          expectedFontClass = "font-brand";
+        } else {
+          expectedFontClass = "font-heading";
+        }
+
+        expect(element.className).toBe(`text-3xl font-bold ${expectedCssClass} ${expectedFontClass} scroll-m-20`);
       }
     });
   });

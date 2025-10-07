@@ -180,8 +180,8 @@ export const Sizes: Story = {
   render: () => (
     <>
       <OptionsByFamilyGrid<FontSize>
+        optionLabel="Size"
         options={FONT_SIZES.slice(0, 6) as unknown as FontSize[]}
-        propKey="size"
         renderOption={(family, option) => (
           <Heading align="center" family={family} level="4" size={option}>
             {sampleHeading}
@@ -203,8 +203,8 @@ export const Weights: Story = {
   render: () => (
     <>
       <OptionsByFamilyGrid<FontWeight>
+        optionLabel="Weight"
         options={FONT_WEIGHTS as unknown as FontWeight[]}
-        propKey="weight"
         renderOption={(family, option) => (
           <Heading align="center" family={family} level="4" weight={option}>
             {sampleHeading}
@@ -221,8 +221,8 @@ export const Weights: Story = {
 export const Variants: Story = {
   render: () => (
     <OptionsByFamilyGrid<TypographyVariant>
+      optionLabel="Variant"
       options={TYPOGRAPHY_VARIANTS as unknown as TypographyVariant[]}
-      propKey="variant"
       renderOption={(family, option) => {
         const Component = () => (
           <Heading align="center" family={family} level="4" variant={option}>
@@ -249,8 +249,8 @@ export const Variants: Story = {
 export const VariantsAsForeground: Story = {
   render: () => (
     <OptionsByFamilyGrid<TypographyVariant>
+      optionLabel="Variant"
       options={TYPOGRAPHY_VARIANTS as unknown as TypographyVariant[]}
-      propKey="variant"
       renderOption={(family, option) => {
         const Component = () => (
           <Heading align="center" asForeground family={family} level="4" variant={option}>
@@ -300,8 +300,8 @@ export const Leading: Story = {
 export const Tracking: Story = {
   render: () => (
     <OptionsByFamilyGrid<TextTracking>
+      optionLabel="Tracking"
       options={TEXT_TRACKINGS as unknown as TextTracking[]}
-      propKey="tracking"
       renderOption={(family, option) => (
         <Heading align="center" family={family} level="4" tracking={option}>
           {sampleHeading}

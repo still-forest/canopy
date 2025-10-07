@@ -45,7 +45,7 @@ const Text = React.forwardRef(
       align,
       leading, // No default: Tailwind applies a default from text size classes
       tracking,
-      family = "body",
+      family: familyProp,
       asForeground = false,
       truncate = false,
       numeric = false,
@@ -54,6 +54,7 @@ const Text = React.forwardRef(
     ref: React.Ref<Element>,
   ) => {
     const Component = as || "p";
+    const family = familyProp || (variant === "brand" ? "brand" : "body");
 
     return (
       <Component
