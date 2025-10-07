@@ -237,7 +237,6 @@ describe("Box", () => {
 
   it("passes additional props to the element", () => {
     render(
-      // biome-ignore lint/a11y/useSemanticElements: Testing custom elements, up to the user to ensure accessibility
       <Box aria-label="box container" as="section" data-testid="box-component" role="region">
         Test box
       </Box>,

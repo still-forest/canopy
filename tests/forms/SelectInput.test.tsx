@@ -22,8 +22,8 @@ describe("SelectInput", () => {
     },
   ];
 
-  const EXPECTED_BASE_BUTTON_CLASSES =
-    "flex w-fit items-center justify-between gap-2 whitespace-nowrap rounded-md border border-input bg-transparent px-3 py-2 text-sm shadow-xs outline-none transition-[color,box-shadow] focus-visible:border-ring focus-visible:ring-[3px] focus-visible:ring-ring/50 disabled:cursor-not-allowed disabled:opacity-50 aria-invalid:border-destructive aria-invalid:ring-destructive/20 data-[size=default]:h-9 data-[size=sm]:h-8 data-[placeholder]:text-muted-foreground *:data-[slot=select-value]:line-clamp-1 *:data-[slot=select-value]:flex *:data-[slot=select-value]:items-center *:data-[slot=select-value]:gap-2 dark:bg-input/30 dark:aria-invalid:ring-destructive/40 dark:hover:bg-input/50 [&_svg:not([class*='size-'])]:size-4 [&_svg:not([class*='text-'])]:text-muted-foreground [&_svg]:pointer-events-none [&_svg]:shrink-0 min-w-[180px]";
+  const EXPECTED_BASE_TRIGGER_CLASSES =
+    "flex w-fit items-center justify-between gap-2 whitespace-nowrap rounded-md border border-input bg-transparent px-3 py-2 shadow-xs outline-none transition-[color,box-shadow] focus-visible:border-ring focus-visible:ring-[3px] focus-visible:ring-ring/50 disabled:cursor-not-allowed disabled:opacity-50 aria-invalid:border-destructive aria-invalid:ring-destructive/20 data-[size=default]:h-9 data-[size=sm]:h-8 data-[placeholder]:text-muted-foreground *:data-[slot=select-value]:line-clamp-1 *:data-[slot=select-value]:flex *:data-[slot=select-value]:items-center *:data-[slot=select-value]:gap-2 dark:bg-input/30 dark:aria-invalid:ring-destructive/40 dark:hover:bg-input/50 [&_svg:not([class*='size-'])]:size-4 [&_svg:not([class*='text-'])]:text-muted-foreground [&_svg]:pointer-events-none [&_svg]:shrink-0 min-w-[180px] h-9 text-base md:text-sm";
 
   const onSelect = vi.fn();
 
@@ -32,7 +32,7 @@ describe("SelectInput", () => {
 
     const trigger = screen.getByRole("combobox") as HTMLButtonElement;
     expect(trigger.tagName).toBe("BUTTON");
-    expect(trigger.className).toBe(EXPECTED_BASE_BUTTON_CLASSES);
+    expect(trigger.className).toBe(EXPECTED_BASE_TRIGGER_CLASSES);
     expect(trigger).toHaveTextContent("");
 
     expect(trigger.dataset.state).toBe("closed");
@@ -102,6 +102,6 @@ describe("SelectInput", () => {
     render(<SelectInput className="custom-class" name="some_input" onValueChange={onSelect} options={OPTIONS} />);
 
     const trigger = screen.getByRole("combobox") as HTMLButtonElement;
-    expect(trigger.className).toBe(`${EXPECTED_BASE_BUTTON_CLASSES} custom-class`);
+    expect(trigger.className).toBe(`${EXPECTED_BASE_TRIGGER_CLASSES} custom-class`);
   });
 });
