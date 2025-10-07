@@ -1,5 +1,5 @@
 import type { Meta, StoryObj } from "@storybook/react-vite";
-
+import { Home } from "lucide-react";
 import { PageNotFound } from "@/interstitials";
 import { INTERSTITIAL_DECORATOR } from "../support/decorators";
 
@@ -18,9 +18,19 @@ export const Default: Story = {
   args: {},
 };
 
-export const WithGoHome: Story = {
+export const WithBackFunction: Story = {
   args: {
-    goHome: () => {
+    onBack: () => {
+      window.alert("Going home...");
+    },
+  },
+};
+
+export const WithCustomBack: Story = {
+  args: {
+    backIcon: Home,
+    backLabel: "Phone home",
+    onBack: () => {
       window.alert("Going home...");
     },
   },
