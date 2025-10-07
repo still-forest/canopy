@@ -12,7 +12,7 @@ describe("ErrorOverlay", () => {
 
     const icon = screen.getByTestId("icon");
     expect(icon).toBeInTheDocument();
-    expect(icon.getAttribute("class")).toBe("lucide lucide-circle-x text-destructive");
+    expect(icon.getAttribute("class")).toBe("lucide lucide-circle-x text-destructive size-32");
   });
 
   it("renders with custom message", () => {
@@ -22,7 +22,7 @@ describe("ErrorOverlay", () => {
 
     const icon = screen.getByTestId("icon");
     expect(icon).toBeInTheDocument();
-    expect(icon.getAttribute("class")).toBe("lucide lucide-circle-x text-destructive");
+    expect(icon.getAttribute("class")).toBe("lucide lucide-circle-x text-destructive size-32");
   });
 
   it("renders with children", () => {

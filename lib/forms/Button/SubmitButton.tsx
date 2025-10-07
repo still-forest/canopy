@@ -1,4 +1,5 @@
-import { Loader, Save, Send } from "lucide-react";
+import { Save, Send } from "lucide-react";
+import { Loader } from "@/components/Loader";
 import { Button, type ButtonProps } from "@/forms";
 
 export interface SubmitButtonProps extends Omit<ButtonProps, "icon"> {
@@ -30,8 +31,6 @@ const SubmitButton = ({
   noIcon = false,
   ...rest
 }: SubmitButtonProps) => {
-  const SubmitIcon = submittingIcon || Loader;
-
   if (!BUTTON_TEXT_MAP[action]) {
     throw new Error(`Invalid action: ${action}`);
   }
@@ -41,7 +40,7 @@ const SubmitButton = ({
   const submittingLabel = customSubmittingLabel || defaultActionMap.submittingLabel;
   const IconComponent = customIcon || defaultActionMap.IconComponent;
 
-  const labelIcon = submitting ? <SubmitIcon className="animate-spin" /> : <IconComponent />;
+  const labelIcon = submitting ? <Loader icon={submittingIcon} /> : <IconComponent />;
 
   return (
     <Button

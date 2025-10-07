@@ -12,7 +12,7 @@ describe("ErrorFallback", () => {
 
     const icon = screen.getByTestId("icon");
     expect(icon).toBeInTheDocument();
-    expect(icon.getAttribute("class")).toBe("lucide lucide-circle-x text-destructive");
+    expect(icon.getAttribute("class")).toBe("lucide lucide-circle-x text-destructive size-32");
 
     const reloadButton = screen.getByRole("button", { name: "Reload" });
     expect(reloadButton).toBeInTheDocument();
@@ -28,7 +28,7 @@ describe("ErrorFallback", () => {
 
     const icon = screen.getByTestId("icon");
     expect(icon).toBeInTheDocument();
-    expect(icon.getAttribute("class")).toBe("lucide lucide-circle-x text-destructive");
+    expect(icon.getAttribute("class")).toBe("lucide lucide-circle-x text-destructive size-32");
 
     const reloadButton = screen.getByRole("button", { name: "Reload" });
     expect(reloadButton).toBeInTheDocument();

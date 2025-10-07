@@ -11,7 +11,7 @@ describe("PageLoader", () => {
 
     const icon = screen.getByTestId("icon");
     expect(icon).toBeInTheDocument();
-    expect(icon.getAttribute("class")).toBe("lucide lucide-loader-circle animate-spin text-info");
+    expect(icon.getAttribute("class")).toBe("lucide lucide-loader-circle animate-spin size-12 text-info");
   });
 
   it("renders with custom icon", () => {
@@ -21,6 +21,6 @@ describe("PageLoader", () => {
 
     const icon = screen.getByTestId("icon");
     expect(icon).toBeInTheDocument();
-    expect(icon.getAttribute("class")).toBe("lucide lucide-mailbox");
+    expect(icon.getAttribute("class")).toBe("lucide lucide-mailbox size-12 text-info");
   });
 });
