@@ -23,13 +23,21 @@ describe("PageNotFound", () => {
     expect(icon.getAttribute("class")).toBe("lucide lucide-file-question-mark text-warning");
   });
 
-  it("renders with goHome button", () => {
-    const goHome = vi.fn();
-    render(<PageNotFound goHome={goHome} />);
+  it("renders with onBack function", () => {
+    const onBack = vi.fn();
+    render(<PageNotFound onBack={onBack} />);
 
-    const goHomeButton = screen.getByRole("button", { name: "Home" });
+    const goHomeButton = screen.getByRole("button", { name: "Back" });
     fireEvent.click(goHomeButton);
 
-    expect(goHome).toHaveBeenCalled();
+    expect(onBack).toHaveBeenCalled();
+  });
+
+  it("renders with custom back label", () => {
+    const onBack = vi.fn();
+    render(<PageNotFound backLabel="Home" onBack={onBack} />);
+
+    const backLabel = screen.getByRole("button", { name: "Home" });
+    expect(backLabel).toBeInTheDocument();
   });
 });
