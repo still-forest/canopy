@@ -1,7 +1,6 @@
 import type { Meta, StoryObj } from "@storybook/react-vite";
 import { Home } from "lucide-react";
-import { Item } from "@/components";
-import { ItemGroup } from "@/components/Item/ItemGroup";
+import { Item, ItemGroup } from "@/components";
 import { Button } from "@/forms/Button";
 import { DEFAULT_DECORATOR_WITH_MIN_WIDTH_MD } from "../support/decorators";
 
