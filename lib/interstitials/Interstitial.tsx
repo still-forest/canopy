@@ -9,10 +9,18 @@ export interface InterstitialProps {
   iconComponent?: React.ElementType;
   message?: string;
   iconSize?: LoaderProps["size"];
+  iconClassName?: string;
   children?: React.ReactNode;
 }
 
-export const Interstitial = ({ variant, iconComponent, message, children, iconSize = "10xl" }: InterstitialProps) => {
+export const Interstitial = ({
+  variant,
+  iconComponent,
+  message,
+  children,
+  iconSize = "10xl",
+  iconClassName,
+}: InterstitialProps) => {
   if (!iconComponent && !message && !children) {
     if (process.env.NODE_ENV !== "production") {
       throw new Error("Interstitial requires at least one of icon, iconComponent, message, or children");
@@ -53,6 +61,7 @@ export const Interstitial = ({ variant, iconComponent, message, children, iconSi
                 iconSize === "8xl" && "size-20",
                 iconSize === "9xl" && "size-28",
                 iconSize === "10xl" && "size-32",
+                iconClassName,
               )} // Hide from screen readers if there's a text message
               data-testid="icon" // Add role if no message explains the icon
               role={!message ? "img" : undefined} // Add label if no message

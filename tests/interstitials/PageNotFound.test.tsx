@@ -10,7 +10,7 @@ describe("PageNotFound", () => {
 
     const icon = screen.getByTestId("icon");
     expect(icon).toBeInTheDocument();
-    expect(icon.getAttribute("class")).toBe("lucide lucide-file-question-mark text-warning");
+    expect(icon.getAttribute("class")).toBe("lucide lucide-file-question-mark text-warning size-32");
   });
 
   it("renders with custom message", () => {
@@ -20,7 +20,7 @@ describe("PageNotFound", () => {
 
     const icon = screen.getByTestId("icon");
     expect(icon).toBeInTheDocument();
-    expect(icon.getAttribute("class")).toBe("lucide lucide-file-question-mark text-warning");
+    expect(icon.getAttribute("class")).toBe("lucide lucide-file-question-mark text-warning size-32");
   });
 
   it("renders with onBack function", () => {

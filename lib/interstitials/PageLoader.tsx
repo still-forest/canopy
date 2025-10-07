@@ -9,10 +9,11 @@ interface PageLoaderProps {
   containerClassName?: string;
   iconSize?: LoaderProps["size"];
   fullScreen?: boolean;
+  iconClassName?: string;
 }
 
-const DefaultIconComponent = ({ iconSize = "8xl" }: { iconSize?: LoaderProps["size"] }) => {
-  return <Loader className="text-info" data-testid="icon" size={iconSize} />;
+const DefaultIconComponent = (props: React.SVGProps<SVGSVGElement>) => {
+  return <Loader className="text-info" data-testid="icon" {...props} />;
 };
 
 export const PageLoader = ({
@@ -21,12 +22,18 @@ export const PageLoader = ({
   containerClassName,
   iconSize = "5xl",
   fullScreen = false,
+  iconClassName,
 }: PageLoaderProps) => {
   const IconComponent = iconComponent ? iconComponent : DefaultIconComponent;
 
   return (
     <Flex className={cn("w-full h-full", fullScreen && "h-screen", containerClassName)}>
-      <Interstitial iconComponent={IconComponent} iconSize={iconSize} message={message} />
+      <Interstitial
+        iconClassName={cn("text-info", iconClassName)}
+        iconComponent={IconComponent}
+        iconSize={iconSize}
+        message={message}
+      />
     </Flex>
   );
 };

@@ -19,7 +19,7 @@ describe("Interstitial", () => {
 
     const icon = screen.getByTestId("icon");
     expect(icon).toBeInTheDocument();
-    expect(icon.getAttribute("class")).toBe("lucide lucide-mailbox");
+    expect(icon.getAttribute("class")).toBe("lucide lucide-mailbox size-32");
   });
 
   it("renders with icon and info variant", () => {
@@ -29,7 +29,7 @@ describe("Interstitial", () => {
 
     const icon = screen.getByTestId("icon");
     expect(icon).toBeInTheDocument();
-    expect(icon.getAttribute("class")).toBe("lucide lucide-mailbox text-info");
+    expect(icon.getAttribute("class")).toBe("lucide lucide-mailbox text-info size-32");
   });
 
   it("renders with icon and success variant", () => {
@@ -39,7 +39,7 @@ describe("Interstitial", () => {
 
     const icon = screen.getByTestId("icon");
     expect(icon).toBeInTheDocument();
-    expect(icon.getAttribute("class")).toBe("lucide lucide-mailbox text-success");
+    expect(icon.getAttribute("class")).toBe("lucide lucide-mailbox text-success size-32");
   });
 
   it("renders with icon and warning variant", () => {
@@ -49,7 +49,7 @@ describe("Interstitial", () => {
 
     const icon = screen.getByTestId("icon");
     expect(icon).toBeInTheDocument();
-    expect(icon.getAttribute("class")).toBe("lucide lucide-mailbox text-warning");
+    expect(icon.getAttribute("class")).toBe("lucide lucide-mailbox text-warning size-32");
   });
 
   it("renders with icon and error variant", () => {
@@ -59,6 +59,6 @@ describe("Interstitial", () => {
 
     const icon = screen.getByTestId("icon");
     expect(icon).toBeInTheDocument();
-    expect(icon.getAttribute("class")).toBe("lucide lucide-mailbox text-destructive");
+    expect(icon.getAttribute("class")).toBe("lucide lucide-mailbox text-destructive size-32");
   });
 });
