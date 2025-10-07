@@ -11,7 +11,7 @@ interface PageLoaderProps {
   fullScreen?: boolean;
 }
 
-const DefaultIconComponent = ({ iconSize = "5xl" }: { iconSize?: LoaderProps["size"] }) => {
+const DefaultIconComponent = ({ iconSize = "8xl" }: { iconSize?: LoaderProps["size"] }) => {
   return <Loader className="text-info" data-testid="icon" size={iconSize} />;
 };
 

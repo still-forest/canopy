@@ -57,6 +57,7 @@ export const Sizes: Story = {
       <SizeOption size="7xl" />
       <SizeOption size="8xl" />
       <SizeOption size="9xl" />
+      <SizeOption size="10xl" />
     </Flex>
   ),
 };
