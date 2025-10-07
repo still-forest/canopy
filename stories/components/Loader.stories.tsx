@@ -1,6 +1,6 @@
 import type { Meta, StoryObj } from "@storybook/react-vite";
 import { PiggyBank } from "lucide-react";
-import { Loader } from "@/components";
+import { Loader, type LoaderProps } from "@/components";
 import { Flex, Grid } from "@/layout";
 import { Text } from "@/typography";
 import { INTERSTITIAL_DECORATOR } from "../support/decorators";
@@ -32,29 +32,31 @@ export const WithCustomIcon: Story = {
   },
 };
 
+const SizeOption = ({ size }: { size: LoaderProps["size"] }) => {
+  return (
+    <Flex align="center" gap="2">
+      <Loader size={size} />
+      <Text size={size}>{size}</Text>
+    </Flex>
+  );
+};
+
 export const Sizes: Story = {
   render: () => (
     <Flex direction="col" gap="2">
-      <Flex align="center" gap="2">
-        <Loader size="xs" />
-        <Text size="xs">Extra small</Text>
-      </Flex>
-      <Flex align="center" gap="2">
-        <Loader size="sm" />
-        <Text size="sm">Small</Text>
-      </Flex>
-      <Flex align="center" gap="2">
-        <Loader size="md" />
-        <Text size="md">Medium</Text>
-      </Flex>
-      <Flex align="center" gap="2">
-        <Loader size="lg" />
-        <Text size="lg">Large</Text>
-      </Flex>
-      <Flex align="center" gap="2">
-        <Loader size="xl" />
-        <Text size="xl">Extra large</Text>
-      </Flex>
+      <SizeOption size="xs" />
+      <SizeOption size="sm" />
+      <SizeOption size="md" />
+      <SizeOption size="lg" />
+      <SizeOption size="xl" />
+      <SizeOption size="2xl" />
+      <SizeOption size="3xl" />
+      <SizeOption size="4xl" />
+      <SizeOption size="5xl" />
+      <SizeOption size="6xl" />
+      <SizeOption size="7xl" />
+      <SizeOption size="8xl" />
+      <SizeOption size="9xl" />
     </Flex>
   ),
 };
