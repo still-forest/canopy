@@ -65,7 +65,7 @@
 
   --info: oklch(0.71 0.14 255); /* blue-400 */
   --info-foreground: oklch(0.93 0.03 256); /* blue-100 */
-  --success: oklch(0.80 0.18 152); /* green-400 */
+  --success: oklch(0.8 0.18 152); /* green-400 */
   --success-foreground: oklch(0.96 0.04 157); /* green-100 */
   --warning: oklch(0.76 0.16 56); /* orange-400 */
   --warning-foreground: oklch(0.95 0.04 75); /* orange-100 */
