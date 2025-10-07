@@ -10,7 +10,7 @@ import { useTheme } from "./context/useTheme";
 
 export default function App() {
   const { theme, setTheme } = useTheme();
-  const [showDimensions, setShowDimensions] = useState(true);
+  const [showDimensions, setShowDimensions] = useState(false);
 
   return (
     <Layout>
