@@ -9,7 +9,7 @@ export interface Option {
   label: string;
 }
 
-export interface SelectInputProps extends Omit<React.ComponentProps<"select">, "dir"> {
+export interface SelectInputProps extends Omit<React.ComponentProps<"select">, "dir" | "size"> {
   name: string;
   value?: string;
   onValueChange: (value: string) => void;
@@ -19,6 +19,7 @@ export interface SelectInputProps extends Omit<React.ComponentProps<"select">, "
   note?: string;
   className?: string;
   error?: string;
+  size?: "xs" | "sm" | "md" | "lg" | "xl";
 }
 
 const SelectInput = ({
@@ -32,8 +33,21 @@ const SelectInput = ({
   value,
   onValueChange,
   error,
+  size = "md",
   ...props
 }: SelectInputProps) => {
+  const triggerClasses = cn(
+    "min-w-[180px]",
+    size === "xs" && "h-7 text-xs md:text-xs",
+    size === "sm" && "h-8 text-sm md:text-xs",
+    size === "md" && "h-9 text-base md:text-sm",
+    size === "lg" && "h-10 text-lg md:text-base",
+    size === "xl" && "h-11 text-xl md:text-lg",
+    className,
+  );
+
+  const triggerSize = size === "xs" || size === "sm" ? "sm" : "default";
+
   return (
     <Flex className="w-full" direction="col" gap="2">
       {label && <Label htmlFor={name}>{label}</Label>}
@@ -44,7 +58,7 @@ const SelectInput = ({
         value={value}
         {...props}
       >
-        <SelectTrigger className={cn("min-w-[180px]", className)} data-testid={`select-input-${name}`}>
+        <SelectTrigger className={triggerClasses} data-testid={`select-input-${name}`} size={triggerSize}>
           <SelectValue placeholder={placeholder} />
         </SelectTrigger>
         <SelectContent>
