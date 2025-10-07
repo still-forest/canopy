@@ -71,7 +71,14 @@ describe("Text", () => {
           expectedCssClass = `text-${variant}`;
         }
 
-        expect(element.className).toBe(`${expectedCssClass} font-body`);
+        let expectedFontClass = "";
+        if (variant === "brand") {
+          expectedFontClass = "font-brand";
+        } else {
+          expectedFontClass = "font-body";
+        }
+
+        expect(element.className).toBe(`${expectedCssClass} ${expectedFontClass}`);
       }
     });
 
@@ -93,7 +100,14 @@ describe("Text", () => {
           expectedCssClass = `text-${variant}-foreground`;
         }
 
-        expect(element.className).toBe(`${expectedCssClass} font-body`);
+        let expectedFontClass = "";
+        if (variant === "brand") {
+          expectedFontClass = "font-brand";
+        } else {
+          expectedFontClass = "font-body";
+        }
+
+        expect(element.className).toBe(`${expectedCssClass} ${expectedFontClass}`);
       }
     });
   });
