@@ -60,6 +60,15 @@
   --secondary: oklch(0.269 0 0);
   --secondary-foreground: oklch(0.985 0 0);
 
+  --info: oklch(0.71 0.14 255); /* blue-400 */
+  --info-foreground: oklch(0.93 0.03 256); /* blue-100 */
+  --success: oklch(0.80 0.18 152); /* green-400 */
+  --success-foreground: oklch(0.96 0.04 157); /* green-100 */
+  --warning: oklch(0.76 0.16 56); /* orange-400 */
+  --warning-foreground: oklch(0.95 0.04 75); /* orange-100 */
+  --destructive: oklch(0.71 0.17 22); /* red-400 */
+  --destructive-foreground: oklch(0.94 0.03 18); /* red-100 */
+
   --card: oklch(0.145 0 0);
   --card-foreground: oklch(0.985 0 0);
 
