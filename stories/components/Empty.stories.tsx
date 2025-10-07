@@ -3,6 +3,7 @@ import { Bird, Origami } from "lucide-react";
 import { Empty } from "@/components";
 import { Button } from "@/forms/Button";
 import { DEFAULT_DECORATOR_WITH_MIN_WIDTH_MD } from "../support/decorators";
+import { sampleText2 } from "../support/sampleText";
 
 const meta: Meta<typeof Empty> = {
   title: "Components/Empty",
@@ -15,6 +16,8 @@ export default meta;
 
 type Story = StoryObj<typeof meta>;
 
+const description = sampleText2;
+
 export const Default: Story = {
   render: () => (
     <Empty>
@@ -22,8 +25,8 @@ export const Default: Story = {
         <Bird />
       </Empty.Media>
       <Empty.Content>
-        <Empty.Title>Basic Empty</Empty.Title>
-        <Empty.Description>A simple item with title and description.</Empty.Description>
+        <Empty.Title>Basic Bird</Empty.Title>
+        <Empty.Description>{description}</Empty.Description>
       </Empty.Content>
     </Empty>
   ),
@@ -36,13 +39,11 @@ export const WithHeader: Story = {
         <Empty.Media variant="default">
           <Origami size={96} />
         </Empty.Media>
-        <Empty.Title>User Offline</Empty.Title>
-        <Empty.Description>
-          This user is currently offline. You can leave a message to notify them or try again later.
-        </Empty.Description>
+        <Empty.Title>Origami Bird</Empty.Title>
+        <Empty.Description>{description}</Empty.Description>
       </Empty.Header>
       <Empty.Content>
-        <Button size="sm">Leave Message</Button>
+        <Button size="sm">Create Origami</Button>
       </Empty.Content>
     </Empty>
   ),
