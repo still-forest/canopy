@@ -1,7 +1,7 @@
 import type { Meta, StoryObj } from "@storybook/react-vite";
 import { PiggyBank } from "lucide-react";
 import { Loader } from "@/components";
-import { Flex } from "@/layout";
+import { Flex, Grid } from "@/layout";
 import { Text } from "@/typography";
 import { INTERSTITIAL_DECORATOR } from "../support/decorators";
 
@@ -56,5 +56,26 @@ export const Sizes: Story = {
         <Text size="xl">Extra large</Text>
       </Flex>
     </Flex>
+  ),
+};
+
+export const WithColorClassName: Story = {
+  render: () => (
+    <Grid cols="7" gap="2">
+      <Loader className="text-brand" />
+      <Loader className="text-primary" />
+      <Loader className="text-info" />
+      <Loader className="text-warning" />
+      <Loader className="text-success" />
+      <Loader className="text-destructive" />
+      <Loader className="text-gray-500" />
+      <Loader className="text-red-500" />
+      <Loader className="text-orange-500" />
+      <Loader className="text-yellow-500" />
+      <Loader className="text-green-500" />
+      <Loader className="text-blue-500" />
+      <Loader className="text-indigo-500" />
+      <Loader className="text-violet-500" />
+    </Grid>
   ),
 };
