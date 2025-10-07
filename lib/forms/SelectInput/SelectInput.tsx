@@ -9,7 +9,7 @@ export interface Option {
   label: string;
 }
 
-export interface SelectInputProps extends Omit<React.ComponentProps<"select">, "dir"> {
+export interface SelectInputProps extends Omit<React.ComponentProps<"select">, "dir" | "size"> {
   name: string;
   value?: string;
   onValueChange: (value: string) => void;
