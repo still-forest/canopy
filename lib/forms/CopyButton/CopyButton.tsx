@@ -1,5 +1,5 @@
 import { Clipboard, ClipboardCheck } from "lucide-react";
-import { useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { cn } from "@/utils";
 import { Button, type ButtonProps } from "../Button";
 
@@ -9,6 +9,15 @@ interface CopyButtonProps extends Omit<ButtonProps, "onClick" | "disabled"> {
 
 export const CopyButton = ({ content, className, size = "md", ...props }: CopyButtonProps) => {
   const [recentlyCopied, setRecentlyCopied] = useState(false);
+  const timeoutRef = useRef<NodeJS.Timeout | null>(null);
+
+  useEffect(() => {
+    return () => {
+      if (timeoutRef.current) {
+        clearTimeout(timeoutRef.current);
+      }
+    };
+  }, []);
 
   const copyText = () => {
     const write = navigator.clipboard?.writeText;
@@ -19,8 +28,12 @@ export const CopyButton = ({ content, className, size = "md", ...props }: CopyBu
     void write
       .call(navigator.clipboard, content)
       .then(() => {
-        window.setTimeout(() => {
+        if (timeoutRef.current) {
+          clearTimeout(timeoutRef.current);
+        }
+        timeoutRef.current = setTimeout(() => {
           setRecentlyCopied(false);
+          timeoutRef.current = null;
         }, 2000);
       })
       .catch(() => {
