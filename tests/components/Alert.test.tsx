@@ -57,4 +57,21 @@ describe("Alert", () => {
     expect(within(alert).getByText("This is an important message.")).toBeInTheDocument();
     expect(within(alert).getByTestId("alert-icon-error")).toBeInTheDocument();
   });
+
+  test("renders with children", async () => {
+    render(
+      <Alert title="Important Information" type="info">
+        <div>
+          <p>This is a child</p>
+          <p>This is another child</p>
+        </div>
+      </Alert>,
+    );
+
+    const alert = screen.getByRole("alert");
+    expect(alert).toBeInTheDocument();
+    expect(within(alert).getByText("This is a child")).toBeInTheDocument();
+    expect(within(alert).getByText("This is another child")).toBeInTheDocument();
+    expect(within(alert).getByTestId("alert-icon-info")).toBeInTheDocument();
+  });
 });
