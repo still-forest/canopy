@@ -21,22 +21,22 @@ export const Switch = ({ id: ipProp, label, leftLabel, rightLabel, size = "md" }
       )}
       <BaseSwitch
         className={cn({
-          "h-[12px] min-h-[12px] w-[20px] px-[3px]": size === "xs",
-          "h-[16px] min-h-[16px] w-[28px] px-[3px]": size === "sm",
+          "h-[10px] min-h-[10px] w-[20px] px-[3px]": size === "xs",
+          "h-[14px] min-h-[14px] w-[28px] px-[3px]": size === "sm",
           md: size === "md",
-          "h-[24px] min-h-[24px] w-[42px] px-[3px]": size === "lg",
-          "h-[28px] min-h-[28px] w-[48px] px-[3px]": size === "xl",
+          "h-[22px] min-h-[22px] w-[42px] px-[3px]": size === "lg",
+          "h-[26px] min-h-[26px] w-[48px] px-[3px]": size === "xl",
         })}
         id={id}
         thumbClassName={cn({
-          "size-2 data-[state=checked]:translate-x-[calc(100%-1.5px)]  data-[state=unchecked]:-translate-x-0.5":
+          "size-2 data-[state=checked]:translate-x-[calc(100%-1px)]  data-[state=unchecked]:-translate-x-0.75":
             size === "xs",
-          "size-3 data-[state=checked]:translate-x-[calc(100%-2px)]  data-[state=unchecked]:-translate-x-0.5":
+          "size-3 data-[state=checked]:translate-x-[calc(100%-1px)]  data-[state=unchecked]:-translate-x-0.75":
             size === "sm",
           md: size === "md",
-          "size-5 data-[state=checked]:translate-x-[calc(100%-4px)] data-[state=unchecked]:-translate-x-0.5":
+          "size-5 data-[state=checked]:translate-x-[calc(100%-3px)] data-[state=unchecked]:-translate-x-0.75":
             size === "lg",
-          "size-6 data-[state=checked]:translate-x-[calc(100%-6px)] data-[state=unchecked]:-translate-x-0.5":
+          "size-6 data-[state=checked]:translate-x-[calc(100%-5px)] data-[state=unchecked]:-translate-x-0.5":
             size === "xl",
         })}
       />
