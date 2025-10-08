@@ -1,13 +1,13 @@
 import { Switch as BaseSwitch } from "@/components/ui/switch";
 import { Label } from "@/forms/Label";
+import { cn } from "@/utils";
 
 interface SwitchProps {
   id?: string;
   label: string;
-  name: string;
   leftLabel?: string;
   rightLabel?: string;
-  size?: "sm" | "md" | "lg";
+  size?: "xs" | "sm" | "md" | "lg" | "xl";
 }
 
 export const Switch = ({ id: ipProp, label, leftLabel, rightLabel, size = "md" }: SwitchProps) => {
@@ -19,7 +19,25 @@ export const Switch = ({ id: ipProp, label, leftLabel, rightLabel, size = "md" }
           {leftLabel}
         </Label>
       )}
-      <BaseSwitch id={id} />
+      <BaseSwitch
+        className={cn({
+          xs: size === "xs",
+          sm: size === "sm",
+          md: size === "md",
+          "inline-flex h-[28px] min-h-[28px] w-[42px] shrink-0 cursor-pointer items-center rounded-full px-[3px]":
+            size === "lg",
+          xl: size === "xl",
+        })}
+        id={id}
+        thumbClassName={cn({
+          xs: size === "xs",
+          sm: size === "sm",
+          md: size === "md",
+          "size-[24px] transition-transform data-[state=checked]:translate-x-3 data-[state=unchecked]:-translate-x-0.5":
+            size === "lg",
+          xl: size === "xl",
+        })}
+      />
       <Label htmlFor={id} size={size}>
         {rightLabel || label}
       </Label>
