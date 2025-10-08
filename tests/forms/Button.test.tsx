@@ -38,4 +38,63 @@ describe("Button", () => {
     expect(screen.getByRole("button")).toHaveTextContent("Test Button");
     expect(screen.getByRole("button")).toHaveAttribute("type", "reset");
   });
+
+  test("renders a Button of size xs", async () => {
+    render(<Button size="xs">Test Button</Button>);
+
+    expect(screen.getByRole("button")).toHaveTextContent("Test Button");
+    expect(screen.getByRole("button")).toHaveAttribute("type", "button");
+    expect(screen.getByRole("button")).toHaveClass("h-7 px-3 py-1.5 has-[>svg]:px-2 text-xs");
+  });
+
+  test("renders a Button of size sm", async () => {
+    render(<Button size="sm">Test Button</Button>);
+
+    expect(screen.getByRole("button")).toHaveTextContent("Test Button");
+    expect(screen.getByRole("button")).toHaveAttribute("type", "button");
+    expect(screen.getByRole("button")).toHaveClass("h-8 rounded-md gap-1.5 px-3 has-[>svg]:px-2.5 text-sm");
+  });
+
+  test("renders a Button of size md", async () => {
+    render(<Button size="md">Test Button</Button>);
+
+    expect(screen.getByRole("button")).toHaveTextContent("Test Button");
+    expect(screen.getByRole("button")).toHaveAttribute("type", "button");
+    expect(screen.getByRole("button")).toHaveClass("h-9 px-4 py-2 has-[>svg]:px-3 text-sm");
+  });
+
+  test("renders a Button of size lg", async () => {
+    render(<Button size="lg">Test Button</Button>);
+
+    expect(screen.getByRole("button")).toHaveTextContent("Test Button");
+    expect(screen.getByRole("button")).toHaveAttribute("type", "button");
+    expect(screen.getByRole("button")).toHaveClass("h-10 rounded-md px-6 has-[>svg]:px-4 text-base");
+  });
+
+  test("renders a Button of size xl", async () => {
+    render(<Button size="xl">Test Button</Button>);
+
+    expect(screen.getByRole("button")).toHaveTextContent("Test Button");
+    expect(screen.getByRole("button")).toHaveAttribute("type", "button");
+    expect(screen.getByRole("button")).toHaveClass("h-11 px-8 py-3 has-[>svg]:px-5 text-lg");
+  });
+
+  test("renders an unstyled Button", async () => {
+    render(<Button variant="unstyled">Test Button</Button>);
+
+    expect(screen.getByRole("button")).toHaveTextContent("Test Button");
+    expect(screen.getByRole("button")).toHaveAttribute("type", "button");
+    expect(screen.getByRole("button")).toHaveClass("h-auto p-0 text-sm");
+    expect(screen.getByRole("button")).toHaveClass(
+      "hover:bg-accent hover:text-accent-foreground dark:hover:bg-accent/50 justify-start",
+    );
+  });
+
+  test("renders a Button of size default", async () => {
+    render(<Button size="default">Test Button</Button>);
+
+    expect(screen.getByRole("button")).toHaveTextContent("Test Button");
+    expect(screen.getByRole("button")).toHaveAttribute("type", "button");
+    expect(screen.getByRole("button")).toHaveClass("h-9 px-4 py-2 has-[>svg]:px-3 text-sm");
+  });
 });

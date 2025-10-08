@@ -4,6 +4,8 @@ import "@testing-library/jest-dom";
 
 import { Breadcrumbs } from "@/components";
 
+const EXPECTED_UPSTREAM_LINK_CLASSES = "hover:text-foreground transition-colors font-display";
+
 describe("Breadcrumbs", () => {
   const breadcrumbs = [
     { label: "Root", to: "/" },
@@ -22,22 +24,22 @@ describe("Breadcrumbs", () => {
     const rootLink = screen.getByRole("link", { name: "Root" });
     expect(rootLink).toHaveAttribute("href", "/");
     expect(rootLink).not.toHaveAttribute("aria-disabled", "true");
-    expect(rootLink.className).toBe("transition-colors hover:text-foreground font-display");
+    expect(rootLink.className).toBe(EXPECTED_UPSTREAM_LINK_CLASSES);
 
     const level1Link = screen.getByRole("link", { name: "Level 1" });
     expect(level1Link).toHaveAttribute("href", "/level_1");
     expect(level1Link).not.toHaveAttribute("aria-disabled", "true");
-    expect(level1Link.className).toBe("transition-colors hover:text-foreground font-display");
+    expect(level1Link.className).toBe(EXPECTED_UPSTREAM_LINK_CLASSES);
 
     const level2Link = screen.getByRole("link", { name: "Level 2" });
     expect(level2Link).toHaveAttribute("href", "/level_1/two");
     expect(level2Link).not.toHaveAttribute("aria-disabled", "true");
-    expect(level2Link.className).toBe("transition-colors hover:text-foreground font-display");
+    expect(level2Link.className).toBe(EXPECTED_UPSTREAM_LINK_CLASSES);
 
     const currentPage = screen.getByText("Current");
     expect(currentPage).toBeInTheDocument();
     expect(currentPage).toHaveAttribute("aria-disabled", "true");
-    expect(currentPage.className).toBe("font-normal text-foreground font-display");
+    expect(currentPage.className).toBe("text-foreground font-normal font-display");
   });
 
   test("renders Breadcrumbs with custom link component", async () => {

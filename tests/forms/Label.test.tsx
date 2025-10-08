@@ -5,7 +5,7 @@ import { Label } from "@/forms";
 
 describe("Label", () => {
   const EXPECTED_BASE_LABEL_CLASSES =
-    "flex select-none items-center gap-2 peer-disabled:cursor-not-allowed peer-disabled:opacity-50 group-data-[disabled=true]:pointer-events-none group-data-[disabled=true]:opacity-50 font-display font-normal text-base text-foreground";
+    "flex items-center gap-2 select-none group-data-[disabled=true]:pointer-events-none group-data-[disabled=true]:opacity-50 peer-disabled:cursor-not-allowed peer-disabled:opacity-50 font-display font-normal text-base text-foreground";
 
   it("renders with default props as children", () => {
     render(<Label>Some label</Label>);
