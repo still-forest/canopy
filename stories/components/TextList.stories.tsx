@@ -1,5 +1,6 @@
 import type { Meta, StoryObj } from "@storybook/react-vite";
 import { TextList } from "@/components/TextList";
+import { Box } from "@/layout";
 import { Text } from "@/typography/Text";
 import { DEFAULT_DECORATOR_WITH_MIN_WIDTH_MD } from "../support/decorators";
 import { sampleSentences } from "../support/sampleText";
@@ -25,14 +26,36 @@ export const Default: Story = {
   ),
 };
 
+export const Ordered: Story = {
+  render: () => (
+    <TextList type="ordered">
+      {sampleSentences.map((sentence) => (
+        <TextList.Item key={sentence}>{sentence}.</TextList.Item>
+      ))}
+    </TextList>
+  ),
+};
+
+export const None: Story = {
+  render: () => (
+    <TextList type="none">
+      {sampleSentences.map((sentence) => (
+        <TextList.Item key={sentence}>{sentence}.</TextList.Item>
+      ))}
+    </TextList>
+  ),
+};
+
 export const WithComponents: Story = {
   render: () => (
     <TextList>
       {sampleSentences.map((sentence) => (
-        <TextList.Item key={sentence}>
-          <Text className="text-sm" variant="inherit">
-            {sentence}.
-          </Text>
+        <TextList.Item asChild key={sentence}>
+          <Box as="li" className="px-4 mb-2 hover:bg-primary/20 hover:cursor-default" rounded="sm" variant="secondary">
+            <Text inheritColor inline size="sm" variant="brand">
+              {sentence}.
+            </Text>
+          </Box>
         </TextList.Item>
       ))}
     </TextList>

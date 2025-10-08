@@ -1,4 +1,5 @@
 import type { Meta, StoryObj } from "@storybook/react-vite";
+import { TextList } from "@/components";
 import type { AlertProps } from "@/components/Alert";
 import { Alert } from "@/components/Alert";
 import { Flex } from "@/layout/Flex";
@@ -50,15 +51,11 @@ export const WithComplexMessage: Story = {
         <Text className="text-sm" variant="inherit">
           {sampleText}
         </Text>
-        <ul>
+        <TextList>
           {sampleSentences.map((sentence) => (
-            <li key={sentence}>
-              <Text className="text-sm" variant="inherit">
-                {sentence}.
-              </Text>
-            </li>
+            <TextList.Item key={sentence}>{sentence}.</TextList.Item>
           ))}
-        </ul>
+        </TextList>
       </Flex>
     </Alert>
   ),

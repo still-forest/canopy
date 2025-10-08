@@ -27,6 +27,8 @@ interface TextBaseProps {
   truncate?: boolean;
   numeric?: boolean;
   className?: string;
+  inheritColor?: boolean;
+  inline?: boolean;
   as?: TypographyElement;
 }
 
@@ -49,6 +51,8 @@ const Text = React.forwardRef(
       asForeground = false,
       truncate = false,
       numeric = false,
+      inheritColor = false,
+      inline = false,
       ...props
     }: TextProps<E>,
     ref: React.Ref<Element>,
@@ -151,6 +155,9 @@ const Text = React.forwardRef(
           truncate && "truncate",
           // Tabular numerals
           numeric && "tabular-nums",
+          // Other
+          inheritColor && "text-inherit",
+          inline && "inline",
           className,
         )}
         ref={ref}
