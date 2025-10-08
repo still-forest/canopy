@@ -15,11 +15,11 @@ export const Slider = ({ size = "xl", className, ...props }: SliderProps) => (
       "size-6": size === "xl",
     })}
     trackClassName={cn({
-      "data-[orientation=horizontal]:h-2": size === "xs",
-      "data-[orientation=horizontal]:h-3": size === "sm",
-      "data-[orientation=horizontal]:h-4": size === "md",
-      "data-[orientation=horizontal]:h-5": size === "lg",
-      "data-[orientation=horizontal]:h-6": size === "xl",
+      "data-[orientation=horizontal]:h-1 data-[orientation=vertical]:w-1": size === "xs",
+      "data-[orientation=horizontal]:h-1.5 data-[orientation=vertical]:w-1.5": size === "sm",
+      "data-[orientation=horizontal]:h-2 data-[orientation=vertical]:w-2": size === "md",
+      "data-[orientation=horizontal]:h-3 data-[orientation=vertical]:w-3": size === "lg",
+      "data-[orientation=horizontal]:h-4 data-[orientation=vertical]:w-4": size === "xl",
     })}
     {...props}
   />

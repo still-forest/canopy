@@ -25,6 +25,9 @@ const defaultProps = {
 export const Default: Story = {
   args: defaultProps,
 };
+export const Vertical: Story = {
+  args: { ...defaultProps, orientation: "vertical" },
+};
 
 export const Sizes: Story = {
   render: () => (
@@ -34,6 +37,18 @@ export const Sizes: Story = {
       <Slider {...defaultProps} defaultValue={[10]} size="md" />
       <Slider {...defaultProps} defaultValue={[80]} size="lg" />
       <Slider {...defaultProps} defaultValue={[70]} size="xl" />
+    </Flex>
+  ),
+};
+
+export const VerticalSizes: Story = {
+  render: () => (
+    <Flex direction="row" gap="4">
+      <Slider {...defaultProps} defaultValue={[20]} orientation="vertical" size="xs" />
+      <Slider {...defaultProps} defaultValue={[40]} orientation="vertical" size="sm" />
+      <Slider {...defaultProps} defaultValue={[10]} orientation="vertical" size="md" />
+      <Slider {...defaultProps} defaultValue={[80]} orientation="vertical" size="lg" />
+      <Slider {...defaultProps} defaultValue={[70]} orientation="vertical" size="xl" />
     </Flex>
   ),
 };
