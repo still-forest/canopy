@@ -51,7 +51,7 @@ export const WithComplexMessage: Story = {
         <Text className="text-sm" variant="inherit">
           {sampleText}
         </Text>
-        <TextList>
+        <TextList variant="inherit">
           {sampleSentences.map((sentence) => (
             <TextList.Item key={sentence}>{sentence}.</TextList.Item>
           ))}
