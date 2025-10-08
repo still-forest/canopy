@@ -21,21 +21,19 @@ export const Switch = ({ id: ipProp, label, leftLabel, rightLabel, size = "md" }
       )}
       <BaseSwitch
         className={cn({
-          xs: size === "xs",
-          sm: size === "sm",
+          "h-[12px] min-h-[12px] w-[20px] px-[3px]": size === "xs",
+          "h-[16px] min-h-[16px] w-[28px] px-[3px]": size === "sm",
           md: size === "md",
-          "inline-flex h-[28px] min-h-[28px] w-[42px] shrink-0 cursor-pointer items-center rounded-full px-[3px]":
-            size === "lg",
-          xl: size === "xl",
+          "h-[24px] min-h-[24px] w-[42px] px-[3px]": size === "lg",
+          "h-[28px] min-h-[28px] w-[48px] px-[3px]": size === "xl",
         })}
         id={id}
         thumbClassName={cn({
-          xs: size === "xs",
-          sm: size === "sm",
+          "size-[8px] data-[state=checked]:translate-x-1.5 data-[state=unchecked]:-translate-x-0.5": size === "xs",
+          "size-[12px] data-[state=checked]:translate-x-2.5 data-[state=unchecked]:-translate-x-0.5": size === "sm",
           md: size === "md",
-          "size-[24px] transition-transform data-[state=checked]:translate-x-3 data-[state=unchecked]:-translate-x-0.5":
-            size === "lg",
-          xl: size === "xl",
+          "size-[20px] data-[state=checked]:translate-x-4 data-[state=unchecked]:-translate-x-0.5": size === "lg",
+          "size-[24px] data-[state=checked]:translate-x-4.5 data-[state=unchecked]:-translate-x-0.5": size === "xl",
         })}
       />
       <Label htmlFor={id} size={size}>
