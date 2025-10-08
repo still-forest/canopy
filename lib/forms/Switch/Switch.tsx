@@ -11,7 +11,16 @@ interface SwitchProps extends React.ComponentProps<typeof BaseSwitch> {
   size?: "xs" | "sm" | "md" | "lg" | "xl";
 }
 
-export const Switch = ({ id: idProp, label, leftLabel, rightLabel, size = "md", ...props }: SwitchProps) => {
+export const Switch = ({
+  id: idProp,
+  label,
+  leftLabel,
+  rightLabel,
+  className,
+  thumbClassName,
+  size = "md",
+  ...props
+}: SwitchProps) => {
   const generatedId = useId();
   const id = idProp || generatedId;
   return (
@@ -22,21 +31,27 @@ export const Switch = ({ id: idProp, label, leftLabel, rightLabel, size = "md", 
         </Label>
       )}
       <BaseSwitch
-        className={cn({
-          "h-[10px] w-4": size === "xs",
-          "h-[14px] w-6": size === "sm",
-          "h-[18px] w-8": size === "md",
-          "h-[22px] w-10": size === "lg",
-          "h-[26px] w-12": size === "xl",
-        })}
+        className={cn(
+          {
+            "h-[10px] w-4": size === "xs",
+            "h-[14px] w-6": size === "sm",
+            "h-[18px] w-8": size === "md",
+            "h-[22px] w-10": size === "lg",
+            "h-[26px] w-12": size === "xl",
+          },
+          className,
+        )}
         id={id}
-        thumbClassName={cn({
-          "size-2": size === "xs",
-          "size-3": size === "sm",
-          "size-4": size === "md",
-          "size-5": size === "lg",
-          "size-6": size === "xl",
-        })}
+        thumbClassName={cn(
+          {
+            "size-2": size === "xs",
+            "size-3": size === "sm",
+            "size-4": size === "md",
+            "size-5": size === "lg",
+            "size-6": size === "xl",
+          },
+          thumbClassName,
+        )}
         {...props}
       />
       <Label className="cursor-pointer" htmlFor={id} size={size}>
