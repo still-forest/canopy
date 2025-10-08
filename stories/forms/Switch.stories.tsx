@@ -44,3 +44,12 @@ export const Sizes: Story = {
     </Flex>
   ),
 };
+
+export const WithCallback: Story = {
+  args: {
+    ...defaultProps,
+    onCheckedChange: (checked: boolean) => {
+      window.alert(checked ? "90s mode engaged" : "Returning to the present");
+    },
+  },
+};
