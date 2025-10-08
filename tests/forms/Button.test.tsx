@@ -85,6 +85,9 @@ describe("Button", () => {
     expect(screen.getByRole("button")).toHaveTextContent("Test Button");
     expect(screen.getByRole("button")).toHaveAttribute("type", "button");
     expect(screen.getByRole("button")).toHaveClass("h-auto p-0 text-sm");
+    expect(screen.getByRole("button")).toHaveClass(
+      "hover:bg-accent hover:text-accent-foreground dark:hover:bg-accent/50 justify-start",
+    );
   });
 
   test("renders a Button of size default", async () => {
