@@ -45,6 +45,14 @@ export const Sizes: Story = {
   ),
 };
 
+export const WithClassNames: Story = {
+  args: {
+    ...defaultProps,
+    className: "data-[state=checked]:bg-blue-100 data-[state=unchecked]:bg-blue-100 rounded-none",
+    thumbClassName: "bg-blue-500 h-6 rounded-none",
+  },
+};
+
 export const WithCallback: Story = {
   args: {
     ...defaultProps,
