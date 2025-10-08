@@ -1,11 +1,13 @@
 import { Clipboard, ClipboardCheck } from "lucide-react";
 import { useState } from "react";
+import { cn } from "@/utils";
+import { Button, type ButtonProps } from "../Button";
 
-interface CopyButtonProps {
+interface CopyButtonProps extends Omit<ButtonProps, "onClick" | "disabled"> {
   content: string;
 }
 
-export function CopyButton({ content }: CopyButtonProps) {
+export const CopyButton = ({ content, className, size = "md", ...props }: CopyButtonProps) => {
   const [recentlyCopied, setRecentlyCopied] = useState(false);
 
   const copyText = () => {
@@ -18,23 +20,24 @@ export function CopyButton({ content }: CopyButtonProps) {
   };
 
   return (
-    <button
-      className="flex w-25 justify-center gap-1 rounded-sm"
-      disabled={recentlyCopied}
-      onClick={copyText}
-      type="button"
-    >
-      {recentlyCopied ? (
-        <>
-          <ClipboardCheck size={24} />
-          Copied
-        </>
-      ) : (
-        <>
-          <Clipboard size={24} />
-          Copy
-        </>
+    <Button
+      className={cn(
+        {
+          "w-[88px]": size === "xs",
+          "w-[96px]": size === "sm",
+          "w-[100px]": size === "md",
+          "w-[125px]": size === "lg",
+          "w-[144px]": size === "xl",
+        },
+        "justify-start",
+        className,
       )}
-    </button>
+      disabled={recentlyCopied}
+      icon={recentlyCopied ? <ClipboardCheck /> : <Clipboard />}
+      label={recentlyCopied ? "Copied" : "Copy"}
+      onClick={copyText}
+      size={size}
+      {...props}
+    />
   );
-}
+};

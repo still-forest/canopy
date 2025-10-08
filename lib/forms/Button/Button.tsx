@@ -79,14 +79,20 @@ export const Button = ({
       variant={getBaseVariant()}
       {...rest}
     >
-      {icon && children ? (
+      {icon && children && (
         <Flex align="center" gap="2">
           <span key="icon">{icon}</span>
           <span key="children">{children}</span>
         </Flex>
-      ) : (
-        icon || children || label
       )}
+      {icon && label && (
+        <Flex align="center" gap="2">
+          <span key="icon">{icon}</span>
+          <span key="label">{label}</span>
+        </Flex>
+      )}
+      {icon && !children && !label && <span key="icon">{icon}</span>}
+      {!icon ? children || label : null}
     </BaseButton>
   );
 };

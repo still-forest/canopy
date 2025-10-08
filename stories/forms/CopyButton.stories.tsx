@@ -1,6 +1,7 @@
 import type { Meta, StoryObj } from "@storybook/react-vite";
 
 import { CopyButton } from "@/forms";
+import { Flex } from "@/layout";
 import { sampleParagraphText } from "../support/sampleText";
 
 const meta: Meta<typeof CopyButton> = {
@@ -21,4 +22,16 @@ export const Default: Story = {
   args: {
     ...defaultProps,
   },
+};
+
+export const Sizes: Story = {
+  render: () => (
+    <Flex direction="col" gap="2">
+      <CopyButton {...defaultProps} size="xs" />
+      <CopyButton {...defaultProps} size="sm" />
+      <CopyButton {...defaultProps} size="md" />
+      <CopyButton {...defaultProps} size="lg" />
+      <CopyButton {...defaultProps} size="xl" />
+    </Flex>
+  ),
 };
