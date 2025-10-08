@@ -4,7 +4,7 @@ import "@testing-library/jest-dom";
 
 import { CopyButton } from "@/forms";
 
-const mockClipboardWriteText = vi.fn();
+const mockClipboardWriteText = vi.fn().mockResolvedValue(undefined);
 
 // Mock navigator.clipboard
 Object.assign(navigator, {

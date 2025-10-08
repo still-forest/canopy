@@ -11,12 +11,21 @@ export const CopyButton = ({ content, className, size = "md", ...props }: CopyBu
   const [recentlyCopied, setRecentlyCopied] = useState(false);
 
   const copyText = () => {
+    const write = navigator.clipboard?.writeText;
+    if (!write) {
+      return;
+    }
     setRecentlyCopied(true);
-    navigator.clipboard.writeText(content);
-
-    setTimeout(() => {
-      setRecentlyCopied(false);
-    }, 2000);
+    void write
+      .call(navigator.clipboard, content)
+      .then(() => {
+        window.setTimeout(() => {
+          setRecentlyCopied(false);
+        }, 2000);
+      })
+      .catch(() => {
+        setRecentlyCopied(false);
+      });
   };
 
   return (
