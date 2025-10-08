@@ -1,10 +1,12 @@
 import { Slot as SlotPrimitive } from "radix-ui";
 import type { ReactNode } from "react";
+import type { TypographyVariant } from "@/types";
 import { cn } from "@/utils";
 
 type TextListProps = React.ComponentProps<"ul"> & {
   type?: "ordered" | "unordered" | "none";
   position?: "inside" | "outside";
+  variant?: TypographyVariant;
   children: ReactNode;
 };
 type TextListItemProps = React.ComponentProps<"li"> & {
@@ -21,6 +23,7 @@ const TextList: TextListComponent = ({
   className,
   position = "outside",
   type = "unordered",
+  variant = "muted",
   ...props
 }: TextListProps) => {
   return (
@@ -38,6 +41,22 @@ const TextList: TextListComponent = ({
         {
           "ml-4": position === "outside" && type === "unordered",
           "ml-6": position === "outside" && type === "ordered",
+        },
+        {
+          "marker:text-foreground": variant === "default",
+          "marker:text-inherit": variant === "inherit",
+          "marker:text-muted": variant === "muted",
+          "marker:text-accent": variant === "accent",
+          // Action colors
+          "marker:text-primary": variant === "primary",
+          "marker:text-secondary": variant === "secondary",
+          // Brand color
+          "marker:text-brand": variant === "brand",
+          // Accent colors (rich color variants)
+          "marker:text-info": variant === "info",
+          "marker:text-warning": variant === "warning",
+          "marker:text-destructive": variant === "destructive",
+          "marker:text-success": variant === "success",
         },
         className,
       )}
