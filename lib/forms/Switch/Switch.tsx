@@ -33,7 +33,7 @@ export const Switch = ({ id: idProp, label, leftLabel, rightLabel, size = "md", 
         thumbClassName={cn({
           "size-2": size === "xs",
           "size-3": size === "sm",
-          "size-4": size === "sm",
+          "size-4": size === "md",
           "size-5": size === "lg",
           "size-6": size === "xl",
         })}
