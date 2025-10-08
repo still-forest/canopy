@@ -1,8 +1,9 @@
+import { useId } from "react";
 import { Switch as BaseSwitch } from "@/components/ui/switch";
 import { Label } from "@/forms/Label";
 import { cn } from "@/utils";
 
-interface SwitchProps {
+interface SwitchProps extends React.ComponentProps<typeof BaseSwitch> {
   id?: string;
   label: string;
   leftLabel?: string;
@@ -10,8 +11,9 @@ interface SwitchProps {
   size?: "xs" | "sm" | "md" | "lg" | "xl";
 }
 
-export const Switch = ({ id: idProp, label, leftLabel, rightLabel, size = "md" }: SwitchProps) => {
-  const id = idProp || `switch-${Math.random().toString(36).substring(2, 15)}`;
+export const Switch = ({ id: idProp, label, leftLabel, rightLabel, size = "md", ...props }: SwitchProps) => {
+  const generatedId = useId();
+  const id = idProp || generatedId;
   return (
     <div className="flex items-center space-x-2">
       {leftLabel && (
@@ -35,6 +37,7 @@ export const Switch = ({ id: idProp, label, leftLabel, rightLabel, size = "md" }
           "size-5": size === "lg",
           "size-6": size === "xl",
         })}
+        {...props}
       />
       <Label className="cursor-pointer" htmlFor={id} size={size}>
         {rightLabel || label}
