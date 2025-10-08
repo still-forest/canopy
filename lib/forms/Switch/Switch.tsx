@@ -21,11 +21,11 @@ export const Switch = ({ id: ipProp, label, leftLabel, rightLabel, size = "md" }
       )}
       <BaseSwitch
         className={cn({
-          "h-[10px] min-h-[10px] w-[16px]": size === "xs",
-          "h-[14px] min-h-[14px] w-[24px]": size === "sm",
+          "h-[10px] w-4": size === "xs",
+          "h-[14px] w-6": size === "sm",
           md: size === "md",
-          "h-[22px] min-h-[22px] w-[40px]": size === "lg",
-          "h-[26px] min-h-[26px] w-[48px]": size === "xl",
+          "h-[22px] w-10": size === "lg",
+          "h-[26px] w-12": size === "xl",
         })}
         id={id}
         thumbClassName={cn({
