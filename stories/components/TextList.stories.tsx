@@ -2,13 +2,13 @@ import type { Meta, StoryObj } from "@storybook/react-vite";
 import { TextList } from "@/components/TextList";
 import { Box } from "@/layout";
 import { Text } from "@/typography/Text";
-import { DEFAULT_DECORATOR_WITH_MIN_WIDTH_MD } from "../support/decorators";
+import { DEFAULT_DECORATOR_WITH_WIDTH_MD } from "../support/decorators";
 import { sampleSentences } from "../support/sampleText";
 
 const meta: Meta<typeof TextList> = {
   title: "Components/TextList",
   component: TextList,
-  decorators: [DEFAULT_DECORATOR_WITH_MIN_WIDTH_MD],
+  decorators: [DEFAULT_DECORATOR_WITH_WIDTH_MD],
   tags: ["autodocs"],
 } satisfies Meta<typeof TextList>;
 
@@ -39,6 +39,26 @@ export const Ordered: Story = {
 export const None: Story = {
   render: () => (
     <TextList type="none">
+      {sampleSentences.map((sentence) => (
+        <TextList.Item key={sentence}>{sentence}.</TextList.Item>
+      ))}
+    </TextList>
+  ),
+};
+
+export const Inside: Story = {
+  render: () => (
+    <TextList position="inside">
+      {sampleSentences.map((sentence) => (
+        <TextList.Item key={sentence}>{sentence}.</TextList.Item>
+      ))}
+    </TextList>
+  ),
+};
+
+export const WithClassName: Story = {
+  render: () => (
+    <TextList className="ml-0">
       {sampleSentences.map((sentence) => (
         <TextList.Item key={sentence}>{sentence}.</TextList.Item>
       ))}
