@@ -10,5 +10,6 @@ export * from "./NumberInput";
 export * from "./RadioSelect";
 export * from "./SelectInput";
 export * from "./SelectPicker";
+export * from "./Switch";
 export * from "./Textarea";
 export * from "./TextInput";

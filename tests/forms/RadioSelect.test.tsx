@@ -31,7 +31,7 @@ describe("RadioSelect", () => {
       const labelElement = screen.getByText(label);
       expect(labelElement).toHaveAttribute("for", value);
       expect(labelElement.className).toBe(
-        "flex items-center gap-2 select-none group-data-[disabled=true]:pointer-events-none group-data-[disabled=true]:opacity-50 peer-disabled:cursor-not-allowed peer-disabled:opacity-50 font-display font-normal text-base text-foreground",
+        "flex items-center gap-2 select-none group-data-[disabled=true]:pointer-events-none group-data-[disabled=true]:opacity-50 peer-disabled:cursor-not-allowed peer-disabled:opacity-50 font-display font-normal text-foreground text-base",
       );
     });
 
