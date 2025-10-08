@@ -107,3 +107,15 @@ export const WithSize: Story = {
     </Flex>
   ),
 };
+
+export const WithSizeAndLabel: Story = {
+  render: () => (
+    <Flex direction="col" gap="4">
+      <TextInput {...defaultProps} label="This input is extra small" size="xs" />
+      <TextInput {...defaultProps} label="This input is small" size="sm" />
+      <TextInput {...defaultProps} label="This input is medium (default size)" size="md" />
+      <TextInput {...defaultProps} label="This input is large" size="lg" />
+      <TextInput {...defaultProps} label="This input is extra large" size="xl" />
+    </Flex>
+  ),
+};
