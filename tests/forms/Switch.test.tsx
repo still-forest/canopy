@@ -46,11 +46,39 @@ describe("Switch", () => {
     expect(label).toBeInTheDocument();
   });
 
-  it("renders a Switch with size", () => {
+  it("renders a Switch with xs size", () => {
     render(<Switch checked={false} label="Test Switch" name="test-switch" size="xs" />);
 
     const switchElement = screen.getByRole("switch");
     expect(switchElement).toHaveClass("h-[10px] w-4");
+  });
+
+  it("renders a Switch with sm size", () => {
+    render(<Switch checked={false} label="Test Switch" name="test-switch" size="sm" />);
+
+    const switchElement = screen.getByRole("switch");
+    expect(switchElement).toHaveClass("h-[14px] w-6");
+  });
+
+  it("renders a Switch with md size", () => {
+    render(<Switch checked={false} label="Test Switch" name="test-switch" size="md" />);
+
+    const switchElement = screen.getByRole("switch");
+    expect(switchElement).toHaveClass("h-[18px] w-8");
+  });
+
+  it("renders a Switch with lg size", () => {
+    render(<Switch checked={false} label="Test Switch" name="test-switch" size="lg" />);
+
+    const switchElement = screen.getByRole("switch");
+    expect(switchElement).toHaveClass("h-[22px] w-10");
+  });
+
+  it("renders a Switch with xl size", () => {
+    render(<Switch checked={false} label="Test Switch" name="test-switch" size="xl" />);
+
+    const switchElement = screen.getByRole("switch");
+    expect(switchElement).toHaveClass("h-[26px] w-12");
   });
 
   it("renders a Switch with change handler", async () => {
