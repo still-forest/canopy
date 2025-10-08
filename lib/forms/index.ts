@@ -1,5 +1,6 @@
 export * from "./Button";
 export * from "./Checkbox";
+export * from "./CopyButton";
 export * from "./DateInput";
 export * from "./DatePicker";
 export * from "./InputError";
