@@ -15,7 +15,7 @@ export const Switch = ({ id: ipProp, label, leftLabel, rightLabel, size = "md" }
   return (
     <div className="flex items-center space-x-2">
       {leftLabel && (
-        <Label htmlFor={id} size={size}>
+        <Label className="cursor-pointer" htmlFor={id} size={size}>
           {leftLabel}
         </Label>
       )}
@@ -29,14 +29,18 @@ export const Switch = ({ id: ipProp, label, leftLabel, rightLabel, size = "md" }
         })}
         id={id}
         thumbClassName={cn({
-          "size-[8px] data-[state=checked]:translate-x-1.5 data-[state=unchecked]:-translate-x-0.5": size === "xs",
-          "size-[12px] data-[state=checked]:translate-x-2.5 data-[state=unchecked]:-translate-x-0.5": size === "sm",
+          "size-2 data-[state=checked]:translate-x-[calc(100%-1.5px)]  data-[state=unchecked]:-translate-x-0.5":
+            size === "xs",
+          "size-3 data-[state=checked]:translate-x-[calc(100%-2px)]  data-[state=unchecked]:-translate-x-0.5":
+            size === "sm",
           md: size === "md",
-          "size-[20px] data-[state=checked]:translate-x-4 data-[state=unchecked]:-translate-x-0.5": size === "lg",
-          "size-[24px] data-[state=checked]:translate-x-4.5 data-[state=unchecked]:-translate-x-0.5": size === "xl",
+          "size-5 data-[state=checked]:translate-x-[calc(100%-4px)] data-[state=unchecked]:-translate-x-0.5":
+            size === "lg",
+          "size-6 data-[state=checked]:translate-x-[calc(100%-6px)] data-[state=unchecked]:-translate-x-0.5":
+            size === "xl",
         })}
       />
-      <Label htmlFor={id} size={size}>
+      <Label className="cursor-pointer" htmlFor={id} size={size}>
         {rightLabel || label}
       </Label>
     </div>
