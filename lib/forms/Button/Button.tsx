@@ -84,8 +84,15 @@ export const Button = ({
           <span key="icon">{icon}</span>
           <span key="children">{children}</span>
         </Flex>
+      ) : icon && label ? (
+        <Flex align="center" gap="2">
+          <span key="icon">{icon}</span>
+          <span key="label">{label}</span>
+        </Flex>
+      ) : icon ? (
+        <span key="icon">{icon}</span>
       ) : (
-        icon || children || label
+        children || label
       )}
     </BaseButton>
   );
