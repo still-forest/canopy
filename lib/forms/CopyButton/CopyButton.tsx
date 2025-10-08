@@ -2,7 +2,7 @@ import { Clipboard, ClipboardCheck } from "lucide-react";
 import { useState } from "react";
 
 interface CopyButtonProps {
-  content: string[];
+  content: string;
 }
 
 export function CopyButton({ content }: CopyButtonProps) {
@@ -10,8 +10,7 @@ export function CopyButton({ content }: CopyButtonProps) {
 
   const copyText = () => {
     setRecentlyCopied(true);
-    const text = content.join("\n\n");
-    navigator.clipboard.writeText(text);
+    navigator.clipboard.writeText(content);
 
     setTimeout(() => {
       setRecentlyCopied(false);
