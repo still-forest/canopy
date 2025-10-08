@@ -35,3 +35,10 @@ export const Sizes: Story = {
     </Flex>
   ),
 };
+
+export const WithVariant: Story = {
+  args: {
+    ...defaultProps,
+    variant: "outline",
+  },
+};
