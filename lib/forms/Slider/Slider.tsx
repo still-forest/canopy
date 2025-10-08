@@ -1,16 +1,22 @@
 import { Slider as BaseSlider } from "@/components/ui/slider";
 import { cn } from "@/utils";
 
-interface SliderProps extends React.ComponentProps<typeof BaseSlider> {
+interface SliderProps extends Omit<React.ComponentProps<typeof BaseSlider>, "value" | "defaultValue"> {
   size?: "xs" | "sm" | "md" | "lg" | "xl";
   thumbClassName?: string;
   trackClassName?: string;
+  value?: number | number[];
+  defaultValue?: number | number[];
 }
 
-export const Slider = ({ size = "md", thumbClassName, trackClassName, ...props }: SliderProps) => {
-  console.log("props", props);
+export const Slider = ({ size = "md", thumbClassName, trackClassName, value, defaultValue, ...props }: SliderProps) => {
+  const _defaultValue =
+    defaultValue !== undefined ? (Array.isArray(defaultValue) ? defaultValue : [defaultValue]) : undefined;
+  const _value = value !== undefined ? (Array.isArray(value) ? value : [value]) : undefined;
+
   return (
     <BaseSlider
+      defaultValue={_defaultValue}
       thumbClassName={cn(
         {
           "size-2": size === "xs",
@@ -32,6 +38,7 @@ export const Slider = ({ size = "md", thumbClassName, trackClassName, ...props }
         },
         trackClassName,
       )}
+      value={_value}
       {...props}
     />
   );
