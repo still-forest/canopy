@@ -115,6 +115,39 @@ describe("TextList", () => {
     expect(item1.textContent).toBe("Item 1");
   });
 
+  test("renders a TextList item as a child", async () => {
+    render(
+      <TextList>
+        <TextList.Item asChild>
+          <p>Item 1</p>
+        </TextList.Item>
+        <TextList.Item asChild>
+          <h3>Item 2</h3>
+        </TextList.Item>
+      </TextList>,
+    );
+
+    const textList = screen.getByRole("list");
+    expect(textList).toBeInTheDocument();
+    expect(textList.tagName).toBe("UL");
+    expect(textList.className).toBe("list-disc list-outside ml-4 marker:text-muted");
+
+    const items = screen.getAllByRole("listitem");
+    expect(items).toHaveLength(2);
+
+    const item1 = items[0];
+    expect(item1).toBeInTheDocument();
+    expect(item1.tagName).toBe("P");
+    expect(item1.className).toBe("");
+    expect(item1.textContent).toBe("Item 1");
+
+    const item2 = items[1];
+    expect(item2).toBeInTheDocument();
+    expect(item2.tagName).toBe("H3");
+    expect(item2.className).toBe("");
+    expect(item2.textContent).toBe("Item 2");
+  });
+
   test("renders a variant TextList", async () => {
     for (const variant of TYPOGRAPHY_VARIANTS) {
       const { rerender } = render(

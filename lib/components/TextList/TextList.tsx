@@ -1,4 +1,4 @@
-import { Slot as SlotPrimitive } from "@radix-ui/react-slot";
+import { Slot as SlotPrimitive } from "radix-ui";
 import type { ReactNode } from "react";
 import type { TypographyVariant } from "@/types";
 import { cn } from "@/utils";
@@ -70,7 +70,11 @@ const TextList: TextListComponent = ({
 const TextListItem = ({ children, asChild, ...props }: TextListItemProps) => {
   const Comp = asChild ? SlotPrimitive.Slot : "li";
 
-  return <Comp {...props}>{children}</Comp>;
+  return (
+    <Comp role="listitem" {...props}>
+      {children}
+    </Comp>
+  );
 };
 
 TextList.Item = TextListItem;

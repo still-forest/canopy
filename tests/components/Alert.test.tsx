@@ -58,6 +58,14 @@ describe("Alert", () => {
     expect(within(alert).getByTestId("alert-icon-error")).toBeInTheDocument();
   });
 
+  test("renders without title", async () => {
+    render(<Alert message="This is an important message." type="info" />);
+    const alert = screen.getByRole("alert");
+    expect(alert).toBeInTheDocument();
+    expect(within(alert).getByText("This is an important message.")).toBeInTheDocument();
+    expect(within(alert).getByTestId("alert-icon-info")).toBeInTheDocument();
+  });
+
   test("renders with children", async () => {
     render(
       <Alert title="Important Information" type="info">
@@ -73,5 +81,15 @@ describe("Alert", () => {
     expect(within(alert).getByText("This is a child")).toBeInTheDocument();
     expect(within(alert).getByText("This is another child")).toBeInTheDocument();
     expect(within(alert).getByTestId("alert-icon-info")).toBeInTheDocument();
+  });
+
+  test("errors when both message and children are provided", async () => {
+    expect(() => {
+      render(
+        <Alert message="This is an important message." title="Important Information" type="info">
+          <p>This is a child</p>
+        </Alert>,
+      );
+    }).toThrow("Alert cannot have both message and children");
   });
 });
