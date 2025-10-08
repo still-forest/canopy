@@ -19,9 +19,7 @@ const defaultProps = {
 };
 
 export const Default: Story = {
-  args: {
-    ...defaultProps,
-  },
+  render: () => <CopyButton content="Hello World" />,
 };
 
 export const Sizes: Story = {

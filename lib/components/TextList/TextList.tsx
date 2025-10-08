@@ -1,4 +1,4 @@
-import { Slot as SlotPrimitive } from "radix-ui";
+import { Slot as SlotPrimitive } from "@radix-ui/react-slot";
 import type { ReactNode } from "react";
 import type { TypographyVariant } from "@/types";
 import { cn } from "@/utils";
