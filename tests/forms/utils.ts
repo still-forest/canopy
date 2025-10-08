@@ -1,5 +1,5 @@
 export const EXPECTED_BASE_LABEL_CLASSES =
-  "flex items-center gap-2 select-none group-data-[disabled=true]:pointer-events-none group-data-[disabled=true]:opacity-50 peer-disabled:cursor-not-allowed peer-disabled:opacity-50 font-display font-normal text-base text-foreground";
+  "flex items-center gap-2 select-none group-data-[disabled=true]:pointer-events-none group-data-[disabled=true]:opacity-50 peer-disabled:cursor-not-allowed peer-disabled:opacity-50 font-display font-normal text-foreground text-base";
 export const EXPECTED_BASE_INPUT_CLASSES = [
   "flex w-full min-w-0 rounded-md border border-input bg-transparent px-3 py-1 shadow-xs outline-none",
   "transition-[color,box-shadow] selection:bg-primary selection:text-primary-foreground file:inline-flex file:h-7",

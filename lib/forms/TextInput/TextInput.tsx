@@ -45,7 +45,7 @@ const TextInput = ({
   return (
     <Flex className="w-full" direction={labelOrientation === "left" ? "row" : "col"} gap="2">
       {label && (
-        <Label className={labelOrientation === "left" ? "text-nowrap" : ""} htmlFor={name}>
+        <Label className={labelOrientation === "left" ? "text-nowrap" : ""} htmlFor={name} size={size}>
           {label}
         </Label>
       )}

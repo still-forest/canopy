@@ -5,7 +5,7 @@ import { Label } from "@/forms";
 
 describe("Label", () => {
   const EXPECTED_BASE_LABEL_CLASSES =
-    "flex items-center gap-2 select-none group-data-[disabled=true]:pointer-events-none group-data-[disabled=true]:opacity-50 peer-disabled:cursor-not-allowed peer-disabled:opacity-50 font-display font-normal text-base text-foreground";
+    "flex items-center gap-2 select-none group-data-[disabled=true]:pointer-events-none group-data-[disabled=true]:opacity-50 peer-disabled:cursor-not-allowed peer-disabled:opacity-50 font-display font-normal text-foreground text-base";
 
   it("renders with default props as children", () => {
     render(<Label>Some label</Label>);
@@ -37,5 +37,39 @@ describe("Label", () => {
 
     const label = screen.getByText("With custom class");
     expect(label.className).toBe(`${EXPECTED_BASE_LABEL_CLASSES} custom-class`);
+  });
+
+  it("renders with size xs", () => {
+    render(<Label size="xs">Some label</Label>);
+    const label = screen.getByText("Some label");
+    const expectedClasses = EXPECTED_BASE_LABEL_CLASSES.replace("text-base", "text-xs");
+    expect(label.className).toBe(expectedClasses);
+  });
+
+  it("renders with size sm", () => {
+    render(<Label size="sm">Some label</Label>);
+    const label = screen.getByText("Some label");
+    const expectedClasses = EXPECTED_BASE_LABEL_CLASSES.replace("text-base", "text-sm");
+    expect(label.className).toBe(expectedClasses);
+  });
+
+  it("renders with size md", () => {
+    render(<Label size="md">Some label</Label>);
+    const label = screen.getByText("Some label");
+    expect(label.className).toBe(EXPECTED_BASE_LABEL_CLASSES);
+  });
+
+  it("renders with size lg", () => {
+    render(<Label size="lg">Some label</Label>);
+    const label = screen.getByText("Some label");
+    const expectedClasses = EXPECTED_BASE_LABEL_CLASSES.replace("text-base", "text-lg");
+    expect(label.className).toBe(expectedClasses);
+  });
+
+  it("renders with size xl", () => {
+    render(<Label size="xl">Some label</Label>);
+    const label = screen.getByText("Some label");
+    const expectedClasses = EXPECTED_BASE_LABEL_CLASSES.replace("text-base", "text-xl");
+    expect(label.className).toBe(expectedClasses);
   });
 });
