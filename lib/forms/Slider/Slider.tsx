@@ -5,7 +5,7 @@ interface SliderProps extends React.ComponentProps<typeof BaseSlider> {
   size?: "xs" | "sm" | "md" | "lg" | "xl";
 }
 
-export const Slider = ({ size = "xl", className, ...props }: SliderProps) => (
+export const Slider = ({ size = "md", ...props }: SliderProps) => (
   <BaseSlider
     thumbClassName={cn({
       "size-2": size === "xs",
