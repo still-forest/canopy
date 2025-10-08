@@ -25,6 +25,10 @@ export const Default: Story = {
 };
 
 export const WithDefaultValue: Story = {
+  args: { ...defaultProps, defaultValue: 20 },
+};
+
+export const WithDefaultValueAsArray: Story = {
   args: { ...defaultProps, defaultValue: [20] },
 };
 
