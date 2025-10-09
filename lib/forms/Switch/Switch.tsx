@@ -5,7 +5,7 @@ import { cn } from "@/utils";
 
 interface SwitchProps extends React.ComponentProps<typeof BaseSwitch> {
   id?: string;
-  label: string;
+  label?: string;
   leftLabel?: string;
   rightLabel?: string;
   size?: "xs" | "sm" | "md" | "lg" | "xl";

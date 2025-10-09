@@ -25,9 +25,12 @@ export const Default: Story = {
   },
 };
 
+export const NoLabel: Story = {
+  args: {},
+};
+
 export const WithLeftLabel: Story = {
   args: {
-    ...defaultProps,
     leftLabel: "Off",
     rightLabel: "On",
   },
