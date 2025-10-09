@@ -50,7 +50,7 @@ export const WithClassNames: Story = {
   },
 };
 
-export const WithLeftLabel: Story = {
+export const WithBothLabels: Story = {
   args: {
     label: ["Off", "On"],
   },
