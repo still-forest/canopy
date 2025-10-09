@@ -56,6 +56,18 @@ export const WithLeftLabel: Story = {
   },
 };
 
+export const WithOnlyLeftLabel: Story = {
+  args: {
+    label: ["Off", null],
+  },
+};
+
+export const WithOnlyRightLabel: Story = {
+  args: {
+    label: [null, "On"],
+  },
+};
+
 export const WithLabelClassNames: Story = {
   args: {
     ...defaultProps,
