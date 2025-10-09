@@ -89,4 +89,22 @@ describe("Switch", () => {
     await userEvent.click(switchElement);
     expect(handleClick).toHaveBeenCalledWith(true);
   });
+
+  it("renders a Switch with label class name", () => {
+    render(
+      <Switch
+        checked={false}
+        label="Test Switch"
+        labelClassName="text-blue-500"
+        leftLabel="Leftie"
+        name="test-switch"
+      />,
+    );
+
+    const rightLabel = screen.getByText("Test Switch");
+    expect(rightLabel).toHaveClass("text-blue-500");
+
+    const leftLabel = screen.getByText("Leftie");
+    expect(leftLabel).toHaveClass("text-blue-500");
+  });
 });
