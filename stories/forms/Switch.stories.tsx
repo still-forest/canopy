@@ -57,6 +57,15 @@ export const WithClassNames: Story = {
   },
 };
 
+export const WithLabelClassNames: Story = {
+  args: {
+    ...defaultProps,
+    leftLabel: "Off",
+    rightLabel: "On",
+    labelClassName: ["text-blue-500", "text-red-500"],
+  },
+};
+
 export const WithCallback: Story = {
   args: {
     ...defaultProps,
