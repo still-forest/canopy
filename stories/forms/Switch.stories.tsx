@@ -50,6 +50,7 @@ export const WithClassNames: Story = {
     ...defaultProps,
     className: "data-[state=checked]:bg-blue-100 data-[state=unchecked]:bg-blue-100 rounded-none",
     thumbClassName: "bg-blue-500 h-6 rounded-none",
+    labelClassName: "text-blue-500",
   },
 };
 

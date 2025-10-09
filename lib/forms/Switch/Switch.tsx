@@ -9,6 +9,7 @@ interface SwitchProps extends React.ComponentProps<typeof BaseSwitch> {
   leftLabel?: string;
   rightLabel?: string;
   size?: "xs" | "sm" | "md" | "lg" | "xl";
+  labelClassName?: string;
 }
 
 export const Switch = ({
@@ -18,15 +19,19 @@ export const Switch = ({
   rightLabel,
   className,
   thumbClassName,
+  labelClassName,
   size = "md",
   ...props
 }: SwitchProps) => {
   const generatedId = useId();
   const id = idProp || generatedId;
+
+  const labelClassNames = cn("cursor-pointer", labelClassName);
+
   return (
     <div className="flex items-center space-x-2">
       {leftLabel && (
-        <Label className="cursor-pointer" htmlFor={id} size={size}>
+        <Label className={labelClassNames} htmlFor={id} size={size}>
           {leftLabel}
         </Label>
       )}
@@ -54,7 +59,7 @@ export const Switch = ({
         )}
         {...props}
       />
-      <Label className="cursor-pointer" htmlFor={id} size={size}>
+      <Label className={labelClassNames} htmlFor={id} size={size}>
         {rightLabel || label}
       </Label>
     </div>
