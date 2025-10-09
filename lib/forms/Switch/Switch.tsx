@@ -5,9 +5,7 @@ import { cn } from "@/utils";
 
 interface SwitchProps extends React.ComponentProps<typeof BaseSwitch> {
   id?: string;
-  label?: string;
-  leftLabel?: string;
-  rightLabel?: string;
+  label?: string | string[];
   size?: "xs" | "sm" | "md" | "lg" | "xl";
   labelClassName?: string | string[];
 }
@@ -15,8 +13,6 @@ interface SwitchProps extends React.ComponentProps<typeof BaseSwitch> {
 export const Switch = ({
   id: idProp,
   label,
-  leftLabel,
-  rightLabel,
   className,
   thumbClassName,
   labelClassName,
@@ -25,6 +21,8 @@ export const Switch = ({
 }: SwitchProps) => {
   const generatedId = useId();
   const id = idProp || generatedId;
+
+  const [leftLabel, rightLabel] = Array.isArray(label) ? label : [undefined, label];
 
   const commonLabelClassNames = "cursor-pointer";
   const leftLabelClassName = labelClassName && Array.isArray(labelClassName) ? labelClassName[0] : labelClassName;

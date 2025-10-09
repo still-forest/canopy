@@ -29,13 +29,6 @@ export const NoLabel: Story = {
   args: {},
 };
 
-export const WithLeftLabel: Story = {
-  args: {
-    leftLabel: "Off",
-    rightLabel: "On",
-  },
-};
-
 export const Sizes: Story = {
   render: () => (
     <Flex direction="col" gap="2">
@@ -57,11 +50,16 @@ export const WithClassNames: Story = {
   },
 };
 
+export const WithLeftLabel: Story = {
+  args: {
+    label: ["Off", "On"],
+  },
+};
+
 export const WithLabelClassNames: Story = {
   args: {
     ...defaultProps,
-    leftLabel: "Off",
-    rightLabel: "On",
+    label: ["Off", "On"],
     labelClassName: ["text-blue-500", "text-red-500"],
   },
 };

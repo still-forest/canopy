@@ -32,18 +32,14 @@ describe("Switch", () => {
     expect(switchElement).toHaveAttribute("data-state", "checked");
   });
 
-  it("renders a Switch with left label", () => {
-    render(<Switch checked={false} label="Test Switch" leftLabel="Left" name="test-switch" />);
+  it("renders a Switch with left and right labels", () => {
+    render(<Switch checked={false} label={["Leftie", "Rightie"]} name="test-switch" />);
 
-    const label = screen.getByText("Left");
-    expect(label).toBeInTheDocument();
-  });
+    const leftLabel = screen.getByText("Leftie");
+    expect(leftLabel).toBeInTheDocument();
 
-  it("renders a Switch with right label", () => {
-    render(<Switch checked={false} label="Test Switch" name="test-switch" rightLabel="Right" />);
-
-    const label = screen.getByText("Right");
-    expect(label).toBeInTheDocument();
+    const rightLabel = screen.getByText("Rightie");
+    expect(rightLabel).toBeInTheDocument();
   });
 
   it("renders a Switch with xs size", () => {
@@ -94,17 +90,16 @@ describe("Switch", () => {
     render(
       <Switch
         checked={false}
-        label="Test Switch"
-        labelClassName="text-blue-500"
-        leftLabel="Leftie"
+        label={["Leftie", "Rightie"]}
+        labelClassName={["text-blue-500", "text-red-500"]}
         name="test-switch"
       />,
     );
 
-    const rightLabel = screen.getByText("Test Switch");
-    expect(rightLabel).toHaveClass("text-blue-500");
-
     const leftLabel = screen.getByText("Leftie");
     expect(leftLabel).toHaveClass("text-blue-500");
+
+    const rightLabel = screen.getByText("Rightie");
+    expect(rightLabel).toHaveClass("text-red-500");
   });
 });
