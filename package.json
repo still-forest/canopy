@@ -1,6 +1,6 @@
 {
   "name": "@still-forest/canopy",
-  "version": "0.39.2",
+  "version": "0.39.3",
   "author": "John Szymanowski",
   "license": "MIT",
   "description": "React components, built with Tailwind CSS, Shadcn, and VisX",
