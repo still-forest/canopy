@@ -25,12 +25,8 @@ export const Default: Story = {
   },
 };
 
-export const WithLeftLabel: Story = {
-  args: {
-    ...defaultProps,
-    leftLabel: "Off",
-    rightLabel: "On",
-  },
+export const NoLabel: Story = {
+  args: {},
 };
 
 export const Sizes: Story = {
@@ -51,6 +47,32 @@ export const WithClassNames: Story = {
     className: "data-[state=checked]:bg-blue-100 data-[state=unchecked]:bg-blue-100 rounded-none",
     thumbClassName: "bg-blue-500 h-6 rounded-none",
     labelClassName: "text-blue-500",
+  },
+};
+
+export const WithBothLabels: Story = {
+  args: {
+    label: ["Off", "On"],
+  },
+};
+
+export const WithOnlyLeftLabel: Story = {
+  args: {
+    label: ["Off", null],
+  },
+};
+
+export const WithOnlyRightLabel: Story = {
+  args: {
+    label: [null, "On"],
+  },
+};
+
+export const WithLabelClassNames: Story = {
+  args: {
+    ...defaultProps,
+    label: ["Off", "On"],
+    labelClassName: ["text-blue-500", "text-red-500"],
   },
 };
 
