@@ -1,12 +1,8 @@
 import type { ReactNode } from "react";
-import {
-  InputGroup as BaseInputGroup,
-  InputGroupAddon,
-  InputGroupText,
-  InputGroupTextarea,
-} from "@/components/ui/input-group";
+import { InputGroup as BaseInputGroup, InputGroupAddon, InputGroupText } from "@/components/ui/input-group";
 import { Button, type ButtonProps } from "@/forms/Button";
 import { Input, type InputProps } from "@/forms/Input";
+import { Textarea, type TextareaProps } from "@/main";
 import { cn } from "@/utils";
 
 export type InputGroupProps = React.ComponentProps<typeof BaseInputGroup> & {
@@ -52,6 +48,19 @@ const InputGroupInput = ({ className, ...props }: InputProps) => {
     <Input
       className={cn(
         "flex-1 rounded-none border-0 bg-transparent shadow-none focus-visible:ring-0 dark:bg-transparent",
+        className,
+      )}
+      data-slot="input-group-control"
+      {...props}
+    />
+  );
+};
+
+const InputGroupTextarea = ({ className, ...props }: TextareaProps) => {
+  return (
+    <Textarea
+      className={cn(
+        "flex-1 resize-none rounded-none border-0 bg-transparent py-3 shadow-none focus-visible:ring-0 dark:bg-transparent",
         className,
       )}
       data-slot="input-group-control"
