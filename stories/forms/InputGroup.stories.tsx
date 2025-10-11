@@ -12,7 +12,6 @@ import {
   ScrollText,
   SearchIcon,
   Star,
-  StarIcon,
 } from "lucide-react";
 import { useId } from "react";
 import { Loader } from "@/components/Loader";
@@ -52,19 +51,19 @@ export const WithIcon: Story = {
   render: () => (
     <Flex direction="col" gap="2">
       <InputGroup>
-        <InputGroup.Input placeholder="Search..." />
+        <InputGroup.Input name="search" placeholder="Search..." />
         <InputGroup.Addon>
           <SearchIcon />
         </InputGroup.Addon>
       </InputGroup>
       <InputGroup>
-        <InputGroup.Input placeholder="Enter your email" type="email" />
+        <InputGroup.Input name="email" placeholder="Enter your email" type="email" />
         <InputGroup.Addon>
           <MailIcon />
         </InputGroup.Addon>
       </InputGroup>
       <InputGroup>
-        <InputGroup.Input placeholder="Card number" />
+        <InputGroup.Input name="card-number" placeholder="Card number" />
         <InputGroup.Addon>
           <CreditCardIcon />
         </InputGroup.Addon>
@@ -73,9 +72,9 @@ export const WithIcon: Story = {
         </InputGroup.Addon>
       </InputGroup>
       <InputGroup>
-        <InputGroup.Input placeholder="Card number" />
+        <InputGroup.Input name="card-number" placeholder="Card number" />
         <InputGroup.Addon align="inline-end">
-          <StarIcon />
+          <Star />
           <InfoIcon />
         </InputGroup.Addon>
       </InputGroup>
@@ -87,14 +86,14 @@ export const WithButton: Story = {
   render: () => (
     <Flex direction="col" gap="2">
       <InputGroup>
-        <InputGroup.Input placeholder="https://x.com/shadcn" readOnly />
+        <InputGroup.Input name="url" placeholder="https://x.com/shadcn" readOnly />
         <InputGroup.Addon align="inline-end">
           <InputGroup.Button
             aria-label="Copy"
             onClick={() => {
               console.log("Copy");
             }}
-            size="icon-xs"
+            size="xs"
             title="Copy"
           >
             <Copy />
@@ -105,7 +104,7 @@ export const WithButton: Story = {
         <Popover>
           <Popover.Trigger asChild>
             <InputGroup.Addon>
-              <InputGroup.Button size="icon-xs" variant="secondary">
+              <InputGroup.Button asIcon size="xs" variant="secondary">
                 <Circle />
               </InputGroup.Button>
             </InputGroup.Addon>
@@ -116,9 +115,9 @@ export const WithButton: Story = {
           </Popover.Content>
         </Popover>
         <InputGroup.Addon className="text-muted-foreground pl-1.5">https://</InputGroup.Addon>
-        <InputGroup.Input />
+        <InputGroup.Input name="url" />
         <InputGroup.Addon align="inline-end">
-          <InputGroup.Button onClick={() => console.log("Favorite")} size="icon-xs">
+          <InputGroup.Button asIcon onClick={() => console.log("Favorite")} size="xs">
             <Star
               className="data-[favorite=true]:fill-blue-600 data-[favorite=true]:stroke-blue-600"
               data-favorite={true}
@@ -127,7 +126,7 @@ export const WithButton: Story = {
         </InputGroup.Addon>
       </InputGroup>
       <InputGroup>
-        <InputGroup.Input placeholder="Type to search..." />
+        <InputGroup.Input name="search" placeholder="Type to search..." />
         <InputGroup.Addon align="inline-end">
           <InputGroup.Button variant="secondary">Search</InputGroup.Button>
         </InputGroup.Addon>
@@ -140,11 +139,11 @@ export const WithTooltip: Story = {
   render: () => (
     <Flex direction="col" gap="2">
       <InputGroup>
-        <InputGroup.Input placeholder="Enter password" type="password" />
+        <InputGroup.Input name="password" placeholder="Enter password" type="password" />
         <InputGroup.Addon align="inline-end">
           <Tooltip>
             <Tooltip.Trigger asChild>
-              <InputGroup.Button aria-label="Info" size="icon-xs" variant="ghost">
+              <InputGroup.Button aria-label="Info" asIcon size="xs" variant="ghost">
                 <InfoIcon />
               </InputGroup.Button>
             </Tooltip.Trigger>
@@ -155,11 +154,11 @@ export const WithTooltip: Story = {
         </InputGroup.Addon>
       </InputGroup>
       <InputGroup>
-        <InputGroup.Input placeholder="Your email address" />
+        <InputGroup.Input name="email" placeholder="Your email address" />
         <InputGroup.Addon align="inline-end">
           <Tooltip>
             <Tooltip.Trigger asChild>
-              <InputGroup.Button aria-label="Help" size="icon-xs" variant="ghost">
+              <InputGroup.Button aria-label="Help" asIcon size="xs" variant="ghost">
                 <HelpCircle />
               </InputGroup.Button>
             </Tooltip.Trigger>
@@ -170,11 +169,11 @@ export const WithTooltip: Story = {
         </InputGroup.Addon>
       </InputGroup>
       <InputGroup>
-        <InputGroup.Input placeholder="Enter API key" />
+        <InputGroup.Input name="api-key" placeholder="Enter API key" />
         <Tooltip>
           <Tooltip.Trigger asChild>
             <InputGroup.Addon>
-              <InputGroup.Button aria-label="Help" size="icon-xs" variant="ghost">
+              <InputGroup.Button aria-label="Help" asIcon size="xs" variant="ghost">
                 <HelpCircle />
               </InputGroup.Button>
             </InputGroup.Addon>
@@ -192,7 +191,7 @@ export const Textarea: Story = {
   render: () => (
     <Flex direction="col" gap="2">
       <InputGroup>
-        <InputGroup.Textarea className="min-h-[200px]" placeholder="console.log('Hello, world!');" />
+        <InputGroup.Textarea className="min-h-[200px]" name="code" placeholder="console.log('Hello, world!');" />
         <InputGroup.Addon align="block-end" className="border-t">
           <InputGroup.Text>Line 1, Column 1</InputGroup.Text>
           <InputGroup.Button className="ml-auto" size="sm" variant="default">
@@ -204,10 +203,10 @@ export const Textarea: Story = {
             <ScrollText />
             script.js
           </InputGroup.Text>
-          <InputGroup.Button className="ml-auto" size="icon-xs">
+          <InputGroup.Button asIcon className="ml-auto" size="xs">
             <RotateCcw />
           </InputGroup.Button>
-          <InputGroup.Button size="icon-xs" variant="ghost">
+          <InputGroup.Button asIcon size="xs" variant="ghost">
             <Copy />
           </InputGroup.Button>
         </InputGroup.Addon>
@@ -220,26 +219,26 @@ export const WithSpinner: Story = {
   render: () => (
     <Flex direction="col" gap="2">
       <InputGroup data-disabled>
-        <InputGroup.Input disabled placeholder="Searching..." />
+        <InputGroup.Input disabled name="searching" placeholder="Searching..." />
         <InputGroup.Addon align="inline-end">
           <Loader />
         </InputGroup.Addon>
       </InputGroup>
       <InputGroup data-disabled>
-        <InputGroup.Input disabled placeholder="Processing..." />
+        <InputGroup.Input disabled name="processing" placeholder="Processing..." />
         <InputGroup.Addon>
           <Loader />
         </InputGroup.Addon>
       </InputGroup>
       <InputGroup data-disabled>
-        <InputGroup.Input disabled placeholder="Saving changes..." />
+        <InputGroup.Input disabled name="saving-changes" placeholder="Saving changes..." />
         <InputGroup.Addon align="inline-end">
           <InputGroup.Text>Saving...</InputGroup.Text>
           <Loader />
         </InputGroup.Addon>
       </InputGroup>
       <InputGroup data-disabled>
-        <InputGroup.Input disabled placeholder="Refreshing data..." />
+        <InputGroup.Input disabled name="refreshing-data" placeholder="Refreshing data..." />
         <InputGroup.Addon>
           <Loader variant="wheel" />
         </InputGroup.Addon>
@@ -258,20 +257,20 @@ export const WithLabel: Story = {
     return (
       <Flex direction="col" gap="2">
         <InputGroup>
-          <InputGroup.Input id={emailId} placeholder="shadcn" />
+          <InputGroup.Input id={emailId} name="email" placeholder="shadcn" />
           <InputGroup.Addon>
             <Label htmlFor={emailId}>@</Label>
           </InputGroup.Addon>
         </InputGroup>
         <InputGroup>
-          <InputGroup.Input id={email2Id} placeholder="shadcn@vercel.com" />
+          <InputGroup.Input id={email2Id} name="email" placeholder="shadcn@vercel.com" />
           <InputGroup.Addon align="block-start">
             <Label className="text-foreground" htmlFor={email2Id}>
               Email
             </Label>
             <Tooltip>
               <Tooltip.Trigger asChild>
-                <InputGroup.Button aria-label="Help" className="ml-auto rounded-full" size="icon-xs" variant="ghost">
+                <InputGroup.Button aria-label="Help" asIcon className="ml-auto rounded-full" size="xs" variant="ghost">
                   <InfoIcon />
                 </InputGroup.Button>
               </Tooltip.Trigger>

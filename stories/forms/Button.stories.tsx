@@ -146,6 +146,55 @@ export const NoText: Story = {
   },
 };
 
+export const NoTextAsIcon: Story = {
+  render: () => (
+    <Flex align="center" direction="row" gap="4">
+      <Button asIcon size="xs">
+        <SampleIcon />
+      </Button>
+      <Button asIcon size="sm">
+        <SampleIcon />
+      </Button>
+      <Button asIcon size="default">
+        <SampleIcon />
+      </Button>
+      <Button asIcon size="md">
+        <SampleIcon />
+      </Button>
+      <Button asIcon size="lg">
+        <SampleIcon />
+      </Button>
+      <Button asIcon size="xl">
+        <SampleIcon />
+      </Button>
+    </Flex>
+  ),
+};
+export const NoTextAsIconRounded: Story = {
+  render: () => (
+    <Flex align="center" direction="row" gap="4">
+      <Button asIcon rounded size="xs">
+        <SampleIcon />
+      </Button>
+      <Button asIcon rounded size="sm">
+        <SampleIcon />
+      </Button>
+      <Button asIcon rounded size="default">
+        <SampleIcon />
+      </Button>
+      <Button asIcon rounded size="md">
+        <SampleIcon />
+      </Button>
+      <Button asIcon rounded size="lg">
+        <SampleIcon />
+      </Button>
+      <Button asIcon rounded size="xl">
+        <SampleIcon />
+      </Button>
+    </Flex>
+  ),
+};
+
 export const NoTextLink: Story = {
   args: {
     children: <SampleIcon />,
