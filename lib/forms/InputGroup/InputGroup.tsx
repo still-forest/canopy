@@ -1,5 +1,9 @@
 import type { ReactNode } from "react";
-import { InputGroup as BaseInputGroup, InputGroupAddon, InputGroupText } from "@/components/ui/input-group";
+import {
+  InputGroup as BaseInputGroup,
+  InputGroupAddon as BaseInputGroupAddon,
+  InputGroupText,
+} from "@/components/ui/input-group";
 import { Button, type ButtonProps } from "@/forms/Button";
 import { Input, type InputProps } from "@/forms/Input";
 import { Textarea, type TextareaProps } from "@/main";
@@ -8,7 +12,6 @@ import { cn } from "@/utils";
 export type InputGroupProps = React.ComponentProps<typeof BaseInputGroup> & {
   children: ReactNode;
 };
-type InputGroupAddonProps = React.ComponentProps<typeof InputGroupAddon>;
 type InputGroupTextProps = React.ComponentProps<typeof InputGroupText>;
 type InputGroupTextareaProps = React.ComponentProps<typeof InputGroupTextarea>;
 
@@ -58,6 +61,14 @@ const InputGroupTextarea = ({ className, ...props }: TextareaProps) => {
       {...props}
     />
   );
+};
+
+interface InputGroupAddonProps extends React.ComponentProps<typeof BaseInputGroupAddon> {
+  right?: boolean;
+}
+
+const InputGroupAddon = ({ className, right = false, ...props }: InputGroupAddonProps) => {
+  return <BaseInputGroupAddon align={right ? "inline-end" : "inline-start"} className={className} {...props} />;
 };
 
 InputGroup.Input = InputGroupInput;

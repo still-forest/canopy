@@ -9,6 +9,7 @@ export * from "./InputGroup";
 export * from "./Label";
 export * from "./LegacyInputGroup";
 export * from "./NumberInput";
+export * from "./PasswordInput";
 export * from "./RadioSelect";
 export * from "./SelectInput";
 export * from "./SelectPicker";
