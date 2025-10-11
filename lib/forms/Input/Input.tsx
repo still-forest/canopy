@@ -2,7 +2,7 @@ import { TextInput, type TextInputProps } from "@/forms/TextInput";
 import { DateInput, NumberInput } from "@/main";
 
 export interface InputProps extends TextInputProps {
-  type?: "text" | "number" | "date" | "email";
+  type?: "text" | "number" | "date" | "email" | "password";
   step?: string;
 }
 
