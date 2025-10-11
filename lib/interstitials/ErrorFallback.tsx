@@ -4,12 +4,11 @@ import { Button } from "@/forms";
 import { Box, Flex } from "@/layout";
 import { Code } from "@/typography";
 
-import { ErrorOverlay } from "./ErrorOverlay";
+import { ErrorOverlay, type ErrorOverlayProps } from "./ErrorOverlay";
 
-interface ErrorFallbackProps {
+interface ErrorFallbackProps extends ErrorOverlayProps {
   error: Error;
   onRetry?: () => void;
-  fullScreen?: boolean;
 }
 
 const defaultOnRetry = () => {
@@ -21,9 +20,9 @@ const defaultOnRetry = () => {
   }
 };
 
-export const ErrorFallback = ({ error, onRetry = defaultOnRetry, fullScreen = false }: ErrorFallbackProps) => {
+export const ErrorFallback = ({ error, onRetry = defaultOnRetry, ...props }: ErrorFallbackProps) => {
   return (
-    <ErrorOverlay fullScreen={fullScreen}>
+    <ErrorOverlay {...props}>
       <Flex align="center" className="mt-8" direction="col">
         <Box className="mb-8 p-4" variant="muted" width="full">
           <Code align="center" size="xs" variant="inherit">

@@ -1,7 +1,7 @@
 import { CircleX } from "lucide-react";
 import { Interstitial, type InterstitialProps } from "./Interstitial";
 
-interface ErrorOverlayProps extends InterstitialProps {}
+export interface ErrorOverlayProps extends InterstitialProps {}
 
 export const ErrorOverlay = ({ message = "Something went wrong.", children, ...props }: ErrorOverlayProps) => {
   return (
