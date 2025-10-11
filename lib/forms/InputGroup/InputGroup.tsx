@@ -2,11 +2,12 @@ import type { ReactNode } from "react";
 import {
   InputGroup as BaseInputGroup,
   InputGroupAddon,
-  InputGroupButton,
+  type InputGroupButton,
   InputGroupInput,
   InputGroupText,
   InputGroupTextarea,
 } from "@/components/ui/input-group";
+import { Button } from "@/forms/Button";
 
 export type InputGroupProps = React.ComponentProps<typeof BaseInputGroup> & {
   children: ReactNode;
@@ -31,7 +32,7 @@ const InputGroup: InputGroupComponent = ({ children, ...props }: InputGroupProps
 
 InputGroup.Input = InputGroupInput;
 InputGroup.Addon = InputGroupAddon;
-InputGroup.Button = InputGroupButton;
+InputGroup.Button = Button;
 InputGroup.Text = InputGroupText;
 InputGroup.Textarea = InputGroupTextarea;
 

@@ -48,7 +48,7 @@ export const Default: Story = {
   ),
 };
 
-export const Icons: Story = {
+export const WithIcon: Story = {
   render: () => (
     <Flex direction="col" gap="2">
       <InputGroup>
@@ -83,7 +83,7 @@ export const Icons: Story = {
   ),
 };
 
-export const Button: Story = {
+export const WithButton: Story = {
   render: () => (
     <Flex direction="col" gap="2">
       <InputGroup>
@@ -216,7 +216,7 @@ export const Textarea: Story = {
   ),
 };
 
-export const Spinner: Story = {
+export const WithSpinner: Story = {
   render: () => (
     <Flex direction="col" gap="2">
       <InputGroup data-disabled>
