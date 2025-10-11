@@ -65,13 +65,15 @@ function InputGroupAddon({
         if ((e.target as HTMLElement).closest("button")) {
           return;
         }
-        e.currentTarget.parentElement?.querySelector("input")?.focus();
+        const control = e.currentTarget.parentElement?.querySelector<HTMLElement>('[data-slot="input-group-control"]');
+        control?.focus();
       }}
       onKeyUp={(e) => {
         if ((e.target as HTMLElement).closest("button")) {
           return;
         }
-        e.currentTarget.parentElement?.querySelector("input")?.focus();
+        const control = e.currentTarget.parentElement?.querySelector<HTMLElement>('[data-slot="input-group-control"]');
+        control?.focus();
       }}
       role="group"
       {...props}
