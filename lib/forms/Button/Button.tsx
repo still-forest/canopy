@@ -23,12 +23,14 @@ export interface ButtonProps extends React.ComponentProps<"button"> {
     | "subtle";
   size?: "default" | "xs" | "sm" | "md" | "lg" | "xl";
   icon?: React.ReactElement;
+  asIcon?: boolean;
   disabled?: boolean;
   className?: string;
   type?: "button" | "submit" | "reset";
   fit?: boolean;
   full?: boolean;
   asChild?: boolean;
+  rounded?: boolean;
 }
 
 export const Button = ({
@@ -38,12 +40,14 @@ export const Button = ({
   variant = "default",
   size = "default",
   icon,
+  asIcon = false,
   disabled = false,
   className = "",
   type = "button",
   asChild = false,
   full = false,
   fit = false,
+  rounded = false,
   ...rest
 }: ButtonProps) => {
   const getBaseVariant = (): BaseButtonVariant => {
@@ -57,6 +61,10 @@ export const Button = ({
   };
 
   const getBaseSize = (): BaseButtonSize => {
+    if (asIcon) {
+      return "icon";
+    }
+
     if (variant === "unstyled") {
       return "unstyled";
     }
@@ -71,7 +79,19 @@ export const Button = ({
   return (
     <BaseButton
       asChild={asChild}
-      className={cn(className, fit && "w-fit", full && "w-full", variant === "unstyled" && "justify-start")}
+      className={cn(
+        fit && "w-fit",
+        full && "w-full",
+        variant === "unstyled" && "justify-start",
+        asIcon && size === "xs" && "size-6 p-0 has-[>svg]:p-0",
+        asIcon && size === "sm" && "size-8  p-0 has-[>svg]:p-0",
+        asIcon && size === "md" && "size-10 p-0 has-[>svg]:p-0",
+        asIcon && size === "default" && "size-10  p-0 has-[>svg]:p-0",
+        asIcon && size === "lg" && "size-12 p-0  has-[>svg]:p-0",
+        asIcon && size === "xl" && "size-14 p-0 has-[>svg]:p-0",
+        rounded && "rounded-full",
+        className,
+      )}
       disabled={disabled}
       onClick={onClick}
       size={getBaseSize()}
