@@ -1,3 +1,4 @@
+import type { ReactNode } from "react";
 import { Label } from "@/forms";
 import { Flex } from "@/layout";
 
@@ -6,7 +7,7 @@ interface InputGroupProps {
   labelFor?: string;
   className?: string;
   labelClassName?: string;
-  children: React.ReactNode;
+  children: ReactNode;
 }
 
 export const LegacyInputGroup = ({
