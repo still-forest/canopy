@@ -11,6 +11,7 @@ export interface InterstitialProps {
   iconSize?: LoaderProps["size"];
   iconClassName?: string;
   children?: React.ReactNode;
+  fullScreen?: boolean;
 }
 
 export const Interstitial = ({
@@ -20,6 +21,7 @@ export const Interstitial = ({
   children,
   iconSize = "10xl",
   iconClassName,
+  fullScreen = false,
 }: InterstitialProps) => {
   if (!iconComponent && !message && !children) {
     if (process.env.NODE_ENV !== "production") {
@@ -35,7 +37,7 @@ export const Interstitial = ({
   const IconComponent = iconComponent ? iconComponent : null;
 
   return (
-    <Flex align="center" className="h-full w-full" justify="center">
+    <Flex align="center" className={cn("w-full", !fullScreen && "h-full", fullScreen && "h-screen")} justify="center">
       <Flex direction="col" justify="center">
         {IconComponent && (
           <Flex align="center" className="my-6" gapX="4" justify="center">

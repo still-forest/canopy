@@ -9,6 +9,7 @@ import { ErrorOverlay } from "./ErrorOverlay";
 interface ErrorFallbackProps {
   error: Error;
   onRetry?: () => void;
+  fullScreen?: boolean;
 }
 
 const defaultOnRetry = () => {
@@ -20,9 +21,9 @@ const defaultOnRetry = () => {
   }
 };
 
-export const ErrorFallback = ({ error, onRetry = defaultOnRetry }: ErrorFallbackProps) => {
+export const ErrorFallback = ({ error, onRetry = defaultOnRetry, fullScreen = false }: ErrorFallbackProps) => {
   return (
-    <ErrorOverlay>
+    <ErrorOverlay fullScreen={fullScreen}>
       <Flex align="center" className="mt-8" direction="col">
         <Box className="mb-8 p-4" variant="muted" width="full">
           <Code align="center" size="xs" variant="inherit">
