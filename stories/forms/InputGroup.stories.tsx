@@ -257,13 +257,13 @@ export const WithLabel: Story = {
     return (
       <Flex direction="col" gap="2">
         <InputGroup>
-          <InputGroup.Input id={emailId} name="email" placeholder="shadcn" />
+          <InputGroup.Input id={emailId} name="email" placeholder="homer@simpson.com" />
           <InputGroup.Addon>
             <Label htmlFor={emailId}>@</Label>
           </InputGroup.Addon>
         </InputGroup>
         <InputGroup>
-          <InputGroup.Input id={email2Id} name="email" placeholder="shadcn@vercel.com" />
+          <InputGroup.Input id={email2Id} name="email-2" placeholder="marge@simpson.com" />
           <InputGroup.Addon align="block-start">
             <Label className="text-foreground" htmlFor={email2Id}>
               Email
