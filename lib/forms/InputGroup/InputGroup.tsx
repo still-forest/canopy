@@ -64,7 +64,7 @@ const InputGroupTextarea = ({ className, ...props }: TextareaProps) => {
 };
 
 interface InputGroupAddonProps extends React.ComponentProps<typeof BaseInputGroupAddon> {
-  right: boolean;
+  right?: boolean;
 }
 
 const InputGroupAddon = ({ className, right = false, ...props }: InputGroupAddonProps) => {
