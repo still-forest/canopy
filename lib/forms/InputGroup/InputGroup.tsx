@@ -68,7 +68,7 @@ interface InputGroupAddonProps extends React.ComponentProps<typeof BaseInputGrou
 }
 
 const InputGroupAddon = ({ className, right = false, ...props }: InputGroupAddonProps) => {
-  return <BaseInputGroupAddon align={right ? "inline-end" : "inline-start"} className={cn(className)} {...props} />;
+  return <BaseInputGroupAddon align={right ? "inline-end" : "inline-start"} className={className} {...props} />;
 };
 
 InputGroup.Input = InputGroupInput;
