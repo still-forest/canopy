@@ -1,5 +1,5 @@
 import { RadioGroup, RadioGroupItem } from "@/components/ui/radio-group";
-import { InputError, InputGroup, Label } from "@/forms";
+import { InputError, Label, LegacyInputGroup } from "@/forms";
 import { Flex, Grid } from "@/layout";
 
 interface Option {
@@ -18,7 +18,7 @@ interface RadioSelectProps {
 
 const RadioSelect = ({ label, name, options, value, onChange, error }: RadioSelectProps) => {
   return (
-    <InputGroup className="flex flex-col gap-4 px-2 py-1" label={label} labelFor={name}>
+    <LegacyInputGroup className="flex flex-col gap-4 px-2 py-1" label={label} labelFor={name}>
       <RadioGroup className="w-full" name={name} onValueChange={onChange} value={value}>
         <Grid cols="2">
           {options.map((option, i) => (
@@ -30,7 +30,7 @@ const RadioSelect = ({ label, name, options, value, onChange, error }: RadioSele
         </Grid>
       </RadioGroup>
       {error && <InputError message={error} />}
-    </InputGroup>
+    </LegacyInputGroup>
   );
 };
 

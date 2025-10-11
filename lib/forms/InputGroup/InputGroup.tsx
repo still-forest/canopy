@@ -1,23 +1,38 @@
-import { Label } from "@/forms";
-import { Flex } from "@/layout";
+import type { ReactNode } from "react";
+import {
+  InputGroup as BaseInputGroup,
+  InputGroupAddon,
+  InputGroupButton,
+  InputGroupInput,
+  InputGroupText,
+  InputGroupTextarea,
+} from "@/components/ui/input-group";
 
-interface InputGroupProps {
-  label?: string;
-  labelFor?: string;
-  className?: string;
-  labelClassName?: string;
-  children: React.ReactNode;
-}
+export type InputGroupProps = React.ComponentProps<typeof BaseInputGroup> & {
+  children: ReactNode;
+};
+type InputGroupInputProps = React.ComponentProps<typeof InputGroupInput>;
+type InputGroupAddonProps = React.ComponentProps<typeof InputGroupAddon>;
+type InputGroupButtonProps = React.ComponentProps<typeof InputGroupButton>;
+type InputGroupTextProps = React.ComponentProps<typeof InputGroupText>;
+type InputGroupTextareaProps = React.ComponentProps<typeof InputGroupTextarea>;
 
-export const InputGroup = ({ label, labelFor, className = "", labelClassName = "", children }: InputGroupProps) => (
-  <Flex direction="col" gap="2">
-    {label && (
-      <Label className={labelClassName} htmlFor={labelFor}>
-        {label}
-      </Label>
-    )}
-    <Flex className={`rounded-md border border-input bg-card p-2 shadow-xs ${className}`} gapY="1">
-      {children}
-    </Flex>
-  </Flex>
-);
+type InputGroupComponent = React.FC<InputGroupProps> & {
+  Input: React.FC<InputGroupInputProps>;
+  Addon: React.FC<InputGroupAddonProps>;
+  Button: React.FC<InputGroupButtonProps>;
+  Text: React.FC<InputGroupTextProps>;
+  Textarea: React.FC<InputGroupTextareaProps>;
+};
+
+const InputGroup: InputGroupComponent = ({ children, ...props }: InputGroupProps) => {
+  return <BaseInputGroup {...props}>{children}</BaseInputGroup>;
+};
+
+InputGroup.Input = InputGroupInput;
+InputGroup.Addon = InputGroupAddon;
+InputGroup.Button = InputGroupButton;
+InputGroup.Text = InputGroupText;
+InputGroup.Textarea = InputGroupTextarea;
+
+export { InputGroup };

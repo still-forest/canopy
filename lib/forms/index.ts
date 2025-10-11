@@ -6,6 +6,7 @@ export * from "./DatePicker";
 export * from "./InputError";
 export * from "./InputGroup";
 export * from "./Label";
+export * from "./LegacyInputGroup";
 export * from "./NumberInput";
 export * from "./RadioSelect";
 export * from "./SelectInput";
