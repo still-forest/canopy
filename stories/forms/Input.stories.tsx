@@ -31,6 +31,16 @@ export const WithInitialValue: Story = {
     value: "Something something",
   },
 };
+export const Types: Story = {
+  render: () => (
+    <Flex direction="col" gap="4">
+      <Input {...defaultProps} placeholder="Something something" type="text" />
+      <Input {...defaultProps} placeholder="123" type="number" />
+      <Input {...defaultProps} placeholder="test@test.com" type="email" />
+      <Input {...defaultProps} placeholder="password" type="password" />
+    </Flex>
+  ),
+};
 
 export const WithLabel: Story = {
   args: {
