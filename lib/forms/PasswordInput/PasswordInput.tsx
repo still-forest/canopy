@@ -31,7 +31,13 @@ export const PasswordInput = ({
       <InputGroup>
         <InputGroup.Input type={showPassword ? "text" : "password"} {...props} name={name} size={size} />
         <InputGroup.Addon right>
-          <InputGroup.Button asIcon onClick={togglePassword} size="xs" variant="ghost">
+          <InputGroup.Button
+            aria-label={showPassword ? "Hide password" : "Show password"}
+            asIcon
+            onClick={togglePassword}
+            size="xs"
+            variant="ghost"
+          >
             {showPassword ? <Eye /> : <EyeOff />}
           </InputGroup.Button>
         </InputGroup.Addon>
