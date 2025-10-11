@@ -54,14 +54,34 @@ export const WithEverything: Story = {
   },
 };
 
-export const WithSize: Story = {
+export const WithLeftLabelOrientation: Story = {
+  args: {
+    ...defaultProps,
+    label: "Some value:",
+    labelOrientation: "left",
+  },
+};
+export const WithError: Story = {
+  args: {
+    ...defaultProps,
+    label: "Password",
+    error: "Password is required",
+  },
+};
+
+export const WithSizeAndLabel: Story = {
   render: () => (
     <Flex direction="col" gap="4">
-      <PasswordInput {...defaultProps} placeholder="This password is extra small" size="xs" />
-      <PasswordInput {...defaultProps} placeholder="This password is small" size="sm" />
-      <PasswordInput {...defaultProps} placeholder="This password is medium (default size)" size="md" />
-      <PasswordInput {...defaultProps} placeholder="This password is large" size="lg" />
-      <PasswordInput {...defaultProps} placeholder="This password is extra large" size="xl" />
+      <PasswordInput {...defaultProps} label="Password" placeholder="This password is extra small" size="xs" />
+      <PasswordInput {...defaultProps} label="Password" placeholder="This password is small" size="sm" />
+      <PasswordInput
+        {...defaultProps}
+        label="Password"
+        placeholder="This password is medium (default size)"
+        size="md"
+      />
+      <PasswordInput {...defaultProps} label="Password" placeholder="This password is large" size="lg" />
+      <PasswordInput {...defaultProps} label="Password" placeholder="This password is extra large" size="xl" />
     </Flex>
   ),
 };
