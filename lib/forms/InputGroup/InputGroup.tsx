@@ -6,7 +6,7 @@ import {
   InputGroupTextarea,
 } from "@/components/ui/input-group";
 import { Button, type ButtonProps } from "@/forms/Button";
-import { TextInput, type TextInputProps } from "@/forms/TextInput";
+import { Input, type InputProps } from "@/forms/Input";
 import { cn } from "@/utils";
 
 export type InputGroupProps = React.ComponentProps<typeof BaseInputGroup> & {
@@ -17,7 +17,7 @@ type InputGroupTextProps = React.ComponentProps<typeof InputGroupText>;
 type InputGroupTextareaProps = React.ComponentProps<typeof InputGroupTextarea>;
 
 type InputGroupComponent = React.FC<InputGroupProps> & {
-  Input: React.FC<TextInputProps>;
+  Input: React.FC<InputProps>;
   Addon: React.FC<InputGroupAddonProps>;
   Button: React.FC<ButtonProps>;
   Text: React.FC<InputGroupTextProps>;
@@ -47,9 +47,9 @@ const InputGroupButton = ({
   />
 );
 
-const InputGroupInput = ({ className, ...props }: TextInputProps) => {
+const InputGroupInput = ({ className, ...props }: InputProps) => {
   return (
-    <TextInput
+    <Input
       className={cn(
         "flex-1 rounded-none border-0 bg-transparent shadow-none focus-visible:ring-0 dark:bg-transparent",
         className,

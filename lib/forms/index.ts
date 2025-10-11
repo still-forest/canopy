@@ -3,6 +3,7 @@ export * from "./Checkbox";
 export * from "./CopyButton";
 export * from "./DateInput";
 export * from "./DatePicker";
+export * from "./Input";
 export * from "./InputError";
 export * from "./InputGroup";
 export * from "./Label";
