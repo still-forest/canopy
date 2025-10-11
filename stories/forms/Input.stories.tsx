@@ -38,7 +38,6 @@ export const Types: Story = {
       <Input {...defaultProps} placeholder="123" type="number" />
       <Input {...defaultProps} placeholder="2025-12-25" type="date" />
       <Input {...defaultProps} placeholder="test@test.com" type="email" />
-      <Input {...defaultProps} placeholder="password" type="password" />
     </Flex>
   ),
 };
