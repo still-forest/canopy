@@ -36,7 +36,7 @@ type Story = StoryObj<typeof meta>;
 export const Default: Story = {
   render: () => (
     <InputGroup>
-      <InputGroup.Input placeholder="Search..." />
+      <InputGroup.Input name="search" placeholder="Search..." />
       <InputGroup.Addon>
         <SearchIcon />
       </InputGroup.Addon>
