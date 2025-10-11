@@ -24,19 +24,10 @@ const InputGroup: InputGroupComponent = ({ children, ...props }: InputGroupProps
   return <BaseInputGroup {...props}>{children}</BaseInputGroup>;
 };
 
-const InputGroupButton = ({
-  className,
-  size = "xs",
-  icon,
-  asIcon,
-  rounded,
-  variant = "ghost",
-  ...props
-}: ButtonProps) => (
+const InputGroupButton = ({ className, size = "xs", variant = "ghost", ...props }: ButtonProps) => (
   <Button
     className={cn("shadow-none flex gap-2 items-center", className)}
     data-slot="input-group-control"
-    rounded={asIcon ?? rounded}
     size={size}
     variant={variant}
     {...props}
