@@ -17,7 +17,18 @@ export type ButtonVariant =
   | "success"
   | "warning";
 
-export type BaseButtonVariant = Omit<ButtonVariant, "primary">;
+export type BaseButtonVariant =
+  | "default"
+  | "secondary"
+  | "destructive"
+  | "outline"
+  | "ghost"
+  | "link"
+  | "unstyled"
+  | "error"
+  | "info"
+  | "success"
+  | "warning";
 export type BaseButtonSize = "xs" | "sm" | "md" | "lg" | "xl" | "icon" | "unstyled";
 
 export interface ButtonProps extends React.ComponentProps<"button"> {

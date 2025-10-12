@@ -150,13 +150,6 @@ export const NoTextLink: Story = {
   },
 };
 
-export const NoTextSubtle: Story = {
-  args: {
-    children: <SampleIcon />,
-    variant: "subtle",
-  },
-};
-
 export const NoTextGhost: Story = {
   args: {
     children: <SampleIcon />,
