@@ -3,24 +3,28 @@ import { Button as BaseButton } from "@/components/ui/button";
 import { Flex } from "@/layout";
 import { cn } from "@/utils";
 
-export type BaseButtonVariant = "default" | "secondary" | "destructive" | "outline" | "ghost" | "link" | "unstyled";
+export type ButtonVariant =
+  | "default"
+  | "primary"
+  | "secondary"
+  | "destructive"
+  | "outline"
+  | "ghost"
+  | "link"
+  | "unstyled"
+  | "error"
+  | "info"
+  | "success"
+  | "warning";
+
+export type BaseButtonVariant = Omit<ButtonVariant, "primary">;
 export type BaseButtonSize = "xs" | "sm" | "md" | "lg" | "xl" | "icon" | "unstyled";
 
 export interface ButtonProps extends React.ComponentProps<"button"> {
   label?: string;
   children?: React.ReactNode;
   onClick?: () => void;
-  variant?:
-    | "default"
-    | "primary"
-    | "secondary"
-    | "destructive"
-    | "outline"
-    | "ghost"
-    | "link"
-    | "unstyled"
-    // deprecated
-    | "subtle";
+  variant?: ButtonVariant;
   size?: "default" | "xs" | "sm" | "md" | "lg" | "xl";
   icon?: React.ReactElement;
   asIcon?: boolean;
@@ -54,9 +58,7 @@ export const Button = ({
     if (variant === "primary") {
       return "default";
     }
-    if (variant === "subtle") {
-      return "secondary";
-    }
+
     return variant;
   };
 

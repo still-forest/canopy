@@ -33,53 +33,22 @@ export const Default: Story = {
   },
 };
 
-export const Primary: Story = {
-  args: {
-    ...defaultProps,
-    variant: "primary",
-  },
-};
-
-export const Secondary: Story = {
-  args: {
-    ...defaultProps,
-    variant: "secondary",
-  },
-};
-
-export const Subtle: Story = {
-  args: {
-    ...defaultProps,
-    variant: "subtle",
-  },
-};
-
-export const Destructive: Story = {
-  args: {
-    ...defaultProps,
-    variant: "destructive",
-  },
-};
-
-export const Outline: Story = {
-  args: {
-    ...defaultProps,
-    variant: "outline",
-  },
-};
-
-export const Ghost: Story = {
-  args: {
-    ...defaultProps,
-    variant: "ghost",
-  },
-};
-
-export const Link: Story = {
-  args: {
-    ...defaultProps,
-    variant: "link",
-  },
+export const Variants: Story = {
+  render: () => (
+    <Flex direction="col" gap="4">
+      <Button label="Primary" variant="primary" />
+      <Button label="Secondary" variant="secondary" />
+      <Button label="Destructive" variant="destructive" />
+      <Button label="Outline" variant="outline" />
+      <Button label="Link" variant="link" />
+      <Button label="Error" variant="error" />
+      <Button label="Info" variant="info" />
+      <Button label="Success" variant="success" />
+      <Button label="Warning" variant="warning" />
+      <Button label="Ghost" variant="ghost" />
+      <Button label="Unstyled" variant="unstyled" />
+    </Flex>
+  ),
 };
 
 export const Disabled: Story = {
@@ -102,42 +71,21 @@ export const Sizes: Story = {
 };
 
 export const WithIcon: Story = {
-  args: {
-    ...defaultProps,
-    ...iconProps,
-  },
-};
-
-export const WithIconPrimary: Story = {
-  args: {
-    ...defaultProps,
-    ...iconProps,
-    variant: "primary",
-  },
-};
-
-export const WithIconLink: Story = {
-  args: {
-    ...defaultProps,
-    ...iconProps,
-    variant: "link",
-  },
-};
-
-export const WithIconSubtle: Story = {
-  args: {
-    ...defaultProps,
-    ...iconProps,
-    variant: "subtle",
-  },
-};
-
-export const WithIconGhost: Story = {
-  args: {
-    ...defaultProps,
-    ...iconProps,
-    variant: "ghost",
-  },
+  render: () => (
+    <Flex direction="col" gap="4">
+      <Button label="Primary" variant="primary" {...iconProps} />
+      <Button label="Secondary" variant="secondary" {...iconProps} />
+      <Button label="Destructive" variant="destructive" {...iconProps} />
+      <Button label="Outline" variant="outline" {...iconProps} />
+      <Button label="Ghost" variant="ghost" {...iconProps} />
+      <Button label="Error" variant="error" {...iconProps} />
+      <Button label="Info" variant="info" {...iconProps} />
+      <Button label="Success" variant="success" {...iconProps} />
+      <Button label="Warning" variant="warning" {...iconProps} />
+      <Button label="Link" variant="link" {...iconProps} />
+      <Button label="Unstyled" variant="unstyled" {...iconProps} />
+    </Flex>
+  ),
 };
 
 export const NoText: Story = {
