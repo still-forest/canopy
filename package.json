@@ -64,7 +64,7 @@
     "storybook:build": "storybook build",
     "storybook:build:docs": "storybook build --docs",
     "storybook:docs": "storybook dev --docs",
-    "test": "vitest",
+    "test": "vitest run",
     "test:coverage": "vitest run --coverage",
     "test:watch": "vitest --watch",
     "release": "release-it",
