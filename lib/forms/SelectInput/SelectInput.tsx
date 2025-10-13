@@ -47,6 +47,16 @@ const SelectInput = ({
   );
 
   const triggerSize = size === "xs" || size === "sm" ? "sm" : "default";
+  const EMPTY_OPTION_VALUE = "__none__";
+  const emptyOption = { value: EMPTY_OPTION_VALUE, label: placeholder || "(none)" };
+
+  const handleValueChange = (value: string) => {
+    if (value === EMPTY_OPTION_VALUE) {
+      onValueChange("");
+    } else {
+      onValueChange(value);
+    }
+  };
 
   return (
     <Flex className="w-full" direction="col" gap="2">
@@ -54,7 +64,7 @@ const SelectInput = ({
       <Select
         defaultValue={defaultValue as string | undefined}
         name={name}
-        onValueChange={onValueChange}
+        onValueChange={handleValueChange}
         value={value}
         {...props}
       >
@@ -62,6 +72,15 @@ const SelectInput = ({
           <SelectValue placeholder={placeholder} />
         </SelectTrigger>
         <SelectContent>
+          {emptyOption && (
+            <SelectItem
+              className="text-muted-foreground/50 focus:text-muted-foreground/50 focus:bg-transparent border-b border-b-border"
+              key="empty-option"
+              value={emptyOption.value}
+            >
+              {emptyOption.label}
+            </SelectItem>
+          )}
           {options.map(({ value, label }) => (
             <SelectItem key={`option-${value}`} value={value}>
               {label}
