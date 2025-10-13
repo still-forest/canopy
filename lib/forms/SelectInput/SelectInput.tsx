@@ -48,13 +48,23 @@ const SelectInput = ({
 
   const triggerSize = size === "xs" || size === "sm" ? "sm" : "default";
 
+  const EMPTY_OPTION_VALUE = "__none__"; // RadixUI doesn't allow for an empty string SelectInput value, so this is a workaround
+
+  const handleValueChange = (value: string) => {
+    if (value === EMPTY_OPTION_VALUE) {
+      onValueChange("");
+    } else {
+      onValueChange(value);
+    }
+  };
+
   return (
     <Flex className="w-full" direction="col" gap="2">
       {label && <Label htmlFor={name}>{label}</Label>}
       <Select
         defaultValue={defaultValue as string | undefined}
         name={name}
-        onValueChange={onValueChange}
+        onValueChange={handleValueChange}
         value={value}
         {...props}
       >
@@ -62,6 +72,10 @@ const SelectInput = ({
           <SelectValue placeholder={placeholder} />
         </SelectTrigger>
         <SelectContent>
+          <SelectItem className="border-b border-b-border" key="empty-option" value={EMPTY_OPTION_VALUE}>
+            &nbsp;
+          </SelectItem>
+
           {options.map(({ value, label }) => (
             <SelectItem key={`option-${value}`} value={value}>
               {label}
