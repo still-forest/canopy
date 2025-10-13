@@ -111,24 +111,7 @@ export type FlexJustify = (typeof FLEX_JUSTIFIES)[number];
 export const FLEX_WRAPS = ["nowrap", "wrap", "wrap-reverse"] as const;
 export type FlexWrap = (typeof FLEX_WRAPS)[number];
 
-export const FLEX_GROWS = [
-  null,
-  true,
-  false,
-  "0",
-  "1",
-  "2",
-  "3",
-  "4",
-  "5",
-  "6",
-  "7",
-  "8",
-  "9",
-  "10",
-  "11",
-  "12",
-] as const;
+export const FLEX_GROWS = [true, false, "0", "1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12"] as const;
 export type FlexGrow = (typeof FLEX_GROWS)[number];
 
 export const GRID_COLS = ["1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12", "none"] as const;

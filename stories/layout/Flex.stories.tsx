@@ -247,11 +247,11 @@ export const Justification: Story = {
   ),
 };
 
-const FLEX_GROW_EXAMPLES: [FlexGrow, FlexGrow][] = [
-  [null, "0"],
-  [null, false],
-  [null, "1"],
-  [null, true],
+const FLEX_GROW_EXAMPLES: [FlexGrow | undefined, FlexGrow | undefined][] = [
+  [undefined, "0"],
+  [undefined, false],
+  [undefined, "1"],
+  [undefined, true],
   ["1", "1"],
   ["1", "4"],
   ["2", "1"],

@@ -2,9 +2,7 @@
  * Responsive utility functions for handling Tailwind CSS breakpoint-based values
  */
 
-export type Breakpoint = "base" | "sm" | "md" | "lg" | "xl" | "2xl";
-
-export type ResponsiveValue<T> = T | Partial<Record<Breakpoint, T>>;
+import type { Breakpoint, ResponsiveValue } from "@/types/layout";
 
 /**
  * Checks if a value is a responsive object (contains breakpoint keys)
@@ -67,8 +65,8 @@ export function getResponsiveClasses<T extends string | boolean | number>(
  * Useful for properties that map to multiple CSS classes based on value
  *
  * @param value - Either a simple value or an object with breakpoint keys
- * @param classMap - Object mapping values to class names
- * @returns Array of class names with appropriate responsive prefixes
+ * @param classMap - Object mapping values to class names (can be partial)
+ * @returns Array of class names with appropriate responsive prefixes, filtering out empty/undefined values
  *
  * @example
  * getResponsiveConditionalClasses(
@@ -79,7 +77,7 @@ export function getResponsiveClasses<T extends string | boolean | number>(
  */
 export function getResponsiveConditionalClasses<T extends string>(
   value: T | ResponsiveValue<T> | undefined,
-  classMap: Record<T, string>,
+  classMap: Partial<Record<T, string>>,
 ): string[] {
-  return getResponsiveClasses(value, (val) => classMap[val] || "");
+  return getResponsiveClasses(value, (val) => classMap[val] ?? "").filter(Boolean);
 }
