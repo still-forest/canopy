@@ -46,7 +46,7 @@ describe("SelectInput", () => {
     const options = within(optionContainer).getAllByRole("option");
     expect(options).toHaveLength(OPTIONS.length + 1);
 
-    expect(options[0]).toHaveTextContent("(none)");
+    expect(options[0]).toHaveTextContent("");
     expect(options[1]).toHaveTextContent("Earth");
     expect(options[2]).toHaveTextContent("Wind");
     expect(options[3]).toHaveTextContent("Fire");
@@ -124,7 +124,7 @@ describe("SelectInput", () => {
     render(<SelectInput name="some_input" onValueChange={onSelect} options={OPTIONS} value="__none__" />);
 
     const trigger = screen.getByRole("combobox") as HTMLButtonElement;
-    expect(trigger).toHaveTextContent("(none)");
+    expect(trigger).toHaveTextContent("");
 
     fireEvent.click(trigger);
 
@@ -132,7 +132,7 @@ describe("SelectInput", () => {
     const options = within(optionContainer).getAllByRole("option");
     expect(options).toHaveLength(OPTIONS.length + 1);
 
-    expect(options[0]).toHaveTextContent("(none)");
+    expect(options[0]).toHaveTextContent("");
     expect(options[1]).toHaveTextContent("Earth");
     expect(options[2]).toHaveTextContent("Wind");
     expect(options[3]).toHaveTextContent("Fire");
@@ -151,7 +151,7 @@ describe("SelectInput", () => {
     render(<SelectInput name="some_input" onValueChange={onSelect} options={OPTIONS} value="__none__" />);
 
     const trigger = screen.getByRole("combobox") as HTMLButtonElement;
-    expect(trigger).toHaveTextContent("(none)");
+    expect(trigger).toHaveTextContent("");
 
     fireEvent.click(trigger);
 
@@ -159,7 +159,7 @@ describe("SelectInput", () => {
     const options = within(optionContainer).getAllByRole("option");
     expect(options).toHaveLength(OPTIONS.length + 1);
 
-    expect(options[0]).toHaveTextContent("(none)");
+    expect(options[0]).toHaveTextContent("");
     expect(options[1]).toHaveTextContent("Earth");
     expect(options[2]).toHaveTextContent("Wind");
     expect(options[3]).toHaveTextContent("Fire");
@@ -169,6 +169,6 @@ describe("SelectInput", () => {
 
     expect(trigger.dataset.state).toBe("closed");
     expect(trigger.ariaExpanded).toBe("false");
-    expect(trigger).toHaveTextContent("(none)");
+    expect(trigger).toHaveTextContent("");
   });
 });
