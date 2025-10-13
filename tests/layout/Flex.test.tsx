@@ -249,4 +249,129 @@ describe("Flex", () => {
     expect(item4.className).toBe("flex-none");
     expect(item5.className).toBe("flex-initial");
   });
+
+  describe("Responsive behavior", () => {
+    it("applies responsive direction classes", () => {
+      render(
+        <Flex data-testid="flex-element" direction={{ base: "col", md: "row" }}>
+          Responsive direction
+        </Flex>,
+      );
+      const element = screen.getByTestId("flex-element");
+      expect(element.className).toBe("flex flex-col md:flex-row");
+    });
+
+    it("applies responsive align classes", () => {
+      render(
+        <Flex align={{ base: "start", lg: "center" }} data-testid="flex-element">
+          Responsive align
+        </Flex>,
+      );
+      const element = screen.getByTestId("flex-element");
+      expect(element.className).toBe("flex items-start lg:items-center");
+    });
+
+    it("applies responsive justify classes", () => {
+      render(
+        <Flex data-testid="flex-element" justify={{ base: "start", md: "between", xl: "center" }}>
+          Responsive justify
+        </Flex>,
+      );
+      const element = screen.getByTestId("flex-element");
+      expect(element.className).toBe("flex justify-start md:justify-between xl:justify-center");
+    });
+
+    it("applies responsive gap classes", () => {
+      render(
+        <Flex data-testid="flex-element" gap={{ base: "2", sm: "4", lg: "6" }}>
+          Responsive gap
+        </Flex>,
+      );
+      const element = screen.getByTestId("flex-element");
+      expect(element.className).toBe("flex gap-2 sm:gap-4 lg:gap-6");
+    });
+
+    it("applies responsive gapX and gapY classes", () => {
+      render(
+        <Flex data-testid="flex-element" gapX={{ base: "2", md: "4" }} gapY={{ base: "1", md: "3" }}>
+          Responsive gaps
+        </Flex>,
+      );
+      const element = screen.getByTestId("flex-element");
+      expect(element.className).toBe("flex gap-x-2 md:gap-x-4 gap-y-1 md:gap-y-3");
+    });
+
+    it("applies responsive wrap classes", () => {
+      render(
+        <Flex data-testid="flex-element" wrap={{ base: "wrap", lg: "nowrap" }}>
+          Responsive wrap
+        </Flex>,
+      );
+      const element = screen.getByTestId("flex-element");
+      expect(element.className).toBe("flex flex-wrap lg:flex-nowrap");
+    });
+
+    it("applies responsive grow classes", () => {
+      render(
+        <Flex data-testid="flex-element" grow={{ base: "0", md: "1" }}>
+          Responsive grow
+        </Flex>,
+      );
+      const element = screen.getByTestId("flex-element");
+      expect(element.className).toBe("flex grow-0 md:grow-1");
+    });
+
+    it("handles boolean grow values in responsive objects", () => {
+      render(
+        <Flex data-testid="flex-element" grow={{ base: false, md: true }}>
+          Responsive boolean grow
+        </Flex>,
+      );
+      const element = screen.getByTestId("flex-element");
+      expect(element.className).toBe("flex grow-0 md:grow-1");
+    });
+
+    it("combines multiple responsive properties", () => {
+      render(
+        <Flex
+          align={{ base: "start", md: "center" }}
+          data-testid="flex-element"
+          direction={{ base: "col", md: "row" }}
+          gap={{ base: "2", lg: "4" }}
+          justify={{ base: "start", md: "between" }}
+        >
+          Multiple responsive props
+        </Flex>,
+      );
+      const element = screen.getByTestId("flex-element");
+      expect(element.className).toBe(
+        "flex flex-col md:flex-row items-start md:items-center justify-start md:justify-between gap-2 lg:gap-4",
+      );
+    });
+
+    it("mixes responsive and non-responsive properties", () => {
+      render(
+        <Flex data-testid="flex-element" direction="row" gap={{ base: "2", md: "4" }} wrap="wrap">
+          Mixed props
+        </Flex>,
+      );
+      const element = screen.getByTestId("flex-element");
+      expect(element.className).toBe("flex flex-row flex-wrap gap-2 md:gap-4");
+    });
+
+    it("applies all breakpoints correctly", () => {
+      render(
+        <Flex
+          data-testid="flex-element"
+          direction={{ base: "col", sm: "col", md: "row", lg: "row-reverse", xl: "col-reverse", "2xl": "row" }}
+        >
+          All breakpoints
+        </Flex>,
+      );
+      const element = screen.getByTestId("flex-element");
+      expect(element.className).toBe(
+        "flex flex-col sm:flex-col md:flex-row lg:flex-row-reverse xl:flex-col-reverse 2xl:flex-row",
+      );
+    });
+  });
 });

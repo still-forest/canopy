@@ -323,3 +323,131 @@ export const Wrapping: Story = {
     </Flex>
   ),
 };
+
+export const ResponsiveDirection: Story = {
+  render: () => (
+    <Flex className="w-full max-w-4xl" direction="col" gap="8">
+      <Box>
+        <Heading className="mb-2" level="3" weight="semibold">
+          Responsive Direction
+        </Heading>
+        <Heading className="mb-4" level="6" variant="muted" weight="normal">
+          Stack vertically on mobile, horizontal on tablet and up
+        </Heading>
+        <Flex
+          className="w-full rounded-md border-1 border-gray-300 border-dashed bg-background p-4"
+          direction={{ base: "col", md: "row" }}
+          gap="4"
+        >
+          <Box className="flex-1 rounded-md bg-info p-4 text-info-foreground">
+            <Heading level="5">Item 1</Heading>
+            <p className="text-sm">Stacks on mobile, side-by-side on tablet+</p>
+          </Box>
+          <Box className="flex-1 rounded-md bg-success p-4 text-success-foreground">
+            <Heading level="5">Item 2</Heading>
+            <p className="text-sm">direction=&#123;&#123; base: "col", md: "row" &#125;&#125;</p>
+          </Box>
+        </Flex>
+      </Box>
+    </Flex>
+  ),
+};
+
+export const ResponsiveGap: Story = {
+  render: () => (
+    <Flex className="w-full max-w-4xl" direction="col" gap="8">
+      <Box>
+        <Heading className="mb-2" level="3" weight="semibold">
+          Responsive Gap
+        </Heading>
+        <Heading className="mb-4" level="6" variant="muted" weight="normal">
+          Tighter spacing on mobile, more breathing room on desktop
+        </Heading>
+        <Flex
+          className="w-full rounded-md border-1 border-gray-300 border-dashed bg-background p-4"
+          direction="row"
+          gap={{ base: "2", md: "4", lg: "8" }}
+          wrap="wrap"
+        >
+          <Box className="rounded-md bg-info px-4 py-2 text-info-foreground">gap-2 (base)</Box>
+          <Box className="rounded-md bg-success px-4 py-2 text-success-foreground">gap-4 (md)</Box>
+          <Box className="rounded-md bg-warning px-4 py-2 text-warning-foreground">gap-8 (lg)</Box>
+          <Box className="rounded-md bg-destructive px-4 py-2 text-destructive-foreground">Responsive</Box>
+        </Flex>
+      </Box>
+    </Flex>
+  ),
+};
+
+export const ResponsiveMobileFirst: Story = {
+  render: () => (
+    <Flex className="w-full max-w-4xl" direction="col" gap="8">
+      <Box>
+        <Heading className="mb-2" level="3" weight="semibold">
+          Mobile-First Layout Pattern
+        </Heading>
+        <Heading className="mb-4" level="6" variant="muted" weight="normal">
+          Common pattern: stack on mobile, sidebar layout on desktop
+        </Heading>
+        <Flex
+          align={{ base: "stretch", lg: "start" }}
+          className="w-full rounded-md border-1 border-gray-300 border-dashed bg-background p-4"
+          direction={{ base: "col", lg: "row" }}
+          gap={{ base: "4", lg: "6" }}
+        >
+          <Box className="flex-1 rounded-md bg-muted p-6">
+            <Heading className="mb-2" level="4">
+              Main Content
+            </Heading>
+            <p className="text-sm text-muted-foreground">
+              This takes full width on mobile and 2/3 width on desktop. Responsive props make this easy without
+              className overrides.
+            </p>
+          </Box>
+          <Box className="min-w-[250px] rounded-md bg-accent p-6 text-accent-foreground lg:w-1/3">
+            <Heading className="mb-2" level="4">
+              Sidebar
+            </Heading>
+            <p className="text-sm">Appears below content on mobile, beside it on desktop (lg+)</p>
+          </Box>
+        </Flex>
+      </Box>
+    </Flex>
+  ),
+};
+
+export const ResponsiveAlignment: Story = {
+  render: () => (
+    <Flex className="w-full max-w-4xl" direction="col" gap="8">
+      <Box>
+        <Heading className="mb-2" level="3" weight="semibold">
+          Responsive Alignment
+        </Heading>
+        <Heading className="mb-4" level="6" variant="muted" weight="normal">
+          Change alignment based on screen size
+        </Heading>
+        <Flex
+          align={{ base: "stretch", md: "center" }}
+          className="w-full rounded-md border-1 border-gray-300 border-dashed bg-background p-4"
+          direction={{ base: "col", md: "row" }}
+          gap="4"
+          justify={{ base: "start", md: "between" }}
+        >
+          <Box className="rounded-md bg-info p-4 text-info-foreground">
+            <Heading level="5">Aligned Start (mobile)</Heading>
+            <p className="text-sm">Centered on md+</p>
+          </Box>
+          <Box className="rounded-md bg-success p-8 text-success-foreground">
+            <Heading level="5">Taller Box</Heading>
+            <p className="text-sm">Demonstrates vertical alignment</p>
+            <p className="mt-2 text-sm">align: &#123;&#123; base: "stretch", md: "center" &#125;&#125;</p>
+          </Box>
+          <Box className="rounded-md bg-warning p-4 text-warning-foreground">
+            <Heading level="5">Justify Between</Heading>
+            <p className="text-sm">On md+</p>
+          </Box>
+        </Flex>
+      </Box>
+    </Flex>
+  ),
+};

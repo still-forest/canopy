@@ -162,6 +162,108 @@ describe("Grid", () => {
 
     const element = screen.getByTestId("grid-element");
 
-    expect(element.className).toBe("grid grid-cols-3 grid-rows-2 gap-4 grid-flow-row-dense");
+    expect(element.className).toBe("grid grid-cols-3 grid-rows-2 grid-flow-row-dense gap-4");
+  });
+
+  describe("Responsive behavior", () => {
+    it("applies responsive columns classes", () => {
+      render(
+        <Grid cols={{ base: "1", md: "2", lg: "4" }} data-testid="grid-element">
+          Responsive columns
+        </Grid>,
+      );
+      const element = screen.getByTestId("grid-element");
+      expect(element.className).toBe("grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4");
+    });
+
+    it("applies responsive rows classes", () => {
+      render(
+        <Grid data-testid="grid-element" rows={{ base: "2", lg: "4" }}>
+          Responsive rows
+        </Grid>,
+      );
+      const element = screen.getByTestId("grid-element");
+      expect(element.className).toBe("grid grid-rows-2 lg:grid-rows-4");
+    });
+
+    it("applies responsive flow classes", () => {
+      render(
+        <Grid data-testid="grid-element" flow={{ base: "row", md: "col" }}>
+          Responsive flow
+        </Grid>,
+      );
+      const element = screen.getByTestId("grid-element");
+      expect(element.className).toBe("grid grid-flow-row md:grid-flow-col");
+    });
+
+    it("applies responsive gap classes", () => {
+      render(
+        <Grid data-testid="grid-element" gap={{ base: "2", sm: "4", lg: "8" }}>
+          Responsive gap
+        </Grid>,
+      );
+      const element = screen.getByTestId("grid-element");
+      expect(element.className).toBe("grid gap-2 sm:gap-4 lg:gap-8");
+    });
+
+    it("applies responsive gapX and gapY classes", () => {
+      render(
+        <Grid data-testid="grid-element" gapX={{ base: "2", md: "6" }} gapY={{ base: "1", md: "4" }}>
+          Responsive gaps
+        </Grid>,
+      );
+      const element = screen.getByTestId("grid-element");
+      expect(element.className).toBe("grid gap-x-2 md:gap-x-6 gap-y-1 md:gap-y-4");
+    });
+
+    it("combines multiple responsive properties", () => {
+      render(
+        <Grid
+          cols={{ base: "1", md: "2", lg: "3" }}
+          data-testid="grid-element"
+          flow={{ base: "row", lg: "col" }}
+          gap={{ base: "2", md: "4" }}
+          rows={{ base: "2", md: "4" }}
+        >
+          Multiple responsive props
+        </Grid>,
+      );
+      const element = screen.getByTestId("grid-element");
+      expect(element.className).toBe(
+        "grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 grid-rows-2 md:grid-rows-4 grid-flow-row lg:grid-flow-col gap-2 md:gap-4",
+      );
+    });
+
+    it("mixes responsive and non-responsive properties", () => {
+      render(
+        <Grid cols={{ base: "1", md: "3" }} data-testid="grid-element" flow="row" gap="4">
+          Mixed props
+        </Grid>,
+      );
+      const element = screen.getByTestId("grid-element");
+      expect(element.className).toBe("grid grid-cols-1 md:grid-cols-3 grid-flow-row gap-4");
+    });
+
+    it("applies all breakpoints correctly", () => {
+      render(
+        <Grid cols={{ base: "1", sm: "2", md: "3", lg: "4", xl: "6", "2xl": "12" }} data-testid="grid-element">
+          All breakpoints
+        </Grid>,
+      );
+      const element = screen.getByTestId("grid-element");
+      expect(element.className).toBe(
+        "grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-6 2xl:grid-cols-12",
+      );
+    });
+
+    it("handles common responsive grid patterns", () => {
+      render(
+        <Grid cols={{ base: "1", sm: "2", lg: "4" }} data-testid="grid-element" gap={{ base: "4", lg: "6" }}>
+          Common pattern
+        </Grid>,
+      );
+      const element = screen.getByTestId("grid-element");
+      expect(element.className).toBe("grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 lg:gap-6");
+    });
   });
 });

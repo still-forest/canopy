@@ -186,3 +186,18 @@ export const GAPS = [
   "16",
 ] as const;
 export type Gap = (typeof GAPS)[number];
+
+// Responsive type support
+export type Breakpoint = "base" | "sm" | "md" | "lg" | "xl" | "2xl";
+export type ResponsiveValue<T> = T | Partial<Record<Breakpoint, T>>;
+
+// Responsive variants for layout properties
+export type ResponsiveFlexDirection = ResponsiveValue<FlexDirection>;
+export type ResponsiveFlexAlign = ResponsiveValue<FlexAlign>;
+export type ResponsiveFlexJustify = ResponsiveValue<FlexJustify>;
+export type ResponsiveFlexWrap = ResponsiveValue<FlexWrap>;
+export type ResponsiveFlexGrow = ResponsiveValue<FlexGrow>;
+export type ResponsiveGridCols = ResponsiveValue<GridCols>;
+export type ResponsiveGridRows = ResponsiveValue<GridRows>;
+export type ResponsiveGridFlow = ResponsiveValue<GridFlow>;
+export type ResponsiveGap = ResponsiveValue<Gap>;
