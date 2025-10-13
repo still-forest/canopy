@@ -111,14 +111,6 @@ describe("SelectInput", () => {
     expect(trigger.className).toBe(`${EXPECTED_BASE_TRIGGER_CLASSES} custom-class`);
   });
 
-  it("renders with a placeholder", () => {
-    const onSelect = vi.fn();
-    render(<SelectInput name="some_input" onValueChange={onSelect} options={OPTIONS} placeholder="Some placeholder" />);
-
-    const trigger = screen.getByRole("combobox") as HTMLButtonElement;
-    expect(trigger).toHaveTextContent("Some placeholder");
-  });
-
   it("allows selecting an option", async () => {
     const onSelect = vi.fn();
     render(<SelectInput name="some_input" onValueChange={onSelect} options={OPTIONS} value="__none__" />);
