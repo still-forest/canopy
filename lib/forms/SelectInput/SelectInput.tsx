@@ -1,3 +1,4 @@
+import { useState } from "react";
 import {
   Select,
   SelectContent,
@@ -8,7 +9,7 @@ import {
   SelectTrigger,
   SelectValue,
 } from "@/components/ui/select";
-import { InputError, Label } from "@/forms";
+import { InputError, Label, TextInput } from "@/forms";
 import { Flex } from "@/layout";
 import { Text } from "@/typography";
 import { cn } from "@/utils";
@@ -77,6 +78,8 @@ const SelectInput = ({
 
   const EMPTY_OPTION_VALUE = "__none__"; // RadixUI doesn't allow for an empty string SelectInput value, so this is a workaround
 
+  const [searchValue, setSearchValue] = useState("");
+
   const handleValueChange = (value: string) => {
     if (value === EMPTY_OPTION_VALUE) {
       onValueChange("");
@@ -85,7 +88,15 @@ const SelectInput = ({
     }
   };
 
-  console.log(options.length);
+  const handleSearchChange = (value: string) => {
+    setSearchValue(value);
+  };
+
+  // Filter options based on search value
+  const filteredOptions = options.map((group) => ({
+    ...group,
+    options: group.options.filter((option) => option.label.toLowerCase().includes(searchValue.toLowerCase())),
+  }));
 
   return (
     <Flex className="w-full" direction="col" gap="2">
@@ -101,24 +112,33 @@ const SelectInput = ({
           <SelectValue placeholder={placeholder} />
         </SelectTrigger>
         <SelectContent>
+          <SelectGroup>
+            <TextInput name="search" onChange={(e) => handleSearchChange(e.target.value)} placeholder="Search" />
+          </SelectGroup>
+          <SelectSeparator />
           <SelectItem key="empty-option" value={EMPTY_OPTION_VALUE}>
             {emptyOptionLabel || <>&nbsp;</>}
           </SelectItem>
 
           <SelectSeparator />
 
-          {options.map(({ label, options }, index) => (
-            <SelectGroup key={label}>
-              {label && <SelectLabel>{label}</SelectLabel>}
-              {options.map(({ value, label, icon }) => (
-                <SelectItem key={`option-${value}`} value={value}>
-                  {icon ? <span>{icon}</span> : ""}
-                  {label}
-                </SelectItem>
-              ))}
-              {isOptionGroup && index < options.length - 1 && <SelectSeparator />}
-            </SelectGroup>
-          ))}
+          {filteredOptions.map(({ label, options }, index) => {
+            // Hide group if no options match the search
+            if (options.length === 0) return null;
+
+            return (
+              <SelectGroup key={label}>
+                {label && <SelectLabel>{label}</SelectLabel>}
+                {options.map(({ value, label, icon }) => (
+                  <SelectItem key={`option-${value}`} value={value}>
+                    {icon ? <span>{icon}</span> : ""}
+                    {label}
+                  </SelectItem>
+                ))}
+                {isOptionGroup && index < filteredOptions.length - 1 && <SelectSeparator />}
+              </SelectGroup>
+            );
+          })}
         </SelectContent>
       </Select>
       {note && (
