@@ -38,6 +38,7 @@ export const MixedStyles: Story = {
       <ButtonGroup.Button variant="outline">Button 1</ButtonGroup.Button>
       <ButtonGroup.Button variant="outline">Button 2</ButtonGroup.Button>
       <ButtonGroup.Button variant="primary">Button 3</ButtonGroup.Button>
+      <ButtonGroup.Button variant="outline">Button 4</ButtonGroup.Button>
     </ButtonGroup>
   ),
 };
