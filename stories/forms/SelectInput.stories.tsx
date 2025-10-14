@@ -114,17 +114,98 @@ export const WithMultipleGroups: Story = {
     ...defaultProps,
     options: [
       {
-        label: "Group 1",
+        label: "Elements",
         options: [
-          { value: "option1", label: "Option 1" },
-          { value: "option2", label: "Option 2" },
+          {
+            icon: "🌎",
+            value: "earth",
+            label: "Earth",
+          },
+          {
+            icon: "🌪️",
+            value: "wind",
+            label: "Wind",
+          },
+          {
+            icon: "🔥",
+            value: "fire",
+            label: "Fire",
+          },
+          {
+            icon: "🌊",
+            value: "water",
+            label: "Water",
+          },
         ],
       },
       {
-        label: "Group 2",
+        label: "Colors",
         options: [
-          { value: "option3", label: "Option 3" },
-          { value: "option4", label: "Option 4" },
+          {
+            icon: "🔴",
+            value: "red",
+            label: "Red",
+          },
+          {
+            icon: "🟡",
+            value: "yellow",
+            label: "Yellow",
+          },
+          {
+            icon: "🟢",
+            value: "green",
+            label: "Green",
+          },
+          {
+            icon: "🔵",
+            value: "blue",
+            label: "Blue",
+          },
+        ],
+      },
+      {
+        label: "Animals",
+        options: [
+          {
+            icon: "🐶",
+            value: "dog",
+            label: "Dog",
+          },
+          {
+            icon: "🐱",
+            value: "cat",
+            label: "Cat",
+          },
+          {
+            icon: "🐭",
+            value: "mouse",
+            label: "Mouse",
+          },
+        ],
+      },
+      {
+        label: "Fruits",
+        options: [
+          {
+            icon: "🍎",
+            value: "apple",
+            label: "Apple",
+          },
+          {
+            icon: "🍓",
+            value: "strawberry",
+            label: "Strawberry",
+          },
+          {
+            icon: "🍊",
+            value: "orange",
+            label: "Orange",
+          },
+          {
+            icon: "🍇",
+            value: "grape",
+            label: "Grape",
+          },
         ],
       },
     ],
