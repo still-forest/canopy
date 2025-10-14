@@ -163,4 +163,25 @@ describe("SelectInput", () => {
     expect(trigger.ariaExpanded).toBe("false");
     expect(trigger).toHaveTextContent("");
   });
+
+  it("renders with an empty option label", () => {
+    const onSelect = vi.fn();
+    render(
+      <SelectInput emptyOptionLabel="Select a thing..." name="some_input" onValueChange={onSelect} options={OPTIONS} />,
+    );
+    const trigger = screen.getByRole("combobox") as HTMLButtonElement;
+    expect(trigger).toHaveTextContent("");
+
+    fireEvent.click(trigger);
+
+    const optionContainer = screen.getByRole("presentation");
+    const options = within(optionContainer).getAllByRole("option");
+    expect(options).toHaveLength(OPTIONS.length + 1);
+
+    expect(options[0]).toHaveTextContent("Select a thing...");
+    expect(options[1]).toHaveTextContent("Earth");
+    expect(options[2]).toHaveTextContent("Wind");
+    expect(options[3]).toHaveTextContent("Fire");
+    expect(options[4]).toHaveTextContent("Water");
+  });
 });
