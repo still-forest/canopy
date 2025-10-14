@@ -1,5 +1,5 @@
 import type { Meta, StoryObj } from "@storybook/react-vite";
-import { SelectPicker, type SelectPickerOption } from "@/forms";
+import { SelectPicker, type SelectPickerOption, type SelectPickerOptionGroup } from "@/forms";
 import { Flex } from "@/layout";
 import { Text } from "@/typography";
 
@@ -16,30 +16,36 @@ export default meta;
 
 type Story = StoryObj<typeof meta>;
 
-const options = [
+const optionGroups: SelectPickerOptionGroup[] = [
   {
-    icon: "🌎",
-    value: "earth",
-    label: "Earth",
-  },
-  {
-    icon: "🌪️",
-    value: "wind",
-    label: "Wind",
-  },
-  {
-    icon: "🔥",
-    value: "fire",
-    label: "Fire",
-  },
-  {
-    icon: "🌊",
-    value: "water",
-    label: "Water",
+    label: "Elements",
+    options: [
+      {
+        icon: "🌎",
+        value: "earth",
+        label: "Earth",
+      },
+      {
+        icon: "🌪️",
+        value: "wind",
+        label: "Wind",
+      },
+      {
+        icon: "🔥",
+        value: "fire",
+        label: "Fire",
+      },
+      {
+        icon: "🌊",
+        value: "water",
+        label: "Water",
+      },
+    ],
   },
 ];
+
 const defaultProps = {
-  options,
+  options: optionGroups,
 };
 
 export const Default: Story = {
@@ -47,7 +53,7 @@ export const Default: Story = {
 };
 
 export const WithSelection: Story = {
-  args: { ...defaultProps, value: options[1].value },
+  args: { ...defaultProps, value: optionGroups[0].options[1].value },
 };
 
 export const NoIcons: Story = {
@@ -81,7 +87,7 @@ export const WithCustomRenderSelected: Story = {
 export const WithCustomRenderSelectedAndInitialValue: Story = {
   args: {
     ...defaultProps,
-    value: options[1].value,
+    value: optionGroups[0].options[1].value,
     renderSelected: ({ value, label, icon }: SelectPickerOption) => {
       return (
         <>
@@ -94,5 +100,84 @@ export const WithCustomRenderSelectedAndInitialValue: Story = {
         </>
       );
     },
+  },
+};
+
+export const WithMultipleGroups: Story = {
+  args: {
+    ...defaultProps,
+    options: [
+      ...optionGroups,
+      {
+        label: "Colors",
+        options: [
+          {
+            icon: "🔴",
+            value: "red",
+            label: "Red",
+          },
+          {
+            icon: "🟡",
+            value: "yellow",
+            label: "Yellow",
+          },
+          {
+            icon: "🟢",
+            value: "green",
+            label: "Green",
+          },
+          {
+            icon: "🔵",
+            value: "blue",
+            label: "Blue",
+          },
+        ],
+      },
+      {
+        label: "Animals",
+        options: [
+          {
+            icon: "🐶",
+            value: "dog",
+            label: "Dog",
+          },
+          {
+            icon: "🐱",
+            value: "cat",
+            label: "Cat",
+          },
+          {
+            icon: "🐭",
+            value: "mouse",
+            label: "Mouse",
+          },
+        ],
+      },
+      {
+        label: "Fruits",
+        options: [
+          {
+            icon: "🍎",
+            value: "apple",
+            label: "Apple",
+          },
+          {
+            icon: "🍓",
+            value: "strawberry",
+            label: "Strawberry",
+          },
+          {
+            icon: "🍊",
+            value: "orange",
+            label: "Orange",
+          },
+          {
+            icon: "🍇",
+            value: "grape",
+            label: "Grape",
+          },
+        ],
+      },
+    ],
   },
 };

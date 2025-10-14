@@ -5,6 +5,11 @@ import { Command, CommandEmpty, CommandGroup, CommandInput, CommandItem, Command
 import { Popover, PopoverContent, PopoverTrigger } from "@/components/ui/popover";
 import { cn } from "@/utils";
 
+export interface SelectPickerOptionGroup {
+  label: string;
+  options: SelectPickerOption[];
+}
+
 export interface SelectPickerOption {
   icon?: string;
   value: string;
@@ -12,7 +17,7 @@ export interface SelectPickerOption {
 }
 
 export interface SelectPickerProps {
-  options: SelectPickerOption[];
+  options: SelectPickerOptionGroup[];
   onSelect: (selected: string) => void;
   value?: string;
   placeholder?: string;
@@ -46,7 +51,7 @@ const Trigger = ({
 };
 
 export const SelectPicker = ({
-  options,
+  options: optionGroups,
   value = "",
   placeholder = "Select a value...",
   className = "",
@@ -55,7 +60,13 @@ export const SelectPicker = ({
 }: SelectPickerProps) => {
   const [open, setOpen] = useState(false);
 
-  const selectedOption = useMemo(() => options.find((option) => option.value === value), [options, value]);
+  const singleGroup = optionGroups.length === 1;
+  const flattenedOptions = useMemo(() => optionGroups.flatMap((group) => group.options), [optionGroups]);
+
+  const selectedOption = useMemo(
+    () => flattenedOptions.find((option) => option.value === value),
+    [flattenedOptions, value],
+  );
 
   return (
     <Popover onOpenChange={setOpen} open={open}>
@@ -71,22 +82,24 @@ export const SelectPicker = ({
           <CommandInput aria-label="Search options" className="h-9" placeholder="Search" />
           <CommandList>
             <CommandEmpty>No results found</CommandEmpty>
-            <CommandGroup>
-              {options.map((option) => (
-                <CommandItem
-                  key={option.value}
-                  onSelect={() => {
-                    setOpen(false);
-                    onSelect(option.value);
-                  }}
-                  value={option.value}
-                >
-                  {option.icon ? <span className="mr-2">{option.icon}</span> : ""}
-                  {option.label}
-                  <Check className={cn("ml-auto", option.value === value ? "opacity-100" : "opacity-0")} />
-                </CommandItem>
-              ))}
-            </CommandGroup>
+            {optionGroups.map((group) => (
+              <CommandGroup heading={!singleGroup ? group.label : undefined} key={group.label}>
+                {group.options.map((option) => (
+                  <CommandItem
+                    key={option.value}
+                    onSelect={() => {
+                      setOpen(false);
+                      onSelect(option.value);
+                    }}
+                    value={option.value}
+                  >
+                    {option.icon ? <span className="mr-2">{option.icon}</span> : ""}
+                    {option.label}
+                    <Check className={cn("ml-auto", option.value === value ? "opacity-100" : "opacity-0")} />
+                  </CommandItem>
+                ))}
+              </CommandGroup>
+            ))}
           </CommandList>
         </Command>
       </PopoverContent>
