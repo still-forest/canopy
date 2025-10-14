@@ -15,7 +15,7 @@ export const ButtonGroup = ({ children, className = "" }: ButtonGroupProps) => (
 ButtonGroup.Button = ({ children, className, ...props }: ButtonProps) => {
   return (
     <Button
-      className={cn("not-first:-ml-[0.5px] border-1 not-last:rounded-r-none not-first:rounded-l-none", className)}
+      className={cn("border-1 not-first:-ml-[0.5px] not-first:rounded-l-none not-last:rounded-r-none ", className)}
       {...props}
     >
       {children}
