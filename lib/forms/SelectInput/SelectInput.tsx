@@ -4,7 +4,12 @@ import { Flex } from "@/layout";
 import { Text } from "@/typography";
 import { cn } from "@/utils";
 
-export interface Option {
+export interface SelectInputOptionGroup {
+  label: string;
+  options: SelectInputOption[];
+}
+
+export interface SelectInputOption {
   value: string;
   label: string;
 }
@@ -13,7 +18,7 @@ export interface SelectInputProps extends Omit<React.ComponentProps<"select">, "
   name: string;
   value?: string;
   onValueChange: (value: string) => void;
-  options: Option[];
+  options: SelectInputOption[] | SelectInputOptionGroup[];
   label?: string;
   placeholder?: string;
   note?: string;
@@ -26,7 +31,7 @@ export interface SelectInputProps extends Omit<React.ComponentProps<"select">, "
 const SelectInput = ({
   name,
   defaultValue,
-  options,
+  options: optionsProp,
   label,
   placeholder,
   note,
@@ -47,6 +52,16 @@ const SelectInput = ({
     size === "xl" && "h-11 text-xl md:text-lg",
     className,
   );
+
+  const isOptionGroup = optionsProp.some((option) => "options" in option);
+  const options: SelectInputOptionGroup[] = isOptionGroup
+    ? (optionsProp as SelectInputOptionGroup[])
+    : [
+        {
+          label: "",
+          options: optionsProp as SelectInputOption[],
+        },
+      ];
 
   const triggerSize = size === "xs" || size === "sm" ? "sm" : "default";
 
@@ -80,7 +95,7 @@ const SelectInput = ({
 
           <SelectSeparator />
 
-          {options.map(({ value, label }) => (
+          {options[0].options.map(({ value, label }) => (
             <SelectItem key={`option-${value}`} value={value}>
               {label}
             </SelectItem>
