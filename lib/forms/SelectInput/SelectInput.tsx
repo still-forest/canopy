@@ -82,7 +82,6 @@ const SelectInput = ({
   const [searchValue, setSearchValue] = useState("");
 
   const handleValueChange = (value: string) => {
-    setSearchValue("");
     if (value === EMPTY_OPTION_VALUE) {
       onValueChange("");
     } else {
@@ -92,6 +91,13 @@ const SelectInput = ({
 
   const handleSearchChange = (value: string) => {
     setSearchValue(value);
+  };
+
+  const handleOpenChange = (open: boolean) => {
+    // Clear search when the select closes
+    if (!open) {
+      setSearchValue("");
+    }
   };
 
   // Filter options based on search value
@@ -109,6 +115,7 @@ const SelectInput = ({
       <Select
         defaultValue={defaultValue as string | undefined}
         name={name}
+        onOpenChange={handleOpenChange}
         onValueChange={handleValueChange}
         value={value}
         {...props}
