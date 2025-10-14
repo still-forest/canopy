@@ -82,22 +82,24 @@ export const SelectPicker = ({
           <CommandInput aria-label="Search options" className="h-9" placeholder="Search" />
           <CommandList>
             <CommandEmpty>No results found</CommandEmpty>
-            <CommandGroup>
-              {flattenedOptions.map((option) => (
-                <CommandItem
-                  key={option.value}
-                  onSelect={() => {
-                    setOpen(false);
-                    onSelect(option.value);
-                  }}
-                  value={option.value}
-                >
-                  {option.icon ? <span className="mr-2">{option.icon}</span> : ""}
-                  {option.label}
-                  <Check className={cn("ml-auto", option.value === value ? "opacity-100" : "opacity-0")} />
-                </CommandItem>
-              ))}
-            </CommandGroup>
+            {optionGroups.map((group) => (
+              <CommandGroup heading={group.label} key={group.label}>
+                {group.options.map((option) => (
+                  <CommandItem
+                    key={option.value}
+                    onSelect={() => {
+                      setOpen(false);
+                      onSelect(option.value);
+                    }}
+                    value={option.value}
+                  >
+                    {option.icon ? <span className="mr-2">{option.icon}</span> : ""}
+                    {option.label}
+                    <Check className={cn("ml-auto", option.value === value ? "opacity-100" : "opacity-0")} />
+                  </CommandItem>
+                ))}
+              </CommandGroup>
+            ))}
           </CommandList>
         </Command>
       </PopoverContent>

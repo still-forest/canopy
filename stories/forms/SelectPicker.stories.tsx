@@ -102,3 +102,82 @@ export const WithCustomRenderSelectedAndInitialValue: Story = {
     },
   },
 };
+
+export const WithMultipleGroups: Story = {
+  args: {
+    ...defaultProps,
+    options: [
+      ...optionGroups,
+      {
+        label: "Colors",
+        options: [
+          {
+            icon: "🔴",
+            value: "red",
+            label: "Red",
+          },
+          {
+            icon: "🟡",
+            value: "yellow",
+            label: "Yellow",
+          },
+          {
+            icon: "🟢",
+            value: "green",
+            label: "Green",
+          },
+          {
+            icon: "🔵",
+            value: "blue",
+            label: "Blue",
+          },
+        ],
+      },
+      {
+        label: "Animals",
+        options: [
+          {
+            icon: "🐶",
+            value: "dog",
+            label: "Dog",
+          },
+          {
+            icon: "🐱",
+            value: "cat",
+            label: "Cat",
+          },
+          {
+            icon: "🐭",
+            value: "mouse",
+            label: "Mouse",
+          },
+        ],
+      },
+      {
+        label: "Fruits",
+        options: [
+          {
+            icon: "🍎",
+            value: "apple",
+            label: "Apple",
+          },
+          {
+            icon: "🍓",
+            value: "strawberry",
+            label: "Strawberry",
+          },
+          {
+            icon: "🍊",
+            value: "orange",
+            label: "Orange",
+          },
+          {
+            icon: "🍇",
+            value: "grape",
+            label: "Grape",
+          },
+        ],
+      },
+    ],
+  },
+};
