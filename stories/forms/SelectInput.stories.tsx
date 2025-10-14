@@ -86,3 +86,10 @@ export const WithSize: Story = {
     </Flex>
   ),
 };
+
+export const WithEmptyOptionLabel: Story = {
+  args: {
+    ...defaultProps,
+    emptyOptionLabel: "Select a thing...",
+  },
+};

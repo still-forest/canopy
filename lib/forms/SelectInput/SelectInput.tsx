@@ -1,4 +1,4 @@
-import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
+import { Select, SelectContent, SelectItem, SelectSeparator, SelectTrigger, SelectValue } from "@/components/ui/select";
 import { InputError, Label } from "@/forms";
 import { Flex } from "@/layout";
 import { Text } from "@/typography";
@@ -19,6 +19,7 @@ export interface SelectInputProps extends Omit<React.ComponentProps<"select">, "
   note?: string;
   className?: string;
   error?: string;
+  emptyOptionLabel?: string;
   size?: "xs" | "sm" | "md" | "lg" | "xl";
 }
 
@@ -33,6 +34,7 @@ const SelectInput = ({
   value,
   onValueChange,
   error,
+  emptyOptionLabel,
   size = "md",
   ...props
 }: SelectInputProps) => {
@@ -72,9 +74,11 @@ const SelectInput = ({
           <SelectValue placeholder={placeholder} />
         </SelectTrigger>
         <SelectContent>
-          <SelectItem className="border-b border-b-border" key="empty-option" value={EMPTY_OPTION_VALUE}>
-            &nbsp;
+          <SelectItem key="empty-option" value={EMPTY_OPTION_VALUE}>
+            {emptyOptionLabel || <>&nbsp;</>}
           </SelectItem>
+
+          <SelectSeparator />
 
           {options.map(({ value, label }) => (
             <SelectItem key={`option-${value}`} value={value}>
