@@ -64,6 +64,7 @@ describe("SelectPicker", () => {
     const options = within(optionContainer).getAllByRole("option");
     expect(options).toHaveLength(OPTION_GROUPS[0].options.length);
 
+    expect(optionContainer).not.toHaveTextContent("Elements");
     expect(options[0]).toHaveTextContent("🌎Earth");
     expect(options[1]).toHaveTextContent("🌪️Wind");
     expect(options[2]).toHaveTextContent("🔥Fire");
@@ -119,5 +120,57 @@ describe("SelectPicker", () => {
 
     const trigger = screen.getByRole("combobox") as HTMLButtonElement;
     expect(trigger).toHaveTextContent("The thing is Earth");
+  });
+
+  it("renders with multiple groups", () => {
+    const optionGroups = [
+      ...OPTION_GROUPS,
+      {
+        label: "Colors",
+        options: [
+          {
+            icon: "🔴",
+            value: "red",
+            label: "Red",
+          },
+          {
+            icon: "🟡",
+            value: "yellow",
+            label: "Yellow",
+          },
+          {
+            icon: "🟢",
+            value: "green",
+            label: "Green",
+          },
+          {
+            icon: "🔵",
+            value: "blue",
+            label: "Blue",
+          },
+        ],
+      },
+    ];
+    render(<SelectPicker onSelect={onSelect} options={optionGroups} />);
+
+    const trigger = screen.getByRole("combobox") as HTMLButtonElement;
+    expect(trigger).toHaveTextContent("Select a value...");
+    fireEvent.click(trigger);
+
+    const optionContainer = screen.getByRole("listbox");
+    const options = within(optionContainer).getAllByRole("option");
+    expect(options).toHaveLength(optionGroups[0].options.length + optionGroups[1].options.length);
+
+    expect(optionContainer).toHaveTextContent("Elements");
+    expect(options[0]).toHaveTextContent("Earth");
+    expect(options[1]).toHaveTextContent("Wind");
+    expect(options[2]).toHaveTextContent("Fire");
+    expect(options[3]).toHaveTextContent("Water");
+
+    expect(optionContainer).toHaveTextContent("Colors");
+    expect(options[4]).toHaveTextContent("Red");
+    expect(options[5]).toHaveTextContent("Yellow");
+    expect(options[6]).toHaveTextContent("Green");
+    expect(options[7]).toHaveTextContent("Blue");
   });
 });

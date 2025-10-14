@@ -60,7 +60,7 @@ export const SelectPicker = ({
 }: SelectPickerProps) => {
   const [open, setOpen] = useState(false);
 
-  const _singleGroup = optionGroups.length === 1;
+  const singleGroup = optionGroups.length === 1;
   const flattenedOptions = useMemo(() => optionGroups.flatMap((group) => group.options), [optionGroups]);
 
   const selectedOption = useMemo(
@@ -83,7 +83,7 @@ export const SelectPicker = ({
           <CommandList>
             <CommandEmpty>No results found</CommandEmpty>
             {optionGroups.map((group) => (
-              <CommandGroup heading={group.label} key={group.label}>
+              <CommandGroup heading={!singleGroup ? group.label : undefined} key={group.label}>
                 {group.options.map((option) => (
                   <CommandItem
                     key={option.value}
