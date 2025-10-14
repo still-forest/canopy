@@ -1,3 +1,4 @@
+import { SearchIcon } from "lucide-react";
 import { useState } from "react";
 import {
   Select,
@@ -9,7 +10,7 @@ import {
   SelectTrigger,
   SelectValue,
 } from "@/components/ui/select";
-import { InputError, Label, TextInput } from "@/forms";
+import { InputError, InputGroup, Label } from "@/forms";
 import { Flex } from "@/layout";
 import { Text } from "@/typography";
 import { cn } from "@/utils";
@@ -113,7 +114,16 @@ const SelectInput = ({
         </SelectTrigger>
         <SelectContent>
           <SelectGroup>
-            <TextInput name="search" onChange={(e) => handleSearchChange(e.target.value)} placeholder="Search" />
+            <InputGroup className="border-0 shadow-none">
+              <InputGroup.Input
+                name="search"
+                onChange={(e) => handleSearchChange(e.target.value)}
+                placeholder="Search"
+              />
+              <InputGroup.Addon>
+                <SearchIcon />
+              </InputGroup.Addon>
+            </InputGroup>
           </SelectGroup>
           <SelectSeparator />
           <SelectItem key="empty-option" value={EMPTY_OPTION_VALUE}>
