@@ -1,5 +1,5 @@
 import { Check, ChevronsUpDown } from "lucide-react";
-import { useMemo, useState } from "react";
+import { useEffect, useMemo, useState } from "react";
 import { Button } from "@/components/ui/button";
 import { Command, CommandEmpty, CommandGroup, CommandInput, CommandItem, CommandList } from "@/components/ui/command";
 import { Popover, PopoverContent, PopoverTrigger } from "@/components/ui/popover";
@@ -58,6 +58,10 @@ export const SelectPicker = ({
   onSelect = () => {},
   renderSelected = (selected) => selected.label,
 }: SelectPickerProps) => {
+  useEffect(() => {
+    console.warn("SelectPicker is deprecated and will be removed in a future version. Please use SelectInput instead.");
+  }, []);
+
   const [open, setOpen] = useState(false);
 
   const singleGroup = optionGroups.length === 1;

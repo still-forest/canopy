@@ -184,4 +184,101 @@ describe("SelectInput", () => {
     expect(options[3]).toHaveTextContent("Fire");
     expect(options[4]).toHaveTextContent("Water");
   });
+
+  it("renders with icons", () => {
+    const onSelect = vi.fn();
+    const OPTIONS_WITH_ICONS = [
+      {
+        icon: "🌎",
+        value: "earth",
+        label: "Earth",
+      },
+      {
+        icon: "🌪️",
+        value: "wind",
+        label: "Wind",
+      },
+      {
+        icon: "🔥",
+        value: "fire",
+        label: "Fire",
+      },
+      {
+        icon: "🌊",
+        value: "water",
+        label: "Water",
+      },
+    ];
+    render(<SelectInput name="some_input" onValueChange={onSelect} options={OPTIONS_WITH_ICONS} />);
+
+    const trigger = screen.getByRole("combobox") as HTMLButtonElement;
+    expect(trigger).toHaveTextContent("");
+
+    fireEvent.click(trigger);
+
+    const optionContainer = screen.getByRole("presentation");
+    const options = within(optionContainer).getAllByRole("option");
+    expect(options).toHaveLength(OPTIONS.length + 1);
+
+    expect(options[0]).toHaveTextContent("");
+    expect(options[1]).toHaveTextContent("🌎Earth");
+    expect(options[2]).toHaveTextContent("🌪️Wind");
+    expect(options[3]).toHaveTextContent("🔥Fire");
+    expect(options[4]).toHaveTextContent("🌊Water");
+  });
+
+  it("renders with multiple groups", () => {
+    const onSelect = vi.fn();
+    const optionGroups = [
+      {
+        label: "Elements",
+        options: OPTIONS,
+      },
+      {
+        label: "Colors",
+        options: [
+          {
+            value: "red",
+            label: "Red",
+          },
+          {
+            value: "yellow",
+            label: "Yellow",
+          },
+          {
+            value: "green",
+            label: "Green",
+          },
+          {
+            value: "blue",
+            label: "Blue",
+          },
+        ],
+      },
+    ];
+    render(<SelectInput name="some_input" onValueChange={onSelect} options={optionGroups} />);
+
+    const trigger = screen.getByRole("combobox") as HTMLButtonElement;
+    expect(trigger).toHaveTextContent("");
+
+    fireEvent.click(trigger);
+
+    const optionContainer = screen.getByRole("presentation");
+    const options = within(optionContainer).getAllByRole("option");
+    expect(options).toHaveLength(9);
+
+    expect(options[0]).toHaveTextContent("");
+
+    expect(optionContainer).toHaveTextContent("Elements");
+    expect(options[1]).toHaveTextContent("Earth");
+    expect(options[2]).toHaveTextContent("Wind");
+    expect(options[3]).toHaveTextContent("Fire");
+    expect(options[4]).toHaveTextContent("Water");
+
+    expect(optionContainer).toHaveTextContent("Colors");
+    expect(options[5]).toHaveTextContent("Red");
+    expect(options[6]).toHaveTextContent("Yellow");
+    expect(options[7]).toHaveTextContent("Green");
+    expect(options[8]).toHaveTextContent("Blue");
+  });
 });
