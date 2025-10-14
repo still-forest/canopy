@@ -1,11 +1,13 @@
 import type { Meta, StoryObj } from "@storybook/react-vite";
-
-import { SelectInput } from "@/forms";
+import { useState } from "react";
+import { Button, SelectInput } from "@/forms";
 import { Flex } from "@/layout";
+import { DEFAULT_DECORATOR_WITH_WIDTH_MD } from "../support/decorators";
 
 const meta: Meta<typeof SelectInput> = {
   title: "Forms/Inputs/SelectInput",
   component: SelectInput,
+  decorators: [DEFAULT_DECORATOR_WITH_WIDTH_MD],
   tags: ["autodocs"],
 } satisfies Meta<typeof SelectInput>;
 
@@ -127,4 +129,25 @@ export const WithMultipleGroups: Story = {
       },
     ],
   },
+};
+
+const ControlledInput = () => {
+  const [value, setValue] = useState("marge");
+  return (
+    <Flex align="center" direction="col" gap="4">
+      <Flex.Item>
+        <SelectInput {...defaultProps} onValueChange={setValue} value={value} />
+      </Flex.Item>
+      <Flex direction="row" gap="4">
+        <Button onClick={() => setValue("bart")}>Set to Bart</Button>
+        <Button onClick={() => setValue("marge")} variant="secondary">
+          Reset
+        </Button>
+      </Flex>
+    </Flex>
+  );
+};
+
+export const Controlled: Story = {
+  render: () => <ControlledInput />,
 };
