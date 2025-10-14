@@ -82,6 +82,7 @@ const SelectInput = ({
   const [searchValue, setSearchValue] = useState("");
 
   const handleValueChange = (value: string) => {
+    setSearchValue("");
     if (value === EMPTY_OPTION_VALUE) {
       onValueChange("");
     } else {
@@ -98,6 +99,9 @@ const SelectInput = ({
     ...group,
     options: group.options.filter((option) => option.label.toLowerCase().includes(searchValue.toLowerCase())),
   }));
+
+  // Check if any options match the search
+  const hasResults = filteredOptions.some((group) => group.options.length > 0);
 
   return (
     <Flex className="w-full" direction="col" gap="2">
@@ -131,6 +135,16 @@ const SelectInput = ({
           </SelectItem>
 
           <SelectSeparator />
+
+          {!hasResults && searchValue && (
+            <SelectGroup>
+              <Flex align="center" className="py-6" justify="center">
+                <Text size="sm" variant="muted">
+                  No results found
+                </Text>
+              </Flex>
+            </SelectGroup>
+          )}
 
           {filteredOptions.map(({ label, options }, index) => {
             // Hide group if no options match the search
