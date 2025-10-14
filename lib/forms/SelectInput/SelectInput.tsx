@@ -19,6 +19,7 @@ export interface SelectInputOptionGroup {
 }
 
 export interface SelectInputOption {
+  icon?: string;
   value: string;
   label: string;
 }
@@ -109,8 +110,9 @@ const SelectInput = ({
           {options.map(({ label, options }, index) => (
             <SelectGroup key={label}>
               {label && <SelectLabel>{label}</SelectLabel>}
-              {options.map(({ value, label }) => (
+              {options.map(({ value, label, icon }) => (
                 <SelectItem key={`option-${value}`} value={value}>
+                  {icon ? <span>{icon}</span> : ""}
                   {label}
                 </SelectItem>
               ))}

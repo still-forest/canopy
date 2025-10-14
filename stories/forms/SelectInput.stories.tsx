@@ -94,6 +94,19 @@ export const WithEmptyOptionLabel: Story = {
   },
 };
 
+export const WithIcons: Story = {
+  args: {
+    ...defaultProps,
+    options: [
+      { value: "homer", label: "Homer", icon: "👨" },
+      { value: "marge", label: "Marge", icon: "👩" },
+      { value: "bart", label: "Bart", icon: "👦" },
+      { value: "lisa", label: "Lisa", icon: "👧" },
+      { value: "maggie", label: "Maggie", icon: "👶" },
+    ],
+  },
+};
+
 export const WithMultipleGroups: Story = {
   args: {
     ...defaultProps,

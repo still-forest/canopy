@@ -185,6 +185,48 @@ describe("SelectInput", () => {
     expect(options[4]).toHaveTextContent("Water");
   });
 
+  it("renders with icons", () => {
+    const onSelect = vi.fn();
+    const OPTIONS_WITH_ICONS = [
+      {
+        icon: "🌎",
+        value: "earth",
+        label: "Earth",
+      },
+      {
+        icon: "🌪️",
+        value: "wind",
+        label: "Wind",
+      },
+      {
+        icon: "🔥",
+        value: "fire",
+        label: "Fire",
+      },
+      {
+        icon: "🌊",
+        value: "water",
+        label: "Water",
+      },
+    ];
+    render(<SelectInput name="some_input" onValueChange={onSelect} options={OPTIONS_WITH_ICONS} />);
+
+    const trigger = screen.getByRole("combobox") as HTMLButtonElement;
+    expect(trigger).toHaveTextContent("");
+
+    fireEvent.click(trigger);
+
+    const optionContainer = screen.getByRole("presentation");
+    const options = within(optionContainer).getAllByRole("option");
+    expect(options).toHaveLength(OPTIONS.length + 1);
+
+    expect(options[0]).toHaveTextContent("");
+    expect(options[1]).toHaveTextContent("🌎Earth");
+    expect(options[2]).toHaveTextContent("🌪️Wind");
+    expect(options[3]).toHaveTextContent("🔥Fire");
+    expect(options[4]).toHaveTextContent("🌊Water");
+  });
+
   it("renders with multiple groups", () => {
     const onSelect = vi.fn();
     const optionGroups = [
