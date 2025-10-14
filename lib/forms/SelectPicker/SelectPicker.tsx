@@ -5,6 +5,11 @@ import { Command, CommandEmpty, CommandGroup, CommandInput, CommandItem, Command
 import { Popover, PopoverContent, PopoverTrigger } from "@/components/ui/popover";
 import { cn } from "@/utils";
 
+export interface SelectPickerOptionGroup {
+  label: string;
+  options: SelectPickerOption[];
+}
+
 export interface SelectPickerOption {
   icon?: string;
   value: string;
@@ -12,7 +17,7 @@ export interface SelectPickerOption {
 }
 
 export interface SelectPickerProps {
-  options: SelectPickerOption[];
+  options: SelectPickerOptionGroup[];
   onSelect: (selected: string) => void;
   value?: string;
   placeholder?: string;
@@ -46,7 +51,7 @@ const Trigger = ({
 };
 
 export const SelectPicker = ({
-  options,
+  options: optionGroups,
   value = "",
   placeholder = "Select a value...",
   className = "",
@@ -55,7 +60,13 @@ export const SelectPicker = ({
 }: SelectPickerProps) => {
   const [open, setOpen] = useState(false);
 
-  const selectedOption = useMemo(() => options.find((option) => option.value === value), [options, value]);
+  const _singleGroup = optionGroups.length === 1;
+  const flattenedOptions = useMemo(() => optionGroups.flatMap((group) => group.options), [optionGroups]);
+
+  const selectedOption = useMemo(
+    () => flattenedOptions.find((option) => option.value === value),
+    [flattenedOptions, value],
+  );
 
   return (
     <Popover onOpenChange={setOpen} open={open}>
@@ -72,7 +83,7 @@ export const SelectPicker = ({
           <CommandList>
             <CommandEmpty>No results found</CommandEmpty>
             <CommandGroup>
-              {options.map((option) => (
+              {flattenedOptions.map((option) => (
                 <CommandItem
                   key={option.value}
                   onSelect={() => {

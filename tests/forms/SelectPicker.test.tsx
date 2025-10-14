@@ -3,26 +3,31 @@ import { describe, expect, it, vi } from "vitest";
 import { SelectPicker, type SelectPickerOption } from "@/forms";
 
 describe("SelectPicker", () => {
-  const OPTIONS = [
+  const OPTION_GROUPS = [
     {
-      icon: "🌎",
-      value: "earth",
-      label: "Earth",
-    },
-    {
-      icon: "🌪️",
-      value: "wind",
-      label: "Wind",
-    },
-    {
-      icon: "🔥",
-      value: "fire",
-      label: "Fire",
-    },
-    {
-      icon: "🌊",
-      value: "water",
-      label: "Water",
+      label: "Elements",
+      options: [
+        {
+          icon: "🌎",
+          value: "earth",
+          label: "Earth",
+        },
+        {
+          icon: "🌪️",
+          value: "wind",
+          label: "Wind",
+        },
+        {
+          icon: "🔥",
+          value: "fire",
+          label: "Fire",
+        },
+        {
+          icon: "🌊",
+          value: "water",
+          label: "Water",
+        },
+      ],
     },
   ];
 
@@ -35,7 +40,7 @@ describe("SelectPicker", () => {
   const onSelect = vi.fn();
 
   it("renders with default props", () => {
-    render(<SelectPicker onSelect={onSelect} options={OPTIONS} />);
+    render(<SelectPicker onSelect={onSelect} options={OPTION_GROUPS} />);
 
     const trigger = screen.getByRole("combobox") as HTMLButtonElement;
     expect(trigger.tagName).toBe("BUTTON");
@@ -57,7 +62,7 @@ describe("SelectPicker", () => {
 
     const optionContainer = screen.getByRole("listbox");
     const options = within(optionContainer).getAllByRole("option");
-    expect(options).toHaveLength(OPTIONS.length);
+    expect(options).toHaveLength(OPTION_GROUPS[0].options.length);
 
     expect(options[0]).toHaveTextContent("🌎Earth");
     expect(options[1]).toHaveTextContent("🌪️Wind");
@@ -69,11 +74,15 @@ describe("SelectPicker", () => {
     expect(trigger.dataset.state).toBe("closed");
     expect(trigger.ariaExpanded).toBe("false");
 
-    expect(onSelect).toHaveBeenCalledWith(OPTIONS[2].value);
+    expect(onSelect).toHaveBeenCalledWith(OPTION_GROUPS[0].options[2].value);
   });
 
   it("renders with no icons", () => {
-    render(<SelectPicker onSelect={onSelect} options={OPTIONS.map((option) => ({ ...option, icon: undefined }))} />);
+    const optionGroups = OPTION_GROUPS.map((group) => ({
+      ...group,
+      options: group.options.map((option) => ({ ...option, icon: undefined })),
+    }));
+    render(<SelectPicker onSelect={onSelect} options={optionGroups} />);
 
     const trigger = screen.getByRole("combobox") as HTMLButtonElement;
     expect(trigger).toHaveTextContent("Select a value...");
@@ -82,7 +91,7 @@ describe("SelectPicker", () => {
 
     const optionContainer = screen.getByRole("listbox");
     const options = within(optionContainer).getAllByRole("option");
-    expect(options).toHaveLength(OPTIONS.length);
+    expect(options).toHaveLength(OPTION_GROUPS[0].options.length);
 
     expect(options[0]).toHaveTextContent("Earth");
     expect(options[1]).toHaveTextContent("Wind");
@@ -91,7 +100,7 @@ describe("SelectPicker", () => {
   });
 
   it("renders with a selected value", () => {
-    render(<SelectPicker onSelect={onSelect} options={OPTIONS} value={OPTIONS[0].value} />);
+    render(<SelectPicker onSelect={onSelect} options={OPTION_GROUPS} value={OPTION_GROUPS[0].options[0].value} />);
 
     const trigger = screen.getByRole("combobox") as HTMLButtonElement;
     expect(trigger).toHaveTextContent("Earth");
@@ -100,7 +109,12 @@ describe("SelectPicker", () => {
   it("renders with a custom renderSelected function", () => {
     const renderSelected = ({ label }: SelectPickerOption) => `The thing is ${label}`;
     render(
-      <SelectPicker onSelect={onSelect} options={OPTIONS} renderSelected={renderSelected} value={OPTIONS[0].value} />,
+      <SelectPicker
+        onSelect={onSelect}
+        options={OPTION_GROUPS}
+        renderSelected={renderSelected}
+        value={OPTION_GROUPS[0].options[0].value}
+      />,
     );
 
     const trigger = screen.getByRole("combobox") as HTMLButtonElement;
