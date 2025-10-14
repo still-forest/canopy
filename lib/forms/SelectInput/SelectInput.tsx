@@ -1,4 +1,13 @@
-import { Select, SelectContent, SelectItem, SelectSeparator, SelectTrigger, SelectValue } from "@/components/ui/select";
+import {
+  Select,
+  SelectContent,
+  SelectGroup,
+  SelectItem,
+  SelectLabel,
+  SelectSeparator,
+  SelectTrigger,
+  SelectValue,
+} from "@/components/ui/select";
 import { InputError, Label } from "@/forms";
 import { Flex } from "@/layout";
 import { Text } from "@/typography";
@@ -75,6 +84,8 @@ const SelectInput = ({
     }
   };
 
+  console.log(options.length);
+
   return (
     <Flex className="w-full" direction="col" gap="2">
       {label && <Label htmlFor={name}>{label}</Label>}
@@ -95,10 +106,16 @@ const SelectInput = ({
 
           <SelectSeparator />
 
-          {options[0].options.map(({ value, label }) => (
-            <SelectItem key={`option-${value}`} value={value}>
-              {label}
-            </SelectItem>
+          {options.map(({ label, options }, index) => (
+            <SelectGroup key={label}>
+              {label && <SelectLabel>{label}</SelectLabel>}
+              {options.map(({ value, label }) => (
+                <SelectItem key={`option-${value}`} value={value}>
+                  {label}
+                </SelectItem>
+              ))}
+              {isOptionGroup && index < options.length - 1 && <SelectSeparator />}
+            </SelectGroup>
           ))}
         </SelectContent>
       </Select>

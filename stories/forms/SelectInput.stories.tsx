@@ -93,3 +93,25 @@ export const WithEmptyOptionLabel: Story = {
     emptyOptionLabel: "Select a thing...",
   },
 };
+
+export const WithMultipleGroups: Story = {
+  args: {
+    ...defaultProps,
+    options: [
+      {
+        label: "Group 1",
+        options: [
+          { value: "option1", label: "Option 1" },
+          { value: "option2", label: "Option 2" },
+        ],
+      },
+      {
+        label: "Group 2",
+        options: [
+          { value: "option3", label: "Option 3" },
+          { value: "option4", label: "Option 4" },
+        ],
+      },
+    ],
+  },
+};
