@@ -11,6 +11,7 @@ export interface ThemeSelectorProps {
   theme: Theme;
   setTheme: (theme: Theme) => void;
   className?: string;
+  containerClassName?: string;
   buttonClassName?: string;
 }
 
@@ -32,7 +33,14 @@ const StackedThemes = [
   },
 ];
 
-const StackedThemeSelector = ({ theme, setTheme, className, buttonClassName, ...props }: ThemeSelectorProps) => {
+const StackedThemeSelector = ({
+  theme,
+  setTheme,
+  className,
+  containerClassName,
+  buttonClassName,
+  ...props
+}: ThemeSelectorProps) => {
   const toggleTheme = () => {
     const nextTheme = theme === "light" ? "dark" : theme === "dark" ? "system" : "light";
     setTheme(nextTheme);
@@ -41,10 +49,10 @@ const StackedThemeSelector = ({ theme, setTheme, className, buttonClassName, ...
   const label = StackedThemes.find((t) => t.theme === theme)?.label;
 
   return (
-    <span className={cn(className)} {...props}>
+    <span className={cn(containerClassName)} {...props}>
       <Button className={cn("p-1 w-full", buttonClassName)} onClick={toggleTheme} variant="unstyled">
         {icon}
-        <Text size="base" truncate>
+        <Text className={className} size="base" truncate>
           {label}
         </Text>
       </Button>
@@ -57,6 +65,7 @@ export const ThemeSelector = ({
   theme,
   setTheme,
   className,
+  containerClassName,
   buttonClassName,
   ...props
 }: ThemeSelectorProps) => {
@@ -69,6 +78,7 @@ export const ThemeSelector = ({
       <StackedThemeSelector
         buttonClassName={buttonClassName}
         className={className}
+        containerClassName={containerClassName}
         setTheme={setTheme}
         theme={theme}
         {...props}
@@ -77,22 +87,26 @@ export const ThemeSelector = ({
   }
 
   return (
-    <Flex gap="4">
+    <Flex className={containerClassName} gap="4">
       <Tooltip>
         <Tooltip.Trigger>
-          <MonitorCog className={getClassName("system")} onClick={() => setTheme("system")} size={32} />
+          <MonitorCog
+            className={cn(getClassName("system"), buttonClassName)}
+            onClick={() => setTheme("system")}
+            size={32}
+          />
         </Tooltip.Trigger>
         <Tooltip.Content>Use system theme</Tooltip.Content>
       </Tooltip>
       <Tooltip>
         <Tooltip.Trigger>
-          <Sun className={getClassName("light")} onClick={() => setTheme("light")} size={32} />
+          <Sun className={cn(getClassName("light"), buttonClassName)} onClick={() => setTheme("light")} size={32} />
         </Tooltip.Trigger>
         <Tooltip.Content>Use light theme</Tooltip.Content>
       </Tooltip>
       <Tooltip>
         <Tooltip.Trigger>
-          <Moon className={getClassName("dark")} onClick={() => setTheme("dark")} size={32} />
+          <Moon className={cn(getClassName("dark"), buttonClassName)} onClick={() => setTheme("dark")} size={32} />
         </Tooltip.Trigger>
         <Tooltip.Content>Use dark theme</Tooltip.Content>
       </Tooltip>
