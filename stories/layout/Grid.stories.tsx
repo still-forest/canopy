@@ -306,3 +306,159 @@ export const CustomElement: Story = {
     </>
   ),
 };
+
+export const ResponsiveColumns: Story = {
+  render: () => (
+    <Flex className="w-full max-w-4xl" direction="col" gap="8">
+      <Box>
+        <Heading className="mb-2" level="3" weight="semibold">
+          Responsive Grid Columns
+        </Heading>
+        <Heading className="mb-4" level="6" variant="muted" weight="normal">
+          Most common pattern: 1 column on mobile, 2 on tablet, 4 on desktop
+        </Heading>
+        <Grid className="bg-muted" cols={{ base: "1", sm: "2", lg: "4" }} gap="4">
+          {Array.from({ length: 8 }).map((_, i) => (
+            <GridItem key={i}>Item {i + 1}</GridItem>
+          ))}
+        </Grid>
+        <Box className="mt-4 rounded-md bg-accent/10 p-4">
+          <code className="text-sm">cols=&#123;&#123; base: "1", sm: "2", lg: "4" &#125;&#125;</code>
+        </Box>
+      </Box>
+    </Flex>
+  ),
+};
+
+export const ResponsiveGap: Story = {
+  render: () => (
+    <Flex className="w-full max-w-4xl" direction="col" gap="8">
+      <Box>
+        <Heading className="mb-2" level="3" weight="semibold">
+          Responsive Gap
+        </Heading>
+        <Heading className="mb-4" level="6" variant="muted" weight="normal">
+          Tighter spacing on mobile, more space on larger screens
+        </Heading>
+        <Grid className="bg-muted" cols="3" gap={{ base: "2", md: "4", lg: "8" }}>
+          {Array.from({ length: 9 }).map((_, i) => (
+            <GridItem key={i}>Item {i + 1}</GridItem>
+          ))}
+        </Grid>
+        <Box className="mt-4 rounded-md bg-accent/10 p-4">
+          <code className="text-sm">gap=&#123;&#123; base: "2", md: "4", lg: "8" &#125;&#125;</code>
+        </Box>
+      </Box>
+    </Flex>
+  ),
+};
+
+export const ResponsiveProductGrid: Story = {
+  render: () => (
+    <Flex className="w-full max-w-6xl" direction="col" gap="8">
+      <Box>
+        <Heading className="mb-2" level="3" weight="semibold">
+          Product Grid Pattern
+        </Heading>
+        <Heading className="mb-4" level="6" variant="muted" weight="normal">
+          Real-world example: 1 col mobile, 2 col tablet, 3 col desktop, 4 col wide
+        </Heading>
+        <Grid className="bg-muted" cols={{ base: "1", sm: "2", md: "3", xl: "4" }} gap={{ base: "4", md: "6" }}>
+          {Array.from({ length: 12 }).map((_, i) => (
+            <Box className="bg-background" key={i}>
+              <Flex align="center" className="aspect-square rounded-md bg-info text-info-foreground" justify="center">
+                <Heading level="3">{i + 1}</Heading>
+              </Flex>
+              <Box className="p-3">
+                <Heading level="5">Product {i + 1}</Heading>
+                <p className="text-sm text-muted-foreground">Description text</p>
+              </Box>
+            </Box>
+          ))}
+        </Grid>
+        <Box className="mt-4 rounded-md bg-accent/10 p-4">
+          <code className="text-sm">
+            cols=&#123;&#123; base: "1", sm: "2", md: "3", xl: "4" &#125;&#125;
+            <br />
+            gap=&#123;&#123; base: "4", md: "6" &#125;&#125;
+          </code>
+        </Box>
+      </Box>
+    </Flex>
+  ),
+};
+
+export const ResponsiveDashboard: Story = {
+  render: () => (
+    <Flex className="w-full max-w-6xl" direction="col" gap="8">
+      <Box>
+        <Heading className="mb-2" level="3" weight="semibold">
+          Dashboard Layout
+        </Heading>
+        <Heading className="mb-4" level="6" variant="muted" weight="normal">
+          Complex responsive grid with different column counts
+        </Heading>
+        <Grid cols={{ base: "1", md: "2", lg: "4" }} gap={{ base: "4", lg: "6" }}>
+          <Box className="rounded-md bg-info p-6 text-info-foreground md:col-span-2">
+            <Heading level="4">Main Chart</Heading>
+            <p className="text-sm">Spans 2 columns on md+</p>
+          </Box>
+          <Box className="rounded-md bg-success p-6 text-success-foreground">
+            <Heading level="5">Metric 1</Heading>
+            <Heading className="mt-2" level="2">
+              42
+            </Heading>
+          </Box>
+          <Box className="rounded-md bg-warning p-6 text-warning-foreground">
+            <Heading level="5">Metric 2</Heading>
+            <Heading className="mt-2" level="2">
+              89
+            </Heading>
+          </Box>
+          <Box className="rounded-md bg-accent p-6 text-accent-foreground">
+            <Heading level="5">Status</Heading>
+            <p className="mt-2">Active</p>
+          </Box>
+          <Box className="rounded-md bg-muted p-6 text-muted-foreground">
+            <Heading level="5">Updates</Heading>
+            <p className="mt-2 text-sm">3 new items</p>
+          </Box>
+          <Box className="rounded-md bg-secondary p-6 text-secondary-foreground md:col-span-2">
+            <Heading level="5">Recent Activity</Heading>
+            <p className="mt-2 text-sm">Spans 2 columns on md+</p>
+          </Box>
+        </Grid>
+        <Box className="mt-4 rounded-md bg-accent/10 p-4">
+          <code className="text-sm">
+            cols=&#123;&#123; base: "1", md: "2", lg: "4" &#125;&#125;
+            <br />
+            Use className="md:col-span-2" for spanning items
+          </code>
+        </Box>
+      </Box>
+    </Flex>
+  ),
+};
+
+export const ResponsiveRows: Story = {
+  render: () => (
+    <Flex className="w-full max-w-4xl" direction="col" gap="8">
+      <Box>
+        <Heading className="mb-2" level="3" weight="semibold">
+          Responsive Rows
+        </Heading>
+        <Heading className="mb-4" level="6" variant="muted" weight="normal">
+          Control row count at different breakpoints
+        </Heading>
+        <Grid className="bg-muted" cols="3" gap="4" rows={{ base: "2", md: "3" }}>
+          {Array.from({ length: 9 }).map((_, i) => (
+            <GridItem key={i}>Item {i + 1}</GridItem>
+          ))}
+        </Grid>
+        <Box className="mt-4 rounded-md bg-accent/10 p-4">
+          <code className="text-sm">rows=&#123;&#123; base: "2", md: "3" &#125;&#125;</code>
+        </Box>
+      </Box>
+    </Flex>
+  ),
+};
