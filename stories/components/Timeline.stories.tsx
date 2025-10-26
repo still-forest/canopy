@@ -15,16 +15,6 @@ export default meta;
 
 type Story = StoryObj<typeof meta>;
 
-export const Default: Story = {
-  render: () => (
-    <BulletList>
-      <BulletList.Item>Item 1</BulletList.Item>
-      <BulletList.Item>Item 2</BulletList.Item>
-      <BulletList.Item>Item 3</BulletList.Item>
-    </BulletList>
-  ),
-};
-
 const sampleItems = [
   {
     id: 1,
@@ -46,7 +36,25 @@ const sampleItems = [
   },
 ];
 
-const Description = ({ description }: { description: string | string[] }) => {
+export const Default: Story = {
+  render: () => (
+    <Timeline defaultValue={1}>
+      {sampleItems.map((item) => (
+        <Timeline.Item key={item.id} step={item.id}>
+          <Timeline.Header>
+            <Timeline.Separator />
+            <Timeline.Date>{item.date}</Timeline.Date>
+            <Timeline.Title>{item.title}</Timeline.Title>
+            <Timeline.Indicator />
+          </Timeline.Header>
+          <Timeline.Content>{item.description}</Timeline.Content>
+        </Timeline.Item>
+      ))}
+    </Timeline>
+  ),
+};
+
+const _Description = ({ description }: { description: string | string[] }) => {
   if (typeof description === "string") {
     return <Text variant="muted">{description}</Text>;
   }
@@ -80,9 +88,7 @@ export const Styled: Story = {
             </Timeline.Title>
             <Timeline.Indicator />
           </Timeline.Header>
-          <Timeline.Content>
-            <Description description={item.description} />
-          </Timeline.Content>
+          <Timeline.Content>{item.description}</Timeline.Content>
         </Timeline.Item>
       ))}
     </Timeline>

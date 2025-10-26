@@ -38,6 +38,16 @@
   font-weight: var(--font-body-weight);
 }
 
+@utility font-sans {
+  font-family: var(--font-sans-family);
+  font-weight: var(--font-sans-weight);
+}
+
+@utility font-serif {
+  font-family: var(--font-serif-family);
+  font-weight: var(--font-serif-weight);
+}
+
 @utility font-mono {
   font-family: var(--font-mono-family);
   font-weight: var(--font-mono-weight);
