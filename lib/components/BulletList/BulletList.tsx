@@ -1,9 +1,8 @@
 import type { ComponentProps } from "react";
-import { Flex } from "@/layout";
 import { Text } from "@/typography";
 import { cn } from "@/utils";
 
-type BulletListProps = ComponentProps<typeof Flex>;
+type BulletListProps = ComponentProps<"ul">;
 type BulletListItemProps = ComponentProps<typeof Text>;
 
 type BulletListComponent = React.FC<BulletListProps> & {
@@ -12,9 +11,9 @@ type BulletListComponent = React.FC<BulletListProps> & {
 
 const BulletList: BulletListComponent = ({ children, className, ...props }: BulletListProps) => {
   return (
-    <Flex as="ul" className={cn("list-disc gap-2 ml-4", className)} direction="col" {...props}>
+    <ul className={cn("list-disc flex flex-col gap-2 ml-4", className)} {...props}>
       {children}
-    </Flex>
+    </ul>
   );
 };
 
