@@ -45,7 +45,7 @@ const sampleItems = [
 
 export const Styled: Story = {
   render: () => (
-    <BulletList className="flex-1" justify="between">
+    <BulletList className="flex-1 justify-between">
       {sampleItems.map((item) => (
         <BulletList.Item key={item.title}>
           <Heading family="body" level="6">
