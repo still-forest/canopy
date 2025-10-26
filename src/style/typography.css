@@ -1,7 +1,12 @@
 @theme inline {
   --font-sans-family: Optima, Candara, "Noto Sans", source-sans-pro, sans-serif;
+  --font-sans-weight: 300;
+
   --font-serif-family: "Iowan Old Style", "Palatino Linotype", "URW Palladio L", P052, serif;
+  --font-serif-weight: 300;
+
   --font-mono-family: "Nimbus Mono PS", "Courier New", monospace;
+  --font-mono-weight: 300;
 
   --font-brand-family: "SignPainter", cursive;
   --font-brand-weight: 300;
@@ -14,8 +19,6 @@
 
   --font-body-family: var(--font-sans-family);
   --font-body-weight: 300;
-
-  --font-mono-weight: 300;
 }
 
 @utility font-brand {
