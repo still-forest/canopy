@@ -1,5 +1,7 @@
-import { cn, Flex, Text } from "@still-forest/canopy";
 import type { ComponentProps } from "react";
+import { Flex } from "@/layout";
+import { Text } from "@/typography";
+import { cn } from "@/utils";
 
 type BulletListProps = ComponentProps<typeof Flex>;
 type BulletListItemProps = ComponentProps<typeof Text>;
