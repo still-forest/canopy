@@ -76,7 +76,7 @@ interface TimelineDateProps extends React.HTMLAttributes<HTMLTimeElement> {
 }
 
 function TimelineDate({ asChild = false, className, ...props }: TimelineDateProps) {
-  const Comp = asChild ? Slot.Root : "time";
+  const Comp = asChild ? Slot : "time";
 
   return (
     <Comp

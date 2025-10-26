@@ -1,7 +1,6 @@
 import type { Meta, StoryObj } from "@storybook/react-vite";
 
-import { BulletList, Timeline } from "@/components";
-import { Text } from "@/typography";
+import { Timeline } from "@/components";
 import { DEFAULT_DECORATOR_WITH_MIN_WIDTH_MD } from "../support/decorators";
 
 const meta: Meta<typeof Timeline> = {
@@ -52,21 +51,6 @@ export const Default: Story = {
       ))}
     </Timeline>
   ),
-};
-
-const _Description = ({ description }: { description: string | string[] }) => {
-  if (typeof description === "string") {
-    return <Text variant="muted">{description}</Text>;
-  }
-  return (
-    <BulletList>
-      {description.map((d) => (
-        <BulletList.Item key={d} variant="muted">
-          {d}
-        </BulletList.Item>
-      ))}
-    </BulletList>
-  );
 };
 
 export const Styled: Story = {
