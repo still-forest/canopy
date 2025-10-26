@@ -46,8 +46,6 @@
   --popover: oklch(1 0 0);
   --popover-foreground: oklch(0.129 0.042 264.695);
   --ring: oklch(0.869 0.022 252.894);
-
-  --radius: 0.625rem;
 }
 
 .dark {
