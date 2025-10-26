@@ -1,4 +1,3 @@
-import { Heading } from "@still-forest/canopy";
 import type { ReactNode } from "react";
 import {
   Timeline as BaseTimeline,
@@ -9,6 +8,7 @@ import {
   TimelineItem,
   TimelineSeparator,
 } from "@/components/ui/timeline";
+import { Heading } from "@/typography";
 
 export type TimelineProps = React.ComponentProps<typeof BaseTimeline> & {
   children: ReactNode;
