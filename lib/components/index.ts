@@ -2,6 +2,7 @@ export * from "./Accordion";
 export * from "./Alert";
 export * from "./Badge";
 export * from "./Breadcrumbs";
+export * from "./BulletList";
 export * from "./Card";
 export * from "./Collapsible";
 export * from "./Empty";

@@ -1,7 +1,7 @@
 @theme inline {
-  --font-sans-family: "Arial", sans-serif;
-  --font-serif-family: "Georgia", serif;
-  --font-mono-family: "Courier New", monospace;
+  --font-sans-family: Optima, Candara, "Noto Sans", source-sans-pro, sans-serif;
+  --font-serif-family: "Iowan Old Style", "Palatino Linotype", "URW Palladio L", P052, serif;
+  --font-mono-family: "Nimbus Mono PS", "Courier New", monospace;
 
   --font-brand-family: "SignPainter", cursive;
   --font-brand-weight: 300;
