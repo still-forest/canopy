@@ -7,36 +7,6 @@
   "main": "./dist/index.js",
   "module": "./dist/index.js",
   "types": "./dist/index.d.ts",
-  "exports": {
-    ".": {
-      "types": "./dist/index.d.ts",
-      "import": "./dist/index.js"
-    },
-    "./layout": {
-      "types": "./dist/layout.d.ts",
-      "import": "./dist/layout.js"
-    },
-    "./navigation": {
-      "types": "./dist/navigation.d.ts",
-      "import": "./dist/navigation.js"
-    },
-    "./forms": {
-      "types": "./dist/forms.d.ts",
-      "import": "./dist/forms.js"
-    },
-    "./interstitials": {
-      "types": "./dist/interstitials.d.ts",
-      "import": "./dist/interstitials.js"
-    },
-    "./typography": {
-      "types": "./dist/typography.d.ts",
-      "import": "./dist/typography.js"
-    },
-    "./utilities": {
-      "types": "./dist/utilities.d.ts",
-      "import": "./dist/utilities.js"
-    }
-  },
   "files": [
     "dist"
   ],
