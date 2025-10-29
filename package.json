@@ -59,7 +59,8 @@
     "date-fns": "^4.1.0",
     "lucide-react": "^0.544.0",
     "react-day-picker": "^9.9.0",
-    "react-router": "^7.8.2"
+    "react-router": "^7.8.2",
+    "vaul": "^1.1.2"
   },
   "devDependencies": {
     "@biomejs/biome": "2.2.5",
