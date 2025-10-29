@@ -24,7 +24,7 @@ const defaultProps = {
     { value: "lisa", label: "Lisa" },
     { value: "maggie", label: "Maggie" },
   ],
-  onValueChange: (value: string) => window.alert(`Selected option ${value}`),
+  onChange: (value: string) => window.alert(`Selected option ${value}`),
 };
 
 export const Default: Story = {
@@ -182,7 +182,7 @@ const ControlledInput = () => {
   return (
     <Flex align="center" direction="col" gap="4">
       <Flex.Item>
-        <SelectInput {...defaultProps} onValueChange={setValue} value={value} />
+        <SelectInput {...defaultProps} onChange={setValue} value={value} />
       </Flex.Item>
       <Flex direction="row" gap="4">
         <Button onClick={() => setValue("bart")}>Set to Bart</Button>
