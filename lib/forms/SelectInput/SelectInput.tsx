@@ -39,8 +39,19 @@ const SelectInput = ({
   value,
   onValueChange,
   error,
+  size = "md",
   ...props
 }: SelectInputProps) => {
+  const triggerClasses = cn(
+    "min-w-[180px]",
+    size === "xs" && "h-7 text-xs md:text-xs",
+    size === "sm" && "h-8 text-sm md:text-xs",
+    size === "md" && "h-9 text-base md:text-sm",
+    size === "lg" && "h-10 text-lg md:text-base",
+    size === "xl" && "h-11 text-xl md:text-lg",
+    className,
+  );
+
   const isOptionGroup = optionsProp.some((option) => "options" in option);
   const options: SelectInputOptionGroup[] = isOptionGroup
     ? (optionsProp as SelectInputOptionGroup[])
@@ -51,8 +62,10 @@ const SelectInput = ({
         },
       ];
 
+  const triggerSize = size === "xs" || size === "sm" ? "sm" : "default";
+
+  // TODO: this is temporary, until they can be grouped properly
   const flattenedOptions = options.flatMap((option) => option.options);
-  console.log("flattenedOptions", flattenedOptions);
 
   return (
     <Flex className="w-full" direction="col" gap="2">
@@ -64,7 +77,7 @@ const SelectInput = ({
         value={value}
         {...props}
       >
-        <SelectTrigger className={cn("min-w-[180px]", className)} data-testid={`select-input-${name}`}>
+        <SelectTrigger className={triggerClasses} data-testid={`select-input-${name}`} size={triggerSize}>
           <SelectValue placeholder={placeholder} />
         </SelectTrigger>
         <SelectContent>

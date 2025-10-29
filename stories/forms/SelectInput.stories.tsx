@@ -2,10 +2,12 @@ import type { Meta, StoryObj } from "@storybook/react-vite";
 import { useState } from "react";
 import { Button, SelectInput } from "@/forms";
 import { Flex } from "@/layout";
+import { DEFAULT_DECORATOR_WITH_WIDTH_MD } from "../support/decorators";
 
 const meta: Meta<typeof SelectInput> = {
   title: "Forms/Inputs/SelectInput",
   component: SelectInput,
+  decorators: [DEFAULT_DECORATOR_WITH_WIDTH_MD],
   tags: ["autodocs"],
 } satisfies Meta<typeof SelectInput>;
 
