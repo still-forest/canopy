@@ -32,20 +32,20 @@ describe("SelectPicker", () => {
   ];
 
   const EXPECTED_BASE_BUTTON_CLASSES =
-    "inline-flex items-center gap-2 whitespace-nowrap rounded-md font-medium transition-all disabled:pointer-events-none disabled:opacity-50 [&_svg]:pointer-events-none [&_svg:not([class*='size-'])]:size-4 shrink-0 [&_svg]:shrink-0 outline-none focus-visible:border-ring focus-visible:ring-ring/50 focus-visible:ring-[3px] aria-invalid:ring-destructive/20 dark:aria-invalid:ring-destructive/40 aria-invalid:border-destructive border bg-background shadow-xs hover:bg-accent hover:text-accent-foreground dark:bg-input/30 dark:border-input dark:hover:bg-input/50 h-9 px-4 py-2 has-[>svg]:px-3 text-sm justify-between w-full";
+    "inline-flex items-center gap-2 whitespace-nowrap rounded-md transition-all disabled:pointer-events-none disabled:opacity-50 [&_svg]:pointer-events-none [&_svg:not([class*='size-'])]:size-4 shrink-0 [&_svg]:shrink-0 outline-none focus-visible:border-ring focus-visible:ring-ring/50 focus-visible:ring-[3px] aria-invalid:ring-destructive/20 dark:aria-invalid:ring-destructive/40 aria-invalid:border-destructive border bg-background shadow-xs hover:bg-accent hover:text-accent-foreground dark:bg-input/30 dark:border-input dark:hover:bg-input/50 h-9 px-4 py-2 has-[>svg]:px-3 text-sm w-full justify-between font-normal";
 
   const EXPECTED_BASE_POPOVER_CLASSES =
-    "bg-popover text-popover-foreground data-[state=open]:animate-in data-[state=closed]:animate-out data-[state=closed]:fade-out-0 data-[state=open]:fade-in-0 data-[state=closed]:zoom-out-95 data-[state=open]:zoom-in-95 data-[side=bottom]:slide-in-from-top-2 data-[side=left]:slide-in-from-right-2 data-[side=right]:slide-in-from-left-2 data-[side=top]:slide-in-from-bottom-2 z-50 origin-(--radix-popover-content-transform-origin) rounded-md border shadow-md outline-hidden w-full p-0";
+    "bg-popover text-popover-foreground data-[state=open]:animate-in data-[state=closed]:animate-out data-[state=closed]:fade-out-0 data-[state=open]:fade-in-0 data-[state=closed]:zoom-out-95 data-[state=open]:zoom-in-95 data-[side=bottom]:slide-in-from-top-2 data-[side=left]:slide-in-from-right-2 data-[side=right]:slide-in-from-left-2 data-[side=top]:slide-in-from-bottom-2 z-50 origin-(--radix-popover-content-transform-origin) rounded-md border shadow-md outline-hidden w-[400px] p-0";
 
   const onSelect = vi.fn();
 
   it("renders with default props", () => {
-    render(<SelectPicker onSelect={onSelect} options={OPTION_GROUPS} />);
+    render(<SelectPicker name="some_input" onChange={onSelect} options={OPTION_GROUPS} />);
 
     const trigger = screen.getByRole("combobox") as HTMLButtonElement;
     expect(trigger.tagName).toBe("BUTTON");
     expect(trigger.className).toBe(EXPECTED_BASE_BUTTON_CLASSES);
-    expect(trigger).toHaveTextContent("Select a value...");
+    expect(trigger).toHaveTextContent("Select an option");
 
     expect(trigger.dataset.state).toBe("closed");
     expect(trigger.ariaExpanded).toBe("false");
@@ -64,7 +64,7 @@ describe("SelectPicker", () => {
     const options = within(optionContainer).getAllByRole("option");
     expect(options).toHaveLength(OPTION_GROUPS[0].options.length);
 
-    expect(optionContainer).not.toHaveTextContent("Elements");
+    expect(optionContainer).toHaveTextContent("Elements");
     expect(options[0]).toHaveTextContent("🌎Earth");
     expect(options[1]).toHaveTextContent("🌪️Wind");
     expect(options[2]).toHaveTextContent("🔥Fire");
@@ -83,10 +83,10 @@ describe("SelectPicker", () => {
       ...group,
       options: group.options.map((option) => ({ ...option, icon: undefined })),
     }));
-    render(<SelectPicker onSelect={onSelect} options={optionGroups} />);
+    render(<SelectPicker name="some_input" onChange={onSelect} options={optionGroups} />);
 
     const trigger = screen.getByRole("combobox") as HTMLButtonElement;
-    expect(trigger).toHaveTextContent("Select a value...");
+    expect(trigger).toHaveTextContent("Select an option");
 
     fireEvent.click(trigger);
 
@@ -101,7 +101,14 @@ describe("SelectPicker", () => {
   });
 
   it("renders with a selected value", () => {
-    render(<SelectPicker onSelect={onSelect} options={OPTION_GROUPS} value={OPTION_GROUPS[0].options[0].value} />);
+    render(
+      <SelectPicker
+        name="some_input"
+        onChange={onSelect}
+        options={OPTION_GROUPS}
+        value={OPTION_GROUPS[0].options[0].value}
+      />,
+    );
 
     const trigger = screen.getByRole("combobox") as HTMLButtonElement;
     expect(trigger).toHaveTextContent("Earth");
@@ -111,7 +118,8 @@ describe("SelectPicker", () => {
     const renderSelected = ({ label }: SelectPickerOption) => `The thing is ${label}`;
     render(
       <SelectPicker
-        onSelect={onSelect}
+        name="some_input"
+        onChange={onSelect}
         options={OPTION_GROUPS}
         renderSelected={renderSelected}
         value={OPTION_GROUPS[0].options[0].value}
@@ -151,10 +159,10 @@ describe("SelectPicker", () => {
         ],
       },
     ];
-    render(<SelectPicker onSelect={onSelect} options={optionGroups} />);
+    render(<SelectPicker name="some_input" onChange={onSelect} options={optionGroups} />);
 
     const trigger = screen.getByRole("combobox") as HTMLButtonElement;
-    expect(trigger).toHaveTextContent("Select a value...");
+    expect(trigger).toHaveTextContent("Select an option");
     fireEvent.click(trigger);
 
     const optionContainer = screen.getByRole("listbox");

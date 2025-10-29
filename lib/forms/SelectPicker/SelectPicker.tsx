@@ -1,108 +1,89 @@
-import { Check, ChevronsUpDown } from "lucide-react";
 import { useMemo, useState } from "react";
-import { Button } from "@/components/ui/button";
-import { Command, CommandEmpty, CommandGroup, CommandInput, CommandItem, CommandList } from "@/components/ui/command";
-import { Popover, PopoverContent, PopoverTrigger } from "@/components/ui/popover";
-import { cn } from "@/utils";
-
-export interface SelectPickerOptionGroup {
-  label: string;
-  options: SelectPickerOption[];
-}
-
-export interface SelectPickerOption {
-  icon?: string;
-  value: string;
-  label: string;
-}
+import { InputError, Label } from "@/forms";
+import { useIsMobile } from "@/hooks/use-mobile";
+import { Flex } from "@/layout";
+import { Text } from "@/typography";
+import { DesktopSelectPicker } from "./DesktopSelectPicker";
+import { MobileSelectPicker } from "./MobileSelectPicker";
+import { GroupedOptionList } from "./OptionList";
+import type { SelectPickerOption, SelectPickerOptionGroup } from "./types";
 
 export interface SelectPickerProps {
-  options: SelectPickerOptionGroup[];
-  onSelect: (selected: string) => void;
+  name: string;
   value?: string;
+  onChange: (value: string) => void;
+  options: SelectPickerOption[] | SelectPickerOptionGroup[];
+  label?: string;
   placeholder?: string;
-  className?: string;
+  note?: string;
+  error?: string;
   renderSelected?: (selected: SelectPickerOption) => React.ReactNode;
 }
-
-interface TriggerProps {
-  selected?: SelectPickerOption;
-  placeholder: string;
-  className: string;
-  open: boolean;
-  renderSelected?: (selected: SelectPickerOption) => React.ReactNode;
-}
-
-const Trigger = ({
-  placeholder,
-  selected,
-  className,
-  open,
-  renderSelected = (selected) => selected.label,
-}: TriggerProps) => {
-  return (
-    <PopoverTrigger asChild>
-      <Button aria-expanded={open} className={`justify-between ${className}`} role="combobox" variant="outline">
-        {renderSelected(selected || { label: placeholder, value: "" })}
-        <ChevronsUpDown className="ml-2 h-4 w-4 shrink-0 opacity-50" />
-      </Button>
-    </PopoverTrigger>
-  );
-};
 
 export const SelectPicker = ({
-  options: optionGroups,
-  value = "",
-  placeholder = "Select a value...",
-  className = "",
-  onSelect = () => {},
+  options,
+  value,
+  placeholder = "Select an option",
+  onChange,
+  label,
+  name,
+  note,
+  error,
   renderSelected = (selected) => selected.label,
 }: SelectPickerProps) => {
   const [open, setOpen] = useState(false);
-
-  const singleGroup = optionGroups.length === 1;
+  const isMobile = useIsMobile();
+  const isOptionGroup = options.some((option) => "options" in option);
+  const optionGroups = isOptionGroup
+    ? (options as SelectPickerOptionGroup[])
+    : [
+        {
+          label: undefined,
+          options: options as SelectPickerOption[],
+        },
+      ];
   const flattenedOptions = useMemo(() => optionGroups.flatMap((group) => group.options), [optionGroups]);
 
-  const selectedOption = useMemo(
-    () => flattenedOptions.find((option) => option.value === value),
-    [flattenedOptions, value],
-  );
+  const selectedLabel = useMemo(() => {
+    if (!value) return placeholder;
+    const option = flattenedOptions.find((option) => option.value === value);
+    const label = option ? renderSelected(option) : placeholder;
+    return label;
+  }, [value, placeholder, renderSelected, flattenedOptions]);
+
+  const handleSelect = (currentValue: string) => {
+    onChange(currentValue === value ? "" : currentValue);
+    setOpen(false);
+  };
 
   return (
-    <Popover onOpenChange={setOpen} open={open}>
-      <Trigger
-        className={`w-full ${className}`}
-        open={open}
-        placeholder={placeholder}
-        renderSelected={renderSelected}
-        selected={selectedOption}
-      />
-      <PopoverContent className="w-full p-0">
-        <Command value={value}>
-          <CommandInput aria-label="Search options" className="h-9" placeholder="Search" />
-          <CommandList>
-            <CommandEmpty>No results found</CommandEmpty>
-            {optionGroups.map((group) => (
-              <CommandGroup heading={!singleGroup ? group.label : undefined} key={group.label}>
-                {group.options.map((option) => (
-                  <CommandItem
-                    key={option.value}
-                    onSelect={() => {
-                      setOpen(false);
-                      onSelect(option.value);
-                    }}
-                    value={option.value}
-                  >
-                    {option.icon ? <span className="mr-2">{option.icon}</span> : ""}
-                    {option.label}
-                    <Check className={cn("ml-auto", option.value === value ? "opacity-100" : "opacity-0")} />
-                  </CommandItem>
-                ))}
-              </CommandGroup>
-            ))}
-          </CommandList>
-        </Command>
-      </PopoverContent>
-    </Popover>
+    <Flex direction="col" gap="2">
+      {label && <Label htmlFor={name}>{label}</Label>}
+      {isMobile ? (
+        <MobileSelectPicker open={open} selectedLabel={selectedLabel} setOpen={setOpen} triggerId={name}>
+          <GroupedOptionList
+            onSelect={handleSelect}
+            optionGroups={optionGroups}
+            placeholder={placeholder}
+            selectedValue={value}
+          />
+        </MobileSelectPicker>
+      ) : (
+        <DesktopSelectPicker open={open} selectedLabel={selectedLabel} setOpen={setOpen} triggerId={name}>
+          <GroupedOptionList
+            onSelect={handleSelect}
+            optionGroups={optionGroups}
+            placeholder={placeholder}
+            selectedValue={value}
+          />
+        </DesktopSelectPicker>
+      )}
+      {note && (
+        <Text size="sm" variant="muted">
+          {note}
+        </Text>
+      )}
+      {error && <InputError message={error} />}
+    </Flex>
   );
 };
