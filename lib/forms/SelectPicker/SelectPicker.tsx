@@ -42,7 +42,7 @@ export const SelectPicker = ({
           options: options as SelectPickerOption[],
         },
       ];
-  const flattenedOptions = optionGroups.flatMap((group) => group.options);
+  const flattenedOptions = useMemo(() => optionGroups.flatMap((group) => group.options), [optionGroups]);
 
   const selectedLabel = useMemo(() => {
     if (!value) return placeholder;

@@ -11,13 +11,13 @@ interface OptionListProps {
 }
 
 const OptionList = ({ label, options, onSelect, selectedValue }: OptionListProps) => {
-  console.log("options", options);
   return (
     <CommandGroup heading={label}>
-      {options.map(({ value, label, keywords: keywordsProp = [] }) => {
+      {options.map(({ icon, value, label, keywords: keywordsProp = [] }) => {
         const keywords = [label, value, ...keywordsProp].filter(Boolean);
         return (
           <CommandItem key={value} keywords={keywords} onSelect={() => onSelect(value)} value={value}>
+            {icon ? <span className="mr-2">{icon}</span> : ""}
             {label}
             <Check className={cn("ml-auto", value === selectedValue ? "opacity-100" : "opacity-0")} />
           </CommandItem>

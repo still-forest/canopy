@@ -64,7 +64,7 @@ describe("SelectPicker", () => {
     const options = within(optionContainer).getAllByRole("option");
     expect(options).toHaveLength(OPTION_GROUPS[0].options.length);
 
-    expect(optionContainer).not.toHaveTextContent("Elements");
+    expect(optionContainer).toHaveTextContent("Elements");
     expect(options[0]).toHaveTextContent("🌎Earth");
     expect(options[1]).toHaveTextContent("🌪️Wind");
     expect(options[2]).toHaveTextContent("🔥Fire");
