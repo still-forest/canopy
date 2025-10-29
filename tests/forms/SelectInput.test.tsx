@@ -1,5 +1,5 @@
 import { render, screen, within } from "@testing-library/react";
-import { userEvent } from "@testing-library/user-event";
+import userEvent from "@testing-library/user-event";
 import { describe, expect, it, vi } from "vitest";
 import { SelectInput } from "@/forms";
 
@@ -33,7 +33,7 @@ describe("SelectInput", () => {
 
     render(<SelectInput name="some_input" onChange={onSelect} options={OPTIONS} />);
 
-    const select = screen.getByRole("combobox") as HTMLButtonElement;
+    const select = screen.getByRole("combobox") as HTMLSelectElement;
     expect(select.tagName).toBe("SELECT");
     expect(select.className).toBe(EXPECTED_BASE_TRIGGER_CLASSES);
     expect(select).toHaveTextContent("Select an optionEarthWindFireWater");
@@ -55,7 +55,7 @@ describe("SelectInput", () => {
   it("renders with a selected value", () => {
     render(<SelectInput name="some_input" onChange={onSelect} options={OPTIONS} value={OPTIONS[0].value} />);
 
-    const trigger = screen.getByRole("combobox") as HTMLButtonElement;
+    const trigger = screen.getByRole("combobox") as HTMLSelectElement;
     expect(trigger).toHaveTextContent("Earth");
   });
 
@@ -70,7 +70,7 @@ describe("SelectInput", () => {
   it("renders with a placeholder", () => {
     render(<SelectInput name="some_input" onChange={onSelect} options={OPTIONS} placeholder="Some placeholder" />);
 
-    const trigger = screen.getByRole("combobox") as HTMLButtonElement;
+    const trigger = screen.getByRole("combobox") as HTMLSelectElement;
     expect(trigger).toHaveTextContent("Some placeholder");
   });
 
@@ -93,7 +93,7 @@ describe("SelectInput", () => {
   it("combines custom className with generated classes", () => {
     render(<SelectInput className="custom-class" name="some_input" onChange={onSelect} options={OPTIONS} />);
 
-    const trigger = screen.getByRole("combobox") as HTMLButtonElement;
+    const trigger = screen.getByRole("combobox") as HTMLSelectElement;
     expect(trigger.className).toBe(`${EXPECTED_BASE_TRIGGER_CLASSES} custom-class`);
   });
 

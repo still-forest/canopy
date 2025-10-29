@@ -1,3 +1,4 @@
+import type { ChangeEvent, ComponentProps } from "react";
 import { NativeSelect, NativeSelectOptGroup, NativeSelectOption } from "@/components/ui/native-select";
 import { InputError, Label } from "@/forms";
 import { Flex } from "@/layout";
@@ -14,7 +15,7 @@ export interface SelectInputOption {
   label: string;
 }
 
-export interface SelectInputProps extends Omit<React.ComponentProps<"select">, "dir" | "size" | "onChange"> {
+export interface SelectInputProps extends Omit<ComponentProps<"select">, "dir" | "size" | "onChange"> {
   name: string;
   value?: string;
   onChange: (value: string) => void;
@@ -51,7 +52,7 @@ const SelectInput = ({
 
   const isOptionGroup = options.some((option) => "options" in option);
 
-  const handleSelectChange = (event: React.ChangeEvent<HTMLSelectElement>) => {
+  const handleSelectChange = (event: ChangeEvent<HTMLSelectElement>) => {
     onChange?.(event.target.value);
   };
 
@@ -59,11 +60,13 @@ const SelectInput = ({
     <Flex className="w-full" direction="col" gap="2">
       {label && <Label htmlFor={name}>{label}</Label>}
       <NativeSelect
+        aria-describedby={error ? `${name}-error` : undefined}
+        aria-invalid={Boolean(error) || undefined}
         className={triggerClasses}
-        defaultValue={defaultValue as string | undefined}
+        id={name}
         name={name}
         onChange={handleSelectChange}
-        value={value}
+        {...(value !== undefined ? { value } : { defaultValue: defaultValue as string | undefined })}
         {...props}
       >
         <NativeSelectOption value="">{placeholder}</NativeSelectOption>
@@ -89,7 +92,7 @@ const SelectInput = ({
           {note}
         </Text>
       )}
-      {error && <InputError message={error} />}
+      {error && <InputError id={`${name}-error`} message={error} />}
     </Flex>
   );
 };
