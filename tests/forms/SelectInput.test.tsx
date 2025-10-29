@@ -104,4 +104,80 @@ describe("SelectInput", () => {
     const trigger = screen.getByRole("combobox") as HTMLButtonElement;
     expect(trigger.className).toBe(`${EXPECTED_BASE_BUTTON_CLASSES} custom-class`);
   });
+
+  it("allows selecting an option", async () => {
+    const onSelect = vi.fn();
+    render(<SelectInput name="some_input" onValueChange={onSelect} options={OPTIONS} value="__none__" />);
+
+    const trigger = screen.getByRole("combobox") as HTMLButtonElement;
+    expect(trigger).toHaveTextContent("");
+
+    fireEvent.click(trigger);
+
+    const optionContainer = screen.getByRole("presentation");
+    const options = within(optionContainer).getAllByRole("option");
+    expect(options).toHaveLength(4);
+
+    expect(options[0]).toHaveTextContent("Earth");
+    expect(options[1]).toHaveTextContent("Wind");
+    expect(options[2]).toHaveTextContent("Fire");
+    expect(options[3]).toHaveTextContent("Water");
+
+    fireEvent.click(options[3]);
+
+    expect(trigger.dataset.state).toBe("closed");
+    expect(trigger.ariaExpanded).toBe("false");
+
+    expect(onSelect).toHaveBeenCalledWith("water");
+  });
+
+  it("renders with multiple groups", () => {
+    const onSelect = vi.fn();
+    const optionGroups = [
+      {
+        label: "Elements",
+        options: OPTIONS,
+      },
+      {
+        label: "Colors",
+        options: [
+          {
+            value: "red",
+            label: "Red",
+          },
+          {
+            value: "yellow",
+            label: "Yellow",
+          },
+          {
+            value: "green",
+            label: "Green",
+          },
+          {
+            value: "blue",
+            label: "Blue",
+          },
+        ],
+      },
+    ];
+    render(<SelectInput name="some_input" onValueChange={onSelect} options={optionGroups} />);
+
+    const trigger = screen.getByRole("combobox") as HTMLButtonElement;
+    expect(trigger).toHaveTextContent("");
+
+    fireEvent.click(trigger);
+
+    const optionContainer = screen.getByRole("presentation");
+    const options = within(optionContainer).getAllByRole("option");
+    expect(options).toHaveLength(8);
+
+    expect(options[0]).toHaveTextContent("Earth");
+    expect(options[1]).toHaveTextContent("Wind");
+    expect(options[2]).toHaveTextContent("Fire");
+    expect(options[3]).toHaveTextContent("Water");
+    expect(options[4]).toHaveTextContent("Red");
+    expect(options[5]).toHaveTextContent("Yellow");
+    expect(options[6]).toHaveTextContent("Green");
+    expect(options[7]).toHaveTextContent("Blue");
+  });
 });

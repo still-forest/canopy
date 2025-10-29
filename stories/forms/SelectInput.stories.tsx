@@ -1,6 +1,6 @@
 import type { Meta, StoryObj } from "@storybook/react-vite";
-
-import { SelectInput } from "@/forms";
+import { useState } from "react";
+import { Button, SelectInput } from "@/forms";
 import { Flex } from "@/layout";
 
 const meta: Meta<typeof SelectInput> = {
@@ -85,4 +85,128 @@ export const WithSize: Story = {
       <SelectInput {...defaultProps} placeholder="This input is extra large" size="xl" />
     </Flex>
   ),
+};
+
+export const WithMultipleGroups: Story = {
+  args: {
+    ...defaultProps,
+    options: [
+      {
+        label: "Elements",
+        options: [
+          {
+            icon: "🌎",
+            value: "earth",
+            label: "Earth",
+          },
+          {
+            icon: "🌪️",
+            value: "wind",
+            label: "Wind",
+          },
+          {
+            icon: "🔥",
+            value: "fire",
+            label: "Fire",
+          },
+          {
+            icon: "🌊",
+            value: "water",
+            label: "Water",
+          },
+        ],
+      },
+      {
+        label: "Colors",
+        options: [
+          {
+            icon: "🔴",
+            value: "red",
+            label: "Red",
+          },
+          {
+            icon: "🟡",
+            value: "yellow",
+            label: "Yellow",
+          },
+          {
+            icon: "🟢",
+            value: "green",
+            label: "Green",
+          },
+          {
+            icon: "🔵",
+            value: "blue",
+            label: "Blue",
+          },
+        ],
+      },
+      {
+        label: "Animals",
+        options: [
+          {
+            icon: "🐶",
+            value: "dog",
+            label: "Dog",
+          },
+          {
+            icon: "🐱",
+            value: "cat",
+            label: "Cat",
+          },
+          {
+            icon: "🐭",
+            value: "mouse",
+            label: "Mouse",
+          },
+        ],
+      },
+      {
+        label: "Fruits",
+        options: [
+          {
+            icon: "🍎",
+            value: "apple",
+            label: "Apple",
+          },
+          {
+            icon: "🍓",
+            value: "strawberry",
+            label: "Strawberry",
+          },
+          {
+            icon: "🍊",
+            value: "orange",
+            label: "Orange",
+          },
+          {
+            icon: "🍇",
+            value: "grape",
+            label: "Grape",
+          },
+        ],
+      },
+    ],
+  },
+};
+
+const ControlledInput = () => {
+  const [value, setValue] = useState("marge");
+  return (
+    <Flex align="center" direction="col" gap="4">
+      <Flex.Item>
+        <SelectInput {...defaultProps} onValueChange={setValue} value={value} />
+      </Flex.Item>
+      <Flex direction="row" gap="4">
+        <Button onClick={() => setValue("bart")}>Set to Bart</Button>
+        <Button onClick={() => setValue("marge")} variant="secondary">
+          Reset
+        </Button>
+      </Flex>
+    </Flex>
+  );
+};
+
+export const Controlled: Story = {
+  render: () => <ControlledInput />,
 };

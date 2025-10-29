@@ -4,7 +4,13 @@ import { Flex } from "@/layout";
 import { Text } from "@/typography";
 import { cn } from "@/utils";
 
-export interface Option {
+export interface SelectInputOptionGroup {
+  label: string;
+  options: SelectInputOption[];
+}
+
+export interface SelectInputOption {
+  icon?: string;
   value: string;
   label: string;
 }
@@ -13,7 +19,7 @@ export interface SelectInputProps extends Omit<React.ComponentProps<"select">, "
   name: string;
   value?: string;
   onValueChange: (value: string) => void;
-  options: Option[];
+  options: SelectInputOption[] | SelectInputOptionGroup[];
   label?: string;
   placeholder?: string;
   note?: string;
@@ -25,7 +31,7 @@ export interface SelectInputProps extends Omit<React.ComponentProps<"select">, "
 const SelectInput = ({
   name,
   defaultValue,
-  options,
+  options: optionsProp,
   label,
   placeholder,
   note,
@@ -35,6 +41,19 @@ const SelectInput = ({
   error,
   ...props
 }: SelectInputProps) => {
+  const isOptionGroup = optionsProp.some((option) => "options" in option);
+  const options: SelectInputOptionGroup[] = isOptionGroup
+    ? (optionsProp as SelectInputOptionGroup[])
+    : [
+        {
+          label: "",
+          options: optionsProp as SelectInputOption[],
+        },
+      ];
+
+  const flattenedOptions = options.flatMap((option) => option.options);
+  console.log("flattenedOptions", flattenedOptions);
+
   return (
     <Flex className="w-full" direction="col" gap="2">
       {label && <Label htmlFor={name}>{label}</Label>}
@@ -49,7 +68,7 @@ const SelectInput = ({
           <SelectValue placeholder={placeholder} />
         </SelectTrigger>
         <SelectContent>
-          {options.map(({ value, label }) => (
+          {flattenedOptions.map(({ value, label }) => (
             <SelectItem key={`option-${value}`} value={value}>
               {label}
             </SelectItem>
