@@ -1,6 +1,2 @@
-export {
-  SelectPicker,
-  type SelectPickerOption,
-  type SelectPickerOptionGroup,
-  type SelectPickerProps,
-} from "./SelectPicker";
+export * from "./SelectPicker";
+export * from "./types";

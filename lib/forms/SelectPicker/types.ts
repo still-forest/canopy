@@ -1,5 +1,5 @@
 export interface SelectPickerOptionGroup {
-  label: string;
+  label?: string;
   options: SelectPickerOption[];
 }
 

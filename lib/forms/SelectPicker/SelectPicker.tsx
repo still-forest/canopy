@@ -12,7 +12,7 @@ export interface SelectPickerProps {
   name: string;
   value?: string;
   onChange: (value: string) => void;
-  options: SelectPickerOptionGroup[];
+  options: SelectPickerOption[] | SelectPickerOptionGroup[];
   label?: string;
   placeholder?: string;
   note?: string;
@@ -21,7 +21,7 @@ export interface SelectPickerProps {
 }
 
 export const SelectPicker = ({
-  options: optionGroups,
+  options,
   value,
   placeholder = "Select an option",
   onChange,
@@ -33,16 +33,23 @@ export const SelectPicker = ({
 }: SelectPickerProps) => {
   const [open, setOpen] = useState(false);
   const isMobile = useIsMobile();
-
-  // TODO: remove this
-  const flattenedOptions = useMemo(() => optionGroups.flatMap((group) => group.options), [optionGroups]);
+  const isOptionGroup = options.some((option) => "options" in option);
+  const optionGroups = isOptionGroup
+    ? (options as SelectPickerOptionGroup[])
+    : [
+        {
+          label: undefined,
+          options: options as SelectPickerOption[],
+        },
+      ];
 
   const selectedLabel = useMemo(() => {
     if (!value) return placeholder;
-    const option = flattenedOptions.find((option) => option.value === value);
+    // const option = flattenedOptions.find((option) => option.value === value);
+    const option = undefined;
     const label = option ? renderSelected(option) : placeholder;
     return label;
-  }, [value, flattenedOptions, placeholder, renderSelected]);
+  }, [value, placeholder, renderSelected]);
 
   const handleSelect = (currentValue: string) => {
     onChange(currentValue === value ? "" : currentValue);
