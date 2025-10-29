@@ -17,7 +17,7 @@ const OptionList = ({ label, options, onSelect, selectedValue }: OptionListProps
         const keywords = [label, value, ...keywordsProp].filter(Boolean);
         return (
           <CommandItem key={value} keywords={keywords} onSelect={() => onSelect(value)} value={value}>
-            {icon ? <span className="mr-2">{icon}</span> : ""}
+            {icon ? <span>{icon}</span> : ""}
             {label}
             <Check className={cn("ml-auto", value === selectedValue ? "opacity-100" : "opacity-0")} />
           </CommandItem>
