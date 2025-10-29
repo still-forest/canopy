@@ -17,3 +17,6 @@ vi.stubGlobal(
 vi.mock("@/hooks/use-mobile", () => ({
   useIsMobile: vi.fn().mockReturnValue(false),
 }));
+
+// Mock scrollIntoView for cmdk and other components that use it
+Element.prototype.scrollIntoView = vi.fn();
