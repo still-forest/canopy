@@ -24,7 +24,7 @@ const defaultProps = {
     { value: "lisa", label: "Lisa" },
     { value: "maggie", label: "Maggie" },
   ],
-  onValueChange: (value: string) => console.log("Selected:", value),
+  onChange: (value: string) => window.alert(`Selected option ${value}`),
 };
 
 export const Default: Story = {
@@ -82,31 +82,11 @@ export const WithSize: Story = {
     <Flex direction="col" gap="4">
       <SelectInput {...defaultProps} placeholder="This input is extra small" size="xs" />
       <SelectInput {...defaultProps} placeholder="This input is small" size="sm" />
-      <SelectInput {...defaultProps} placeholder="This input is medium (default size)" size="md" />
+      <SelectInput {...defaultProps} placeholder="This input is medium (default)" size="md" />
       <SelectInput {...defaultProps} placeholder="This input is large" size="lg" />
       <SelectInput {...defaultProps} placeholder="This input is extra large" size="xl" />
     </Flex>
   ),
-};
-
-export const WithEmptyOptionLabel: Story = {
-  args: {
-    ...defaultProps,
-    emptyOptionLabel: "Select a thing...",
-  },
-};
-
-export const WithIcons: Story = {
-  args: {
-    ...defaultProps,
-    options: [
-      { value: "homer", label: "Homer", icon: "👨" },
-      { value: "marge", label: "Marge", icon: "👩" },
-      { value: "bart", label: "Bart", icon: "👦" },
-      { value: "lisa", label: "Lisa", icon: "👧" },
-      { value: "maggie", label: "Maggie", icon: "👶" },
-    ],
-  },
 };
 
 export const WithMultipleGroups: Story = {
@@ -117,22 +97,18 @@ export const WithMultipleGroups: Story = {
         label: "Elements",
         options: [
           {
-            icon: "🌎",
             value: "earth",
             label: "Earth",
           },
           {
-            icon: "🌪️",
             value: "wind",
             label: "Wind",
           },
           {
-            icon: "🔥",
             value: "fire",
             label: "Fire",
           },
           {
-            icon: "🌊",
             value: "water",
             label: "Water",
           },
@@ -142,22 +118,18 @@ export const WithMultipleGroups: Story = {
         label: "Colors",
         options: [
           {
-            icon: "🔴",
             value: "red",
             label: "Red",
           },
           {
-            icon: "🟡",
             value: "yellow",
             label: "Yellow",
           },
           {
-            icon: "🟢",
             value: "green",
             label: "Green",
           },
           {
-            icon: "🔵",
             value: "blue",
             label: "Blue",
           },
@@ -167,17 +139,14 @@ export const WithMultipleGroups: Story = {
         label: "Animals",
         options: [
           {
-            icon: "🐶",
             value: "dog",
             label: "Dog",
           },
           {
-            icon: "🐱",
             value: "cat",
             label: "Cat",
           },
           {
-            icon: "🐭",
             value: "mouse",
             label: "Mouse",
           },
@@ -187,22 +156,18 @@ export const WithMultipleGroups: Story = {
         label: "Fruits",
         options: [
           {
-            icon: "🍎",
             value: "apple",
             label: "Apple",
           },
           {
-            icon: "🍓",
             value: "strawberry",
             label: "Strawberry",
           },
           {
-            icon: "🍊",
             value: "orange",
             label: "Orange",
           },
           {
-            icon: "🍇",
             value: "grape",
             label: "Grape",
           },
@@ -217,7 +182,7 @@ const ControlledInput = () => {
   return (
     <Flex align="center" direction="col" gap="4">
       <Flex.Item>
-        <SelectInput {...defaultProps} onValueChange={setValue} value={value} />
+        <SelectInput {...defaultProps} onChange={setValue} value={value} />
       </Flex.Item>
       <Flex direction="row" gap="4">
         <Button onClick={() => setValue("bart")}>Set to Bart</Button>

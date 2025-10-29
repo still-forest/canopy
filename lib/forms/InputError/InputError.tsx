@@ -1,8 +1,13 @@
 import { Text } from "@/typography";
 
-export const InputError = ({ message }: { message: string }) => {
+interface InputErrorProps {
+  id?: string;
+  message: string;
+}
+
+export const InputError = ({ id, message }: InputErrorProps) => {
   return (
-    <Text size="xs" variant="destructive">
+    <Text id={id} size="xs" variant="destructive">
       {message}
     </Text>
   );
