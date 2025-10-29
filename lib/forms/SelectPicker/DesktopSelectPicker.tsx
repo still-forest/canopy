@@ -1,12 +1,13 @@
 import { ChevronsUpDown } from "lucide-react";
+import type { ReactNode } from "react";
 import { Button } from "@/components/ui/button";
 import { Popover, PopoverContent, PopoverTrigger } from "@/components/ui/popover";
 
 interface DesktopSelectPickerProps {
-  selectedLabel: string;
+  selectedLabel: string | ReactNode;
   open: boolean;
   setOpen: (open: boolean) => void;
-  children: React.ReactNode;
+  children: ReactNode;
   triggerId?: string;
 }
 

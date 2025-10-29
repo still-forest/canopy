@@ -5,7 +5,7 @@ import { Flex } from "@/layout";
 import { Text } from "@/typography";
 import { DesktopSelectPicker } from "./DesktopSelectPicker";
 import { MobileSelectPicker } from "./MobileSelectPicker";
-import { OptionList } from "./OptionList";
+import { GroupedOptionList } from "./OptionList";
 import type { SelectPickerOption, SelectPickerOptionGroup } from "./types";
 
 export interface SelectPickerProps {
@@ -34,7 +34,7 @@ export const SelectPicker = ({
   const [open, setOpen] = useState(false);
   const isMobile = useIsMobile();
 
-  // TODO: Handle option groups
+  // TODO: remove this
   const flattenedOptions = useMemo(() => optionGroups.flatMap((group) => group.options), [optionGroups]);
 
   const selectedLabel = useMemo(() => {
@@ -54,18 +54,18 @@ export const SelectPicker = ({
       {label && <Label htmlFor={name}>{label}</Label>}
       {isMobile ? (
         <MobileSelectPicker open={open} selectedLabel={selectedLabel} setOpen={setOpen} triggerId={name}>
-          <OptionList
+          <GroupedOptionList
             onSelect={handleSelect}
-            options={flattenedOptions}
+            optionGroups={optionGroups}
             placeholder={placeholder}
             selectedValue={value}
           />
         </MobileSelectPicker>
       ) : (
         <DesktopSelectPicker open={open} selectedLabel={selectedLabel} setOpen={setOpen} triggerId={name}>
-          <OptionList
+          <GroupedOptionList
             onSelect={handleSelect}
-            options={flattenedOptions}
+            optionGroups={optionGroups}
             placeholder={placeholder}
             selectedValue={value}
           />

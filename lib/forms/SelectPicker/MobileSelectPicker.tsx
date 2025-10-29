@@ -1,11 +1,12 @@
+import type { ReactNode } from "react";
 import { Button } from "@/components/ui/button";
 import { Drawer, DrawerContent, DrawerTrigger } from "@/components/ui/drawer";
 
 interface MobileSelectPickerProps {
-  selectedLabel: string;
+  selectedLabel: string | ReactNode;
   open: boolean;
   setOpen: (open: boolean) => void;
-  children: React.ReactNode;
+  children: ReactNode;
   triggerId?: string;
 }
 

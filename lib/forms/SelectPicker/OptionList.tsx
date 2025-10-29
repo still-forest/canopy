@@ -1,7 +1,8 @@
 import { Check } from "lucide-react";
+import { useMemo } from "react";
 import { Command, CommandEmpty, CommandGroup, CommandInput, CommandItem, CommandList } from "@/components/ui/command";
 import { cn } from "@/utils";
-import type { SelectPickerOption, SelectPickerOptionValue } from "./types";
+import type { SelectPickerOption, SelectPickerOptionGroup, SelectPickerOptionValue } from "./types";
 
 interface OptionListProps {
   placeholder: string;
@@ -10,7 +11,7 @@ interface OptionListProps {
   onSelect: (value: SelectPickerOptionValue) => void;
 }
 
-export const OptionList = ({ placeholder = "DEFAULT?", options, onSelect, selectedValue }: OptionListProps) => {
+const OptionList = ({ placeholder = "DEFAULT?", options, onSelect, selectedValue }: OptionListProps) => {
   return (
     <Command>
       <CommandInput className="h-9" placeholder={placeholder} />
@@ -30,4 +31,18 @@ export const OptionList = ({ placeholder = "DEFAULT?", options, onSelect, select
       </CommandList>
     </Command>
   );
+};
+
+interface GroupedOptionListProps {
+  optionGroups: SelectPickerOptionGroup[];
+  placeholder: string;
+  selectedValue: SelectPickerOptionValue | undefined;
+  onSelect: (value: SelectPickerOptionValue) => void;
+}
+
+export const GroupedOptionList = ({ optionGroups, ...props }: GroupedOptionListProps) => {
+  // TODO: Handle option groups
+  const flattenedOptions = useMemo(() => optionGroups.flatMap((group) => group.options), [optionGroups]);
+
+  return <OptionList options={flattenedOptions} {...props} />;
 };
