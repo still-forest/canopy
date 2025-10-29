@@ -1,4 +1,5 @@
-import { fireEvent, render, screen, within } from "@testing-library/react";
+import { render, screen, within } from "@testing-library/react";
+import { userEvent } from "@testing-library/user-event";
 import { describe, expect, it, vi } from "vitest";
 import { SelectInput } from "@/forms";
 
@@ -23,41 +24,33 @@ describe("SelectInput", () => {
   ];
 
   const EXPECTED_BASE_TRIGGER_CLASSES =
-    "border-input data-[placeholder]:text-muted-foreground [&_svg:not([class*='text-'])]:text-muted-foreground focus-visible:border-ring focus-visible:ring-ring/50 aria-invalid:ring-destructive/20 dark:aria-invalid:ring-destructive/40 aria-invalid:border-destructive dark:bg-input/30 dark:hover:bg-input/50 flex w-fit items-center justify-between gap-2 rounded-md border bg-transparent px-3 py-2 whitespace-nowrap shadow-xs transition-[color,box-shadow] outline-none focus-visible:ring-[3px] disabled:cursor-not-allowed disabled:opacity-50 data-[size=default]:h-9 data-[size=sm]:h-8 *:data-[slot=select-value]:line-clamp-1 *:data-[slot=select-value]:flex *:data-[slot=select-value]:items-center *:data-[slot=select-value]:gap-2 [&_svg]:pointer-events-none [&_svg]:shrink-0 [&_svg:not([class*='size-'])]:size-4 min-w-[180px] h-9 text-base md:text-sm";
+    "border-input placeholder:text-muted-foreground selection:bg-primary selection:text-primary-foreground dark:bg-input/30 dark:hover:bg-input/50 w-full min-w-0 appearance-none rounded-md border bg-transparent px-3 py-2 pr-9 shadow-xs transition-[color,box-shadow] outline-none disabled:pointer-events-none disabled:cursor-not-allowed focus-visible:border-ring focus-visible:ring-ring/50 focus-visible:ring-[3px] aria-invalid:ring-destructive/20 dark:aria-invalid:ring-destructive/40 aria-invalid:border-destructive h-9 text-sm";
 
   const onSelect = vi.fn();
 
-  it("renders with default props", () => {
+  it("renders with default props", async () => {
+    const user = userEvent.setup();
+
     render(<SelectInput name="some_input" onValueChange={onSelect} options={OPTIONS} />);
 
-    const trigger = screen.getByRole("combobox") as HTMLButtonElement;
-    expect(trigger.tagName).toBe("BUTTON");
-    expect(trigger.className).toBe(EXPECTED_BASE_TRIGGER_CLASSES);
-    expect(trigger).toHaveTextContent("");
+    const select = screen.getByRole("combobox") as HTMLButtonElement;
+    expect(select.tagName).toBe("SELECT");
+    expect(select.className).toBe(EXPECTED_BASE_TRIGGER_CLASSES);
+    expect(select).toHaveTextContent("Select an optionEarthWindFireWater");
 
-    expect(trigger.dataset.state).toBe("closed");
-    expect(trigger.ariaExpanded).toBe("false");
+    const options = within(select).getAllByRole("option");
+    expect(options).toHaveLength(5);
 
-    fireEvent.click(trigger);
+    expect(options[0]).toHaveTextContent("Select an option");
+    expect(options[1]).toHaveTextContent("Earth");
+    expect(options[2]).toHaveTextContent("Wind");
+    expect(options[3]).toHaveTextContent("Fire");
+    expect(options[4]).toHaveTextContent("Water");
 
-    expect(trigger.dataset.state).toBe("open");
-    expect(trigger.ariaExpanded).toBe("true");
+    const waterOption = screen.getByRole("option", { name: "Water" });
+    await user.click(waterOption);
 
-    const optionContainer = screen.getByRole("presentation");
-    const options = within(optionContainer).getAllByRole("option");
-    expect(options).toHaveLength(OPTIONS.length);
-
-    expect(options[0]).toHaveTextContent("Earth");
-    expect(options[1]).toHaveTextContent("Wind");
-    expect(options[2]).toHaveTextContent("Fire");
-    expect(options[3]).toHaveTextContent("Water");
-
-    fireEvent.click(options[2]);
-
-    expect(trigger.dataset.state).toBe("closed");
-    expect(trigger.ariaExpanded).toBe("false");
-
-    expect(onSelect).toHaveBeenCalledWith(OPTIONS[2].value);
+    expect(onSelect).toHaveBeenCalledWith("water");
   });
 
   it("renders with a selected value", () => {
@@ -106,29 +99,26 @@ describe("SelectInput", () => {
   });
 
   it("allows selecting an option", async () => {
-    const onSelect = vi.fn();
+    const user = userEvent.setup();
+
     render(<SelectInput name="some_input" onValueChange={onSelect} options={OPTIONS} value="__none__" />);
 
-    const trigger = screen.getByRole("combobox") as HTMLButtonElement;
-    expect(trigger).toHaveTextContent("");
+    const select = screen.getByRole("combobox") as HTMLSelectElement;
+    expect(select.value).toBe("");
 
-    fireEvent.click(trigger);
+    const options = within(select).getAllByRole("option");
+    expect(options).toHaveLength(5);
 
-    const optionContainer = screen.getByRole("presentation");
-    const options = within(optionContainer).getAllByRole("option");
-    expect(options).toHaveLength(4);
+    expect(options[0]).toHaveTextContent("Select an option");
+    expect(options[1]).toHaveTextContent("Earth");
+    expect(options[2]).toHaveTextContent("Wind");
+    expect(options[3]).toHaveTextContent("Fire");
+    expect(options[4]).toHaveTextContent("Water");
 
-    expect(options[0]).toHaveTextContent("Earth");
-    expect(options[1]).toHaveTextContent("Wind");
-    expect(options[2]).toHaveTextContent("Fire");
-    expect(options[3]).toHaveTextContent("Water");
+    const fireOption = screen.getByRole("option", { name: "Fire" });
+    await user.click(fireOption);
 
-    fireEvent.click(options[3]);
-
-    expect(trigger.dataset.state).toBe("closed");
-    expect(trigger.ariaExpanded).toBe("false");
-
-    expect(onSelect).toHaveBeenCalledWith("water");
+    expect(onSelect).toHaveBeenCalledWith("fire");
   });
 
   it("renders with multiple groups", () => {
@@ -162,22 +152,20 @@ describe("SelectInput", () => {
     ];
     render(<SelectInput name="some_input" onValueChange={onSelect} options={optionGroups} />);
 
-    const trigger = screen.getByRole("combobox") as HTMLButtonElement;
-    expect(trigger).toHaveTextContent("");
+    const select = screen.getByRole("combobox") as HTMLSelectElement;
+    expect(select.value).toBe("");
 
-    fireEvent.click(trigger);
+    const options = within(select).getAllByRole("option");
+    expect(options).toHaveLength(9);
 
-    const optionContainer = screen.getByRole("presentation");
-    const options = within(optionContainer).getAllByRole("option");
-    expect(options).toHaveLength(8);
-
-    expect(options[0]).toHaveTextContent("Earth");
-    expect(options[1]).toHaveTextContent("Wind");
-    expect(options[2]).toHaveTextContent("Fire");
-    expect(options[3]).toHaveTextContent("Water");
-    expect(options[4]).toHaveTextContent("Red");
-    expect(options[5]).toHaveTextContent("Yellow");
-    expect(options[6]).toHaveTextContent("Green");
-    expect(options[7]).toHaveTextContent("Blue");
+    expect(options[0]).toHaveTextContent("Select an option");
+    expect(options[1]).toHaveTextContent("Earth");
+    expect(options[2]).toHaveTextContent("Wind");
+    expect(options[3]).toHaveTextContent("Fire");
+    expect(options[4]).toHaveTextContent("Water");
+    expect(options[5]).toHaveTextContent("Red");
+    expect(options[6]).toHaveTextContent("Yellow");
+    expect(options[7]).toHaveTextContent("Green");
+    expect(options[8]).toHaveTextContent("Blue");
   });
 });

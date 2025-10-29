@@ -1,4 +1,4 @@
-import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
+import { NativeSelect, NativeSelectOption } from "@/components/ui/native-select";
 import { InputError, Label } from "@/forms";
 import { Flex } from "@/layout";
 import { Text } from "@/typography";
@@ -32,7 +32,7 @@ const SelectInput = ({
   defaultValue,
   options: optionsProp,
   label,
-  placeholder,
+  placeholder = "Select an option",
   note,
   className,
   value,
@@ -42,12 +42,10 @@ const SelectInput = ({
   ...props
 }: SelectInputProps) => {
   const triggerClasses = cn(
-    "min-w-[180px]",
-    size === "xs" && "h-7 text-xs md:text-xs",
-    size === "sm" && "h-8 text-sm md:text-xs",
-    size === "md" && "h-9 text-base md:text-sm",
-    size === "lg" && "h-10 text-lg md:text-base",
-    size === "xl" && "h-11 text-xl md:text-lg",
+    (size === "xs" || size === "sm") && "h-8 text-xs",
+    size === "md" && "h-9 text-sm",
+    size === "lg" && "h-10 text-base",
+    size === "xl" && "h-11 text-lg",
     className,
   );
 
@@ -61,32 +59,27 @@ const SelectInput = ({
         },
       ];
 
-  const triggerSize = size === "xs" || size === "sm" ? "sm" : "default";
-
   // TODO: this is temporary, until they can be grouped properly
   const flattenedOptions = options.flatMap((option) => option.options);
 
   return (
     <Flex className="w-full" direction="col" gap="2">
       {label && <Label htmlFor={name}>{label}</Label>}
-      <Select
+      <NativeSelect
+        className={triggerClasses}
         defaultValue={defaultValue as string | undefined}
         name={name}
         onValueChange={onValueChange}
         value={value}
         {...props}
       >
-        <SelectTrigger className={triggerClasses} data-testid={`select-input-${name}`} size={triggerSize}>
-          <SelectValue placeholder={placeholder} />
-        </SelectTrigger>
-        <SelectContent>
-          {flattenedOptions.map(({ value, label }) => (
-            <SelectItem key={`option-${value}`} value={value}>
-              {label}
-            </SelectItem>
-          ))}
-        </SelectContent>
-      </Select>
+        <NativeSelectOption value="">{placeholder}</NativeSelectOption>
+        {flattenedOptions.map(({ value, label }) => (
+          <NativeSelectOption key={`option-${value}`} value={value}>
+            {label}
+          </NativeSelectOption>
+        ))}
+      </NativeSelect>
       {note && (
         <Text size="sm" variant="muted">
           {note}
