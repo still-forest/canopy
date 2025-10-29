@@ -14,10 +14,10 @@ export interface SelectInputOption {
   label: string;
 }
 
-export interface SelectInputProps extends Omit<React.ComponentProps<"select">, "dir" | "size"> {
+export interface SelectInputProps extends Omit<React.ComponentProps<"select">, "dir" | "size" | "onChange"> {
   name: string;
   value?: string;
-  onValueChange: (value: string) => void;
+  onChange: (value: string) => void;
   options: SelectInputOption[] | SelectInputOptionGroup[];
   label?: string;
   placeholder?: string;
@@ -36,7 +36,7 @@ const SelectInput = ({
   note,
   className,
   value,
-  onValueChange,
+  onChange,
   error,
   size = "md",
   ...props
@@ -62,6 +62,10 @@ const SelectInput = ({
   // TODO: this is temporary, until they can be grouped properly
   const flattenedOptions = options.flatMap((option) => option.options);
 
+  const handleSelectChange = (event: React.ChangeEvent<HTMLSelectElement>) => {
+    onChange?.(event.target.value);
+  };
+
   return (
     <Flex className="w-full" direction="col" gap="2">
       {label && <Label htmlFor={name}>{label}</Label>}
@@ -69,7 +73,7 @@ const SelectInput = ({
         className={triggerClasses}
         defaultValue={defaultValue as string | undefined}
         name={name}
-        onValueChange={onValueChange}
+        onChange={handleSelectChange}
         value={value}
         {...props}
       >

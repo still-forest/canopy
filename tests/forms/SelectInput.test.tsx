@@ -31,7 +31,7 @@ describe("SelectInput", () => {
   it("renders with default props", async () => {
     const user = userEvent.setup();
 
-    render(<SelectInput name="some_input" onValueChange={onSelect} options={OPTIONS} />);
+    render(<SelectInput name="some_input" onChange={onSelect} options={OPTIONS} />);
 
     const select = screen.getByRole("combobox") as HTMLButtonElement;
     expect(select.tagName).toBe("SELECT");
@@ -47,21 +47,20 @@ describe("SelectInput", () => {
     expect(options[3]).toHaveTextContent("Fire");
     expect(options[4]).toHaveTextContent("Water");
 
-    const waterOption = screen.getByRole("option", { name: "Water" });
-    await user.click(waterOption);
+    await user.selectOptions(select, "water");
 
     expect(onSelect).toHaveBeenCalledWith("water");
   });
 
   it("renders with a selected value", () => {
-    render(<SelectInput name="some_input" onValueChange={onSelect} options={OPTIONS} value={OPTIONS[0].value} />);
+    render(<SelectInput name="some_input" onChange={onSelect} options={OPTIONS} value={OPTIONS[0].value} />);
 
     const trigger = screen.getByRole("combobox") as HTMLButtonElement;
     expect(trigger).toHaveTextContent("Earth");
   });
 
   it("renders with a label", () => {
-    render(<SelectInput label="Some label" name="some_input" onValueChange={onSelect} options={OPTIONS} />);
+    render(<SelectInput label="Some label" name="some_input" onChange={onSelect} options={OPTIONS} />);
 
     const label = screen.getByText("Some label") as HTMLLabelElement;
     expect(label.tagName).toBe("LABEL");
@@ -69,14 +68,14 @@ describe("SelectInput", () => {
   });
 
   it("renders with a placeholder", () => {
-    render(<SelectInput name="some_input" onValueChange={onSelect} options={OPTIONS} placeholder="Some placeholder" />);
+    render(<SelectInput name="some_input" onChange={onSelect} options={OPTIONS} placeholder="Some placeholder" />);
 
     const trigger = screen.getByRole("combobox") as HTMLButtonElement;
     expect(trigger).toHaveTextContent("Some placeholder");
   });
 
   it("renders with a note", () => {
-    render(<SelectInput name="some_input" note="Some note" onValueChange={onSelect} options={OPTIONS} />);
+    render(<SelectInput name="some_input" note="Some note" onChange={onSelect} options={OPTIONS} />);
 
     const note = screen.getByText("Some note") as HTMLParagraphElement;
     expect(note.tagName).toBe("P");
@@ -84,7 +83,7 @@ describe("SelectInput", () => {
   });
 
   it("renders with an error message", () => {
-    render(<SelectInput error="What'd you do?" name="some_input" onValueChange={onSelect} options={OPTIONS} />);
+    render(<SelectInput error="What'd you do?" name="some_input" onChange={onSelect} options={OPTIONS} />);
 
     const error = screen.getByText("What'd you do?");
     expect(error.tagName).toBe("P");
@@ -92,7 +91,7 @@ describe("SelectInput", () => {
   });
 
   it("combines custom className with generated classes", () => {
-    render(<SelectInput className="custom-class" name="some_input" onValueChange={onSelect} options={OPTIONS} />);
+    render(<SelectInput className="custom-class" name="some_input" onChange={onSelect} options={OPTIONS} />);
 
     const trigger = screen.getByRole("combobox") as HTMLButtonElement;
     expect(trigger.className).toBe(`${EXPECTED_BASE_TRIGGER_CLASSES} custom-class`);
@@ -101,7 +100,7 @@ describe("SelectInput", () => {
   it("allows selecting an option", async () => {
     const user = userEvent.setup();
 
-    render(<SelectInput name="some_input" onValueChange={onSelect} options={OPTIONS} value="__none__" />);
+    render(<SelectInput name="some_input" onChange={onSelect} options={OPTIONS} value="__none__" />);
 
     const select = screen.getByRole("combobox") as HTMLSelectElement;
     expect(select.value).toBe("");
@@ -115,8 +114,7 @@ describe("SelectInput", () => {
     expect(options[3]).toHaveTextContent("Fire");
     expect(options[4]).toHaveTextContent("Water");
 
-    const fireOption = screen.getByRole("option", { name: "Fire" });
-    await user.click(fireOption);
+    await user.selectOptions(select, "fire");
 
     expect(onSelect).toHaveBeenCalledWith("fire");
   });
@@ -150,7 +148,7 @@ describe("SelectInput", () => {
         ],
       },
     ];
-    render(<SelectInput name="some_input" onValueChange={onSelect} options={optionGroups} />);
+    render(<SelectInput name="some_input" onChange={onSelect} options={optionGroups} />);
 
     const select = screen.getByRole("combobox") as HTMLSelectElement;
     expect(select.value).toBe("");
