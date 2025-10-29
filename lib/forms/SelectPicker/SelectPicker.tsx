@@ -42,14 +42,14 @@ export const SelectPicker = ({
           options: options as SelectPickerOption[],
         },
       ];
+  const flattenedOptions = optionGroups.flatMap((group) => group.options);
 
   const selectedLabel = useMemo(() => {
     if (!value) return placeholder;
-    // const option = flattenedOptions.find((option) => option.value === value);
-    const option = undefined;
+    const option = flattenedOptions.find((option) => option.value === value);
     const label = option ? renderSelected(option) : placeholder;
     return label;
-  }, [value, placeholder, renderSelected]);
+  }, [value, placeholder, renderSelected, flattenedOptions]);
 
   const handleSelect = (currentValue: string) => {
     onChange(currentValue === value ? "" : currentValue);
