@@ -39,7 +39,7 @@ export const GroupedOptionList = ({ optionGroups, placeholder, ...props }: Group
     <Command>
       <CommandInput className="h-9" placeholder={placeholder} />
       <CommandList>
-        <CommandEmpty>No timezone found.</CommandEmpty>
+        <CommandEmpty>No results found.</CommandEmpty>
         {optionGroups.map(({ label, options }) => (
           <OptionList key={label} label={label} options={options} {...props} />
         ))}
