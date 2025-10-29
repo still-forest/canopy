@@ -40,8 +40,11 @@ const SelectInput = ({
   onChange,
   error,
   size = "md",
+  id: idProp,
   ...props
 }: SelectInputProps) => {
+  const id = idProp ?? name;
+
   const triggerClasses = cn(
     (size === "xs" || size === "sm") && "h-8 text-xs",
     size === "md" && "h-9 text-sm",
@@ -58,12 +61,12 @@ const SelectInput = ({
 
   return (
     <Flex className="w-full" direction="col" gap="2">
-      {label && <Label htmlFor={name}>{label}</Label>}
+      {label && <Label htmlFor={id}>{label}</Label>}
       <NativeSelect
-        aria-describedby={error ? `${name}-error` : undefined}
+        aria-describedby={error ? `${id}-error` : undefined}
         aria-invalid={Boolean(error) || undefined}
         className={triggerClasses}
-        id={name}
+        id={id}
         name={name}
         onChange={handleSelectChange}
         {...(value !== undefined ? { value } : { defaultValue: defaultValue as string | undefined })}
@@ -92,7 +95,7 @@ const SelectInput = ({
           {note}
         </Text>
       )}
-      {error && <InputError id={`${name}-error`} message={error} />}
+      {error && <InputError id={`${id}-error`} message={error} />}
     </Flex>
   );
 };
