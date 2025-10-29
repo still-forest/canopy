@@ -97,22 +97,18 @@ export const WithMultipleGroups: Story = {
         label: "Elements",
         options: [
           {
-            icon: "🌎",
             value: "earth",
             label: "Earth",
           },
           {
-            icon: "🌪️",
             value: "wind",
             label: "Wind",
           },
           {
-            icon: "🔥",
             value: "fire",
             label: "Fire",
           },
           {
-            icon: "🌊",
             value: "water",
             label: "Water",
           },
@@ -122,22 +118,18 @@ export const WithMultipleGroups: Story = {
         label: "Colors",
         options: [
           {
-            icon: "🔴",
             value: "red",
             label: "Red",
           },
           {
-            icon: "🟡",
             value: "yellow",
             label: "Yellow",
           },
           {
-            icon: "🟢",
             value: "green",
             label: "Green",
           },
           {
-            icon: "🔵",
             value: "blue",
             label: "Blue",
           },
@@ -147,17 +139,14 @@ export const WithMultipleGroups: Story = {
         label: "Animals",
         options: [
           {
-            icon: "🐶",
             value: "dog",
             label: "Dog",
           },
           {
-            icon: "🐱",
             value: "cat",
             label: "Cat",
           },
           {
-            icon: "🐭",
             value: "mouse",
             label: "Mouse",
           },
@@ -167,22 +156,18 @@ export const WithMultipleGroups: Story = {
         label: "Fruits",
         options: [
           {
-            icon: "🍎",
             value: "apple",
             label: "Apple",
           },
           {
-            icon: "🍓",
             value: "strawberry",
             label: "Strawberry",
           },
           {
-            icon: "🍊",
             value: "orange",
             label: "Orange",
           },
           {
-            icon: "🍇",
             value: "grape",
             label: "Grape",
           },
