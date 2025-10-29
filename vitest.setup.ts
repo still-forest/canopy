@@ -1,5 +1,5 @@
 import "@testing-library/jest-dom";
-import { vi } from "vitest";
+import { beforeEach, vi } from "vitest";
 
 vi.stubGlobal(
   "ResizeObserver",
@@ -9,3 +9,7 @@ vi.stubGlobal(
     disconnect: vi.fn(),
   })),
 );
+
+beforeEach(() => {
+  vi.clearAllMocks();
+});

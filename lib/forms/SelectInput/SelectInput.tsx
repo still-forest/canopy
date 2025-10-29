@@ -10,7 +10,6 @@ export interface SelectInputOptionGroup {
 }
 
 export interface SelectInputOption {
-  icon?: string;
   value: string;
   label: string;
 }
