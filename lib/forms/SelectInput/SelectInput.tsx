@@ -1,4 +1,4 @@
-import { NativeSelect, NativeSelectOption } from "@/components/ui/native-select";
+import { NativeSelect, NativeSelectOptGroup, NativeSelectOption } from "@/components/ui/native-select";
 import { InputError, Label } from "@/forms";
 import { Flex } from "@/layout";
 import { Text } from "@/typography";
@@ -30,7 +30,7 @@ export interface SelectInputProps extends Omit<React.ComponentProps<"select">, "
 const SelectInput = ({
   name,
   defaultValue,
-  options: optionsProp,
+  options,
   label,
   placeholder = "Select an option",
   note,
@@ -49,18 +49,7 @@ const SelectInput = ({
     className,
   );
 
-  const isOptionGroup = optionsProp.some((option) => "options" in option);
-  const options: SelectInputOptionGroup[] = isOptionGroup
-    ? (optionsProp as SelectInputOptionGroup[])
-    : [
-        {
-          label: "",
-          options: optionsProp as SelectInputOption[],
-        },
-      ];
-
-  // TODO: this is temporary, until they can be grouped properly
-  const flattenedOptions = options.flatMap((option) => option.options);
+  const isOptionGroup = options.some((option) => "options" in option);
 
   const handleSelectChange = (event: React.ChangeEvent<HTMLSelectElement>) => {
     onChange?.(event.target.value);
@@ -78,11 +67,22 @@ const SelectInput = ({
         {...props}
       >
         <NativeSelectOption value="">{placeholder}</NativeSelectOption>
-        {flattenedOptions.map(({ value, label }) => (
-          <NativeSelectOption key={`option-${value}`} value={value}>
-            {label}
-          </NativeSelectOption>
-        ))}
+        {!isOptionGroup &&
+          (options as unknown as SelectInputOption[]).map(({ value, label }) => (
+            <NativeSelectOption key={`option-${value}`} value={value}>
+              {label}
+            </NativeSelectOption>
+          ))}
+        {isOptionGroup &&
+          (options as unknown as SelectInputOptionGroup[]).map(({ label, options: optionGroups }) => (
+            <NativeSelectOptGroup key={`option-group-${label}`} label={label}>
+              {optionGroups.map(({ value, label }) => (
+                <NativeSelectOption key={`option-${value}`} value={value}>
+                  {label}
+                </NativeSelectOption>
+              ))}
+            </NativeSelectOptGroup>
+          ))}
       </NativeSelect>
       {note && (
         <Text size="sm" variant="muted">
