@@ -1,21 +1,35 @@
 import { useEffect, useState } from "react";
 
+import { Hint } from "@/components";
 import { Checkbox as BaseCheckbox } from "@/components/ui/checkbox";
 import { InputError, Label } from "@/forms";
 import { Flex } from "@/layout";
 import { Text } from "@/typography";
+import { cn } from "@/utils";
 
 export interface CheckboxProps {
   label: string;
+  labelClassName?: string;
   name: string;
   value?: string;
   checked: boolean;
   onCheckedChange?: (checked: boolean) => void;
+  hint?: string;
   note?: string;
   error?: string;
 }
 
-const Checkbox = ({ label, name, value, checked, onCheckedChange, note, error }: CheckboxProps) => {
+const Checkbox = ({
+  label,
+  name,
+  value,
+  checked,
+  onCheckedChange,
+  note,
+  error,
+  labelClassName,
+  hint,
+}: CheckboxProps) => {
   const [checkedState, setCheckedState] = useState(checked);
 
   useEffect(() => {
@@ -45,9 +59,10 @@ const Checkbox = ({ label, name, value, checked, onCheckedChange, note, error }:
           onCheckedChange={handleChange}
           value={effectiveValue}
         />
-        <Label className="cursor-pointer" htmlFor={fullId}>
+        <Label className={cn("cursor-pointer", labelClassName)} htmlFor={fullId}>
           {label}
         </Label>
+        {hint && <Hint content={hint} />}
       </Flex>
       {(note || error) && (
         <Flex className="ml-6" direction="col" gap="2">
