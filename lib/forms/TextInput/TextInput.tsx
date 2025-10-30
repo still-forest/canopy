@@ -1,3 +1,4 @@
+import { Hint } from "@/components";
 import { InputError, Label } from "@/forms";
 import { Flex } from "@/layout";
 import { Text } from "@/typography";
@@ -9,6 +10,7 @@ export interface TextInputProps extends Omit<React.ComponentProps<"input">, "siz
   placeholder?: string;
   label?: string;
   labelOrientation?: "top" | "left";
+  hint?: string;
   note?: string;
   size?: "xs" | "sm" | "md" | "lg" | "xl";
   className?: string;
@@ -21,6 +23,7 @@ const TextInput = ({
   placeholder,
   label,
   labelOrientation = "top",
+  hint,
   note,
   size = "md",
   className,
@@ -44,11 +47,14 @@ const TextInput = ({
 
   return (
     <Flex className="w-full" direction={labelOrientation === "left" ? "row" : "col"} gap="2">
-      {label && (
-        <Label className={labelOrientation === "left" ? "text-nowrap" : ""} htmlFor={name} size={size}>
-          {label}
-        </Label>
-      )}
+      <Flex align="center" direction="row" gap="1">
+        {label && (
+          <Label className={labelOrientation === "left" ? "text-nowrap" : ""} htmlFor={name} size={size}>
+            {label}
+          </Label>
+        )}
+        {hint && <Hint content={hint} />}
+      </Flex>
       <input
         aria-label={label || name}
         className={inputClasses}

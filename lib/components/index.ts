@@ -6,6 +6,7 @@ export * from "./BulletList";
 export * from "./Card";
 export * from "./Collapsible";
 export * from "./Empty";
+export * from "./Hint";
 export * from "./Item";
 export * from "./Loader";
 export * from "./Modal";
