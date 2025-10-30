@@ -37,12 +37,21 @@ export const WithNote: Story = {
   },
 };
 
+export const WithHint: Story = {
+  args: {
+    ...defaultProps,
+    label: "Your message:",
+    hint: "This is a hint.",
+  },
+};
+
 export const WithEverything: Story = {
   args: {
     ...defaultProps,
     label: "Your message:",
     placeholder: "Type your message here",
     note: "Your message will self destruct in 5 seconds",
+    hint: "My cat's breath smells like cat food",
   },
 };
 
