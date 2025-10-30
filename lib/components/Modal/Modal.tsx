@@ -15,11 +15,18 @@ interface Props {
   description?: string;
   open?: boolean;
   onOpenChange?: (open: boolean) => void;
+  ariaDescription?: string;
 }
 
-export const Modal = ({ trigger, children, title, description, open, onOpenChange }: Props) => {
+export const Modal = ({ trigger, children, title, description, open, onOpenChange, ariaDescription }: Props) => {
   const isControlled = open !== undefined;
   const [openState, setOpenState] = useState<boolean>(isControlled ? open : false);
+
+  useEffect(() => {
+    if (!ariaDescription && !description) {
+      console.warn("Warning: Missing aria description. Please provide either an ariaDescription or description prop.");
+    }
+  }, [ariaDescription, description]);
 
   useEffect(() => {
     if (isControlled) {
@@ -45,6 +52,9 @@ export const Modal = ({ trigger, children, title, description, open, onOpenChang
             {title && <DialogTitle>{title}</DialogTitle>}
             {description && <DialogDescription>{description}</DialogDescription>}
           </DialogHeader>
+        )}
+        {ariaDescription && !description && (
+          <DialogDescription className="sr-only">{ariaDescription}</DialogDescription>
         )}
         {children}
       </DialogContent>
