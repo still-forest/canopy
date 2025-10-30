@@ -36,7 +36,7 @@ const Checkbox = ({ label, name, value, checked, onCheckedChange, note, error }:
   };
 
   return (
-    <Flex className="w-full" direction="col">
+    <Flex direction="col">
       <Flex align="center" gap="2">
         <BaseCheckbox
           checked={checkedState}
