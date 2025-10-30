@@ -22,9 +22,11 @@ export const Modal = ({ trigger, children, title, description, open, onOpenChang
   const isControlled = open !== undefined;
   const [openState, setOpenState] = useState<boolean>(isControlled ? open : false);
 
-  if (!ariaDescription && !description) {
-    console.warn("Warning: Missing aria description. Please provide either an ariaDescription or description prop.");
-  }
+  useEffect(() => {
+    if (!ariaDescription && !description) {
+      console.warn("Warning: Missing aria description. Please provide either an ariaDescription or description prop.");
+    }
+  }, [ariaDescription, description]);
 
   useEffect(() => {
     if (isControlled) {
@@ -44,12 +46,15 @@ export const Modal = ({ trigger, children, title, description, open, onOpenChang
   return (
     <Dialog onOpenChange={handleOpenChange} open={openState}>
       <DialogTrigger asChild>{trigger}</DialogTrigger>
-      <DialogContent aria-describedby={ariaDescription || description}>
+      <DialogContent>
         {(title || description) && (
           <DialogHeader>
             {title && <DialogTitle>{title}</DialogTitle>}
             {description && <DialogDescription>{description}</DialogDescription>}
           </DialogHeader>
+        )}
+        {ariaDescription && !description && (
+          <DialogDescription className="sr-only">{ariaDescription}</DialogDescription>
         )}
         {children}
       </DialogContent>
