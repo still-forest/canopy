@@ -45,6 +45,14 @@ export const WithNote: Story = {
   },
 };
 
+export const WithHint: Story = {
+  args: {
+    ...defaultProps,
+    label: "This is a checkbox",
+    hint: "This is a hint.",
+  },
+};
+
 export const WithError: Story = {
   args: {
     ...defaultProps,
@@ -58,6 +66,7 @@ export const WithEverything: Story = {
     ...defaultProps,
     label: "Some value:",
     note: "Sorry, buddy. You got me confused with Fred Flintstone.",
+    hint: "My cat's breath smells like cat food",
     error: "What'd you do?!",
   },
 };

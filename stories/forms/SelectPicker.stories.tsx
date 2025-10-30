@@ -128,6 +128,14 @@ export const WithSelection: Story = {
   args: { ...defaultProps, value: "wind" },
 };
 
+export const WithHint: Story = {
+  args: {
+    ...defaultProps,
+    hint: "My cat's breath smells like cat food",
+    label: "Select a thing:",
+  },
+};
+
 export const NoIcons: Story = {
   args: {
     ...defaultProps,

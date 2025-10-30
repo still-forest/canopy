@@ -1,4 +1,5 @@
 import { useMemo, useState } from "react";
+import { Hint } from "@/components";
 import { InputError, Label } from "@/forms";
 import { useIsMobile } from "@/hooks/use-mobile";
 import { Flex } from "@/layout";
@@ -14,7 +15,9 @@ export interface SelectPickerProps {
   onChange: (value: string) => void;
   options: SelectPickerOption[] | SelectPickerOptionGroup[];
   label?: string;
+  labelClassName?: string;
   placeholder?: string;
+  hint?: string;
   note?: string;
   error?: string;
   renderSelected?: (selected: SelectPickerOption) => React.ReactNode;
@@ -27,6 +30,8 @@ export const SelectPicker = ({
   onChange,
   label,
   name,
+  labelClassName,
+  hint,
   note,
   error,
   renderSelected = (selected) => selected.label,
@@ -58,7 +63,16 @@ export const SelectPicker = ({
 
   return (
     <Flex direction="col" gap="2">
-      {label && <Label htmlFor={name}>{label}</Label>}
+      {(label || hint) && (
+        <Flex align="center" direction="row" gap="1">
+          {label && (
+            <Label className={labelClassName} htmlFor={name}>
+              {label}
+            </Label>
+          )}
+          {hint && <Hint content={hint} />}
+        </Flex>
+      )}
       {isMobile ? (
         <MobileSelectPicker open={open} selectedLabel={selectedLabel} setOpen={setOpen} triggerId={name}>
           <GroupedOptionList

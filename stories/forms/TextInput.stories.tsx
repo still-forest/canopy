@@ -53,11 +53,20 @@ export const WithNote: Story = {
   },
 };
 
+export const WithHint: Story = {
+  args: {
+    ...defaultProps,
+    label: "Some value:",
+    hint: "Label isn't required, but it's a little odd without it.",
+  },
+};
+
 export const WithEverything: Story = {
   args: {
     ...defaultProps,
     placeholder: "Do alligators alligate?",
     label: "Some value:",
+    hint: "My cat's breath smells like cat food",
     note: "Sorry, buddy. You got me confused with Fred Flintstone.",
   },
 };
