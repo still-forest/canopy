@@ -9,6 +9,7 @@ export interface TextInputProps extends Omit<React.ComponentProps<"input">, "siz
   type?: string;
   placeholder?: string;
   label?: string;
+  labelClassName?: string;
   labelOrientation?: "top" | "left";
   hint?: string;
   note?: string;
@@ -22,6 +23,7 @@ const TextInput = ({
   type = "text",
   placeholder,
   label,
+  labelClassName,
   labelOrientation = "top",
   hint,
   note,
@@ -49,7 +51,11 @@ const TextInput = ({
     <Flex className="w-full" direction={labelOrientation === "left" ? "row" : "col"} gap="2">
       <Flex align="center" direction="row" gap="1">
         {label && (
-          <Label className={labelOrientation === "left" ? "text-nowrap" : ""} htmlFor={name} size={size}>
+          <Label
+            className={cn(labelOrientation === "left" ? "text-nowrap" : "", labelClassName)}
+            htmlFor={name}
+            size={size}
+          >
             {label}
           </Label>
         )}

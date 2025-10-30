@@ -1,4 +1,5 @@
 import type { ChangeEvent, ComponentProps } from "react";
+import { Hint } from "@/components";
 import { NativeSelect, NativeSelectOptGroup, NativeSelectOption } from "@/components/ui/native-select";
 import { InputError, Label } from "@/forms";
 import { Flex } from "@/layout";
@@ -21,7 +22,9 @@ export interface SelectInputProps extends Omit<ComponentProps<"select">, "dir" |
   onChange: (value: string) => void;
   options: SelectInputOption[] | SelectInputOptionGroup[];
   label?: string;
+  labelClassName?: string;
   placeholder?: string;
+  hint?: string;
   note?: string;
   className?: string;
   error?: string;
@@ -33,7 +36,9 @@ const SelectInput = ({
   defaultValue,
   options,
   label,
+  labelClassName,
   placeholder = "Select an option",
+  hint,
   note,
   className,
   value,
@@ -61,7 +66,14 @@ const SelectInput = ({
 
   return (
     <Flex className="w-full" direction="col" gap="2">
-      {label && <Label htmlFor={id}>{label}</Label>}
+      <Flex align="center" direction="row" gap="1">
+        {label && (
+          <Label className={labelClassName} htmlFor={id}>
+            {label}
+          </Label>
+        )}
+        {hint && <Hint content={hint} />}
+      </Flex>
       <NativeSelect
         aria-describedby={error ? `${id}-error` : undefined}
         aria-invalid={Boolean(error) || undefined}
