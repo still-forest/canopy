@@ -45,6 +45,14 @@ export const WithLabel: Story = {
   },
 };
 
+export const WithHint: Story = {
+  args: {
+    ...defaultProps,
+    label: "Favorite Simpson:",
+    hint: "This is a hint.",
+  },
+};
+
 export const WithError: Story = {
   args: {
     ...defaultProps,
