@@ -49,7 +49,13 @@ export const WithHint: Story = {
   args: {
     ...defaultProps,
     label: "Favorite Simpson:",
-    hint: "This is a hint.",
+    options: [
+      { value: "homer", label: "Homer", hint: "Homer is the father of the Simpson family." },
+      { value: "marge", label: "Marge", hint: "Marge is the mother of the Simpson family." },
+      { value: "bart", label: "Bart", hint: "Bart is the oldest child of the Simpson family." },
+      { value: "lisa", label: "Lisa", hint: "Lisa is the second child of the Simpson family." },
+      { value: "maggie", label: "Maggie", hint: "Maggie is the youngest child of the Simpson family." },
+    ],
   },
 };
 

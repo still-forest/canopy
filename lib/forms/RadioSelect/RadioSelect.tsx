@@ -6,20 +6,20 @@ import { Flex, Grid } from "@/layout";
 interface Option {
   value: string;
   label: string;
+  hint?: string;
 }
 
 interface RadioSelectProps {
   name: string;
   label?: string;
   labelClassName?: string;
-  hint?: string;
   value?: string;
   options: Option[];
   onChange?: (value: string) => void;
   error?: string;
 }
 
-const RadioSelect = ({ label, name, options, value, onChange, error, labelClassName, hint }: RadioSelectProps) => {
+const RadioSelect = ({ label, name, options, value, onChange, error, labelClassName }: RadioSelectProps) => {
   return (
     <LegacyInputGroup className="flex flex-col gap-4 px-2 py-1" label={label} labelFor={name}>
       <RadioGroup className="w-full" name={name} onValueChange={onChange} value={value}>
@@ -30,7 +30,7 @@ const RadioSelect = ({ label, name, options, value, onChange, error, labelClassN
               <Label className={labelClassName} htmlFor={option.value}>
                 {option.label}
               </Label>
-              {hint && <Hint content={hint} />}
+              {option.hint && <Hint content={option.hint} />}
             </Flex>
           ))}
         </Grid>
