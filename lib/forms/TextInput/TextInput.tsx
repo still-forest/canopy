@@ -49,18 +49,20 @@ const TextInput = ({
 
   return (
     <Flex className="w-full" direction={labelOrientation === "left" ? "row" : "col"} gap="2">
-      <Flex align="center" direction="row" gap="1">
-        {label && (
-          <Label
-            className={cn(labelOrientation === "left" ? "text-nowrap" : "", labelClassName)}
-            htmlFor={name}
-            size={size}
-          >
-            {label}
-          </Label>
-        )}
-        {hint && <Hint content={hint} />}
-      </Flex>
+      {(label || hint) && (
+        <Flex align="center" direction="row" gap="1">
+          {label && (
+            <Label
+              className={cn(labelOrientation === "left" ? "text-nowrap" : "", labelClassName)}
+              htmlFor={name}
+              size={size}
+            >
+              {label}
+            </Label>
+          )}
+          {hint && <Hint content={hint} />}
+        </Flex>
+      )}
       <input
         aria-label={label || name}
         className={inputClasses}
