@@ -48,7 +48,7 @@ const TextInput = ({
   );
 
   return (
-    <Flex className="w-full" data-testid="text-input" direction={labelOrientation === "left" ? "row" : "col"} gap="2">
+    <Flex className="w-full" direction={labelOrientation === "left" ? "row" : "col"} gap="2">
       {(label || hint) && (
         <Flex align="center" direction="row" gap="1">
           {label && (
