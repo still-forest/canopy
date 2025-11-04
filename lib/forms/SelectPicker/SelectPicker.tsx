@@ -16,11 +16,13 @@ export interface SelectPickerProps {
   options: SelectPickerOption[] | SelectPickerOptionGroup[];
   label?: string;
   labelClassName?: string;
+  triggerClassName?: string;
   placeholder?: string;
   hint?: string;
   note?: string;
   error?: string;
   renderSelected?: (selected: SelectPickerOption) => React.ReactNode;
+  className?: string;
 }
 
 export const SelectPicker = ({
@@ -31,6 +33,7 @@ export const SelectPicker = ({
   label,
   name,
   labelClassName,
+  triggerClassName,
   hint,
   note,
   error,
@@ -74,7 +77,13 @@ export const SelectPicker = ({
         </Flex>
       )}
       {isMobile ? (
-        <MobileSelectPicker open={open} selectedLabel={selectedLabel} setOpen={setOpen} triggerId={name}>
+        <MobileSelectPicker
+          className={triggerClassName}
+          open={open}
+          selectedLabel={selectedLabel}
+          setOpen={setOpen}
+          triggerId={name}
+        >
           <GroupedOptionList
             onSelect={handleSelect}
             optionGroups={optionGroups}
@@ -83,7 +92,13 @@ export const SelectPicker = ({
           />
         </MobileSelectPicker>
       ) : (
-        <DesktopSelectPicker open={open} selectedLabel={selectedLabel} setOpen={setOpen} triggerId={name}>
+        <DesktopSelectPicker
+          className={triggerClassName}
+          open={open}
+          selectedLabel={selectedLabel}
+          setOpen={setOpen}
+          triggerId={name}
+        >
           <GroupedOptionList
             onSelect={handleSelect}
             optionGroups={optionGroups}
