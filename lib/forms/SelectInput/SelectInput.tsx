@@ -66,14 +66,16 @@ const SelectInput = ({
 
   return (
     <Flex className="w-full" direction="col" gap="2">
-      <Flex align="center" direction="row" gap="1">
-        {label && (
-          <Label className={labelClassName} htmlFor={id}>
-            {label}
-          </Label>
-        )}
-        {hint && <Hint content={hint} />}
-      </Flex>
+      {(label || hint) && (
+        <Flex align="center" direction="row" gap="1">
+          {label && (
+            <Label className={labelClassName} htmlFor={id}>
+              {label}
+            </Label>
+          )}
+          {hint && <Hint content={hint} />}
+        </Flex>
+      )}
       <NativeSelect
         aria-describedby={error ? `${id}-error` : undefined}
         aria-invalid={Boolean(error) || undefined}
