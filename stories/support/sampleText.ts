@@ -16,5 +16,6 @@ export const sampleParagraphText = [
 ];
 export const sampleLongText = sampleParagraphText[1];
 export const sampleSentences = sampleLongText.split(".").filter(Boolean);
+export const sampleSentence = `${sampleSentences[0]}.`;
 
 export const sampleLongWord = "Simpsoncalifragilisticexpiala(annoyed-grunt)cious";
