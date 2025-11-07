@@ -2,11 +2,12 @@ import type React from "react";
 import type { LoaderProps } from "@/components/Loader";
 import { Flex } from "@/layout";
 import type { FontWeight, HeadingSize } from "@/types";
+import type { AlertVariant } from "@/types/variants";
 import { Heading, Text } from "@/typography";
 import { cn } from "@/utils";
 
 export interface InterstitialProps {
-  variant?: "error" | "info" | "success" | "warning";
+  variant?: AlertVariant;
   iconComponent?: React.ElementType;
   headline?: string;
   headlineLevel?: HeadingSize;
