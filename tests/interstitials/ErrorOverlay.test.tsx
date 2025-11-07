@@ -8,7 +8,7 @@ describe("ErrorOverlay", () => {
   it("renders with default message", () => {
     render(<ErrorOverlay />);
 
-    expect(screen.getByText("Something went wrong.")).toBeInTheDocument();
+    expect(screen.getByText("Something went wrong")).toBeInTheDocument();
 
     const icon = screen.getByTestId("icon");
     expect(icon).toBeInTheDocument();
