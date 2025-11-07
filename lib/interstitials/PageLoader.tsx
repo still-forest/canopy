@@ -13,10 +13,12 @@ export const PageLoader = ({ iconComponent, message, iconSize = "5xl", iconClass
 
   return (
     <Interstitial
+      headline={message}
+      headlineLevel="4"
+      headlineWeight="normal"
       iconClassName={cn("text-info", iconClassName)}
       iconComponent={IconComponent}
       iconSize={iconSize}
-      message={message}
       {...props}
     />
   );

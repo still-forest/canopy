@@ -18,14 +18,23 @@ export const Default: Story = {
   args: {},
 };
 
+export const WithHeadline: Story = {
+  args: {
+    headline: "Something went wrong",
+  },
+};
+
 export const WithMessage: Story = {
   args: {
-    message: "Something went wrong",
+    headline: "Something went wrong",
+    message: "This is a message describing the error.",
   },
 };
 
 export const WithLongMessage: Story = {
   args: {
-    message: "This is a long message because things are totally fucked up.",
+    headline: "Something went wrong",
+    message:
+      "This is a long message because things are totally fucked up. You should panic immediately or else you will be fired.",
   },
 };
