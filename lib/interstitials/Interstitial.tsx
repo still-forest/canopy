@@ -1,12 +1,16 @@
 import type React from "react";
 import type { LoaderProps } from "@/components/Loader";
 import { Flex } from "@/layout";
+import type { FontWeight, HeadingSize } from "@/types";
 import { Heading } from "@/typography";
 import { cn } from "@/utils";
 
 export interface InterstitialProps {
   variant?: "error" | "info" | "success" | "warning";
   iconComponent?: React.ElementType;
+  headline?: string;
+  headlineLevel?: HeadingSize;
+  headlineWeight?: FontWeight;
   message?: string;
   iconSize?: LoaderProps["size"];
   iconClassName?: string;
@@ -18,6 +22,9 @@ export interface InterstitialProps {
 export const Interstitial = ({
   variant,
   iconComponent,
+  headline,
+  headlineLevel = "2",
+  headlineWeight = "bold",
   message,
   children,
   iconSize = "10xl",
@@ -76,7 +83,12 @@ export const Interstitial = ({
             />
           </Flex>
         )}
-        <Flex className="max-w-[500px]" direction="col" justify="center">
+        <Flex className="max-w-[500px]" direction="col" gap="4" justify="center">
+          {headline ? (
+            <Heading align="center" level={headlineLevel} weight={headlineWeight}>
+              {headline}
+            </Heading>
+          ) : null}
           {message ? (
             <Heading align="center" level="4" weight="normal">
               {message}

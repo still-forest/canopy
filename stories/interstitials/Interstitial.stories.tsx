@@ -31,6 +31,39 @@ export const NoIcon: Story = {
   },
 };
 
+export const WithHeadline: Story = {
+  args: {
+    ...defaultProps,
+    headline: "Extra! Extra!",
+  },
+};
+
+export const WithHeadlineOptions: Story = {
+  args: {
+    ...defaultProps,
+    headline: "Extra! Extra!",
+    headlineLevel: "4",
+    headlineWeight: "normal",
+  },
+};
+
+export const WithHeadlineAndMessage: Story = {
+  args: {
+    ...defaultProps,
+    headline: "Extra! Extra!",
+    message: "Todd Smells",
+  },
+};
+
+export const WithEverything: Story = {
+  args: {
+    ...defaultProps,
+    headline: "Extra! Extra!",
+    message: "Todd Smells",
+    children: <Button>Read all about it</Button>,
+  },
+};
+
 export const WithLongMessage: Story = {
   args: {
     ...defaultProps,

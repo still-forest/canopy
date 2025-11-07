@@ -5,11 +5,42 @@ import { Interstitial } from "@/interstitials";
 
 describe("Interstitial", () => {
   it("renders with message", () => {
-    render(<Interstitial message="This is an Interstitial" />);
+    render(<Interstitial message="This is a message" />);
 
-    expect(screen.getByText("This is an Interstitial")).toBeInTheDocument();
+    const message = screen.getByText("This is a message");
+    expect(message).toBeInTheDocument();
+    expect(message.tagName).toBe("H4");
+    expect(message.className).toBe("text-xl font-normal text-foreground text-center font-heading scroll-m-20");
 
     expect(screen.queryByTestId("icon")).not.toBeInTheDocument();
+  });
+
+  it("renders with headline", () => {
+    render(<Interstitial headline="This is a headline" message="This is a message" />);
+
+    const headline = screen.getByText("This is a headline");
+    expect(headline).toBeInTheDocument();
+    expect(headline.tagName).toBe("H2");
+    expect(headline.className).toBe("text-3xl font-bold text-foreground text-center font-heading scroll-m-20");
+
+    const message = screen.getByText("This is a message");
+    expect(message).toBeInTheDocument();
+  });
+
+  it("renders with headline options", () => {
+    render(
+      <Interstitial
+        headline="This is a headline"
+        headlineLevel="4"
+        headlineWeight="normal"
+        message="This is a message"
+      />,
+    );
+
+    const headline = screen.getByText("This is a headline");
+    expect(headline).toBeInTheDocument();
+    expect(headline.tagName).toBe("H4");
+    expect(headline.className).toBe("text-xl font-normal text-foreground text-center font-heading scroll-m-20");
   });
 
   it("renders with icon", () => {
