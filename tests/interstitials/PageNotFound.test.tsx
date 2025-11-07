@@ -17,9 +17,12 @@ describe("PageNotFound", () => {
   });
 
   it("renders with custom headline", () => {
-    render(<PageNotFound message="You appear to be lost" />);
+    render(<PageNotFound headline="You appear to be lost" headlineLevel="4" headlineWeight="normal" />);
 
-    expect(screen.getByText("You appear to be lost")).toBeInTheDocument();
+    const headline = screen.getByText("You appear to be lost");
+    expect(headline).toBeInTheDocument();
+    expect(headline.tagName).toBe("H4");
+    expect(headline.className).toBe("text-xl font-normal text-foreground text-center font-heading scroll-m-20");
 
     const icon = screen.getByTestId("icon");
     expect(icon).toBeInTheDocument();
