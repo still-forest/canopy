@@ -35,6 +35,10 @@ export const badgeColorVariants = cva(
         secondary: "border-transparent",
         destructive: "border-transparent",
         outline: "",
+        info: "border-transparent",
+        success: "border-transparent",
+        warning: "border-transparent",
+        error: "border-transparent",
       },
     },
     compoundVariants: [
