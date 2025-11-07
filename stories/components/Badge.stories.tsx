@@ -3,6 +3,7 @@ import type { Meta, StoryObj } from "@storybook/react-vite";
 import { Badge } from "@/components";
 import { Flex, Grid } from "@/layout";
 import { TAILWIND_COLORS } from "@/types/color";
+import type { BadgeVariant } from "@/types/variants";
 import { asOptionalValue, summarizeValues } from "../utils";
 
 const meta: Meta<typeof Badge> = {
@@ -35,14 +36,28 @@ export const Default: Story = {
 };
 
 export const Variants: Story = {
-  render: () => (
-    <Flex gap="2">
-      <Badge label="Default" />
-      <Badge label="Secondary" variant="secondary" />
-      <Badge label="Destructive" variant="destructive" />
-      <Badge label="Outline" variant="outline" />
-    </Flex>
-  ),
+  render: () => {
+    const variants: { label: string; variant: BadgeVariant }[] = [
+      { label: "Default", variant: "default" },
+      { label: "Secondary", variant: "secondary" },
+      { label: "Destructive", variant: "destructive" },
+      { label: "Outline", variant: "outline" },
+      { label: "Info", variant: "info" },
+      { label: "Success", variant: "success" },
+      { label: "Warning", variant: "warning" },
+      { label: "Error", variant: "error" },
+    ];
+
+    return (
+      <Grid cols="4" gap="2">
+        {variants.map(({ label, variant }) => (
+          <Flex justify="center" key={variant}>
+            <Badge label={label} variant={variant} />
+          </Flex>
+        ))}
+      </Grid>
+    );
+  },
 };
 
 export const Clickable: Story = {

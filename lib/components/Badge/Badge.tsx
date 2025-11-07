@@ -1,10 +1,11 @@
 import { Badge as BadgeBase } from "@/components/ui/badge";
 import type { TailwindColor } from "@/types/color";
+import type { BadgeVariant } from "@/types/variants";
 import { cn } from "@/utils";
 import { badgeColorVariants } from "./colorVariants";
 
 export interface BadgeProps {
-  variant?: "default" | "secondary" | "destructive" | "outline";
+  variant?: BadgeVariant;
   color?: TailwindColor;
   label: string;
   onClick?: () => void;

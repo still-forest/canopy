@@ -1,6 +1,7 @@
 import { CircleCheckBig, Info, OctagonX, TriangleAlert } from "lucide-react";
 
 import { Alert as AlertBase, AlertDescription, AlertTitle } from "@/components/ui/alert";
+import type { AlertVariant } from "@/types/variants";
 
 const icons: Record<AlertProps["type"], React.ElementType> = {
   success: CircleCheckBig,
@@ -10,7 +11,7 @@ const icons: Record<AlertProps["type"], React.ElementType> = {
 };
 
 export interface AlertProps {
-  type: "info" | "success" | "warning" | "error";
+  type: AlertVariant;
   title?: string;
   message?: string;
   className?: string;
