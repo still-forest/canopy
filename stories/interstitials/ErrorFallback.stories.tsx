@@ -21,3 +21,22 @@ export const Default: Story = {
     ),
   },
 };
+
+export const WithHeadline: Story = {
+  args: {
+    error: Error(
+      "Critical Synergy Failure: Our core competencies failed to leverage key deliverables. Please pivot and circle back later.",
+    ),
+    headline: "Something went wrong",
+  },
+};
+
+export const WithHeadlineAndMessage: Story = {
+  args: {
+    error: Error(
+      "Critical Synergy Failure: Our core competencies failed to leverage key deliverables. Please pivot and circle back later.",
+    ),
+    headline: "Something went wrong",
+    message: "This is a summary of the error.",
+  },
+};

@@ -13,7 +13,8 @@ interface PageNotFoundProps extends InterstitialProps {
 
 export const PageNotFound = ({
   onBack,
-  message = "404: Not found",
+  headline = "Page not found",
+  message = "The page you are looking for does not exist.",
   backIcon = CircleChevronLeft,
   backLabel = "Back",
   ...props
@@ -21,7 +22,7 @@ export const PageNotFound = ({
   const BackIcon = backIcon;
 
   return (
-    <Interstitial iconComponent={FileQuestion} message={message} variant="warning" {...props}>
+    <Interstitial headline={headline} iconComponent={FileQuestion} message={message} variant="warning" {...props}>
       <Flex align="center" className="mt-8" direction="col">
         {onBack && (
           <Button icon={<BackIcon />} onClick={onBack} variant="primary">

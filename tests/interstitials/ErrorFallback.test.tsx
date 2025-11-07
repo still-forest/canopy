@@ -7,7 +7,7 @@ describe("ErrorFallback", () => {
   it("renders with default message", () => {
     render(<ErrorFallback error={new Error()} />);
 
-    expect(screen.getByText("Something went wrong.")).toBeInTheDocument();
+    expect(screen.getByText("Something went wrong")).toBeInTheDocument();
     expect(screen.getByText("Unknown error occurred")).toBeInTheDocument();
 
     const icon = screen.getByTestId("icon");
@@ -23,7 +23,7 @@ describe("ErrorFallback", () => {
   it("renders with error message", () => {
     render(<ErrorFallback error={new Error("Kaboom!")} />);
 
-    expect(screen.getByText("Something went wrong.")).toBeInTheDocument();
+    expect(screen.getByText("Something went wrong")).toBeInTheDocument();
     expect(screen.getByText("Kaboom!")).toBeInTheDocument();
 
     const icon = screen.getByTestId("icon");

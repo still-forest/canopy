@@ -1,3 +1,4 @@
+import { sampleSentence } from "@stories/support/sampleText";
 import type { Meta, StoryObj } from "@storybook/react-vite";
 import { Mailbox, PiggyBank } from "lucide-react";
 import { Button } from "@/forms";
@@ -31,10 +32,51 @@ export const NoIcon: Story = {
   },
 };
 
+export const WithHeadline: Story = {
+  args: {
+    ...defaultProps,
+    headline: "Extra! Extra!",
+  },
+};
+
+export const WithHeadlineOptions: Story = {
+  args: {
+    ...defaultProps,
+    headline: "Extra! Extra!",
+    headlineLevel: "4",
+    headlineWeight: "normal",
+  },
+};
+
+export const WithHeadlineAndMessage: Story = {
+  args: {
+    ...defaultProps,
+    headline: "Extra! Extra!",
+    message: "Todd Smells",
+  },
+};
+
+export const WithEverything: Story = {
+  args: {
+    ...defaultProps,
+    headline: "Extra! Extra!",
+    message: "Todd Smells",
+    children: <Button>Read all about it</Button>,
+  },
+};
+
 export const WithLongMessage: Story = {
   args: {
     ...defaultProps,
-    message: "This is a long message because things are totally fucked up.",
+    message: sampleSentence,
+  },
+};
+
+export const WithMessageClassName: Story = {
+  args: {
+    ...defaultProps,
+    message: sampleSentence,
+    messageClassName: "text-red-500 truncate",
   },
 };
 
