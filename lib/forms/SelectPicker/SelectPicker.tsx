@@ -65,7 +65,7 @@ export const SelectPicker = ({
     setOpen(false);
   };
 
-  const triggerClasses = cn("bg-input/30 dark:bg-input/30", triggerClassName);
+  const triggerClasses = cn("bg-input dark:bg-input", triggerClassName);
 
   return (
     <Flex direction="col" gap="2">

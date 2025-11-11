@@ -25,7 +25,7 @@ type InputGroupComponent = React.FC<InputGroupProps> & {
 
 const InputGroup: InputGroupComponent = ({ children, className, ...props }: InputGroupProps) => {
   return (
-    <BaseInputGroup className={cn("bg-input/30 dark:bg-input/30", className)} {...props}>
+    <BaseInputGroup className={cn("bg-input dark:bg-input", className)} {...props}>
       {children}
     </BaseInputGroup>
   );

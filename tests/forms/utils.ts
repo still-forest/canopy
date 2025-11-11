@@ -1,10 +1,10 @@
 export const EXPECTED_BASE_LABEL_CLASSES =
   "flex items-center gap-2 select-none group-data-[disabled=true]:pointer-events-none group-data-[disabled=true]:opacity-50 peer-disabled:cursor-not-allowed peer-disabled:opacity-50 font-display font-normal text-foreground text-base";
 export const EXPECTED_BASE_INPUT_CLASSES = [
-  "flex w-full min-w-0 rounded-md border border-input bg-input/30 px-3 py-1 shadow-xs outline-none",
+  "flex w-full min-w-0 rounded-md border border-input bg-input px-3 py-1 shadow-xs outline-none",
   "transition-[color,box-shadow] selection:bg-primary selection:text-primary-foreground file:inline-flex file:h-7",
-  "file:border-0 file:bg-input/30 file:font-medium file:text-foreground file:text-sm placeholder:text-muted-foreground",
-  "disabled:pointer-events-none disabled:cursor-not-allowed disabled:opacity-50 dark:bg-input/30",
+  "file:border-0 file:bg-input file:font-medium file:text-foreground file:text-sm placeholder:text-muted-foreground",
+  "disabled:pointer-events-none disabled:cursor-not-allowed disabled:opacity-50 dark:bg-input",
   "focus-visible:border-ring focus-visible:ring-[3px] focus-visible:ring-ring/50 aria-invalid:border-destructive",
   "aria-invalid:ring-destructive/20 dark:aria-invalid:ring-destructive/40 h-9 text-base md:text-sm",
 ].join(" ");
