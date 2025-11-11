@@ -1,11 +1,13 @@
 import { ChevronsUpDown } from "lucide-react";
 import type { ReactNode } from "react";
-import { Button } from "@/components/ui/button";
 import { Popover, PopoverContent, PopoverTrigger } from "@/components/ui/popover";
+import type { ButtonProps } from "@/forms/Button/Button";
+import { Button } from "@/forms/Button/Button";
 import { cn } from "@/utils";
 
 interface DesktopSelectPickerProps {
   selectedLabel: string | ReactNode;
+  triggerComponent?: React.ComponentType<ButtonProps>;
   open: boolean;
   setOpen: (open: boolean) => void;
   children: ReactNode;
@@ -16,6 +18,7 @@ interface DesktopSelectPickerProps {
 
 export const DesktopSelectPicker = ({
   selectedLabel,
+  triggerComponent: TriggerComponent = Button,
   open,
   setOpen,
   children,
@@ -26,7 +29,7 @@ export const DesktopSelectPicker = ({
   return (
     <Popover onOpenChange={setOpen} open={open}>
       <PopoverTrigger asChild>
-        <Button
+        <TriggerComponent
           aria-expanded={open}
           className={cn("w-full justify-between font-normal", triggerClassName)}
           id={triggerId}
@@ -35,7 +38,7 @@ export const DesktopSelectPicker = ({
         >
           {selectedLabel}
           <ChevronsUpDown className="opacity-50" />
-        </Button>
+        </TriggerComponent>
       </PopoverTrigger>
       <PopoverContent className={cn("w-fit p-0", dropdownClassName)}>{children}</PopoverContent>
     </Popover>
