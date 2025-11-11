@@ -14,7 +14,7 @@ export default meta;
 
 type Story = StoryObj<typeof meta>;
 
-const onChange = (value: string) => console.log(`Selected option ${value}`);
+const onChange = (value: string) => console.log(`Selected option: ${value}`);
 
 const defaultProps = {
   name: "someThing",
