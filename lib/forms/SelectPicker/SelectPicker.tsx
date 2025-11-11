@@ -4,6 +4,7 @@ import { InputError, Label } from "@/forms";
 import { useIsMobile } from "@/hooks/use-mobile";
 import { Flex } from "@/layout";
 import { Text } from "@/typography";
+import { cn } from "@/utils";
 import { DesktopSelectPicker } from "./DesktopSelectPicker";
 import { MobileSelectPicker } from "./MobileSelectPicker";
 import { GroupedOptionList } from "./OptionList";
@@ -64,6 +65,8 @@ export const SelectPicker = ({
     setOpen(false);
   };
 
+  const triggerClasses = cn("bg-input/30 dark:bg-input/30", triggerClassName);
+
   return (
     <Flex direction="col" gap="2">
       {(label || hint) && (
@@ -78,7 +81,7 @@ export const SelectPicker = ({
       )}
       {isMobile ? (
         <MobileSelectPicker
-          className={triggerClassName}
+          className={triggerClasses}
           open={open}
           selectedLabel={selectedLabel}
           setOpen={setOpen}
@@ -93,7 +96,7 @@ export const SelectPicker = ({
         </MobileSelectPicker>
       ) : (
         <DesktopSelectPicker
-          className={triggerClassName}
+          className={triggerClasses}
           open={open}
           selectedLabel={selectedLabel}
           setOpen={setOpen}

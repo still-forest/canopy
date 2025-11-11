@@ -29,7 +29,11 @@ export const DatePicker = ({ onDateSelection, initialValue, className, size = "d
       <Popover>
         <PopoverTrigger asChild>
           <Button
-            className={cn("w-[280px] justify-start text-left font-normal", !date && "text-muted-foreground", className)}
+            className={cn(
+              "w-[280px] justify-start text-left font-normal bg-input/30 dark:bg-input/30",
+              !date && "text-muted-foreground",
+              className,
+            )}
             size={size}
             variant="outline"
           >
