@@ -14,6 +14,8 @@ export default meta;
 
 type Story = StoryObj<typeof meta>;
 
+const onChange = (value: string) => console.log(`Selected option ${value}`);
+
 const defaultProps = {
   name: "someThing",
   options: [
@@ -23,7 +25,7 @@ const defaultProps = {
     { value: "lisa", label: "Lisa" },
     { value: "maggie", label: "Maggie" },
   ],
-  onChange: (value: string) => window.alert(`Selected option ${value}`),
+  onChange,
 };
 
 export const Default: Story = {
@@ -50,9 +52,20 @@ export const WithSecondaryOptions: Story = {
       { value: "patty", label: "Patty" },
       { value: "selma", label: "Selma" },
     ];
+
+    const handleChange = (value: string) => {
+      setValue(value);
+      onChange(value);
+    };
+
     return (
       <Flex direction="col" gap="4">
-        <ButtonSelectInput {...defaultProps} onChange={setValue} secondaryOptions={secondaryOptions} value={value} />
+        <ButtonSelectInput
+          {...defaultProps}
+          onChange={handleChange}
+          secondaryOptions={secondaryOptions}
+          value={value}
+        />
         <Text className="italic" variant="muted">
           Selected value: {value || "none"}
         </Text>

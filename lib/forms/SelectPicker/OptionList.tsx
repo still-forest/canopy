@@ -41,8 +41,8 @@ export const GroupedOptionList = ({ optionGroups, placeholder, noSearch, ...prop
       {!noSearch && <CommandInput className="h-9" placeholder={placeholder} />}
       <CommandList>
         <CommandEmpty>{noSearch ? "No options found." : "No results found."}</CommandEmpty>
-        {optionGroups.map(({ label, options }) => (
-          <OptionList key={label} label={label} options={options} {...props} />
+        {optionGroups.map(({ label, options }, index) => (
+          <OptionList key={label || `option-list-${index}`} label={label} options={options} {...props} />
         ))}
       </CommandList>
     </Command>
