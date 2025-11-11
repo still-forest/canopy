@@ -3,6 +3,7 @@ import { Textarea as BaseTextarea } from "@/components/ui/textarea";
 import { InputError, Label } from "@/forms";
 import { Flex } from "@/layout";
 import { Text } from "@/typography";
+import { cn } from "@/utils";
 
 export interface TextareaProps extends React.ComponentProps<"textarea"> {
   name: string;
@@ -38,7 +39,7 @@ export function Textarea({
       </Flex>
       <BaseTextarea
         aria-label={label || name}
-        className={className}
+        className={cn("bg-input/30 dark:bg-input/30", className)}
         id={name}
         name={name}
         placeholder={placeholder}
