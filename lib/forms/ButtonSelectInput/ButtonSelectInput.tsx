@@ -1,11 +1,13 @@
+import { useState } from "react";
 import type { ButtonGroupProps } from "@/forms/Button/ButtonGroup";
 import { ButtonGroup } from "@/forms/Button/ButtonGroup";
 import { InputError } from "@/forms/InputError";
 import { Label } from "@/forms/Label";
-import { SelectInput } from "@/forms/SelectInput";
+import { DesktopSelectPicker } from "@/forms/SelectPicker/DesktopSelectPicker";
 import { Flex } from "@/layout";
 import { Text } from "@/typography";
 import { cn } from "@/utils";
+import { GroupedOptionList } from "../SelectPicker/OptionList";
 
 interface Option {
   label: string;
@@ -22,6 +24,7 @@ interface ButtonSelectInputProps extends Omit<ButtonGroupProps, "children"> {
   value: string | undefined;
   onChange: (value: string) => void;
   buttonClassName?: string;
+  secondaryButtonClassName?: string;
 }
 
 export const ButtonSelectInput = ({
@@ -34,8 +37,16 @@ export const ButtonSelectInput = ({
   value,
   onChange,
   buttonClassName,
+  secondaryButtonClassName,
   ...props
 }: ButtonSelectInputProps) => {
+  const [open, setOpen] = useState(false);
+  const hasSecondaryOptions = secondaryOptions && secondaryOptions.length > 0;
+  const selectedLabel =
+    hasSecondaryOptions && value
+      ? secondaryOptions.find((option) => option.value === value)?.label
+      : "Select an option";
+
   return (
     <Flex className="w-full" direction="col" gap="2">
       {label && <Label htmlFor={name}>{label}</Label>}
@@ -44,7 +55,7 @@ export const ButtonSelectInput = ({
           const isSelected = option.value === value;
           return (
             <ButtonGroup.Button
-              className={cn("flex-grow", buttonClassName)}
+              className={cn("flex-grow bg-input dark:bg-input", buttonClassName)}
               key={option.value}
               label={option.label}
               onClick={() => onChange(option.value)}
@@ -52,14 +63,23 @@ export const ButtonSelectInput = ({
             />
           );
         })}
-        {secondaryOptions && secondaryOptions.length > 0 && (
-          <SelectInput
-            name={name ?? "select-input"}
-            onChange={(value) => onChange(value)}
-            options={secondaryOptions}
-            placeholder="More options..."
-            value={value}
-          />
+        {hasSecondaryOptions && (
+          <DesktopSelectPicker
+            // className={triggerClasses}
+            className={cn("w-[150px]", secondaryButtonClassName)}
+            contentClassName={cn("w-[150px]", secondaryButtonClassName)}
+            open={open}
+            selectedLabel={selectedLabel}
+            setOpen={setOpen}
+            triggerId={name}
+          >
+            <GroupedOptionList
+              onSelect={(value) => onChange(value)}
+              optionGroups={[{ label: "Secondary options", options: secondaryOptions }]}
+              placeholder="More options..."
+              selectedValue={value}
+            />
+          </DesktopSelectPicker>
         )}
       </ButtonGroup>
       {note && (

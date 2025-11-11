@@ -3,12 +3,10 @@ import { useState } from "react";
 import { ButtonSelectInput } from "@/forms";
 import { Flex } from "@/layout";
 import { Text } from "@/typography";
-import { DEFAULT_DECORATOR_WITH_WIDTH_MD } from "../support/decorators";
 
 const meta: Meta<typeof ButtonSelectInput> = {
   title: "Forms/Inputs/ButtonSelectInput",
   component: ButtonSelectInput,
-  decorators: [DEFAULT_DECORATOR_WITH_WIDTH_MD],
   tags: ["autodocs"],
 } satisfies Meta<typeof ButtonSelectInput>;
 

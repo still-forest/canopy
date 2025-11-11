@@ -11,6 +11,7 @@ interface DesktopSelectPickerProps {
   children: ReactNode;
   triggerId?: string;
   className?: string;
+  contentClassName?: string;
 }
 
 export const DesktopSelectPicker = ({
@@ -20,6 +21,7 @@ export const DesktopSelectPicker = ({
   children,
   triggerId,
   className,
+  contentClassName,
 }: DesktopSelectPickerProps) => {
   return (
     <Popover onOpenChange={setOpen} open={open}>
@@ -35,7 +37,7 @@ export const DesktopSelectPicker = ({
           <ChevronsUpDown className="opacity-50" />
         </Button>
       </PopoverTrigger>
-      <PopoverContent className="w-[400px] p-0">{children}</PopoverContent>
+      <PopoverContent className={cn("w-fit p-0", contentClassName)}>{children}</PopoverContent>
     </Popover>
   );
 };
