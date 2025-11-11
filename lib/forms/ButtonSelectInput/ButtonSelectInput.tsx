@@ -66,16 +66,17 @@ export const ButtonSelectInput = ({
         {hasSecondaryOptions && (
           <DesktopSelectPicker
             // className={triggerClasses}
-            className={cn("w-[150px]", secondaryButtonClassName)}
-            contentClassName={cn("w-[150px]", secondaryButtonClassName)}
+            dropdownClassName={cn("w-[150px]", secondaryButtonClassName)}
             open={open}
             selectedLabel={selectedLabel}
             setOpen={setOpen}
+            triggerClassName={cn("w-[150px]", secondaryButtonClassName)}
             triggerId={name}
           >
             <GroupedOptionList
+              noSearch
               onSelect={(value) => onChange(value)}
-              optionGroups={[{ label: "Secondary options", options: secondaryOptions }]}
+              optionGroups={[{ options: secondaryOptions }]}
               placeholder="More options..."
               selectedValue={value}
             />

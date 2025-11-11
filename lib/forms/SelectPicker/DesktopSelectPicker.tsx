@@ -10,8 +10,8 @@ interface DesktopSelectPickerProps {
   setOpen: (open: boolean) => void;
   children: ReactNode;
   triggerId?: string;
-  className?: string;
-  contentClassName?: string;
+  triggerClassName?: string;
+  dropdownClassName?: string;
 }
 
 export const DesktopSelectPicker = ({
@@ -20,15 +20,15 @@ export const DesktopSelectPicker = ({
   setOpen,
   children,
   triggerId,
-  className,
-  contentClassName,
+  triggerClassName,
+  dropdownClassName,
 }: DesktopSelectPickerProps) => {
   return (
     <Popover onOpenChange={setOpen} open={open}>
       <PopoverTrigger asChild>
         <Button
           aria-expanded={open}
-          className={cn("w-full justify-between font-normal", className)}
+          className={cn("w-full justify-between font-normal", triggerClassName)}
           id={triggerId}
           role="combobox"
           variant="outline"
@@ -37,7 +37,7 @@ export const DesktopSelectPicker = ({
           <ChevronsUpDown className="opacity-50" />
         </Button>
       </PopoverTrigger>
-      <PopoverContent className={cn("w-fit p-0", contentClassName)}>{children}</PopoverContent>
+      <PopoverContent className={cn("w-fit p-0", dropdownClassName)}>{children}</PopoverContent>
     </Popover>
   );
 };
