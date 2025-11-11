@@ -42,10 +42,8 @@ export const ButtonSelectInput = ({
 }: ButtonSelectInputProps) => {
   const [open, setOpen] = useState(false);
   const hasSecondaryOptions = secondaryOptions && secondaryOptions.length > 0;
-  const selectedLabel =
-    hasSecondaryOptions && value
-      ? secondaryOptions.find((option) => option.value === value)?.label
-      : "Select an option";
+  const selectedSecondaryOption = secondaryOptions?.find((option) => option.value === value);
+  const secondaryLabel = selectedSecondaryOption?.label || "More options...";
 
   return (
     <Flex className="w-full" direction="col" gap="2">
@@ -55,7 +53,7 @@ export const ButtonSelectInput = ({
           const isSelected = option.value === value;
           return (
             <ButtonGroup.Button
-              className={cn("flex-grow bg-input", buttonClassName)}
+              className={cn("flex-grow", !isSelected && "bg-input", buttonClassName)}
               key={option.value}
               label={option.label}
               onClick={() => onChange(option.value)}
@@ -65,12 +63,15 @@ export const ButtonSelectInput = ({
         })}
         {hasSecondaryOptions && (
           <DesktopSelectPicker
-            // className={triggerClasses}
             dropdownClassName={cn("w-[150px]", secondaryButtonClassName)}
             open={open}
-            selectedLabel={selectedLabel}
+            selectedLabel={secondaryLabel}
             setOpen={setOpen}
-            triggerClassName={cn("w-[150px] bg-input", secondaryButtonClassName)}
+            triggerClassName={cn(
+              "w-[150px] bg-input",
+              selectedSecondaryOption && "font-medium bg-primary text-primary-foreground",
+              secondaryButtonClassName,
+            )}
             triggerComponent={ButtonGroup.Button}
             triggerId={name}
           >
