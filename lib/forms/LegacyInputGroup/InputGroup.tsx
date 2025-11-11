@@ -1,6 +1,7 @@
 import type { ReactNode } from "react";
 import { Label } from "@/forms";
 import { Flex } from "@/layout";
+import { cn } from "@/utils";
 
 interface InputGroupProps {
   label?: string;
@@ -23,7 +24,10 @@ export const LegacyInputGroup = ({
         {label}
       </Label>
     )}
-    <Flex className={`rounded-md border border-input bg-input/30 dark:bg-input/30 p-2 shadow-xs ${className}`} gapY="1">
+    <Flex
+      className={cn("rounded-md border border-input bg-input/30 dark:bg-input/30 p-2 shadow-xs", className)}
+      gapY="1"
+    >
       {children}
     </Flex>
   </Flex>
