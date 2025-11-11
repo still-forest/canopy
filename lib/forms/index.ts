@@ -1,4 +1,5 @@
 export * from "./Button";
+export * from "./ButtonSelectInput";
 export * from "./Checkbox";
 export * from "./CopyButton";
 export * from "./DateInput";
