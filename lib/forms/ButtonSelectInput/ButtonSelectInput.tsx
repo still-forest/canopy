@@ -61,7 +61,7 @@ export const ButtonSelectInput = ({
           const isSelected = option.value === value;
           return (
             <ButtonGroup.Button
-              className={cn("flex-grow", !isSelected && "bg-input", buttonClassName)}
+              className={cn("flex-grow", buttonClassName)}
               key={option.value}
               label={option.label}
               onClick={() => onChange(option.value)}
@@ -76,7 +76,7 @@ export const ButtonSelectInput = ({
             selectedLabel={secondaryLabel}
             setOpen={setOpen}
             triggerClassName={cn(
-              "w-[150px] bg-input",
+              "w-[150px]",
               selectedSecondaryOption && "font-medium bg-primary text-primary-foreground",
               secondaryButtonClassName,
             )}
