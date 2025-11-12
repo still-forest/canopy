@@ -32,16 +32,17 @@ interface GroupedOptionListProps {
   placeholder: string;
   selectedValue: SelectPickerOptionValue | undefined;
   onSelect: (value: SelectPickerOptionValue) => void;
+  noSearch?: boolean;
 }
 
-export const GroupedOptionList = ({ optionGroups, placeholder, ...props }: GroupedOptionListProps) => {
+export const GroupedOptionList = ({ optionGroups, placeholder, noSearch, ...props }: GroupedOptionListProps) => {
   return (
     <Command>
-      <CommandInput className="h-9" placeholder={placeholder} />
+      {!noSearch && <CommandInput className="h-9" placeholder={placeholder} />}
       <CommandList>
-        <CommandEmpty>No results found.</CommandEmpty>
-        {optionGroups.map(({ label, options }) => (
-          <OptionList key={label} label={label} options={options} {...props} />
+        <CommandEmpty>{noSearch ? "No options found." : "No results found."}</CommandEmpty>
+        {optionGroups.map(({ label, options }, index) => (
+          <OptionList key={label || `option-list-${index}`} label={label} options={options} {...props} />
         ))}
       </CommandList>
     </Command>

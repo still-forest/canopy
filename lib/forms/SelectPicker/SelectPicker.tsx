@@ -18,6 +18,7 @@ export interface SelectPickerProps {
   label?: string;
   labelClassName?: string;
   triggerClassName?: string;
+  dropdownClassName?: string;
   placeholder?: string;
   hint?: string;
   note?: string;
@@ -35,6 +36,7 @@ export const SelectPicker = ({
   name,
   labelClassName,
   triggerClassName,
+  dropdownClassName,
   hint,
   note,
   error,
@@ -96,10 +98,11 @@ export const SelectPicker = ({
         </MobileSelectPicker>
       ) : (
         <DesktopSelectPicker
-          className={triggerClasses}
+          dropdownClassName={dropdownClassName}
           open={open}
           selectedLabel={selectedLabel}
           setOpen={setOpen}
+          triggerClassName={triggerClasses}
           triggerId={name}
         >
           <GroupedOptionList
