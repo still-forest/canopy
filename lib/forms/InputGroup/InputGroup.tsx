@@ -23,12 +23,8 @@ type InputGroupComponent = React.FC<InputGroupProps> & {
   Textarea: React.FC<InputGroupTextareaProps>;
 };
 
-const InputGroup: InputGroupComponent = ({ children, className, ...props }: InputGroupProps) => {
-  return (
-    <BaseInputGroup className={className} {...props}>
-      {children}
-    </BaseInputGroup>
-  );
+const InputGroup: InputGroupComponent = ({ children, ...props }: InputGroupProps) => {
+  return <BaseInputGroup {...props}>{children}</BaseInputGroup>;
 };
 
 const InputGroupButton = ({ className, size = "xs", variant = "ghost", ...props }: ButtonProps) => (
@@ -45,7 +41,7 @@ const InputGroupInput = ({ className, ...props }: InputProps) => {
   return (
     <Input
       className={cn(
-        "flex-1 rounded-none border-0 bg-input/30 shadow-none focus-visible:ring-0 dark:bg-input/30",
+        "flex-1 rounded-none border-0 bg-transparent shadow-none focus-visible:ring-0 dark:bg-transparent",
         className,
       )}
       data-slot="input-group-control"
@@ -58,7 +54,7 @@ const InputGroupTextarea = ({ className, ...props }: TextareaProps) => {
   return (
     <Textarea
       className={cn(
-        "flex-1 resize-none rounded-none border-0 bg-input/30 py-3 shadow-none focus-visible:ring-0 dark:bg-input/30",
+        "flex-1 resize-none rounded-none border-0 bg-transparent py-3 shadow-none focus-visible:ring-0 dark:bg-transparent",
         className,
       )}
       data-slot="input-group-control"
