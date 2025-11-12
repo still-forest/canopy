@@ -1,7 +1,6 @@
 @import "tailwindcss";
 @import "tw-animate-css";
 
-@import "./color-palette.css";
 @import "./theme.css";
 @import "./typography.css";
 @import "./dimensions.css";

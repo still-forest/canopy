@@ -39,7 +39,7 @@ export function Textarea({
       </Flex>
       <BaseTextarea
         aria-label={label || name}
-        className={cn("bg-input dark:bg-input", className)}
+        className={cn("bg-input/30 dark:bg-input/30", className)}
         id={name}
         name={name}
         placeholder={placeholder}
