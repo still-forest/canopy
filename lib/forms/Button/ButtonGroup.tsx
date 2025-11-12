@@ -1,4 +1,5 @@
 import type React from "react";
+import { forwardRef } from "react";
 import { Flex } from "@/layout";
 import { cn } from "@/utils";
 import { Button, type ButtonProps } from "./Button";
@@ -14,13 +15,15 @@ export const ButtonGroup = ({ children, className = "", ...props }: ButtonGroupP
   </Flex>
 );
 
-ButtonGroup.Button = ({ children, className, ...props }: ButtonProps) => {
+ButtonGroup.Button = forwardRef<HTMLButtonElement, ButtonProps>(({ children, className, ...props }, ref) => {
   return (
     <Button
       className={cn("border-1 not-first:-ml-[0.5px] not-first:rounded-l-none not-last:rounded-r-none ", className)}
+      ref={ref}
       {...props}
     >
       {children}
     </Button>
   );
-};
+});
+ButtonGroup.Button.displayName = "ButtonGroupButton";
