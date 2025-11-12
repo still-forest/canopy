@@ -41,6 +41,7 @@ export const ButtonSelectInput = ({
   onChange,
   buttonClassName,
   secondaryButtonClassName,
+  className: groupClassName,
   ...props
 }: ButtonSelectInputProps) => {
   const [open, setOpen] = useState(false);
@@ -112,7 +113,7 @@ export const ButtonSelectInput = ({
         aria-invalid={error ? "true" : undefined}
         aria-label={!label ? name : undefined}
         aria-labelledby={label ? labelId : undefined}
-        className="w-full"
+        className={cn("w-full", groupClassName)}
         role="radiogroup"
         {...props}
       >
