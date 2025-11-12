@@ -75,11 +75,29 @@ export const WithSecondaryOptions: Story = {
 };
 
 export const WithLabelAndNote: Story = {
-  args: {
-    ...defaultProps,
-    label: "Select a character:",
-    hint: "This is a hint",
-    note: "My cat's breath smells like cat food.",
-    error: "You picked the wrong character!",
+  render: () => {
+    const [value, setValue] = useState<string | undefined>(undefined);
+    const secondaryOptions = [
+      { value: "abraham", label: "Abraham" },
+      { value: "herbert", label: "Herbert" },
+      { value: "jacqueline", label: "Jacqueline" },
+      { value: "patty", label: "Patty" },
+      { value: "selma", label: "Selma" },
+    ];
+
+    const handleChange = (value: string) => {
+      setValue(value);
+      onChange(value);
+    };
+
+    const props = {
+      ...defaultProps,
+      label: "Select a character:",
+      hint: "This is a hint",
+      note: "My cat's breath smells like cat food.",
+      error: value ? `You picked ${value}, which is incorrect.` : undefined,
+    };
+
+    return <ButtonSelectInput {...props} onChange={handleChange} secondaryOptions={secondaryOptions} value={value} />;
   },
 };

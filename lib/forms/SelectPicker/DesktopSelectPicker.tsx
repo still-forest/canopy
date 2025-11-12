@@ -14,6 +14,7 @@ interface DesktopSelectPickerProps {
   triggerId?: string;
   triggerClassName?: string;
   dropdownClassName?: string;
+  triggerProps?: Partial<ButtonProps>;
 }
 
 export const DesktopSelectPicker = ({
@@ -25,6 +26,7 @@ export const DesktopSelectPicker = ({
   triggerId,
   triggerClassName,
   dropdownClassName,
+  triggerProps,
 }: DesktopSelectPickerProps) => {
   return (
     <Popover onOpenChange={setOpen} open={open}>
@@ -35,6 +37,7 @@ export const DesktopSelectPicker = ({
           id={triggerId}
           role="combobox"
           variant="outline"
+          {...triggerProps}
         >
           {selectedLabel}
           <ChevronsUpDown className="opacity-50" />
