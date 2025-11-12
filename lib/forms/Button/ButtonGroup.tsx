@@ -3,13 +3,15 @@ import { Flex } from "@/layout";
 import { cn } from "@/utils";
 import { Button, type ButtonProps } from "./Button";
 
-export interface ButtonGroupProps {
+export interface ButtonGroupProps extends React.ComponentPropsWithoutRef<"div"> {
   children: React.ReactNode;
   className?: string;
 }
 
-export const ButtonGroup = ({ children, className = "" }: ButtonGroupProps) => (
-  <Flex className={className}>{children}</Flex>
+export const ButtonGroup = ({ children, className = "", ...props }: ButtonGroupProps) => (
+  <Flex className={className} {...props}>
+    {children}
+  </Flex>
 );
 
 ButtonGroup.Button = ({ children, className, ...props }: ButtonProps) => {
