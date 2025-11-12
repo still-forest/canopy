@@ -42,7 +42,7 @@
   --sidebar-ring: hsl(217.2 91.2% 59.8%);
 
   --border: oklch(0.929 0.013 255.508);
-  --input: oklch(0.929 0.013 255.508 / 20%);
+  --input: oklch(0.929 0.013 255.508);
   --popover: oklch(1 0 0);
   --popover-foreground: oklch(0.129 0.042 264.695);
   --ring: oklch(0.869 0.022 252.894);
@@ -89,7 +89,7 @@
   --sidebar-ring: hsl(217.2 91.2% 59.8%);
 
   --border: oklch(0.279 0.041 260.031);
-  --input: oklch(0.279 0.041 260.031 / 30%);
+  --input: oklch(0.279 0.041 260.031);
   --popover: oklch(0.129 0.042 264.695);
   --popover-foreground: oklch(0.984 0.003 247.858);
   --ring: oklch(0.446 0.043 257.281);

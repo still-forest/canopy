@@ -24,7 +24,10 @@ export const LegacyInputGroup = ({
         {label}
       </Label>
     )}
-    <Flex className={cn("rounded-md border border-input bg-input dark:bg-input p-2 shadow-xs", className)} gapY="1">
+    <Flex
+      className={cn("rounded-md border border-input bg-input/30 dark:bg-input/30 p-2 shadow-xs", className)}
+      gapY="1"
+    >
       {children}
     </Flex>
   </Flex>

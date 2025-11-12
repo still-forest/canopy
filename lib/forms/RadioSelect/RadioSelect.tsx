@@ -26,7 +26,7 @@ const RadioSelect = ({ label, name, options, value, onChange, error, labelClassN
         <Grid cols="2">
           {options.map((option, i) => (
             <Flex align="center" gap="2" justify="start" key={i}>
-              <RadioGroupItem className="bg-input dark:bg-input" id={option.value} value={option.value} />
+              <RadioGroupItem id={option.value} value={option.value} />
               <Label className={labelClassName} htmlFor={option.value}>
                 {option.label}
               </Label>
