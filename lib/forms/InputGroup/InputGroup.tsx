@@ -25,7 +25,7 @@ type InputGroupComponent = React.FC<InputGroupProps> & {
 
 const InputGroup: InputGroupComponent = ({ children, className, ...props }: InputGroupProps) => {
   return (
-    <BaseInputGroup className={cn("bg-input/30 dark:bg-input/30", className)} {...props}>
+    <BaseInputGroup className={className} {...props}>
       {children}
     </BaseInputGroup>
   );
@@ -45,7 +45,7 @@ const InputGroupInput = ({ className, ...props }: InputProps) => {
   return (
     <Input
       className={cn(
-        "flex-1 rounded-none border-0 bg-transparent shadow-none focus-visible:ring-0 dark:bg-transparent",
+        "flex-1 rounded-none border-0 bg-input/30 shadow-none focus-visible:ring-0 dark:bg-input/30",
         className,
       )}
       data-slot="input-group-control"
@@ -58,7 +58,7 @@ const InputGroupTextarea = ({ className, ...props }: TextareaProps) => {
   return (
     <Textarea
       className={cn(
-        "flex-1 resize-none rounded-none border-0 bg-transparent py-3 shadow-none focus-visible:ring-0 dark:bg-transparent",
+        "flex-1 resize-none rounded-none border-0 bg-input/30 py-3 shadow-none focus-visible:ring-0 dark:bg-input/30",
         className,
       )}
       data-slot="input-group-control"
