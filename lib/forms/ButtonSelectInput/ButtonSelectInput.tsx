@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { Hint } from "@/components";
 import type { ButtonGroupProps } from "@/forms/Button/ButtonGroup";
 import { ButtonGroup } from "@/forms/Button/ButtonGroup";
 import { InputError } from "@/forms/InputError";
@@ -17,6 +18,7 @@ interface Option {
 interface ButtonSelectInputProps extends Omit<ButtonGroupProps, "children"> {
   name?: string;
   label?: string;
+  hint?: string;
   error?: string;
   note?: string;
   options: Option[];
@@ -30,6 +32,7 @@ interface ButtonSelectInputProps extends Omit<ButtonGroupProps, "children"> {
 export const ButtonSelectInput = ({
   name,
   label,
+  hint,
   options,
   error,
   note,
@@ -47,7 +50,12 @@ export const ButtonSelectInput = ({
 
   return (
     <Flex className="w-full" direction="col" gap="2">
-      {label && <Label htmlFor={name}>{label}</Label>}
+      {(label || hint) && (
+        <Flex align="center" direction="row" gap="1">
+          {label && <Label htmlFor={name}>{label}</Label>}
+          {hint && <Hint content={hint} />}
+        </Flex>
+      )}
       <ButtonGroup className="w-full" {...props}>
         {options.map((option) => {
           const isSelected = option.value === value;

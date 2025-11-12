@@ -73,3 +73,13 @@ export const WithSecondaryOptions: Story = {
     );
   },
 };
+
+export const WithLabelAndNote: Story = {
+  args: {
+    ...defaultProps,
+    label: "Select a character:",
+    hint: "This is a hint",
+    note: "My cat's breath smells like cat food.",
+    error: "You picked the wrong character!",
+  },
+};
