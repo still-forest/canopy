@@ -1,4 +1,5 @@
 import { fireEvent, render, screen } from "@testing-library/react";
+import { Home, User } from "lucide-react";
 import { describe, expect, it, vi } from "vitest";
 
 import { ButtonSelectInput } from "@/forms";
@@ -327,6 +328,66 @@ describe("ButtonSelectInput", () => {
       expect(buttons[0]).toHaveAttribute("aria-checked", "true");
       expect(buttons[1]).toHaveAttribute("aria-checked", "false");
       expect(buttons[2]).toHaveAttribute("aria-checked", "false");
+    });
+  });
+
+  describe("Icon support", () => {
+    it("renders buttons with icons only", () => {
+      const onChange = vi.fn();
+      const iconOptions = [
+        { value: "home", icon: <Home data-testid="home-icon" /> },
+        { value: "user", icon: <User data-testid="user-icon" /> },
+      ];
+
+      render(<ButtonSelectInput onChange={onChange} options={iconOptions} value={undefined} />);
+
+      expect(screen.getByTestId("home-icon")).toBeInTheDocument();
+      expect(screen.getByTestId("user-icon")).toBeInTheDocument();
+    });
+
+    it("renders buttons with both icons and labels", () => {
+      const onChange = vi.fn();
+      const iconOptions = [
+        { value: "home", label: "Home", icon: <Home data-testid="home-icon" /> },
+        { value: "user", label: "Profile", icon: <User data-testid="user-icon" /> },
+      ];
+
+      render(<ButtonSelectInput onChange={onChange} options={iconOptions} value={undefined} />);
+
+      expect(screen.getByTestId("home-icon")).toBeInTheDocument();
+      expect(screen.getByTestId("user-icon")).toBeInTheDocument();
+      expect(screen.getByText("Home")).toBeInTheDocument();
+      expect(screen.getByText("Profile")).toBeInTheDocument();
+    });
+
+    it("works with keyboard navigation when using icons", () => {
+      const onChange = vi.fn();
+      const iconOptions = [
+        { value: "home", icon: <Home data-testid="home-icon" /> },
+        { value: "user", icon: <User data-testid="user-icon" /> },
+      ];
+
+      render(<ButtonSelectInput onChange={onChange} options={iconOptions} value="home" />);
+
+      const buttons = screen.getAllByRole("radio");
+      fireEvent.keyDown(buttons[0], { key: "ArrowRight" });
+
+      expect(onChange).toHaveBeenCalledWith("user");
+    });
+
+    it("handles selection with icon buttons", () => {
+      const onChange = vi.fn();
+      const iconOptions = [
+        { value: "home", icon: <Home data-testid="home-icon" /> },
+        { value: "user", icon: <User data-testid="user-icon" /> },
+      ];
+
+      render(<ButtonSelectInput onChange={onChange} options={iconOptions} value={undefined} />);
+
+      const buttons = screen.getAllByRole("radio");
+      fireEvent.click(buttons[1]);
+
+      expect(onChange).toHaveBeenCalledWith("user");
     });
   });
 });

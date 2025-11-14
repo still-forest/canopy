@@ -5,14 +5,16 @@ import { ButtonGroup } from "@/forms/Button/ButtonGroup";
 import { InputError } from "@/forms/InputError";
 import { Label } from "@/forms/Label";
 import { DesktopSelectPicker } from "@/forms/SelectPicker/DesktopSelectPicker";
+import type { SelectPickerOption } from "@/forms/SelectPicker/types";
 import { Flex } from "@/layout";
 import { Text } from "@/typography";
 import { cn } from "@/utils";
 import { GroupedOptionList } from "../SelectPicker/OptionList";
 
 interface Option {
-  label: string;
+  label?: string;
   value: string;
+  icon?: React.ReactElement;
 }
 
 interface ButtonSelectInputProps extends Omit<ButtonGroupProps, "children" | "onChange"> {
@@ -22,7 +24,7 @@ interface ButtonSelectInputProps extends Omit<ButtonGroupProps, "children" | "on
   error?: string;
   note?: string;
   options: Option[];
-  secondaryOptions?: Option[];
+  secondaryOptions?: SelectPickerOption[];
   value: string | undefined;
   onChange: (value: string) => void;
   buttonClassName?: string;
@@ -57,7 +59,7 @@ export const ButtonSelectInput = ({
   const buttonRefs = useRef<Map<string, HTMLButtonElement>>(new Map());
 
   // All available options (primary + secondary)
-  const allOptions = [...options, ...(secondaryOptions || [])];
+  const allOptions: Array<Option | SelectPickerOption> = [...options, ...(secondaryOptions || [])];
 
   const handleKeyDown = (e: KeyboardEvent<HTMLButtonElement>, currentValue: string) => {
     const currentIndex = allOptions.findIndex((opt) => opt.value === currentValue);
@@ -127,6 +129,7 @@ export const ButtonSelectInput = ({
             <ButtonGroup.Button
               aria-checked={isSelected}
               className={cn("flex-grow", buttonClassName)}
+              icon={option.icon}
               key={option.value}
               label={option.label}
               onClick={() => onChange(option.value)}
