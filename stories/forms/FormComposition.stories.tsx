@@ -1,5 +1,4 @@
 import type { Meta, StoryObj } from "@storybook/react-vite";
-import { Mail, User } from "lucide-react";
 import { useState } from "react";
 
 import { Card } from "@/components";
@@ -24,7 +23,7 @@ import { Flex } from "@/layout";
 import { Heading, Text } from "@/typography";
 
 const meta: Meta = {
-  title: "Forms/Form Composition",
+  title: "Forms/Composition",
   tags: ["autodocs"],
   decorators: [
     (Story) => (
@@ -71,26 +70,17 @@ const CompleteFormExample = () => {
   return (
     <form onSubmit={handleSubmit}>
       <Flex direction="col" gap="6">
-        <Heading level={2}>User Registration Form</Heading>
+        <Heading level="2">User Registration Form</Heading>
 
         {/* Text Inputs Section */}
         <Flex direction="col" gap="4">
-          <Heading level={3}>Basic Information</Heading>
+          <Heading level="3">Basic Information</Heading>
 
-          <TextInput
-            icon={<User />}
-            label="Username"
-            name="username"
-            onChange={handleInputChange("username")}
-            placeholder="Enter your username"
-            value={formData.username}
-          />
+          <TextInput label="Username" name="username" placeholder="Enter your username" value={formData.username} />
 
           <Input
-            icon={<Mail />}
             label="Email Address"
             name="email"
-            onChange={handleInputChange("email")}
             placeholder="user@example.com"
             type="email"
             value={formData.email}
@@ -100,7 +90,6 @@ const CompleteFormExample = () => {
             label="Password"
             name="password"
             note="Must be at least 8 characters"
-            onChange={handleInputChange("password")}
             placeholder="Enter a secure password"
             value={formData.password}
           />
@@ -111,22 +100,16 @@ const CompleteFormExample = () => {
             max={120}
             min={18}
             name="age"
-            onChange={handleInputChange("age")}
             placeholder="Enter your age"
             value={formData.age}
           />
 
-          <DateInput
-            label="Date of Birth"
-            name="birthdate"
-            onChange={handleInputChange("birthdate")}
-            value={formData.birthdate}
-          />
+          <DateInput label="Date of Birth" name="birthdate" value={formData.birthdate} />
         </Flex>
 
         {/* Select Inputs Section */}
         <Flex direction="col" gap="4">
-          <Heading level={3}>Location & Preferences</Heading>
+          <Heading level="3">Location & Preferences</Heading>
 
           <SelectInput
             label="Country"
@@ -159,7 +142,7 @@ const CompleteFormExample = () => {
 
         {/* Radio & Checkbox Section */}
         <Flex direction="col" gap="4">
-          <Heading level={3}>Account Settings</Heading>
+          <Heading level="3">Account Settings</Heading>
 
           <RadioSelect
             label="Account Type"
@@ -179,7 +162,6 @@ const CompleteFormExample = () => {
               hint="Receive updates about new features"
               label="Enable email notifications"
               name="notifications"
-              onChange={handleInputChange("notifications")}
               value="notifications"
             />
 
@@ -187,7 +169,6 @@ const CompleteFormExample = () => {
               checked={formData.newsletter}
               label="Subscribe to newsletter"
               name="newsletter"
-              onChange={handleInputChange("newsletter")}
               value="newsletter"
             />
 
@@ -196,7 +177,6 @@ const CompleteFormExample = () => {
               error={!formData.privacy ? "You must accept the privacy policy to continue" : undefined}
               label="I accept the privacy policy"
               name="privacy"
-              onChange={handleInputChange("privacy")}
               value="privacy"
             />
           </Flex>
@@ -204,13 +184,12 @@ const CompleteFormExample = () => {
 
         {/* Advanced Inputs Section */}
         <Flex direction="col" gap="4">
-          <Heading level={3}>Additional Settings</Heading>
+          <Heading level="3">Additional Settings</Heading>
 
           <Textarea
             label="Bio"
             name="bio"
             note="Tell us a little about yourself"
-            onChange={handleInputChange("bio")}
             placeholder="Write a short bio..."
             rows={4}
             value={formData.bio}
@@ -251,11 +230,11 @@ const CompleteFormExample = () => {
   );
 };
 
-export const CompleteForm: Story = {
+export const Default: Story = {
   render: () => <CompleteFormExample />,
 };
 
-export const FormInCard: Story = {
+export const WithinCard: Story = {
   render: () => (
     <Card>
       <Card.Header>
