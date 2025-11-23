@@ -23,9 +23,9 @@ type InputGroupComponent = React.FC<InputGroupProps> & {
   Textarea: React.FC<InputGroupTextareaProps>;
 };
 
-const InputGroup: InputGroupComponent = ({ children, ...props }: InputGroupProps) => {
+const InputGroup: InputGroupComponent = ({ children, className, ...props }: InputGroupProps) => {
   return (
-    <BaseInputGroup className="bg-background" {...props}>
+    <BaseInputGroup className={cn("bg-background", className)} {...props}>
       {children}
     </BaseInputGroup>
   );

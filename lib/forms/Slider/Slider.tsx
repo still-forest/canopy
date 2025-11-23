@@ -31,13 +31,19 @@ export const Slider = ({
   error,
   thumbClassName,
   trackClassName,
-  value,
-  defaultValue,
+  value: valueProp,
+  defaultValue: defaultValueProp,
   ...props
 }: SliderProps) => {
-  const _defaultValue =
-    defaultValue !== undefined ? (Array.isArray(defaultValue) ? defaultValue : [defaultValue]) : undefined;
-  const _value = value !== undefined ? (Array.isArray(value) ? value : [value]) : undefined;
+  const defaultValue =
+    defaultValueProp !== undefined
+      ? Array.isArray(defaultValueProp)
+        ? defaultValueProp
+        : [defaultValueProp]
+      : undefined;
+  const value = valueProp !== undefined ? (Array.isArray(valueProp) ? valueProp : [valueProp]) : undefined;
+
+  const errorId = error ? `${name}-error` : undefined;
 
   return (
     <Flex className="w-full" direction={labelOrientation === "left" ? "row" : "col"} gap="2">
@@ -56,7 +62,9 @@ export const Slider = ({
         </Flex>
       )}
       <BaseSlider
-        defaultValue={_defaultValue}
+        aria-describedby={errorId}
+        aria-invalid={error ? true : undefined}
+        defaultValue={defaultValue}
         id={name}
         name={name}
         thumbClassName={cn(
@@ -80,7 +88,7 @@ export const Slider = ({
           },
           trackClassName,
         )}
-        value={_value}
+        value={value}
         {...props}
       />
       {note && (
@@ -88,7 +96,7 @@ export const Slider = ({
           {note}
         </Text>
       )}
-      {error && <InputError message={error} />}
+      {error && <InputError id={errorId} message={error} />}
     </Flex>
   );
 };

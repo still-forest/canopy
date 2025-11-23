@@ -18,7 +18,9 @@ export default meta;
 
 type Story = StoryObj<typeof meta>;
 
-const defaultProps = {};
+const defaultProps = {
+  name: "example-slider",
+};
 
 export const Default: Story = {
   args: defaultProps,
