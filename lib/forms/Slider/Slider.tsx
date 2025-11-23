@@ -44,6 +44,8 @@ export const Slider = ({
   const value = valueProp !== undefined ? (Array.isArray(valueProp) ? valueProp : [valueProp]) : undefined;
 
   const errorId = error ? `${name}-error` : undefined;
+  const noteId = note ? `${name}-note` : undefined;
+  const describedBy = [noteId, errorId].filter(Boolean).join(" ") || undefined;
 
   return (
     <Flex className="w-full" direction={labelOrientation === "left" ? "row" : "col"} gap="2">
@@ -62,7 +64,7 @@ export const Slider = ({
         </Flex>
       )}
       <BaseSlider
-        aria-describedby={errorId}
+        aria-describedby={describedBy}
         aria-invalid={error ? true : undefined}
         defaultValue={defaultValue}
         id={name}
@@ -92,7 +94,7 @@ export const Slider = ({
         {...props}
       />
       {note && (
-        <Text size="sm" variant="muted">
+        <Text id={noteId} size="sm" variant="muted">
           {note}
         </Text>
       )}
