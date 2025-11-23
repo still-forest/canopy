@@ -1,5 +1,5 @@
 import type { Meta, StoryObj } from "@storybook/react-vite";
-import { PiggyBank } from "lucide-react";
+import { Origami, PiggyBank } from "lucide-react";
 
 import { SubmitButton } from "@/forms";
 
@@ -93,10 +93,17 @@ export const NoIcon: Story = {
   },
 };
 
+export const WithCustomIcon: Story = {
+  args: {
+    ...defaultProps,
+    icon: <Origami />,
+  },
+};
+
 export const WithCustomSubmittingIcon: Story = {
   args: {
     ...defaultProps,
-    submittingIcon: PiggyBank,
+    submittingIcon: <PiggyBank className="animate-spin" />,
     submitting: true,
   },
 };

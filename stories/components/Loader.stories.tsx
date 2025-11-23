@@ -28,7 +28,8 @@ export const Wheel: Story = {
 
 export const WithCustomIcon: Story = {
   args: {
-    icon: PiggyBank,
+    icon: <PiggyBank />,
+    size: "5xl",
   },
 };
 

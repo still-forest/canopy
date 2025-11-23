@@ -1,4 +1,5 @@
 import { Save, Send } from "lucide-react";
+import type { ReactElement } from "react";
 import { Loader } from "@/components/Loader";
 import { Button, type ButtonProps } from "@/forms";
 
@@ -8,8 +9,8 @@ export interface SubmitButtonProps extends Omit<ButtonProps, "icon"> {
   submittingLabel?: string;
   submitting?: boolean;
   disabled?: boolean;
-  icon?: React.ComponentType<React.SVGProps<SVGSVGElement>>;
-  submittingIcon?: React.ComponentType<React.SVGProps<SVGSVGElement>>;
+  icon?: ReactElement;
+  submittingIcon?: ReactElement;
   noIcon?: boolean;
 }
 
@@ -38,7 +39,7 @@ const SubmitButton = ({
   const defaultActionMap = BUTTON_TEXT_MAP[action];
   const label = customLabel || defaultActionMap.label;
   const submittingLabel = customSubmittingLabel || defaultActionMap.submittingLabel;
-  const IconComponent = customIcon || defaultActionMap.IconComponent;
+  const IconComponent = customIcon ? () => customIcon : defaultActionMap.IconComponent;
 
   const labelIcon = submitting ? <Loader icon={submittingIcon} /> : <IconComponent />;
 
