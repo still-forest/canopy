@@ -24,7 +24,11 @@ type InputGroupComponent = React.FC<InputGroupProps> & {
 };
 
 const InputGroup: InputGroupComponent = ({ children, ...props }: InputGroupProps) => {
-  return <BaseInputGroup {...props}>{children}</BaseInputGroup>;
+  return (
+    <BaseInputGroup className="bg-background" {...props}>
+      {children}
+    </BaseInputGroup>
+  );
 };
 
 const InputGroupButton = ({ className, size = "xs", variant = "ghost", ...props }: ButtonProps) => (
