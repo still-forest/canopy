@@ -32,9 +32,9 @@ export const Loader = ({ variant = "default", icon, size = "md", className, ...p
     return cloneElement(icon, {
       "aria-label": "Loading",
       role: "status",
-      className: cn(classNames, icon.props.className),
+      className: cn(classNames, (icon.props as { className?: string }).className),
       ...props,
-    });
+    } as Partial<React.ComponentProps<"svg">>);
   }
 
   const Icon = variant === "wheel" ? LoaderIcon : Loader2Icon;
