@@ -1,16 +1,14 @@
 import { Loader2Icon, LoaderIcon } from "lucide-react";
-
+import { cloneElement, type ReactElement } from "react";
 import { cn } from "@/utils";
 
 export interface LoaderProps extends React.ComponentProps<"svg"> {
   variant?: "default" | "wheel";
-  icon?: React.ComponentType<React.SVGProps<SVGSVGElement>>;
+  icon?: ReactElement;
   size?: "xs" | "sm" | "md" | "lg" | "xl" | "2xl" | "3xl" | "4xl" | "5xl" | "6xl" | "7xl" | "8xl" | "9xl" | "10xl";
 }
 
 export const Loader = ({ variant = "default", icon, size = "md", className, ...props }: LoaderProps) => {
-  const Icon = icon ? icon : variant === "wheel" ? LoaderIcon : Loader2Icon;
-
   const classNames = cn(
     "animate-spin",
     size === "xs" && "size-2",
@@ -30,5 +28,15 @@ export const Loader = ({ variant = "default", icon, size = "md", className, ...p
     className,
   );
 
+  if (icon) {
+    return cloneElement(icon, {
+      "aria-label": "Loading",
+      role: "status",
+      className: cn(classNames, (icon.props as { className?: string }).className),
+      ...props,
+    } as Partial<React.ComponentProps<"svg">>);
+  }
+
+  const Icon = variant === "wheel" ? LoaderIcon : Loader2Icon;
   return <Icon aria-label="Loading" className={classNames} role="status" {...props} />;
 };
