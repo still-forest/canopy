@@ -55,6 +55,7 @@ const SelectInput = ({
     size === "md" && "h-9 text-sm",
     size === "lg" && "h-10 text-base",
     size === "xl" && "h-11 text-lg",
+    "bg-background",
     className,
   );
 

@@ -54,6 +54,7 @@ const Checkbox = ({
       <Flex align="center" gap="2">
         <BaseCheckbox
           checked={checkedState}
+          className="bg-background"
           id={fullId}
           name={name}
           onCheckedChange={handleChange}
