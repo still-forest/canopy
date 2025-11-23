@@ -136,6 +136,17 @@ const CompleteFormExample = () => {
               { value: "advanced", label: "Advanced" },
               { value: "expert", label: "Expert" },
             ]}
+            secondaryOptions={[
+              { value: "professional", label: "Professional" },
+              { value: "sensei", label: "Sensei" },
+              { value: "master", label: "Master" },
+              { value: "grandmaster", label: "Grandmaster" },
+              { value: "legend", label: "Legend" },
+              { value: "god", label: "God" },
+              { value: "transcendent", label: "Transcendent" },
+              { value: "overlord", label: "Overlord" },
+              { value: "avatar", label: "Avatar" },
+            ]}
             value={formData.experience}
           />
         </Flex>

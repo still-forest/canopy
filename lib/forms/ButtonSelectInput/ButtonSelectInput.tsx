@@ -155,7 +155,7 @@ export const ButtonSelectInput = ({
             setOpen={setOpen}
             triggerClassName={cn(
               "w-[150px] font-normal ",
-              selectedSecondaryOption && "bg-primary font-medium text-primary-foreground",
+              selectedSecondaryOption && "bg-primary font-medium text-primary-foreground dark:bg-primary",
               secondaryButtonClassName,
             )}
             triggerComponent={ButtonGroup.Button}
