@@ -4,7 +4,7 @@ import type { BadgeVariant } from "@/types/variants";
 import { cn } from "@/utils";
 import { badgeColorVariants } from "./colorVariants";
 
-export interface BadgeProps {
+export interface BadgeProps extends React.ComponentProps<typeof BadgeBase> {
   variant?: BadgeVariant;
   color?: TailwindColor;
   label?: string;
@@ -13,7 +13,7 @@ export interface BadgeProps {
   className?: string;
 }
 
-export const Badge = ({ label, onClick, className, variant = "default", color, children }: BadgeProps) => {
+export const Badge = ({ label, onClick, className, variant = "default", color, children, ...props }: BadgeProps) => {
   const content = label || children;
   if (!content) {
     throw new Error("Badge must have either a label or children");
@@ -40,7 +40,7 @@ export const Badge = ({ label, onClick, className, variant = "default", color, c
   );
 
   return (
-    <BadgeBase className={badgeClasses} onClick={onClick} variant={variant}>
+    <BadgeBase className={badgeClasses} onClick={onClick} variant={variant} {...props}>
       {content}
     </BadgeBase>
   );

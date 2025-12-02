@@ -1,7 +1,7 @@
 import type { Meta, StoryObj } from "@storybook/react-vite";
-import { type CursorType, SimpleTooltip, Tooltip } from "@/components";
+import { CURSOR_TYPES, type CursorType, SimpleTooltip, Tooltip } from "@/components";
 import { Button } from "@/forms";
-import { Box } from "@/layout";
+import { Box, Flex } from "@/layout";
 import { Heading, Text } from "@/typography";
 import { sampleLongText } from "../support/sampleText";
 import OptionList from "../templates/OptionList";
@@ -117,6 +117,19 @@ export const WithLongText: Story = {
 
 export const AsSimpleTooltip: Story = {
   render: () => <SimpleTooltip content="This is a tooltip">Hover over me</SimpleTooltip>,
+};
+export const AsSimpleTooltipWithCursor: Story = {
+  render: () => (
+    <Flex className="flex-wrap" gap="2">
+      {CURSOR_TYPES.map((cursor) => (
+        <SimpleTooltip content="This is a tooltip" cursor={cursor} key={cursor}>
+          <Button size="sm" variant="outline">
+            {cursor}
+          </Button>
+        </SimpleTooltip>
+      ))}
+    </Flex>
+  ),
 };
 
 export const AsSimpleTooltipWithComponents: Story = {
