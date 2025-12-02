@@ -7,12 +7,18 @@ import { badgeColorVariants } from "./colorVariants";
 export interface BadgeProps {
   variant?: BadgeVariant;
   color?: TailwindColor;
-  label: string;
+  label?: string;
+  children?: React.ReactNode;
   onClick?: () => void;
   className?: string;
 }
 
-export const Badge = ({ label, onClick, className, variant = "default", color }: BadgeProps) => {
+export const Badge = ({ label, onClick, className, variant = "default", color, children }: BadgeProps) => {
+  const content = label || children;
+  if (!content) {
+    throw new Error("Badge must have either a label or children");
+  }
+
   if (color && !(variant === "default" || variant === "outline")) {
     throw new Error(
       `Color ${color} is not allowed for variant '${variant}'. Only default and outline variants support color.`,
@@ -35,7 +41,7 @@ export const Badge = ({ label, onClick, className, variant = "default", color }:
 
   return (
     <BadgeBase className={badgeClasses} onClick={onClick} variant={variant}>
-      {label}
+      {content}
     </BadgeBase>
   );
 };

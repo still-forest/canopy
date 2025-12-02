@@ -1,9 +1,10 @@
 import type { Meta, StoryObj } from "@storybook/react-vite";
-
+import { OrigamiIcon } from "lucide-react";
 import { Badge } from "@/components";
 import { Flex, Grid } from "@/layout";
 import { TAILWIND_COLORS } from "@/types/color";
 import type { BadgeVariant } from "@/types/variants";
+import { Text } from "@/typography";
 import { asOptionalValue, summarizeValues } from "../utils";
 
 const meta: Meta<typeof Badge> = {
@@ -103,5 +104,25 @@ export const CustomOutlineColor: Story = {
         </Flex>
       ))}
     </Grid>
+  ),
+};
+
+export const WithChildren: Story = {
+  render: () => (
+    <Flex gap="2">
+      <Badge>Just text</Badge>
+      <Badge>
+        <Text className="text-red-300" weight="bold">
+          Formatted text
+        </Text>
+      </Badge>
+      <Badge>
+        <OrigamiIcon />
+        <span>with icon</span>
+      </Badge>
+      <Badge>
+        <OrigamiIcon />
+      </Badge>
+    </Flex>
   ),
 };

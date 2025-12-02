@@ -101,4 +101,18 @@ describe("Badge", () => {
       "Color red is not allowed for variant 'secondary'. Only default and outline variants support color.",
     );
   });
+
+  test("should render with children", () => {
+    render(
+      <Badge>
+        <span>A badge with children</span>
+      </Badge>,
+    );
+    const badge = screen.getByText("A badge with children");
+    expect(badge).toBeInTheDocument();
+  });
+
+  test("should throw an error if both label and children are not provided", () => {
+    expect(() => render(<Badge />)).toThrow("Badge must have either a label or children");
+  });
 });
