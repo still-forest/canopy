@@ -10,13 +10,15 @@ Canopy is a React component library built with Tailwind CSS, Shadcn UI, and Radi
 
 ### Building
 ```bash
-pnpm build              # Build the library
+pnpm build              # Build the library (runs tsc -b && vite build)
 pnpm build --watch      # Build in watch mode for local development
+pnpm dev                # Start Vite dev server for local development
 ```
 
 ### Testing
 ```bash
-pnpm test               # Run tests in watch mode
+pnpm test               # Run all tests once
+pnpm test:watch         # Run tests in watch mode
 pnpm test:coverage      # Run tests with coverage report
 vitest run path/to/test.test.tsx  # Run a single test file
 ```

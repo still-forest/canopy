@@ -111,24 +111,7 @@ export type FlexJustify = (typeof FLEX_JUSTIFIES)[number];
 export const FLEX_WRAPS = ["nowrap", "wrap", "wrap-reverse"] as const;
 export type FlexWrap = (typeof FLEX_WRAPS)[number];
 
-export const FLEX_GROWS = [
-  null,
-  true,
-  false,
-  "0",
-  "1",
-  "2",
-  "3",
-  "4",
-  "5",
-  "6",
-  "7",
-  "8",
-  "9",
-  "10",
-  "11",
-  "12",
-] as const;
+export const FLEX_GROWS = [true, false, "0", "1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12"] as const;
 export type FlexGrow = (typeof FLEX_GROWS)[number];
 
 export const GRID_COLS = ["1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12", "none"] as const;
@@ -186,3 +169,18 @@ export const GAPS = [
   "16",
 ] as const;
 export type Gap = (typeof GAPS)[number];
+
+// Responsive type support
+export type Breakpoint = "base" | "sm" | "md" | "lg" | "xl" | "2xl";
+export type ResponsiveValue<T> = T | Partial<Record<Breakpoint, T>>;
+
+// Responsive variants for layout properties
+export type ResponsiveFlexDirection = ResponsiveValue<FlexDirection>;
+export type ResponsiveFlexAlign = ResponsiveValue<FlexAlign>;
+export type ResponsiveFlexJustify = ResponsiveValue<FlexJustify>;
+export type ResponsiveFlexWrap = ResponsiveValue<FlexWrap>;
+export type ResponsiveFlexGrow = ResponsiveValue<FlexGrow>;
+export type ResponsiveGridCols = ResponsiveValue<GridCols>;
+export type ResponsiveGridRows = ResponsiveValue<GridRows>;
+export type ResponsiveGridFlow = ResponsiveValue<GridFlow>;
+export type ResponsiveGap = ResponsiveValue<Gap>;
