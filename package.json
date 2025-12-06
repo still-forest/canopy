@@ -101,7 +101,7 @@
     "tailwindcss": "^4.0.0",
     "tw-animate-css": "^1.0.0"
   },
-  "packageManager": "pnpm@10.23.0",
+  "packageManager": "pnpm@10.24.0",
   "pnpm": {
     "overrides": {
       "rollup": "4.44.1"
