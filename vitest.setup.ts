@@ -7,16 +7,20 @@ beforeEach(() => {
 
 vi.stubGlobal(
   "ResizeObserver",
-  vi.fn().mockImplementation(() => ({
-    observe: vi.fn(),
-    unobserve: vi.fn(),
-    disconnect: vi.fn(),
-  })),
+  vi.fn(function ResizeObserver() {
+    return {
+      observe: vi.fn(),
+      unobserve: vi.fn(),
+      disconnect: vi.fn(),
+    };
+  }),
 );
 
 vi.mock("@/hooks/use-mobile", () => ({
-  useIsMobile: vi.fn().mockReturnValue(false),
+  useIsMobile: vi.fn(function useIsMobile() {
+    return false;
+  }),
 }));
 
 // Mock scrollIntoView for cmdk and other components that use it
-Element.prototype.scrollIntoView = vi.fn();
+Element.prototype.scrollIntoView = vi.fn(function scrollIntoView() {});
