@@ -136,8 +136,8 @@ importers:
         specifier: 19.2.3
         version: 19.2.3(react@19.2.3)
       release-it:
-        specifier: 19.0.6
-        version: 19.0.6(@types/node@24.10.3)
+        specifier: 19.1.0
+        version: 19.1.0(@types/node@24.10.3)
       storybook:
         specifier: 10.1.10
         version: 10.1.10(@testing-library/dom@10.4.1)(react-dom@19.2.3(react@19.2.3))(react@19.2.3)
@@ -3034,8 +3034,8 @@ packages:
     resolution: {integrity: sha512-6tDA8g98We0zd0GvVeMT9arEOnTw9qM03L9cJXaCjrip1OO764RDBLBfrB4cwzNGDj5OA5ioymC9GkizgWJDUg==}
     engines: {node: '>=8'}
 
-  release-it@19.0.6:
-    resolution: {integrity: sha512-XTCNZ2mV9wjASQmc2bcQjA+ImJiFMijbFSyQE6lDmP1Plq17acjYaoY5FmJb5Lh/Nv4UDwfRlKQMv1DvHFKf1g==}
+  release-it@19.1.0:
+    resolution: {integrity: sha512-XgAIZVKgHgOBUUoLFrUfXHG4cUDiXPWFW0AHIAgk17Tk9JbIjz9YyAU8MyQer7dWkfG5IpNU9QH8tViQZGfhaw==}
     engines: {node: ^20.12.0 || >=22.0.0}
     hasBin: true
 
@@ -6294,7 +6294,7 @@ snapshots:
       indent-string: 4.0.0
       strip-indent: 3.0.0
 
-  release-it@19.0.6(@types/node@24.10.3):
+  release-it@19.1.0(@types/node@24.10.3):
     dependencies:
       '@nodeutils/defaults-deep': 1.1.0
       '@octokit/rest': 22.0.0
