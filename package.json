@@ -81,7 +81,7 @@
     "@vitest/coverage-v8": "4.0.16",
     "class-variance-authority": "0.7.1",
     "clsx": "2.1.1",
-    "jsdom": "27.3.0",
+    "jsdom": "27.4.0",
     "react": "19.2.3",
     "react-dom": "19.2.3",
     "release-it": "19.1.0",
