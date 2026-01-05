@@ -7,7 +7,7 @@ import { Flex } from "@/layout";
 import { Text } from "@/typography";
 import { cn } from "@/utils";
 
-export interface CheckboxProps {
+export interface CheckboxProps extends React.ComponentProps<typeof BaseCheckbox> {
   label: string;
   labelClassName?: string;
   name: string;
@@ -29,6 +29,7 @@ const Checkbox = ({
   error,
   labelClassName,
   hint,
+  ...props
 }: CheckboxProps) => {
   const [checkedState, setCheckedState] = useState(checked);
 
@@ -59,6 +60,7 @@ const Checkbox = ({
           name={name}
           onCheckedChange={handleChange}
           value={effectiveValue}
+          {...props}
         />
         <Label className={cn("cursor-pointer", labelClassName)} htmlFor={fullId}>
           {label}

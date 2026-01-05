@@ -94,3 +94,11 @@ export const AsList: Story = {
     </Box>
   ),
 };
+
+export const Disabled: Story = {
+  args: {
+    ...defaultProps,
+    disabled: true,
+    label: "Disabled checkbox",
+  },
+};
