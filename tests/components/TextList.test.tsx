@@ -18,7 +18,7 @@ describe("TextList", () => {
     const textList = screen.getByRole("list");
     expect(textList).toBeInTheDocument();
     expect(textList.tagName).toBe("UL");
-    expect(textList.className).toBe("list-disc list-outside ml-4 marker:text-muted");
+    expect(textList.className).toBe("list-disc list-outside ml-4 marker:text-foreground");
 
     const items = screen.getAllByRole("listitem");
     expect(items).toHaveLength(3);
@@ -53,7 +53,7 @@ describe("TextList", () => {
     const textList = screen.getByRole("list");
     expect(textList).toBeInTheDocument();
     expect(textList.tagName).toBe("UL");
-    expect(textList.className).toBe("list-decimal list-outside ml-6 marker:text-muted");
+    expect(textList.className).toBe("list-decimal list-outside ml-6 marker:text-foreground");
 
     const items = screen.getAllByRole("listitem");
     expect(items).toHaveLength(2);
@@ -81,7 +81,7 @@ describe("TextList", () => {
     const textList = screen.getByRole("list");
     expect(textList).toBeInTheDocument();
     expect(textList.tagName).toBe("UL");
-    expect(textList.className).toBe("list-none list-outside marker:text-muted");
+    expect(textList.className).toBe("list-none list-outside marker:text-foreground");
 
     const items = screen.getAllByRole("listitem");
     expect(items).toHaveLength(1);
@@ -103,7 +103,7 @@ describe("TextList", () => {
     const textList = screen.getByRole("list");
     expect(textList).toBeInTheDocument();
     expect(textList.tagName).toBe("UL");
-    expect(textList.className).toBe("list-disc list-inside marker:text-muted");
+    expect(textList.className).toBe("list-disc list-inside marker:text-foreground");
 
     const items = screen.getAllByRole("listitem");
     expect(items).toHaveLength(1);
@@ -130,7 +130,7 @@ describe("TextList", () => {
     const textList = screen.getByRole("list");
     expect(textList).toBeInTheDocument();
     expect(textList.tagName).toBe("UL");
-    expect(textList.className).toBe("list-disc list-outside ml-4 marker:text-muted");
+    expect(textList.className).toBe("list-disc list-outside ml-4 marker:text-foreground");
 
     const items = screen.getAllByRole("listitem");
     expect(items).toHaveLength(2);

@@ -23,7 +23,7 @@ const TextList: TextListComponent = ({
   className,
   position = "outside",
   type = "unordered",
-  variant = "muted",
+  variant = "default",
   ...props
 }: TextListProps) => {
   return (
