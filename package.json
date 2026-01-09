@@ -84,7 +84,7 @@
     "jsdom": "27.4.0",
     "react": "19.2.3",
     "react-dom": "19.2.3",
-    "release-it": "19.2.2",
+    "release-it": "19.2.3",
     "storybook": "10.1.11",
     "tailwind-merge": "3.4.0",
     "tailwindcss": "4.1.18",
