@@ -2,6 +2,7 @@ import { Hint } from "@/components";
 import { RadioGroup, RadioGroupItem } from "@/components/ui/radio-group";
 import { InputError, Label, LegacyInputGroup } from "@/forms";
 import { Flex, Grid } from "@/layout";
+import type { GridCols } from "@/types";
 
 interface Option {
   value: string;
@@ -10,6 +11,7 @@ interface Option {
 }
 
 interface RadioSelectProps {
+  cols?: GridCols;
   name: string;
   label?: string;
   labelClassName?: string;
@@ -19,11 +21,20 @@ interface RadioSelectProps {
   error?: string;
 }
 
-const RadioSelect = ({ label, name, options, value, onChange, error, labelClassName }: RadioSelectProps) => {
+export const RadioSelect = ({
+  cols = "1",
+  label,
+  name,
+  options,
+  value,
+  onChange,
+  error,
+  labelClassName,
+}: RadioSelectProps) => {
   return (
-    <LegacyInputGroup className="flex flex-col gap-4 px-2 py-1" label={label} labelFor={name}>
+    <LegacyInputGroup className="flex flex-col gap-4 px-4 py-2" label={label} labelFor={name}>
       <RadioGroup className="w-full" name={name} onValueChange={onChange} value={value}>
-        <Grid cols="2">
+        <Grid cols={cols} gap="2">
           {options.map((option, i) => (
             <Flex align="center" gap="2" justify="start" key={i}>
               <RadioGroupItem id={option.value} value={option.value} />
@@ -39,5 +50,3 @@ const RadioSelect = ({ label, name, options, value, onChange, error, labelClassN
     </LegacyInputGroup>
   );
 };
-
-export { RadioSelect };

@@ -65,3 +65,10 @@ export const WithError: Story = {
     error: "What'd you do?!",
   },
 };
+
+export const WithCols: Story = {
+  args: {
+    ...defaultProps,
+    cols: "2",
+  },
+};
