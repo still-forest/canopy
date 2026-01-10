@@ -72,3 +72,24 @@ export const WithCols: Story = {
     cols: "2",
   },
 };
+
+export const SmallSize: Story = {
+  args: {
+    ...defaultProps,
+    size: "sm",
+  },
+};
+
+export const MediumSize: Story = {
+  args: {
+    ...defaultProps,
+    size: "md",
+  },
+};
+
+export const LargeSize: Story = {
+  args: {
+    ...defaultProps,
+    size: "lg",
+  },
+};

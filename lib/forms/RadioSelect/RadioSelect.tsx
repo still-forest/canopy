@@ -18,6 +18,7 @@ interface RadioSelectProps {
   value?: string;
   options: Option[];
   onChange?: (value: string) => void;
+  size?: "sm" | "md" | "lg";
   error?: string;
 }
 
@@ -27,18 +28,20 @@ export const RadioSelect = ({
   name,
   options,
   value,
+  size = "md",
   onChange,
   error,
   labelClassName,
 }: RadioSelectProps) => {
+  const radioSizeClasses = size === "lg" ? "size-5" : size === "md" ? "size-4" : "size-3";
   return (
     <LegacyInputGroup className="flex flex-col gap-4 px-4 py-2" label={label} labelFor={name}>
       <RadioGroup className="w-full" name={name} onValueChange={onChange} value={value}>
-        <Grid cols={cols} gap="2">
+        <Grid cols={cols} gap={size === "lg" ? "1" : "2"}>
           {options.map((option, i) => (
             <Flex align="center" gap="2" justify="start" key={i}>
-              <RadioGroupItem id={option.value} value={option.value} />
-              <Label className={labelClassName} htmlFor={option.value}>
+              <RadioGroupItem className={radioSizeClasses} id={option.value} value={option.value} />
+              <Label className={labelClassName} htmlFor={option.value} size={size}>
                 {option.label}
               </Label>
               {option.hint && <Hint content={option.hint} />}
