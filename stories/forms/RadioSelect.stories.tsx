@@ -65,3 +65,31 @@ export const WithError: Story = {
     error: "What'd you do?!",
   },
 };
+
+export const WithCols: Story = {
+  args: {
+    ...defaultProps,
+    cols: "2",
+  },
+};
+
+export const SmallSize: Story = {
+  args: {
+    ...defaultProps,
+    size: "sm",
+  },
+};
+
+export const MediumSize: Story = {
+  args: {
+    ...defaultProps,
+    size: "md",
+  },
+};
+
+export const LargeSize: Story = {
+  args: {
+    ...defaultProps,
+    size: "lg",
+  },
+};
