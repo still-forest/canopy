@@ -1,3 +1,4 @@
+import { mergeProps } from "@base-ui/react";
 import { Calendar as CalendarIcon } from "lucide-react";
 import { useState } from "react";
 import { Calendar } from "@/components/ui/calendar";
@@ -27,20 +28,23 @@ export const DatePicker = ({ onDateSelection, initialValue, className, size = "d
   return (
     <Flex direction="col" gap="2">
       <Popover>
-        <PopoverTrigger asChild>
-          <Button
-            className={cn(
-              "w-[280px] justify-start text-left font-normal bg-background",
-              !date && "text-muted-foreground",
-              className,
-            )}
-            size={size}
-            variant="outline"
-          >
-            <CalendarIcon className="mr-2 h-4 w-4" />
-            {date ? date.toISOString().split("T")[0] : <span>Select a date</span>}
-          </Button>
-        </PopoverTrigger>
+        <PopoverTrigger
+          render={(props) => (
+            <Button
+              className={cn(
+                "w-[280px] justify-start text-left font-normal bg-background",
+                !date && "text-muted-foreground",
+                className,
+              )}
+              size={size}
+              variant="outline"
+              {...mergeProps(props, { onClick: () => handleSelect(date) })}
+            >
+              <CalendarIcon className="mr-2 h-4 w-4" />
+              {date ? date.toISOString().split("T")[0] : <span>Select a date</span>}
+            </Button>
+          )}
+        />
         <PopoverContent className="w-auto p-0">
           <Calendar autoFocus mode="single" onSelect={handleSelect} selected={date} />
         </PopoverContent>

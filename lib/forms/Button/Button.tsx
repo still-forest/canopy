@@ -91,7 +91,6 @@ export const Button = ({
 
   return (
     <BaseButton
-      asChild={asChild}
       className={cn(
         fit && "w-fit",
         full && "w-full",

@@ -102,13 +102,15 @@ export const WithButton: Story = {
       </InputGroup>
       <InputGroup className="[--radius:9999px]">
         <Popover>
-          <Popover.Trigger asChild>
-            <InputGroup.Addon>
-              <InputGroup.Button asIcon size="xs" variant="secondary">
-                <Circle />
-              </InputGroup.Button>
-            </InputGroup.Addon>
-          </Popover.Trigger>
+          <Popover.Trigger
+            render={() => (
+              <InputGroup.Addon>
+                <InputGroup.Button asIcon size="xs" variant="secondary">
+                  <Circle />
+                </InputGroup.Button>
+              </InputGroup.Addon>
+            )}
+          />
           <Popover.Content align="start" className="flex flex-col gap-1 rounded-xl text-sm">
             <p className="font-medium">Your connection is not secure.</p>
             <p>You should not enter any sensitive information on this site.</p>
