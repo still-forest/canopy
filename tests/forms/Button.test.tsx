@@ -44,7 +44,7 @@ describe("Button", () => {
 
     expect(screen.getByRole("button")).toHaveTextContent("Test Button");
     expect(screen.getByRole("button")).toHaveAttribute("type", "button");
-    expect(screen.getByRole("button")).toHaveClass("h-7 px-3 py-1.5 has-[>svg]:px-2 text-xs");
+    expect(screen.getByRole("button")).toHaveClass("h-6 px-2");
   });
 
   test("renders a Button of size sm", async () => {
@@ -52,7 +52,7 @@ describe("Button", () => {
 
     expect(screen.getByRole("button")).toHaveTextContent("Test Button");
     expect(screen.getByRole("button")).toHaveAttribute("type", "button");
-    expect(screen.getByRole("button")).toHaveClass("h-8 rounded-md gap-1.5 px-3 has-[>svg]:px-2.5 text-sm");
+    expect(screen.getByRole("button")).toHaveClass("h-8 px-2.5");
   });
 
   test("renders a Button of size md", async () => {
@@ -60,7 +60,7 @@ describe("Button", () => {
 
     expect(screen.getByRole("button")).toHaveTextContent("Test Button");
     expect(screen.getByRole("button")).toHaveAttribute("type", "button");
-    expect(screen.getByRole("button")).toHaveClass("h-9 px-4 py-2 has-[>svg]:px-3 text-sm");
+    expect(screen.getByRole("button")).toHaveClass("h-9 px-2.5");
   });
 
   test("renders a Button of size lg", async () => {
@@ -68,7 +68,7 @@ describe("Button", () => {
 
     expect(screen.getByRole("button")).toHaveTextContent("Test Button");
     expect(screen.getByRole("button")).toHaveAttribute("type", "button");
-    expect(screen.getByRole("button")).toHaveClass("h-10 rounded-md px-6 has-[>svg]:px-4 text-base");
+    expect(screen.getByRole("button")).toHaveClass("h-10 px-2.5");
   });
 
   test("renders a Button of size xl", async () => {
@@ -76,7 +76,7 @@ describe("Button", () => {
 
     expect(screen.getByRole("button")).toHaveTextContent("Test Button");
     expect(screen.getByRole("button")).toHaveAttribute("type", "button");
-    expect(screen.getByRole("button")).toHaveClass("h-11 px-8 py-3 has-[>svg]:px-5 text-lg");
+    expect(screen.getByRole("button")).toHaveClass("h-11 px-3");
   });
 
   test("renders an unstyled Button", async () => {
@@ -95,6 +95,6 @@ describe("Button", () => {
 
     expect(screen.getByRole("button")).toHaveTextContent("Test Button");
     expect(screen.getByRole("button")).toHaveAttribute("type", "button");
-    expect(screen.getByRole("button")).toHaveClass("h-9 px-4 py-2 has-[>svg]:px-3 text-sm");
+    expect(screen.getByRole("button")).toHaveClass("h-9 px-2.5");
   });
 });

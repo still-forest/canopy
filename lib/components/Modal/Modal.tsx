@@ -1,4 +1,4 @@
-import { cloneElement, useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import {
   Dialog,
   DialogContent,
@@ -16,9 +16,19 @@ interface Props {
   open?: boolean;
   onOpenChange?: (open: boolean) => void;
   ariaDescription?: string;
+  renderTrigger?: (props: React.ComponentProps<typeof DialogTrigger>) => React.ReactNode;
 }
 
-export const Modal = ({ trigger, children, title, description, open, onOpenChange, ariaDescription }: Props) => {
+export const Modal = ({
+  trigger,
+  children,
+  title,
+  description,
+  open,
+  onOpenChange,
+  ariaDescription,
+  renderTrigger,
+}: Props) => {
   const isControlled = open !== undefined;
   const [openState, setOpenState] = useState<boolean>(isControlled ? open : false);
 
@@ -45,7 +55,7 @@ export const Modal = ({ trigger, children, title, description, open, onOpenChang
 
   return (
     <Dialog onOpenChange={handleOpenChange} open={openState}>
-      <DialogTrigger render={(props) => cloneElement(trigger as React.ReactElement, props)} />
+      <DialogTrigger render={renderTrigger} />
       <DialogContent>
         {(title || description) && (
           <DialogHeader>
