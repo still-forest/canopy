@@ -1,3 +1,4 @@
+import { mergeProps } from "@base-ui/react";
 import { Calendar as CalendarIcon } from "lucide-react";
 import { useState } from "react";
 import { Calendar } from "@/components/ui/calendar";
@@ -28,7 +29,7 @@ export const DatePicker = ({ onDateSelection, initialValue, className, size = "d
     <Flex direction="col" gap="2">
       <Popover>
         <PopoverTrigger
-          render={() => (
+          render={(props) => (
             <Button
               className={cn(
                 "w-[280px] justify-start text-left font-normal bg-background",
@@ -37,6 +38,7 @@ export const DatePicker = ({ onDateSelection, initialValue, className, size = "d
               )}
               size={size}
               variant="outline"
+              {...mergeProps(props, { onClick: () => handleSelect(date) })}
             >
               <CalendarIcon className="mr-2 h-4 w-4" />
               {date ? date.toISOString().split("T")[0] : <span>Select a date</span>}

@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { cloneElement, useEffect, useState } from "react";
 import {
   Dialog,
   DialogContent,
@@ -45,7 +45,7 @@ export const Modal = ({ trigger, children, title, description, open, onOpenChang
 
   return (
     <Dialog onOpenChange={handleOpenChange} open={openState}>
-      <DialogTrigger render={() => <>{trigger}</>} />
+      <DialogTrigger render={(props) => cloneElement(trigger as React.ReactElement, props)} />
       <DialogContent>
         {(title || description) && (
           <DialogHeader>
