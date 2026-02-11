@@ -111,9 +111,7 @@ describe("Tooltip", () => {
 
     render(
       <Tooltip onOpenChange={onOpenChange}>
-        <Tooltip.Trigger>
-          <button type="button">Hover over me</button>
-        </Tooltip.Trigger>
+        <Tooltip.Trigger>Hover over me</Tooltip.Trigger>
         <Tooltip.Content>This is a tooltip</Tooltip.Content>
       </Tooltip>,
     );

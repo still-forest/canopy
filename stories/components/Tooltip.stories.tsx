@@ -132,17 +132,3 @@ export const AsSimpleTooltipWithCursor: Story = {
     </Flex>
   ),
 };
-
-export const AsSimpleTooltipWithComponents: Story = {
-  render: () => (
-    <SimpleTooltip
-      content={
-        <Heading level="4" variant="primary">
-          This is a tooltip
-        </Heading>
-      }
-    >
-      <Button>Hover over me</Button>
-    </SimpleTooltip>
-  ),
-};
