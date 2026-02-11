@@ -13,10 +13,10 @@ type TooltipComponent = React.FC<TooltipProps> & {
   Content: React.FC<TooltipContentProps>;
 };
 
-const Tooltip: TooltipComponent = ({ children, open, onOpenChange }) => {
+const Tooltip: TooltipComponent = ({ children, open, onOpenChange, ...props }) => {
   return (
     <TooltipProvider>
-      <BaseTooltip onOpenChange={onOpenChange} open={open}>
+      <BaseTooltip onOpenChange={onOpenChange} open={open} {...props}>
         {children}
       </BaseTooltip>
     </TooltipProvider>
@@ -65,8 +65,10 @@ const Trigger = ({ cursor = "pointer", className, ...props }: TooltipTriggerProp
   />
 );
 
-const Content = ({ className, children }: TooltipContentProps) => (
-  <TooltipContent className={className}>{children}</TooltipContent>
+const Content = ({ className, children, ...props }: TooltipContentProps) => (
+  <TooltipContent className={className} role="tooltip" {...props}>
+    {children}
+  </TooltipContent>
 );
 
 Tooltip.Trigger = Trigger;

@@ -93,6 +93,22 @@ export const Open: Story = {
   ),
 };
 
+export const OnOpenChangeCallback: Story = {
+  render: () => (
+    <Tooltip
+      onOpenChange={() => {
+        window.console.log("Tooltip opened or closed");
+      }}
+    >
+      <Tooltip.Trigger>
+        {/* TODO: this is a nested button, needs to be fixed */}
+        <Button>Hover over me</Button>
+      </Tooltip.Trigger>
+      <Tooltip.Content>This is a tooltip</Tooltip.Content>
+    </Tooltip>
+  ),
+};
+
 export const WithContentStyle: Story = {
   render: () => (
     <Tooltip>
@@ -126,6 +142,34 @@ export const AsSimpleTooltipWithCursor: Story = {
         <SimpleTooltip content="This is a tooltip" cursor={cursor} key={cursor}>
           <Button size="sm" variant="outline">
             {cursor}
+          </Button>
+        </SimpleTooltip>
+      ))}
+    </Flex>
+  ),
+};
+
+export const AsSimpleTooltipWithSide: Story = {
+  render: () => (
+    <Flex className="flex-wrap" gap="2">
+      {(["left", "top", "bottom", "right"] as const).map((side) => (
+        <SimpleTooltip content="This is a tooltip" key={side} side={side}>
+          <Button size="sm" variant="outline">
+            {side}
+          </Button>
+        </SimpleTooltip>
+      ))}
+    </Flex>
+  ),
+};
+
+export const AsSimpleTooltipWithAlign: Story = {
+  render: () => (
+    <Flex direction="col" gap="2">
+      {(["start", "center", "end"] as const).map((align) => (
+        <SimpleTooltip align={align} content="This is a tooltip" key={align}>
+          <Button size="sm" variant="outline">
+            {align}
           </Button>
         </SimpleTooltip>
       ))}
