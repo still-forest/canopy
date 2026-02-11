@@ -118,6 +118,7 @@ export const WithLongText: Story = {
 export const AsSimpleTooltip: Story = {
   render: () => <SimpleTooltip content="This is a tooltip">Hover over me</SimpleTooltip>,
 };
+
 export const AsSimpleTooltipWithCursor: Story = {
   render: () => (
     <Flex className="flex-wrap" gap="2">
