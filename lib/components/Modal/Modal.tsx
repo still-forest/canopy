@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { type ReactElement, type ReactNode, useEffect, useState } from "react";
 import {
   Dialog,
   DialogContent,
@@ -9,8 +9,8 @@ import {
 } from "@/components/ui/dialog";
 
 interface Props {
-  children: React.ReactNode;
-  trigger?: React.ReactNode;
+  children: ReactNode;
+  trigger?: ReactElement;
   title?: string;
   description?: string;
   open?: boolean;
@@ -45,7 +45,7 @@ export const Modal = ({ trigger, children, title, description, open, onOpenChang
 
   return (
     <Dialog onOpenChange={handleOpenChange} open={openState}>
-      <DialogTrigger asChild>{trigger}</DialogTrigger>
+      <DialogTrigger render={trigger} />
       <DialogContent>
         {(title || description) && (
           <DialogHeader>
