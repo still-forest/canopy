@@ -142,11 +142,13 @@ export const WithTooltip: Story = {
         <InputGroup.Input name="password" placeholder="Enter password" type="password" />
         <InputGroup.Addon align="inline-end">
           <Tooltip>
-            <Tooltip.Trigger asChild>
-              <InputGroup.Button aria-label="Info" asIcon size="xs" variant="ghost">
-                <InfoIcon />
-              </InputGroup.Button>
-            </Tooltip.Trigger>
+            <Tooltip.Trigger
+              render={
+                <InputGroup.Button aria-label="Info" asIcon size="xs" variant="ghost">
+                  <InfoIcon />
+                </InputGroup.Button>
+              }
+            />
             <Tooltip.Content>
               <p>Password must be at least 8 characters</p>
             </Tooltip.Content>
@@ -157,11 +159,13 @@ export const WithTooltip: Story = {
         <InputGroup.Input name="email" placeholder="Your email address" />
         <InputGroup.Addon align="inline-end">
           <Tooltip>
-            <Tooltip.Trigger asChild>
-              <InputGroup.Button aria-label="Help" asIcon size="xs" variant="ghost">
-                <HelpCircle />
-              </InputGroup.Button>
-            </Tooltip.Trigger>
+            <Tooltip.Trigger
+              render={
+                <InputGroup.Button aria-label="Help" asIcon size="xs" variant="ghost">
+                  <HelpCircle />
+                </InputGroup.Button>
+              }
+            />
             <Tooltip.Content>
               <p>We&apos;ll use this to send you notifications</p>
             </Tooltip.Content>
@@ -171,13 +175,15 @@ export const WithTooltip: Story = {
       <InputGroup>
         <InputGroup.Input name="api-key" placeholder="Enter API key" />
         <Tooltip>
-          <Tooltip.Trigger asChild>
-            <InputGroup.Addon>
-              <InputGroup.Button aria-label="Help" asIcon size="xs" variant="ghost">
-                <HelpCircle />
-              </InputGroup.Button>
-            </InputGroup.Addon>
-          </Tooltip.Trigger>
+          <Tooltip.Trigger
+            render={() => (
+              <InputGroup.Addon>
+                <InputGroup.Button aria-label="Help" asIcon size="xs" variant="ghost">
+                  <HelpCircle />
+                </InputGroup.Button>
+              </InputGroup.Addon>
+            )}
+          />
           <Tooltip.Content side="left">
             <p>Click for help with API keys</p>
           </Tooltip.Content>
@@ -269,11 +275,19 @@ export const WithLabel: Story = {
               Email
             </Label>
             <Tooltip>
-              <Tooltip.Trigger asChild>
-                <InputGroup.Button aria-label="Help" asIcon className="ml-auto rounded-full" size="xs" variant="ghost">
-                  <InfoIcon />
-                </InputGroup.Button>
-              </Tooltip.Trigger>
+              <Tooltip.Trigger
+                render={
+                  <InputGroup.Button
+                    aria-label="Help"
+                    asIcon
+                    className="ml-auto rounded-full"
+                    size="xs"
+                    variant="ghost"
+                  >
+                    <InfoIcon />
+                  </InputGroup.Button>
+                }
+              />
               <Tooltip.Content>
                 <p>We&apos;ll use this to send you notifications</p>
               </Tooltip.Content>

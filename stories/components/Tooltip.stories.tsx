@@ -19,9 +19,7 @@ type Story = StoryObj<typeof meta>;
 export const Default: Story = {
   render: () => (
     <Tooltip>
-      <Tooltip.Trigger>
-        <Button>Hover over me</Button>
-      </Tooltip.Trigger>
+      <Tooltip.Trigger render={<Button>Hover over me</Button>} />
       <Tooltip.Content>This is a tooltip</Tooltip.Content>
     </Tooltip>
   ),
@@ -34,9 +32,7 @@ export const Cursor: Story = {
       options={["arrow", "pointer", "text", "not-allowed"] as CursorType[]}
       renderOption={(option) => (
         <Tooltip>
-          <Tooltip.Trigger cursor={option}>
-            <Button className="max-w-40">Hover over me</Button>
-          </Tooltip.Trigger>
+          <Tooltip.Trigger cursor={option} render={<Button className="max-w-40">Hover over me</Button>} />
           <Tooltip.Content>This is a tooltip</Tooltip.Content>
         </Tooltip>
       )}
@@ -66,9 +62,7 @@ export const WithText: Story = {
 export const WithComplexContent: Story = {
   render: () => (
     <Tooltip>
-      <Tooltip.Trigger>
-        <Button>Hover over me</Button>
-      </Tooltip.Trigger>
+      <Tooltip.Trigger render={<Button>Hover over me</Button>} />
       <Tooltip.Content>
         <Heading level="4" variant="primary">
           This is a heading
@@ -85,9 +79,20 @@ export const WithComplexContent: Story = {
 export const Open: Story = {
   render: () => (
     <Tooltip open={true}>
-      <Tooltip.Trigger>
-        <Button>Hover over me</Button>
-      </Tooltip.Trigger>
+      <Tooltip.Trigger render={<Button>Hover over me</Button>} />
+      <Tooltip.Content>This is a tooltip</Tooltip.Content>
+    </Tooltip>
+  ),
+};
+
+export const OnOpenChangeCallback: Story = {
+  render: () => (
+    <Tooltip
+      onOpenChange={() => {
+        window.console.log("Tooltip opened or closed");
+      }}
+    >
+      <Tooltip.Trigger render={<Button>Hover over me</Button>} />
       <Tooltip.Content>This is a tooltip</Tooltip.Content>
     </Tooltip>
   ),
@@ -96,9 +101,7 @@ export const Open: Story = {
 export const WithContentStyle: Story = {
   render: () => (
     <Tooltip>
-      <Tooltip.Trigger>
-        <Button>Hover over me</Button>
-      </Tooltip.Trigger>
+      <Tooltip.Trigger render={<Button>Hover over me</Button>} />
       <Tooltip.Content className="max-w-sm border-1 border-red-500 opacity-75 p-12">This is a tooltip</Tooltip.Content>
     </Tooltip>
   ),
@@ -107,9 +110,7 @@ export const WithContentStyle: Story = {
 export const WithLongText: Story = {
   render: () => (
     <Tooltip>
-      <Tooltip.Trigger>
-        <Button>Hover over me</Button>
-      </Tooltip.Trigger>
+      <Tooltip.Trigger render={<Button>Hover over me</Button>} />
       <Tooltip.Content className="max-w-sm">{sampleLongText}</Tooltip.Content>
     </Tooltip>
   ),
@@ -118,6 +119,7 @@ export const WithLongText: Story = {
 export const AsSimpleTooltip: Story = {
   render: () => <SimpleTooltip content="This is a tooltip">Hover over me</SimpleTooltip>,
 };
+
 export const AsSimpleTooltipWithCursor: Story = {
   render: () => (
     <Flex className="flex-wrap" gap="2">
@@ -132,16 +134,30 @@ export const AsSimpleTooltipWithCursor: Story = {
   ),
 };
 
-export const AsSimpleTooltipWithComponents: Story = {
+export const AsSimpleTooltipWithSide: Story = {
   render: () => (
-    <SimpleTooltip
-      content={
-        <Heading level="4" variant="primary">
-          This is a tooltip
-        </Heading>
-      }
-    >
-      <Button>Hover over me</Button>
-    </SimpleTooltip>
+    <Flex className="flex-wrap" gap="2">
+      {(["left", "top", "bottom", "right"] as const).map((side) => (
+        <SimpleTooltip content="This is a tooltip" key={side} side={side}>
+          <Button size="sm" variant="outline">
+            {side}
+          </Button>
+        </SimpleTooltip>
+      ))}
+    </Flex>
+  ),
+};
+
+export const AsSimpleTooltipWithAlign: Story = {
+  render: () => (
+    <Flex direction="col" gap="2">
+      {(["start", "center", "end"] as const).map((align) => (
+        <SimpleTooltip align={align} content="This is a tooltip" key={align}>
+          <Button size="sm" variant="outline">
+            {align}
+          </Button>
+        </SimpleTooltip>
+      ))}
+    </Flex>
   ),
 };
