@@ -19,9 +19,7 @@ type Story = StoryObj<typeof meta>;
 export const Default: Story = {
   render: () => (
     <Tooltip>
-      <Tooltip.Trigger>
-        <Button>Hover over me</Button>
-      </Tooltip.Trigger>
+      <Tooltip.Trigger render={<Button>Hover over me</Button>} />
       <Tooltip.Content>This is a tooltip</Tooltip.Content>
     </Tooltip>
   ),
@@ -34,9 +32,7 @@ export const Cursor: Story = {
       options={["arrow", "pointer", "text", "not-allowed"] as CursorType[]}
       renderOption={(option) => (
         <Tooltip>
-          <Tooltip.Trigger cursor={option}>
-            <Button className="max-w-40">Hover over me</Button>
-          </Tooltip.Trigger>
+          <Tooltip.Trigger cursor={option} render={<Button className="max-w-40">Hover over me</Button>} />
           <Tooltip.Content>This is a tooltip</Tooltip.Content>
         </Tooltip>
       )}
@@ -66,9 +62,7 @@ export const WithText: Story = {
 export const WithComplexContent: Story = {
   render: () => (
     <Tooltip>
-      <Tooltip.Trigger>
-        <Button>Hover over me</Button>
-      </Tooltip.Trigger>
+      <Tooltip.Trigger render={<Button>Hover over me</Button>} />
       <Tooltip.Content>
         <Heading level="4" variant="primary">
           This is a heading
@@ -85,9 +79,7 @@ export const WithComplexContent: Story = {
 export const Open: Story = {
   render: () => (
     <Tooltip open={true}>
-      <Tooltip.Trigger>
-        <Button>Hover over me</Button>
-      </Tooltip.Trigger>
+      <Tooltip.Trigger render={<Button>Hover over me</Button>} />
       <Tooltip.Content>This is a tooltip</Tooltip.Content>
     </Tooltip>
   ),
@@ -100,10 +92,7 @@ export const OnOpenChangeCallback: Story = {
         window.console.log("Tooltip opened or closed");
       }}
     >
-      <Tooltip.Trigger>
-        {/* TODO: this is a nested button, needs to be fixed */}
-        <Button>Hover over me</Button>
-      </Tooltip.Trigger>
+      <Tooltip.Trigger render={<Button>Hover over me</Button>} />
       <Tooltip.Content>This is a tooltip</Tooltip.Content>
     </Tooltip>
   ),
@@ -112,9 +101,7 @@ export const OnOpenChangeCallback: Story = {
 export const WithContentStyle: Story = {
   render: () => (
     <Tooltip>
-      <Tooltip.Trigger>
-        <Button>Hover over me</Button>
-      </Tooltip.Trigger>
+      <Tooltip.Trigger render={<Button>Hover over me</Button>} />
       <Tooltip.Content className="max-w-sm border-1 border-red-500 opacity-75 p-12">This is a tooltip</Tooltip.Content>
     </Tooltip>
   ),
@@ -123,9 +110,7 @@ export const WithContentStyle: Story = {
 export const WithLongText: Story = {
   render: () => (
     <Tooltip>
-      <Tooltip.Trigger>
-        <Button>Hover over me</Button>
-      </Tooltip.Trigger>
+      <Tooltip.Trigger render={<Button>Hover over me</Button>} />
       <Tooltip.Content className="max-w-sm">{sampleLongText}</Tooltip.Content>
     </Tooltip>
   ),

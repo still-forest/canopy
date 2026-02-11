@@ -12,7 +12,7 @@ describe("Tooltip", () => {
     render(
       <Tooltip>
         <Tooltip.Trigger>
-          <button type="button">Hover over me</button>
+          <span>Hover over me</span>
         </Tooltip.Trigger>
         <Tooltip.Content>This is a tooltip</Tooltip.Content>
       </Tooltip>,
@@ -34,7 +34,7 @@ describe("Tooltip", () => {
     render(
       <Tooltip>
         <Tooltip.Trigger cursor="arrow">
-          <button type="button">Hover over me</button>
+          <span>Hover over me</span>
         </Tooltip.Trigger>
         <Tooltip.Content>This is a tooltip</Tooltip.Content>
       </Tooltip>,
@@ -48,7 +48,7 @@ describe("Tooltip", () => {
     render(
       <Tooltip>
         <Tooltip.Trigger cursor="pointer">
-          <button type="button">Hover over me</button>
+          <span>Hover over me</span>
         </Tooltip.Trigger>
         <Tooltip.Content>This is a tooltip</Tooltip.Content>
       </Tooltip>,
@@ -62,7 +62,7 @@ describe("Tooltip", () => {
     render(
       <Tooltip>
         <Tooltip.Trigger cursor="text">
-          <button type="button">Hover over me</button>
+          <span>Hover over me</span>
         </Tooltip.Trigger>
         <Tooltip.Content>This is a tooltip</Tooltip.Content>
       </Tooltip>,
@@ -76,7 +76,7 @@ describe("Tooltip", () => {
     render(
       <Tooltip>
         <Tooltip.Trigger cursor="not-allowed">
-          <button type="button">Hover over me</button>
+          <span>Hover over me</span>
         </Tooltip.Trigger>
         <Tooltip.Content>This is a tooltip</Tooltip.Content>
       </Tooltip>,
@@ -91,7 +91,7 @@ describe("Tooltip", () => {
     render(
       <Tooltip open={true}>
         <Tooltip.Trigger>
-          <button type="button">Hover over me</button>
+          <span>Hover over me</span>
         </Tooltip.Trigger>
         <Tooltip.Content>This is a tooltip</Tooltip.Content>
       </Tooltip>,
@@ -123,6 +123,6 @@ describe("Tooltip", () => {
     const tooltip = screen.getByRole("tooltip");
     expect(tooltip).toHaveTextContent("This is a tooltip");
 
-    expect(onOpenChange).toHaveBeenCalledWith(true);
+    expect(onOpenChange).toHaveBeenCalledWith(true, expect.anything());
   });
 });
