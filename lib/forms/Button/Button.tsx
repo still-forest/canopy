@@ -44,7 +44,6 @@ export interface ButtonProps extends React.ComponentProps<"button"> {
   type?: "button" | "submit" | "reset";
   fit?: boolean;
   full?: boolean;
-  asChild?: boolean;
   rounded?: boolean;
 }
 
@@ -59,7 +58,6 @@ export const Button = ({
   disabled = false,
   className = "",
   type = "button",
-  asChild = false,
   full = false,
   fit = false,
   rounded = false,
@@ -91,7 +89,6 @@ export const Button = ({
 
   return (
     <BaseButton
-      asChild={asChild}
       className={cn(
         fit && "w-fit",
         full && "w-full",
