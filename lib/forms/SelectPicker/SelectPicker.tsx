@@ -44,8 +44,8 @@ export const SelectPicker = ({
     return label;
   }, [value, placeholder, renderSelected, flattenedOptions]);
 
-  const handleSelect = (currentValue: string) => {
-    onChange(currentValue === value ? "" : currentValue);
+  const handleSelect = (newValue: string) => {
+    onChange(newValue === value ? "" : newValue);
     setOpen(false);
   };
 

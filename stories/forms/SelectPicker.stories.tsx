@@ -117,31 +117,29 @@ const OPTION_GROUPS: SelectPickerOptionGroup[] = [
 const RenderedSelectPicker = ({
   options = OPTIONS,
   defaultValue,
+  name = "select-picker",
   ...props
-}: Omit<SelectPickerProps, "value" | "onChange"> & { defaultValue?: string }) => {
+}: Partial<SelectPickerProps> & { defaultValue?: string }) => {
   const [value, setValue] = useState<string | undefined>(defaultValue);
 
-  return <SelectPicker onChange={setValue} options={options} value={value} {...props} />;
+  return <SelectPicker name={name} onChange={setValue} options={options} value={value} {...props} />;
 };
 
 export const Default: Story = {
-  render: (args) => <RenderedSelectPicker {...args} />,
+  render: () => <RenderedSelectPicker />,
 };
 
 export const WithSelection: Story = {
-  render: (args) => <RenderedSelectPicker {...args} defaultValue="wind" />,
+  render: () => <RenderedSelectPicker defaultValue="wind" />,
 };
 
 export const NoIcons: Story = {
-  render: (args) => (
-    <RenderedSelectPicker {...args} options={OPTIONS.map((option) => ({ ...option, icon: undefined }))} />
-  ),
+  render: () => <RenderedSelectPicker options={OPTIONS.map((option) => ({ ...option, icon: undefined }))} />,
 };
 
 export const WithCustomRenderSelected: Story = {
-  render: (args) => (
+  render: () => (
     <RenderedSelectPicker
-      {...args}
       renderSelected={({ value, label, icon }: SelectPickerOption) => {
         return (
           <>
@@ -159,9 +157,8 @@ export const WithCustomRenderSelected: Story = {
 };
 
 export const WithCustomRenderSelectedAndInitialValue: Story = {
-  render: (args) => (
+  render: () => (
     <RenderedSelectPicker
-      {...args}
       defaultValue={OPTIONS[1].value}
       renderSelected={({ value, label, icon }: SelectPickerOption) => {
         return (
@@ -180,5 +177,5 @@ export const WithCustomRenderSelectedAndInitialValue: Story = {
 };
 
 export const WithMultipleGroups: Story = {
-  render: (args) => <RenderedSelectPicker {...args} options={OPTION_GROUPS} />,
+  render: () => <RenderedSelectPicker options={OPTION_GROUPS} />,
 };
