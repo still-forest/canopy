@@ -210,7 +210,7 @@ const CompleteFormExample = () => {
             checked={formData.theme === "dark"}
             label="Dark Mode"
             name="theme"
-            onChange={(checked) => handleInputChange("theme")(checked ? "dark" : "light")}
+            onCheckedChange={(checked) => handleInputChange("theme")(checked ? "dark" : "light")}
           />
 
           <Slider
