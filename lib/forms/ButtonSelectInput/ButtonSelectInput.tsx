@@ -161,8 +161,9 @@ export const ButtonSelectInput = ({
             )}
             triggerComponent={ButtonGroup.Button}
             triggerProps={{
-              role: "radio",
               "aria-checked": !!selectedSecondaryOption,
+              "aria-label": secondaryLabel,
+              role: "radio",
               tabIndex: selectedSecondaryOption ? 0 : -1,
               onKeyDown: (e: KeyboardEvent<HTMLButtonElement>) => {
                 // Use the selected secondary value if available, otherwise first secondary option

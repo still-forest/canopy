@@ -69,9 +69,9 @@ describe("ButtonSelectInput", () => {
       );
 
       const buttons = screen.getAllByRole("radio");
-      expect(buttons).toHaveLength(OPTIONS.length);
-      // Secondary options render as a combobox trigger
-      expect(screen.getByRole("combobox")).toBeInTheDocument();
+      // Primary options + secondary trigger = 4 radio buttons
+      expect(buttons).toHaveLength(OPTIONS.length + 1);
+      expect(buttons[OPTIONS.length]).toHaveAccessibleName("More options...");
     });
   });
 
@@ -297,8 +297,8 @@ describe("ButtonSelectInput", () => {
         <ButtonSelectInput onChange={onChange} options={OPTIONS} secondaryOptions={SECONDARY_OPTIONS} value="marge" />,
       );
 
-      // Secondary options render as a combobox trigger, not a radio button
-      const secondaryButton = screen.getByRole("combobox");
+      const buttons = screen.getAllByRole("radio");
+      const secondaryButton = buttons[buttons.length - 1];
       fireEvent.keyDown(secondaryButton, { key: "ArrowRight" });
 
       // Since we start at 'marge' (last secondary), ArrowRight should wrap to 'bart' (first primary)

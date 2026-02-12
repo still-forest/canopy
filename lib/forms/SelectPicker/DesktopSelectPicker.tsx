@@ -37,8 +37,8 @@ export const DesktopSelectPicker = ({
               "aria-expanded": open,
               className: cn("w-full justify-between font-normal", triggerClassName),
               id,
-              role: "combobox",
-              variant: "outline",
+              role: triggerProps?.role ?? "combobox",
+              variant: triggerProps?.variant ?? "outline",
             })}
           >
             {selectedLabel}
