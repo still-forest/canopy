@@ -218,7 +218,7 @@ const CompleteFormExample = () => {
             max={100}
             min={0}
             name="volume"
-            onValueChange={(value) => handleInputChange("volume")(value[0])}
+            onValueChange={(value) => handleInputChange("volume")(Array.isArray(value) ? value[0] : value)}
             step={5}
             value={[formData.volume]}
           />
