@@ -13,10 +13,19 @@ export interface BadgeProps extends React.ComponentProps<typeof BadgeBase> {
   className?: string;
 }
 
-export const Badge = ({ label, onClick, className, variant = "default", color, children, ...props }: BadgeProps) => {
+export const Badge = ({
+  label,
+  onClick,
+  className,
+  variant = "default",
+  color,
+  children,
+  render,
+  ...props
+}: BadgeProps) => {
   const content = label || children;
-  if (!content) {
-    throw new Error("Badge must have either a label or children");
+  if (!content && !render) {
+    throw new Error("Badge must have either a label or children, or a render prop");
   }
 
   if (color && !(variant === "default" || variant === "outline")) {
@@ -40,7 +49,7 @@ export const Badge = ({ label, onClick, className, variant = "default", color, c
   );
 
   return (
-    <BadgeBase className={badgeClasses} onClick={onClick} variant={variant} {...props}>
+    <BadgeBase className={badgeClasses} onClick={onClick} render={render} variant={variant} {...props}>
       {content}
     </BadgeBase>
   );
