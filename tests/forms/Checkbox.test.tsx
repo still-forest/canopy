@@ -26,7 +26,7 @@ describe("Checkbox", () => {
     const label = screen.getByText("Test Checkbox");
     expect(label).toHaveAttribute("for", "test-checkbox");
     expect(label.className).toBe(
-      "flex items-center gap-2 select-none group-data-[disabled=true]:pointer-events-none group-data-[disabled=true]:opacity-50 peer-disabled:cursor-not-allowed peer-disabled:opacity-50 font-display font-normal text-foreground text-base cursor-pointer",
+      "gap-2 group-data-[disabled=true]:opacity-50 peer-disabled:opacity-50 flex items-center select-none group-data-[disabled=true]:pointer-events-none peer-disabled:cursor-not-allowed font-display font-normal text-foreground text-base cursor-pointer",
     );
 
     fireEvent.click(checkbox);

@@ -6,7 +6,7 @@ import { Separator } from "@/components";
 
 describe("Separator", () => {
   const EXPECTED_CLASS_NAME =
-    "bg-border shrink-0 data-[orientation=horizontal]:h-px data-[orientation=horizontal]:w-full data-[orientation=vertical]:h-full data-[orientation=vertical]:w-px";
+    "bg-border shrink-0 data-[orientation=horizontal]:h-px data-[orientation=horizontal]:w-full data-[orientation=vertical]:w-px data-[orientation=vertical]:self-stretch";
 
   test("renders a Separator", async () => {
     render(<Separator />);
