@@ -60,15 +60,13 @@ const MenuSubSection = ({ itemSet, activeSlug }: MenuSubSectionProps) => {
       {itemSet.links.map((item) => (
         <SidebarMenuItem className="hover:cursor-pointer" key={item.slug} onClick={item.onClick}>
           <SidebarMenuButton isActive={activeSlug === item.slug}>
-            <span>
-              <item.icon />
-              <MenuItemText>{item.title}</MenuItemText>
-              {item.external && (
-                <Flex>
-                  <SquareArrowOutUpRight size={12} strokeWidth={1.5} />
-                </Flex>
-              )}
-            </span>
+            <item.icon />
+            <MenuItemText>{item.title}</MenuItemText>
+            {item.external && (
+              <Flex>
+                <SquareArrowOutUpRight size={12} strokeWidth={1.5} />
+              </Flex>
+            )}
           </SidebarMenuButton>
         </SidebarMenuItem>
       ))}
