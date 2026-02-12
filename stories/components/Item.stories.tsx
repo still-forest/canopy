@@ -123,22 +123,6 @@ export const WithFooter: Story = {
   ),
 };
 
-export const WithLink: Story = {
-  render: () => (
-    <Item asChild>
-      <a href="#" onClick={() => alert("Item clicked")}>
-        <Item.Media variant="icon">
-          <Home />
-        </Item.Media>
-        <Item.Content>
-          <Item.Title>Dashboard</Item.Title>
-          <Item.Description>Overview of your account and activity.</Item.Description>
-        </Item.Content>
-      </a>
-    </Item>
-  ),
-};
-
 export const WithGroup: Story = {
   render: () => (
     <ItemGroup>
