@@ -2,7 +2,6 @@
 
 import { SquareArrowOutUpRight } from "lucide-react";
 import { Fragment } from "react";
-import { ThemeSelector } from "@/components/ThemeSelector/ThemeSelector";
 import {
   Sidebar as BaseSidebar,
   SidebarContent,
@@ -17,9 +16,9 @@ import {
   SidebarSeparator,
   SidebarTrigger,
 } from "@/components/ui/sidebar";
-import { Flex } from "@/layout";
 import type { Theme } from "@/types";
 import { Text } from "@/typography";
+import { cn } from "@/utils";
 
 interface SideLink {
   slug: string;
@@ -59,16 +58,10 @@ const MenuSubSection = ({ itemSet, activeSlug }: MenuSubSectionProps) => {
     <>
       {itemSet.links.map((item) => (
         <SidebarMenuItem className="hover:cursor-pointer" key={item.slug} onClick={item.onClick}>
-          <SidebarMenuButton asChild isActive={activeSlug === item.slug}>
-            <span>
-              <item.icon />
-              <MenuItemText>{item.title}</MenuItemText>
-              {item.external && (
-                <Flex>
-                  <SquareArrowOutUpRight size={12} strokeWidth={1.5} />
-                </Flex>
-              )}
-            </span>
+          <SidebarMenuButton isActive={activeSlug === item.slug}>
+            <item.icon />
+            <MenuItemText>{item.title}</MenuItemText>
+            {item.external && <SquareArrowOutUpRight size={12} strokeWidth={1.5} />}
           </SidebarMenuButton>
         </SidebarMenuItem>
       ))}
@@ -131,16 +124,14 @@ export const Sidebar = ({
       <SidebarFooter className="mb-4">
         <SidebarMenu>
           <SidebarMenuItem>
-            <SidebarMenuButton asChild>
-              <SidebarTrigger className="justify-start font-normal">
-                <MenuItemText>Collapse menu</MenuItemText>
-              </SidebarTrigger>
-            </SidebarMenuButton>
-          </SidebarMenuItem>
-          <SidebarMenuItem>
-            <SidebarMenuButton asChild>
-              <ThemeSelector buttonClassName="p-0" setTheme={setTheme} theme={theme} variant="stacked" />
-            </SidebarMenuButton>
+            <SidebarMenuButton
+              render={({ className, ...props }) => (
+                <SidebarTrigger className={cn("justify-start font-normal", className)} {...props}>
+                  <MenuItemText>Collapse menu</MenuItemText>
+                </SidebarTrigger>
+              )}
+              tooltip="Collapse menu"
+            />
           </SidebarMenuItem>
           {bottomItemSets.length > 0 && (
             <>

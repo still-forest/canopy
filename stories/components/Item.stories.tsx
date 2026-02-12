@@ -118,7 +118,7 @@ export const WithFooter: Story = {
         <Item.Title>Item Title</Item.Title>
         <Item.Description>Item Description</Item.Description>
       </Item.Content>
-      <Item.Footer>© 2025 Still Forest LLC. All rights reserved.</Item.Footer>
+      <Item.Footer>© 2026 Still Forest LLC. All rights reserved.</Item.Footer>
     </Item>
   ),
 };
