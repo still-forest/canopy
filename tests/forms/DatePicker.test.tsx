@@ -203,7 +203,7 @@ describe("DatePicker", () => {
     fireEvent.click(nextMonthButton);
 
     expect(calendar.textContent).toBe(
-      "January 2026SuMoTuWeThFrSa293031123456789101112131415161718192021222324252627282930311",
+      "January 2025SuMoTuWeThFrSa293031123456789101112131415161718192021222324252627282930311",
     );
 
     const dates = screen.getAllByRole("gridcell");
@@ -214,7 +214,7 @@ describe("DatePicker", () => {
     expect(january12.cell.className).toBe(EXPECTED_UNSELECTED_DATE_CLASSES);
 
     fireEvent.click(january12.button);
-    expect(onDateSelection).toHaveBeenCalledWith(new Date("2026-01-12T05:00:00.000Z"));
+    expect(onDateSelection).toHaveBeenCalledWith(new Date("2025-01-12T05:00:00.000Z"));
 
     january12 = findDay(calendar, "12");
     expect(january12.cell.className).toBe(EXPECTED_SELECTED_DATE_CLASSES);
@@ -232,7 +232,7 @@ describe("DatePicker", () => {
     const currentMonthButton = within(calendar).getByRole("button", { name: "December 2024" });
     fireEvent.click(currentMonthButton);
 
-    expect(calendar.textContent).toBe("2019 - 2030201920202021202220232024202620262027202820292030");
+    expect(calendar.textContent).toBe("2019 - 2030201920202021202220232024202520262027202820292030");
 
     fireEvent.click(within(calendar).getByRole("button", { name: "2023" }));
     expect(calendar.textContent).toBe(

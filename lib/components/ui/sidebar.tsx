@@ -234,7 +234,7 @@ function SidebarTrigger({ className, onClick, children, ...props }: React.Compon
 
   return (
     <Button
-      className={cn(className)}
+      className={cn("size-7", className)}
       data-sidebar="trigger"
       data-slot="sidebar-trigger"
       onClick={(event) => {
