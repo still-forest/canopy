@@ -37,17 +37,25 @@ function AccordionTrigger({ className, children, ...props }: AccordionPrimitive.
   );
 }
 
-function AccordionContent({ className, children, ...props }: AccordionPrimitive.Panel.Props) {
+function AccordionContent({
+  className,
+  contentClassName,
+  children,
+  ...props
+}: AccordionPrimitive.Panel.Props & { contentClassName?: string }) {
   return (
     <AccordionPrimitive.Panel
-      className="data-open:animate-accordion-down data-closed:animate-accordion-up text-sm overflow-hidden"
+      className={cn(
+        "data-open:animate-accordion-down data-closed:animate-accordion-up text-sm overflow-hidden",
+        className,
+      )}
       data-slot="accordion-content"
       {...props}
     >
       <div
         className={cn(
           "pt-0 pb-4 [&_a]:hover:text-foreground h-(--accordion-panel-height) data-ending-style:h-0 data-starting-style:h-0 [&_a]:underline [&_a]:underline-offset-3 [&_p:not(:last-child)]:mb-4",
-          className,
+          contentClassName,
         )}
       >
         {children}
