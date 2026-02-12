@@ -4,7 +4,7 @@ import { Text } from "@/typography";
 export const FooterContent = ({ children }: { children?: React.ReactNode }) => (
   <Flex align="center" justify="between">
     <Text size="sm" variant="muted">
-      © 2025 Still Forest LLC.
+      © 2026 Still Forest LLC.
     </Text>
     {children}
   </Flex>

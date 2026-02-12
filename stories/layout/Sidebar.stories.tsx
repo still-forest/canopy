@@ -106,7 +106,7 @@ const SampleContent = () => (
     </Container>
     <Footer>
       <Text size="sm" variant="muted">
-        © 2025 Still Forest LLC.
+        © 2026 Still Forest LLC.
       </Text>
     </Footer>
   </>

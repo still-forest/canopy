@@ -2,7 +2,6 @@
 
 import { SquareArrowOutUpRight } from "lucide-react";
 import { Fragment } from "react";
-import { ThemeSelector } from "@/components/ThemeSelector/ThemeSelector";
 import {
   Sidebar as BaseSidebar,
   SidebarContent,
@@ -17,9 +16,9 @@ import {
   SidebarSeparator,
   SidebarTrigger,
 } from "@/components/ui/sidebar";
-import { Flex } from "@/layout";
 import type { Theme } from "@/types";
 import { Text } from "@/typography";
+import { cn } from "@/utils";
 
 interface SideLink {
   slug: string;
@@ -62,11 +61,7 @@ const MenuSubSection = ({ itemSet, activeSlug }: MenuSubSectionProps) => {
           <SidebarMenuButton isActive={activeSlug === item.slug}>
             <item.icon />
             <MenuItemText>{item.title}</MenuItemText>
-            {item.external && (
-              <Flex>
-                <SquareArrowOutUpRight size={12} strokeWidth={1.5} />
-              </Flex>
-            )}
+            {item.external && <SquareArrowOutUpRight size={12} strokeWidth={1.5} />}
           </SidebarMenuButton>
         </SidebarMenuItem>
       ))}
@@ -130,16 +125,11 @@ export const Sidebar = ({
         <SidebarMenu>
           <SidebarMenuItem>
             <SidebarMenuButton
-              render={(props) => (
-                <SidebarTrigger className="justify-start font-normal" {...props}>
+              render={({ className, ...props }) => (
+                <SidebarTrigger className={cn("justify-start font-normal", className)} {...props}>
                   <MenuItemText>Collapse menu</MenuItemText>
                 </SidebarTrigger>
               )}
-            />
-          </SidebarMenuItem>
-          <SidebarMenuItem>
-            <SidebarMenuButton
-              render={<ThemeSelector buttonClassName="p-0" setTheme={setTheme} theme={theme} variant="stacked" />}
             />
           </SidebarMenuItem>
           {bottomItemSets.length > 0 && (
