@@ -69,8 +69,9 @@ describe("ButtonSelectInput", () => {
       );
 
       const buttons = screen.getAllByRole("radio");
-      // Should have primary buttons + secondary dropdown trigger
-      expect(buttons.length).toBeGreaterThan(OPTIONS.length);
+      expect(buttons).toHaveLength(OPTIONS.length);
+      // Secondary options render as a combobox trigger
+      expect(screen.getByRole("combobox")).toBeInTheDocument();
     });
   });
 
@@ -296,13 +297,10 @@ describe("ButtonSelectInput", () => {
         <ButtonSelectInput onChange={onChange} options={OPTIONS} secondaryOptions={SECONDARY_OPTIONS} value="marge" />,
       );
 
-      const buttons = screen.getAllByRole("radio");
-
-      // The secondary options button (last button) when a secondary option is selected
-      const secondaryButton = buttons[buttons.length - 1];
+      // Secondary options render as a combobox trigger, not a radio button
+      const secondaryButton = screen.getByRole("combobox");
       fireEvent.keyDown(secondaryButton, { key: "ArrowRight" });
 
-      // Should navigate to the next option in the secondary list, wrapping to first primary
       // Since we start at 'marge' (last secondary), ArrowRight should wrap to 'bart' (first primary)
       expect(onChange).toHaveBeenCalledWith("bart");
     });
