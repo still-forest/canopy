@@ -1,5 +1,5 @@
 import { BookType, FolderTree, Home, LayoutDashboard, LogOut, Settings2 } from "lucide-react";
-import { type HTMLProps, useState } from "react";
+import { useState } from "react";
 import { Link } from "react-router";
 import { Button } from "@/forms";
 import { Container, Flex, Footer } from "@/layout";
@@ -94,14 +94,7 @@ export default function App() {
       </Container>
       <Container className={cn(showDimensions && "bg-green-500/5 inset-shadow-sm inset-shadow-green-500")}>
         <Flex direction="col" gap="8">
-          <Button
-            fit
-            render={({ ref, ...props }: HTMLProps<unknown>) => (
-              <Link to="/" {...props}>
-                Home
-              </Link>
-            )}
-          />
+          <Button fit render={<Link to="/">Home</Link>} />
           <Button fit onClick={() => setShowDimensions(!showDimensions)} variant="outline">
             {showDimensions ? "Hide " : "Show "} dimensions
           </Button>

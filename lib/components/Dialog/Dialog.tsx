@@ -18,7 +18,7 @@ const Dialog = (props: ComponentProps<typeof BaseDialog>) => {
   return <BaseDialog {...props} />;
 };
 
-const Trigger = ({ children, render, ...props }: DialogPrimitive.Trigger.Props & Omit<ButtonProps, "render">) => {
+const Trigger = ({ children, render, ...props }: DialogPrimitive.Trigger.Props & ButtonProps) => {
   return <DialogTrigger render={render ?? <Button {...props}>{children}</Button>} />;
 };
 

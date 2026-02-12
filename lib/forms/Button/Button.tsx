@@ -1,4 +1,4 @@
-import type { HTMLProps, ReactElement } from "react";
+import type { ReactElement } from "react";
 
 import { Button as BaseButton } from "@/components/ui/button";
 import { Flex } from "@/layout";
@@ -46,7 +46,7 @@ export interface ButtonProps extends React.ComponentProps<"button"> {
   fit?: boolean;
   full?: boolean;
   rounded?: boolean;
-  render?: (props: HTMLProps<unknown>) => ReactElement;
+  render?: React.ComponentProps<typeof BaseButton>["render"];
 }
 
 export const Button = ({
