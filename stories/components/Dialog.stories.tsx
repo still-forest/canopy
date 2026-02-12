@@ -1,4 +1,5 @@
 import type { Meta, StoryObj } from "@storybook/react-vite";
+import { OrigamiIcon } from "lucide-react";
 import { useState } from "react";
 import { Dialog } from "@/components";
 import { Button } from "@/forms";
@@ -21,9 +22,7 @@ const SampleContent = () => <Text>{sampleParagraphText[0]}</Text>;
 export const Default: Story = {
   render: () => (
     <Dialog>
-      <Dialog.Trigger>
-        <Button>Open dialog</Button>
-      </Dialog.Trigger>
+      <Dialog.Trigger>Open dialog</Dialog.Trigger>
       <Dialog.Content>
         <Dialog.Header>
           <Dialog.Title>Dialog title</Dialog.Title>
@@ -34,12 +33,11 @@ export const Default: Story = {
     </Dialog>
   ),
 };
+
 export const NoDescription: Story = {
   render: () => (
     <Dialog>
-      <Dialog.Trigger>
-        <Button>Open dialog</Button>
-      </Dialog.Trigger>
+      <Dialog.Trigger>Open dialog</Dialog.Trigger>
       <Dialog.Content>
         <Dialog.Header>
           <Dialog.Title>Dialog title</Dialog.Title>
@@ -53,9 +51,24 @@ export const NoDescription: Story = {
 export const NoTitleOrDescription: Story = {
   render: () => (
     <Dialog>
-      <Dialog.Trigger>
-        <Button>Open dialog</Button>
-      </Dialog.Trigger>
+      <Dialog.Trigger>Open dialog</Dialog.Trigger>
+      <Dialog.Content>
+        <SampleContent />
+      </Dialog.Content>
+    </Dialog>
+  ),
+};
+
+export const CustomTrigger: Story = {
+  render: () => (
+    <Dialog>
+      <Dialog.Trigger
+        render={
+          <Button icon={<OrigamiIcon />} variant="info">
+            Open dialog
+          </Button>
+        }
+      />
       <Dialog.Content>
         <SampleContent />
       </Dialog.Content>
@@ -66,9 +79,7 @@ export const NoTitleOrDescription: Story = {
 export const SimpleTrigger: Story = {
   render: () => (
     <Dialog>
-      <Dialog.Trigger>
-        <Text className="cursor-pointer hover:underline">Open modal</Text>
-      </Dialog.Trigger>
+      <Dialog.Trigger render={<Text className="cursor-pointer hover:underline">Open modal</Text>} />
       <Dialog.Content>
         <Dialog.Header>
           <Dialog.Title>Dialog title</Dialog.Title>

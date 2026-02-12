@@ -11,9 +11,16 @@ import {
   DialogTitle,
   DialogTrigger,
 } from "@/components/ui/dialog";
+import { Button } from "@/forms";
 
 const Dialog = (props: ComponentProps<typeof BaseDialog>) => {
   return <BaseDialog {...props} />;
+};
+
+const Trigger = ({ children, render, ...props }: ComponentProps<typeof DialogTrigger>) => {
+  const defaultRender = () => <Button>{children}</Button>;
+
+  return <DialogTrigger render={render || defaultRender} {...props} />;
 };
 
 Dialog.Close = DialogClose;
@@ -24,5 +31,5 @@ Dialog.Header = DialogHeader;
 Dialog.Overlay = DialogOverlay;
 Dialog.Portal = DialogPortal;
 Dialog.Title = DialogTitle;
-Dialog.Trigger = DialogTrigger;
+Dialog.Trigger = Trigger;
 export { Dialog };
