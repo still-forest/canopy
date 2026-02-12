@@ -1,4 +1,5 @@
-import type { ComponentProps } from "react";
+import { mergeProps } from "@base-ui/react";
+import type { ComponentProps, HTMLProps } from "react";
 import {
   Dialog as BaseDialog,
   DialogClose,
@@ -11,14 +12,16 @@ import {
   DialogTitle,
   DialogTrigger,
 } from "@/components/ui/dialog";
-import { Button } from "@/forms";
+import { Button, type ButtonProps } from "@/forms";
 
 const Dialog = (props: ComponentProps<typeof BaseDialog>) => {
   return <BaseDialog {...props} />;
 };
 
-const Trigger = ({ children, render, ...props }: ComponentProps<typeof DialogTrigger>) => {
-  const defaultRender = () => <Button>{children}</Button>;
+const Trigger = ({ children, render, ...props }: ComponentProps<typeof DialogTrigger> & ButtonProps) => {
+  const defaultRender = (triggerProps: HTMLProps<HTMLButtonElement>) => {
+    return <Button {...mergeProps(props, triggerProps)}>{children}</Button>;
+  };
 
   return <DialogTrigger render={render || defaultRender} {...props} />;
 };
