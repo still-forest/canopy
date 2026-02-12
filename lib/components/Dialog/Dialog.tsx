@@ -1,3 +1,4 @@
+import type { Dialog as DialogPrimitive } from "@base-ui/react/dialog";
 import type { ComponentProps } from "react";
 import {
   Dialog as BaseDialog,
@@ -17,7 +18,7 @@ const Dialog = (props: ComponentProps<typeof BaseDialog>) => {
   return <BaseDialog {...props} />;
 };
 
-const Trigger = ({ children, render, ...props }: ComponentProps<typeof DialogTrigger> & ButtonProps) => {
+const Trigger = ({ children, render, ...props }: DialogPrimitive.Trigger.Props & Omit<ButtonProps, "render">) => {
   return <DialogTrigger render={render ?? <Button {...props}>{children}</Button>} />;
 };
 
