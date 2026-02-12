@@ -1,4 +1,4 @@
-import { cloneElement, type HTMLProps, type ReactElement, type ReactNode, useEffect, useState } from "react";
+import { type ReactElement, type ReactNode, useEffect, useState } from "react";
 import { Dialog } from "@/components/Dialog";
 
 interface Props {
@@ -38,9 +38,7 @@ export const Modal = ({ trigger, children, title, description, open, onOpenChang
 
   return (
     <Dialog onOpenChange={handleOpenChange} open={openState}>
-      {trigger && (
-        <Dialog.Trigger render={({ ref, ...props }: HTMLProps<unknown>) => cloneElement(trigger, { ...props })} />
-      )}
+      {trigger && <Dialog.Trigger render={trigger} />}
       <Dialog.Content>
         {(title || description) && (
           <Dialog.Header>
