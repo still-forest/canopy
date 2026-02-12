@@ -150,6 +150,7 @@ export const ButtonSelectInput = ({
         {hasSecondaryOptions && (
           <DesktopSelectPicker
             dropdownClassName={cn("w-[150px]", secondaryButtonClassName)}
+            id={name}
             open={open}
             selectedLabel={secondaryLabel}
             setOpen={setOpen}
@@ -159,7 +160,6 @@ export const ButtonSelectInput = ({
               secondaryButtonClassName,
             )}
             triggerComponent={ButtonGroup.Button}
-            triggerId={name}
             triggerProps={{
               role: "radio",
               "aria-checked": !!selectedSecondaryOption,

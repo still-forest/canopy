@@ -7,9 +7,6 @@ import { Text } from "@/typography";
 const meta: Meta<typeof SelectPicker> = {
   title: "Forms/Inputs/SelectPicker",
   component: SelectPicker,
-  parameters: {
-    layout: "centered",
-  },
   tags: ["autodocs"],
 } satisfies Meta<typeof SelectPicker>;
 

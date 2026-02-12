@@ -1,10 +1,5 @@
 import { useMemo, useState } from "react";
-import { Hint } from "@/components";
-import { InputError, Label } from "@/forms";
 import { useIsMobile } from "@/hooks/use-mobile";
-import { Flex } from "@/layout";
-import { Text } from "@/typography";
-import { cn } from "@/utils";
 import { DesktopSelectPicker } from "./DesktopSelectPicker";
 import { MobileSelectPicker } from "./MobileSelectPicker";
 import { GroupedOptionList } from "./OptionList";
@@ -12,19 +7,12 @@ import type { SelectPickerOption, SelectPickerOptionGroup } from "./types";
 
 export interface SelectPickerProps {
   name: string;
-  value?: string;
+  value?: string | null;
   onChange: (value: string) => void;
   options: SelectPickerOption[] | SelectPickerOptionGroup[];
-  label?: string;
-  labelClassName?: string;
-  triggerClassName?: string;
-  dropdownClassName?: string;
   placeholder?: string;
-  hint?: string;
-  note?: string;
-  error?: string;
   renderSelected?: (selected: SelectPickerOption) => React.ReactNode;
-  className?: string;
+  dropdownClassName?: string;
 }
 
 export const SelectPicker = ({
@@ -32,15 +20,9 @@ export const SelectPicker = ({
   value,
   placeholder = "Select an option",
   onChange,
-  label,
   name,
-  labelClassName,
-  triggerClassName,
-  dropdownClassName,
-  hint,
-  note,
-  error,
   renderSelected = (selected) => selected.label,
+  dropdownClassName,
 }: SelectPickerProps) => {
   const [open, setOpen] = useState(false);
   const isMobile = useIsMobile();
@@ -67,58 +49,33 @@ export const SelectPicker = ({
     setOpen(false);
   };
 
-  const triggerClasses = cn("bg-background", triggerClassName);
+  if (isMobile) {
+    return (
+      <MobileSelectPicker id={name} open={open} selectedLabel={selectedLabel} setOpen={setOpen}>
+        <GroupedOptionList
+          onSelect={handleSelect}
+          optionGroups={optionGroups}
+          placeholder={placeholder}
+          selectedValue={value}
+        />
+      </MobileSelectPicker>
+    );
+  }
 
   return (
-    <Flex direction="col" gap="2">
-      {(label || hint) && (
-        <Flex align="center" direction="row" gap="1">
-          {label && (
-            <Label className={labelClassName} htmlFor={name}>
-              {label}
-            </Label>
-          )}
-          {hint && <Hint content={hint} />}
-        </Flex>
-      )}
-      {isMobile ? (
-        <MobileSelectPicker
-          className={triggerClasses}
-          open={open}
-          selectedLabel={selectedLabel}
-          setOpen={setOpen}
-          triggerId={name}
-        >
-          <GroupedOptionList
-            onSelect={handleSelect}
-            optionGroups={optionGroups}
-            placeholder={placeholder}
-            selectedValue={value}
-          />
-        </MobileSelectPicker>
-      ) : (
-        <DesktopSelectPicker
-          dropdownClassName={dropdownClassName}
-          open={open}
-          selectedLabel={selectedLabel}
-          setOpen={setOpen}
-          triggerClassName={triggerClasses}
-          triggerId={name}
-        >
-          <GroupedOptionList
-            onSelect={handleSelect}
-            optionGroups={optionGroups}
-            placeholder={placeholder}
-            selectedValue={value}
-          />
-        </DesktopSelectPicker>
-      )}
-      {note && (
-        <Text size="sm" variant="muted">
-          {note}
-        </Text>
-      )}
-      {error && <InputError message={error} />}
-    </Flex>
+    <DesktopSelectPicker
+      dropdownClassName={dropdownClassName}
+      id={name}
+      open={open}
+      selectedLabel={selectedLabel}
+      setOpen={setOpen}
+    >
+      <GroupedOptionList
+        onSelect={handleSelect}
+        optionGroups={optionGroups}
+        placeholder={placeholder}
+        selectedValue={value}
+      />
+    </DesktopSelectPicker>
   );
 };
