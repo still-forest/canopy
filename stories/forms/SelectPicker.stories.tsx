@@ -1,5 +1,6 @@
 import type { Meta, StoryObj } from "@storybook/react-vite";
-import { SelectPicker, type SelectPickerOption, type SelectPickerOptionGroup } from "@/forms";
+import { useState } from "react";
+import { SelectPicker, type SelectPickerOption, type SelectPickerOptionGroup, type SelectPickerProps } from "@/forms";
 import { Flex } from "@/layout";
 import { Text } from "@/typography";
 
@@ -116,76 +117,71 @@ const OPTION_GROUPS: SelectPickerOptionGroup[] = [
   },
 ];
 
-const defaultProps = {
-  options: OPTIONS,
+const RenderedSelectPicker = ({
+  options = OPTIONS,
+  defaultValue,
+  ...props
+}: Omit<SelectPickerProps, "value" | "onChange"> & { defaultValue?: string }) => {
+  const [value, setValue] = useState<string | undefined>(defaultValue);
+
+  return <SelectPicker onChange={setValue} options={options} value={value} {...props} />;
 };
 
 export const Default: Story = {
-  args: defaultProps,
+  render: (args) => <RenderedSelectPicker {...args} />,
 };
 
 export const WithSelection: Story = {
-  args: { ...defaultProps, value: "wind" },
-};
-
-export const WithHint: Story = {
-  args: {
-    ...defaultProps,
-    hint: "My cat's breath smells like cat food",
-    label: "Select a thing:",
-  },
+  render: (args) => <RenderedSelectPicker {...args} defaultValue="wind" />,
 };
 
 export const NoIcons: Story = {
-  args: {
-    ...defaultProps,
-    options: defaultProps.options.map((option) => ({
-      ...option,
-      icon: undefined,
-    })),
-  },
+  render: (args) => (
+    <RenderedSelectPicker {...args} options={OPTIONS.map((option) => ({ ...option, icon: undefined }))} />
+  ),
 };
 
 export const WithCustomRenderSelected: Story = {
-  args: {
-    ...defaultProps,
-    renderSelected: ({ value, label, icon }: SelectPickerOption) => {
-      return (
-        <>
-          <Text>Thing:</Text>
-          <div>
-            {icon ? <span className="mx-1 my-auto">{icon}</span> : null}
-            {value && <Text variant="info">{label}</Text>}
-            {!value && <Text variant="muted">Select</Text>}
-          </div>
-        </>
-      );
-    },
-  },
+  render: (args) => (
+    <RenderedSelectPicker
+      {...args}
+      renderSelected={({ value, label, icon }: SelectPickerOption) => {
+        return (
+          <>
+            <Text>Thing:</Text>
+            <div>
+              {icon ? <span className="mx-1 my-auto">{icon}</span> : null}
+              {value && <Text variant="info">{label}</Text>}
+              {!value && <Text variant="muted">Select</Text>}
+            </div>
+          </>
+        );
+      }}
+    />
+  ),
 };
 
 export const WithCustomRenderSelectedAndInitialValue: Story = {
-  args: {
-    ...defaultProps,
-    value: OPTIONS[1].value,
-    renderSelected: ({ value, label, icon }: SelectPickerOption) => {
-      return (
-        <>
-          <Text>Thing:</Text>
-          <Flex align="center" gap="2" justify="start">
-            {icon}
-            {value && <Text variant="info">{label}</Text>}
-            {!value && <Text variant="muted">Select</Text>}
-          </Flex>
-        </>
-      );
-    },
-  },
+  render: (args) => (
+    <RenderedSelectPicker
+      {...args}
+      defaultValue={OPTIONS[1].value}
+      renderSelected={({ value, label, icon }: SelectPickerOption) => {
+        return (
+          <>
+            <Text>Thing:</Text>
+            <Flex align="center" gap="2" justify="start">
+              {icon}
+              {value && <Text variant="info">{label}</Text>}
+              {!value && <Text variant="muted">Select</Text>}
+            </Flex>
+          </>
+        );
+      }}
+    />
+  ),
 };
 
 export const WithMultipleGroups: Story = {
-  args: {
-    ...defaultProps,
-    options: OPTION_GROUPS,
-  },
+  render: (args) => <RenderedSelectPicker {...args} options={OPTION_GROUPS} />,
 };
