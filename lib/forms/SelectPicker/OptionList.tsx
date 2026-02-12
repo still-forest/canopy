@@ -1,12 +1,12 @@
 import { Check } from "lucide-react";
 import { Command, CommandEmpty, CommandGroup, CommandInput, CommandItem, CommandList } from "@/components/ui/command";
-import { cn } from "@/utils";
+import { cn } from "@/utils/cn";
 import type { SelectPickerOption, SelectPickerOptionGroup, SelectPickerOptionValue } from "./types";
 
 interface OptionListProps {
   label?: string;
   options: SelectPickerOption[];
-  selectedValue: SelectPickerOptionValue | undefined;
+  selectedValue?: SelectPickerOptionValue | null;
   onSelect: (value: SelectPickerOptionValue) => void;
 }
 
@@ -30,7 +30,7 @@ const OptionList = ({ label, options, onSelect, selectedValue }: OptionListProps
 interface GroupedOptionListProps {
   optionGroups: SelectPickerOptionGroup[];
   placeholder: string;
-  selectedValue: SelectPickerOptionValue | undefined;
+  selectedValue?: SelectPickerOptionValue | null;
   onSelect: (value: SelectPickerOptionValue) => void;
   noSearch?: boolean;
 }
