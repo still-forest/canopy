@@ -21,7 +21,7 @@ export const Switch = ({ id: idProp, label, className, labelClassName, size = "m
   const rightLabelClassName = labelClassName && Array.isArray(labelClassName) ? labelClassName[1] : labelClassName;
 
   return (
-    <div className="flex items-center space-x-2">
+    <div className={cn("flex items-center space-x-2", className)}>
       {leftLabel && (
         <Label className={cn(commonLabelClassNames, leftLabelClassName)} htmlFor={id} size={size}>
           {leftLabel}
