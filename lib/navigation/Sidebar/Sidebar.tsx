@@ -130,6 +130,7 @@ export const Sidebar = ({
                   <MenuItemText>Collapse menu</MenuItemText>
                 </SidebarTrigger>
               )}
+              tooltip="Collapse menu"
             />
           </SidebarMenuItem>
           {bottomItemSets.length > 0 && (

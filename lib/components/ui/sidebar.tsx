@@ -476,11 +476,16 @@ function SidebarMenuButton({
     tooltip?: string | React.ComponentProps<typeof TooltipContent>;
   } & VariantProps<typeof sidebarMenuButtonVariants>) {
   const { isMobile, state } = useSidebar();
+
+  // When tooltip is present and user provided a render prop, pass user's render to TooltipTrigger
+  // This composes tooltip functionality with custom rendering (e.g., Link for routing)
   const comp = useRender({
     defaultTagName: "button",
     props: mergeProps<"button">(
       {
         className: cn(sidebarMenuButtonVariants({ variant, size }), className),
+        // Pass user's render to TooltipTrigger when both tooltip and render exist
+        ...(tooltip && render ? { render } : {}),
       },
       props,
     ),
