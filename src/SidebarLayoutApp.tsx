@@ -94,9 +94,7 @@ export default function App() {
       </Container>
       <Container className={cn(showDimensions && "bg-green-500/5 inset-shadow-sm inset-shadow-green-500")}>
         <Flex direction="col" gap="8">
-          <Button asChild fit>
-            <Link to="/">Home</Link>
-          </Button>
+          <Button fit render={<Link to="/">Home</Link>} />
           <Button fit onClick={() => setShowDimensions(!showDimensions)} variant="outline">
             {showDimensions ? "Hide " : "Show "} dimensions
           </Button>

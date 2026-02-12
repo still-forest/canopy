@@ -26,14 +26,16 @@ describe("Modal", () => {
 
     const dialog = screen.getByRole("dialog");
     expect(dialog.className).toBe(
-      "bg-background data-[state=open]:animate-in data-[state=closed]:animate-out data-[state=closed]:fade-out-0 data-[state=open]:fade-in-0 data-[state=closed]:zoom-out-95 data-[state=open]:zoom-in-95 fixed top-[50%] left-[50%] z-50 grid w-full max-w-[calc(100%-2rem)] translate-x-[-50%] translate-y-[-50%] gap-4 rounded-lg border p-6 shadow-lg duration-200 sm:max-w-lg",
+      "bg-background data-open:animate-in data-closed:animate-out data-closed:fade-out-0 data-open:fade-in-0 data-closed:zoom-out-95 data-open:zoom-in-95 ring-foreground/10 grid max-w-[calc(100%-2rem)] gap-6 rounded-xl p-6 text-sm ring-1 duration-100 sm:max-w-md fixed top-1/2 left-1/2 z-50 w-full -translate-x-1/2 -translate-y-1/2 outline-none",
     );
 
     const title = within(dialog).getByText("Modal title");
-    expect(title.className).toBe("text-lg leading-none font-semibold");
+    expect(title.className).toBe("leading-none font-medium");
 
     const description = within(dialog).getByText("Modal description");
-    expect(description.className).toBe("text-muted-foreground text-sm");
+    expect(description.className).toBe(
+      "text-muted-foreground *:[a]:hover:text-foreground text-sm *:[a]:underline *:[a]:underline-offset-3",
+    );
 
     const content = within(dialog).getByText("Modal content");
     expect(content.className).toBe("");
