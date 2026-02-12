@@ -8,7 +8,7 @@ import { Accordion } from "@/components";
 describe("Accordion", () => {
   test("renders an Accordion", async () => {
     render(
-      <Accordion collapsible type="single">
+      <Accordion>
         <Accordion.Item value="item-1">
           <Accordion.Trigger>This first thing</Accordion.Trigger>
           <Accordion.Content>And here's the content</Accordion.Content>

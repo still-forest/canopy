@@ -39,32 +39,27 @@ const defaultRender = (args: AccordionProps) => (
 );
 
 export const Default: Story = {
-  args: {
-    type: "single",
-    collapsible: true,
-  },
+  args: {},
   render: defaultRender,
 };
 
 export const WithDefaultValue: Story = {
   args: {
-    type: "single",
-    collapsible: true,
-    defaultValue: "item-3",
+    defaultValue: ["item-3"],
   },
   render: defaultRender,
 };
 
 export const Multiple: Story = {
   args: {
-    type: "multiple",
+    multiple: true,
   },
   render: defaultRender,
 };
 
 export const MultipleWithDefaultValues: Story = {
   args: {
-    type: "multiple",
+    multiple: true,
     defaultValue: ["item-1", "item-3"],
   },
   render: defaultRender,

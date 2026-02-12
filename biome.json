@@ -10,7 +10,8 @@
         "useSemanticElements": "warn",
         "useValidAnchor": "warn",
         "noSvgWithoutTitle": "warn",
-        "noLabelWithoutControl": "warn"
+        "noLabelWithoutControl": "warn",
+        "useFocusableInteractive": "warn"
       },
       "correctness": {
         "noNestedComponentDefinitions": "off"

@@ -41,11 +41,7 @@ export const Breadcrumbs = ({ breadcrumbs, linkComponent, pageComponent, classNa
         {breadcrumbs.map(({ to, label }, index) => (
           <Fragment key={label}>
             <BreadcrumbItem>
-              {to && (
-                <BreadcrumbLink asChild className="font-display">
-                  <Link label={label} to={to} />
-                </BreadcrumbLink>
-              )}
+              {to && <BreadcrumbLink className="font-display" render={<Link label={label} to={to} />} />}
               {!to && <Page label={label} />}
             </BreadcrumbItem>
             {index < breadcrumbs.length - 1 && <BreadcrumbSeparator />}
