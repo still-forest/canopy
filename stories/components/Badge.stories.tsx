@@ -127,18 +127,24 @@ export const WithChildren: Story = {
   ),
 };
 
-export const AsChild: Story = {
+export const WithRender: Story = {
   render: () => (
     <Flex gap="2">
       <Badge>Default</Badge>
-      <Badge asChild>
-        <button type="button">As a button</button>
-      </Badge>
-      <Badge asChild>
-        <Flex>
-          <OrigamiIcon size={16} /> <Text className="text-primary-foreground">As Flex with an icon and text</Text>
-        </Flex>
-      </Badge>
+      <Badge
+        render={(props) => (
+          <button type="button" {...props}>
+            As a button
+          </button>
+        )}
+      />
+      <Badge
+        render={(props) => (
+          <Flex {...props}>
+            <OrigamiIcon size={16} /> <Text className="text-primary-foreground">As Flex with an icon and text</Text>
+          </Flex>
+        )}
+      />
     </Flex>
   ),
 };
