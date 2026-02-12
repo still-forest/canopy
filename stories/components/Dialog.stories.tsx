@@ -79,7 +79,10 @@ export const CustomTrigger: Story = {
 export const SimpleTrigger: Story = {
   render: () => (
     <Dialog>
-      <Dialog.Trigger render={<Text className="cursor-pointer hover:underline">Open modal</Text>} />
+      <Dialog.Trigger
+        nativeButton={false}
+        render={<Text className="cursor-pointer hover:underline">Open modal</Text>}
+      />
       <Dialog.Content>
         <Dialog.Header>
           <Dialog.Title>Dialog title</Dialog.Title>
