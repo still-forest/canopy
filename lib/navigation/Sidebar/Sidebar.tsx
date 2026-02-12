@@ -59,7 +59,7 @@ const MenuSubSection = ({ itemSet, activeSlug }: MenuSubSectionProps) => {
     <>
       {itemSet.links.map((item) => (
         <SidebarMenuItem className="hover:cursor-pointer" key={item.slug} onClick={item.onClick}>
-          <SidebarMenuButton asChild isActive={activeSlug === item.slug}>
+          <SidebarMenuButton isActive={activeSlug === item.slug}>
             <span>
               <item.icon />
               <MenuItemText>{item.title}</MenuItemText>
@@ -131,16 +131,18 @@ export const Sidebar = ({
       <SidebarFooter className="mb-4">
         <SidebarMenu>
           <SidebarMenuItem>
-            <SidebarMenuButton asChild>
-              <SidebarTrigger className="justify-start font-normal">
-                <MenuItemText>Collapse menu</MenuItemText>
-              </SidebarTrigger>
-            </SidebarMenuButton>
+            <SidebarMenuButton
+              render={(props) => (
+                <SidebarTrigger className="justify-start font-normal" {...props}>
+                  <MenuItemText>Collapse menu</MenuItemText>
+                </SidebarTrigger>
+              )}
+            />
           </SidebarMenuItem>
           <SidebarMenuItem>
-            <SidebarMenuButton asChild>
-              <ThemeSelector buttonClassName="p-0" setTheme={setTheme} theme={theme} variant="stacked" />
-            </SidebarMenuButton>
+            <SidebarMenuButton
+              render={<ThemeSelector buttonClassName="p-0" setTheme={setTheme} theme={theme} variant="stacked" />}
+            />
           </SidebarMenuItem>
           {bottomItemSets.length > 0 && (
             <>
