@@ -27,9 +27,13 @@ describe("Collapsible", () => {
   test("renders a Collapsible with custom trigger and styled content", async () => {
     render(
       <Collapsible>
-        <Collapsible.Trigger asChild>
-          <Button variant="outline">This is the thing that is collapsed</Button>
-        </Collapsible.Trigger>
+        <Collapsible.Trigger
+          render={(props) => (
+            <Button variant="outline" {...props}>
+              This is the thing that is collapsed
+            </Button>
+          )}
+        />
         <Collapsible.Content className="bg-info/10 p-2">
           <Text weight="thin">And here's the content</Text>
         </Collapsible.Content>

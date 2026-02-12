@@ -44,12 +44,14 @@ export const Styled: Story = {
   args: {},
   render: (args: CollapsibleProps) => (
     <Collapsible className="flex flex-col items-center gap-2" {...args}>
-      <Collapsible.Trigger asChild>
-        <Button className="w-fit" variant="outline">
-          <Text weight="bold">Are you insane?</Text>
-          <ChevronsUpDown />
-        </Button>
-      </Collapsible.Trigger>
+      <Collapsible.Trigger
+        render={(props) => (
+          <Button className="w-fit" variant="outline" {...props}>
+            <Text weight="bold">Are you insane?</Text>
+            <ChevronsUpDown />
+          </Button>
+        )}
+      />
       <Collapsible.Content className="flex flex-col gap-2 bg-info/10 p-2">
         {sampleParagraphText.map((paragraph, index) => (
           <Text className="text-sm" key={index}>
