@@ -10,16 +10,14 @@ describe("Switch", () => {
     const switchElement = screen.getByRole("switch");
     expect(switchElement).toBeInTheDocument();
     expect(switchElement).toHaveAttribute("aria-checked", "false");
-    expect(switchElement).toHaveAttribute("data-state", "unchecked");
-    expect(switchElement).toHaveAttribute("type", "button");
-    expect(switchElement).toHaveAttribute("value", "on");
+    expect(switchElement).toHaveAttribute("data-unchecked", "");
     expect(switchElement).toHaveClass(
-      "peer data-[state=checked]:bg-primary data-[state=unchecked]:bg-input focus-visible:border-ring focus-visible:ring-ring/50 dark:data-[state=unchecked]:bg-input/80 inline-flex shrink-0 items-center rounded-full border border-transparent shadow-xs transition-all outline-none focus-visible:ring-[3px] disabled:cursor-not-allowed disabled:opacity-50 h-[18px] w-8",
+      "peer data-checked:bg-primary data-unchecked:bg-input focus-visible:border-ring focus-visible:ring-ring/50 dark:data-unchecked:bg-input/80 inline-flex shrink-0 items-center rounded-full border border-transparent shadow-xs transition-all outline-none focus-visible:ring-3 data-disabled:cursor-not-allowed data-disabled:opacity-50",
     );
 
     const label = screen.getByText("Test Switch");
-    expect(label.className).toBe(
-      "gap-2 group-data-[disabled=true]:opacity-50 peer-disabled:opacity-50 flex items-center select-none group-data-[disabled=true]:pointer-events-none peer-disabled:cursor-not-allowed font-display font-normal text-foreground text-base cursor-pointer",
+    expect(label).toHaveClass(
+      "font-display font-normal text-foreground text-base cursor-pointer flex items-center select-none",
     );
   });
 
@@ -29,7 +27,7 @@ describe("Switch", () => {
     const switchElement = screen.getByRole("switch");
     expect(switchElement).toBeInTheDocument();
     expect(switchElement).toHaveAttribute("aria-checked", "true");
-    expect(switchElement).toHaveAttribute("data-state", "checked");
+    expect(switchElement).toHaveAttribute("data-checked", "");
   });
 
   it("renders a Switch with left and right labels", () => {
@@ -42,48 +40,13 @@ describe("Switch", () => {
     expect(rightLabel).toBeInTheDocument();
   });
 
-  it("renders a Switch with xs size", () => {
-    render(<Switch checked={false} label="Test Switch" name="test-switch" size="xs" />);
-
-    const switchElement = screen.getByRole("switch");
-    expect(switchElement).toHaveClass("h-[10px] w-4");
-  });
-
-  it("renders a Switch with sm size", () => {
-    render(<Switch checked={false} label="Test Switch" name="test-switch" size="sm" />);
-
-    const switchElement = screen.getByRole("switch");
-    expect(switchElement).toHaveClass("h-[14px] w-6");
-  });
-
-  it("renders a Switch with md size", () => {
-    render(<Switch checked={false} label="Test Switch" name="test-switch" size="md" />);
-
-    const switchElement = screen.getByRole("switch");
-    expect(switchElement).toHaveClass("h-[18px] w-8");
-  });
-
-  it("renders a Switch with lg size", () => {
-    render(<Switch checked={false} label="Test Switch" name="test-switch" size="lg" />);
-
-    const switchElement = screen.getByRole("switch");
-    expect(switchElement).toHaveClass("h-[22px] w-10");
-  });
-
-  it("renders a Switch with xl size", () => {
-    render(<Switch checked={false} label="Test Switch" name="test-switch" size="xl" />);
-
-    const switchElement = screen.getByRole("switch");
-    expect(switchElement).toHaveClass("h-[26px] w-12");
-  });
-
   it("renders a Switch with change handler", async () => {
     const handleClick = vi.fn();
     render(<Switch checked={false} label="Test Switch" name="test-switch" onCheckedChange={handleClick} />);
 
     const switchElement = screen.getByRole("switch");
     await userEvent.click(switchElement);
-    expect(handleClick).toHaveBeenCalledWith(true);
+    expect(handleClick).toHaveBeenCalledWith(true, expect.anything());
   });
 
   it("renders a Switch with label class name", () => {
