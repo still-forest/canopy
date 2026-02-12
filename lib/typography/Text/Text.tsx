@@ -2,10 +2,10 @@ import React from "react";
 
 import type {
   FontFamily,
-  FontSize,
   FontWeight,
   TextAlign,
   TextLeading,
+  TextSize,
   TextTracking,
   TypographyElement,
   TypographyVariant,
@@ -13,7 +13,7 @@ import type {
 import { cn } from "@/utils";
 
 interface TextBaseProps {
-  size?: FontSize;
+  size?: TextSize;
   weight?: FontWeight;
   variant?: TypographyVariant;
   align?: TextAlign;
@@ -27,7 +27,6 @@ interface TextBaseProps {
   truncate?: boolean;
   numeric?: boolean;
   className?: string;
-  inheritColor?: boolean;
   inline?: boolean;
   as?: TypographyElement;
 }
@@ -45,13 +44,12 @@ const Text = React.forwardRef(
       weight,
       variant = "default",
       align,
-      leading, // No default: Tailwind applies a default from text size classes
+      leading,
       tracking,
       family: familyProp,
       asForeground = false,
       truncate = false,
       numeric = false,
-      inheritColor = false,
       inline = false,
       ...props
     }: TextProps<E>,
@@ -63,33 +61,20 @@ const Text = React.forwardRef(
     return (
       <Component
         className={cn(
-          // Font sizes
+          // Font size
           {
             "text-xs": size === "xs",
             "text-sm": size === "sm",
-            "text-base": size === "base" || size === "md",
+            "text-base": size === "md",
             "text-lg": size === "lg",
             "text-xl": size === "xl",
-            "text-2xl": size === "2xl",
-            "text-3xl": size === "3xl",
-            "text-4xl": size === "4xl",
-            "text-5xl": size === "5xl",
-            "text-6xl": size === "6xl",
-            "text-7xl": size === "7xl",
-            "text-8xl": size === "8xl",
-            "text-9xl": size === "9xl",
           },
-          // Font weights
+          // Font weight
           {
-            "font-thin": weight === "thin",
-            "font-extralight": weight === "extralight",
-            "font-light": weight === "light",
             "font-normal": weight === "normal",
             "font-medium": weight === "medium",
             "font-semibold": weight === "semibold",
             "font-bold": weight === "bold",
-            "font-extrabold": weight === "extrabold",
-            "font-black": weight === "black",
           },
           // Text colors (variants)
           {
@@ -97,18 +82,14 @@ const Text = React.forwardRef(
             "text-inherit": variant === "inherit",
             "text-muted-foreground": variant === "muted",
             "text-accent-foreground": variant === "accent",
-            // Action colors
             "text-primary-foreground": variant === "primary",
             "text-secondary-foreground": variant === "secondary",
-            // Brand color
             "text-brand": !asForeground && variant === "brand",
             "text-brand-foreground": asForeground && variant === "brand",
-            // Accent colors (rich color variants)
             "text-info": !asForeground && variant === "info",
             "text-warning": !asForeground && variant === "warning",
             "text-destructive": !asForeground && variant === "destructive",
             "text-success": !asForeground && variant === "success",
-            // Accent colors (foreground variants)
             "text-info-foreground": asForeground && variant === "info",
             "text-warning-foreground": asForeground && variant === "warning",
             "text-destructive-foreground": asForeground && variant === "destructive",
@@ -155,8 +136,7 @@ const Text = React.forwardRef(
           truncate && "truncate",
           // Tabular numerals
           numeric && "tabular-nums",
-          // Other
-          inheritColor && "text-inherit",
+          // Inline
           inline && "inline",
           className,
         )}

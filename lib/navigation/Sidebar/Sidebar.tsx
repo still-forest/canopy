@@ -44,7 +44,7 @@ export interface SidebarProps extends React.ComponentProps<typeof BaseSidebar> {
 }
 
 export const MenuItemText = ({ children }: { children: React.ReactNode }) => (
-  <Text size="base" truncate>
+  <Text size="md" truncate>
     {children}
   </Text>
 );

@@ -52,7 +52,7 @@ const StackedThemeSelector = ({
     <span className={cn(containerClassName)} {...props}>
       <Button className={cn("p-1 w-full", buttonClassName)} onClick={toggleTheme} variant="unstyled">
         {icon}
-        <Text className={className} size="base" truncate>
+        <Text className={className} size="md" truncate>
           {label}
         </Text>
       </Button>

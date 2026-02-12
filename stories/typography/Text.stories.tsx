@@ -6,16 +6,16 @@ import type { Meta, StoryObj } from "@storybook/react-vite";
 import { Box, Flex, Grid } from "@/layout";
 import {
   FONT_FAMILIES,
-  FONT_SIZES,
   FONT_WEIGHTS,
   type FontFamily,
-  type FontSize,
   type FontWeight,
   TEXT_ALIGNS,
   TEXT_LEADINGS,
+  TEXT_SIZES,
   TEXT_TRACKINGS,
   type TextAlign,
   type TextLeading,
+  type TextSize,
   type TextTracking,
   TYPOGRAPHY_ELEMENTS,
   TYPOGRAPHY_VARIANTS,
@@ -41,10 +41,10 @@ const meta: Meta<typeof Text> = {
     },
     size: {
       control: "select",
-      options: asOptionalValue(FONT_SIZES),
+      options: asOptionalValue(TEXT_SIZES),
       description: "Controls font size",
       table: {
-        type: { summary: summarizeValues(FONT_SIZES, true) },
+        type: { summary: summarizeValues(TEXT_SIZES, true) },
       },
     },
     family: {
@@ -94,7 +94,8 @@ const meta: Meta<typeof Text> = {
       control: "boolean",
     },
     truncate: {
-      description: "If true, prevents text from wrapping by truncating overflowing text with an ellipsis (…) if needed",
+      description:
+        "If true, prevents text from wrapping by truncating overflowing text with an ellipsis (...) if needed",
       control: "boolean",
     },
     numeric: {
@@ -155,43 +156,29 @@ export const Families: Story = {
 
 export const Sizes: Story = {
   render: () => (
-    <>
-      <OptionsByFamilyGrid<FontSize>
-        optionLabel="Size"
-        options={FONT_SIZES.slice(0, 6) as unknown as FontSize[]}
-        renderOption={(family, option) => (
-          <Text family={family} size={option}>
-            {sampleText}
-          </Text>
-        )}
-      />
-      <Text className="mt-8" variant="muted">
-        Note: Options for{" "}
-        <Text as="span" family="mono" variant="muted">
-          {FONT_SIZES.slice(6).join(", ")}
-        </Text>{" "}
-        are not displayed.
-      </Text>
-    </>
+    <OptionsByFamilyGrid<TextSize>
+      optionLabel="Size"
+      options={TEXT_SIZES as unknown as TextSize[]}
+      renderOption={(family, option) => (
+        <Text family={family} size={option}>
+          {sampleText}
+        </Text>
+      )}
+    />
   ),
 };
 
 export const Weights: Story = {
   render: () => (
-    <>
-      <OptionsByFamilyGrid<FontWeight>
-        optionLabel="Weight"
-        options={FONT_WEIGHTS as unknown as FontWeight[]}
-        renderOption={(family, option) => (
-          <Text family={family} weight={option}>
-            {sampleText}
-          </Text>
-        )}
-      />
-      <Text className="mt-8" variant="muted">
-        Note: Certain fonts may not support all weights.
-      </Text>
-    </>
+    <OptionsByFamilyGrid<FontWeight>
+      optionLabel="Weight"
+      options={FONT_WEIGHTS as unknown as FontWeight[]}
+      renderOption={(family, option) => (
+        <Text family={family} weight={option}>
+          {sampleText}
+        </Text>
+      )}
+    />
   ),
 };
 

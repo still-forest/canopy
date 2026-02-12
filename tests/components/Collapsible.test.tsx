@@ -31,7 +31,7 @@ describe("Collapsible", () => {
           <Button variant="outline">This is the thing that is collapsed</Button>
         </Collapsible.Trigger>
         <Collapsible.Content className="bg-info/10 p-2">
-          <Text weight="thin">And here's the content</Text>
+          <Text weight="normal">And here's the content</Text>
         </Collapsible.Content>
       </Collapsible>,
     );
@@ -45,6 +45,6 @@ describe("Collapsible", () => {
 
     const content = screen.getByText("And here's the content");
     expect(content).toBeInTheDocument();
-    expect(content.className).toContain("font-thin");
+    expect(content.className).toContain("font-normal");
   });
 });

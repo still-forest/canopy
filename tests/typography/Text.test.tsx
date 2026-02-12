@@ -2,11 +2,12 @@ import { render, screen } from "@testing-library/react";
 import { describe, expect, it } from "vitest";
 import {
   FONT_FAMILIES,
-  FONT_SIZES,
   FONT_WEIGHTS,
   TEXT_ALIGNS,
   TEXT_LEADINGS,
+  TEXT_SIZES,
   TEXT_TRACKINGS,
+  type TextSize,
   TYPOGRAPHY_VARIANTS,
 } from "@/types";
 import { Text } from "@/typography";
@@ -37,13 +38,25 @@ describe("Text", () => {
   });
 
   it("applies the correct text size classes", () => {
-    for (const size of FONT_SIZES) {
+    const sizeClassMap: Record<TextSize, string> = {
+      xs: "text-xs",
+      sm: "text-sm",
+      md: "text-base",
+      lg: "text-lg",
+      xl: "text-xl",
+    };
+
+    for (const size of TEXT_SIZES) {
       render(<Text size={size}>Text {size}</Text>);
       const element = screen.getByText(`Text ${size}`);
-
-      const expectedCssClass = size === "md" ? "text-base" : `text-${size}`;
-      expect(element.className).toBe(`${expectedCssClass} text-foreground font-body`);
+      expect(element.className).toBe(`${sizeClassMap[size]} text-foreground font-body`);
     }
+  });
+
+  it("does not apply a size class when size is not specified", () => {
+    render(<Text>No size</Text>);
+    const element = screen.getByText("No size");
+    expect(element.className).toBe("text-foreground font-body");
   });
 
   it("applies the correct font weight classes", () => {

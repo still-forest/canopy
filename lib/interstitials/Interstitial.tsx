@@ -1,7 +1,7 @@
 import type React from "react";
 import type { LoaderProps } from "@/components/Loader";
 import { Flex } from "@/layout";
-import type { FontWeight, HeadingSize } from "@/types";
+import type { FontWeight, HeadingLevel } from "@/types";
 import type { AlertVariant } from "@/types/variants";
 import { Heading, Text } from "@/typography";
 import { cn } from "@/utils";
@@ -10,7 +10,7 @@ export interface InterstitialProps {
   variant?: AlertVariant;
   iconComponent?: React.ElementType;
   headline?: string;
-  headlineLevel?: HeadingSize;
+  headlineLevel?: HeadingLevel;
   headlineWeight?: FontWeight;
   message?: string;
   messageClassName?: string;

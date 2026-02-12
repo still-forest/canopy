@@ -1,25 +1,13 @@
 import { COLOR_VARIANTS } from "@/types";
 
 export const HEADING_LEVELS = ["1", "2", "3", "4", "5", "6"] as const;
-export type HeadingSize = (typeof HEADING_LEVELS)[number];
+export type HeadingLevel = (typeof HEADING_LEVELS)[number];
 
-export const FONT_SIZES = [
-  "xs",
-  "sm",
-  "base",
-  "md",
-  "lg",
-  "xl",
-  "2xl",
-  "3xl",
-  "4xl",
-  "5xl",
-  "6xl",
-  "7xl",
-  "8xl",
-  "9xl",
-] as const;
-export type FontSize = (typeof FONT_SIZES)[number];
+export const HEADING_SIZES = ["xs", "sm", "md", "lg", "xl"] as const;
+export type HeadingSize = (typeof HEADING_SIZES)[number];
+
+export const TEXT_SIZES = ["xs", "sm", "md", "lg", "xl"] as const;
+export type TextSize = (typeof TEXT_SIZES)[number];
 
 export const FONT_FAMILIES = ["display", "serif", "sans", "mono", "heading", "body", "brand"] as const;
 export type FontFamily = (typeof FONT_FAMILIES)[number];
@@ -27,17 +15,7 @@ export type FontFamily = (typeof FONT_FAMILIES)[number];
 export const TYPOGRAPHY_VARIANTS = ["default", "inherit", ...COLOR_VARIANTS] as const;
 export type TypographyVariant = (typeof TYPOGRAPHY_VARIANTS)[number];
 
-export const FONT_WEIGHTS = [
-  "thin",
-  "extralight",
-  "light",
-  "normal",
-  "medium",
-  "semibold",
-  "bold",
-  "extrabold",
-  "black",
-] as const;
+export const FONT_WEIGHTS = ["normal", "medium", "semibold", "bold"] as const;
 export type FontWeight = (typeof FONT_WEIGHTS)[number];
 
 export const TEXT_ALIGNS = ["left", "center", "right", "justify", "start", "end"] as const;

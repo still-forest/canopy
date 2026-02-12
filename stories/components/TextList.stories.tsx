@@ -74,7 +74,7 @@ export const WithComponents: Story = {
       {sampleSentences.map((sentence) => (
         <TextList.Item asChild key={sentence}>
           <Box as="li" className="px-4 mb-2 hover:bg-primary/20 hover:cursor-default" rounded="sm" variant="secondary">
-            <Text inheritColor inline size="sm" variant="brand">
+            <Text inline size="sm" variant="brand">
               {sentence}.
             </Text>
           </Box>

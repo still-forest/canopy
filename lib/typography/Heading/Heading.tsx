@@ -1,8 +1,8 @@
 import React from "react";
 import type {
   FontFamily,
-  FontSize,
   FontWeight,
+  HeadingLevel,
   HeadingSize,
   TextAlign,
   TextLeading,
@@ -12,8 +12,8 @@ import type {
 import { cn } from "@/utils";
 
 export interface HeadingProps extends React.HTMLAttributes<HTMLHeadingElement> {
-  level?: HeadingSize;
-  size?: FontSize;
+  level?: HeadingLevel;
+  size?: HeadingSize;
   weight?: FontWeight;
   variant?: TypographyVariant;
   align?: TextAlign;
@@ -29,6 +29,23 @@ export interface HeadingProps extends React.HTMLAttributes<HTMLHeadingElement> {
   className?: string;
 }
 
+const DEFAULT_SIZES: Record<HeadingLevel, HeadingSize> = {
+  "1": "xl",
+  "2": "lg",
+  "3": "md",
+  "4": "sm",
+  "5": "xs",
+  "6": "xs",
+};
+
+const SIZE_CLASSES: Record<HeadingSize, string> = {
+  xs: "text-lg",
+  sm: "text-xl",
+  md: "text-2xl",
+  lg: "text-3xl",
+  xl: "text-4xl",
+};
+
 const Heading = React.forwardRef<HTMLHeadingElement, HeadingProps>(
   (
     {
@@ -36,9 +53,9 @@ const Heading = React.forwardRef<HTMLHeadingElement, HeadingProps>(
       variant = "default",
       level = "2",
       size,
-      weight = "bold", // Typical default browser style for headings
+      weight = "bold",
       align,
-      leading, // No default: Tailwind applies a default from text size classes
+      leading,
       tracking,
       family: familyProp,
       asForeground = false,
@@ -49,52 +66,20 @@ const Heading = React.forwardRef<HTMLHeadingElement, HeadingProps>(
     ref,
   ) => {
     const family = familyProp || (variant === "brand" ? "brand" : "heading");
-
-    // Map level to component
     const Component = `h${level}` as React.ElementType;
-
-    // Default size based on heading level if not specified
-    const defaultSizes: Record<string, string> = {
-      "1": "4xl",
-      "2": "3xl",
-      "3": "2xl",
-      "4": "xl",
-      "5": "lg",
-      "6": "base",
-    };
-
-    const headingSize = size || defaultSizes[level];
+    const resolvedSize = size || DEFAULT_SIZES[level];
 
     return (
       <Component
         className={cn(
-          // Size scales
+          // Size
+          SIZE_CLASSES[resolvedSize],
+          // Font weight
           {
-            "text-xs": headingSize === "xs",
-            "text-sm": headingSize === "sm",
-            "text-base": headingSize === "base" || headingSize === "md",
-            "text-lg": headingSize === "lg",
-            "text-xl": headingSize === "xl",
-            "text-2xl": headingSize === "2xl",
-            "text-3xl": headingSize === "3xl",
-            "text-4xl": headingSize === "4xl",
-            "text-5xl": headingSize === "5xl",
-            "text-6xl": headingSize === "6xl",
-            "text-7xl": headingSize === "7xl",
-            "text-8xl": headingSize === "8xl",
-            "text-9xl": headingSize === "9xl",
-          },
-          // Font weights
-          {
-            "font-thin": weight === "thin",
-            "font-extralight": weight === "extralight",
-            "font-light": weight === "light",
             "font-normal": weight === "normal",
             "font-medium": weight === "medium",
             "font-semibold": weight === "semibold",
             "font-bold": weight === "bold",
-            "font-extrabold": weight === "extrabold",
-            "font-black": weight === "black",
           },
           // Text colors (variants)
           {
@@ -102,18 +87,14 @@ const Heading = React.forwardRef<HTMLHeadingElement, HeadingProps>(
             "text-inherit": variant === "inherit",
             "text-muted-foreground": variant === "muted",
             "text-accent-foreground": variant === "accent",
-            // Action colors
             "text-primary-foreground": variant === "primary",
             "text-secondary-foreground": variant === "secondary",
-            // Brand color
             "text-brand": variant === "brand",
             "text-brand-foreground": asForeground && variant === "brand",
-            // Accent colors (rich color variants)
             "text-info": !asForeground && variant === "info",
             "text-warning": !asForeground && variant === "warning",
             "text-destructive": !asForeground && variant === "destructive",
             "text-success": !asForeground && variant === "success",
-            // Accent colors (foreground variants)
             "text-info-foreground": asForeground && variant === "info",
             "text-warning-foreground": asForeground && variant === "warning",
             "text-destructive-foreground": asForeground && variant === "destructive",
@@ -160,7 +141,7 @@ const Heading = React.forwardRef<HTMLHeadingElement, HeadingProps>(
           truncate && "truncate",
           // Tabular numerals
           numeric && "tabular-nums",
-          // Add some scroll margin for better anchor navigation
+          // Scroll margin for anchor navigation
           "scroll-m-20",
           className,
         )}

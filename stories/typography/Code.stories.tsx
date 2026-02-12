@@ -44,8 +44,8 @@ export const WithinText: Story = {
 
 export const WithinLargeText: Story = {
   render: () => (
-    <Text size="2xl">
-      This is a paragraph with a <Code size="2xl">Code</Code> component.
+    <Text size="xl">
+      This is a paragraph with a <Code size="xl">Code</Code> component.
     </Text>
   ),
 };

@@ -14,11 +14,11 @@ describe("Code", () => {
   });
 
   it("renders with size prop", () => {
-    render(<Code size="2xl">Does not compute</Code>);
+    render(<Code size="xl">Does not compute</Code>);
     const element = screen.getByText("Does not compute");
 
     expect(element.className).toBe(
-      "text-2xl text-accent-foreground font-mono inline-block w-fit rounded bg-accent px-2",
+      "text-xl text-accent-foreground font-mono inline-block w-fit rounded bg-accent px-2",
     );
   });
 

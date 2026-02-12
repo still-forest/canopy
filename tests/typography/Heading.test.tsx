@@ -2,10 +2,11 @@ import { render, screen } from "@testing-library/react";
 import { describe, expect, it } from "vitest";
 import {
   FONT_FAMILIES,
-  FONT_SIZES,
   FONT_WEIGHTS,
   type FontWeight,
   HEADING_LEVELS,
+  HEADING_SIZES,
+  type HeadingSize,
   TEXT_ALIGNS,
   TEXT_LEADINGS,
   TEXT_TRACKINGS,
@@ -30,7 +31,7 @@ describe("Heading", () => {
       "3": "text-2xl",
       "4": "text-xl",
       "5": "text-lg",
-      "6": "text-base",
+      "6": "text-lg",
     };
 
     for (const level of HEADING_LEVELS) {
@@ -42,16 +43,22 @@ describe("Heading", () => {
   });
 
   it("applies explicitly specified size regardless of level", () => {
-    for (const size of FONT_SIZES) {
+    const sizeClassMap: Record<HeadingSize, string> = {
+      xs: "text-lg",
+      sm: "text-xl",
+      md: "text-2xl",
+      lg: "text-3xl",
+      xl: "text-4xl",
+    };
+
+    for (const size of HEADING_SIZES) {
       render(
         <Heading level="3" size={size}>
           Heading {size}
         </Heading>,
       );
       const element = screen.getByText(`Heading ${size}`);
-
-      const expectedCssClass = size === "md" ? "text-base" : `text-${size}`;
-      expect(element.className).toBe(`${expectedCssClass} font-bold text-foreground font-heading scroll-m-20`);
+      expect(element.className).toBe(`${sizeClassMap[size]} font-bold text-foreground font-heading scroll-m-20`);
     }
   });
 
@@ -199,10 +206,10 @@ describe("Heading", () => {
         family="serif"
         level="1"
         numeric
-        size="5xl"
+        size="xl"
         tracking="wide"
         variant="accent"
-        weight="extrabold"
+        weight="semibold"
       >
         Combined props
       </Heading>,
@@ -212,7 +219,7 @@ describe("Heading", () => {
 
     expect(element.tagName).toBe("H1");
     expect(element.className).toBe(
-      "text-5xl font-extrabold text-accent-foreground text-center tracking-wide font-serif tabular-nums scroll-m-20",
+      "text-4xl font-semibold text-accent-foreground text-center tracking-wide font-serif tabular-nums scroll-m-20",
     );
   });
 });

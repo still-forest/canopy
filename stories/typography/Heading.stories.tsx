@@ -5,12 +5,12 @@ import type { Meta, StoryObj } from "@storybook/react-vite";
 import { Box, Flex } from "@/layout";
 import {
   FONT_FAMILIES,
-  FONT_SIZES,
   FONT_WEIGHTS,
   type FontFamily,
-  type FontSize,
   type FontWeight,
   HEADING_LEVELS,
+  HEADING_SIZES,
+  type HeadingSize,
   TEXT_ALIGNS,
   TEXT_LEADINGS,
   TEXT_TRACKINGS,
@@ -48,10 +48,10 @@ const meta: Meta<typeof Heading> = {
     },
     size: {
       control: "select",
-      options: asOptionalValue(FONT_SIZES),
-      description: "Controls font size on a more granular basis (this will override `level`)",
+      options: asOptionalValue(HEADING_SIZES),
+      description: "Controls visual size of the heading (overrides the default size for the level)",
       table: {
-        type: { summary: summarizeValues(FONT_SIZES, true) },
+        type: { summary: summarizeValues(HEADING_SIZES, true) },
       },
     },
     family: {
@@ -178,43 +178,29 @@ export const Families: Story = {
 
 export const Sizes: Story = {
   render: () => (
-    <>
-      <OptionsByFamilyGrid<FontSize>
-        optionLabel="Size"
-        options={FONT_SIZES.slice(0, 6) as unknown as FontSize[]}
-        renderOption={(family, option) => (
-          <Heading align="center" family={family} level="4" size={option}>
-            {sampleHeading}
-          </Heading>
-        )}
-      />
-      <Text className="mt-8" variant="muted">
-        Note: Options for{" "}
-        <Text as="span" family="mono" variant="muted">
-          {FONT_SIZES.slice(6).join(", ")}
-        </Text>{" "}
-        are not displayed.
-      </Text>
-    </>
+    <OptionsByFamilyGrid<HeadingSize>
+      optionLabel="Size"
+      options={HEADING_SIZES as unknown as HeadingSize[]}
+      renderOption={(family, option) => (
+        <Heading align="center" family={family} level="4" size={option}>
+          {sampleHeading}
+        </Heading>
+      )}
+    />
   ),
 };
 
 export const Weights: Story = {
   render: () => (
-    <>
-      <OptionsByFamilyGrid<FontWeight>
-        optionLabel="Weight"
-        options={FONT_WEIGHTS as unknown as FontWeight[]}
-        renderOption={(family, option) => (
-          <Heading align="center" family={family} level="4" weight={option}>
-            {sampleHeading}
-          </Heading>
-        )}
-      />
-      <Text className="mt-8" variant="muted">
-        Note: Certain fonts may not support all weights.
-      </Text>
-    </>
+    <OptionsByFamilyGrid<FontWeight>
+      optionLabel="Weight"
+      options={FONT_WEIGHTS as unknown as FontWeight[]}
+      renderOption={(family, option) => (
+        <Heading align="center" family={family} level="4" weight={option}>
+          {sampleHeading}
+        </Heading>
+      )}
+    />
   ),
 };
 
