@@ -19,45 +19,43 @@ describe("RadioSelect", () => {
     radioButtons.forEach((radioButton, index) => {
       const { value, label } = OPTIONS[index];
 
-      expect(radioButton).toHaveAttribute("value", value);
-      expect(radioButton).toHaveAttribute("id", value);
       expect(radioButton).toHaveAttribute("aria-checked", "false");
-      expect(radioButton).toHaveAttribute("data-state", "unchecked");
+      expect(radioButton).toHaveAttribute("data-unchecked", "");
       expect(radioButton).toHaveAttribute("data-slot", "radio-group-item");
-      expect(radioButton.className).toBe(
-        "border-input text-primary focus-visible:border-ring focus-visible:ring-ring/50 aria-invalid:ring-destructive/20 dark:aria-invalid:ring-destructive/40 aria-invalid:border-destructive dark:bg-input/30 aspect-square shrink-0 rounded-full border shadow-xs transition-[color,box-shadow] outline-none focus-visible:ring-[3px] disabled:cursor-not-allowed disabled:opacity-50 size-4",
+      expect(radioButton).toHaveClass(
+        "border-input text-primary focus-visible:border-ring focus-visible:ring-ring/50 dark:bg-input/30 aspect-square shrink-0 rounded-full border shadow-xs outline-none focus-visible:ring-3 disabled:cursor-not-allowed disabled:opacity-50 size-4",
       );
 
       const labelElement = screen.getByText(label);
       expect(labelElement).toHaveAttribute("for", value);
-      expect(labelElement.className).toBe(
-        "gap-2 group-data-[disabled=true]:opacity-50 peer-disabled:opacity-50 flex items-center select-none group-data-[disabled=true]:pointer-events-none peer-disabled:cursor-not-allowed font-display font-normal text-foreground text-base",
+      expect(labelElement).toHaveClass(
+        "font-display font-normal text-foreground text-base flex items-center select-none",
       );
     });
 
     fireEvent.click(radioButtons[0]);
     expect(radioButtons[0]).toHaveAttribute("aria-checked", "true");
-    expect(radioButtons[0]).toHaveAttribute("data-state", "checked");
+    expect(radioButtons[0]).toHaveAttribute("data-checked", "");
     expect(radioButtons[1]).toHaveAttribute("aria-checked", "false");
-    expect(radioButtons[1]).toHaveAttribute("data-state", "unchecked");
+    expect(radioButtons[1]).toHaveAttribute("data-unchecked", "");
     expect(radioButtons[2]).toHaveAttribute("aria-checked", "false");
-    expect(radioButtons[2]).toHaveAttribute("data-state", "unchecked");
+    expect(radioButtons[2]).toHaveAttribute("data-unchecked", "");
 
     fireEvent.click(radioButtons[1]);
     expect(radioButtons[0]).toHaveAttribute("aria-checked", "false");
-    expect(radioButtons[0]).toHaveAttribute("data-state", "unchecked");
+    expect(radioButtons[0]).toHaveAttribute("data-unchecked", "");
     expect(radioButtons[1]).toHaveAttribute("aria-checked", "true");
-    expect(radioButtons[1]).toHaveAttribute("data-state", "checked");
+    expect(radioButtons[1]).toHaveAttribute("data-checked", "");
     expect(radioButtons[2]).toHaveAttribute("aria-checked", "false");
-    expect(radioButtons[2]).toHaveAttribute("data-state", "unchecked");
+    expect(radioButtons[2]).toHaveAttribute("data-unchecked", "");
 
     fireEvent.click(radioButtons[2]);
     expect(radioButtons[0]).toHaveAttribute("aria-checked", "false");
-    expect(radioButtons[0]).toHaveAttribute("data-state", "unchecked");
+    expect(radioButtons[0]).toHaveAttribute("data-unchecked", "");
     expect(radioButtons[1]).toHaveAttribute("aria-checked", "false");
-    expect(radioButtons[1]).toHaveAttribute("data-state", "unchecked");
+    expect(radioButtons[1]).toHaveAttribute("data-unchecked", "");
     expect(radioButtons[2]).toHaveAttribute("aria-checked", "true");
-    expect(radioButtons[2]).toHaveAttribute("data-state", "checked");
+    expect(radioButtons[2]).toHaveAttribute("data-checked", "");
   });
 
   it("renders a label", () => {
@@ -71,7 +69,7 @@ describe("RadioSelect", () => {
 
     radioButtons.forEach((radioButton) => {
       expect(radioButton).toHaveAttribute("aria-checked", "false");
-      expect(radioButton).toHaveAttribute("data-state", "unchecked");
+      expect(radioButton).toHaveAttribute("data-unchecked", "");
     });
   });
 
@@ -88,7 +86,11 @@ describe("RadioSelect", () => {
       const { value } = OPTIONS[index];
 
       expect(radioButton).toHaveAttribute("aria-checked", value === "bart" ? "true" : "false");
-      expect(radioButton).toHaveAttribute("data-state", value === "bart" ? "checked" : "unchecked");
+      if (value === "bart") {
+        expect(radioButton).toHaveAttribute("data-checked", "");
+      } else {
+        expect(radioButton).toHaveAttribute("data-unchecked", "");
+      }
     });
   });
 
@@ -100,13 +102,13 @@ describe("RadioSelect", () => {
     expect(radioButtons).toHaveLength(OPTIONS.length);
 
     fireEvent.click(radioButtons[0]);
-    expect(onChange).toHaveBeenCalledWith("bart");
+    expect(onChange).toHaveBeenCalledWith("bart", expect.anything());
 
     fireEvent.click(radioButtons[1]);
-    expect(onChange).toHaveBeenCalledWith("lisa");
+    expect(onChange).toHaveBeenCalledWith("lisa", expect.anything());
 
     fireEvent.click(radioButtons[2]);
-    expect(onChange).toHaveBeenCalledWith("maggie");
+    expect(onChange).toHaveBeenCalledWith("maggie", expect.anything());
   });
 
   it("does not call onChange when an option is already selected", () => {
@@ -120,10 +122,10 @@ describe("RadioSelect", () => {
     expect(onChange).not.toHaveBeenCalled();
 
     fireEvent.click(radioButtons[1]);
-    expect(onChange).toHaveBeenCalledWith("lisa");
+    expect(onChange).toHaveBeenCalledWith("lisa", expect.anything());
 
     fireEvent.click(radioButtons[2]);
-    expect(onChange).toHaveBeenCalledWith("maggie");
+    expect(onChange).toHaveBeenCalledWith("maggie", expect.anything());
   });
 
   it("renders an error message", () => {

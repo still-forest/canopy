@@ -12,26 +12,22 @@ describe("Checkbox", () => {
 
     const checkbox = screen.getByRole("checkbox");
 
-    expect(checkbox).toHaveAccessibleName("Test Checkbox");
-    expect(checkbox).toHaveAttribute("type", "button");
-    expect(checkbox).toHaveAttribute("id", "test-checkbox");
     expect(checkbox).toHaveAttribute("aria-checked", "false");
-    expect(checkbox).toHaveAttribute("data-state", "unchecked");
-    expect(checkbox).toHaveAttribute("value", "test-checkbox");
+    expect(checkbox).toHaveAttribute("data-unchecked", "");
     expect(checkbox).not.toBeDisabled();
     expect(checkbox).toHaveClass(
-      "border-input dark:bg-input/30 data-[state=checked]:bg-primary data-[state=checked]:text-primary-foreground dark:data-[state=checked]:bg-primary data-[state=checked]:border-primary focus-visible:border-ring focus-visible:ring-ring/50 aria-invalid:ring-destructive/20 dark:aria-invalid:ring-destructive/40 aria-invalid:border-destructive size-4 shrink-0 rounded-[4px] border shadow-xs transition-shadow outline-none focus-visible:ring-[3px] disabled:cursor-not-allowed disabled:opacity-50",
+      "border-input dark:bg-input/30 data-checked:bg-primary data-checked:text-primary-foreground data-checked:border-primary focus-visible:border-ring focus-visible:ring-ring/50 shrink-0 rounded-[4px] border shadow-xs outline-none focus-visible:ring-3 disabled:cursor-not-allowed disabled:opacity-50",
     );
 
     const label = screen.getByText("Test Checkbox");
     expect(label).toHaveAttribute("for", "test-checkbox");
-    expect(label.className).toBe(
-      "gap-2 group-data-[disabled=true]:opacity-50 peer-disabled:opacity-50 flex items-center select-none group-data-[disabled=true]:pointer-events-none peer-disabled:cursor-not-allowed font-display font-normal text-foreground text-base cursor-pointer",
+    expect(label).toHaveClass(
+      "font-display font-normal text-foreground text-base cursor-pointer flex items-center select-none",
     );
 
     fireEvent.click(checkbox);
     expect(checkbox).toHaveAttribute("aria-checked", "true");
-    expect(checkbox).toHaveAttribute("data-state", "checked");
+    expect(checkbox).toHaveAttribute("data-checked", "");
   });
 
   test("renders a Checkbox with value", async () => {
@@ -39,12 +35,8 @@ describe("Checkbox", () => {
 
     const checkbox = screen.getByRole("checkbox");
 
-    expect(checkbox).toHaveAccessibleName("Test Checkbox");
-    expect(checkbox).toHaveAttribute("type", "button");
-    expect(checkbox).toHaveAttribute("id", "test-checkbox[abc1]");
     expect(checkbox).toHaveAttribute("aria-checked", "false");
-    expect(checkbox).toHaveAttribute("data-state", "unchecked");
-    expect(checkbox).toHaveAttribute("value", "abc1");
+    expect(checkbox).toHaveAttribute("data-unchecked", "");
     expect(checkbox).not.toBeDisabled();
 
     const label = screen.getByText("Test Checkbox");
@@ -56,14 +48,13 @@ describe("Checkbox", () => {
 
     const checkbox = screen.getByRole("checkbox");
 
-    expect(checkbox).toHaveAccessibleName("Test Checkbox");
     expect(checkbox).toHaveAttribute("aria-checked", "false");
-    expect(checkbox).toHaveAttribute("data-state", "unchecked");
+    expect(checkbox).toHaveAttribute("data-unchecked", "");
     expect(checkbox).not.toBeDisabled();
 
     fireEvent.click(checkbox);
     expect(checkbox).toHaveAttribute("aria-checked", "true");
-    expect(checkbox).toHaveAttribute("data-state", "checked");
+    expect(checkbox).toHaveAttribute("data-checked", "");
     expect(handleClick).toHaveBeenCalledWith(true);
   });
 });

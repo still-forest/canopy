@@ -10,15 +10,7 @@ interface SwitchProps extends React.ComponentProps<typeof BaseSwitch> {
   labelClassName?: string | string[];
 }
 
-export const Switch = ({
-  id: idProp,
-  label,
-  className,
-  thumbClassName,
-  labelClassName,
-  size = "md",
-  ...props
-}: SwitchProps) => {
+export const Switch = ({ id: idProp, label, className, labelClassName, size = "md", ...props }: SwitchProps) => {
   const generatedId = useId();
   const id = idProp || generatedId;
 
@@ -29,36 +21,13 @@ export const Switch = ({
   const rightLabelClassName = labelClassName && Array.isArray(labelClassName) ? labelClassName[1] : labelClassName;
 
   return (
-    <div className="flex items-center space-x-2">
+    <div className={cn("flex items-center space-x-2", className)}>
       {leftLabel && (
         <Label className={cn(commonLabelClassNames, leftLabelClassName)} htmlFor={id} size={size}>
           {leftLabel}
         </Label>
       )}
-      <BaseSwitch
-        className={cn(
-          {
-            "h-[10px] w-4": size === "xs",
-            "h-[14px] w-6": size === "sm",
-            "h-[18px] w-8": size === "md",
-            "h-[22px] w-10": size === "lg",
-            "h-[26px] w-12": size === "xl",
-          },
-          className,
-        )}
-        id={id}
-        thumbClassName={cn(
-          {
-            "size-2": size === "xs",
-            "size-3": size === "sm",
-            "size-4": size === "md",
-            "size-5": size === "lg",
-            "size-6": size === "xl",
-          },
-          thumbClassName,
-        )}
-        {...props}
-      />
+      <BaseSwitch id={id} size={size} {...props} />
       <Label className={cn(commonLabelClassNames, rightLabelClassName)} htmlFor={id} size={size}>
         {rightLabel}
       </Label>
