@@ -3,7 +3,6 @@ import { describe, expect, test } from "vitest";
 import "@testing-library/jest-dom";
 
 import { TextList } from "@/components";
-import { TYPOGRAPHY_VARIANTS } from "@/types";
 
 describe("TextList", () => {
   test("renders a TextList", async () => {
@@ -18,7 +17,7 @@ describe("TextList", () => {
     const textList = screen.getByRole("list");
     expect(textList).toBeInTheDocument();
     expect(textList.tagName).toBe("UL");
-    expect(textList.className).toBe("list-disc list-outside ml-4 marker:text-foreground");
+    expect(textList.className).toBe("list-disc list-outside ml-4");
 
     const items = screen.getAllByRole("listitem");
     expect(items).toHaveLength(3);
@@ -44,7 +43,7 @@ describe("TextList", () => {
 
   test("renders a an ordered TextList", async () => {
     render(
-      <TextList type="ordered">
+      <TextList variant="ordered">
         <TextList.Item>Item 1</TextList.Item>
         <TextList.Item>Item 2</TextList.Item>
       </TextList>,
@@ -52,8 +51,8 @@ describe("TextList", () => {
 
     const textList = screen.getByRole("list");
     expect(textList).toBeInTheDocument();
-    expect(textList.tagName).toBe("UL");
-    expect(textList.className).toBe("list-decimal list-outside ml-6 marker:text-foreground");
+    expect(textList.tagName).toBe("OL");
+    expect(textList.className).toBe("list-decimal list-outside ml-6");
 
     const items = screen.getAllByRole("listitem");
     expect(items).toHaveLength(2);
@@ -73,7 +72,7 @@ describe("TextList", () => {
 
   test("renders a none TextList", async () => {
     render(
-      <TextList type="none">
+      <TextList variant="none">
         <TextList.Item>Item 1</TextList.Item>
       </TextList>,
     );
@@ -81,7 +80,7 @@ describe("TextList", () => {
     const textList = screen.getByRole("list");
     expect(textList).toBeInTheDocument();
     expect(textList.tagName).toBe("UL");
-    expect(textList.className).toBe("list-none list-outside marker:text-foreground");
+    expect(textList.className).toBe("list-none list-outside");
 
     const items = screen.getAllByRole("listitem");
     expect(items).toHaveLength(1);
@@ -103,7 +102,7 @@ describe("TextList", () => {
     const textList = screen.getByRole("list");
     expect(textList).toBeInTheDocument();
     expect(textList.tagName).toBe("UL");
-    expect(textList.className).toBe("list-disc list-inside marker:text-foreground");
+    expect(textList.className).toBe("list-disc list-inside");
 
     const items = screen.getAllByRole("listitem");
     expect(items).toHaveLength(1);
@@ -113,65 +112,5 @@ describe("TextList", () => {
     expect(item1.tagName).toBe("LI");
     expect(item1.className).toBe("");
     expect(item1.textContent).toBe("Item 1");
-  });
-
-  test("renders a TextList item as a child", async () => {
-    render(
-      <TextList>
-        <TextList.Item asChild>
-          <p>Item 1</p>
-        </TextList.Item>
-        <TextList.Item asChild>
-          <h3>Item 2</h3>
-        </TextList.Item>
-      </TextList>,
-    );
-
-    const textList = screen.getByRole("list");
-    expect(textList).toBeInTheDocument();
-    expect(textList.tagName).toBe("UL");
-    expect(textList.className).toBe("list-disc list-outside ml-4 marker:text-foreground");
-
-    const items = screen.getAllByRole("listitem");
-    expect(items).toHaveLength(2);
-
-    const item1 = items[0];
-    expect(item1).toBeInTheDocument();
-    expect(item1.tagName).toBe("P");
-    expect(item1.className).toBe("");
-    expect(item1.textContent).toBe("Item 1");
-
-    const item2 = items[1];
-    expect(item2).toBeInTheDocument();
-    expect(item2.tagName).toBe("H3");
-    expect(item2.className).toBe("");
-    expect(item2.textContent).toBe("Item 2");
-  });
-
-  test("renders a variant TextList", async () => {
-    for (const variant of TYPOGRAPHY_VARIANTS) {
-      const { rerender } = render(
-        <TextList variant={variant}>
-          <TextList.Item>Item 1</TextList.Item>
-        </TextList>,
-      );
-
-      const expectedMarkerTextClass = variant === "default" ? "marker:text-foreground" : `marker:text-${variant}`;
-
-      const textList = screen.getByRole("list");
-      expect(textList).toBeInTheDocument();
-      expect(textList.tagName).toBe("UL");
-      expect(textList.className).toBe(`list-disc list-outside ml-4 ${expectedMarkerTextClass}`);
-
-      const items = screen.getAllByRole("listitem");
-      expect(items).toHaveLength(1);
-
-      const item1 = items[0];
-      expect(item1).toBeInTheDocument();
-      expect(item1.tagName).toBe("LI");
-      expect(item1.className).toBe("");
-      expect(item1.textContent).toBe("Item 1");
-      rerender(<div />);
-    }
   });
 });

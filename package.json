@@ -45,7 +45,6 @@
     "cmdk": "^1.1.1",
     "date-fns": "^4.1.0",
     "lucide-react": "^0.563.0",
-    "radix-ui": "^1.4.3",
     "react-day-picker": "^9.9.0",
     "react-router": "^7.8.2",
     "vaul": "^1.1.2"

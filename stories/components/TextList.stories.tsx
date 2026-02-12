@@ -1,8 +1,6 @@
 import type { Meta, StoryObj } from "@storybook/react-vite";
 import { TextList } from "@/components/TextList";
-import { Box, Flex } from "@/layout";
-import { TYPOGRAPHY_VARIANTS } from "@/types";
-import { Code } from "@/typography/Code";
+import { Box } from "@/layout";
 import { Text } from "@/typography/Text";
 import { DEFAULT_DECORATOR_WITH_WIDTH_MD } from "../support/decorators";
 import { sampleSentences } from "../support/sampleText";
@@ -30,7 +28,7 @@ export const Default: Story = {
 
 export const Ordered: Story = {
   render: () => (
-    <TextList type="ordered">
+    <TextList variant="ordered">
       {sampleSentences.map((sentence) => (
         <TextList.Item key={sentence}>{sentence}.</TextList.Item>
       ))}
@@ -40,7 +38,7 @@ export const Ordered: Story = {
 
 export const None: Story = {
   render: () => (
-    <TextList type="none">
+    <TextList variant="none">
       {sampleSentences.map((sentence) => (
         <TextList.Item key={sentence}>{sentence}.</TextList.Item>
       ))}
@@ -81,22 +79,5 @@ export const WithComponents: Story = {
         </TextList.Item>
       ))}
     </TextList>
-  ),
-};
-
-export const Variants: Story = {
-  render: () => (
-    <Flex direction="col" gap="4">
-      {TYPOGRAPHY_VARIANTS.map((variant) => (
-        <Box key={variant}>
-          <Code size="sm">{variant}</Code>
-          <TextList variant={variant}>
-            {sampleSentences.map((sentence) => (
-              <TextList.Item key={sentence}>{sentence}.</TextList.Item>
-            ))}
-          </TextList>
-        </Box>
-      ))}
-    </Flex>
   ),
 };

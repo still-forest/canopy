@@ -4,7 +4,7 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 
 ## Project Overview
 
-Canopy is a React component library built with Tailwind CSS, Shadcn UI, and Radix UI primitives. It is published to npm as `@still-forest/canopy` and uses pnpm for package management.
+Canopy is a React component library built with Tailwind CSS, Shadcn UI, and Base UI primitives. It is published to npm as `@still-forest/canopy` and uses pnpm for package management.
 
 ## Development Commands
 
@@ -107,7 +107,7 @@ Components are organized in feature folders with:
 - Corresponding test file in `tests/` directory
 - Storybook story in `stories/` directory
 
-Components are built on Radix UI primitives (`@radix-ui/*`) for accessibility and use `class-variance-authority` for variant management.
+Components are built on Base UI primitives (`@base-ui/*`) for accessibility and use `class-variance-authority` for variant management.
 
 ## Local Development Workflow
 
@@ -138,7 +138,7 @@ When testing Canopy in a consuming app:
 
 - **React 19** (peer dependency, supports 16.8+)
 - **Tailwind CSS 4** (peer dependency)
-- **Radix UI** for accessible component primitives
+- **Base UI** for accessible component primitives
 - **Vite** for building and development
 - **Vitest** for testing
 - **Biome** for linting and formatting (extends `@still-forest/biomejs-config`)
