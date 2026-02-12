@@ -1,12 +1,9 @@
-import { Slot as SlotPrimitive } from "radix-ui";
-import type { ReactNode } from "react";
-import type { TypographyVariant } from "@/types";
+import type { ReactNode, RefObject } from "react";
 import { cn } from "@/utils";
 
 type TextListProps = React.ComponentProps<"ul"> & {
-  type?: "ordered" | "unordered" | "none";
   position?: "inside" | "outside";
-  variant?: TypographyVariant;
+  variant?: "ordered" | "unordered" | "none";
   children: ReactNode;
 };
 type TextListItemProps = React.ComponentProps<"li"> & {
@@ -21,60 +18,45 @@ type TextListComponent = React.FC<TextListProps> & {
 const TextList: TextListComponent = ({
   children,
   className,
+  variant = "unordered",
   position = "outside",
-  type = "unordered",
-  variant = "default",
+  ref,
   ...props
 }: TextListProps) => {
+  const classNames = cn(
+    {
+      "list-decimal": variant === "ordered",
+      "list-disc": variant === "unordered",
+      "list-none": variant === "none",
+    },
+    {
+      "list-inside": position === "inside",
+      "list-outside": position === "outside",
+    },
+    {
+      "ml-4": position === "outside" && variant === "unordered",
+      "ml-6": position === "outside" && variant === "ordered",
+    },
+    className,
+  );
+
+  if (variant === "ordered") {
+    return (
+      <ol className={classNames} ref={ref as RefObject<HTMLOListElement>} {...props}>
+        {children}
+      </ol>
+    );
+  }
+
   return (
-    <ul
-      className={cn(
-        {
-          "list-decimal": type === "ordered",
-          "list-disc": type === "unordered",
-          "list-none": type === "none",
-        },
-        {
-          "list-inside": position === "inside",
-          "list-outside": position === "outside",
-        },
-        {
-          "ml-4": position === "outside" && type === "unordered",
-          "ml-6": position === "outside" && type === "ordered",
-        },
-        {
-          "marker:text-foreground": variant === "default",
-          "marker:text-inherit": variant === "inherit",
-          "marker:text-muted": variant === "muted",
-          "marker:text-accent": variant === "accent",
-          // Action colors
-          "marker:text-primary": variant === "primary",
-          "marker:text-secondary": variant === "secondary",
-          // Brand color
-          "marker:text-brand": variant === "brand",
-          // Accent colors (rich color variants)
-          "marker:text-info": variant === "info",
-          "marker:text-warning": variant === "warning",
-          "marker:text-destructive": variant === "destructive",
-          "marker:text-success": variant === "success",
-        },
-        className,
-      )}
-      {...props}
-    >
+    <ul className={classNames} {...props}>
       {children}
     </ul>
   );
 };
 
-const TextListItem = ({ children, asChild, ...props }: TextListItemProps) => {
-  const Comp = asChild ? SlotPrimitive.Slot : "li";
-
-  return (
-    <Comp role="listitem" {...props}>
-      {children}
-    </Comp>
-  );
+const TextListItem = ({ children, ...props }: TextListItemProps) => {
+  return <li {...props}>{children}</li>;
 };
 
 TextList.Item = TextListItem;
