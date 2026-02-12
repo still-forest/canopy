@@ -1,12 +1,5 @@
-import { type ReactElement, type ReactNode, useEffect, useState } from "react";
-import {
-  Dialog,
-  DialogContent,
-  DialogDescription,
-  DialogHeader,
-  DialogTitle,
-  DialogTrigger,
-} from "@/components/ui/dialog";
+import { cloneElement, type HTMLProps, type ReactElement, type ReactNode, useEffect, useState } from "react";
+import { Dialog } from "@/components/Dialog";
 
 interface Props {
   children: ReactNode;
@@ -45,19 +38,21 @@ export const Modal = ({ trigger, children, title, description, open, onOpenChang
 
   return (
     <Dialog onOpenChange={handleOpenChange} open={openState}>
-      <DialogTrigger render={trigger} />
-      <DialogContent>
+      {trigger && (
+        <Dialog.Trigger render={({ ref, ...props }: HTMLProps<unknown>) => cloneElement(trigger, { ...props })} />
+      )}
+      <Dialog.Content>
         {(title || description) && (
-          <DialogHeader>
-            {title && <DialogTitle>{title}</DialogTitle>}
-            {description && <DialogDescription>{description}</DialogDescription>}
-          </DialogHeader>
+          <Dialog.Header>
+            {title && <Dialog.Title>{title}</Dialog.Title>}
+            {description && <Dialog.Description>{description}</Dialog.Description>}
+          </Dialog.Header>
         )}
         {ariaDescription && !description && (
-          <DialogDescription className="sr-only">{ariaDescription}</DialogDescription>
+          <Dialog.Description className="sr-only">{ariaDescription}</Dialog.Description>
         )}
         {children}
-      </DialogContent>
+      </Dialog.Content>
     </Dialog>
   );
 };
