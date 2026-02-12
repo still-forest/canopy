@@ -54,6 +54,7 @@ export const ButtonSelectInput = ({
   // Generate stable IDs for accessibility
   const labelId = useId();
   const errorId = useId();
+  const noteId = useId();
 
   // Refs for managing focus
   const buttonRefs = useRef<Map<string, HTMLButtonElement>>(new Map());
@@ -111,7 +112,7 @@ export const ButtonSelectInput = ({
         </Flex>
       )}
       <ButtonGroup
-        aria-describedby={error ? errorId : undefined}
+        aria-describedby={[note && noteId, error && errorId].filter(Boolean).join(" ") || undefined}
         aria-invalid={error ? "true" : undefined}
         aria-label={!label ? name : undefined}
         aria-labelledby={label ? labelId : undefined}
@@ -128,6 +129,7 @@ export const ButtonSelectInput = ({
           return (
             <ButtonGroup.Button
               aria-checked={isSelected}
+              aria-label={option.label ? undefined : option.value}
               className={cn("flex-grow", buttonClassName)}
               icon={option.icon}
               key={option.value}
@@ -192,7 +194,7 @@ export const ButtonSelectInput = ({
         )}
       </ButtonGroup>
       {note && (
-        <Text size="sm" variant="muted">
+        <Text id={noteId} size="sm" variant="muted">
           {note}
         </Text>
       )}

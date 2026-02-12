@@ -153,6 +153,59 @@ describe("ButtonSelectInput", () => {
       expect(buttons[0]).toHaveAttribute("aria-checked", "false");
       expect(buttons[1]).toHaveAttribute("aria-checked", "true");
     });
+
+    it("associates note with radiogroup via aria-describedby", () => {
+      const onChange = vi.fn();
+      render(<ButtonSelectInput note="Pick your favorite" onChange={onChange} options={OPTIONS} value={undefined} />);
+
+      const radioGroup = screen.getByRole("radiogroup");
+      const describedBy = radioGroup.getAttribute("aria-describedby");
+      expect(describedBy).toBeTruthy();
+
+      const note = screen.getByText("Pick your favorite");
+      expect(note).toHaveAttribute("id", describedBy);
+    });
+
+    it("associates both note and error with radiogroup via aria-describedby", () => {
+      const onChange = vi.fn();
+      render(
+        <ButtonSelectInput
+          error="Selection required"
+          note="Pick your favorite"
+          onChange={onChange}
+          options={OPTIONS}
+          value={undefined}
+        />,
+      );
+
+      const radioGroup = screen.getByRole("radiogroup");
+      const describedBy = radioGroup.getAttribute("aria-describedby");
+      expect(describedBy).toBeTruthy();
+
+      const ids = describedBy!.split(" ");
+      expect(ids).toHaveLength(2);
+
+      const note = screen.getByText("Pick your favorite");
+      const error = screen.getByText("Selection required");
+      expect(note).toHaveAttribute("id", ids[0]);
+      expect(error).toHaveAttribute("id", ids[1]);
+    });
+
+    it("does not have aria-expanded on secondary trigger with role radio", () => {
+      const onChange = vi.fn();
+      render(
+        <ButtonSelectInput
+          onChange={onChange}
+          options={OPTIONS}
+          secondaryOptions={SECONDARY_OPTIONS}
+          value={undefined}
+        />,
+      );
+
+      const buttons = screen.getAllByRole("radio");
+      const secondaryButton = buttons[buttons.length - 1];
+      expect(secondaryButton).not.toHaveAttribute("aria-expanded");
+    });
   });
 
   describe("Accessibility - Keyboard navigation", () => {
@@ -341,6 +394,34 @@ describe("ButtonSelectInput", () => {
 
       expect(screen.getByTestId("home-icon")).toBeInTheDocument();
       expect(screen.getByTestId("user-icon")).toBeInTheDocument();
+    });
+
+    it("provides accessible names for icon-only buttons via aria-label", () => {
+      const onChange = vi.fn();
+      const iconOptions = [
+        { value: "home", icon: <Home data-testid="home-icon" /> },
+        { value: "user", icon: <User data-testid="user-icon" /> },
+      ];
+
+      render(<ButtonSelectInput onChange={onChange} options={iconOptions} value={undefined} />);
+
+      const buttons = screen.getAllByRole("radio");
+      expect(buttons[0]).toHaveAccessibleName("home");
+      expect(buttons[1]).toHaveAccessibleName("user");
+    });
+
+    it("does not add aria-label when option has a label", () => {
+      const onChange = vi.fn();
+      const iconOptions = [
+        { value: "home", label: "Home", icon: <Home data-testid="home-icon" /> },
+        { value: "user", label: "Profile", icon: <User data-testid="user-icon" /> },
+      ];
+
+      render(<ButtonSelectInput onChange={onChange} options={iconOptions} value={undefined} />);
+
+      const buttons = screen.getAllByRole("radio");
+      expect(buttons[0]).not.toHaveAttribute("aria-label");
+      expect(buttons[1]).not.toHaveAttribute("aria-label");
     });
 
     it("renders buttons with both icons and labels", () => {

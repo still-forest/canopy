@@ -28,23 +28,30 @@ export const DesktopSelectPicker = ({
   dropdownClassName,
   triggerClassName,
 }: DesktopSelectPickerProps) => {
+  const effectiveRole = triggerProps?.role ?? "combobox";
+
   return (
     <Popover onOpenChange={setOpen} open={open}>
       <PopoverTrigger
-        render={(props) => (
-          <TriggerComponent
-            {...mergeProps(props, triggerProps, {
-              "aria-expanded": open,
-              className: cn("w-full justify-between font-normal", triggerClassName),
-              id,
-              role: triggerProps?.role ?? "combobox",
-              variant: triggerProps?.variant ?? "outline",
-            })}
-          >
-            {selectedLabel}
-            <ChevronsUpDown className="opacity-50" />
-          </TriggerComponent>
-        )}
+        render={(props) => {
+          // aria-expanded is not a valid ARIA state for role="radio".
+          // Strip it from popover props when using a non-combobox role.
+          const { "aria-expanded": _ariaExpanded, ...popoverProps } = props;
+          return (
+            <TriggerComponent
+              {...mergeProps(popoverProps, triggerProps, {
+                ...(effectiveRole === "combobox" && { "aria-expanded": open }),
+                className: cn("w-full justify-between font-normal", triggerClassName),
+                id,
+                role: effectiveRole,
+                variant: triggerProps?.variant ?? "outline",
+              })}
+            >
+              {selectedLabel}
+              <ChevronsUpDown className="opacity-50" />
+            </TriggerComponent>
+          );
+        }}
       />
       <PopoverContent className={cn("p-0!", dropdownClassName)}>{children}</PopoverContent>
     </Popover>
