@@ -19,9 +19,14 @@ export default function App() {
       </Layout.Header>
       <Layout.Body className={cn(showDimensions && "bg-blue-500/5 inset-shadow-sm inset-shadow-blue-500")}>
         <Container>
-          <Button asChild fit>
-            <Link to="/">Home</Link>
-          </Button>
+          <Button
+            fit
+            render={({ ref, ...props }) => (
+              <Link to="/" {...props}>
+                Home
+              </Link>
+            )}
+          />
         </Container>
         <Container>
           <Button fit onClick={() => setShowDimensions(!showDimensions)} variant="outline">

@@ -1,6 +1,6 @@
 import type { Meta, StoryObj } from "@storybook/react-vite";
 import { OrigamiIcon } from "lucide-react";
-import { useState } from "react";
+import { type HTMLProps, useState } from "react";
 import { Dialog } from "@/components";
 import { Button } from "@/forms";
 import { Flex } from "@/layout";
@@ -62,13 +62,9 @@ export const NoTitleOrDescription: Story = {
 export const CustomTrigger: Story = {
   render: () => (
     <Dialog>
-      <Dialog.Trigger
-        render={
-          <Button icon={<OrigamiIcon />} variant="info">
-            Open dialog
-          </Button>
-        }
-      />
+      <Dialog.Trigger icon={<OrigamiIcon />} variant="info">
+        Open dialog
+      </Dialog.Trigger>
       <Dialog.Content>
         <SampleContent />
       </Dialog.Content>
@@ -81,7 +77,11 @@ export const SimpleTrigger: Story = {
     <Dialog>
       <Dialog.Trigger
         nativeButton={false}
-        render={<Text className="cursor-pointer hover:underline">Open modal</Text>}
+        render={({ ref, ...props }: HTMLProps<unknown>) => (
+          <Text className="cursor-pointer hover:underline" {...props}>
+            Open modal
+          </Text>
+        )}
       />
       <Dialog.Content>
         <Dialog.Header>

@@ -1,4 +1,5 @@
-import type React from "react";
+import type { HTMLProps, ReactElement } from "react";
+
 import { Button as BaseButton } from "@/components/ui/button";
 import { Flex } from "@/layout";
 import { cn } from "@/utils";
@@ -37,7 +38,7 @@ export interface ButtonProps extends React.ComponentProps<"button"> {
   onClick?: () => void;
   variant?: ButtonVariant;
   size?: "default" | "xs" | "sm" | "md" | "lg" | "xl";
-  icon?: React.ReactElement;
+  icon?: ReactElement;
   asIcon?: boolean;
   disabled?: boolean;
   className?: string;
@@ -45,6 +46,7 @@ export interface ButtonProps extends React.ComponentProps<"button"> {
   fit?: boolean;
   full?: boolean;
   rounded?: boolean;
+  render?: (props: HTMLProps<unknown>) => ReactElement;
 }
 
 export const Button = ({
@@ -61,6 +63,7 @@ export const Button = ({
   full = false,
   fit = false,
   rounded = false,
+  render,
   ...rest
 }: ButtonProps) => {
   const getBaseVariant = (): BaseButtonVariant => {
@@ -104,6 +107,7 @@ export const Button = ({
       )}
       disabled={disabled}
       onClick={onClick}
+      render={render}
       size={getBaseSize()}
       type={type}
       variant={getBaseVariant()}
