@@ -3,7 +3,7 @@ import { type ComponentProps, useState } from "react";
 import { InputGroup } from "@/forms/InputGroup";
 import { Flex, InputError, Label, Text } from "@/main";
 
-interface PasswordInputProps extends Omit<ComponentProps<"input">, "type" | "size"> {
+interface PasswordFieldProps extends Omit<ComponentProps<"input">, "type" | "size"> {
   name: string;
   size?: "xs" | "sm" | "md" | "lg" | "xl";
   label?: string;
@@ -12,7 +12,7 @@ interface PasswordInputProps extends Omit<ComponentProps<"input">, "type" | "siz
   error?: string;
 }
 
-export const PasswordInput = ({
+export const PasswordField = ({
   name,
   size = "md",
   label,
@@ -20,7 +20,7 @@ export const PasswordInput = ({
   note,
   error,
   ...props
-}: PasswordInputProps) => {
+}: PasswordFieldProps) => {
   const [showPassword, setShowPassword] = useState(false);
 
   const togglePassword = () => {

@@ -4,7 +4,7 @@ import { InputError, Label } from "@/forms";
 import { Flex } from "@/layout";
 import { Text } from "@/typography";
 
-export interface TextareaProps extends React.ComponentProps<"textarea"> {
+export interface TextareaFieldProps extends React.ComponentProps<"textarea"> {
   name: string;
   label?: string;
   labelClassName?: string;
@@ -15,7 +15,7 @@ export interface TextareaProps extends React.ComponentProps<"textarea"> {
   error?: string;
 }
 
-export function Textarea({
+export function TextareaField({
   label,
   name,
   note,
@@ -25,7 +25,7 @@ export function Textarea({
   labelClassName,
   hint,
   ...props
-}: TextareaProps) {
+}: TextareaFieldProps) {
   return (
     <Flex className="w-full" direction="col" gap="2">
       <Flex align="center" direction="row" gap="1">

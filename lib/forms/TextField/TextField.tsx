@@ -4,7 +4,7 @@ import { Flex } from "@/layout";
 import { Text } from "@/typography";
 import { cn } from "@/utils";
 
-export interface TextInputProps extends Omit<React.ComponentProps<"input">, "size"> {
+export interface TextFieldProps extends Omit<React.ComponentProps<"input">, "size"> {
   name: string;
   type?: string;
   placeholder?: string;
@@ -18,7 +18,7 @@ export interface TextInputProps extends Omit<React.ComponentProps<"input">, "siz
   error?: string;
 }
 
-const TextInput = ({
+const TextField = ({
   name,
   type = "text",
   placeholder,
@@ -31,7 +31,7 @@ const TextInput = ({
   className,
   error,
   ...props
-}: TextInputProps) => {
+}: TextFieldProps) => {
   const inputClasses = cn(
     "flex w-full min-w-0 rounded-md border border-input bg-background px-3 py-1 shadow-xs outline-none",
     "transition-[color,box-shadow] selection:bg-primary selection:text-primary-foreground file:inline-flex ",
@@ -83,4 +83,4 @@ const TextInput = ({
   );
 };
 
-export { TextInput };
+export { TextField };

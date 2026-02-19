@@ -1,14 +1,14 @@
 import { render, screen } from "@testing-library/react";
 import { EXPECTED_BASE_LABEL_CLASSES } from "@tests/forms/utils";
 import { describe, expect, it } from "vitest";
-import { Textarea } from "@/forms";
+import { TextareaField } from "@/forms";
 
-describe("Textarea", () => {
+describe("TextareaField", () => {
   const EXPECTED_BASE_TEXTAREA_CLASSES =
     "border-input dark:bg-input/30 focus-visible:border-ring focus-visible:ring-ring/50 aria-invalid:ring-destructive/20 dark:aria-invalid:ring-destructive/40 aria-invalid:border-destructive dark:aria-invalid:border-destructive/50 rounded-md border bg-transparent px-2.5 py-2 text-base shadow-xs transition-[color,box-shadow] focus-visible:ring-3 aria-invalid:ring-3 md:text-sm placeholder:text-muted-foreground flex field-sizing-content min-h-16 w-full outline-none disabled:cursor-not-allowed disabled:opacity-50";
 
   it("renders with default props", () => {
-    render(<Textarea name="some_input" />);
+    render(<TextareaField name="some_input" />);
 
     const input = screen.getByRole("textbox", { name: "some_input" }) as HTMLTextAreaElement;
     expect(input.tagName).toBe("TEXTAREA");
@@ -17,7 +17,7 @@ describe("Textarea", () => {
   });
 
   it("renders with label", () => {
-    render(<Textarea label="Some thing" name="some_input" />);
+    render(<TextareaField label="Some thing" name="some_input" />);
 
     const label = screen.getByText("Some thing");
     expect(label.tagName).toBe("LABEL");
@@ -29,7 +29,7 @@ describe("Textarea", () => {
   });
 
   it("renders with placeholder", () => {
-    render(<Textarea name="some_input" placeholder="Type here" />);
+    render(<TextareaField name="some_input" placeholder="Type here" />);
 
     const input = screen.getByRole("textbox", { name: "some_input" }) as HTMLTextAreaElement;
     expect(input.placeholder).toBe("Type here");
@@ -37,7 +37,7 @@ describe("Textarea", () => {
   });
 
   it("renders with note", () => {
-    render(<Textarea name="some_input" note="My cat's breath smells like cat food" />);
+    render(<TextareaField name="some_input" note="My cat's breath smells like cat food" />);
 
     const note = screen.getByText("My cat's breath smells like cat food");
     expect(note.tagName).toBe("P");
@@ -49,7 +49,7 @@ describe("Textarea", () => {
   });
 
   it("renders with an error message", () => {
-    render(<Textarea error="What'd you do?" name="some_input" />);
+    render(<TextareaField error="What'd you do?" name="some_input" />);
 
     const error = screen.getByText("What'd you do?");
     expect(error.tagName).toBe("P");
@@ -61,7 +61,7 @@ describe("Textarea", () => {
   });
 
   it("combines custom className with generated classes", () => {
-    render(<Textarea className="custom-class" name="some_input" />);
+    render(<TextareaField className="custom-class" name="some_input" />);
 
     const input = screen.getByRole("textbox", { name: "some_input" }) as HTMLTextAreaElement;
     expect(input.tagName).toBe("TEXTAREA");
@@ -69,7 +69,7 @@ describe("Textarea", () => {
   });
 
   it("renders in disabled state correctly", () => {
-    render(<Textarea disabled name="some_input" />);
+    render(<TextareaField disabled name="some_input" />);
 
     const input = screen.getByRole("textbox", { name: "some_input" }) as HTMLTextAreaElement;
     expect(input.disabled).toBe(true);

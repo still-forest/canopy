@@ -5,15 +5,15 @@ import {
   InputGroupAddon as BaseInputGroupAddon,
   InputGroupText,
 } from "@/components/ui/input-group";
+import { Textarea } from "@/components/ui/textarea";
 import { Button, type ButtonProps } from "@/forms/Button";
-import { Textarea, type TextareaProps } from "@/main";
 import { cn } from "@/utils";
 
 export type InputGroupProps = React.ComponentProps<typeof BaseInputGroup> & {
   children: ReactNode;
 };
 type InputGroupTextProps = React.ComponentProps<typeof InputGroupText>;
-type InputGroupTextareaProps = React.ComponentProps<typeof InputGroupTextarea>;
+type InputGroupTextareaProps = React.ComponentProps<"textarea">;
 
 type InputGroupComponent = React.FC<InputGroupProps> & {
   Input: React.FC<ComponentProps<"input">>;
@@ -54,7 +54,7 @@ const InputGroupInput = ({ className, ...props }: ComponentProps<"input">) => {
   );
 };
 
-const InputGroupTextarea = ({ className, ...props }: TextareaProps) => {
+const InputGroupTextarea = ({ className, ...props }: React.ComponentProps<"textarea">) => {
   return (
     <Textarea
       className={cn(

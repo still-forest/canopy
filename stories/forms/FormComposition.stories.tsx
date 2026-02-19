@@ -6,17 +6,17 @@ import {
   Button,
   ButtonSelectInput,
   CheckboxField,
-  DateInput,
+  DateField,
   DatePicker,
   NumberInput,
-  PasswordInput,
+  PasswordField,
   RadioSelect,
   SelectInput,
   Slider,
   SubmitButton,
   Switch,
-  Textarea,
-  TextInput,
+  TextareaField,
+  TextField,
 } from "@/forms";
 
 import { Flex } from "@/layout";
@@ -76,9 +76,9 @@ const CompleteFormExample = () => {
         <Flex direction="col" gap="4">
           <Heading level="3">Basic Information</Heading>
 
-          <TextInput label="Username" name="username" placeholder="Enter your username" value={formData.username} />
+          <TextField label="Username" name="username" placeholder="Enter your username" value={formData.username} />
 
-          <TextInput
+          <TextField
             label="Email Address"
             name="email"
             placeholder="user@example.com"
@@ -86,7 +86,7 @@ const CompleteFormExample = () => {
             value={formData.email}
           />
 
-          <PasswordInput
+          <PasswordField
             label="Password"
             name="password"
             note="Must be at least 8 characters"
@@ -104,7 +104,7 @@ const CompleteFormExample = () => {
             value={formData.age}
           />
 
-          <DateInput label="Date of Birth" name="birthdate" value={formData.birthdate} />
+          <DateField label="Date of Birth" name="birthdate" value={formData.birthdate} />
         </Flex>
 
         {/* Select Inputs Section */}
@@ -197,7 +197,7 @@ const CompleteFormExample = () => {
         <Flex direction="col" gap="4">
           <Heading level="3">Additional Settings</Heading>
 
-          <Textarea
+          <TextareaField
             label="Bio"
             name="bio"
             note="Tell us a little about yourself"

@@ -1,11 +1,11 @@
 import { render, screen } from "@testing-library/react";
 import { EXPECTED_BASE_INPUT_CLASSES, EXPECTED_BASE_LABEL_CLASSES } from "@tests/forms/utils";
 import { describe, expect, it } from "vitest";
-import { TextInput } from "@/forms";
+import { TextField } from "@/forms";
 
-describe("TextInput", () => {
+describe("TextField", () => {
   it("renders with default props", () => {
-    render(<TextInput name="some_input" />);
+    render(<TextField name="some_input" />);
 
     const input = screen.getByRole("textbox", { name: "some_input" }) as HTMLInputElement;
     expect(input.tagName).toBe("INPUT");
@@ -15,7 +15,7 @@ describe("TextInput", () => {
   });
 
   it("renders with label", () => {
-    render(<TextInput label="Some thing" name="some_input" />);
+    render(<TextField label="Some thing" name="some_input" />);
 
     const label = screen.getByText("Some thing");
     expect(label.tagName).toBe("LABEL");
@@ -27,7 +27,7 @@ describe("TextInput", () => {
   });
 
   it("renders with left-oriented label", () => {
-    render(<TextInput label="Some thing" labelOrientation="left" name="some_input" />);
+    render(<TextField label="Some thing" labelOrientation="left" name="some_input" />);
 
     const label = screen.getByText("Some thing");
     expect(label.tagName).toBe("LABEL");
@@ -39,7 +39,7 @@ describe("TextInput", () => {
   });
 
   it("renders with placeholder", () => {
-    render(<TextInput name="some_input" placeholder="Type here" />);
+    render(<TextField name="some_input" placeholder="Type here" />);
 
     const input = screen.getByRole("textbox", { name: "some_input" }) as HTMLInputElement;
     expect(input.placeholder).toBe("Type here");
@@ -47,7 +47,7 @@ describe("TextInput", () => {
   });
 
   it("renders with note", () => {
-    render(<TextInput name="some_input" note="My cat's breath smells like cat food" />);
+    render(<TextField name="some_input" note="My cat's breath smells like cat food" />);
 
     const note = screen.getByText("My cat's breath smells like cat food");
     expect(note.tagName).toBe("P");
@@ -59,7 +59,7 @@ describe("TextInput", () => {
   });
 
   it("renders with an error message", () => {
-    render(<TextInput error="What'd you do?" name="some_input" />);
+    render(<TextField error="What'd you do?" name="some_input" />);
 
     const error = screen.getByText("What'd you do?");
     expect(error.tagName).toBe("P");
@@ -71,7 +71,7 @@ describe("TextInput", () => {
   });
 
   it("renders with custom type", () => {
-    render(<TextInput name="some_input" type="email" />);
+    render(<TextField name="some_input" type="email" />);
 
     const input = screen.getByRole("textbox", { name: "some_input" }) as HTMLInputElement;
     expect(input.type).toBe("email");
@@ -79,7 +79,7 @@ describe("TextInput", () => {
   });
 
   it("combines custom className with generated classes", () => {
-    render(<TextInput className="custom-class" name="some_input" />);
+    render(<TextField className="custom-class" name="some_input" />);
 
     const input = screen.getByRole("textbox", { name: "some_input" }) as HTMLInputElement;
     expect(input.tagName).toBe("INPUT");

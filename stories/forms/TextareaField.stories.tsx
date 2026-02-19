@@ -1,14 +1,14 @@
 import type { Meta, StoryObj } from "@storybook/react-vite";
 
-import { Textarea } from "@/forms";
+import { TextareaField } from "@/forms";
 import { DEFAULT_DECORATOR_WITH_MIN_WIDTH_MD } from "../support/decorators";
 
-const meta: Meta<typeof Textarea> = {
-  title: "Forms/Inputs/Textarea",
-  component: Textarea,
+const meta: Meta<typeof TextareaField> = {
+  title: "Forms/Inputs/TextareaField",
+  component: TextareaField,
   decorators: [DEFAULT_DECORATOR_WITH_MIN_WIDTH_MD],
   tags: ["autodocs"],
-} satisfies Meta<typeof Textarea>;
+} satisfies Meta<typeof TextareaField>;
 
 export default meta;
 

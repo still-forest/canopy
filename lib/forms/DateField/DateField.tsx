@@ -1,11 +1,11 @@
-import { TextInput, type TextInputProps } from "@/forms";
+import { TextField, type TextFieldProps } from "@/forms";
 import { cn } from "@/utils";
 
-interface DateInputProps extends Omit<TextInputProps, "type"> {}
+interface DateFieldProps extends Omit<TextFieldProps, "type"> {}
 
-const DateInput = ({ name, label, placeholder, note, className, size = "md", ...props }: DateInputProps) => {
+const DateField = ({ name, label, placeholder, note, className, size = "md", ...props }: DateFieldProps) => {
   return (
-    <TextInput
+    <TextField
       className={cn(
         size === "xs" && "max-w-[140px] md:max-w-[135px]",
         size === "sm" && "max-w-[150px] md:max-w-[140px]",
@@ -25,4 +25,4 @@ const DateInput = ({ name, label, placeholder, note, className, size = "md", ...
   );
 };
 
-export { DateInput };
+export { DateField };

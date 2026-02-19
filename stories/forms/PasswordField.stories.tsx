@@ -1,15 +1,15 @@
 import type { Meta, StoryObj } from "@storybook/react-vite";
 
-import { PasswordInput } from "@/forms/PasswordInput/PasswordInput";
+import { PasswordField } from "@/forms/PasswordField/PasswordField";
 import { Flex } from "@/layout";
 import { DEFAULT_DECORATOR_WITH_MIN_WIDTH_MD } from "../support/decorators";
 
-const meta: Meta<typeof PasswordInput> = {
-  title: "Forms/Inputs/PasswordInput",
-  component: PasswordInput,
+const meta: Meta<typeof PasswordField> = {
+  title: "Forms/Inputs/PasswordField",
+  component: PasswordField,
   decorators: [DEFAULT_DECORATOR_WITH_MIN_WIDTH_MD],
   tags: ["autodocs"],
-} satisfies Meta<typeof PasswordInput>;
+} satisfies Meta<typeof PasswordField>;
 
 export default meta;
 
@@ -72,16 +72,16 @@ export const WithError: Story = {
 export const WithSizeAndLabel: Story = {
   render: () => (
     <Flex direction="col" gap="4">
-      <PasswordInput {...defaultProps} label="Password" placeholder="This password is extra small" size="xs" />
-      <PasswordInput {...defaultProps} label="Password" placeholder="This password is small" size="sm" />
-      <PasswordInput
+      <PasswordField {...defaultProps} label="Password" placeholder="This password is extra small" size="xs" />
+      <PasswordField {...defaultProps} label="Password" placeholder="This password is small" size="sm" />
+      <PasswordField
         {...defaultProps}
         label="Password"
         placeholder="This password is medium (default size)"
         size="md"
       />
-      <PasswordInput {...defaultProps} label="Password" placeholder="This password is large" size="lg" />
-      <PasswordInput {...defaultProps} label="Password" placeholder="This password is extra large" size="xl" />
+      <PasswordField {...defaultProps} label="Password" placeholder="This password is large" size="lg" />
+      <PasswordField {...defaultProps} label="Password" placeholder="This password is extra large" size="xl" />
     </Flex>
   ),
 };

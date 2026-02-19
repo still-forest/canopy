@@ -1,12 +1,12 @@
-import { TextInput, type TextInputProps } from "@/forms/TextInput";
+import { TextField, type TextFieldProps } from "@/forms/TextField";
 
-export interface NumberInputProps extends Omit<TextInputProps, "type"> {
+export interface NumberInputProps extends Omit<TextFieldProps, "type"> {
   step?: string;
 }
 
 /**
 + * A specialized input component for numeric values.
-+ * Extends TextInput with number-specific functionality.
++ * Extends TextField with number-specific functionality.
 + */
 export const NumberInput = ({
   name,
@@ -19,7 +19,7 @@ export const NumberInput = ({
   ...props
 }: NumberInputProps) => {
   return (
-    <TextInput
+    <TextField
       className={className}
       label={label}
       name={name}

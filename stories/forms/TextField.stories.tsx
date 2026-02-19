@@ -1,15 +1,15 @@
 import type { Meta, StoryObj } from "@storybook/react-vite";
 
-import { TextInput } from "@/forms";
+import { TextField } from "@/forms";
 import { Flex } from "@/layout";
 import { DEFAULT_DECORATOR_WITH_MIN_WIDTH_MD } from "../support/decorators";
 
-const meta: Meta<typeof TextInput> = {
-  title: "Forms/Inputs/TextInput",
-  component: TextInput,
+const meta: Meta<typeof TextField> = {
+  title: "Forms/Inputs/TextField",
+  component: TextField,
   decorators: [DEFAULT_DECORATOR_WITH_MIN_WIDTH_MD],
   tags: ["autodocs"],
-} satisfies Meta<typeof TextInput>;
+} satisfies Meta<typeof TextField>;
 
 export default meta;
 
@@ -108,11 +108,11 @@ export const WithError: Story = {
 export const WithSize: Story = {
   render: () => (
     <Flex direction="col" gap="4">
-      <TextInput {...defaultProps} placeholder="This input is extra small" size="xs" />
-      <TextInput {...defaultProps} placeholder="This input is small" size="sm" />
-      <TextInput {...defaultProps} placeholder="This input is medium (default size)" size="md" />
-      <TextInput {...defaultProps} placeholder="This input is large" size="lg" />
-      <TextInput {...defaultProps} placeholder="This input is extra large" size="xl" />
+      <TextField {...defaultProps} placeholder="This input is extra small" size="xs" />
+      <TextField {...defaultProps} placeholder="This input is small" size="sm" />
+      <TextField {...defaultProps} placeholder="This input is medium (default size)" size="md" />
+      <TextField {...defaultProps} placeholder="This input is large" size="lg" />
+      <TextField {...defaultProps} placeholder="This input is extra large" size="xl" />
     </Flex>
   ),
 };
@@ -120,11 +120,11 @@ export const WithSize: Story = {
 export const WithSizeAndLabel: Story = {
   render: () => (
     <Flex direction="col" gap="4">
-      <TextInput {...defaultProps} label="This input is extra small" size="xs" />
-      <TextInput {...defaultProps} label="This input is small" size="sm" />
-      <TextInput {...defaultProps} label="This input is medium (default size)" size="md" />
-      <TextInput {...defaultProps} label="This input is large" size="lg" />
-      <TextInput {...defaultProps} label="This input is extra large" size="xl" />
+      <TextField {...defaultProps} label="This input is extra small" size="xs" />
+      <TextField {...defaultProps} label="This input is small" size="sm" />
+      <TextField {...defaultProps} label="This input is medium (default size)" size="md" />
+      <TextField {...defaultProps} label="This input is large" size="lg" />
+      <TextField {...defaultProps} label="This input is extra large" size="xl" />
     </Flex>
   ),
 };

@@ -1,13 +1,13 @@
 import type { Meta, StoryObj } from "@storybook/react-vite";
 
-import { DateInput } from "@/forms";
+import { DateField } from "@/forms";
 import { Flex } from "@/layout";
 
-const meta: Meta<typeof DateInput> = {
-  title: "Forms/Inputs/DateInput",
-  component: DateInput,
+const meta: Meta<typeof DateField> = {
+  title: "Forms/Inputs/DateField",
+  component: DateField,
   tags: ["autodocs"],
-} satisfies Meta<typeof DateInput>;
+} satisfies Meta<typeof DateField>;
 
 export default meta;
 
@@ -61,11 +61,11 @@ export const WithError: Story = {
 export const WithSize: Story = {
   render: () => (
     <Flex direction="col" gap="4">
-      <DateInput {...defaultProps} size="xs" />
-      <DateInput {...defaultProps} size="sm" />
-      <DateInput {...defaultProps} size="md" />
-      <DateInput {...defaultProps} size="lg" />
-      <DateInput {...defaultProps} size="xl" />
+      <DateField {...defaultProps} size="xs" />
+      <DateField {...defaultProps} size="sm" />
+      <DateField {...defaultProps} size="md" />
+      <DateField {...defaultProps} size="lg" />
+      <DateField {...defaultProps} size="xl" />
     </Flex>
   ),
 };
