@@ -1,12 +1,12 @@
+import { DEFAULT_DECORATOR_WITH_WIDTH_MD } from "@stories/support/decorators";
+import { sampleSentences } from "@stories/support/sampleText";
 import type { Meta, StoryObj } from "@storybook/react-vite";
-import { TextList } from "@/components/TextList";
 import { Box } from "@/layout";
+import { TextList } from "@/lists/TextList";
 import { Text } from "@/typography/Text";
-import { DEFAULT_DECORATOR_WITH_WIDTH_MD } from "../support/decorators";
-import { sampleSentences } from "../support/sampleText";
 
 const meta: Meta<typeof TextList> = {
-  title: "Components/TextList",
+  title: "Lists/TextList",
   component: TextList,
   decorators: [DEFAULT_DECORATOR_WITH_WIDTH_MD],
   tags: ["autodocs"],

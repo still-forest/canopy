@@ -1,8 +1,8 @@
+import { INTERSTITIAL_DECORATOR } from "@stories/support/decorators";
+import { sampleSentence } from "@stories/support/sampleText";
 import type { Meta, StoryObj } from "@storybook/react-vite";
 import { Home } from "lucide-react";
 import { NotFoundPage } from "@/interstitials";
-import { INTERSTITIAL_DECORATOR } from "../support/decorators";
-import { sampleSentence } from "../support/sampleText";
 
 const meta: Meta<typeof NotFoundPage> = {
   title: "Interstitials/NotFoundPage",

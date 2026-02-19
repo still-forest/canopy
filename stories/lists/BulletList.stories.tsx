@@ -1,11 +1,10 @@
+import { DEFAULT_DECORATOR_WITH_MIN_WIDTH_MD } from "@stories/support/decorators";
 import type { Meta, StoryObj } from "@storybook/react-vite";
-
-import { BulletList } from "@/components";
+import { BulletList } from "@/lists";
 import { Heading, Text } from "@/typography";
-import { DEFAULT_DECORATOR_WITH_MIN_WIDTH_MD } from "../support/decorators";
 
 const meta: Meta<typeof BulletList> = {
-  title: "Components/BulletList",
+  title: "Lists/BulletList",
   component: BulletList,
   decorators: [DEFAULT_DECORATOR_WITH_MIN_WIDTH_MD],
   tags: ["autodocs"],

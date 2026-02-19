@@ -1,9 +1,9 @@
+import { DEFAULT_DECORATOR_WITH_MIN_WIDTH_MD } from "@stories/support/decorators";
+import { sampleText2 } from "@stories/support/sampleText";
 import type { Meta, StoryObj } from "@storybook/react-vite";
 import { Bird, Origami } from "lucide-react";
 import { Empty } from "@/components";
 import { Button } from "@/forms/buttons/Button";
-import { DEFAULT_DECORATOR_WITH_MIN_WIDTH_MD } from "../support/decorators";
-import { sampleText2 } from "../support/sampleText";
 
 const meta: Meta<typeof Empty> = {
   title: "Components/Empty",

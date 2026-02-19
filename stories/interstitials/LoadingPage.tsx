@@ -1,8 +1,8 @@
+import { INTERSTITIAL_DECORATOR } from "@stories/support/decorators";
 import type { Meta, StoryObj } from "@storybook/react-vite";
 import { PiggyBank } from "lucide-react";
 import { LoadingPage } from "@/interstitials";
 import { Flex } from "@/layout";
-import { INTERSTITIAL_DECORATOR } from "../support/decorators";
 
 const meta: Meta<typeof LoadingPage> = {
   title: "Interstitials/LoadingPage",

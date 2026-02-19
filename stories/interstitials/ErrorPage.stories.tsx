@@ -1,7 +1,6 @@
+import { INTERSTITIAL_DECORATOR } from "@stories/support/decorators";
 import type { Meta, StoryObj } from "@storybook/react-vite";
-
 import { ErrorPage } from "@/interstitials";
-import { INTERSTITIAL_DECORATOR } from "../support/decorators";
 
 const meta: Meta<typeof ErrorPage> = {
   title: "Interstitials/ErrorPage",
