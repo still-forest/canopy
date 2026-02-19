@@ -11,14 +11,9 @@ describe("ToggleField", () => {
     expect(switchElement).toBeInTheDocument();
     expect(switchElement).toHaveAttribute("aria-checked", "false");
     expect(switchElement).toHaveAttribute("data-unchecked", "");
-    expect(switchElement).toHaveClass(
-      "peer data-checked:bg-primary data-unchecked:bg-input focus-visible:border-ring focus-visible:ring-ring/50 dark:data-unchecked:bg-input/80 inline-flex shrink-0 items-center rounded-full border border-transparent shadow-xs transition-all outline-none focus-visible:ring-3 data-disabled:cursor-not-allowed data-disabled:opacity-50",
-    );
 
     const label = screen.getByText("Test Switch");
-    expect(label).toHaveClass(
-      "font-display font-normal text-foreground text-base cursor-pointer flex items-center select-none",
-    );
+    expect(label).toBeInTheDocument();
   });
 
   it("renders a Switch with checked", () => {

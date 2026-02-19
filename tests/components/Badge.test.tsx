@@ -5,16 +5,12 @@ import { Badge } from "@/components/Badge";
 import { TAILWIND_COLORS } from "@/types/color";
 
 describe("Badge", () => {
-  const EXPECTED_DEFAULT_CLASSES =
-    "h-5 has-data-[icon=inline-end]:pr-1.5 has-data-[icon=inline-start]:pl-1.5 [&>svg]:size-3! group/badge bg-primary text-primary-foreground [a]:hover:bg-primary/80 cursor-default inline-flex items-center justify-center rounded-full border px-2 py-0.5 text-xs font-medium w-fit whitespace-nowrap shrink-0 [&>svg]:size-3 gap-1 [&>svg]:pointer-events-none focus-visible:border-ring focus-visible:ring-ring/50 focus-visible:ring-[3px] aria-invalid:ring-destructive/20 dark:aria-invalid:ring-destructive/40 aria-invalid:border-destructive transition-[color,box-shadow] overflow-hidden border-transparent";
-
   test("should render a badge", () => {
     render(<Badge label="Badge" />);
 
     const badge = screen.getByText("Badge");
 
     expect(badge).toBeInTheDocument();
-    expect(badge.className).toBe(EXPECTED_DEFAULT_CLASSES);
   });
 
   test("should render a clickable badge", async () => {

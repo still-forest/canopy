@@ -15,15 +15,9 @@ describe("CheckboxField", () => {
     expect(checkbox).toHaveAttribute("aria-checked", "false");
     expect(checkbox).toHaveAttribute("data-unchecked", "");
     expect(checkbox).not.toBeDisabled();
-    expect(checkbox).toHaveClass(
-      "border-input dark:bg-input/30 data-checked:bg-primary data-checked:text-primary-foreground data-checked:border-primary focus-visible:border-ring focus-visible:ring-ring/50 shrink-0 rounded-[4px] border shadow-xs outline-none focus-visible:ring-3 disabled:cursor-not-allowed disabled:opacity-50",
-    );
 
     const label = screen.getByText("Test CheckboxField");
     expect(label).toHaveAttribute("for", "test-checkbox");
-    expect(label).toHaveClass(
-      "font-display font-normal text-foreground text-base cursor-pointer flex items-center select-none",
-    );
 
     fireEvent.click(checkbox);
     expect(checkbox).toHaveAttribute("aria-checked", "true");

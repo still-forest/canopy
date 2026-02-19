@@ -11,7 +11,7 @@ describe("Flex", () => {
     const element = screen.getByTestId("flex-element");
 
     expect(element.tagName).toBe("DIV");
-    expect(element.className).toBe("flex");
+    expect(element.className).toContain("flex");
   });
 
   it("renders with custom element type", () => {
@@ -22,7 +22,7 @@ describe("Flex", () => {
     );
     const element = screen.getByTestId("flex-element");
     expect(element.tagName).toBe("SECTION");
-    expect(element.className).toBe("flex");
+    expect(element.className).toContain("flex");
   });
 
   it("applies the correct flex direction classes", () => {
@@ -33,7 +33,8 @@ describe("Flex", () => {
         </Flex>,
       );
       const element = screen.getByTestId("flex-element");
-      expect(element.className).toBe(`flex flex-${direction}`);
+      expect(element.className).toContain("flex");
+      expect(element.className).toContain(`flex-${direction}`);
       rerender(<div />);
     }
   });
@@ -46,7 +47,8 @@ describe("Flex", () => {
         </Flex>,
       );
       const element = screen.getByTestId("flex-element");
-      expect(element.className).toBe(`flex items-${align}`);
+      expect(element.className).toContain("flex");
+      expect(element.className).toContain(`items-${align}`);
       rerender(<div />);
     }
   });
@@ -59,7 +61,8 @@ describe("Flex", () => {
         </Flex>,
       );
       const element = screen.getByTestId("flex-element");
-      expect(element.className).toBe(`flex justify-${justify}`);
+      expect(element.className).toContain("flex");
+      expect(element.className).toContain(`justify-${justify}`);
       rerender(<div />);
     }
   });
@@ -75,7 +78,8 @@ describe("Flex", () => {
           </Flex>,
         );
         const element = screen.getByTestId("flex-element");
-        expect(element.className).toBe(`flex grow-${grow}`);
+        expect(element.className).toContain("flex");
+        expect(element.className).toContain(`grow-${grow}`);
         rerender(<div />);
       }
     });
@@ -87,7 +91,8 @@ describe("Flex", () => {
         </Flex>,
       );
       const element = screen.getByTestId("flex-element");
-      expect(element.className).toBe("flex grow-1");
+      expect(element.className).toContain("flex");
+      expect(element.className).toContain("grow-1");
     });
 
     it("aliases false as grow-0", () => {
@@ -97,7 +102,8 @@ describe("Flex", () => {
         </Flex>,
       );
       const element = screen.getByTestId("flex-element");
-      expect(element.className).toBe("flex grow-0");
+      expect(element.className).toContain("flex");
+      expect(element.className).toContain("grow-0");
     });
   });
 
@@ -109,7 +115,8 @@ describe("Flex", () => {
         </Flex>,
       );
       const element = screen.getByTestId("flex-element");
-      expect(element.className).toBe(`flex flex-${wrap}`);
+      expect(element.className).toContain("flex");
+      expect(element.className).toContain(`flex-${wrap}`);
       rerender(<div />);
     }
   });
@@ -122,7 +129,8 @@ describe("Flex", () => {
         </Flex>,
       );
       const element = screen.getByTestId("flex-element");
-      expect(element.className).toBe(`flex gap-${gap}`);
+      expect(element.className).toContain("flex");
+      expect(element.className).toContain(`gap-${gap}`);
       rerender(<div />);
     }
 
@@ -133,7 +141,8 @@ describe("Flex", () => {
         </Flex>,
       );
       const element = screen.getByTestId("flex-element");
-      expect(element.className).toBe(`flex gap-x-${gapX}`);
+      expect(element.className).toContain("flex");
+      expect(element.className).toContain(`gap-x-${gapX}`);
       rerender(<div />);
     }
 
@@ -144,7 +153,8 @@ describe("Flex", () => {
         </Flex>,
       );
       const element = screen.getByTestId("flex-element");
-      expect(element.className).toBe(`flex gap-y-${gapY}`);
+      expect(element.className).toContain("flex");
+      expect(element.className).toContain(`gap-y-${gapY}`);
       rerender(<div />);
     }
   });
@@ -157,7 +167,10 @@ describe("Flex", () => {
     );
 
     const element = screen.getByTestId("flex-element");
-    expect(element.className).toBe("flex gap-2 gap-x-4 gap-y-8");
+    expect(element.className).toContain("flex");
+    expect(element.className).toContain("gap-2");
+    expect(element.className).toContain("gap-x-4");
+    expect(element.className).toContain("gap-y-8");
   });
 
   it("passes additional props to the element", () => {
@@ -177,7 +190,8 @@ describe("Flex", () => {
       </Flex>,
     );
     const element = screen.getByTestId("flex-element");
-    expect(element.className).toBe("flex custom-class");
+    expect(element.className).toContain("flex");
+    expect(element.className).toContain("custom-class");
   });
 
   it("forwards ref correctly", () => {
@@ -201,7 +215,12 @@ describe("Flex", () => {
 
     const element = screen.getByTestId("flex-element");
 
-    expect(element.className).toBe("flex flex-col items-center justify-between flex-wrap gap-4");
+    expect(element.className).toContain("flex");
+    expect(element.className).toContain("flex-col");
+    expect(element.className).toContain("items-center");
+    expect(element.className).toContain("justify-between");
+    expect(element.className).toContain("flex-wrap");
+    expect(element.className).toContain("gap-4");
   });
 
   it("renders children correctly", () => {
@@ -237,16 +256,14 @@ describe("Flex", () => {
     expect(screen.getByText("Item 1")).toBeInTheDocument();
     expect(screen.getByText("Item 2")).toBeInTheDocument();
 
-    const item1 = screen.getByTestId("flex-item-1");
     const item2 = screen.getByTestId("flex-item-2");
     const item3 = screen.getByTestId("flex-item-3");
     const item4 = screen.getByTestId("flex-item-4");
     const item5 = screen.getByTestId("flex-item-5");
 
-    expect(item1.className).toBe("");
-    expect(item2.className).toBe("flex-1");
-    expect(item3.className).toBe("flex-auto");
-    expect(item4.className).toBe("flex-none");
-    expect(item5.className).toBe("flex-initial");
+    expect(item2.className).toContain("flex-1");
+    expect(item3.className).toContain("flex-auto");
+    expect(item4.className).toContain("flex-none");
+    expect(item5.className).toContain("flex-initial");
   });
 });

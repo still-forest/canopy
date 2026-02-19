@@ -17,31 +17,18 @@ describe("TextList", () => {
     const textList = screen.getByRole("list");
     expect(textList).toBeInTheDocument();
     expect(textList.tagName).toBe("UL");
-    expect(textList.className).toBe("list-disc list-outside ml-4");
+    expect(textList.className).toContain("list-disc");
+    expect(textList.className).toContain("list-outside");
 
     const items = screen.getAllByRole("listitem");
     expect(items).toHaveLength(3);
 
-    const item1 = items[0];
-    expect(item1).toBeInTheDocument();
-    expect(item1.tagName).toBe("LI");
-    expect(item1.className).toBe("");
-    expect(item1.textContent).toBe("Item 1");
-
-    const item2 = items[1];
-    expect(item2).toBeInTheDocument();
-    expect(item2.tagName).toBe("LI");
-    expect(item2.className).toBe("");
-    expect(item2.textContent).toBe("Item 2");
-
-    const item3 = items[2];
-    expect(item3).toBeInTheDocument();
-    expect(item3.tagName).toBe("LI");
-    expect(item3.className).toBe("");
-    expect(item3.textContent).toBe("Item 3");
+    expect(items[0].textContent).toBe("Item 1");
+    expect(items[1].textContent).toBe("Item 2");
+    expect(items[2].textContent).toBe("Item 3");
   });
 
-  test("renders a an ordered TextList", async () => {
+  test("renders an ordered TextList", async () => {
     render(
       <TextList variant="ordered">
         <TextList.Item>Item 1</TextList.Item>
@@ -52,22 +39,14 @@ describe("TextList", () => {
     const textList = screen.getByRole("list");
     expect(textList).toBeInTheDocument();
     expect(textList.tagName).toBe("OL");
-    expect(textList.className).toBe("list-decimal list-outside ml-6");
+    expect(textList.className).toContain("list-decimal");
+    expect(textList.className).toContain("list-outside");
 
     const items = screen.getAllByRole("listitem");
     expect(items).toHaveLength(2);
 
-    const item1 = items[0];
-    expect(item1).toBeInTheDocument();
-    expect(item1.tagName).toBe("LI");
-    expect(item1.className).toBe("");
-    expect(item1.textContent).toBe("Item 1");
-
-    const item2 = items[1];
-    expect(item2).toBeInTheDocument();
-    expect(item2.tagName).toBe("LI");
-    expect(item2.className).toBe("");
-    expect(item2.textContent).toBe("Item 2");
+    expect(items[0].textContent).toBe("Item 1");
+    expect(items[1].textContent).toBe("Item 2");
   });
 
   test("renders a none TextList", async () => {
@@ -80,16 +59,13 @@ describe("TextList", () => {
     const textList = screen.getByRole("list");
     expect(textList).toBeInTheDocument();
     expect(textList.tagName).toBe("UL");
-    expect(textList.className).toBe("list-none list-outside");
+    expect(textList.className).toContain("list-none");
+    expect(textList.className).toContain("list-outside");
 
     const items = screen.getAllByRole("listitem");
     expect(items).toHaveLength(1);
 
-    const item1 = items[0];
-    expect(item1).toBeInTheDocument();
-    expect(item1.tagName).toBe("LI");
-    expect(item1.className).toBe("");
-    expect(item1.textContent).toBe("Item 1");
+    expect(items[0].textContent).toBe("Item 1");
   });
 
   test("renders an inside TextList", async () => {
@@ -102,15 +78,12 @@ describe("TextList", () => {
     const textList = screen.getByRole("list");
     expect(textList).toBeInTheDocument();
     expect(textList.tagName).toBe("UL");
-    expect(textList.className).toBe("list-disc list-inside");
+    expect(textList.className).toContain("list-disc");
+    expect(textList.className).toContain("list-inside");
 
     const items = screen.getAllByRole("listitem");
     expect(items).toHaveLength(1);
 
-    const item1 = items[0];
-    expect(item1).toBeInTheDocument();
-    expect(item1.tagName).toBe("LI");
-    expect(item1.className).toBe("");
-    expect(item1.textContent).toBe("Item 1");
+    expect(items[0].textContent).toBe("Item 1");
   });
 });

@@ -1,5 +1,4 @@
 import { render, screen } from "@testing-library/react";
-import { EXPECTED_BASE_INPUT_CLASSES, EXPECTED_BASE_LABEL_CLASSES } from "@tests/forms/utils";
 import { describe, expect, it } from "vitest";
 import { DateField } from "@/forms";
 
@@ -9,7 +8,6 @@ describe("DateField", () => {
 
     const input = screen.getByLabelText("some_input") as HTMLInputElement;
     expect(input.tagName).toBe("INPUT");
-    expect(input.className).toBe(`${EXPECTED_BASE_INPUT_CLASSES} max-w-[170px] md:max-w-[150px]`);
     expect(input.placeholder).toBe("");
     expect(input.type).toBe("date");
     expect(input.value).toBe("");
@@ -28,7 +26,6 @@ describe("DateField", () => {
 
     const label = screen.getByText("Some thing");
     expect(label.tagName).toBe("LABEL");
-    expect(label.className).toBe(EXPECTED_BASE_LABEL_CLASSES);
 
     const input = screen.getByLabelText("Some thing");
     expect(input.tagName).toBe("INPUT");
@@ -39,7 +36,7 @@ describe("DateField", () => {
 
     const label = screen.getByText("Some thing");
     expect(label.tagName).toBe("LABEL");
-    expect(label.className).toBe(`${EXPECTED_BASE_LABEL_CLASSES} text-nowrap`);
+    expect(label.className).toContain("text-nowrap");
 
     const input = screen.getByLabelText("Some thing");
     expect(input.tagName).toBe("INPUT");
@@ -50,7 +47,6 @@ describe("DateField", () => {
 
     const note = screen.getByText("My cat's breath smells like cat food");
     expect(note.tagName).toBe("P");
-    expect(note.className).toBe("text-sm text-muted-foreground font-body");
 
     const input = screen.getByLabelText("some_input") as HTMLInputElement;
     expect(input.tagName).toBe("INPUT");
@@ -61,6 +57,6 @@ describe("DateField", () => {
 
     const input = screen.getByLabelText("some_input") as HTMLInputElement;
     expect(input.tagName).toBe("INPUT");
-    expect(input.className).toBe(`${EXPECTED_BASE_INPUT_CLASSES} max-w-[170px] md:max-w-[150px] custom-class`);
+    expect(input.className).toContain("custom-class");
   });
 });

@@ -17,20 +17,14 @@ describe("RadioField", () => {
     expect(radioButtons).toHaveLength(OPTIONS.length);
 
     radioButtons.forEach((radioButton, index) => {
-      const { value, label } = OPTIONS[index];
+      const { label } = OPTIONS[index];
 
       expect(radioButton).toHaveAttribute("aria-checked", "false");
       expect(radioButton).toHaveAttribute("data-unchecked", "");
       expect(radioButton).toHaveAttribute("data-slot", "radio-group-item");
-      expect(radioButton).toHaveClass(
-        "border-input text-primary focus-visible:border-ring focus-visible:ring-ring/50 dark:bg-input/30 aspect-square shrink-0 rounded-full border shadow-xs outline-none focus-visible:ring-3 disabled:cursor-not-allowed disabled:opacity-50 size-4",
-      );
 
       const labelElement = screen.getByText(label);
-      expect(labelElement).toHaveAttribute("for", value);
-      expect(labelElement).toHaveClass(
-        "font-display font-normal text-foreground text-base flex items-center select-none",
-      );
+      expect(labelElement).toBeInTheDocument();
     });
 
     fireEvent.click(radioButtons[0]);

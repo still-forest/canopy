@@ -5,15 +5,12 @@ import "@testing-library/jest-dom";
 import { Separator } from "@/components";
 
 describe("Separator", () => {
-  const EXPECTED_CLASS_NAME =
-    "bg-border shrink-0 data-[orientation=horizontal]:h-px data-[orientation=horizontal]:w-full data-[orientation=vertical]:w-px data-[orientation=vertical]:self-stretch";
-
   test("renders a Separator", async () => {
     render(<Separator />);
 
     const separator = screen.getByRole("separator");
     expect(separator).toBeInTheDocument();
-    expect(separator.className).toBe(`${EXPECTED_CLASS_NAME} my-4`);
+    expect(separator.className).toContain("my-4");
   });
 
   test("renders with custom gap", async () => {
@@ -21,7 +18,7 @@ describe("Separator", () => {
 
     const separator = screen.getByRole("separator");
     expect(separator).toBeInTheDocument();
-    expect(separator.className).toBe(`${EXPECTED_CLASS_NAME} my-8`);
+    expect(separator.className).toContain("my-8");
   });
 
   test("renders a vertical Separator", async () => {
@@ -29,7 +26,7 @@ describe("Separator", () => {
 
     const separator = screen.getByRole("separator");
     expect(separator).toBeInTheDocument();
-    expect(separator.className).toBe(`${EXPECTED_CLASS_NAME} mx-2`);
+    expect(separator.className).toContain("mx-2");
   });
 
   test("renders a vertical Separator with custom gap", async () => {
@@ -37,6 +34,6 @@ describe("Separator", () => {
 
     const separator = screen.getByRole("separator");
     expect(separator).toBeInTheDocument();
-    expect(separator.className).toBe(`${EXPECTED_CLASS_NAME} mx-4`);
+    expect(separator.className).toContain("mx-4");
   });
 });

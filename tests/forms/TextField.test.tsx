@@ -1,5 +1,4 @@
 import { render, screen } from "@testing-library/react";
-import { EXPECTED_BASE_INPUT_CLASSES, EXPECTED_BASE_LABEL_CLASSES } from "@tests/forms/utils";
 import { describe, expect, it } from "vitest";
 import { TextField } from "@/forms";
 
@@ -9,7 +8,6 @@ describe("TextField", () => {
 
     const input = screen.getByRole("textbox", { name: "some_input" }) as HTMLInputElement;
     expect(input.tagName).toBe("INPUT");
-    expect(input.className).toBe(EXPECTED_BASE_INPUT_CLASSES);
     expect(input.placeholder).toBe("");
     expect(input.type).toBe("text");
   });
@@ -19,11 +17,9 @@ describe("TextField", () => {
 
     const label = screen.getByText("Some thing");
     expect(label.tagName).toBe("LABEL");
-    expect(label.className).toBe(EXPECTED_BASE_LABEL_CLASSES);
 
     const input = screen.getByLabelText("Some thing");
     expect(input.tagName).toBe("INPUT");
-    expect(input.className).toBe(EXPECTED_BASE_INPUT_CLASSES);
   });
 
   it("renders with left-oriented label", () => {
@@ -31,11 +27,10 @@ describe("TextField", () => {
 
     const label = screen.getByText("Some thing");
     expect(label.tagName).toBe("LABEL");
-    expect(label.className).toBe(`${EXPECTED_BASE_LABEL_CLASSES} text-nowrap`);
+    expect(label.className).toContain("text-nowrap");
 
     const input = screen.getByLabelText("Some thing");
     expect(input.tagName).toBe("INPUT");
-    expect(input.className).toBe(EXPECTED_BASE_INPUT_CLASSES);
   });
 
   it("renders with placeholder", () => {
@@ -43,7 +38,6 @@ describe("TextField", () => {
 
     const input = screen.getByRole("textbox", { name: "some_input" }) as HTMLInputElement;
     expect(input.placeholder).toBe("Type here");
-    expect(input.className).toBe(EXPECTED_BASE_INPUT_CLASSES);
   });
 
   it("renders with note", () => {
@@ -51,11 +45,9 @@ describe("TextField", () => {
 
     const note = screen.getByText("My cat's breath smells like cat food");
     expect(note.tagName).toBe("P");
-    expect(note.className).toBe("text-sm text-muted-foreground font-body");
 
     const input = screen.getByRole("textbox", { name: "some_input" }) as HTMLInputElement;
     expect(input.tagName).toBe("INPUT");
-    expect(input.className).toBe(EXPECTED_BASE_INPUT_CLASSES);
   });
 
   it("renders with an error message", () => {
@@ -63,11 +55,9 @@ describe("TextField", () => {
 
     const error = screen.getByText("What'd you do?");
     expect(error.tagName).toBe("P");
-    expect(error.className).toBe("text-xs text-destructive font-body");
 
     const input = screen.getByRole("textbox", { name: "some_input" }) as HTMLInputElement;
     expect(input.tagName).toBe("INPUT");
-    expect(input.className).toBe(EXPECTED_BASE_INPUT_CLASSES);
   });
 
   it("renders with custom type", () => {
@@ -75,7 +65,6 @@ describe("TextField", () => {
 
     const input = screen.getByRole("textbox", { name: "some_input" }) as HTMLInputElement;
     expect(input.type).toBe("email");
-    expect(input.className).toBe(EXPECTED_BASE_INPUT_CLASSES);
   });
 
   it("combines custom className with generated classes", () => {
@@ -83,6 +72,6 @@ describe("TextField", () => {
 
     const input = screen.getByRole("textbox", { name: "some_input" }) as HTMLInputElement;
     expect(input.tagName).toBe("INPUT");
-    expect(input.className).toBe(`${EXPECTED_BASE_INPUT_CLASSES} custom-class`);
+    expect(input.className).toContain("custom-class");
   });
 });

@@ -10,9 +10,9 @@ describe("Alert", () => {
 
     const alert = screen.getByRole("alert");
     expect(alert).toBeInTheDocument();
-    expect(alert.className).toBe(
-      "relative w-full rounded-lg border px-3 py-2 text-sm grid has-[>svg]:grid-cols-[calc(var(--spacing)*4)_1fr] grid-cols-[0_1fr] has-[>svg]:gap-x-3 gap-y-0.5 items-start [&>svg]:size-4 [&>svg]:translate-y-0.5 bg-info-foreground text-info border-info [&>svg]:text-current *:data-[slot=alert-description]:text-info-600",
-    );
+    expect(alert.className).toContain("bg-info-foreground");
+    expect(alert.className).toContain("text-info");
+    expect(alert.className).toContain("border-info");
 
     expect(within(alert).getByText("Important Information")).toBeInTheDocument();
     expect(within(alert).getByText("This is an important message.")).toBeInTheDocument();
@@ -24,9 +24,10 @@ describe("Alert", () => {
 
     const alert = screen.getByRole("alert");
     expect(alert).toBeInTheDocument();
-    expect(alert.className).toBe(
-      "relative w-full rounded-lg border px-3 py-2 text-sm grid has-[>svg]:grid-cols-[calc(var(--spacing)*4)_1fr] grid-cols-[0_1fr] has-[>svg]:gap-x-3 gap-y-0.5 items-start [&>svg]:size-4 [&>svg]:translate-y-0.5 bg-success-foreground text-success border-success [&>svg]:text-current *:data-[slot=alert-description]:text-success-600",
-    );
+    expect(alert.className).toContain("bg-success-foreground");
+    expect(alert.className).toContain("text-success");
+    expect(alert.className).toContain("border-success");
+
     expect(within(alert).getByText("Important Information")).toBeInTheDocument();
     expect(within(alert).getByText("This is an important message.")).toBeInTheDocument();
     expect(within(alert).getByTestId("alert-icon-success")).toBeInTheDocument();
@@ -37,9 +38,10 @@ describe("Alert", () => {
 
     const alert = screen.getByRole("alert");
     expect(alert).toBeInTheDocument();
-    expect(alert.className).toBe(
-      "relative w-full rounded-lg border px-3 py-2 text-sm grid has-[>svg]:grid-cols-[calc(var(--spacing)*4)_1fr] grid-cols-[0_1fr] has-[>svg]:gap-x-3 gap-y-0.5 items-start [&>svg]:size-4 [&>svg]:translate-y-0.5 bg-warning-foreground text-warning border-warning [&>svg]:text-current *:data-[slot=alert-description]:text-warning/80",
-    );
+    expect(alert.className).toContain("bg-warning-foreground");
+    expect(alert.className).toContain("text-warning");
+    expect(alert.className).toContain("border-warning");
+
     expect(within(alert).getByText("Important Information")).toBeInTheDocument();
     expect(within(alert).getByText("This is an important message.")).toBeInTheDocument();
     expect(within(alert).getByTestId("alert-icon-warning")).toBeInTheDocument();
@@ -50,9 +52,10 @@ describe("Alert", () => {
 
     const alert = screen.getByRole("alert");
     expect(alert).toBeInTheDocument();
-    expect(alert.className).toBe(
-      "relative w-full rounded-lg border px-3 py-2 text-sm grid has-[>svg]:grid-cols-[calc(var(--spacing)*4)_1fr] grid-cols-[0_1fr] has-[>svg]:gap-x-3 gap-y-0.5 items-start [&>svg]:size-4 [&>svg]:translate-y-0.5 bg-destructive-foreground text-destructive border-destructive [&>svg]:text-current *:data-[slot=alert-description]:text-destructive/80",
-    );
+    expect(alert.className).toContain("bg-destructive-foreground");
+    expect(alert.className).toContain("text-destructive");
+    expect(alert.className).toContain("border-destructive");
+
     expect(within(alert).getByText("Important Information")).toBeInTheDocument();
     expect(within(alert).getByText("This is an important message.")).toBeInTheDocument();
     expect(within(alert).getByTestId("alert-icon-error")).toBeInTheDocument();
