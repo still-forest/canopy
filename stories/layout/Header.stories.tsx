@@ -1,7 +1,7 @@
+import { sampleLongText } from "@stories/support/sampleText";
 import type { Meta, StoryObj } from "@storybook/react-vite";
 import { Container, Flex, Header } from "@/layout";
 import { Heading, Text } from "@/typography";
-import { sampleLongText } from "../support/sampleText";
 
 const meta: Meta<typeof Header> = {
   title: "Layout/Header",

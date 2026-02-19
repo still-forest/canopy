@@ -1,10 +1,10 @@
 import { fireEvent, render, screen } from "@testing-library/react";
 import { describe, expect, it, vi } from "vitest";
-import { PageNotFound } from "@/interstitials";
+import { NotFoundPage } from "@/interstitials";
 
-describe("PageNotFound", () => {
+describe("NotFoundPage", () => {
   it("renders with default headline", () => {
-    render(<PageNotFound />);
+    render(<NotFoundPage />);
 
     const headline = screen.getByText("Page not found");
     expect(headline).toBeInTheDocument();
@@ -17,7 +17,7 @@ describe("PageNotFound", () => {
   });
 
   it("renders with custom headline", () => {
-    render(<PageNotFound headline="You appear to be lost" headlineLevel="4" headlineWeight="normal" />);
+    render(<NotFoundPage headline="You appear to be lost" headlineLevel="4" headlineWeight="normal" />);
 
     const headline = screen.getByText("You appear to be lost");
     expect(headline).toBeInTheDocument();
@@ -30,7 +30,7 @@ describe("PageNotFound", () => {
   });
 
   it("renders with message", () => {
-    render(<PageNotFound message="You appear to be lost" />);
+    render(<NotFoundPage message="You appear to be lost" />);
 
     const headline = screen.getByText("Page not found");
     expect(headline).toBeInTheDocument();
@@ -43,7 +43,7 @@ describe("PageNotFound", () => {
 
   it("renders with onBack function", () => {
     const onBack = vi.fn();
-    render(<PageNotFound onBack={onBack} />);
+    render(<NotFoundPage onBack={onBack} />);
 
     const goHomeButton = screen.getByRole("button", { name: "Back" });
     fireEvent.click(goHomeButton);
@@ -53,7 +53,7 @@ describe("PageNotFound", () => {
 
   it("renders with custom back label", () => {
     const onBack = vi.fn();
-    render(<PageNotFound backLabel="Home" onBack={onBack} />);
+    render(<NotFoundPage backLabel="Home" onBack={onBack} />);
 
     const backLabel = screen.getByRole("button", { name: "Home" });
     expect(backLabel).toBeInTheDocument();

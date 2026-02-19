@@ -1,15 +1,15 @@
+import { INTERSTITIAL_DECORATOR } from "@stories/support/decorators";
 import type { Meta, StoryObj } from "@storybook/react-vite";
 import { PiggyBank } from "lucide-react";
-import { PageLoader } from "@/interstitials";
+import { LoadingPage } from "@/interstitials";
 import { Flex } from "@/layout";
-import { INTERSTITIAL_DECORATOR } from "../support/decorators";
 
-const meta: Meta<typeof PageLoader> = {
-  title: "Interstitials/PageLoader",
-  component: PageLoader,
+const meta: Meta<typeof LoadingPage> = {
+  title: "Interstitials/LoadingPage",
+  component: LoadingPage,
   decorators: [INTERSTITIAL_DECORATOR],
   tags: ["autodocs"],
-} satisfies Meta<typeof PageLoader>;
+} satisfies Meta<typeof LoadingPage>;
 
 export default meta;
 

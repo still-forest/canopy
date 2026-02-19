@@ -1,9 +1,9 @@
+import { sampleLongText } from "@stories/support/sampleText";
 import type { Meta, StoryObj } from "@storybook/react-vite";
 import { CURSOR_TYPES, type CursorType, SimpleTooltip, Tooltip } from "@/components";
 import { Button } from "@/forms";
 import { Box, Flex } from "@/layout";
 import { Heading, Text } from "@/typography";
-import { sampleLongText } from "../support/sampleText";
 import OptionList from "../templates/OptionList";
 
 const meta: Meta<typeof Tooltip> = {

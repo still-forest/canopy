@@ -1,3 +1,4 @@
+import { sampleParagraphText } from "@stories/support/sampleText";
 import type { Meta, StoryObj } from "@storybook/react-vite";
 import { OrigamiIcon } from "lucide-react";
 import { useState } from "react";
@@ -5,7 +6,6 @@ import { Dialog } from "@/components";
 import { Button } from "@/forms";
 import { Flex } from "@/layout";
 import { Text } from "@/typography";
-import { sampleParagraphText } from "../support/sampleText";
 
 const meta: Meta<typeof Dialog> = {
   title: "Components/Dialog",

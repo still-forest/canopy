@@ -1,10 +1,9 @@
+import { sampleLongText, sampleText, sampleText2 } from "@stories/support/sampleText";
 import type { Meta, StoryObj } from "@storybook/react-vite";
-
 import { Separator } from "@/components";
 import { Box, Flex } from "@/layout";
 import { GAPS, type Gap } from "@/types";
 import { Heading, Text } from "@/typography";
-import { sampleLongText, sampleText, sampleText2 } from "../support/sampleText";
 import OptionList from "../templates/OptionList";
 
 const meta: Meta<typeof Separator> = {

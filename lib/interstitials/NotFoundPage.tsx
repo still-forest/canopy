@@ -5,20 +5,20 @@ import { Flex } from "@/layout/Flex";
 
 import { Interstitial, type InterstitialProps } from "./Interstitial";
 
-interface PageNotFoundProps extends InterstitialProps {
+interface NotFoundPageProps extends InterstitialProps {
   backIcon?: React.ComponentType<React.SVGProps<SVGSVGElement>>;
   backLabel?: string;
   onBack?: () => void;
 }
 
-export const PageNotFound = ({
+export const NotFoundPage = ({
   onBack,
   headline = "Page not found",
   message = "The page you are looking for does not exist.",
   backIcon = CircleChevronLeft,
   backLabel = "Back",
   ...props
-}: PageNotFoundProps) => {
+}: NotFoundPageProps) => {
   const BackIcon = backIcon;
 
   return (

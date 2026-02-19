@@ -1,7 +1,6 @@
+import { DEFAULT_DECORATOR_WITH_WIDTH_MD } from "@stories/support/decorators";
 import type { Meta, StoryObj } from "@storybook/react-vite";
-
 import { Accordion, type AccordionProps } from "@/components/Accordion";
-import { DEFAULT_DECORATOR_WITH_WIDTH_MD } from "../support/decorators";
 
 const meta: Meta<typeof Accordion> = {
   title: "Components/Accordion",

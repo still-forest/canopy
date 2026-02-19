@@ -1,10 +1,10 @@
+import { DEFAULT_DECORATOR_WITH_WIDTH_MD } from "@stories/support/decorators";
+import { sampleParagraphText } from "@stories/support/sampleText";
 import type { Meta, StoryObj } from "@storybook/react-vite";
 import { ChevronsUpDown } from "lucide-react";
 import { Collapsible, type CollapsibleProps } from "@/components/Collapsible";
 import { Button } from "@/components/ui/button";
 import { Text } from "@/typography";
-import { DEFAULT_DECORATOR_WITH_WIDTH_MD } from "../support/decorators";
-import { sampleParagraphText } from "../support/sampleText";
 
 const meta: Meta<typeof Collapsible> = {
   title: "Components/Collapsible",

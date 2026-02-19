@@ -2,7 +2,7 @@ import { render, screen } from "@testing-library/react";
 import { describe, expect, test } from "vitest";
 import "@testing-library/jest-dom";
 
-import { TextList } from "@/components";
+import { TextList } from "@/lists";
 
 describe("TextList", () => {
   test("renders a TextList", async () => {

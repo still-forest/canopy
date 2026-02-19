@@ -1,14 +1,13 @@
+import { INTERSTITIAL_DECORATOR } from "@stories/support/decorators";
 import type { Meta, StoryObj } from "@storybook/react-vite";
+import { ErrorPage } from "@/interstitials";
 
-import { ErrorOverlay } from "@/interstitials";
-import { INTERSTITIAL_DECORATOR } from "../support/decorators";
-
-const meta: Meta<typeof ErrorOverlay> = {
-  title: "Interstitials/ErrorOverlay",
-  component: ErrorOverlay,
+const meta: Meta<typeof ErrorPage> = {
+  title: "Interstitials/ErrorPage",
+  component: ErrorPage,
   decorators: [INTERSTITIAL_DECORATOR],
   tags: ["autodocs"],
-} satisfies Meta<typeof ErrorOverlay>;
+} satisfies Meta<typeof ErrorPage>;
 
 export default meta;
 
