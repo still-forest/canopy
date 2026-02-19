@@ -41,11 +41,11 @@
     "release:dry-run": "release-it --dry-run"
   },
   "dependencies": {
-    "@base-ui/react": "^1.1.0",
+    "@base-ui/react": "^1.2.0",
     "cmdk": "^1.1.1",
     "date-fns": "^4.1.0",
     "lucide-react": "^0.563.0",
-    "react-day-picker": "^9.9.0",
+    "react-day-picker": "^9.13.2",
     "react-router": "^7.8.2",
     "vaul": "^1.1.2"
   },
