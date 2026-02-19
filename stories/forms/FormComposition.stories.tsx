@@ -8,7 +8,6 @@ import {
   Checkbox,
   DateInput,
   DatePicker,
-  Input,
   NumberInput,
   PasswordInput,
   RadioSelect,
@@ -19,6 +18,7 @@ import {
   Textarea,
   TextInput,
 } from "@/forms";
+
 import { Flex } from "@/layout";
 import { Heading, Text } from "@/typography";
 
@@ -78,7 +78,7 @@ const CompleteFormExample = () => {
 
           <TextInput label="Username" name="username" placeholder="Enter your username" value={formData.username} />
 
-          <Input
+          <TextInput
             label="Email Address"
             name="email"
             placeholder="user@example.com"

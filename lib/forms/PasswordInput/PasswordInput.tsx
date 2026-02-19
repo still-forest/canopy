@@ -35,7 +35,7 @@ export const PasswordInput = ({
         </Label>
       )}
       <InputGroup>
-        <InputGroup.Input type={showPassword ? "text" : "password"} {...props} name={name} size={size} />
+        <InputGroup.Input type={showPassword ? "text" : "password"} {...props} name={name} />
         <InputGroup.Addon right>
           <InputGroup.Button
             aria-label={showPassword ? "Hide password" : "Show password"}

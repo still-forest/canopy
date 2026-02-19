@@ -1,5 +1,5 @@
-import type { ReactNode } from "react";
-import { Input, type InputProps } from "@/components/ui/input";
+import type { ComponentProps, ReactNode } from "react";
+import { Input } from "@/components/ui/input";
 import {
   InputGroup as BaseInputGroup,
   InputGroupAddon as BaseInputGroupAddon,
@@ -16,7 +16,7 @@ type InputGroupTextProps = React.ComponentProps<typeof InputGroupText>;
 type InputGroupTextareaProps = React.ComponentProps<typeof InputGroupTextarea>;
 
 type InputGroupComponent = React.FC<InputGroupProps> & {
-  Input: React.FC<InputProps>;
+  Input: React.FC<ComponentProps<"input">>;
   Addon: React.FC<InputGroupAddonProps>;
   Button: React.FC<ButtonProps>;
   Text: React.FC<InputGroupTextProps>;
@@ -41,7 +41,7 @@ const InputGroupButton = ({ className, size = "xs", variant = "ghost", ...props 
   />
 );
 
-const InputGroupInput = ({ className, ...props }: InputProps) => {
+const InputGroupInput = ({ className, ...props }: ComponentProps<"input">) => {
   return (
     <Input
       className={cn(
