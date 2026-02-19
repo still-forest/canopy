@@ -2,11 +2,11 @@ import { fireEvent, render, screen } from "@testing-library/react";
 import { Home } from "lucide-react";
 import { describe, expect, it, vi } from "vitest";
 import { Button } from "@/forms";
-import { ErrorOverlay } from "@/interstitials";
+import { ErrorPage } from "@/interstitials";
 
-describe("ErrorOverlay", () => {
+describe("ErrorPage", () => {
   it("renders with default message", () => {
-    render(<ErrorOverlay />);
+    render(<ErrorPage />);
 
     expect(screen.getByText("Something went wrong")).toBeInTheDocument();
 
@@ -16,7 +16,7 @@ describe("ErrorOverlay", () => {
   });
 
   it("renders with custom message", () => {
-    render(<ErrorOverlay message="What just happened?" />);
+    render(<ErrorPage message="What just happened?" />);
 
     expect(screen.getByText("What just happened?")).toBeInTheDocument();
 
@@ -28,11 +28,11 @@ describe("ErrorOverlay", () => {
   it("renders with children", () => {
     const goHome = vi.fn();
     render(
-      <ErrorOverlay>
+      <ErrorPage>
         <Button icon={<Home />} onClick={goHome} variant="primary">
           Home
         </Button>
-      </ErrorOverlay>,
+      </ErrorPage>,
     );
 
     const goHomeButton = screen.getByRole("button", { name: "Home" });

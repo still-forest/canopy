@@ -2,13 +2,17 @@ import { Loader } from "@/components/Loader";
 import { cn } from "@/utils";
 import { Interstitial, type InterstitialProps } from "./Interstitial";
 
-interface PageLoaderProps extends InterstitialProps {}
-
 const DefaultIconComponent = (props: React.SVGProps<SVGSVGElement>) => {
   return <Loader className="text-info" data-testid="icon" {...props} />;
 };
 
-export const PageLoader = ({ iconComponent, message, iconSize = "5xl", iconClassName, ...props }: PageLoaderProps) => {
+export const LoadingPage = ({
+  iconComponent,
+  message,
+  iconSize = "5xl",
+  iconClassName,
+  ...props
+}: InterstitialProps) => {
   const IconComponent = iconComponent ? iconComponent : DefaultIconComponent;
 
   return (

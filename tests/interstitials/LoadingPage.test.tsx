@@ -1,11 +1,11 @@
 import { render, screen } from "@testing-library/react";
 import { Mailbox } from "lucide-react";
 import { describe, expect, it } from "vitest";
-import { PageLoader } from "@/interstitials";
+import { LoadingPage } from "@/interstitials";
 
-describe("PageLoader", () => {
+describe("LoadingPage", () => {
   it("renders with message", () => {
-    render(<PageLoader message="Loading a thing" />);
+    render(<LoadingPage message="Loading a thing" />);
 
     expect(screen.getByText("Loading a thing")).toBeInTheDocument();
 
@@ -15,7 +15,7 @@ describe("PageLoader", () => {
   });
 
   it("renders with custom icon", () => {
-    render(<PageLoader iconComponent={Mailbox} message="Loading a thing" />);
+    render(<LoadingPage iconComponent={Mailbox} message="Loading a thing" />);
 
     expect(screen.getByText("Loading a thing")).toBeInTheDocument();
 

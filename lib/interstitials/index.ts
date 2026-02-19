@@ -1,4 +1,4 @@
-export * from "./ErrorOverlay";
+export * from "./ErrorPage";
 export * from "./Interstitial";
-export * from "./PageLoader";
-export * from "./PageNotFound";
+export * from "./LoadingPage";
+export * from "./NotFoundPage";
