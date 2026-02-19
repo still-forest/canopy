@@ -6,7 +6,7 @@ import {
   InputGroupText,
 } from "@/components/ui/input-group";
 import { Textarea } from "@/components/ui/textarea";
-import { Button, type ButtonProps } from "@/forms/Button";
+import { Button, type ButtonProps } from "@/forms/buttons/Button";
 import { cn } from "@/utils";
 
 export type InputGroupProps = React.ComponentProps<typeof BaseInputGroup> & {

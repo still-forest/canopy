@@ -4,19 +4,19 @@ import { useState } from "react";
 import { Card } from "@/components";
 import {
   Button,
-  ButtonSelectInput,
+  ButtonRadioField,
   CheckboxField,
   DateField,
-  DatePicker,
-  NumberInput,
+  DatePickerField,
+  NumberField,
   PasswordField,
-  RadioSelect,
+  RadioField,
   SelectInput,
-  Slider,
+  SliderField,
   SubmitButton,
-  Switch,
   TextareaField,
   TextField,
+  ToggleField,
 } from "@/forms";
 
 import { Flex } from "@/layout";
@@ -94,7 +94,7 @@ const CompleteFormExample = () => {
             value={formData.password}
           />
 
-          <NumberInput
+          <NumberField
             hint="You must be 18 or older"
             label="Age"
             max={120}
@@ -126,7 +126,7 @@ const CompleteFormExample = () => {
             value={formData.country}
           />
 
-          <ButtonSelectInput
+          <ButtonRadioField
             label="Experience Level"
             name="experience"
             onChange={handleInputChange("experience")}
@@ -155,7 +155,7 @@ const CompleteFormExample = () => {
         <Flex direction="col" gap="4">
           <Heading level="3">Account Settings</Heading>
 
-          <RadioSelect
+          <RadioField
             label="Account Type"
             name="accountType"
             onChange={handleInputChange("accountType")}
@@ -206,14 +206,14 @@ const CompleteFormExample = () => {
             value={formData.bio}
           />
 
-          <Switch
+          <ToggleField
             checked={formData.theme === "dark"}
             label="Dark Mode"
             name="theme"
             onCheckedChange={(checked) => handleInputChange("theme")(checked ? "dark" : "light")}
           />
 
-          <Slider
+          <SliderField
             label="Notification Volume"
             max={100}
             min={0}
@@ -223,7 +223,7 @@ const CompleteFormExample = () => {
             value={[formData.volume]}
           />
 
-          <DatePicker
+          <DatePickerField
             initialValue={formData.preferredContact ? new Date(formData.preferredContact) : undefined}
             onDateSelection={(date) => handleInputChange("preferredContact")(date)}
           />
