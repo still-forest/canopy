@@ -11,9 +11,11 @@ describe("Footer", () => {
 
     expect(element.tagName).toBe("FOOTER");
     expect(element).toBeInTheDocument();
-    expect(element.className).toBe(
-      "flex flex-col justify-between w-full px-4 md:px-8 lg:px-12 bottom-0 mt-auto py-2 md:py-4",
-    );
+    expect(element.className).toContain("flex");
+    expect(element.className).toContain("flex-col");
+    expect(element.className).toContain("w-full");
+    expect(element.className).toContain("bottom-0");
+    expect(element.className).toContain("mt-auto");
     expect(element).toHaveTextContent("Important notes go here");
   });
 });

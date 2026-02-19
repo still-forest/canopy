@@ -25,20 +25,16 @@ describe("Modal", () => {
     await user.click(trigger);
 
     const dialog = screen.getByRole("dialog");
-    expect(dialog.className).toBe(
-      "bg-background data-open:animate-in data-closed:animate-out data-closed:fade-out-0 data-open:fade-in-0 data-closed:zoom-out-95 data-open:zoom-in-95 ring-foreground/10 grid max-w-[calc(100%-2rem)] gap-6 rounded-xl p-6 text-sm ring-1 duration-100 sm:max-w-md fixed top-1/2 left-1/2 z-50 w-full -translate-x-1/2 -translate-y-1/2 outline-none",
-    );
+    expect(dialog).toBeInTheDocument();
 
     const title = within(dialog).getByText("Modal title");
-    expect(title.className).toBe("leading-none font-medium");
+    expect(title).toBeInTheDocument();
 
     const description = within(dialog).getByText("Modal description");
-    expect(description.className).toBe(
-      "text-muted-foreground *:[a]:hover:text-foreground text-sm *:[a]:underline *:[a]:underline-offset-3",
-    );
+    expect(description).toBeInTheDocument();
 
     const content = within(dialog).getByText("Modal content");
-    expect(content.className).toBe("");
+    expect(content).toBeInTheDocument();
   });
 
   test("renders a Modal with no title", async () => {

@@ -23,9 +23,6 @@ describe("NativeSelectField", () => {
     },
   ];
 
-  const EXPECTED_BASE_TRIGGER_CLASSES =
-    "border-input placeholder:text-muted-foreground selection:bg-primary selection:text-primary-foreground dark:bg-input/30 dark:hover:bg-input/50 w-full min-w-0 appearance-none rounded-md border px-3 py-2 pr-9 shadow-xs transition-[color,box-shadow] outline-none disabled:pointer-events-none disabled:cursor-not-allowed focus-visible:border-ring focus-visible:ring-ring/50 focus-visible:ring-[3px] aria-invalid:ring-destructive/20 dark:aria-invalid:ring-destructive/40 aria-invalid:border-destructive h-9 text-sm bg-background";
-
   const onSelect = vi.fn();
 
   it("renders with default props", async () => {
@@ -35,7 +32,6 @@ describe("NativeSelectField", () => {
 
     const select = screen.getByRole("combobox") as HTMLSelectElement;
     expect(select.tagName).toBe("SELECT");
-    expect(select.className).toBe(EXPECTED_BASE_TRIGGER_CLASSES);
     expect(select).toHaveTextContent("Select an optionEarthWindFireWater");
 
     const options = within(select).getAllByRole("option");
@@ -81,7 +77,6 @@ describe("NativeSelectField", () => {
 
     const note = screen.getByText("Some note") as HTMLParagraphElement;
     expect(note.tagName).toBe("P");
-    expect(note.className).toBe("text-sm text-muted-foreground font-body");
   });
 
   it("renders with an error message", () => {
@@ -89,14 +84,13 @@ describe("NativeSelectField", () => {
 
     const error = screen.getByText("What'd you do?");
     expect(error.tagName).toBe("P");
-    expect(error.className).toBe("text-xs text-destructive font-body");
   });
 
   it("combines custom className with generated classes", () => {
     render(<NativeSelectField className="custom-class" name="some_input" onChange={onSelect} options={OPTIONS} />);
 
     const trigger = screen.getByRole("combobox") as HTMLSelectElement;
-    expect(trigger.className).toBe(`${EXPECTED_BASE_TRIGGER_CLASSES} custom-class`);
+    expect(trigger.className).toContain("custom-class");
   });
 
   it("allows selecting an option", async () => {

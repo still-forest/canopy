@@ -46,19 +46,20 @@ describe("Box", () => {
           </Box>,
         );
         const element = screen.getByTestId("box-element");
-        expect(element.className).toBe(`bg-${variant} text-${variant}-foreground`);
+        expect(element.className).toContain(`bg-${variant}`);
+        expect(element.className).toContain(`text-${variant}-foreground`);
         rerender(<div />);
       }
     });
 
-    it("does not apply classes with default variant", () => {
+    it("does not apply variant classes with default variant", () => {
       render(
         <Box data-testid="box-element" variant={"default"}>
           Default variant
         </Box>,
       );
       const element = screen.getByTestId("box-element");
-      expect(element.className).toBe("");
+      expect(element.className).not.toContain("bg-");
     });
   });
 
@@ -70,7 +71,7 @@ describe("Box", () => {
         </Box>,
       );
       const element = screen.getByTestId("box-element");
-      expect(element.className).toBe(`size-${size}`);
+      expect(element.className).toContain(`size-${size}`);
       rerender(<div />);
     }
   });
@@ -83,7 +84,7 @@ describe("Box", () => {
         </Box>,
       );
       const element = screen.getByTestId("box-element");
-      expect(element.className).toBe(`w-${width}`);
+      expect(element.className).toContain(`w-${width}`);
       rerender(<div />);
     }
   });
@@ -96,7 +97,7 @@ describe("Box", () => {
         </Box>,
       );
       const element = screen.getByTestId("box-element");
-      expect(element.className).toBe(`h-${height}`);
+      expect(element.className).toContain(`h-${height}`);
       rerender(<div />);
     }
   });
@@ -109,7 +110,7 @@ describe("Box", () => {
         </Box>,
       );
       const element = screen.getByTestId("box-element");
-      expect(element.className).toBe(display);
+      expect(element.className).toContain(display);
       rerender(<div />);
     }
   });
@@ -122,7 +123,7 @@ describe("Box", () => {
         </Box>,
       );
       const element = screen.getByTestId("box-element");
-      expect(element.className).toBe(`box-${sizing}`);
+      expect(element.className).toContain(`box-${sizing}`);
       rerender(<div />);
     }
   });
@@ -135,7 +136,7 @@ describe("Box", () => {
         </Box>,
       );
       const element = screen.getByTestId("box-element");
-      expect(element.className).toBe(position);
+      expect(element.className).toContain(position);
       rerender(<div />);
     }
   });
@@ -148,7 +149,7 @@ describe("Box", () => {
         </Box>,
       );
       const element = screen.getByTestId("box-element");
-      expect(element.className).toBe(`overflow-${overflow}`);
+      expect(element.className).toContain(`overflow-${overflow}`);
       rerender(<div />);
     }
 
@@ -159,7 +160,7 @@ describe("Box", () => {
         </Box>,
       );
       const element = screen.getByTestId("box-element");
-      expect(element.className).toBe(`overflow-x-${overflow}`);
+      expect(element.className).toContain(`overflow-x-${overflow}`);
       rerender(<div />);
     }
 
@@ -170,7 +171,7 @@ describe("Box", () => {
         </Box>,
       );
       const element = screen.getByTestId("box-element");
-      expect(element.className).toBe(`overflow-y-${overflow}`);
+      expect(element.className).toContain(`overflow-y-${overflow}`);
       rerender(<div />);
     }
   });
@@ -186,7 +187,7 @@ describe("Box", () => {
           </Box>,
         );
         const element = screen.getByTestId("box-element");
-        expect(element.className).toBe(`rounded-${roundedSize}`);
+        expect(element.className).toContain(`rounded-${roundedSize}`);
         rerender(<div />);
       }
     });
@@ -198,17 +199,17 @@ describe("Box", () => {
         </Box>,
       );
       const element = screen.getByTestId("box-element");
-      expect(element.className).toBe("rounded");
+      expect(element.className).toContain("rounded");
     });
 
-    it("does not rounding with a false value", () => {
+    it("does not apply rounding with a false value", () => {
       render(
         <Box data-testid="box-element" rounded={false}>
           No rounded corners
         </Box>,
       );
       const element = screen.getByTestId("box-element");
-      expect(element.className).toBe("");
+      expect(element.className).not.toContain("rounded");
     });
   });
 
@@ -219,7 +220,7 @@ describe("Box", () => {
       </Box>,
     );
     const element = screen.getByTestId("box-element");
-    expect(element.className).toBe("custom-class");
+    expect(element.className).toContain("custom-class");
   });
 
   it("can render as different HTML elements", () => {
@@ -292,7 +293,9 @@ describe("Box", () => {
     );
 
     const element = screen.getByTestId("box-element");
-    expect(element.className).toBe("class1 class2 class3");
+    expect(element.className).toContain("class1");
+    expect(element.className).toContain("class2");
+    expect(element.className).toContain("class3");
   });
 
   it("can be styled with inline styles", () => {

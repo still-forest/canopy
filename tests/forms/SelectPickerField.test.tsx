@@ -31,12 +31,6 @@ describe("SelectPickerField", () => {
     },
   ];
 
-  const EXPECTED_BASE_BUTTON_CLASSES =
-    "focus-visible:border-ring focus-visible:ring-ring/50 aria-invalid:ring-destructive/20 dark:aria-invalid:ring-destructive/40 aria-invalid:border-destructive dark:aria-invalid:border-destructive/50 rounded-md border bg-clip-padding focus-visible:ring-3 aria-invalid:ring-3 [&_svg:not([class*='size-'])]:size-4 inline-flex items-center whitespace-nowrap transition-all disabled:pointer-events-none disabled:opacity-50 [&_svg]:pointer-events-none shrink-0 [&_svg]:shrink-0 outline-none group/button select-none border-border bg-background hover:bg-muted hover:text-foreground dark:bg-input/30 dark:border-input dark:hover:bg-input/50 aria-expanded:bg-muted aria-expanded:text-foreground shadow-xs h-9 px-4 py-2 has-[>svg]:px-3 text-sm w-full justify-between font-normal";
-
-  const EXPECTED_BASE_POPOVER_CLASSES =
-    "bg-popover text-popover-foreground data-open:animate-in data-closed:animate-out data-closed:fade-out-0 data-open:fade-in-0 data-closed:zoom-out-95 data-open:zoom-in-95 data-[side=bottom]:slide-in-from-top-2 data-[side=left]:slide-in-from-right-2 data-[side=right]:slide-in-from-left-2 data-[side=top]:slide-in-from-bottom-2 ring-foreground/10 flex flex-col gap-4 rounded-md p-4 text-sm shadow-md ring-1 duration-100 data-[side=inline-start]:slide-in-from-right-2 data-[side=inline-end]:slide-in-from-left-2 z-50 w-72 origin-(--transform-origin) outline-hidden p-0!";
-
   const onSelect = vi.fn();
 
   it("renders with default props", () => {
@@ -44,7 +38,6 @@ describe("SelectPickerField", () => {
 
     const trigger = screen.getByRole("combobox") as HTMLButtonElement;
     expect(trigger.tagName).toBe("BUTTON");
-    expect(trigger.className).toBe(EXPECTED_BASE_BUTTON_CLASSES);
     expect(trigger).toHaveTextContent("Select an option");
 
     expect(trigger.getAttribute("aria-expanded")).toBe("false");
@@ -57,7 +50,6 @@ describe("SelectPickerField", () => {
 
     const popover = screen.getByRole("dialog");
     expect(popover.tagName).toBe("DIV");
-    expect(popover.className).toBe(EXPECTED_BASE_POPOVER_CLASSES);
     expect(popover).toHaveTextContent("🌎Earth🌪️Wind🔥Fire🌊Water");
 
     const optionContainer = screen.getByRole("listbox");

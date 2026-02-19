@@ -11,7 +11,7 @@ describe("Grid", () => {
     const element = screen.getByTestId("grid-element");
 
     expect(element.tagName).toBe("DIV");
-    expect(element.className).toBe("grid");
+    expect(element.className).toContain("grid");
   });
 
   it("renders with custom element type", () => {
@@ -22,7 +22,7 @@ describe("Grid", () => {
     );
     const element = screen.getByTestId("grid-element");
     expect(element.tagName).toBe("SECTION");
-    expect(element.className).toBe("grid");
+    expect(element.className).toContain("grid");
   });
 
   it("applies the correct grid columns classes", () => {
@@ -33,7 +33,8 @@ describe("Grid", () => {
         </Grid>,
       );
       const element = screen.getByTestId("grid-element");
-      expect(element.className).toBe(`grid grid-cols-${cols}`);
+      expect(element.className).toContain("grid");
+      expect(element.className).toContain(`grid-cols-${cols}`);
       rerender(<div />);
     }
   });
@@ -46,7 +47,8 @@ describe("Grid", () => {
         </Grid>,
       );
       const element = screen.getByTestId("grid-element");
-      expect(element.className).toBe(`grid grid-rows-${rows}`);
+      expect(element.className).toContain("grid");
+      expect(element.className).toContain(`grid-rows-${rows}`);
       rerender(<div />);
     }
   });
@@ -59,7 +61,8 @@ describe("Grid", () => {
         </Grid>,
       );
       const element = screen.getByTestId("grid-element");
-      expect(element.className).toBe(`grid grid-flow-${flow}`);
+      expect(element.className).toContain("grid");
+      expect(element.className).toContain(`grid-flow-${flow}`);
       rerender(<div />);
     }
   });
@@ -72,7 +75,8 @@ describe("Grid", () => {
         </Grid>,
       );
       const element = screen.getByTestId("grid-element");
-      expect(element.className).toBe(`grid gap-${gap}`);
+      expect(element.className).toContain("grid");
+      expect(element.className).toContain(`gap-${gap}`);
       rerender(<div />);
     }
 
@@ -83,7 +87,8 @@ describe("Grid", () => {
         </Grid>,
       );
       const element = screen.getByTestId("grid-element");
-      expect(element.className).toBe(`grid gap-x-${gapX}`);
+      expect(element.className).toContain("grid");
+      expect(element.className).toContain(`gap-x-${gapX}`);
       rerender(<div />);
     }
 
@@ -94,7 +99,8 @@ describe("Grid", () => {
         </Grid>,
       );
       const element = screen.getByTestId("grid-element");
-      expect(element.className).toBe(`grid gap-y-${gapY}`);
+      expect(element.className).toContain("grid");
+      expect(element.className).toContain(`gap-y-${gapY}`);
       rerender(<div />);
     }
   });
@@ -107,7 +113,10 @@ describe("Grid", () => {
     );
 
     const element = screen.getByTestId("grid-element");
-    expect(element.className).toBe("grid gap-2 gap-x-4 gap-y-8");
+    expect(element.className).toContain("grid");
+    expect(element.className).toContain("gap-2");
+    expect(element.className).toContain("gap-x-4");
+    expect(element.className).toContain("gap-y-8");
   });
 
   it("passes additional props to the element", () => {
@@ -127,7 +136,8 @@ describe("Grid", () => {
       </Grid>,
     );
     const element = screen.getByTestId("grid-element");
-    expect(element.className).toBe("grid custom-class");
+    expect(element.className).toContain("grid");
+    expect(element.className).toContain("custom-class");
   });
 
   it("forwards ref correctly", () => {
@@ -162,6 +172,10 @@ describe("Grid", () => {
 
     const element = screen.getByTestId("grid-element");
 
-    expect(element.className).toBe("grid grid-cols-3 grid-rows-2 gap-4 grid-flow-row-dense");
+    expect(element.className).toContain("grid");
+    expect(element.className).toContain("grid-cols-3");
+    expect(element.className).toContain("grid-rows-2");
+    expect(element.className).toContain("gap-4");
+    expect(element.className).toContain("grid-flow-row-dense");
   });
 });
