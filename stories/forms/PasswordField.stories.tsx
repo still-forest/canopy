@@ -1,6 +1,6 @@
 import type { Meta, StoryObj } from "@storybook/react-vite";
 
-import { PasswordField } from "@/forms/PasswordField/PasswordField";
+import { PasswordField } from "@/forms/fields/PasswordField/PasswordField";
 import { Flex } from "@/layout";
 import { DEFAULT_DECORATOR_WITH_MIN_WIDTH_MD } from "../support/decorators";
 

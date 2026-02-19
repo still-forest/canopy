@@ -1,4 +1,4 @@
-import { TextField, type TextFieldProps } from "@/forms/TextField";
+import { TextField, type TextFieldProps } from "@/forms/fields/TextField";
 
 export interface NumberInputProps extends Omit<TextFieldProps, "type"> {
   step?: string;
