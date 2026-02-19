@@ -18,5 +18,4 @@ export * from "./Skeleton";
 export * from "./Table";
 export * from "./Tabs";
 export * from "./TextList";
-export * from "./ThemeSelector";
 export * from "./Tooltip";
