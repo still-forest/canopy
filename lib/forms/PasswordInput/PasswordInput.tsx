@@ -1,10 +1,16 @@
 import { Eye, EyeOff } from "lucide-react";
-import { useState } from "react";
-import type { InputProps } from "@/forms/Input";
+import { type ComponentProps, useState } from "react";
 import { InputGroup } from "@/forms/InputGroup";
 import { Flex, InputError, Label, Text } from "@/main";
 
-interface PasswordInputProps extends Omit<InputProps, "type"> {}
+interface PasswordInputProps extends Omit<ComponentProps<"input">, "type" | "size"> {
+  name: string;
+  size?: "xs" | "sm" | "md" | "lg" | "xl";
+  label?: string;
+  labelOrientation?: "top" | "left";
+  note?: string;
+  error?: string;
+}
 
 export const PasswordInput = ({
   name,

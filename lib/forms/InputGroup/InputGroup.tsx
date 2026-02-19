@@ -1,11 +1,11 @@
 import type { ReactNode } from "react";
+import { Input, type InputProps } from "@/components/ui/input";
 import {
   InputGroup as BaseInputGroup,
   InputGroupAddon as BaseInputGroupAddon,
   InputGroupText,
 } from "@/components/ui/input-group";
 import { Button, type ButtonProps } from "@/forms/Button";
-import { Input, type InputProps } from "@/forms/Input";
 import { Textarea, type TextareaProps } from "@/main";
 import { cn } from "@/utils";
 
