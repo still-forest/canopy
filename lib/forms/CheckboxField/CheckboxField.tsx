@@ -7,7 +7,7 @@ import { Flex } from "@/layout";
 import { Text } from "@/typography";
 import { cn } from "@/utils";
 
-export interface CheckboxProps extends React.ComponentProps<typeof BaseCheckbox> {
+export interface CheckboxFieldProps extends React.ComponentProps<typeof BaseCheckbox> {
   label: string;
   labelClassName?: string;
   name: string;
@@ -19,7 +19,7 @@ export interface CheckboxProps extends React.ComponentProps<typeof BaseCheckbox>
   error?: string;
 }
 
-const Checkbox = ({
+const CheckboxField = ({
   label,
   name,
   value,
@@ -30,7 +30,7 @@ const Checkbox = ({
   labelClassName,
   hint,
   ...props
-}: CheckboxProps) => {
+}: CheckboxFieldProps) => {
   const [checkedState, setCheckedState] = useState(checked);
 
   useEffect(() => {
@@ -81,4 +81,4 @@ const Checkbox = ({
   );
 };
 
-export { Checkbox };
+export { CheckboxField };

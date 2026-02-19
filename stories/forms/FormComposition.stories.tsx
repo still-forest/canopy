@@ -5,7 +5,7 @@ import { Card } from "@/components";
 import {
   Button,
   ButtonSelectInput,
-  Checkbox,
+  CheckboxField,
   DateInput,
   DatePicker,
   NumberInput,
@@ -151,7 +151,7 @@ const CompleteFormExample = () => {
           />
         </Flex>
 
-        {/* Radio & Checkbox Section */}
+        {/* Radio & CheckboxField Section */}
         <Flex direction="col" gap="4">
           <Heading level="3">Account Settings</Heading>
 
@@ -168,7 +168,7 @@ const CompleteFormExample = () => {
           />
 
           <Flex direction="col" gap="2">
-            <Checkbox
+            <CheckboxField
               checked={formData.notifications}
               hint="Receive updates about new features"
               label="Enable email notifications"
@@ -176,14 +176,14 @@ const CompleteFormExample = () => {
               value="notifications"
             />
 
-            <Checkbox
+            <CheckboxField
               checked={formData.newsletter}
               label="Subscribe to newsletter"
               name="newsletter"
               value="newsletter"
             />
 
-            <Checkbox
+            <CheckboxField
               checked={formData.privacy}
               error={!formData.privacy ? "You must accept the privacy policy to continue" : undefined}
               label="I accept the privacy policy"

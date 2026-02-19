@@ -1,6 +1,6 @@
 export * from "./Button";
 export * from "./ButtonSelectInput";
-export * from "./Checkbox";
+export * from "./CheckboxField";
 export * from "./CopyButton";
 export * from "./DateInput";
 export * from "./DatePicker";

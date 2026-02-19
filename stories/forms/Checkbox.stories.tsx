@@ -1,11 +1,11 @@
 import type { Meta, StoryObj } from "@storybook/react-vite";
 
-import { Checkbox, type CheckboxProps } from "@/forms";
+import { CheckboxField, type CheckboxFieldProps } from "@/forms";
 import { Box, Flex } from "@/layout";
 
-const meta: Meta<typeof Checkbox> = {
-  title: "Forms/Inputs/Checkbox",
-  component: Checkbox,
+const meta: Meta<typeof CheckboxField> = {
+  title: "Forms/Inputs/CheckboxField",
+  component: CheckboxField,
   decorators: [
     // TODO: review this decorator
     (Story) => (
@@ -15,13 +15,13 @@ const meta: Meta<typeof Checkbox> = {
     ),
   ],
   tags: ["autodocs"],
-} satisfies Meta<typeof Checkbox>;
+} satisfies Meta<typeof CheckboxField>;
 
 export default meta;
 
 type Story = StoryObj<typeof meta>;
 
-const defaultProps: Omit<CheckboxProps, "name"> = {
+const defaultProps: Omit<CheckboxFieldProps, "name"> = {
   label: "This is a checkbox",
   checked: false,
   value: "1",
@@ -74,17 +74,17 @@ export const WithEverything: Story = {
 export const AsList: Story = {
   render: () => (
     <Box>
-      <Checkbox checked={false} label="Thing 1" name="something" value="thing-1" />
-      <Checkbox checked={false} label="Thing 2" name="something" value="thing-2" />
-      <Checkbox
+      <CheckboxField checked={false} label="Thing 1" name="something" value="thing-1" />
+      <CheckboxField checked={false} label="Thing 2" name="something" value="thing-2" />
+      <CheckboxField
         checked={false}
         label="Thing 3"
         name="something"
         note="The answer, sadly, is not yes."
         value="thing-3"
       />
-      <Checkbox checked={false} label="Thing 4" name="something" value="thing-4" />
-      <Checkbox
+      <CheckboxField checked={false} label="Thing 4" name="something" value="thing-4" />
+      <CheckboxField
         checked={false}
         error="I'm not the principal of the line, mother."
         label="Extra thing"

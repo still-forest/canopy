@@ -2,13 +2,13 @@ import { fireEvent, render, screen } from "@testing-library/react";
 import { describe, expect, test, vi } from "vitest";
 import "@testing-library/jest-dom";
 
-import { Checkbox } from "@/forms";
+import { CheckboxField } from "@/forms";
 
-describe("Checkbox", () => {
+describe("CheckboxField", () => {
   const handleClick = vi.fn();
 
-  test("renders a Checkbox", async () => {
-    render(<Checkbox checked={false} label="Test Checkbox" name="test-checkbox" />);
+  test("renders a CheckboxField", async () => {
+    render(<CheckboxField checked={false} label="Test CheckboxField" name="test-checkbox" />);
 
     const checkbox = screen.getByRole("checkbox");
 
@@ -19,7 +19,7 @@ describe("Checkbox", () => {
       "border-input dark:bg-input/30 data-checked:bg-primary data-checked:text-primary-foreground data-checked:border-primary focus-visible:border-ring focus-visible:ring-ring/50 shrink-0 rounded-[4px] border shadow-xs outline-none focus-visible:ring-3 disabled:cursor-not-allowed disabled:opacity-50",
     );
 
-    const label = screen.getByText("Test Checkbox");
+    const label = screen.getByText("Test CheckboxField");
     expect(label).toHaveAttribute("for", "test-checkbox");
     expect(label).toHaveClass(
       "font-display font-normal text-foreground text-base cursor-pointer flex items-center select-none",
@@ -30,8 +30,8 @@ describe("Checkbox", () => {
     expect(checkbox).toHaveAttribute("data-checked", "");
   });
 
-  test("renders a Checkbox with value", async () => {
-    render(<Checkbox checked={false} label="Test Checkbox" name="test-checkbox" value="abc1" />);
+  test("renders a CheckboxField with value", async () => {
+    render(<CheckboxField checked={false} label="Test CheckboxField" name="test-checkbox" value="abc1" />);
 
     const checkbox = screen.getByRole("checkbox");
 
@@ -39,12 +39,14 @@ describe("Checkbox", () => {
     expect(checkbox).toHaveAttribute("data-unchecked", "");
     expect(checkbox).not.toBeDisabled();
 
-    const label = screen.getByText("Test Checkbox");
+    const label = screen.getByText("Test CheckboxField");
     expect(label).toHaveAttribute("for", "test-checkbox[abc1]");
   });
 
-  test("renders a Checkbox with change handler", async () => {
-    render(<Checkbox checked={false} label="Test Checkbox" name="test-checkbox" onCheckedChange={handleClick} />);
+  test("renders a CheckboxField with change handler", async () => {
+    render(
+      <CheckboxField checked={false} label="Test CheckboxField" name="test-checkbox" onCheckedChange={handleClick} />,
+    );
 
     const checkbox = screen.getByRole("checkbox");
 
