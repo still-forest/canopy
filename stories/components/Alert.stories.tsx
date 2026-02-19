@@ -1,11 +1,11 @@
+import { DEFAULT_DECORATOR_WITH_MIN_WIDTH_MD } from "@stories/support/decorators";
+import { sampleSentences, sampleText } from "@stories/support/sampleText";
 import type { Meta, StoryObj } from "@storybook/react-vite";
-import { TextList } from "@/components";
 import type { AlertProps } from "@/components/Alert";
 import { Alert } from "@/components/Alert";
 import { Flex } from "@/layout/Flex";
+import { TextList } from "@/lists";
 import { Text } from "@/typography/Text";
-import { DEFAULT_DECORATOR_WITH_MIN_WIDTH_MD } from "../support/decorators";
-import { sampleSentences, sampleText } from "../support/sampleText";
 
 const meta: Meta<typeof Alert> = {
   title: "Components/Alert",

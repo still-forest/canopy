@@ -1,22 +1,22 @@
-import type { ReactNode } from "react";
+import type { ComponentProps, ReactNode } from "react";
+import { Input } from "@/components/ui/input";
 import {
   InputGroup as BaseInputGroup,
   InputGroupAddon as BaseInputGroupAddon,
   InputGroupText,
 } from "@/components/ui/input-group";
-import { Button, type ButtonProps } from "@/forms/Button";
-import { Input, type InputProps } from "@/forms/Input";
-import { Textarea, type TextareaProps } from "@/main";
+import { Textarea } from "@/components/ui/textarea";
+import { Button, type ButtonProps } from "@/forms/buttons/Button";
 import { cn } from "@/utils";
 
 export type InputGroupProps = React.ComponentProps<typeof BaseInputGroup> & {
   children: ReactNode;
 };
 type InputGroupTextProps = React.ComponentProps<typeof InputGroupText>;
-type InputGroupTextareaProps = React.ComponentProps<typeof InputGroupTextarea>;
+type InputGroupTextareaProps = React.ComponentProps<"textarea">;
 
 type InputGroupComponent = React.FC<InputGroupProps> & {
-  Input: React.FC<InputProps>;
+  Input: React.FC<ComponentProps<"input">>;
   Addon: React.FC<InputGroupAddonProps>;
   Button: React.FC<ButtonProps>;
   Text: React.FC<InputGroupTextProps>;
@@ -41,7 +41,7 @@ const InputGroupButton = ({ className, size = "xs", variant = "ghost", ...props 
   />
 );
 
-const InputGroupInput = ({ className, ...props }: InputProps) => {
+const InputGroupInput = ({ className, ...props }: ComponentProps<"input">) => {
   return (
     <Input
       className={cn(
@@ -54,7 +54,7 @@ const InputGroupInput = ({ className, ...props }: InputProps) => {
   );
 };
 
-const InputGroupTextarea = ({ className, ...props }: TextareaProps) => {
+const InputGroupTextarea = ({ className, ...props }: React.ComponentProps<"textarea">) => {
   return (
     <Textarea
       className={cn(

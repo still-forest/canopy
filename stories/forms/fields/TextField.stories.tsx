@@ -1,0 +1,129 @@
+import { DEFAULT_DECORATOR_WITH_MIN_WIDTH_MD } from "@stories/support/decorators";
+import type { Meta, StoryObj } from "@storybook/react-vite";
+import { TextField } from "@/forms";
+import { Flex } from "@/layout";
+
+const meta: Meta<typeof TextField> = {
+  title: "Forms/Fields/TextField",
+  component: TextField,
+  decorators: [DEFAULT_DECORATOR_WITH_MIN_WIDTH_MD],
+  tags: ["autodocs"],
+} satisfies Meta<typeof TextField>;
+
+export default meta;
+
+type Story = StoryObj<typeof meta>;
+
+const defaultProps = {
+  name: "mockField",
+};
+
+export const Default: Story = {
+  args: {
+    ...defaultProps,
+  },
+};
+
+export const WithInitialValue: Story = {
+  args: {
+    ...defaultProps,
+    value: "Something something",
+  },
+};
+
+export const WithLabel: Story = {
+  args: {
+    ...defaultProps,
+    label: "Some value:",
+  },
+};
+
+export const WithPlaceholder: Story = {
+  args: {
+    ...defaultProps,
+    placeholder: "Do alligators alligate?",
+  },
+};
+
+export const WithNote: Story = {
+  args: {
+    ...defaultProps,
+    note: "Sorry, buddy. You got me confused with Fred Flintstone.",
+  },
+};
+
+export const WithHint: Story = {
+  args: {
+    ...defaultProps,
+    label: "Some value:",
+    hint: "Label isn't required, but it's a little odd without it.",
+  },
+};
+
+export const WithEverything: Story = {
+  args: {
+    ...defaultProps,
+    placeholder: "Do alligators alligate?",
+    label: "Some value:",
+    hint: "My cat's breath smells like cat food",
+    note: "Sorry, buddy. You got me confused with Fred Flintstone.",
+  },
+};
+
+export const WithLeftLabelOrientation: Story = {
+  args: {
+    ...defaultProps,
+    label: "Some value:",
+    labelOrientation: "left",
+  },
+};
+
+export const Disabled: Story = {
+  args: {
+    ...defaultProps,
+    label: "Disabled input:",
+    placeholder: "This input is disabled",
+    disabled: true,
+  },
+};
+
+export const ReadOnly: Story = {
+  args: {
+    ...defaultProps,
+    label: "Read-only input:",
+    value: "This is read-only content",
+    readOnly: true,
+  },
+};
+
+export const WithError: Story = {
+  args: {
+    ...defaultProps,
+    label: "Error input:",
+    error: "What'd you do?!",
+  },
+};
+
+export const WithSize: Story = {
+  render: () => (
+    <Flex direction="col" gap="4">
+      <TextField {...defaultProps} placeholder="This input is extra small" size="xs" />
+      <TextField {...defaultProps} placeholder="This input is small" size="sm" />
+      <TextField {...defaultProps} placeholder="This input is medium (default size)" size="md" />
+      <TextField {...defaultProps} placeholder="This input is large" size="lg" />
+      <TextField {...defaultProps} placeholder="This input is extra large" size="xl" />
+    </Flex>
+  ),
+};
+
+export const WithSizeAndLabel: Story = {
+  render: () => (
+    <Flex direction="col" gap="4">
+      <TextField {...defaultProps} label="This input is extra small" size="xs" />
+      <TextField {...defaultProps} label="This input is small" size="sm" />
+      <TextField {...defaultProps} label="This input is medium (default size)" size="md" />
+      <TextField {...defaultProps} label="This input is large" size="lg" />
+      <TextField {...defaultProps} label="This input is extra large" size="xl" />
+    </Flex>
+  ),
+};

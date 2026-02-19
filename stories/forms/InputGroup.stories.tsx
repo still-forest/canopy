@@ -1,3 +1,4 @@
+import { DEFAULT_DECORATOR_WITH_MIN_WIDTH_MD } from "@stories/support/decorators";
 import type { Meta, StoryObj } from "@storybook/react-vite";
 import {
   CheckIcon,
@@ -20,10 +21,9 @@ import { Tooltip } from "@/components/Tooltip";
 import { InputGroup } from "@/forms";
 import { Label } from "@/forms/Label";
 import { Flex } from "@/layout";
-import { DEFAULT_DECORATOR_WITH_MIN_WIDTH_MD } from "../support/decorators";
 
 const meta: Meta<typeof InputGroup> = {
-  title: "Forms/Inputs/InputGroup",
+  title: "Forms/InputGroup",
   component: InputGroup,
   decorators: [DEFAULT_DECORATOR_WITH_MIN_WIDTH_MD],
   tags: ["autodocs"],

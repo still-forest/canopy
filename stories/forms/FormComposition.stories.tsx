@@ -4,21 +4,21 @@ import { useState } from "react";
 import { Card } from "@/components";
 import {
   Button,
-  ButtonSelectInput,
-  Checkbox,
-  DateInput,
-  DatePicker,
-  Input,
-  NumberInput,
-  PasswordInput,
-  RadioSelect,
-  SelectInput,
-  Slider,
+  ButtonRadioField,
+  CheckboxField,
+  DateField,
+  DatePickerField,
+  NativeSelectField,
+  NumberField,
+  PasswordField,
+  RadioField,
+  SliderField,
   SubmitButton,
-  Switch,
-  Textarea,
-  TextInput,
+  TextareaField,
+  TextField,
+  ToggleField,
 } from "@/forms";
+
 import { Flex } from "@/layout";
 import { Heading, Text } from "@/typography";
 
@@ -76,9 +76,9 @@ const CompleteFormExample = () => {
         <Flex direction="col" gap="4">
           <Heading level="3">Basic Information</Heading>
 
-          <TextInput label="Username" name="username" placeholder="Enter your username" value={formData.username} />
+          <TextField label="Username" name="username" placeholder="Enter your username" value={formData.username} />
 
-          <Input
+          <TextField
             label="Email Address"
             name="email"
             placeholder="user@example.com"
@@ -86,7 +86,7 @@ const CompleteFormExample = () => {
             value={formData.email}
           />
 
-          <PasswordInput
+          <PasswordField
             label="Password"
             name="password"
             note="Must be at least 8 characters"
@@ -94,7 +94,7 @@ const CompleteFormExample = () => {
             value={formData.password}
           />
 
-          <NumberInput
+          <NumberField
             hint="You must be 18 or older"
             label="Age"
             max={120}
@@ -104,14 +104,14 @@ const CompleteFormExample = () => {
             value={formData.age}
           />
 
-          <DateInput label="Date of Birth" name="birthdate" value={formData.birthdate} />
+          <DateField label="Date of Birth" name="birthdate" value={formData.birthdate} />
         </Flex>
 
         {/* Select Inputs Section */}
         <Flex direction="col" gap="4">
           <Heading level="3">Location & Preferences</Heading>
 
-          <SelectInput
+          <NativeSelectField
             label="Country"
             name="country"
             onChange={handleInputChange("country")}
@@ -126,7 +126,7 @@ const CompleteFormExample = () => {
             value={formData.country}
           />
 
-          <ButtonSelectInput
+          <ButtonRadioField
             label="Experience Level"
             name="experience"
             onChange={handleInputChange("experience")}
@@ -151,11 +151,11 @@ const CompleteFormExample = () => {
           />
         </Flex>
 
-        {/* Radio & Checkbox Section */}
+        {/* Radio & CheckboxField Section */}
         <Flex direction="col" gap="4">
           <Heading level="3">Account Settings</Heading>
 
-          <RadioSelect
+          <RadioField
             label="Account Type"
             name="accountType"
             onChange={handleInputChange("accountType")}
@@ -168,7 +168,7 @@ const CompleteFormExample = () => {
           />
 
           <Flex direction="col" gap="2">
-            <Checkbox
+            <CheckboxField
               checked={formData.notifications}
               hint="Receive updates about new features"
               label="Enable email notifications"
@@ -176,14 +176,14 @@ const CompleteFormExample = () => {
               value="notifications"
             />
 
-            <Checkbox
+            <CheckboxField
               checked={formData.newsletter}
               label="Subscribe to newsletter"
               name="newsletter"
               value="newsletter"
             />
 
-            <Checkbox
+            <CheckboxField
               checked={formData.privacy}
               error={!formData.privacy ? "You must accept the privacy policy to continue" : undefined}
               label="I accept the privacy policy"
@@ -197,7 +197,7 @@ const CompleteFormExample = () => {
         <Flex direction="col" gap="4">
           <Heading level="3">Additional Settings</Heading>
 
-          <Textarea
+          <TextareaField
             label="Bio"
             name="bio"
             note="Tell us a little about yourself"
@@ -206,14 +206,14 @@ const CompleteFormExample = () => {
             value={formData.bio}
           />
 
-          <Switch
+          <ToggleField
             checked={formData.theme === "dark"}
             label="Dark Mode"
             name="theme"
             onCheckedChange={(checked) => handleInputChange("theme")(checked ? "dark" : "light")}
           />
 
-          <Slider
+          <SliderField
             label="Notification Volume"
             max={100}
             min={0}
@@ -223,7 +223,7 @@ const CompleteFormExample = () => {
             value={[formData.volume]}
           />
 
-          <DatePicker
+          <DatePickerField
             initialValue={formData.preferredContact ? new Date(formData.preferredContact) : undefined}
             onDateSelection={(date) => handleInputChange("preferredContact")(date)}
           />

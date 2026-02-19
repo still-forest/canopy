@@ -1,0 +1,184 @@
+import { fireEvent, render, screen, within } from "@testing-library/react";
+import { describe, expect, it, vi } from "vitest";
+import { SelectPickerField, type SelectPickerOption } from "@/forms";
+
+describe("SelectPickerField", () => {
+  const OPTION_GROUPS = [
+    {
+      label: "Elements",
+      options: [
+        {
+          icon: "🌎",
+          value: "earth",
+          label: "Earth",
+        },
+        {
+          icon: "🌪️",
+          value: "wind",
+          label: "Wind",
+        },
+        {
+          icon: "🔥",
+          value: "fire",
+          label: "Fire",
+        },
+        {
+          icon: "🌊",
+          value: "water",
+          label: "Water",
+        },
+      ],
+    },
+  ];
+
+  const EXPECTED_BASE_BUTTON_CLASSES =
+    "focus-visible:border-ring focus-visible:ring-ring/50 aria-invalid:ring-destructive/20 dark:aria-invalid:ring-destructive/40 aria-invalid:border-destructive dark:aria-invalid:border-destructive/50 rounded-md border bg-clip-padding focus-visible:ring-3 aria-invalid:ring-3 [&_svg:not([class*='size-'])]:size-4 inline-flex items-center whitespace-nowrap transition-all disabled:pointer-events-none disabled:opacity-50 [&_svg]:pointer-events-none shrink-0 [&_svg]:shrink-0 outline-none group/button select-none border-border bg-background hover:bg-muted hover:text-foreground dark:bg-input/30 dark:border-input dark:hover:bg-input/50 aria-expanded:bg-muted aria-expanded:text-foreground shadow-xs h-9 px-4 py-2 has-[>svg]:px-3 text-sm w-full justify-between font-normal";
+
+  const EXPECTED_BASE_POPOVER_CLASSES =
+    "bg-popover text-popover-foreground data-open:animate-in data-closed:animate-out data-closed:fade-out-0 data-open:fade-in-0 data-closed:zoom-out-95 data-open:zoom-in-95 data-[side=bottom]:slide-in-from-top-2 data-[side=left]:slide-in-from-right-2 data-[side=right]:slide-in-from-left-2 data-[side=top]:slide-in-from-bottom-2 ring-foreground/10 flex flex-col gap-4 rounded-md p-4 text-sm shadow-md ring-1 duration-100 data-[side=inline-start]:slide-in-from-right-2 data-[side=inline-end]:slide-in-from-left-2 z-50 w-72 origin-(--transform-origin) outline-hidden p-0!";
+
+  const onSelect = vi.fn();
+
+  it("renders with default props", () => {
+    render(<SelectPickerField name="some_input" onChange={onSelect} options={OPTION_GROUPS} />);
+
+    const trigger = screen.getByRole("combobox") as HTMLButtonElement;
+    expect(trigger.tagName).toBe("BUTTON");
+    expect(trigger.className).toBe(EXPECTED_BASE_BUTTON_CLASSES);
+    expect(trigger).toHaveTextContent("Select an option");
+
+    expect(trigger.getAttribute("aria-expanded")).toBe("false");
+    expect(trigger.ariaExpanded).toBe("false");
+
+    fireEvent.click(trigger);
+
+    expect(trigger.getAttribute("aria-expanded")).toBe("true");
+    expect(trigger.ariaExpanded).toBe("true");
+
+    const popover = screen.getByRole("dialog");
+    expect(popover.tagName).toBe("DIV");
+    expect(popover.className).toBe(EXPECTED_BASE_POPOVER_CLASSES);
+    expect(popover).toHaveTextContent("🌎Earth🌪️Wind🔥Fire🌊Water");
+
+    const optionContainer = screen.getByRole("listbox");
+    const options = within(optionContainer).getAllByRole("option");
+    expect(options).toHaveLength(OPTION_GROUPS[0].options.length);
+
+    expect(optionContainer).toHaveTextContent("Elements");
+    expect(options[0]).toHaveTextContent("🌎Earth");
+    expect(options[1]).toHaveTextContent("🌪️Wind");
+    expect(options[2]).toHaveTextContent("🔥Fire");
+    expect(options[3]).toHaveTextContent("🌊Water");
+
+    fireEvent.click(options[2]);
+
+    expect(trigger.getAttribute("aria-expanded")).toBe("false");
+    expect(trigger.ariaExpanded).toBe("false");
+
+    expect(onSelect).toHaveBeenCalledWith(OPTION_GROUPS[0].options[2].value);
+  });
+
+  it("renders with no icons", () => {
+    const optionGroups = OPTION_GROUPS.map((group) => ({
+      ...group,
+      options: group.options.map((option) => ({ ...option, icon: undefined })),
+    }));
+    render(<SelectPickerField name="some_input" onChange={onSelect} options={optionGroups} />);
+
+    const trigger = screen.getByRole("combobox") as HTMLButtonElement;
+    expect(trigger).toHaveTextContent("Select an option");
+
+    fireEvent.click(trigger);
+
+    const optionContainer = screen.getByRole("listbox");
+    const options = within(optionContainer).getAllByRole("option");
+    expect(options).toHaveLength(OPTION_GROUPS[0].options.length);
+
+    expect(options[0]).toHaveTextContent("Earth");
+    expect(options[1]).toHaveTextContent("Wind");
+    expect(options[2]).toHaveTextContent("Fire");
+    expect(options[3]).toHaveTextContent("Water");
+  });
+
+  it("renders with a selected value", () => {
+    render(
+      <SelectPickerField
+        name="some_input"
+        onChange={onSelect}
+        options={OPTION_GROUPS}
+        value={OPTION_GROUPS[0].options[0].value}
+      />,
+    );
+
+    const trigger = screen.getByRole("combobox") as HTMLButtonElement;
+    expect(trigger).toHaveTextContent("Earth");
+  });
+
+  it("renders with a custom renderSelected function", () => {
+    const renderSelected = ({ label }: SelectPickerOption) => `The thing is ${label}`;
+    render(
+      <SelectPickerField
+        name="some_input"
+        onChange={onSelect}
+        options={OPTION_GROUPS}
+        renderSelected={renderSelected}
+        value={OPTION_GROUPS[0].options[0].value}
+      />,
+    );
+
+    const trigger = screen.getByRole("combobox") as HTMLButtonElement;
+    expect(trigger).toHaveTextContent("The thing is Earth");
+  });
+
+  it("renders with multiple groups", () => {
+    const optionGroups = [
+      ...OPTION_GROUPS,
+      {
+        label: "Colors",
+        options: [
+          {
+            icon: "🔴",
+            value: "red",
+            label: "Red",
+          },
+          {
+            icon: "🟡",
+            value: "yellow",
+            label: "Yellow",
+          },
+          {
+            icon: "🟢",
+            value: "green",
+            label: "Green",
+          },
+          {
+            icon: "🔵",
+            value: "blue",
+            label: "Blue",
+          },
+        ],
+      },
+    ];
+    render(<SelectPickerField name="some_input" onChange={onSelect} options={optionGroups} />);
+
+    const trigger = screen.getByRole("combobox") as HTMLButtonElement;
+    expect(trigger).toHaveTextContent("Select an option");
+    fireEvent.click(trigger);
+
+    const optionContainer = screen.getByRole("listbox");
+    const options = within(optionContainer).getAllByRole("option");
+    expect(options).toHaveLength(optionGroups[0].options.length + optionGroups[1].options.length);
+
+    expect(optionContainer).toHaveTextContent("Elements");
+    expect(options[0]).toHaveTextContent("Earth");
+    expect(options[1]).toHaveTextContent("Wind");
+    expect(options[2]).toHaveTextContent("Fire");
+    expect(options[3]).toHaveTextContent("Water");
+
+    expect(optionContainer).toHaveTextContent("Colors");
+    expect(options[4]).toHaveTextContent("Red");
+    expect(options[5]).toHaveTextContent("Yellow");
+    expect(options[6]).toHaveTextContent("Green");
+    expect(options[7]).toHaveTextContent("Blue");
+  });
+});

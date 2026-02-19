@@ -1,9 +1,9 @@
+import { INTERSTITIAL_DECORATOR } from "@stories/support/decorators";
 import type { Meta, StoryObj } from "@storybook/react-vite";
 import { PiggyBank } from "lucide-react";
 import { Loader, type LoaderProps } from "@/components";
 import { Flex, Grid } from "@/layout";
 import { Text } from "@/typography";
-import { INTERSTITIAL_DECORATOR } from "../support/decorators";
 
 const meta: Meta<typeof Loader> = {
   title: "Components/Loader",
