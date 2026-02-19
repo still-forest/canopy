@@ -1,7 +1,6 @@
+import { DEFAULT_DECORATOR_WITH_MIN_WIDTH_MD } from "@stories/support/decorators";
 import type { Meta, StoryObj } from "@storybook/react-vite";
-
 import { RadioField } from "@/forms";
-import { DEFAULT_DECORATOR_WITH_MIN_WIDTH_MD } from "../../support/decorators";
 
 const meta: Meta<typeof RadioField> = {
   title: "Forms/Fields/RadioField",

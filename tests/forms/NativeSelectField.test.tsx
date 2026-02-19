@@ -1,9 +1,9 @@
 import { render, screen, within } from "@testing-library/react";
 import userEvent from "@testing-library/user-event";
 import { describe, expect, it, vi } from "vitest";
-import { SelectInput } from "@/forms";
+import { NativeSelectField } from "@/forms";
 
-describe("SelectInput", () => {
+describe("NativeSelectField", () => {
   const OPTIONS = [
     {
       value: "earth",
@@ -31,7 +31,7 @@ describe("SelectInput", () => {
   it("renders with default props", async () => {
     const user = userEvent.setup();
 
-    render(<SelectInput name="some_input" onChange={onSelect} options={OPTIONS} />);
+    render(<NativeSelectField name="some_input" onChange={onSelect} options={OPTIONS} />);
 
     const select = screen.getByRole("combobox") as HTMLSelectElement;
     expect(select.tagName).toBe("SELECT");
@@ -53,14 +53,14 @@ describe("SelectInput", () => {
   });
 
   it("renders with a selected value", () => {
-    render(<SelectInput name="some_input" onChange={onSelect} options={OPTIONS} value={OPTIONS[0].value} />);
+    render(<NativeSelectField name="some_input" onChange={onSelect} options={OPTIONS} value={OPTIONS[0].value} />);
 
     const trigger = screen.getByRole("combobox") as HTMLSelectElement;
     expect(trigger).toHaveTextContent("Earth");
   });
 
   it("renders with a label", () => {
-    render(<SelectInput label="Some label" name="some_input" onChange={onSelect} options={OPTIONS} />);
+    render(<NativeSelectField label="Some label" name="some_input" onChange={onSelect} options={OPTIONS} />);
 
     const label = screen.getByText("Some label") as HTMLLabelElement;
     expect(label.tagName).toBe("LABEL");
@@ -68,14 +68,16 @@ describe("SelectInput", () => {
   });
 
   it("renders with a placeholder", () => {
-    render(<SelectInput name="some_input" onChange={onSelect} options={OPTIONS} placeholder="Some placeholder" />);
+    render(
+      <NativeSelectField name="some_input" onChange={onSelect} options={OPTIONS} placeholder="Some placeholder" />,
+    );
 
     const trigger = screen.getByRole("combobox") as HTMLSelectElement;
     expect(trigger).toHaveTextContent("Some placeholder");
   });
 
   it("renders with a note", () => {
-    render(<SelectInput name="some_input" note="Some note" onChange={onSelect} options={OPTIONS} />);
+    render(<NativeSelectField name="some_input" note="Some note" onChange={onSelect} options={OPTIONS} />);
 
     const note = screen.getByText("Some note") as HTMLParagraphElement;
     expect(note.tagName).toBe("P");
@@ -83,7 +85,7 @@ describe("SelectInput", () => {
   });
 
   it("renders with an error message", () => {
-    render(<SelectInput error="What'd you do?" name="some_input" onChange={onSelect} options={OPTIONS} />);
+    render(<NativeSelectField error="What'd you do?" name="some_input" onChange={onSelect} options={OPTIONS} />);
 
     const error = screen.getByText("What'd you do?");
     expect(error.tagName).toBe("P");
@@ -91,7 +93,7 @@ describe("SelectInput", () => {
   });
 
   it("combines custom className with generated classes", () => {
-    render(<SelectInput className="custom-class" name="some_input" onChange={onSelect} options={OPTIONS} />);
+    render(<NativeSelectField className="custom-class" name="some_input" onChange={onSelect} options={OPTIONS} />);
 
     const trigger = screen.getByRole("combobox") as HTMLSelectElement;
     expect(trigger.className).toBe(`${EXPECTED_BASE_TRIGGER_CLASSES} custom-class`);
@@ -100,7 +102,7 @@ describe("SelectInput", () => {
   it("allows selecting an option", async () => {
     const user = userEvent.setup();
 
-    render(<SelectInput name="some_input" onChange={onSelect} options={OPTIONS} value="__none__" />);
+    render(<NativeSelectField name="some_input" onChange={onSelect} options={OPTIONS} value="__none__" />);
 
     const select = screen.getByRole("combobox") as HTMLSelectElement;
     expect(select.value).toBe("");
@@ -148,7 +150,7 @@ describe("SelectInput", () => {
         ],
       },
     ];
-    render(<SelectInput name="some_input" onChange={onSelect} options={optionGroups} />);
+    render(<NativeSelectField name="some_input" onChange={onSelect} options={optionGroups} />);
 
     const select = screen.getByRole("combobox") as HTMLSelectElement;
     expect(select.value).toBe("");

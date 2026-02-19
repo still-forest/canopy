@@ -6,21 +6,21 @@ import { Flex } from "@/layout";
 import { Text } from "@/typography";
 import { cn } from "@/utils";
 
-export interface SelectInputOptionGroup {
+export interface NativeSelectFieldOptionGroup {
   label: string;
-  options: SelectInputOption[];
+  options: NativeSelectFieldOption[];
 }
 
-export interface SelectInputOption {
+export interface NativeSelectFieldOption {
   value: string;
   label: string;
 }
 
-export interface SelectInputProps extends Omit<ComponentProps<"select">, "dir" | "size" | "onChange"> {
+export interface NativeSelectFieldProps extends Omit<ComponentProps<"select">, "dir" | "size" | "onChange"> {
   name: string;
   value?: string;
   onChange: (value: string) => void;
-  options: SelectInputOption[] | SelectInputOptionGroup[];
+  options: NativeSelectFieldOption[] | NativeSelectFieldOptionGroup[];
   label?: string;
   labelClassName?: string;
   placeholder?: string;
@@ -31,7 +31,7 @@ export interface SelectInputProps extends Omit<ComponentProps<"select">, "dir" |
   size?: "xs" | "sm" | "md" | "lg" | "xl";
 }
 
-const SelectInput = ({
+const NativeSelectField = ({
   name,
   defaultValue,
   options,
@@ -47,7 +47,7 @@ const SelectInput = ({
   size = "md",
   id: idProp,
   ...props
-}: SelectInputProps) => {
+}: NativeSelectFieldProps) => {
   const id = idProp ?? name;
 
   const triggerClasses = cn(
@@ -89,13 +89,13 @@ const SelectInput = ({
       >
         <NativeSelectOption value="">{placeholder}</NativeSelectOption>
         {!isOptionGroup &&
-          (options as unknown as SelectInputOption[]).map(({ value, label }) => (
+          (options as unknown as NativeSelectFieldOption[]).map(({ value, label }) => (
             <NativeSelectOption key={`option-${value}`} value={value}>
               {label}
             </NativeSelectOption>
           ))}
         {isOptionGroup &&
-          (options as unknown as SelectInputOptionGroup[]).map(({ label, options: optionGroups }) => (
+          (options as unknown as NativeSelectFieldOptionGroup[]).map(({ label, options: optionGroups }) => (
             <NativeSelectOptGroup key={`option-group-${label}`} label={label}>
               {optionGroups.map(({ value, label }) => (
                 <NativeSelectOption key={`option-${value}`} value={value}>
@@ -115,4 +115,4 @@ const SelectInput = ({
   );
 };
 
-export { SelectInput };
+export { NativeSelectField };

@@ -1,15 +1,15 @@
+import { DEFAULT_DECORATOR_WITH_WIDTH_MD } from "@stories/support/decorators";
 import type { Meta, StoryObj } from "@storybook/react-vite";
 import { useState } from "react";
-import { Button, SelectInput } from "@/forms";
+import { Button, NativeSelectField } from "@/forms";
 import { Flex } from "@/layout";
-import { DEFAULT_DECORATOR_WITH_WIDTH_MD } from "../../support/decorators";
 
-const meta: Meta<typeof SelectInput> = {
-  title: "Forms/Fields/SelectInput",
-  component: SelectInput,
+const meta: Meta<typeof NativeSelectField> = {
+  title: "Forms/Fields/NativeSelectField",
+  component: NativeSelectField,
   decorators: [DEFAULT_DECORATOR_WITH_WIDTH_MD],
   tags: ["autodocs"],
-} satisfies Meta<typeof SelectInput>;
+} satisfies Meta<typeof NativeSelectField>;
 
 export default meta;
 
@@ -89,11 +89,11 @@ export const WithError: Story = {
 export const WithSize: Story = {
   render: () => (
     <Flex direction="col" gap="4">
-      <SelectInput {...defaultProps} placeholder="This input is extra small" size="xs" />
-      <SelectInput {...defaultProps} placeholder="This input is small" size="sm" />
-      <SelectInput {...defaultProps} placeholder="This input is medium (default)" size="md" />
-      <SelectInput {...defaultProps} placeholder="This input is large" size="lg" />
-      <SelectInput {...defaultProps} placeholder="This input is extra large" size="xl" />
+      <NativeSelectField {...defaultProps} placeholder="This input is extra small" size="xs" />
+      <NativeSelectField {...defaultProps} placeholder="This input is small" size="sm" />
+      <NativeSelectField {...defaultProps} placeholder="This input is medium (default)" size="md" />
+      <NativeSelectField {...defaultProps} placeholder="This input is large" size="lg" />
+      <NativeSelectField {...defaultProps} placeholder="This input is extra large" size="xl" />
     </Flex>
   ),
 };
@@ -191,7 +191,7 @@ const ControlledInput = () => {
   return (
     <Flex align="center" direction="col" gap="4">
       <Flex.Item>
-        <SelectInput {...defaultProps} onChange={setValue} value={value} />
+        <NativeSelectField {...defaultProps} onChange={setValue} value={value} />
       </Flex.Item>
       <Flex direction="row" gap="4">
         <Button onClick={() => setValue("bart")}>Set to Bart</Button>

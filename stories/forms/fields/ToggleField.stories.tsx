@@ -1,8 +1,7 @@
+import { DEFAULT_DECORATOR_WITH_MIN_WIDTH_MD } from "@stories/support/decorators";
 import type { Meta, StoryObj } from "@storybook/react-vite";
-
 import { ToggleField } from "@/forms";
 import { Flex } from "@/layout";
-import { DEFAULT_DECORATOR_WITH_MIN_WIDTH_MD } from "../../support/decorators";
 
 const meta: Meta<typeof ToggleField> = {
   title: "Forms/Fields/ToggleField",

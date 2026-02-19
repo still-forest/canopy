@@ -8,10 +8,10 @@ import {
   CheckboxField,
   DateField,
   DatePickerField,
+  NativeSelectField,
   NumberField,
   PasswordField,
   RadioField,
-  SelectInput,
   SliderField,
   SubmitButton,
   TextareaField,
@@ -111,7 +111,7 @@ const CompleteFormExample = () => {
         <Flex direction="col" gap="4">
           <Heading level="3">Location & Preferences</Heading>
 
-          <SelectInput
+          <NativeSelectField
             label="Country"
             name="country"
             onChange={handleInputChange("country")}
