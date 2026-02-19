@@ -52,7 +52,7 @@ pnpm release:dry-run    # Test release process without publishing
   - `forms/`: Form-related components (Button, Input, DatePicker, Select, etc.)
   - `layout/`: Layout components (Box, Container, Flex, Grid, Header, Footer)
   - `navigation/`: Navigation components (Sidebar)
-  - `interstitials/`: Loading and error states (PageLoader, ErrorFallback, Interstitial)
+  - `interstitials/`: Loading and error states (PageLoader, Interstitial)
   - `typography/`: Text components (Heading, Text, Code)
   - `types/`: TypeScript type definitions
   - `utils/`: Utility functions (cn for className merging)
