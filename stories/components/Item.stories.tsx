@@ -1,7 +1,7 @@
 import type { Meta, StoryObj } from "@storybook/react-vite";
 import { Home } from "lucide-react";
 import { Item, ItemGroup } from "@/components";
-import { Button } from "@/forms/Button";
+import { Button } from "@/forms/buttons/Button";
 import { DEFAULT_DECORATOR_WITH_MIN_WIDTH_MD } from "../support/decorators";
 
 const meta: Meta<typeof Item> = {

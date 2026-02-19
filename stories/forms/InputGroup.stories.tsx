@@ -23,7 +23,7 @@ import { Flex } from "@/layout";
 import { DEFAULT_DECORATOR_WITH_MIN_WIDTH_MD } from "../support/decorators";
 
 const meta: Meta<typeof InputGroup> = {
-  title: "Forms/Inputs/InputGroup",
+  title: "Forms/InputGroup",
   component: InputGroup,
   decorators: [DEFAULT_DECORATOR_WITH_MIN_WIDTH_MD],
   tags: ["autodocs"],
