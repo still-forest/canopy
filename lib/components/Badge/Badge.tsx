@@ -27,7 +27,7 @@ export const Badge = ({
   ...props
 }: BadgeProps) => {
   if (!(label || children) || (label && children)) {
-    throw new Error("Either label or children must be provided, but not both");
+    throw new Error("Badge must have either a label or children, but not both");
   }
 
   const Component = as === "button" ? "button" : "div";

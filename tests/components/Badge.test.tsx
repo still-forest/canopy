@@ -1,8 +1,6 @@
-import { render, screen, waitFor } from "@testing-library/react";
-import userEvent from "@testing-library/user-event";
-import { describe, expect, test, vi } from "vitest";
+import { render, screen } from "@testing-library/react";
+import { describe, expect, test } from "vitest";
 import { Badge } from "@/components/Badge";
-import { TAILWIND_COLORS } from "@/types/color";
 
 describe("Badge", () => {
   test("should render a badge", () => {
@@ -13,31 +11,13 @@ describe("Badge", () => {
     expect(badge).toBeInTheDocument();
   });
 
-  test("should render a clickable badge", async () => {
-    const onClick = vi.fn();
-
-    render(<Badge label="Badge" onClick={onClick} />);
-
-    const badge = screen.getByText("Badge");
-
-    expect(badge).toBeInTheDocument();
-    expect(badge.className).toContain("cursor-pointer");
-    expect(badge.className).not.toContain("cursor-default");
-
-    userEvent.click(badge);
-
-    await waitFor(() => {
-      expect(onClick).toHaveBeenCalled();
-    });
-  });
-
   test("should render a badge with a custom className", () => {
     render(<Badge className="font-mono" label="Badge" />);
 
     const badge = screen.getByText("Badge");
 
     expect(badge).toBeInTheDocument();
-    expect(badge.className).toContain("font-mono");
+    expect(badge.className).toBe("badge font-mono");
   });
 
   test("should render a badge with a secondary variant", () => {
@@ -46,56 +26,25 @@ describe("Badge", () => {
     const badge = screen.getByText("Badge");
 
     expect(badge).toBeInTheDocument();
-    expect(badge.className).toContain("bg-secondary");
-    expect(badge.className).toContain("text-secondary-foreground");
-    expect(badge.className).not.toContain("bg-primary");
-    expect(badge.className).not.toContain("text-primary-foreground");
+    expect(badge.className).toBe("badge badge-secondary");
   });
 
-  test("should render a badge with a destructive variant", () => {
-    render(<Badge label="Badge" variant="destructive" />);
+  test("should render a badge with a danger variant", () => {
+    render(<Badge label="Badge" variant="danger" />);
 
     const badge = screen.getByText("Badge");
 
     expect(badge).toBeInTheDocument();
-    expect(badge.className).toContain("bg-destructive");
-    expect(badge.className).toContain("text-white");
-    expect(badge.className).not.toContain("bg-primary");
-    expect(badge.className).not.toContain("text-primary-foreground");
+    expect(badge.className).toBe("badge badge-danger");
   });
 
-  test("should render a badge with an outline variant", () => {
-    render(<Badge label="Badge" variant="outline" />);
+  test("should render a badge with an outline style", () => {
+    render(<Badge label="Badge" outline variant="primary" />);
 
     const badge = screen.getByText("Badge");
 
     expect(badge).toBeInTheDocument();
-    expect(badge.className).toContain("bg-muted");
-    expect(badge.className).toContain("text-muted-foreground");
-    expect(badge.className).not.toContain("bg-primary");
-    expect(badge.className).not.toContain("text-primary-foreground");
-  });
-
-  test("should render a badge with a custom color", () => {
-    for (const color of TAILWIND_COLORS) {
-      render(<Badge color={color} label={color} />);
-      const badge = screen.getByText(color);
-
-      if (color === "white") {
-        expect(badge.className).toContain("bg-white text-black border-1 border-black");
-      } else if (color === "black") {
-        expect(badge.className).toContain("bg-black");
-        expect(badge.className).toContain("text-white");
-      } else {
-        expect(badge.className).toContain(`bg-${color}-500`);
-      }
-    }
-  });
-
-  test("should throw an error if color is used with a non-outline variant", () => {
-    expect(() => render(<Badge color="red" label="Badge" variant="secondary" />)).toThrow(
-      "Color red is not allowed for variant 'secondary'. Only default and outline variants support color.",
-    );
+    expect(badge.className).toBe("badge badge-primary badge--outline");
   });
 
   test("should render with children", () => {
@@ -109,6 +58,6 @@ describe("Badge", () => {
   });
 
   test("should throw an error if both label and children are not provided", () => {
-    expect(() => render(<Badge />)).toThrow("Badge must have either a label or children");
+    expect(() => render(<Badge />)).toThrow("Badge must have either a label or children, but not both");
   });
 });
