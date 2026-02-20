@@ -4,7 +4,7 @@ import { Button as BaseButton } from "@/components/ui/button";
 import { Flex } from "@/layout";
 import { cn } from "@/utils";
 
-export type ButtonVariant =
+type ButtonVariant =
   | "default"
   | "primary"
   | "secondary"

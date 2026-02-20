@@ -20,8 +20,8 @@
   --success-foreground: oklch(0.96 0.04 157); /* green-100 */
   --warning: oklch(0.7 0.19 48); /* orange-500 */
   --warning-foreground: oklch(0.95 0.04 75); /* orange-100 */
-  --destructive: oklch(0.58 0.22 27); /* red-600 */
-  --destructive-foreground: oklch(0.94 0.03 18); /* red-100 */
+  --danger: oklch(0.58 0.22 27); /* red-600 */
+  --danger-foreground: oklch(0.94 0.03 18); /* red-100 */
 
   --card: var(--color-neutral-100);
   --card-foreground: oklch(0.145 0 0);
@@ -67,8 +67,8 @@
   --success-foreground: oklch(0.96 0.04 157); /* green-100 */
   --warning: oklch(0.76 0.16 56); /* orange-400 */
   --warning-foreground: oklch(0.95 0.04 75); /* orange-100 */
-  --destructive: oklch(0.71 0.17 22); /* red-400 */
-  --destructive-foreground: oklch(0.94 0.03 18); /* red-100 */
+  --danger: oklch(0.71 0.17 22); /* red-400 */
+  --danger-foreground: oklch(0.94 0.03 18); /* red-100 */
 
   --card: oklch(0.145 0 0);
   --card-foreground: oklch(0.985 0 0);
@@ -121,6 +121,8 @@
   --color-success-foreground: var(--success-foreground);
   --color-warning: var(--warning);
   --color-warning-foreground: var(--warning-foreground);
+  --color-danger: var(--danger);
+  --color-danger-foreground: var(--danger-foreground);
   --color-destructive: var(--destructive);
   --color-destructive-foreground: var(--destructive-foreground);
 

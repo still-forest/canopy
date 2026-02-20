@@ -1,0 +1,125 @@
+@reference "tailwindcss";
+@reference "../../../src/style/index.css";
+
+@layer components {
+  .badge {
+    @apply inline-flex items-center justify-center rounded-full font-medium gap-1;
+    @apply w-fit h-fit whitespace-nowrap overflow-hidden truncate cursor-default select-none;
+    @apply border;
+
+    & > svg {
+      @apply size-3 pointer-events-none;
+    }
+
+    /* small, primary by default */
+    @apply bg-primary text-primary-foreground;
+    @apply text-xs;
+    @apply px-2.5 py-0.5;
+
+    /* base variants */
+    &.badge-primary {
+      @apply bg-primary text-primary-foreground;
+      @apply border-primary;
+
+      &.badge--outline {
+        @apply bg-background border-primary/50 text-primary;
+      }
+    }
+
+    &.badge-secondary {
+      @apply bg-secondary text-secondary-foreground;
+      @apply border-secondary;
+
+      &.badge--outline {
+        @apply bg-background border-secondary-foreground/20 text-secondary-foreground/80;
+      }
+    }
+
+    &.badge-muted {
+      @apply bg-muted text-muted-foreground;
+      @apply border-muted;
+
+      &.badge--outline {
+        @apply bg-background border-muted-foreground/50 text-muted-foreground;
+      }
+    }
+
+    /* action & alert variants */
+    &.badge-info {
+      @apply bg-info text-info-foreground;
+      @apply border-info;
+
+      &.badge--outline {
+        @apply bg-background border-info/50 text-info;
+      }
+    }
+
+    &.badge-success {
+      @apply bg-success text-success-foreground;
+      @apply border-success;
+
+      &.badge--outline {
+        @apply bg-background border-success/50 text-success;
+      }
+    }
+
+    &.badge-danger {
+      @apply bg-danger text-danger-foreground;
+      @apply border-danger;
+
+      &.badge--outline {
+        @apply bg-background border-danger/50 text-danger;
+      }
+    }
+
+    &.badge-warning {
+      @apply bg-warning text-warning-foreground;
+      @apply border-warning;
+
+      &.badge--outline {
+        @apply bg-background border-warning/50 text-warning;
+      }
+    }
+
+    /* other variants */
+    &.badge-ghost {
+      @apply bg-background text-foreground;
+      @apply border-border;
+
+      &.badge--outline {
+        @apply bg-background text-foreground;
+      }
+    }
+
+    /* outline (standalone) */
+    &.badge--outline {
+      @apply bg-background border-border text-primary;
+    }
+
+    /* sizes */
+    &.badge--xs {
+      @apply text-xs;
+      @apply px-2 py-0.25;
+    }
+
+    &.badge--sm {
+      @apply text-xs;
+      @apply px-2.5 py-0.5;
+    }
+
+    &.badge--md {
+      @apply text-sm;
+      @apply px-3 py-1;
+    }
+
+    &.badge--lg {
+      @apply text-base;
+      @apply px-4 py-1.5;
+    }
+
+    &.badge--xl {
+      @apply text-lg;
+      @apply px-5 py-2;
+    }
+  }
+}

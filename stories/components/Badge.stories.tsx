@@ -1,150 +1,125 @@
 import type { Meta, StoryObj } from "@storybook/react-vite";
 import { OrigamiIcon } from "lucide-react";
 import { Badge } from "@/components";
-import { Flex, Grid } from "@/layout";
-import { TAILWIND_COLORS } from "@/types/color";
-import type { BadgeVariant } from "@/types/variants";
-import { Text } from "@/typography";
-import { asOptionalValue, summarizeValues } from "../utils";
 
 const meta: Meta<typeof Badge> = {
   title: "Components/Badge",
   component: Badge,
   tags: ["autodocs"],
-  argTypes: {
-    color: {
-      control: "select",
-      options: asOptionalValue(TAILWIND_COLORS),
-      description: "Controls background color",
-      table: {
-        type: { summary: summarizeValues(TAILWIND_COLORS, true) },
-      },
-    },
-  },
+  decorators: [
+    (Story) => (
+      <div className="min-w-48">
+        <Story />
+      </div>
+    ),
+  ],
 } satisfies Meta<typeof Badge>;
 
 export default meta;
 
 type Story = StoryObj<typeof meta>;
 
-const defaultArgs = {
-  label: "Tagged",
-  onClick: undefined,
+const defaultProps = {
+  children: "Thing",
 };
 
 export const Default: Story = {
-  args: defaultArgs,
-};
-
-export const Variants: Story = {
-  render: () => {
-    const variants: { label: string; variant: BadgeVariant }[] = [
-      { label: "Default", variant: "default" },
-      { label: "Secondary", variant: "secondary" },
-      { label: "Destructive", variant: "destructive" },
-      { label: "Outline", variant: "outline" },
-      { label: "Info", variant: "info" },
-      { label: "Success", variant: "success" },
-      { label: "Warning", variant: "warning" },
-      { label: "Error", variant: "error" },
-    ];
-
-    return (
-      <Grid cols="4" gap="2">
-        {variants.map(({ label, variant }) => (
-          <Flex justify="center" key={variant}>
-            <Badge label={label} variant={variant} />
-          </Flex>
-        ))}
-      </Grid>
-    );
+  args: {
+    ...defaultProps,
   },
 };
 
-export const Clickable: Story = {
+const SampleIcon = () => <OrigamiIcon />;
+
+export const Variants: Story = {
   render: () => (
-    <Flex gap="2">
-      <Badge label="Default" onClick={() => alert("Default")} />
-      <Badge label="Secondary" onClick={() => alert("Secondary")} variant="secondary" />
-      <Badge label="Destructive" onClick={() => alert("Destructive")} variant="destructive" />
-      <Badge label="Outline" onClick={() => alert("Outline")} variant="outline" />
-    </Flex>
+    <div className="grid grid-cols-5 gap-4">
+      <Badge label="Default" />
+      <Badge className="col-start-1" label="Primary" variant="primary" />
+      <Badge label="Secondary" variant="secondary" />
+      <Badge label="Muted" variant="muted" />
+      <Badge label="Ghost" variant="ghost" />
+      <Badge label="Link" variant="link" />
+      <Badge label="Info" variant="info" />
+      <Badge label="Success" variant="success" />
+      <Badge label="Warning" variant="warning" />
+      <Badge label="Danger" variant="danger" />
+    </div>
   ),
 };
 
-export const CustomClassName: Story = {
+export const OutlineVariants: Story = {
   render: () => (
-    <Flex gap="2">
-      <Badge className="font-mono font-thin text-xl uppercase" label="Default" />
-      <Badge className="font-mono font-thin text-xl uppercase" label="Secondary" variant="secondary" />
-      <Badge className="font-mono font-thin text-xl uppercase" label="Destructive" variant="destructive" />
-      <Badge className="font-mono font-thin text-xl uppercase" label="Outline" variant="outline" />
-    </Flex>
+    <div className="grid grid-cols-5 gap-4">
+      <Badge label="Default" outline />
+      <Badge className="col-start-1" label="Primary" outline variant="primary" />
+      <Badge label="Secondary" outline variant="secondary" />
+      <Badge label="Muted" outline variant="muted" />
+      <Badge label="Ghost" outline variant="ghost" />
+      <Badge label="Link" outline variant="link" />
+      <Badge label="Info" outline variant="info" />
+      <Badge label="Success" outline variant="success" />
+      <Badge label="Warning" outline variant="warning" />
+      <Badge label="Danger" outline variant="danger" />
+    </div>
   ),
 };
 
-export const CustomSolidColor: Story = {
+export const Sizes: Story = {
   render: () => (
-    <Grid cols="4" gap="2">
-      {TAILWIND_COLORS.map((color) => (
-        <Flex justify="center" key={color}>
-          <Badge color={color} label={color} />
-        </Flex>
-      ))}
-    </Grid>
+    <div className="grid grid-cols-5 gap-4">
+      <Badge label="Extra small" size="xs" />
+      <Badge label="Small" size="sm" />
+      <Badge label="Medium" size="md" />
+      <Badge label="Large" size="lg" />
+      <Badge label="Extra large" size="xl" />
+    </div>
   ),
 };
 
-export const CustomOutlineColor: Story = {
+export const WithIcon: Story = {
   render: () => (
-    <Grid cols="4" gap="2">
-      {TAILWIND_COLORS.map((color) => (
-        <Flex justify="center" key={color}>
-          <Badge color={color} label={color} variant="outline" />
-        </Flex>
-      ))}
-    </Grid>
-  ),
-};
-
-export const WithChildren: Story = {
-  render: () => (
-    <Flex gap="2">
-      <Badge>Just text</Badge>
+    <div className="grid grid-cols-5 gap-4">
       <Badge>
-        <Text className="text-red-300" weight="bold">
-          Formatted text
-        </Text>
+        <SampleIcon />
+        Default
       </Badge>
-      <Badge>
-        <OrigamiIcon />
-        <span>with icon</span>
+      <Badge className="col-start-1" variant="primary">
+        <SampleIcon />
+        Primary
       </Badge>
-      <Badge>
-        <OrigamiIcon />
+      <Badge variant="secondary">
+        <SampleIcon />
+        Secondary
       </Badge>
-    </Flex>
-  ),
-};
-
-export const WithRender: Story = {
-  render: () => (
-    <Flex gap="2">
-      <Badge>Default</Badge>
-      <Badge
-        render={(props) => (
-          <button type="button" {...props}>
-            As a button
-          </button>
-        )}
-      />
-      <Badge
-        render={(props) => (
-          <Flex {...props}>
-            <OrigamiIcon size={16} /> <Text className="text-primary-foreground">As Flex with an icon and text</Text>
-          </Flex>
-        )}
-      />
-    </Flex>
+      <Badge variant="muted">
+        <SampleIcon />
+        Muted
+      </Badge>
+      <Badge variant="ghost">
+        <SampleIcon />
+        Ghost
+      </Badge>
+      <Badge variant="link">
+        <SampleIcon />
+        Link
+      </Badge>
+      <Badge variant="info">
+        <SampleIcon />
+        Info
+      </Badge>
+      <Badge variant="success">
+        <SampleIcon />
+        Success
+      </Badge>
+      <Badge variant="warning">
+        <SampleIcon />
+        Warning
+      </Badge>
+      <Badge variant="danger">
+        <SampleIcon />
+        Danger
+      </Badge>
+    </div>
   ),
 };
