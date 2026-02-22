@@ -11,14 +11,7 @@ export const DeleteButton = ({ icon, disabled = false, handleDelete, ...rest }: 
   const IconComponent = icon ? () => icon : Trash2;
 
   return (
-    <Button
-      disabled={disabled}
-      icon={<IconComponent />}
-      onClick={handleDelete}
-      outline
-      {...rest}
-      className="border-danger text-danger hover:bg-danger hover:text-white"
-    >
+    <Button disabled={disabled} icon={<IconComponent />} onClick={handleDelete} outline variant="danger" {...rest}>
       Delete
     </Button>
   );

@@ -21,7 +21,7 @@
       @apply border-ring ring-ring/50 ring-[3px];
     }
 
-    &:aria-invalid {
+    &[aria-invalid="true"] {
       @apply border-danger ring-danger/20 dark:ring-danger/40;
     }
 
@@ -32,7 +32,7 @@
     & > svg {
       @apply pointer-events-none shrink-0;
 
-      &:not([class*='size-']) {
+      &:not([class*="size-"]) {
         @apply size-4;
       }
     }
@@ -128,6 +128,7 @@
 
     &.btn--outline {
       @apply bg-background border-primary/30 text-primary;
+
       &:hover,
       &[aria-pressed="true"] {
         @apply bg-primary/10 dark:bg-primary/20;
@@ -200,11 +201,11 @@
     }
 
     &.btn--outline {
-      @apply bg-background border-info/30 text-info;
+      @apply bg-background border-info/80 text-info;
 
       &:hover,
       &[aria-pressed="true"] {
-        @apply bg-info/10 dark:bg-info/20;
+        @apply bg-info/10 dark:bg-info/20 text-info;
       }
     }
   }
@@ -222,11 +223,11 @@
     }
 
     &.btn--outline {
-      @apply bg-background border-success/30 text-success;
+      @apply bg-background border-success/80 text-success;
 
       &:hover,
       &[aria-pressed="true"] {
-        @apply bg-success/10 dark:bg-success/20;
+        @apply bg-success/10 dark:bg-success/20 text-success;
       }
     }
   }
@@ -244,10 +245,11 @@
     }
 
     &.btn--outline {
-      @apply bg-background border-warning/30 text-warning;
+      @apply bg-background border-warning/80 text-warning;
+
       &:hover,
       &[aria-pressed="true"] {
-        @apply bg-warning/10 dark:bg-warning/20;
+        @apply bg-warning/10 dark:bg-warning/20 text-warning;
       }
     }
   }
@@ -265,11 +267,11 @@
     }
 
     &.btn--outline {
-      @apply bg-background border-danger/30 text-danger;
+      @apply bg-background border-danger/80 text-danger;
 
       &:hover,
       &[aria-pressed="true"] {
-        @apply bg-danger/10 dark:bg-danger/20;
+        @apply bg-danger/10 dark:bg-danger/20 text-danger;
       }
     }
   }
