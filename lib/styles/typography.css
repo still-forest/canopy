@@ -1,14 +1,14 @@
 @theme inline {
   --font-sans: Inter, Roboto, "Helvetica Neue", "Arial Nova", "Nimbus Sans", Arial, sans-serif;
-  --font-family: "Iowan Old Style", "Palatino Linotype", "URW Palladio L", P052, serif;
+  --font-serif: "EB Garamond", "Iowan Old Style", "Palatino Linotype", "URW Palladio L", P052, serif;
   --font-mono: ui-monospace, "Cascadia Code", "Source Code Pro", Menlo, Consolas, "DejaVu Sans Mono", monospace;
 
   --font-brand: var(--font-serif);
   --font-heading: var(--font-serif);
   --font-body: var(--font-sans);
 
-  --font-brand-weight: 400;
-  --font-heading-weight: 400;
+  --font-brand-weight: 500;
+  --font-heading-weight: 500;
   --font-body-weight: 400;
   --font-mono-weight: 400;
 }
@@ -36,19 +36,19 @@
 @layer base {
   h1,
   .heading-1 {
-    @apply font-heading font-normal;
+    @apply font-heading;
     @apply text-5xl tracking-tight;
   }
 
   h2,
   .heading-2 {
-    @apply font-heading font-normal;
+    @apply font-heading;
     @apply text-4xl tracking-normal;
   }
 
   h3,
   .heading-3 {
-    @apply font-heading font-normal;
+    @apply font-heading;
     @apply text-3xl tracking-normal;
   }
 

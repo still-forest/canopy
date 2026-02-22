@@ -141,11 +141,7 @@ type Story = StoryObj<typeof meta>;
 export const BrandFont: Story = {
   render: () => (
     <div className="p-8">
-      <FontSection
-        fontClass="font-brand"
-        fontVar="--font-brand: var(--font-serif) / Cardo"
-        title="Brand Font (Serif)"
-      />
+      <FontSection fontClass="font-brand" fontVar="--font-brand: var(--font-serif)" title="Brand Font (Serif)" />
     </div>
   ),
 };
@@ -153,11 +149,7 @@ export const BrandFont: Story = {
 export const HeadingFont: Story = {
   render: () => (
     <div className="p-8">
-      <FontSection
-        fontClass="font-heading"
-        fontVar="--font-heading: var(--font-serif) / Cormorant Garamond"
-        title="Heading Font (Serif)"
-      />
+      <FontSection fontClass="font-heading" fontVar="--font-heading: var(--font-serif)" title="Heading Font (Serif)" />
     </div>
   ),
 };
@@ -165,11 +157,7 @@ export const HeadingFont: Story = {
 export const BodyFont: Story = {
   render: () => (
     <div className="p-8">
-      <FontSection
-        fontClass="font-body"
-        fontVar="--font-body: var(--font-sans) / Libre Franklin"
-        title="Body Font (Sans)"
-      />
+      <FontSection fontClass="font-body" fontVar="--font-body: var(--font-sans)" title="Body Font (Sans)" />
     </div>
   ),
 };
@@ -177,7 +165,7 @@ export const BodyFont: Story = {
 export const MonoFont: Story = {
   render: () => (
     <div className="p-8">
-      <FontSection fontClass="font-mono" fontVar="--font-mono / Nimbus Mono PS" title="Mono Font" />
+      <FontSection fontClass="font-mono" fontVar="--font-mono" title="Mono Font" />
     </div>
   ),
 };

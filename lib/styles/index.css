@@ -10,7 +10,7 @@
   }
 
   body {
-    @apply bg-background text-foreground antialiased font-body font-body-weight;
+    @apply bg-background text-foreground antialiased font-body;
   }
 
   button:not([disabled]),
