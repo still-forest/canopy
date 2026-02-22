@@ -19,6 +19,7 @@ export const PasswordField = ({
   labelOrientation = "top",
   note,
   error,
+  id,
   ...props
 }: PasswordFieldProps) => {
   const [showPassword, setShowPassword] = useState(false);
@@ -30,12 +31,12 @@ export const PasswordField = ({
   return (
     <Flex className="w-full" direction={labelOrientation === "left" ? "row" : "col"} gap="2">
       {label && (
-        <Label className={labelOrientation === "left" ? "text-nowrap" : ""} htmlFor={name} size={size}>
+        <Label className={labelOrientation === "left" ? "text-nowrap" : ""} htmlFor={id || name} size={size}>
           {label}
         </Label>
       )}
       <InputGroup>
-        <InputGroup.Input type={showPassword ? "text" : "password"} {...props} name={name} />
+        <InputGroup.Input type={showPassword ? "text" : "password"} {...props} id={id || name} name={name} />
         <InputGroup.Addon right>
           <InputGroup.Button
             aria-label={showPassword ? "Hide password" : "Show password"}
