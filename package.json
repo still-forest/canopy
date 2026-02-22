@@ -7,6 +7,14 @@
   "main": "./dist/index.js",
   "module": "./dist/index.js",
   "types": "./dist/index.d.ts",
+  "exports": {
+    ".": {
+      "import": "./dist/index.js",
+      "types": "./dist/index.d.ts"
+    },
+    "./styles": "./dist/styles/index.css",
+    "./styles/*": "./dist/styles/*"
+  },
   "files": [
     "dist"
   ],
@@ -21,7 +29,7 @@
   },
   "type": "module",
   "scripts": {
-    "build": "tsc -b && vite build",
+    "build": "tsc -b && vite build && cp -r lib/styles dist/styles",
     "chromatic": "chromatic --exit-zero-on-changes",
     "dev": "vite",
     "format": "biome format --write .",

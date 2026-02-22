@@ -29,16 +29,37 @@ _React components, built with Tailwind CSS, Shadcn, and VisX_
 
 ### Installation
 
-When using Vite, Canopy must be included in your primary `.css` file in order to ensure the necessary CSS classes are included in the build. For more details, read the Tailwind CSS documentation on [explicitly registering sources](https://tailwindcss.com/docs/detecting-classes-in-source-files#explicitly-registering-sources).
-
-Example `index.css`:
+Canopy provides foundational styles (colors, theme, typography, dimensions) as importable CSS. Import the styles in your primary `.css` file:
 
 ```css
 @import "tailwindcss";
+@import "@still-forest/canopy/styles";
 @source "../node_modules/@still-forest/canopy/dist";
 
 @layer base {
   /* your usual CSS definitions */
+}
+```
+
+The `@import` provides Canopy's design tokens, theme variables, and utility classes. The `@source` directive ensures Tailwind detects classes used by Canopy components ([docs](https://tailwindcss.com/docs/detecting-classes-in-source-files#explicitly-registering-sources)).
+
+You can also import individual style modules:
+
+```css
+@import "@still-forest/canopy/styles/theme.css";
+@import "@still-forest/canopy/styles/typography.css";
+```
+
+### Customization
+
+Override any Canopy design tokens by redefining CSS variables after the import:
+
+```css
+@import "@still-forest/canopy/styles";
+
+:root {
+  --font-brand: "My Custom Font", serif;
+  --color-brand: #4a90d9;
 }
 ```
 
