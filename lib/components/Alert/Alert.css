@@ -3,19 +3,20 @@
 
 @layer components {
   .alert {
-    @apply flex rounded-md border;
+    @apply flex rounded-md;
     @apply p-4 gap-4;
+    @apply text-background;
 
     &.alert-info {
-      @apply bg-info-foreground text-info border-info;
+      @apply bg-info;
     }
 
     &.alert-warning {
-      @apply bg-warning-foreground text-warning border-warning;
+      @apply bg-warning;
     }
 
     &.alert-danger {
-      @apply bg-danger-foreground text-danger border-danger;
+      @apply bg-danger;
     }
   }
 
@@ -39,5 +40,13 @@
 
   .alert-actions {
     @apply flex gap-2 grow items-center justify-end;
+
+    & > .btn-primary {
+      @apply bg-background border-background text-foreground;
+
+      &:hover {
+        @apply bg-background/80 border-inherit;
+      }
+    }
   }
 }
