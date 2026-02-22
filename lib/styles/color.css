@@ -1,22 +1,87 @@
 :root {
+  /* Custom colors */
+
   /* Hydrangea */
-  --color-hydrangea-50: rgb(246, 248, 250);
-  --color-hydrangea-100: rgb(229, 235, 241);
-  --color-hydrangea-200: rgb(210, 219, 228);
-  --color-hydrangea-300: rgb(188, 200, 215);
-  --color-hydrangea-400: rgb(169, 184, 202);
-  --color-hydrangea-500: rgb(164, 179, 198);
-  --color-hydrangea-600: rgb(141, 156, 177);
-  --color-hydrangea-700: rgb(116, 131, 153);
-  --color-hydrangea-800: rgb(90, 105, 126);
-  --color-hydrangea-900: rgb(63, 76, 95);
-  --color-hydrangea-950: rgb(37, 47, 60);
+  /* anchor: 500 = rgb(164, 179, 198) / #A4B3C6 */
+  /* Full palette generated using https://www.tints.dev/palette (hue 0, saturation 2, lightness 100-5 */
+  --color-hydrangea: rgb(164, 179, 198);
+  --color-hydrangea-50: oklch(0.975 0.005 247.84);
+  --color-hydrangea-100: oklch(0.948 0.01 261.82);
+  --color-hydrangea-200: oklch(0.905 0.017 259.43);
+  --color-hydrangea-300: oklch(0.854 0.024 256.11);
+  --color-hydrangea-400: oklch(0.81 0.029 256.5);
+  --color-hydrangea-500: oklch(0.761 0.032 254.36);
+  --color-hydrangea-600: oklch(0.646 0.041 253.33);
+  --color-hydrangea-700: oklch(0.525 0.038 252.68);
+  --color-hydrangea-800: oklch(0.414 0.031 250.35);
+  --color-hydrangea-900: oklch(0.293 0.024 251.09);
+  --color-hydrangea-950: oklch(0.24 0.023 251.44);
 
-  /* Other */
+  /* English Violet */
+  /* anchor: 800 = rgb(71, 49, 68) / #473144 */
+  /* Full palette generated using https://www.tints.dev/palette (hue 0, saturation 0, lightness 100-0 */
   --color-english-violet: rgb(71, 49, 68);
+  --color-english-violet-50: oklch(0.958 0.009 331.18);
+  --color-english-violet-100: oklch(0.916 0.019 331.21);
+  --color-english-violet-200: oklch(0.841 0.036 330.35);
+  --color-english-violet-300: oklch(0.756 0.058 330.97);
+  --color-english-violet-400: oklch(0.681 0.078 330.93);
+  --color-english-violet-500: oklch(0.596 0.077 331.31);
+  --color-english-violet-600: oklch(0.516 0.065 331.38);
+  --color-english-violet-700: oklch(0.428 0.055 331.37);
+  --color-english-violet-800: oklch(0.346 0.044 331.29);
+  --color-english-violet-900: oklch(0.245 0.03 331.51);
+  --color-english-violet-950: oklch(0.19 0.024 329.91);
 
-  /* Benjamin Moore colors */
+  /* Forest */
+  /* anchor: 700 = rgb(39, 80, 45) / #27502D */
+  /* Full palette generated using https://www.tints.dev/palette (hue 0, saturation -4, lightness 100-0 */
+  --color-forest: rgb(39, 80, 45);
+  --color-forest-50: oklch(0.955 0.009 150.47);
+  --color-forest-100: oklch(0.91 0.04 148.67);
+  --color-forest-200: oklch(0.821 0.068 148.16);
+  --color-forest-300: oklch(0.731 0.077 148.1);
+  --color-forest-400: oklch(0.646 0.083 147.63);
+  --color-forest-500: oklch(0.56 0.083 147.4);
+  --color-forest-600: oklch(0.474 0.078 147.43);
+  --color-forest-700: oklch(0.391 0.075 147.22);
+  --color-forest-800: oklch(0.305 0.05 147.03);
+  --color-forest-900: oklch(0.221 0.033 147.63);
+  --color-forest-950: oklch(0.175 0.021 147.4);
+
+  /* French Violet (Benjamin Moore) */
+  /* anchor: 600 = rgb(105, 109, 134) / #696D86 */
+  /* Full palette generated using https://www.tints.dev/palette (hue 0, saturation 0, lightness 100-0 */
   --color-french-violet: rgb(105, 109, 134);
+  --color-french-violet-50: oklch(0.965 0.003 286.81);
+  --color-french-violet-100: oklch(0.923 0.007 277.28);
+  --color-french-violet-200: oklch(0.844 0.014 281.59);
+  --color-french-violet-300: oklch(0.769 0.019 279.01);
+  --color-french-violet-400: oklch(0.69 0.028 278.54);
+  --color-french-violet-500: oklch(0.614 0.033 277.25);
+  --color-french-violet-600: oklch(0.541 0.039 277.88);
+  --color-french-violet-700: oklch(0.44 0.033 278.27);
+  --color-french-violet-800: oklch(0.337 0.025 278.62);
+  --color-french-violet-900: oklch(0.242 0.017 280.06);
+  --color-french-violet-950: oklch(0.189 0.014 278.58);
+
+  /* Coral Reef */
+  /* anchor: 400 = rgb(223, 157, 144) / #DF9D90 */
+  --color-coral-reef: rgb(223, 157, 144);
+  --color-coral-reef-50: oklch(0.967 0.009 26.19);
+  --color-coral-reef-100: oklch(0.942 0.016 27.38);
+  --color-coral-reef-200: oklch(0.873 0.036 28.71);
+  --color-coral-reef-300: oklch(0.816 0.056 29.49);
+  --color-coral-reef-400: oklch(0.757 0.082 31.47);
+  --color-coral-reef-500: oklch(0.658 0.116 34.95);
+  --color-coral-reef-600: oklch(0.553 0.097 34.4);
+  --color-coral-reef-700: oklch(0.449 0.078 35.43);
+  --color-coral-reef-800: oklch(0.35 0.062 34.95);
+  --color-coral-reef-900: oklch(0.246 0.042 36.48);
+  --color-coral-reef-950: oklch(0.191 0.034 32.86);
+
+  /* Benjamin Moore color palettes */
+  /* french violet */
   --color-kensington-green: rgb(154, 185, 181);
   --color-oxford-white: rgb(240, 241, 234);
 
@@ -38,25 +103,29 @@
 
   --color-blue-heather: rgb(177, 191, 199);
   --color-paper-white: rgb(224, 226, 220);
+  /* white-dove */
+
   --color-ashland-slate: rgb(105, 109, 114);
   --color-simply-white: rgb(246, 246, 237);
   --color-october-sky: rgb(245, 236, 220);
 
   --color-oakwood-manor: rgb(218, 202, 172);
   --color-dune-white: rgb(236, 234, 224);
-  --color-river-reflections: rgb(166, 159, 147);
-  /* --color-white-dove: rgb(239, 238, 229); */
   --color-coventry-gray: rgb(184, 186, 182);
 
   --color-manor-blue: rgb(172, 183, 192);
   --color-distant-gray: rgb(242, 244, 241);
   --color-witching-hour: rgb(70, 73, 79);
+
+  /* manor-blue */
   --color-white-christmas: rgb(236, 238, 234);
   --color-dune-grass: rgb(218, 217, 190);
 
   --color-amherst-gray: rgb(117, 118, 112);
-  --color-wythe-blue: rgb(236, 236, 227);
+  --color-wythe-blue: rgb(170, 190, 180);
   --color-vanilla-milkshake: rgb(236, 236, 227);
+
+  /* amherst-gray */
   --color-porcelain: rgb(208, 197, 197);
   --color-oyster: rgb(236, 233, 232);
 
@@ -303,6 +372,50 @@
   --color-stone-800: oklch(0.268 0.007 34.298);
   --color-stone-900: oklch(0.216 0.006 56.043);
   --color-stone-950: oklch(0.147 0.004 49.25);
-  --color-black: #000;
-  --color-white: #fff;
+  --color-mauve-50: oklch(0.985 0 0);
+  --color-mauve-100: oklch(0.96 0.003 325.6);
+  --color-mauve-200: oklch(0.922 0.005 325.62);
+  --color-mauve-300: oklch(0.865 0.012 325.68);
+  --color-mauve-400: oklch(0.711 0.019 323.02);
+  --color-mauve-500: oklch(0.542 0.034 322.5);
+  --color-mauve-600: oklch(0.435 0.029 321.78);
+  --color-mauve-700: oklch(0.364 0.029 323.89);
+  --color-mauve-800: oklch(0.263 0.024 320.12);
+  --color-mauve-900: oklch(0.212 0.019 322.12);
+  --color-mauve-950: oklch(0.145 0.008 326);
+  --color-olive-50: oklch(0.988 0.003 106.5);
+  --color-olive-100: oklch(0.966 0.005 106.5);
+  --color-olive-200: oklch(0.93 0.007 106.5);
+  --color-olive-300: oklch(0.88 0.011 106.6);
+  --color-olive-400: oklch(0.737 0.021 106.9);
+  --color-olive-500: oklch(0.58 0.031 107.3);
+  --color-olive-600: oklch(0.466 0.025 107.3);
+  --color-olive-700: oklch(0.394 0.023 107.4);
+  --color-olive-800: oklch(0.286 0.016 107.4);
+  --color-olive-900: oklch(0.228 0.013 107.4);
+  --color-olive-950: oklch(0.153 0.006 107.1);
+  --color-mist-50: oklch(0.987 0.002 197.1);
+  --color-mist-100: oklch(0.963 0.002 197.1);
+  --color-mist-200: oklch(0.925 0.005 214.3);
+  --color-mist-300: oklch(0.872 0.007 219.6);
+  --color-mist-400: oklch(0.723 0.014 214.4);
+  --color-mist-500: oklch(0.56 0.021 213.5);
+  --color-mist-600: oklch(0.45 0.017 213.2);
+  --color-mist-700: oklch(0.378 0.015 216);
+  --color-mist-800: oklch(0.275 0.011 216.9);
+  --color-mist-900: oklch(0.218 0.008 223.9);
+  --color-mist-950: oklch(0.148 0.004 228.8);
+  --color-taupe-50: oklch(0.986 0.002 67.8);
+  --color-taupe-100: oklch(0.96 0.002 17.2);
+  --color-taupe-200: oklch(0.922 0.005 34.3);
+  --color-taupe-300: oklch(0.868 0.007 39.5);
+  --color-taupe-400: oklch(0.714 0.014 41.2);
+  --color-taupe-500: oklch(0.547 0.021 43.1);
+  --color-taupe-600: oklch(0.438 0.017 39.3);
+  --color-taupe-700: oklch(0.367 0.016 35.7);
+  --color-taupe-800: oklch(0.268 0.011 36.5);
+  --color-taupe-900: oklch(0.214 0.009 43.1);
+  --color-taupe-950: oklch(0.147 0.004 49.3);
+  --color-black: oklch(0 0 0);
+  --color-white: oklch(1 0 0);
 }

@@ -4,7 +4,7 @@ import type { Preview } from "@storybook/react-vite";
 import { THEMES } from "../src/context/ThemeProviderContext";
 import { DEFAULT_DECORATOR } from "../stories/support/decorators";
 
-import "../src/style/index.css";
+import "../src/styles/index.css";
 
 const preview: Preview = {
   decorators: [
