@@ -1,56 +1,69 @@
-import { Badge as BadgeBase } from "@/components/ui/badge";
-import type { TailwindColor } from "@/types/color";
-import type { BadgeVariant } from "@/types/variants";
-import { cn } from "@/utils";
-import { badgeColorVariants } from "./colorVariants";
+import { SimpleTooltip } from "@/components";
+import { cn } from "@/utils/cn";
+import "./Badge.css";
+import type { ButtonSize, ButtonVariant } from "@/forms";
 
-export interface BadgeProps extends React.ComponentProps<typeof BadgeBase> {
-  variant?: BadgeVariant;
-  color?: TailwindColor;
-  label?: string;
-  children?: React.ReactNode;
+export interface BadgeProps {
+  variant?: ButtonVariant;
+  outline?: boolean;
+  size?: ButtonSize;
+  as?: "button" | "div";
   onClick?: () => void;
+  label?: string;
+  tooltip?: string;
+  children?: React.ReactNode;
   className?: string;
 }
 
 export const Badge = ({
-  label,
-  onClick,
-  className,
-  variant = "default",
-  color,
   children,
-  render,
+  label,
+  variant,
+  outline = false,
+  size,
+  as = "div",
+  className = "",
+  tooltip,
   ...props
 }: BadgeProps) => {
-  const content = label || children;
-  if (!content && !render) {
-    throw new Error("Badge must have either a label or children, or a render prop");
+  if (!(label || children) || (label && children)) {
+    throw new Error("Badge must have either a label or children, but not both");
   }
 
-  if (color && !(variant === "default" || variant === "outline")) {
-    throw new Error(
-      `Color ${color} is not allowed for variant '${variant}'. Only default and outline variants support color.`,
-    );
-  }
-
-  const badgeClasses = cn(
-    "cursor-default",
-    !!onClick && "cursor-pointer",
-    badgeColorVariants({ color, variant }),
+  const Component = as === "button" ? "button" : "div";
+  const classNames = cn(
+    "badge",
     {
-      "text-white": color === "black" && variant !== "outline",
-      "text-black": color === "white" && variant !== "outline",
+      "badge-primary": variant === "primary",
+      "badge-secondary": variant === "secondary",
+      "badge-muted": variant === "muted",
+      "badge-ghost": variant === "ghost" || variant === "link",
+      "badge-success": variant === "success",
+      "badge-info": variant === "info",
+      "badge-warning": variant === "warning",
+      "badge-danger": variant === "danger",
     },
     {
-      "border-1 border-black": color === "white",
+      "badge--outline": outline,
+      "badge--xs": size === "xs",
+      "badge--sm": size === "sm",
+      "badge--md": size === "md",
+      "badge--lg": size === "lg",
+      "badge--xl": size === "xl",
     },
     className,
   );
 
-  return (
-    <BadgeBase className={badgeClasses} onClick={onClick} render={render} variant={variant} {...props}>
-      {content}
-    </BadgeBase>
+  const badge = (
+    <Component className={classNames} type={as === "button" ? "button" : undefined} {...props}>
+      {label}
+      {children}
+    </Component>
   );
+
+  if (tooltip) {
+    return <SimpleTooltip content={tooltip}>{badge}</SimpleTooltip>;
+  }
+
+  return badge;
 };
