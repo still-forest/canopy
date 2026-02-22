@@ -1,0 +1,12 @@
+@reference "tailwindcss";
+@reference "../../../styles/index.css";
+
+@layer components {
+  .button-select-input {
+    @apply w-full;
+
+    .btn {
+      @apply flex-1;
+    }
+  }
+}
