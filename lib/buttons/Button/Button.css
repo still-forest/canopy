@@ -7,6 +7,16 @@
     @apply gap-2 h-9 px-4 py-2 has-[>svg]:px-3;
     @apply border;
 
+    /* variant=primary, size=md by default */
+    & {
+      @apply bg-primary text-primary-foreground hover:bg-primary/90 border-primary;
+
+      &:hover,
+      &[aria-pressed="true"] {
+        @apply bg-primary/90;
+      }
+    }
+
     &[data-submitting="true"] {
       .btn-icon {
         @apply animate-spin;

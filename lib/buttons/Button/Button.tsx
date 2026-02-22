@@ -9,8 +9,8 @@ export type ButtonProps = BaseButtonProps & ComponentProps<"button">;
 
 export const Button = ({
   className,
-  variant = "primary",
-  size = "md",
+  variant,
+  size,
   outline = false,
   knockout = false,
   rounded = false,

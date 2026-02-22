@@ -28,6 +28,7 @@ export const buildButtonClassNames = ({
     {
       "btn--xs": size === "xs",
       "btn--sm": size === "sm",
+      "btn--md": size === "md",
       "btn--lg": size === "lg",
       "btn--xl": size === "xl",
       "btn--outline": outline,
