@@ -1,9 +1,8 @@
 import type { Meta, StoryObj } from "@storybook/react-vite";
 import { useState } from "react";
-
+import { Button, SubmitButton } from "@/buttons";
 import { Card } from "@/components";
 import {
-  Button,
   ButtonRadioField,
   CheckboxField,
   DateField,
@@ -13,7 +12,6 @@ import {
   PasswordField,
   RadioField,
   SliderField,
-  SubmitButton,
   TextareaField,
   TextField,
   ToggleField,
@@ -234,7 +232,9 @@ const CompleteFormExample = () => {
           <Button type="button" variant="secondary">
             Cancel
           </Button>
-          <SubmitButton disabled={!formData.privacy}>Submit Registration</SubmitButton>
+          <SubmitButton disabled={!formData.privacy} submitting={false}>
+            Submit Registration
+          </SubmitButton>
         </Flex>
       </Flex>
     </form>

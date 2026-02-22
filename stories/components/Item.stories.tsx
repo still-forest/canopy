@@ -1,8 +1,8 @@
 import { DEFAULT_DECORATOR_WITH_MIN_WIDTH_MD } from "@stories/support/decorators";
 import type { Meta, StoryObj } from "@storybook/react-vite";
 import { Home } from "lucide-react";
+import { Button } from "@/buttons/Button";
 import { Item, ItemGroup } from "@/components";
-import { Button } from "@/forms/buttons/Button";
 
 const meta: Meta<typeof Item> = {
   title: "Components/Item",
@@ -23,7 +23,7 @@ export const Default: Story = {
         <Item.Description>A simple item with title and description.</Item.Description>
       </Item.Content>
       <Item.Actions>
-        <Button size="sm" variant="outline">
+        <Button outline size="sm">
           Action
         </Button>
       </Item.Actions>
@@ -39,7 +39,7 @@ export const AsOutlineVariant: Story = {
         <Item.Description>A simple item with title and description.</Item.Description>
       </Item.Content>
       <Item.Actions>
-        <Button size="sm" variant="outline">
+        <Button outline size="sm">
           Action
         </Button>
       </Item.Actions>
@@ -55,7 +55,7 @@ export const AsMutedVariant: Story = {
         <Item.Description>A simple item with title and description.</Item.Description>
       </Item.Content>
       <Item.Actions>
-        <Button size="sm" variant="outline">
+        <Button outline size="sm">
           Action
         </Button>
       </Item.Actions>
@@ -71,7 +71,7 @@ export const Small: Story = {
         <Item.Description>A simple item with title and description.</Item.Description>
       </Item.Content>
       <Item.Actions>
-        <Button size="sm" variant="outline">
+        <Button outline size="sm">
           Action
         </Button>
       </Item.Actions>

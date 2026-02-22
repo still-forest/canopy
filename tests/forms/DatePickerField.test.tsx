@@ -138,8 +138,7 @@ describe("DatePickerField", () => {
     render(<DatePickerField onDateSelection={onDateSelection} size="sm" />);
 
     const trigger = screen.getByRole("button");
-    // Small size should have h-8 class (height 8)
-    expect(trigger).toHaveClass("h-8");
+    expect(trigger).toHaveClass("btn--sm");
   });
 
   it("can select from past month", async () => {

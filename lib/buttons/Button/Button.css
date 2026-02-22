@@ -1,0 +1,295 @@
+@reference "tailwindcss";
+@reference "../../styles/index.css";
+
+@layer components {
+  .btn {
+    @apply inline-flex items-center justify-center whitespace-nowrap text-sm font-medium transition-all shrink-0 outline-none cursor-pointer rounded-md shadow-xs;
+    @apply gap-2 h-9 px-4 py-2;
+    @apply border;
+
+    &[data-submitting="true"] {
+      .btn-icon {
+        @apply animate-spin;
+      }
+    }
+
+    &:disabled {
+      @apply pointer-events-none opacity-50;
+    }
+
+    &:focus-visible {
+      @apply border-ring ring-ring/50 ring-[3px];
+    }
+
+    &[aria-invalid="true"] {
+      @apply border-danger ring-danger/20 dark:ring-danger/40;
+    }
+
+    &:has(svg) {
+      @apply px-3;
+    }
+
+    & > svg {
+      @apply pointer-events-none shrink-0;
+
+      &:not([class*="size-"]) {
+        @apply size-4;
+      }
+    }
+
+    &.btn--icon {
+      @apply size-9 p-2!;
+    }
+
+    &.btn--xs {
+      @apply gap-1 h-6 px-2 text-xs;
+
+      &.btn--icon {
+        @apply size-6 p-1!;
+      }
+
+      &:has(svg) {
+        @apply px-1.5;
+      }
+    }
+
+    &.btn--sm {
+      @apply gap-1.5 h-8 px-3 text-sm;
+
+      &.btn--icon {
+        @apply size-8 p-2!;
+      }
+
+      &:has(svg) {
+        @apply px-2.5;
+      }
+    }
+
+    /* btn--md is the default size */
+
+    &.btn--lg {
+      @apply gap-2 h-10 px-6 text-lg;
+
+      &.btn--icon {
+        @apply size-10 p-2!;
+      }
+
+      &:has(svg) {
+        @apply px-4;
+      }
+    }
+
+    &.btn--xl {
+      @apply gap-2 h-12 px-8 text-xl;
+
+      &.btn--icon {
+        @apply size-12 p-3!;
+      }
+
+      &:has(svg) {
+        @apply px-6;
+      }
+    }
+
+    &.btn--outline {
+      @apply border bg-background dark:bg-input/30 dark:border-input;
+
+      &:hover,
+      &[aria-pressed="true"] {
+        @apply bg-accent text-accent-foreground dark:bg-accent/50;
+      }
+    }
+
+    &.btn--knockout {
+      @apply border border-foreground bg-background text-foreground;
+
+      &:hover,
+      &[aria-pressed="true"] {
+        @apply bg-foreground text-background;
+      }
+    }
+
+    &.btn--rounded {
+      @apply rounded-full;
+    }
+
+    &.btn--fit {
+      @apply w-fit;
+    }
+  }
+
+  .btn-primary {
+    @apply bg-primary text-primary-foreground border-primary;
+
+    &:hover,
+    &[aria-pressed="true"] {
+      @apply bg-primary/90;
+    }
+
+    &.btn--outline {
+      @apply bg-background border-primary/30 text-primary;
+
+      &:hover,
+      &[aria-pressed="true"] {
+        @apply bg-primary/10 dark:bg-primary/20;
+      }
+    }
+
+    &.btn--knockout {
+      &:hover,
+      &[aria-pressed="true"] {
+        @apply bg-primary text-background;
+      }
+    }
+  }
+
+  .btn-secondary {
+    @apply bg-secondary text-secondary-foreground border-secondary;
+
+    &:hover,
+    &[aria-pressed="true"] {
+      @apply bg-secondary/80;
+    }
+
+    &.btn--outline {
+      @apply bg-background border-secondary-foreground/20 text-secondary-foreground/80;
+
+      &:hover,
+      &[aria-pressed="true"] {
+        @apply bg-secondary/10 dark:bg-secondary/20;
+      }
+    }
+  }
+
+  .btn-muted {
+    @apply bg-muted text-muted-foreground focus-visible:ring-muted/20 dark:focus-visible:ring-muted/40 dark:bg-muted/60 border-muted;
+
+    &:hover,
+    &[aria-pressed="true"] {
+      @apply bg-muted/90 dark:bg-muted/50;
+    }
+
+    &.btn--outline {
+      @apply bg-background border-muted-foreground/30 text-muted-foreground;
+
+      &:hover,
+      &[aria-pressed="true"] {
+        @apply bg-muted/10 dark:bg-muted/20;
+      }
+    }
+  }
+
+  .btn-ghost {
+    @apply shadow-none border-transparent;
+
+    &:hover,
+    &[aria-pressed="true"] {
+      @apply bg-accent text-accent-foreground dark:bg-accent/50;
+    }
+  }
+
+  .btn-info {
+    @apply bg-info text-info-foreground dark:bg-info/60 border-info;
+
+    &:hover,
+    &[aria-pressed="true"] {
+      @apply bg-info/90 dark:bg-info/50;
+    }
+
+    &:focus-visible {
+      @apply ring-info/20 dark:ring-info/40;
+    }
+
+    &.btn--outline {
+      @apply bg-background border-info/80 text-info;
+
+      &:hover,
+      &[aria-pressed="true"] {
+        @apply bg-info/10 dark:bg-info/20 text-info;
+      }
+    }
+  }
+
+  .btn-success {
+    @apply bg-success text-success-foreground dark:bg-success/60 border-success;
+
+    &:hover,
+    &[aria-pressed="true"] {
+      @apply bg-success/90 dark:bg-success/50;
+    }
+
+    &:focus-visible {
+      @apply ring-success/20 dark:ring-success/40;
+    }
+
+    &.btn--outline {
+      @apply bg-background border-success/80 text-success;
+
+      &:hover,
+      &[aria-pressed="true"] {
+        @apply bg-success/10 dark:bg-success/20 text-success;
+      }
+    }
+  }
+
+  .btn-warning {
+    @apply bg-warning text-warning-foreground dark:bg-warning/60 border-warning;
+
+    &:hover,
+    &[aria-pressed="true"] {
+      @apply bg-warning/90 dark:bg-warning/50;
+    }
+
+    &:focus-visible {
+      @apply ring-warning/20 dark:ring-warning/40;
+    }
+
+    &.btn--outline {
+      @apply bg-background border-warning/80 text-warning;
+
+      &:hover,
+      &[aria-pressed="true"] {
+        @apply bg-warning/10 dark:bg-warning/20 text-warning;
+      }
+    }
+  }
+
+  .btn-danger {
+    @apply bg-danger text-danger-foreground dark:bg-danger/60 border-danger;
+
+    &:hover,
+    &[aria-pressed="true"] {
+      @apply bg-danger/90 dark:bg-danger/50;
+    }
+
+    &:focus-visible {
+      @apply ring-danger/20 dark:ring-danger/40;
+    }
+
+    &.btn--outline {
+      @apply bg-background border-danger/80 text-danger;
+
+      &:hover,
+      &[aria-pressed="true"] {
+        @apply bg-danger/10 dark:bg-danger/20 text-danger;
+      }
+    }
+  }
+
+  .btn-link {
+    @apply text-foreground border-transparent;
+    @apply shadow-none;
+
+    &:hover,
+    &[aria-pressed="true"] {
+      @apply underline underline-offset-4 decoration-2;
+    }
+
+    &.btn--outline {
+      &:hover,
+      &[aria-pressed="true"] {
+        @apply bg-transparent;
+      }
+    }
+  }
+}

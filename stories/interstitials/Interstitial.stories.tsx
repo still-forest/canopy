@@ -2,7 +2,7 @@ import { INTERSTITIAL_DECORATOR } from "@stories/support/decorators";
 import { sampleSentence } from "@stories/support/sampleText";
 import type { Meta, StoryObj } from "@storybook/react-vite";
 import { Mailbox, PiggyBank } from "lucide-react";
-import { Button } from "@/forms";
+import { Button } from "@/buttons";
 import { Interstitial, type InterstitialProps } from "@/interstitials";
 
 const meta: Meta<typeof Interstitial> = {

@@ -1,7 +1,7 @@
 import { mergeProps } from "@base-ui/react";
 import type { ReactNode } from "react";
+import { Button, type ButtonProps } from "@/buttons/Button/Button";
 import { Sheet, SheetClose, SheetContent, SheetTrigger } from "@/components/ui/sheet";
-import { Button, type ButtonProps } from "@/forms/buttons/Button/Button";
 
 const CloseButton = (props: ButtonProps) => {
   return (

@@ -1,6 +1,6 @@
 import { CircleChevronLeft, FileQuestion } from "lucide-react";
 
-import { Button } from "@/forms/buttons/Button";
+import { Button } from "@/buttons/Button";
 import { Flex } from "@/layout/Flex";
 
 import { Interstitial, type InterstitialProps } from "./Interstitial";

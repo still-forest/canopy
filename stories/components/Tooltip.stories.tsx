@@ -1,7 +1,7 @@
 import { sampleLongText } from "@stories/support/sampleText";
 import type { Meta, StoryObj } from "@storybook/react-vite";
+import { Button } from "@/buttons";
 import { CURSOR_TYPES, type CursorType, SimpleTooltip, Tooltip } from "@/components";
-import { Button } from "@/forms";
 import { Box, Flex } from "@/layout";
 import { Heading, Text } from "@/typography";
 import OptionList from "../templates/OptionList";
@@ -125,7 +125,7 @@ export const AsSimpleTooltipWithCursor: Story = {
     <Flex className="flex-wrap" gap="2">
       {CURSOR_TYPES.map((cursor) => (
         <SimpleTooltip content="This is a tooltip" cursor={cursor} key={cursor}>
-          <Button size="sm" variant="outline">
+          <Button outline size="sm">
             {cursor}
           </Button>
         </SimpleTooltip>
@@ -139,7 +139,7 @@ export const AsSimpleTooltipWithSide: Story = {
     <Flex className="flex-wrap" gap="2">
       {(["left", "top", "bottom", "right"] as const).map((side) => (
         <SimpleTooltip content="This is a tooltip" key={side} side={side}>
-          <Button size="sm" variant="outline">
+          <Button outline size="sm">
             {side}
           </Button>
         </SimpleTooltip>
@@ -153,7 +153,7 @@ export const AsSimpleTooltipWithAlign: Story = {
     <Flex direction="col" gap="2">
       {(["start", "center", "end"] as const).map((align) => (
         <SimpleTooltip align={align} content="This is a tooltip" key={align}>
-          <Button size="sm" variant="outline">
+          <Button outline size="sm">
             {align}
           </Button>
         </SimpleTooltip>

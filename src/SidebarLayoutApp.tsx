@@ -1,7 +1,8 @@
 import { BookType, FolderTree, Home, LayoutDashboard, LogOut, Settings2 } from "lucide-react";
 import { useState } from "react";
 import { Link } from "react-router";
-import { Button } from "@/forms";
+import { Button } from "@/buttons";
+import { buildButtonClassNames } from "@/buttons/Button/utils";
 import { Container, Flex, Footer } from "@/layout";
 import { SidebarLayout, SidebarTrigger } from "@/navigation";
 import { Heading } from "@/typography";
@@ -94,8 +95,10 @@ export default function App() {
       </Container>
       <Container className={cn(showDimensions && "bg-green-500/5 inset-shadow-sm inset-shadow-green-500")}>
         <Flex direction="col" gap="8">
-          <Button fit render={<Link to="/">Home</Link>} />
-          <Button fit onClick={() => setShowDimensions(!showDimensions)} variant="outline">
+          <Link className={buildButtonClassNames({ fit: true })} to="/">
+            Home
+          </Link>
+          <Button fit onClick={() => setShowDimensions(!showDimensions)} outline>
             {showDimensions ? "Hide " : "Show "} dimensions
           </Button>
         </Flex>

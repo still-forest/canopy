@@ -202,7 +202,7 @@ export const Textarea: Story = {
         <InputGroup.Textarea className="min-h-[200px]" name="code" placeholder="console.log('Hello, world!');" />
         <InputGroup.Addon align="block-end" className="border-t">
           <InputGroup.Text>Line 1, Column 1</InputGroup.Text>
-          <InputGroup.Button className="ml-auto" size="sm" variant="default">
+          <InputGroup.Button className="ml-auto" size="sm">
             Run <CornerDownLeft />
           </InputGroup.Button>
         </InputGroup.Addon>

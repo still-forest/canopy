@@ -1,0 +1,46 @@
+@reference "tailwindcss";
+@reference "../../styles/index.css";
+
+@layer components {
+  .button-group {
+    @apply inline-flex w-fit items-stretch;
+
+    > *:focus-visible,
+    > :is(.dropdown-menu, .popover, .select) > button:focus-visible {
+      @apply relative z-10;
+    }
+
+    > hr[role="separator"] {
+      @apply w-0 h-auto self-stretch border border-input shrink-0 m-0;
+    }
+
+    &:not([data-orientation="vertical"]) {
+      > *:not(:first-of-type),
+      > :is(.dropdown-menu, .popover, .select):not(:first-of-type) > button {
+        @apply rounded-l-none border-l-0;
+      }
+      > *:not(:last-of-type),
+      > :is(.dropdown-menu, .popover, .select):not(:last-of-type) > button {
+        @apply rounded-r-none;
+      }
+    }
+
+    &[data-orientation="vertical"] {
+      @apply flex-col;
+
+      > hr[role="separator"] {
+        @apply w-auto h-px;
+      }
+
+      > *:not(:first-child),
+      > :is(.dropdown-menu, .popover, .select):not(:first-child) > button {
+        @apply rounded-t-none border-t-0;
+      }
+
+      > *:not(:last-child),
+      > :is(.dropdown-menu, .popover, .select):not(:last-child) > button {
+        @apply rounded-b-none;
+      }
+    }
+  }
+}

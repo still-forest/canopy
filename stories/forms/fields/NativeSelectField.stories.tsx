@@ -1,7 +1,8 @@
 import { DEFAULT_DECORATOR_WITH_WIDTH_MD } from "@stories/support/decorators";
 import type { Meta, StoryObj } from "@storybook/react-vite";
 import { useState } from "react";
-import { Button, NativeSelectField } from "@/forms";
+import { Button } from "@/buttons";
+import { NativeSelectField } from "@/forms";
 import { Flex } from "@/layout";
 
 const meta: Meta<typeof NativeSelectField> = {
