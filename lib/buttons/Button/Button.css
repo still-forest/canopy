@@ -7,16 +7,6 @@
     @apply gap-2 h-9 px-4 py-2 has-[>svg]:px-3;
     @apply border;
 
-    /* variant=primary, size=md by default */
-    & {
-      @apply bg-primary text-primary-foreground hover:bg-primary/90 border-primary;
-
-      &:hover,
-      &[aria-pressed="true"] {
-        @apply bg-primary/90;
-      }
-    }
-
     &[data-submitting="true"] {
       .btn-icon {
         @apply animate-spin;
@@ -43,6 +33,8 @@
       }
     }
 
+    /* btn--md is the default size */
+
     &.btn--lg {
       @apply gap-2 h-10 px-6 has-[>svg]:px-4 text-lg;
 
@@ -61,6 +53,7 @@
 
     &.btn--outline {
       @apply border bg-background dark:bg-input/30 dark:border-input;
+
       &:hover,
       &[aria-pressed="true"] {
         @apply bg-accent text-accent-foreground dark:bg-accent/50;
@@ -69,6 +62,7 @@
 
     &.btn--knockout {
       @apply border border-foreground bg-background text-foreground;
+
       &:hover,
       &[aria-pressed="true"] {
         @apply bg-foreground text-background;
@@ -85,7 +79,8 @@
   }
 
   .btn-primary {
-    @apply bg-primary text-primary-foreground hover:bg-primary/90 border-primary;
+    @apply bg-primary text-primary-foreground border-primary;
+
     &:hover,
     &[aria-pressed="true"] {
       @apply bg-primary/90;
@@ -224,21 +219,19 @@
   }
 
   .btn-link {
-    @apply text-primary underline-offset-4 border-transparent shadow-none;
+    @apply text-foreground border-transparent;
+    @apply shadow-none;
 
     &:hover,
     &[aria-pressed="true"] {
-      @apply hover:underline;
+      @apply underline underline-offset-4 decoration-2;
     }
-  }
 
-  .btn-input {
-    @apply border-input h-9 rounded-md border bg-transparent px-2.5 py-1 text-base shadow-xs transition-[color,box-shadow] focus-visible:ring-[3px] md:text-sm placeholder:text-muted-foreground w-full min-w-0 outline-none;
-    @apply justify-between font-normal;
-
-    &:hover,
-    &[aria-pressed="true"] {
-      @apply bg-accent text-accent-foreground dark:bg-accent/50;
+    &.btn--outline {
+      &:hover,
+      &[aria-pressed="true"] {
+        @apply bg-transparent;
+      }
     }
   }
 }

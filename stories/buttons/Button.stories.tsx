@@ -51,7 +51,7 @@ export const Variants: Story = {
   ),
 };
 
-export const OutlineVariants: Story = {
+export const OutlineStyles: Story = {
   render: () => (
     <div className="grid grid-cols-5 gap-4">
       <Button label="Default" outline />
@@ -64,6 +64,40 @@ export const OutlineVariants: Story = {
       <Button label="Success" outline variant="success" />
       <Button label="Warning" outline variant="warning" />
       <Button label="Danger" outline variant="danger" />
+    </div>
+  ),
+};
+
+export const KnockoutStyles: Story = {
+  render: () => (
+    <div className="grid grid-cols-5 gap-4">
+      <Button knockout label="Default" />
+      <Button className="col-start-1" knockout label="Primary" variant="primary" />
+      <Button knockout label="Secondary" variant="secondary" />
+      <Button knockout label="Muted" variant="muted" />
+      <Button knockout label="Ghost" variant="ghost" />
+      <Button knockout label="Link" variant="link" />
+      <Button knockout label="Info" variant="info" />
+      <Button knockout label="Success" variant="success" />
+      <Button knockout label="Warning" variant="warning" />
+      <Button knockout label="Danger" variant="danger" />
+    </div>
+  ),
+};
+
+export const RoundedStyles: Story = {
+  render: () => (
+    <div className="grid grid-cols-5 gap-4">
+      <Button label="Default" rounded />
+      <Button className="col-start-1" label="Primary" rounded variant="primary" />
+      <Button label="Secondary" rounded variant="secondary" />
+      <Button label="Muted" rounded variant="muted" />
+      <Button label="Ghost" rounded variant="ghost" />
+      <Button label="Link" rounded variant="link" />
+      <Button label="Info" rounded variant="info" />
+      <Button label="Success" rounded variant="success" />
+      <Button label="Warning" rounded variant="warning" />
+      <Button label="Danger" rounded variant="danger" />
     </div>
   ),
 };

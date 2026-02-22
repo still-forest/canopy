@@ -44,7 +44,7 @@ describe("Button", () => {
 
     expect(screen.getByRole("button")).toHaveTextContent("Test Button");
     expect(screen.getByRole("button")).toHaveAttribute("type", "button");
-    expect(screen.getByRole("button").className).toBe("btn btn--xs");
+    expect(screen.getByRole("button").className).toBe("btn btn-primary btn--xs");
   });
 
   test("renders a Button of size sm", async () => {
@@ -52,7 +52,7 @@ describe("Button", () => {
 
     expect(screen.getByRole("button")).toHaveTextContent("Test Button");
     expect(screen.getByRole("button")).toHaveAttribute("type", "button");
-    expect(screen.getByRole("button").className).toBe("btn btn--sm");
+    expect(screen.getByRole("button").className).toBe("btn btn-primary btn--sm");
   });
 
   test("renders a Button of size md", async () => {
@@ -60,7 +60,7 @@ describe("Button", () => {
 
     expect(screen.getByRole("button")).toHaveTextContent("Test Button");
     expect(screen.getByRole("button")).toHaveAttribute("type", "button");
-    expect(screen.getByRole("button").className).toBe("btn btn--md");
+    expect(screen.getByRole("button").className).toBe("btn btn-primary btn--md");
   });
 
   test("renders a Button of size lg", async () => {
@@ -68,7 +68,7 @@ describe("Button", () => {
 
     expect(screen.getByRole("button")).toHaveTextContent("Test Button");
     expect(screen.getByRole("button")).toHaveAttribute("type", "button");
-    expect(screen.getByRole("button").className).toBe("btn btn--lg");
+    expect(screen.getByRole("button").className).toBe("btn btn-primary btn--lg");
   });
 
   test("renders a Button of size xl", async () => {
@@ -76,7 +76,7 @@ describe("Button", () => {
 
     expect(screen.getByRole("button")).toHaveTextContent("Test Button");
     expect(screen.getByRole("button")).toHaveAttribute("type", "button");
-    expect(screen.getByRole("button").className).toBe("btn btn--xl");
+    expect(screen.getByRole("button").className).toBe("btn btn-primary btn--xl");
   });
 
   test("renders a Button of size default", async () => {
@@ -84,7 +84,7 @@ describe("Button", () => {
 
     expect(screen.getByRole("button")).toHaveTextContent("Test Button");
     expect(screen.getByRole("button")).toHaveAttribute("type", "button");
-    expect(screen.getByRole("button").className).toBe("btn");
+    expect(screen.getByRole("button").className).toBe("btn btn-primary");
   });
 
   test("renders a Button of variant primary", async () => {
@@ -164,7 +164,7 @@ describe("Button", () => {
 
     expect(screen.getByRole("button")).toHaveTextContent("Test Button");
     expect(screen.getByRole("button")).toHaveAttribute("type", "button");
-    expect(screen.getByRole("button").className).toBe("btn btn--outline");
+    expect(screen.getByRole("button").className).toBe("btn btn-primary btn--outline");
   });
 
   test("renders a Button with variant and outline", async () => {
@@ -184,7 +184,7 @@ describe("Button", () => {
 
     expect(screen.getByRole("button")).toHaveTextContent("Test Button");
     expect(screen.getByRole("button")).toHaveAttribute("type", "button");
-    expect(screen.getByRole("button").className).toBe("btn btn--knockout");
+    expect(screen.getByRole("button").className).toBe("btn btn-primary btn--knockout");
   });
 
   test("renders a Button with variant and knockout", async () => {
@@ -204,7 +204,7 @@ describe("Button", () => {
 
     expect(screen.getByRole("button")).toHaveTextContent("Test Button");
     expect(screen.getByRole("button")).toHaveAttribute("type", "button");
-    expect(screen.getByRole("button").className).toBe("btn btn--rounded");
+    expect(screen.getByRole("button").className).toBe("btn btn-primary btn--rounded");
   });
 
   test("renders a Button with fit", async () => {
@@ -212,7 +212,7 @@ describe("Button", () => {
 
     expect(screen.getByRole("button")).toHaveTextContent("Test Button");
     expect(screen.getByRole("button")).toHaveAttribute("type", "button");
-    expect(screen.getByRole("button").className).toBe("btn btn--fit");
+    expect(screen.getByRole("button").className).toBe("btn btn-primary btn--fit");
   });
 
   test("renders a Button with asIcon", async () => {
@@ -220,7 +220,7 @@ describe("Button", () => {
 
     expect(screen.getByRole("button")).toHaveTextContent("Test Button");
     expect(screen.getByRole("button")).toHaveAttribute("type", "button");
-    expect(screen.getByRole("button").className).toBe("btn btn--icon");
+    expect(screen.getByRole("button").className).toBe("btn btn-primary btn--icon");
   });
 
   test("renders a Button with className", async () => {
@@ -228,6 +228,6 @@ describe("Button", () => {
 
     expect(screen.getByRole("button")).toHaveTextContent("Test Button");
     expect(screen.getByRole("button")).toHaveAttribute("type", "button");
-    expect(screen.getByRole("button").className).toBe("btn custom-class");
+    expect(screen.getByRole("button").className).toBe("btn btn-primary custom-class");
   });
 });
