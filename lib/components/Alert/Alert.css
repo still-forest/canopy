@@ -34,7 +34,7 @@
   }
 
   .alert-description {
-    @apply text-sm text-inherit;
+    @apply text-sm text-inherit text-balance;
   }
 
   .alert-actions {
