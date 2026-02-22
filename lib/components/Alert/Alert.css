@@ -14,8 +14,8 @@
       @apply bg-warning-foreground text-warning border-warning;
     }
 
-    &.alert-error {
-      @apply bg-destructive-foreground text-destructive border-destructive;
+    &.alert-danger {
+      @apply bg-danger-foreground text-danger border-danger;
     }
 
     .alert-media {

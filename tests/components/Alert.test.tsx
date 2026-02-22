@@ -59,7 +59,7 @@ describe("Alert", () => {
     expect(within(alert).getByText("This is an important message.")).toBeInTheDocument();
   });
 
-  test("renders error Alert", async () => {
+  test("renders danger Alert", async () => {
     render(
       <Alert variant="danger">
         <Alert.Content>
@@ -71,7 +71,7 @@ describe("Alert", () => {
 
     const alert = screen.getByRole("alert");
     expect(alert).toBeInTheDocument();
-    expect(alert.className).toEqual("alert alert-error");
+    expect(alert.className).toEqual("alert alert-danger");
 
     expect(within(alert).getByText("Important Information")).toBeInTheDocument();
     expect(within(alert).getByText("This is an important message.")).toBeInTheDocument();

@@ -23,7 +23,7 @@ const Alert = ({ variant, children, className }: AlertProps) => {
           "alert-info": variant === "info",
           "alert-success": variant === "success",
           "alert-warning": variant === "warning",
-          "alert-error": variant === "danger",
+          "alert-danger": variant === "danger",
         }),
         className,
       )}
@@ -45,7 +45,7 @@ const AlertContent = ({ children, className }: StyleableProps) => {
 };
 
 const AlertTitle = ({ children, className }: StyleableProps) => {
-  return <h4 className={cn("alert-title", className)}>{children}</h4>;
+  return <h6 className={cn("alert-title", className)}>{children}</h6>;
 };
 
 const AlertDescription = ({ children, className }: StyleableProps) => {
