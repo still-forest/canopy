@@ -1,0 +1,103 @@
+@theme inline {
+  --font-sans: Inter, Roboto, "Helvetica Neue", "Arial Nova", "Nimbus Sans", Arial, sans-serif;
+  --font-family: "Iowan Old Style", "Palatino Linotype", "URW Palladio L", P052, serif;
+  --font-family: ui-monospace, "Cascadia Code", "Source Code Pro", Menlo, Consolas, "DejaVu Sans Mono", monospace;
+
+  --font-brand: var(--font-serif);
+  --font-heading: var(--font-serif);
+  --font-body: var(--font-sans);
+
+  --font-brand-weight: 400;
+  --font-heading-weight: 400;
+  --font-body-weight: 400;
+  --font-mono-weight: 400;
+}
+
+@utility font-brand {
+  font-family: var(--font-brand);
+  font-weight: var(--font-brand-weight);
+}
+
+@utility font-heading {
+  font-family: var(--font-heading);
+  font-weight: var(--font-heading-weight);
+}
+
+@utility font-body {
+  font-family: var(--font-body);
+  font-weight: var(--font-body-weight);
+}
+
+@utility font-mono {
+  font-family: var(--font-mono);
+  font-weight: var(--font-mono-weight);
+}
+
+@layer base {
+  .heading-1 {
+    @apply font-heading font-normal;
+    @apply text-5xl tracking-tight;
+  }
+
+  .heading-2 {
+    @apply font-heading font-normal;
+    @apply text-4xl tracking-normal;
+  }
+
+  .heading-3 {
+    @apply font-heading font-normal;
+    @apply text-3xl tracking-normal;
+  }
+
+  .heading-4 {
+    @apply font-body font-medium;
+    @apply text-xl;
+  }
+
+  .heading-5 {
+    @apply font-body font-semibold;
+    @apply text-lg;
+  }
+
+  .heading-6 {
+    @apply font-body font-bold;
+    @apply text-base;
+  }
+
+  .body-base {
+    @apply font-body text-base;
+  }
+
+  .label {
+    @apply font-body font-semibold text-sm;
+  }
+
+  .code {
+    @apply font-mono font-normal text-sm;
+    @apply bg-muted-foreground/10 px-1 py-0.5 rounded-md;
+  }
+
+  .heading-hero {
+    @apply font-bold text-6xl tracking-tight;
+  }
+
+  .heading-lead {
+    @apply font-body font-medium text-muted-foreground text-xl;
+  }
+
+  p.muted {
+    @apply text-muted-foreground;
+  }
+
+  .footnote {
+    @apply font-body text-muted-foreground text-sm;
+  }
+
+  .footnote-xs {
+    @apply font-body text-muted-foreground text-xs;
+  }
+
+  .eyebrow {
+    @apply font-body text-muted-foreground text-xs uppercase tracking-wide;
+  }
+}

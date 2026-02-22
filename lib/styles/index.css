@@ -1,0 +1,9 @@
+@import "tailwindcss";
+
+@import "./base.css";
+
+@layer base {
+  * {
+    @apply border-border outline-ring/50;
+  }
+}
