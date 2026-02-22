@@ -17,25 +17,27 @@
     &.alert-danger {
       @apply bg-danger-foreground text-danger border-danger;
     }
+  }
 
-    .alert-media {
-      @apply flex items-center justify-center;
+  .alert-media {
+    & > svg {
+      @apply size-4;
     }
+  }
 
-    .alert-content {
-      @apply flex gap-2 grow justify-center md:flex-col md:items-start;
-    }
+  .alert-content {
+    @apply flex gap-2 grow justify-center md:flex-col md:items-start;
+  }
 
-    .alert-title {
-      @apply text-inherit;
-    }
+  .alert-title {
+    @apply text-inherit;
+  }
 
-    .alert-description {
-      @apply text-sm text-inherit;
-    }
+  .alert-description {
+    @apply text-sm text-inherit;
+  }
 
-    .alert-actions {
-      @apply flex gap-2 grow items-center justify-end;
-    }
+  .alert-actions {
+    @apply flex gap-2 grow items-center justify-end;
   }
 }
