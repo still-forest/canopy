@@ -1,4 +1,4 @@
-import { type KeyboardEvent, type ReactElement, useId, useRef, useState } from "react";
+import { type ComponentProps, type KeyboardEvent, type ReactElement, useId, useRef, useState } from "react";
 import { Button, ButtonGroup, type ButtonGroupProps } from "@/buttons";
 import { Hint } from "@/components";
 import { DesktopSelectPicker } from "@/forms/fields/SelectPickerField/DesktopSelectPicker";
@@ -13,7 +13,7 @@ import { cn } from "@/utils";
 interface Option {
   label?: string;
   value: string;
-  icon?: ReactElement;
+  icon?: ReactElement<ComponentProps<"svg">>;
 }
 
 interface ButtonRadioFieldProps extends Omit<ButtonGroupProps, "children" | "onChange"> {
