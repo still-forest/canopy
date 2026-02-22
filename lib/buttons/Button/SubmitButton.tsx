@@ -9,20 +9,24 @@ export const SubmitButton = ({
   variant = "primary",
   disabled = false,
   submitting = false,
-  label = "Submit",
+  label,
   icon,
+  children,
   ...props
 }: SubmitButtonProps) => {
   const iconElement = submitting ? <Loader2 /> : icon;
+  const resolvedLabel = children ? undefined : (label ?? "Submit");
   return (
     <Button
       data-submitting={submitting}
       disabled={disabled || submitting}
       icon={iconElement}
-      label={label}
+      label={resolvedLabel}
       type="submit"
       variant={variant}
       {...props}
-    />
+    >
+      {children}
+    </Button>
   );
 };

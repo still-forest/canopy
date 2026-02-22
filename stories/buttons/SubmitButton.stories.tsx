@@ -64,3 +64,22 @@ export const Sizes: Story = {
     </div>
   ),
 };
+
+export const WithLabel: Story = {
+  args: {
+    ...defaultProps,
+    label: "Submit the thing",
+  },
+};
+
+export const WithChildren: Story = {
+  args: {
+    ...defaultProps,
+    children: (
+      <>
+        <SendHorizontalIcon />
+        <span className="font-bold">Submit the thing</span>
+      </>
+    ),
+  },
+};

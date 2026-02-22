@@ -1,4 +1,3 @@
-import "./Button.css";
 import type { ComponentProps, ReactElement } from "react";
 
 export type BaseButtonProps = {

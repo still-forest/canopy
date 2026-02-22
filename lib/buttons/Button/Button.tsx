@@ -35,8 +35,7 @@ export const Button = ({
       {...props}
     >
       {icon && cloneElement(icon, { className: cn("btn-icon", icon.props.className) })}
-      {!asIcon && label}
-      {children}
+      {!asIcon && (label || children)}
     </button>
   );
 };

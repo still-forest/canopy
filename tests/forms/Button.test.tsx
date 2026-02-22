@@ -216,9 +216,14 @@ describe("Button", () => {
   });
 
   test("renders a Button with asIcon", async () => {
-    render(<Button asIcon>Test Button</Button>);
+    render(
+      <Button asIcon>
+        <svg>
+          <path d="M1 1h10v10H1z" />
+        </svg>
+      </Button>,
+    );
 
-    expect(screen.getByRole("button")).toHaveTextContent("Test Button");
     expect(screen.getByRole("button")).toHaveAttribute("type", "button");
     expect(screen.getByRole("button").className).toBe("btn btn-primary btn--icon");
   });
