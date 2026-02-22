@@ -8,7 +8,7 @@
     @apply border;
 
     &[data-submitting="true"] {
-      .btn-icon {
+      & > svg {
         @apply animate-spin;
       }
     }
