@@ -1,5 +1,5 @@
-import { Button, ButtonGroup } from "@still-forest/canopy";
-import { type KeyboardEvent, useRef } from "react";
+import { type ComponentProps, type KeyboardEvent, type ReactElement, useRef } from "react";
+import { Button, ButtonGroup } from "@/buttons";
 import { SelectInput, type SelectOption } from "@/forms/inputs";
 import "./ButtonRadioInput.css";
 import { useIsMobile } from "@/hooks/use-mobile";
@@ -7,7 +7,7 @@ import { useIsMobile } from "@/hooks/use-mobile";
 interface Option {
   label?: string;
   value: string;
-  icon?: React.ReactElement;
+  icon?: ReactElement<ComponentProps<"svg">>;
 }
 
 interface ButtonRadioInputProps {
@@ -93,6 +93,7 @@ export const ButtonRadioInput = ({
         return (
           <Button
             aria-checked={isSelected}
+            icon={option.icon}
             key={option.value}
             label={option.label}
             onClick={() => onChange(option.value)}

@@ -15,7 +15,7 @@ export default meta;
 
 type Story = StoryObj<typeof meta>;
 
-const onChange = (value: string) => console.log(`Selected option: ${value}`);
+const onChange = (value: string | null | undefined) => console.log(`Selected option: ${value}`);
 
 const defaultProps = {
   name: "someThing",
@@ -31,7 +31,7 @@ const defaultProps = {
 
 export const Default: Story = {
   render: () => {
-    const [value, setValue] = useState<string | undefined>(undefined);
+    const [value, setValue] = useState<string | null | undefined>(undefined);
     return (
       <Flex direction="col" gap="4">
         <ButtonRadioInput {...defaultProps} onChange={setValue} value={value} />
@@ -45,7 +45,7 @@ export const Default: Story = {
 
 export const WithSecondaryOptions: Story = {
   render: () => {
-    const [value, setValue] = useState<string | undefined>(undefined);
+    const [value, setValue] = useState<string | null | undefined>(undefined);
     const secondaryOptions = [
       { value: "abraham", label: "Abraham" },
       { value: "herbert", label: "Herbert" },
@@ -54,7 +54,7 @@ export const WithSecondaryOptions: Story = {
       { value: "selma", label: "Selma" },
     ];
 
-    const handleChange = (value: string) => {
+    const handleChange = (value: string | null | undefined) => {
       setValue(value);
       onChange(value);
     };
@@ -70,37 +70,9 @@ export const WithSecondaryOptions: Story = {
   },
 };
 
-export const WithLabelAndNote: Story = {
-  render: () => {
-    const [value, setValue] = useState<string | undefined>(undefined);
-    const secondaryOptions = [
-      { value: "abraham", label: "Abraham" },
-      { value: "herbert", label: "Herbert" },
-      { value: "jacqueline", label: "Jacqueline" },
-      { value: "patty", label: "Patty" },
-      { value: "selma", label: "Selma" },
-    ];
-
-    const handleChange = (value: string) => {
-      setValue(value);
-      onChange(value);
-    };
-
-    const props = {
-      ...defaultProps,
-      label: "Select a character:",
-      hint: "This is a hint",
-      note: "My cat's breath smells like cat food.",
-      error: value ? `You picked ${value}, which is incorrect.` : undefined,
-    };
-
-    return <ButtonRadioInput {...props} onChange={handleChange} secondaryOptions={secondaryOptions} value={value} />;
-  },
-};
-
 export const WithIcons: Story = {
   render: () => {
-    const [value, setValue] = useState<string | undefined>(undefined);
+    const [value, setValue] = useState<string | null | undefined>(undefined);
     const iconOptions = [
       { value: "home", icon: <Home className="size-4" /> },
       { value: "user", icon: <User className="size-4" /> },
@@ -127,7 +99,7 @@ export const WithIcons: Story = {
 
 export const WithIconsAndLabels: Story = {
   render: () => {
-    const [value, setValue] = useState<string | undefined>(undefined);
+    const [value, setValue] = useState<string | null | undefined>(undefined);
     const iconOptions = [
       { value: "home", label: "Home", icon: <Home className="size-4" /> },
       { value: "user", label: "Profile", icon: <User className="size-4" /> },
@@ -154,7 +126,7 @@ export const WithIconsAndLabels: Story = {
 
 export const WithLabelOnSelection: Story = {
   render: () => {
-    const [value, setValue] = useState<string | undefined>(undefined);
+    const [value, setValue] = useState<string | null | undefined>(undefined);
 
     const optionConfig = [
       { value: "home", label: "Home", icon: <Home className="size-4" /> },
@@ -173,7 +145,6 @@ export const WithLabelOnSelection: Story = {
     return (
       <Flex className="w-[300px]" direction="col" gap="4">
         <ButtonRadioInput
-          hint="Label only appears on selected option"
           label="Select an action:"
           name="mixedSelect"
           onChange={setValue}
