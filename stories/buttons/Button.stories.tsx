@@ -1,11 +1,11 @@
 import type { Meta, StoryObj } from "@storybook/react-vite";
 import { Armchair as SampleIcon } from "lucide-react";
 
-import { Button } from "@/forms";
+import { Button } from "@/buttons";
 import { Flex } from "@/layout";
 
 const meta: Meta<typeof Button> = {
-  title: "Forms/Buttons/Default",
+  title: "Buttons/Button",
   component: Button,
   tags: ["autodocs"],
   decorators: [

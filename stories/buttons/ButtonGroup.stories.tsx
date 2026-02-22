@@ -1,9 +1,9 @@
 import type { Meta, StoryObj } from "@storybook/react-vite";
 
-import { ButtonGroup } from "@/forms";
+import { ButtonGroup } from "@/buttons";
 
 const meta: Meta<typeof ButtonGroup> = {
-  title: "Forms/Buttons/ButtonGroup",
+  title: "Buttons/ButtonGroup",
   component: ButtonGroup,
   tags: ["autodocs"],
 } satisfies Meta<typeof ButtonGroup>;

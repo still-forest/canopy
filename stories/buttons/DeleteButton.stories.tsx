@@ -1,9 +1,9 @@
 import type { Meta, StoryObj } from "@storybook/react-vite";
 
-import { DeleteButton } from "@/forms";
+import { DeleteButton } from "@/buttons";
 
 const meta: Meta<typeof DeleteButton> = {
-  title: "Forms/Buttons/Delete",
+  title: "Buttons/Delete",
   component: DeleteButton,
   tags: ["autodocs"],
 } satisfies Meta<typeof DeleteButton>;

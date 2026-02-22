@@ -1,11 +1,11 @@
 import type { Meta, StoryObj } from "@storybook/react-vite";
 
-import { CopyButton } from "@/forms";
+import { CopyButton } from "@/buttons";
 import { Flex } from "@/layout";
-import { sampleParagraphText } from "../../support/sampleText";
+import { sampleParagraphText } from "../support/sampleText";
 
 const meta: Meta<typeof CopyButton> = {
-  title: "Forms/Buttons/Copy",
+  title: "Buttons/Copy",
   component: CopyButton,
   tags: ["autodocs"],
 } satisfies Meta<typeof CopyButton>;

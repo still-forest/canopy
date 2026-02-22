@@ -1,10 +1,10 @@
 import type { Meta, StoryObj } from "@storybook/react-vite";
 import { Origami, PiggyBank } from "lucide-react";
 
-import { SubmitButton } from "@/forms";
+import { SubmitButton } from "@/buttons";
 
 const meta: Meta<typeof SubmitButton> = {
-  title: "Forms/Buttons/Submit",
+  title: "Buttons/Submit",
   component: SubmitButton,
   tags: ["autodocs"],
 } satisfies Meta<typeof SubmitButton>;

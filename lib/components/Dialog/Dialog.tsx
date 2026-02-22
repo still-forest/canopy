@@ -1,5 +1,6 @@
 import type { Dialog as DialogPrimitive } from "@base-ui/react/dialog";
 import type { ComponentProps } from "react";
+import { Button, type ButtonProps } from "@/buttons";
 import {
   Dialog as BaseDialog,
   DialogClose,
@@ -12,7 +13,6 @@ import {
   DialogTitle,
   DialogTrigger,
 } from "@/components/ui/dialog";
-import { Button, type ButtonProps } from "@/forms";
 
 const Dialog = (props: ComponentProps<typeof BaseDialog>) => {
   return <BaseDialog {...props} />;

@@ -1,15 +1,15 @@
 import { type KeyboardEvent, useId, useRef, useState } from "react";
+import type { ButtonGroupProps } from "@/buttons";
+import { ButtonGroup } from "@/buttons";
 import { Hint } from "@/components";
-import type { ButtonGroupProps } from "@/forms/buttons/Button/ButtonGroup";
-import { ButtonGroup } from "@/forms/buttons/Button/ButtonGroup";
 import { DesktopSelectPicker } from "@/forms/fields/SelectPickerField/DesktopSelectPicker";
+import { GroupedOptionList } from "@/forms/fields/SelectPickerField/OptionList";
 import type { SelectPickerOption } from "@/forms/fields/SelectPickerField/types";
 import { InputError } from "@/forms/InputError";
 import { Label } from "@/forms/Label";
 import { Flex } from "@/layout";
 import { Text } from "@/typography";
 import { cn } from "@/utils";
-import { GroupedOptionList } from "../SelectPickerField/OptionList";
 
 interface Option {
   label?: string;

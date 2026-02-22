@@ -1,7 +1,7 @@
 import { SimpleTooltip } from "@/components";
 import { cn } from "@/utils/cn";
 import "./Badge.css";
-import type { ButtonSize, ButtonVariant } from "@/forms";
+import type { ButtonSize, ButtonVariant } from "@/buttons";
 
 export interface BadgeProps {
   variant?: ButtonVariant;
