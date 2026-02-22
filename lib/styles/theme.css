@@ -3,7 +3,7 @@
   --brand-foreground: var(--color-forest-100);
 
   --background: var(--color-white);
-  --foreground: var(--neutral-950);
+  --foreground: var(--color-neutral-950);
   --muted: var(--color-neutral-100);
   --muted-foreground: var(--color-neutral-500);
   --accent: var(--color-neutral-100);

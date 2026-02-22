@@ -97,7 +97,7 @@ function BodyShowcase() {
           <p>Regular body text for paragraphs and general content.</p>
         </div>
         <div className="flex items-baseline gap-8">
-          <div className="w-24 footnote-xs">label</div>
+          <div className="w-24 footnote-xs">label / .label</div>
           <label htmlFor="example">Form Label</label>
         </div>
         <div className="flex items-baseline gap-8">
@@ -117,7 +117,7 @@ function BodyShowcase() {
           <p className="eyebrow">Eyebrow text for section headings</p>
         </div>
         <div className="flex items-baseline gap-8">
-          <div className="w-24 footnote-xs">code</div>
+          <div className="w-24 footnote-xs">code / .code</div>
           <p>
             Inline <code>code snippets</code> within text
           </p>

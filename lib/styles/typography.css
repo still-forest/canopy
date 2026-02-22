@@ -1,7 +1,7 @@
 @theme inline {
   --font-sans: Inter, Roboto, "Helvetica Neue", "Arial Nova", "Nimbus Sans", Arial, sans-serif;
   --font-family: "Iowan Old Style", "Palatino Linotype", "URW Palladio L", P052, serif;
-  --font-family: ui-monospace, "Cascadia Code", "Source Code Pro", Menlo, Consolas, "DejaVu Sans Mono", monospace;
+  --font-mono: ui-monospace, "Cascadia Code", "Source Code Pro", Menlo, Consolas, "DejaVu Sans Mono", monospace;
 
   --font-brand: var(--font-serif);
   --font-heading: var(--font-serif);
@@ -34,44 +34,53 @@
 }
 
 @layer base {
+  h1,
   .heading-1 {
     @apply font-heading font-normal;
     @apply text-5xl tracking-tight;
   }
 
+  h2,
   .heading-2 {
     @apply font-heading font-normal;
     @apply text-4xl tracking-normal;
   }
 
+  h3,
   .heading-3 {
     @apply font-heading font-normal;
     @apply text-3xl tracking-normal;
   }
 
+  h4,
   .heading-4 {
     @apply font-body font-medium;
     @apply text-xl;
   }
 
+  h5,
   .heading-5 {
     @apply font-body font-semibold;
     @apply text-lg;
   }
 
+  h6,
   .heading-6 {
     @apply font-body font-bold;
     @apply text-base;
   }
 
+  p,
   .body-base {
     @apply font-body text-base;
   }
 
+  label,
   .label {
     @apply font-body font-semibold text-sm;
   }
 
+  code,
   .code {
     @apply font-mono font-normal text-sm;
     @apply bg-muted-foreground/10 px-1 py-0.5 rounded-md;
