@@ -1,9 +1,9 @@
-import type { ComponentProps, ReactElement } from "react";
+import type { ReactElement } from "react";
 
 export type BaseButtonProps = {
   className?: string;
   label?: string;
-  icon?: ReactElement<ComponentProps<"svg">>;
+  icon?: ReactElement;
   variant?: ButtonVariant;
   size?: ButtonSize;
   outline?: boolean;
