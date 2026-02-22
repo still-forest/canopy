@@ -11,8 +11,8 @@
 
   --primary: var(--color-forest-700);
   --primary-foreground: var(--color-forest-50);
-  --secondary: var(--color-zinc-100);
-  --secondary-foreground: var(--color-zinc-900);
+  --secondary: var(--color-stone-100);
+  --secondary-foreground: var(--color-stone-900);
 
   --info: var(--color-blue-500);
   --info-foreground: var(--color-blue-100);
@@ -34,7 +34,7 @@
   --chart-4: var(--color-blue-700);
   --chart-5: var(--color-blue-800);
 
-  --sidebar: var(--color-zinc-50);
+  --sidebar: var(--color-stone-50);
   --sidebar-foreground: var(--color-neutral-950);
   --sidebar-primary: var(--color-blue-600);
   --sidebar-primary-foreground: var(--color-blue-50);
@@ -63,8 +63,8 @@
 
   --primary: var(--color-blue-800);
   --primary-foreground: var(--color-blue-50);
-  --secondary: var(--color-zinc-800);
-  --secondary-foreground: var(--color-zinc-50);
+  --secondary: var(--color-stone-800);
+  --secondary-foreground: var(--color-stone-50);
 
   --info: var(--color-blue-500);
   --info-foreground: var(--color-blue-100);
