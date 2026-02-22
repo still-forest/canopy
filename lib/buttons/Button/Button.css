@@ -3,8 +3,8 @@
 
 @layer components {
   .btn {
-    @apply inline-flex items-center justify-center whitespace-nowrap text-sm font-medium transition-all disabled:pointer-events-none disabled:opacity-50 [&_svg]:pointer-events-none [&_svg:not([class*='size-'])]:size-4 shrink-0 [&_svg]:shrink-0 outline-none focus-visible:border-ring focus-visible:ring-ring/50 focus-visible:ring-[3px] aria-invalid:ring-danger/20 dark:aria-invalid:ring-danger/40 aria-invalid:border-danger cursor-pointer rounded-md shadow-xs;
-    @apply gap-2 h-9 px-4 py-2 has-[>svg]:px-3;
+    @apply inline-flex items-center justify-center whitespace-nowrap text-sm font-medium transition-all shrink-0 outline-none cursor-pointer rounded-md shadow-xs;
+    @apply gap-2 h-9 px-4 py-2;
     @apply border;
 
     &[data-submitting="true"] {
@@ -13,41 +13,81 @@
       }
     }
 
+    &:disabled {
+      @apply pointer-events-none opacity-50;
+    }
+
+    &:focus-visible {
+      @apply border-ring ring-ring/50 ring-[3px];
+    }
+
+    &:aria-invalid {
+      @apply border-danger ring-danger/20 dark:ring-danger/40;
+    }
+
+    &:has(svg) {
+      @apply px-3;
+    }
+
+    & > svg {
+      @apply pointer-events-none shrink-0;
+
+      &:not([class*='size-']) {
+        @apply size-4;
+      }
+    }
+
     &.btn--icon {
       @apply size-9 p-2!;
     }
 
     &.btn--xs {
-      @apply gap-1 h-6 px-2 has-[>svg]:px-1.5 text-xs;
+      @apply gap-1 h-6 px-2 text-xs;
 
       &.btn--icon {
         @apply size-6 p-1!;
       }
+
+      &:has(svg) {
+        @apply px-1.5;
+      }
     }
 
     &.btn--sm {
-      @apply gap-1.5 h-8 px-3 has-[>svg]:px-2.5 text-sm;
+      @apply gap-1.5 h-8 px-3 text-sm;
 
       &.btn--icon {
         @apply size-8 p-2!;
+      }
+
+      &:has(svg) {
+        @apply px-2.5;
       }
     }
 
     /* btn--md is the default size */
 
     &.btn--lg {
-      @apply gap-2 h-10 px-6 has-[>svg]:px-4 text-lg;
+      @apply gap-2 h-10 px-6 text-lg;
 
       &.btn--icon {
         @apply size-10 p-2!;
       }
+
+      &:has(svg) {
+        @apply px-4;
+      }
     }
 
     &.btn--xl {
-      @apply gap-2 h-12 px-8 has-[>svg]:px-6 text-xl;
+      @apply gap-2 h-12 px-8 text-xl;
 
       &.btn--icon {
         @apply size-12 p-3!;
+      }
+
+      &:has(svg) {
+        @apply px-6;
       }
     }
 
@@ -148,11 +188,15 @@
   }
 
   .btn-info {
-    @apply bg-info text-info-foreground focus-visible:ring-info/20 dark:focus-visible:ring-info/40 dark:bg-info/60 border-info;
+    @apply bg-info text-info-foreground dark:bg-info/60 border-info;
 
     &:hover,
     &[aria-pressed="true"] {
       @apply bg-info/90 dark:bg-info/50;
+    }
+
+    &:focus-visible {
+      @apply ring-info/20 dark:ring-info/40;
     }
 
     &.btn--outline {
@@ -166,11 +210,15 @@
   }
 
   .btn-success {
-    @apply bg-success text-success-foreground focus-visible:ring-success/20 dark:focus-visible:ring-success/40 dark:bg-success/60 border-success;
+    @apply bg-success text-success-foreground dark:bg-success/60 border-success;
 
     &:hover,
     &[aria-pressed="true"] {
       @apply bg-success/90 dark:bg-success/50;
+    }
+
+    &:focus-visible {
+      @apply ring-success/20 dark:ring-success/40;
     }
 
     &.btn--outline {
@@ -184,11 +232,15 @@
   }
 
   .btn-warning {
-    @apply bg-warning text-warning-foreground focus-visible:ring-warning/20 dark:focus-visible:ring-warning/40 dark:bg-warning/60 border-warning;
+    @apply bg-warning text-warning-foreground dark:bg-warning/60 border-warning;
 
     &:hover,
     &[aria-pressed="true"] {
       @apply bg-warning/90 dark:bg-warning/50;
+    }
+
+    &:focus-visible {
+      @apply ring-warning/20 dark:ring-warning/40;
     }
 
     &.btn--outline {
@@ -201,11 +253,15 @@
   }
 
   .btn-danger {
-    @apply bg-danger text-danger-foreground focus-visible:ring-danger/20 dark:focus-visible:ring-danger/40 dark:bg-danger/60 border-danger;
+    @apply bg-danger text-danger-foreground dark:bg-danger/60 border-danger;
 
     &:hover,
     &[aria-pressed="true"] {
       @apply bg-danger/90 dark:bg-danger/50;
+    }
+
+    &:focus-visible {
+      @apply ring-danger/20 dark:ring-danger/40;
     }
 
     &.btn--outline {
