@@ -3,8 +3,8 @@
 
 @layer components {
   .alert {
-    @apply flex flex-row gap-4;
-    @apply p-4 rounded-lg border;
+    @apply flex rounded-md border;
+    @apply p-4 gap-4;
 
     &.alert-info {
       @apply bg-info-foreground text-info border-info;
@@ -26,11 +26,11 @@
   }
 
   .alert-content {
-    @apply flex gap-2 grow justify-center md:flex-col md:items-start;
+    @apply flex grow gap-1 justify-baseline md:flex-col md:items-start;
   }
 
   .alert-title {
-    @apply text-inherit;
+    @apply text-inherit font-semibold leading-none;
   }
 
   .alert-description {
