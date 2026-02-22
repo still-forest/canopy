@@ -1,6 +1,6 @@
 import { Calendar as CalendarIcon } from "lucide-react";
 import { useState } from "react";
-import { Button } from "@/buttons";
+import { Button, type ButtonSize } from "@/buttons";
 import { Calendar } from "@/components/ui/calendar";
 import { Popover, PopoverContent, PopoverTrigger } from "@/components/ui/popover";
 import { InputError } from "@/forms";
@@ -11,17 +11,11 @@ interface DatePickerFieldProps {
   onDateSelection: (date: Date) => void;
   initialValue?: Date;
   className?: string;
-  size?: "default" | "xs" | "sm" | "lg";
+  size?: ButtonSize;
   error?: string;
 }
 
-export const DatePickerField = ({
-  onDateSelection,
-  initialValue,
-  className,
-  size = "default",
-  error,
-}: DatePickerFieldProps) => {
+export const DatePickerField = ({ onDateSelection, initialValue, className, size, error }: DatePickerFieldProps) => {
   const [date, setDate] = useState<Date | undefined>(initialValue);
 
   const handleSelect = (date: Date | undefined) => {
@@ -42,8 +36,8 @@ export const DatePickerField = ({
                 !date && "text-muted-foreground",
                 className,
               )}
+              outline
               size={size}
-              variant="outline"
             >
               <CalendarIcon className="mr-2 h-4 w-4" />
               {date ? date.toISOString().split("T")[0] : <span>Select a date</span>}

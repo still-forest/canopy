@@ -39,6 +39,6 @@ export const Sizes: Story = {
 export const WithVariant: Story = {
   args: {
     ...defaultProps,
-    variant: "outline",
+    variant: "info",
   },
 };

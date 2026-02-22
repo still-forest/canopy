@@ -1,7 +1,7 @@
 import type { Meta, StoryObj } from "@storybook/react-vite";
 import { useState } from "react";
+import { Button } from "@/buttons";
 import { Modal } from "@/components";
-import { Button } from "@/forms";
 import { Flex } from "@/layout";
 import { Text } from "@/typography";
 
@@ -71,7 +71,7 @@ export const Controlled: Story = {
           onOpenChange={setOpen}
           open={open}
           title="Modal title"
-          trigger={<Button variant="outline">Internal trigger</Button>}
+          trigger={<Button outline>Internal trigger</Button>}
         >
           <Text>Modal content</Text>
         </Modal>

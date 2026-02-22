@@ -2,7 +2,7 @@ import { fireEvent, render, screen } from "@testing-library/react";
 import { describe, expect, test, vi } from "vitest";
 import "@testing-library/jest-dom";
 
-import { Button } from "@/forms";
+import { Button } from "@/buttons";
 
 describe("Button", () => {
   test("renders a Button with an onClick action", async () => {
@@ -79,16 +79,8 @@ describe("Button", () => {
     expect(screen.getByRole("button")).toHaveClass("h-11", "text-lg");
   });
 
-  test("renders an unstyled Button", async () => {
-    render(<Button variant="unstyled">Test Button</Button>);
-
-    expect(screen.getByRole("button")).toHaveTextContent("Test Button");
-    expect(screen.getByRole("button")).toHaveAttribute("type", "button");
-    expect(screen.getByRole("button")).toHaveClass("h-auto", "p-0");
-  });
-
   test("renders a Button of size default", async () => {
-    render(<Button size="default">Test Button</Button>);
+    render(<Button>Test Button</Button>);
 
     expect(screen.getByRole("button")).toHaveTextContent("Test Button");
     expect(screen.getByRole("button")).toHaveAttribute("type", "button");

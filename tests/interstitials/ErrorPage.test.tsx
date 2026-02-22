@@ -1,7 +1,7 @@
 import { fireEvent, render, screen } from "@testing-library/react";
 import { Home } from "lucide-react";
 import { describe, expect, it, vi } from "vitest";
-import { Button } from "@/forms";
+import { Button } from "@/buttons";
 import { ErrorPage } from "@/interstitials";
 
 describe("ErrorPage", () => {

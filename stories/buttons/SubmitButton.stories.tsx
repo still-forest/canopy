@@ -1,126 +1,66 @@
 import type { Meta, StoryObj } from "@storybook/react-vite";
-import { Origami, PiggyBank } from "lucide-react";
-
+import { SendHorizontalIcon } from "lucide-react";
 import { SubmitButton } from "@/buttons";
 
 const meta: Meta<typeof SubmitButton> = {
-  title: "Buttons/Submit",
+  title: "Buttons/SubmitButton",
   component: SubmitButton,
   tags: ["autodocs"],
+  decorators: [
+    (Story) => (
+      <div className="min-w-48">
+        <Story />
+      </div>
+    ),
+  ],
 } satisfies Meta<typeof SubmitButton>;
 
 export default meta;
 
 type Story = StoryObj<typeof meta>;
 
-const defaultProps = {
-  disabled: false,
-};
+const defaultProps = { submitting: false };
 
 export const Default: Story = {
   args: {
     ...defaultProps,
   },
 };
-
-export const ExtraSmall: Story = {
+export const WithIcon: Story = {
   args: {
     ...defaultProps,
-    size: "xs",
+    icon: <SendHorizontalIcon />,
   },
 };
 
-export const Small: Story = {
-  args: {
-    ...defaultProps,
-    size: "sm",
-  },
+export const States: Story = {
+  render: () => (
+    <div className="grid grid-cols-5 gap-4">
+      <SubmitButton {...defaultProps} label="Default" />
+      <SubmitButton {...defaultProps} disabled label="Disabled" />
+      <SubmitButton {...defaultProps} submitting />
+    </div>
+  ),
 };
 
-export const Medium: Story = {
-  args: {
-    ...defaultProps,
-    size: "md",
-  },
+export const StatesWithIcon: Story = {
+  render: () => (
+    <div className="grid grid-cols-5 gap-4">
+      <SubmitButton {...defaultProps} icon={<SendHorizontalIcon />} label="Default" />
+      <SubmitButton {...defaultProps} disabled icon={<SendHorizontalIcon />} />
+      <SubmitButton {...defaultProps} icon={<SendHorizontalIcon />} submitting />
+    </div>
+  ),
 };
 
-export const Large: Story = {
-  args: {
-    ...defaultProps,
-    size: "lg",
-  },
-};
-
-export const Submitting: Story = {
-  args: {
-    ...defaultProps,
-    submitting: true,
-  },
-};
-
-export const Disabled: Story = {
-  args: {
-    ...defaultProps,
-    disabled: true,
-  },
-};
-
-export const Submit: Story = {
-  args: {
-    ...defaultProps,
-    action: "submit",
-  },
-};
-
-export const Save: Story = {
-  args: {
-    ...defaultProps,
-    action: "save",
-  },
-};
-
-export const Send: Story = {
-  args: {
-    ...defaultProps,
-    action: "send",
-  },
-};
-
-export const NoIcon: Story = {
-  args: {
-    ...defaultProps,
-    noIcon: true,
-  },
-};
-
-export const WithCustomIcon: Story = {
-  args: {
-    ...defaultProps,
-    icon: <Origami />,
-  },
-};
-
-export const WithCustomSubmittingIcon: Story = {
-  args: {
-    ...defaultProps,
-    submittingIcon: <PiggyBank className="animate-spin" />,
-    submitting: true,
-  },
-};
-
-export const WithCustomLabels: Story = {
-  args: {
-    ...defaultProps,
-    label: "Do the thing",
-    submittingLabel: "Doing it",
-  },
-};
-
-export const WithCustomLabelsSubmitting: Story = {
-  args: {
-    ...defaultProps,
-    label: "Do the thing",
-    submittingLabel: "Doing it",
-    submitting: true,
-  },
+export const Sizes: Story = {
+  render: () => (
+    <div className="grid grid-cols-5 gap-4">
+      <SubmitButton {...defaultProps} label="Extra small" size="xs" />
+      <SubmitButton {...defaultProps} label="Small" size="sm" />
+      <SubmitButton {...defaultProps} label="Medium" size="md" />
+      <SubmitButton {...defaultProps} label="Large" size="lg" />
+      <SubmitButton {...defaultProps} label="Extra large" size="xl" />
+    </div>
+  ),
 };

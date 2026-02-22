@@ -1,6 +1,6 @@
 import type { Meta, StoryObj } from "@storybook/react-vite";
 
-import { ButtonGroup } from "@/buttons";
+import { Button, ButtonGroup } from "@/buttons";
 
 const meta: Meta<typeof ButtonGroup> = {
   title: "Buttons/ButtonGroup",
@@ -15,9 +15,9 @@ type Story = StoryObj<typeof meta>;
 export const Default: Story = {
   render: () => (
     <ButtonGroup>
-      <ButtonGroup.Button>Button 1</ButtonGroup.Button>
-      <ButtonGroup.Button>Button 2</ButtonGroup.Button>
-      <ButtonGroup.Button>Button 3</ButtonGroup.Button>
+      <Button>Button 1</Button>
+      <Button>Button 2</Button>
+      <Button>Button 3</Button>
     </ButtonGroup>
   ),
 };
@@ -25,9 +25,9 @@ export const Default: Story = {
 export const AsOutline: Story = {
   render: () => (
     <ButtonGroup>
-      <ButtonGroup.Button variant="outline">Button 1</ButtonGroup.Button>
-      <ButtonGroup.Button variant="outline">Button 2</ButtonGroup.Button>
-      <ButtonGroup.Button variant="outline">Button 3</ButtonGroup.Button>
+      <Button outline>Button 1</Button>
+      <Button outline>Button 2</Button>
+      <Button outline>Button 3</Button>
     </ButtonGroup>
   ),
 };
@@ -35,10 +35,10 @@ export const AsOutline: Story = {
 export const MixedStyles: Story = {
   render: () => (
     <ButtonGroup>
-      <ButtonGroup.Button variant="outline">Button 1</ButtonGroup.Button>
-      <ButtonGroup.Button variant="outline">Button 2</ButtonGroup.Button>
-      <ButtonGroup.Button variant="primary">Button 3</ButtonGroup.Button>
-      <ButtonGroup.Button variant="outline">Button 4</ButtonGroup.Button>
+      <Button outline>Button 1</Button>
+      <Button outline>Button 2</Button>
+      <Button variant="primary">Button 3</Button>
+      <Button outline>Button 4</Button>
     </ButtonGroup>
   ),
 };

@@ -1,6 +1,5 @@
-import { type KeyboardEvent, useId, useRef, useState } from "react";
-import type { ButtonGroupProps } from "@/buttons";
-import { ButtonGroup } from "@/buttons";
+import { type ComponentProps, type KeyboardEvent, type ReactElement, useId, useRef, useState } from "react";
+import { Button, ButtonGroup, type ButtonGroupProps } from "@/buttons";
 import { Hint } from "@/components";
 import { DesktopSelectPicker } from "@/forms/fields/SelectPickerField/DesktopSelectPicker";
 import { GroupedOptionList } from "@/forms/fields/SelectPickerField/OptionList";
@@ -14,7 +13,7 @@ import { cn } from "@/utils";
 interface Option {
   label?: string;
   value: string;
-  icon?: React.ReactElement;
+  icon?: ReactElement<ComponentProps<"svg">>;
 }
 
 interface ButtonRadioFieldProps extends Omit<ButtonGroupProps, "children" | "onChange"> {
@@ -127,7 +126,7 @@ export const ButtonRadioField = ({
           const shouldBeInTabOrder = isSelected || (!value && isFirstOption);
 
           return (
-            <ButtonGroup.Button
+            <Button
               aria-checked={isSelected}
               aria-label={option.label ? undefined : option.value}
               className={cn("flex-grow", buttonClassName)}
@@ -136,6 +135,7 @@ export const ButtonRadioField = ({
               label={option.label}
               onClick={() => onChange(option.value)}
               onKeyDown={(e) => handleKeyDown(e, option.value)}
+              outline={!isSelected}
               ref={(el) => {
                 if (el) {
                   buttonRefs.current.set(option.value, el);
@@ -145,7 +145,6 @@ export const ButtonRadioField = ({
               }}
               role="radio"
               tabIndex={shouldBeInTabOrder ? 0 : -1}
-              variant={isSelected ? "primary" : "outline"}
             />
           );
         })}
@@ -161,7 +160,7 @@ export const ButtonRadioField = ({
               selectedSecondaryOption && "bg-primary font-medium text-primary-foreground dark:bg-primary",
               secondaryButtonClassName,
             )}
-            triggerComponent={ButtonGroup.Button}
+            triggerComponent={Button}
             triggerProps={{
               "aria-checked": !!selectedSecondaryOption,
               "aria-label": secondaryLabel,

@@ -3,9 +3,8 @@ import { describe, expect, test } from "vitest";
 import "@testing-library/jest-dom";
 import userEvent from "@testing-library/user-event";
 import { useState } from "react";
-
+import { Button } from "@/buttons";
 import { Modal } from "@/components";
-import { Button } from "@/forms";
 
 describe("Modal", () => {
   test("renders a Modal", async () => {
