@@ -1,0 +1,41 @@
+@reference "tailwindcss";
+@reference "../../../style/index.css";
+
+@layer components {
+  .alert {
+    @apply flex flex-row gap-4;
+    @apply p-4 rounded-lg border;
+
+    &.alert-info {
+      @apply bg-info-foreground text-info border-info;
+    }
+
+    &.alert-warning {
+      @apply bg-warning-foreground text-warning border-warning;
+    }
+
+    &.alert-error {
+      @apply bg-destructive-foreground text-destructive border-destructive;
+    }
+
+    .alert-media {
+      @apply flex items-center justify-center;
+    }
+
+    .alert-content {
+      @apply flex gap-2 grow justify-center md:flex-col md:items-start;
+    }
+
+    .alert-title {
+      @apply text-inherit;
+    }
+
+    .alert-description {
+      @apply text-sm text-inherit;
+    }
+
+    .alert-actions {
+      @apply flex gap-2 grow items-center justify-end;
+    }
+  }
+}
