@@ -31,7 +31,7 @@ pnpm format             # Format code with Biome
 
 ### Storybook
 ```bash
-pnpm storybook          # Start Storybook dev server on port 6006
+pnpm storybook          # Start Storybook dev server on port 7006
 pnpm storybook:docs     # Start Storybook in docs-only mode
 pnpm storybook:build    # Build Storybook for production
 ```
