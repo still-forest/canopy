@@ -1,3 +1,4 @@
+import { cpSync } from "node:fs";
 import { resolve } from "node:path";
 import tailwindcss from "@tailwindcss/vite";
 import react from "@vitejs/plugin-react";
@@ -17,6 +18,12 @@ export default defineConfig(
         }),
         libInjectCss(),
         tailwindcss(),
+        {
+          name: "copy-styles",
+          closeBundle() {
+            cpSync("lib/styles", "dist/styles", { recursive: true });
+          },
+        },
       ],
       build: {
         lib: {

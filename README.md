@@ -70,7 +70,7 @@ Override any Canopy design tokens by redefining CSS variables after the import:
 1. In this package, run build in watch mode:
 
 ```bash
-pnpm build --watch
+pnpm build:watch
 ```
 
 Then expose it locally for linking:
@@ -97,7 +97,7 @@ pnpm store prune # clear pnpm's global store
 1. In this package, run build in watch mode:
 
 ```bash
-pnpm build --watch
+pnpm build:watch
 ```
 
 2. In the consuming package, point package.json to the locally built version:
