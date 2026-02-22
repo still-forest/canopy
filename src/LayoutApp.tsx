@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { Link } from "react-router";
-import { Button } from "@/buttons";
+import { Button, buildButtonClassNames } from "@/buttons";
 import { Container, Layout } from "@/layout";
 import { cn } from "@/utils";
 import { Brand } from "./components/Brand";
@@ -16,7 +16,9 @@ export default function App() {
       </Layout.Header>
       <Layout.Body className={cn(showDimensions && "bg-blue-500/5 inset-shadow-sm inset-shadow-blue-500")}>
         <Container>
-          <Link to="/">Home</Link>
+          <Link className={buildButtonClassNames({ fit: true })} to="/">
+            Home
+          </Link>
         </Container>
         <Container>
           <Button fit onClick={() => setShowDimensions(!showDimensions)} outline>
