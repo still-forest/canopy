@@ -1,3 +1,14 @@
 export type AlertVariant = "info" | "success" | "warning" | "danger";
 
-export type BadgeVariant = AlertVariant | "default" | "secondary" | "destructive" | "outline";
+export type ButtonVariant =
+  | "primary"
+  | "secondary"
+  | "muted"
+  | "ghost"
+  | "link"
+  | "info"
+  | "success"
+  | "warning"
+  | "danger";
+
+export type BadgeVariant = ButtonVariant;

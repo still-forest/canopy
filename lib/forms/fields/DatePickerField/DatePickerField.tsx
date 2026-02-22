@@ -1,10 +1,11 @@
 import { Calendar as CalendarIcon } from "lucide-react";
 import { useState } from "react";
-import { Button, type ButtonSize } from "@/buttons";
+import { Button } from "@/buttons";
 import { Calendar } from "@/components/ui/calendar";
 import { Popover, PopoverContent, PopoverTrigger } from "@/components/ui/popover";
 import { InputError } from "@/forms";
 import { Flex } from "@/layout";
+import type { ButtonSize } from "@/types";
 import { cn } from "@/utils";
 
 interface DatePickerFieldProps {
