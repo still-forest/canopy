@@ -156,8 +156,8 @@ export const ButtonRadioField = ({
             selectedLabel={secondaryLabel}
             setOpen={setOpen}
             triggerClassName={cn(
-              "w-[150px] font-normal ",
-              selectedSecondaryOption && "bg-primary font-medium text-primary-foreground dark:bg-primary",
+              "w-[150px] font-normal",
+              selectedSecondaryOption && "font-medium",
               secondaryButtonClassName,
             )}
             triggerComponent={Button}
@@ -165,6 +165,8 @@ export const ButtonRadioField = ({
               "aria-checked": !!selectedSecondaryOption,
               "aria-label": secondaryLabel,
               role: "radio",
+              variant: "primary",
+              outline: !selectedSecondaryOption,
               tabIndex: selectedSecondaryOption ? 0 : -1,
               onKeyDown: (e: KeyboardEvent<HTMLButtonElement>) => {
                 // Use the selected secondary value if available, otherwise first secondary option
