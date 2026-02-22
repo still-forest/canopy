@@ -1,5 +1,5 @@
 @reference "tailwindcss";
-@reference "../../../style/index.css";
+@reference "../../styles/index.css";
 
 @layer components {
   .alert {

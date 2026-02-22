@@ -27,6 +27,7 @@ const Alert = ({ variant, children, className }: AlertProps) => {
         }),
         className,
       )}
+      role="alert"
     >
       <div className="alert-media">
         {variant === "info" && <Info />}
