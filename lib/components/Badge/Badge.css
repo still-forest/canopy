@@ -1,5 +1,5 @@
 @reference "tailwindcss";
-@reference "../../../src/style/index.css";
+@reference "../../styles/index.css";
 
 @layer components {
   .badge {
@@ -7,12 +7,9 @@
     @apply w-fit h-fit whitespace-nowrap overflow-hidden truncate cursor-default select-none;
     @apply border;
 
-    & > svg {
-      @apply size-3 pointer-events-none;
-    }
-
     /* small, primary by default */
     @apply bg-primary text-primary-foreground;
+    @apply border-primary;
     @apply text-xs;
     @apply px-2.5 py-0.5;
 
@@ -120,6 +117,10 @@
     &.badge--xl {
       @apply text-lg;
       @apply px-5 py-2;
+    }
+
+    & > svg {
+      @apply size-3 pointer-events-none;
     }
   }
 }

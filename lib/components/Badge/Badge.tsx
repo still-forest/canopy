@@ -18,9 +18,9 @@ export interface BadgeProps {
 export const Badge = ({
   children,
   label,
-  variant = "primary",
+  variant,
   outline = false,
-  size = "sm",
+  size,
   as = "div",
   className = "",
   tooltip,
@@ -45,7 +45,6 @@ export const Badge = ({
     },
     {
       "badge--outline": outline,
-
       "badge--xs": size === "xs",
       "badge--sm": size === "sm",
       "badge--md": size === "md",
