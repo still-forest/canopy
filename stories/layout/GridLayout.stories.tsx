@@ -165,17 +165,17 @@ export const RowSpans: Story = {
   },
   render: (args) => (
     <GridLayout {...args}>
-      <GridLayout.Item rowSpan={2} span={4}>
-        <Cell className="h-full min-h-32 bg-accent text-accent-foreground">span=4, rowSpan=2</Cell>
+      <GridLayout.Item span={[4, 2]}>
+        <Cell className="h-full min-h-32 bg-accent text-accent-foreground">[4, 2]</Cell>
       </GridLayout.Item>
       <GridLayout.Item span={8}>
-        <Cell>span=8</Cell>
+        <Cell>8</Cell>
       </GridLayout.Item>
       <GridLayout.Item span={4}>
-        <Cell>span=4</Cell>
+        <Cell>4</Cell>
       </GridLayout.Item>
       <GridLayout.Item span={4}>
-        <Cell>span=4</Cell>
+        <Cell>4</Cell>
       </GridLayout.Item>
     </GridLayout>
   ),
@@ -187,8 +187,8 @@ export const RowSpanSidebar: Story = {
   },
   render: (args) => (
     <GridLayout {...args}>
-      <GridLayout.Item rowSpan={3} span={3}>
-        <Cell className="h-full bg-accent text-accent-foreground">Navigation (rowSpan=3)</Cell>
+      <GridLayout.Item span={[3, 3]}>
+        <Cell className="h-full bg-accent text-accent-foreground">Navigation [3, 3]</Cell>
       </GridLayout.Item>
       <GridLayout.Item span={9}>
         <Cell className="min-h-12">Header</Cell>
@@ -224,8 +224,8 @@ export const DashboardLayout: Story = {
       <GridLayout.Item md={8} span={12}>
         <Cell className="min-h-64 bg-accent text-accent-foreground">Chart</Cell>
       </GridLayout.Item>
-      <GridLayout.Item md={4} rowSpan={2} span={12}>
-        <Cell className="h-full">Sidebar (rowSpan=2)</Cell>
+      <GridLayout.Item md={[4, 2]} span={12}>
+        <Cell className="h-full">Sidebar [4, 2]</Cell>
       </GridLayout.Item>
       <GridLayout.Item md={8} span={12}>
         <Cell>Table</Cell>
