@@ -34,7 +34,6 @@ describe("Interstitial", () => {
 
     const icon = document.querySelector(".interstitial-icon");
     expect(icon).toBeInTheDocument();
-    expect(icon).toHaveClass("lucide-mailbox");
   });
 
   it("renders with icon and info variant", () => {

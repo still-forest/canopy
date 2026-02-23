@@ -1,7 +1,5 @@
 import type { ComponentProps } from "react";
 import "./Button.css";
-import { cloneElement } from "react";
-import { cn } from "@/utils/cn";
 import type { BaseButtonProps } from "./types";
 import { buildButtonClassNames } from "./utils";
 
@@ -37,8 +35,8 @@ export const Button = ({
       type={type}
       {...props}
     >
-      {icon && cloneElement(icon, { className: cn("btn-icon", icon.props.className) })}
-      {!asIcon && (label || children)}
+      {icon && <span className="btn-icon">{icon}</span>}
+      {!asIcon && <span className="btn-label">{label || children}</span>}
     </button>
   );
 };

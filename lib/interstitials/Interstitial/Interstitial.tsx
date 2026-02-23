@@ -1,6 +1,5 @@
 import type { ComponentProps, ReactElement } from "react";
 import "./Interstitial.css";
-import { cloneElement } from "react";
 import type { NotificationVariant } from "@/types/variants";
 import { cn } from "@/utils/cn";
 
@@ -42,7 +41,7 @@ export const Interstitial = ({
       )}
       {...props}
     >
-      {icon && cloneElement(icon, { className: cn("interstitial-icon", icon.props.className) })}
+      {icon && <span className="interstitial-icon">{icon}</span>}
       {headline && <h2 className={cn("interstitial-headline", headlineClassName)}>{headline}</h2>}
       {messages.map((message, i) => (
         <p className="interstitial-message" key={i}>

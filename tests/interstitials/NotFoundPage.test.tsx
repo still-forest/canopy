@@ -13,7 +13,6 @@ describe("NotFoundPage", () => {
 
     const icon = document.querySelector(".interstitial-icon");
     expect(icon).toBeInTheDocument();
-    expect(icon).toHaveClass("lucide lucide-file-question-mark interstitial-icon");
   });
 
   it("renders with message", () => {
