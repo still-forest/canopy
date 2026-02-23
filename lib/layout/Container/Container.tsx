@@ -1,38 +1,64 @@
-import { Box, Flex, type FlexProps } from "@/layout";
-import { cn } from "@/utils";
+import type { ReactNode } from "react";
+import { cn } from "@/utils/cn";
+import "./Container.css";
 
-type Display = "block" | "flex";
-
-export interface ContainerProps extends FlexProps {
-  children: React.ReactNode;
-  display?: Display;
+export interface ContainerProps {
+  as?: "div" | "header" | "main" | "footer" | "section";
+  align?: "center" | "start" | "end";
+  justify?: "center" | "start" | "end" | "between" | "around" | "evenly";
+  width?: "sm" | "md" | "lg" | "xl" | "full";
+  direction?: "col" | "row";
+  gap?: "2" | "4" | "8" | "12" | "16" | "20" | "24" | "28" | "32" | "36" | "40";
+  centered?: boolean;
   className?: string;
-  separation?: "none" | "xs" | "sm" | "md" | "lg" | "xl";
+  children: ReactNode;
 }
 
-export const Container = ({ children, className, direction = "col", separation = "md", ...props }: ContainerProps) => {
-  const { display = "flex", ...rest } = props;
-
-  const classes = cn("w-full px-4 md:px-8 lg:px-12", className, {
-    "py-0": separation === "none",
-    "py-0.5 md:py-1": separation === "xs",
-    "py-1 md:py-2 ": separation === "sm",
-    "py-2 md:py-4": separation === "md",
-    "py-4 md:py-6": separation === "lg",
-    "py-6 md:py-8": separation === "xl",
+export const Container = ({
+  as,
+  children,
+  align,
+  justify,
+  width = "full",
+  direction = "col",
+  gap,
+  centered,
+  className,
+  ...props
+}: ContainerProps) => {
+  const Comp = as || "div";
+  const classNames = cn("layout-container", className, {
+    "layout-container--sm": width === "sm",
+    "layout-container--md": width === "md",
+    "layout-container--lg": width === "lg",
+    "layout-container--xl": width === "xl",
+    "layout-container--centered": centered,
+    "items-start": align === "start",
+    "items-center": align === "center",
+    "items-end": align === "end",
+    "justify-start": justify === "start",
+    "justify-center": justify === "center",
+    "justify-end": justify === "end",
+    "justify-between": justify === "between",
+    "justify-around": justify === "around",
+    "justify-evenly": justify === "evenly",
+    "flex-row": direction === "row",
+    "gap-2": gap === "2",
+    "gap-4": gap === "4",
+    "gap-8": gap === "8",
+    "gap-12": gap === "12",
+    "gap-16": gap === "16",
+    "gap-20": gap === "20",
+    "gap-24": gap === "24",
+    "gap-28": gap === "28",
+    "gap-32": gap === "32",
+    "gap-36": gap === "36",
+    "gap-40": gap === "40",
   });
 
-  if (display === "block") {
-    return (
-      <Box className={classes} {...rest}>
-        {children}
-      </Box>
-    );
-  }
-
   return (
-    <Flex className={classes} direction={direction} {...rest}>
+    <Comp className={classNames} data-slot="container" {...props}>
       {children}
-    </Flex>
+    </Comp>
   );
 };
