@@ -22,7 +22,7 @@ export const NotFoundPage = ({
   const BackIcon = backIcon;
 
   return (
-    <Interstitial headline={headline} iconComponent={FileQuestion} message={message} variant="warning" {...props}>
+    <Interstitial headline={headline} icon={<FileQuestion />} message={message} variant="warning" {...props}>
       <Flex align="center" className="mt-8" direction="col">
         {onBack && (
           <Button icon={<BackIcon />} onClick={onBack} variant="primary">

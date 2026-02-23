@@ -38,7 +38,7 @@ const BouncingPigs = () => {
 
 export const WithCustomIcon: Story = {
   args: {
-    iconComponent: BouncingPigs,
+    icon: <BouncingPigs />,
     message: "Something big is coming",
   },
 };

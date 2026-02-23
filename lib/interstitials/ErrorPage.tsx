@@ -5,7 +5,7 @@ export interface ErrorPageProps extends InterstitialProps {}
 
 export const ErrorPage = ({ headline = "Something went wrong", message, children, ...props }: ErrorPageProps) => {
   return (
-    <Interstitial headline={headline} iconComponent={CircleX} message={message} variant="danger" {...props}>
+    <Interstitial headline={headline} icon={<CircleX />} message={message} variant="danger" {...props}>
       {children}
     </Interstitial>
   );

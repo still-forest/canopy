@@ -15,7 +15,7 @@ describe("LoadingPage", () => {
   });
 
   it("renders with custom icon", () => {
-    render(<LoadingPage iconComponent={Mailbox} message="Loading a thing" />);
+    render(<LoadingPage icon={<Mailbox />} message="Loading a thing" />);
 
     expect(screen.getByText("Loading a thing")).toBeInTheDocument();
 
