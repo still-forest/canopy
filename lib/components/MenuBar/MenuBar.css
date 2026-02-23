@@ -1,0 +1,84 @@
+@import "@/styles/layers.css";
+@reference "@/styles/tokens.css";
+
+@layer components {
+  .menubar {
+    @apply flex items-center justify-between;
+    @apply bg-muted rounded-md border shadow-xs;
+    @apply px-1 py-1 gap-1 w-full;
+
+    .menubar-trigger-group {
+      @apply flex items-center gap-1;
+    }
+
+    .menubar-trigger {
+      @apply flex items-center outline-hidden select-none;
+      @apply hover:bg-accent aria-expanded:bg-accent rounded-sm;
+      @apply gap-1 px-4 py-1;
+      @apply font-medium hover:text-accent-foreground aria-expanded:text-accent-foreground;
+
+      &[data-variant="outline"] {
+        @apply border bg-background shadow-xs dark:bg-input/30 dark:border-input;
+        &:hover,
+        &[data-pressed] {
+          @apply bg-accent text-accent-foreground dark:bg-accent/50;
+        }
+      }
+    }
+
+    .menubar-menu-separator {
+      @apply bg-border shrink-0 w-px h-5;
+    }
+  }
+
+  .menubar-content {
+    @apply bg-popover text-popover-foreground data-open:animate-in data-open:fade-in-0 data-open:zoom-in-95 data-[side=bottom]:slide-in-from-top-2 data-[side=left]:slide-in-from-right-2 data-[side=right]:slide-in-from-left-2 data-[side=top]:slide-in-from-bottom-2 ring-foreground/10 min-w-36 rounded-md p-1 shadow-md ring-1 duration-100 data-[side=inline-start]:slide-in-from-right-2 data-[side=inline-end]:slide-in-from-left-2;
+
+    .menubar-item {
+      @apply focus:bg-accent focus:text-accent-foreground data-[variant=destructive]:text-destructive data-[variant=destructive]:focus:bg-destructive/10 dark:data-[variant=destructive]:focus:bg-destructive/20 data-[variant=destructive]:focus:text-destructive data-[variant=destructive]:*:[svg]:!text-destructive not-data-[variant=destructive]:focus:**:text-accent-foreground gap-2 rounded-sm px-2 py-1.5 text-sm data-[disabled]:opacity-50 data-[inset]:pl-8 [&_svg:not([class*='size-'])]:size-4;
+      @apply hover:cursor-pointer!;
+    }
+
+    .menubar-checkbox-item {
+      @apply focus:bg-accent focus:text-accent-foreground focus:**:text-accent-foreground gap-2 rounded-md py-1.5 pr-2 pl-8 text-sm data-disabled:opacity-50 relative flex cursor-default items-center outline-hidden select-none data-disabled:pointer-events-none data-disabled:opacity-50 [&_svg]:pointer-events-none [&_svg]:shrink-0;
+      @apply hover:cursor-pointer;
+
+      .menubar-checkbox-item-indicator {
+        @apply left-2 size-4 [&_svg:not([class*='size-'])]:size-4 pointer-events-none absolute flex items-center justify-center;
+      }
+    }
+
+    .menubar-radio-item {
+      @apply focus:bg-accent focus:text-accent-foreground focus:**:text-accent-foreground gap-2 rounded-md py-1.5 pr-2 pl-8 text-sm data-disabled:opacity-50 [&_svg:not([class*='size-'])]:size-4 relative flex cursor-default items-center outline-hidden select-none data-disabled:pointer-events-none [&_svg]:pointer-events-none [&_svg]:shrink-0;
+      @apply hover:cursor-pointer;
+
+      .menubar-radio-item-indicator {
+        @apply left-2 size-4 [&_svg:not([class*='size-'])]:size-4 pointer-events-none absolute flex items-center justify-center;
+      }
+    }
+
+    .menubar-label {
+      @apply px-2 py-1.5 text-sm font-medium data-[inset]:pl-8;
+    }
+
+    .menubar-separator {
+      @apply bg-border -mx-1 my-1 h-px;
+    }
+
+    .menubar-shortcut {
+      @apply text-muted-foreground text-xs tracking-widest ml-auto;
+    }
+
+    .menubar-item:focus .menubar-shortcut {
+      @apply text-accent-foreground;
+    }
+
+    .menubar-sub-trigger {
+      @apply focus:bg-accent focus:text-accent-foreground data-open:bg-accent data-open:text-accent-foreground gap-2 rounded-sm px-2 py-1.5 text-sm data-[inset]:pl-8 [&_svg:not([class*='size-'])]:size-4;
+    }
+
+    .menubar-sub-content {
+      @apply bg-popover text-popover-foreground data-open:animate-in data-closed:animate-out data-closed:fade-out-0 data-open:fade-in-0 data-closed:zoom-out-95 data-open:zoom-in-95 data-[side=bottom]:slide-in-from-top-2 data-[side=left]:slide-in-from-right-2 data-[side=right]:slide-in-from-left-2 data-[side=top]:slide-in-from-bottom-2 ring-foreground/10 min-w-32 rounded-md p-1 shadow-lg ring-1 duration-100;
+    }
+  }
+}
