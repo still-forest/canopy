@@ -217,12 +217,15 @@ describe("Button", () => {
 
   test("renders a Button with asIcon", async () => {
     render(
-      <Button asIcon>
-        <svg>
-          <title>Test Icon</title>
-          <path d="M1 1h10v10H1z" />
-        </svg>
-      </Button>,
+      <Button
+        asIcon
+        icon={
+          <svg>
+            <title>Test Icon</title>
+            <path d="M1 1h10v10H1z" />
+          </svg>
+        }
+      />,
     );
 
     expect(screen.getByRole("button")).toHaveAttribute("type", "button");

@@ -11,7 +11,8 @@
         "useValidAnchor": "warn",
         "noSvgWithoutTitle": "warn",
         "noLabelWithoutControl": "warn",
-        "useFocusableInteractive": "warn"
+        "useFocusableInteractive": "warn",
+        "useKeyWithClickEvents": "warn"
       },
       "correctness": {
         "noNestedComponentDefinitions": "off"

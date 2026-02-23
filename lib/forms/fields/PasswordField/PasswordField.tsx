@@ -1,6 +1,6 @@
 import { Eye, EyeOff } from "lucide-react";
 import { type ComponentProps, useState } from "react";
-import { InputGroup } from "@/forms/InputGroup";
+import { InputGroup } from "@/forms/inputs";
 import { Flex, InputError, Label, Text } from "@/main";
 
 interface PasswordFieldProps extends Omit<ComponentProps<"input">, "type" | "size"> {
@@ -37,16 +37,15 @@ export const PasswordField = ({
       )}
       <InputGroup>
         <InputGroup.Input type={showPassword ? "text" : "password"} {...props} id={id || name} name={name} />
-        <InputGroup.Addon right>
+        <InputGroup.Addon align="inline-end">
           <InputGroup.Button
             aria-label={showPassword ? "Hide password" : "Show password"}
             asIcon
+            icon={showPassword ? <Eye /> : <EyeOff />}
             onClick={togglePassword}
             size="xs"
             variant="ghost"
-          >
-            {showPassword ? <Eye /> : <EyeOff />}
-          </InputGroup.Button>
+          />
         </InputGroup.Addon>
       </InputGroup>
       {note && (

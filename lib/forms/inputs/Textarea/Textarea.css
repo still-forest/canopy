@@ -1,0 +1,22 @@
+@reference "tailwindcss";
+@reference "../../../styles/index.css";
+
+@layer components {
+  .textarea {
+    @apply border-input dark:bg-input/30 rounded-md border bg-transparent shadow-xs transition-[color,box-shadow] flex field-sizing-content outline-none;
+    @apply min-h-16 w-full px-2.5 py-2;
+    @apply text-base md:text-sm placeholder:text-muted-foreground;
+
+    &:focus-visible {
+      @apply border-ring ring-ring/50 ring-3;
+    }
+
+    &[aria-invalid="true"] {
+      @apply ring-destructive/20 dark:ring-destructive/40 border-destructive dark:border-destructive/50 ring-3;
+    }
+
+    &:disabled {
+      @apply pointer-events-none cursor-not-allowed opacity-50;
+    }
+  }
+}
