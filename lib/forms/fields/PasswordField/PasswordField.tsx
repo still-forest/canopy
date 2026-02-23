@@ -1,6 +1,6 @@
 import { Eye, EyeOff } from "lucide-react";
 import { type ComponentProps, useState } from "react";
-import { InputGroup } from "@/forms/InputGroup";
+import { InputGroup } from "@/forms/inputs";
 import { Flex, InputError, Label, Text } from "@/main";
 
 interface PasswordFieldProps extends Omit<ComponentProps<"input">, "type" | "size"> {

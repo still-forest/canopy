@@ -23,7 +23,7 @@ import { Label } from "@/forms/Label";
 import { Flex } from "@/layout";
 
 const meta: Meta<typeof InputGroup> = {
-  title: "Forms/InputGroup",
+  title: "Forms/Inputs/InputGroup",
   component: InputGroup,
   decorators: [DEFAULT_DECORATOR_WITH_MIN_WIDTH_MD],
   tags: ["autodocs"],
