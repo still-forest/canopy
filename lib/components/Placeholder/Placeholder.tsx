@@ -28,10 +28,11 @@ export const Placeholder = ({
         justify={align === "center" ? "center" : "start"}
       >
         <div className="placeholder-media">{icon}</div>
-        <Flex direction="col">
+        <div className="placeholder-header">
           {title && <h3>{title}</h3>}
           {description && <p className="footnote">{description}</p>}
-        </Flex>
+        </div>
+        {children && <div className="placeholder-content">{children}</div>}
       </Flex>
     );
   }

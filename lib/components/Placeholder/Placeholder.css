@@ -11,6 +11,14 @@
 
     &:not(.placeholder--compact) {
       @apply flex min-w-0 flex-1 flex-col items-center justify-center gap-6 rounded-lg border-dashed p-6 text-center text-balance md:p-12;
+
+      .placeholder-header {
+        @apply flex max-w-sm flex-col items-center gap-2 text-center;
+      }
+
+      .placeholder-content {
+        @apply flex w-full max-w-sm min-w-0 flex-col items-center gap-4 text-sm text-balance;
+      }
     }
 
     &.placeholder--compact {
@@ -19,14 +27,14 @@
           @apply hidden sm:block size-12;
         }
       }
-    }
 
-    .placeholder-header {
-      @apply flex max-w-sm flex-col items-center gap-2 text-center;
-    }
+      .placeholder-header {
+        @apply flex flex-col;
+      }
 
-    .placeholder-content {
-      @apply flex w-full max-w-sm min-w-0 flex-col items-center gap-4 text-sm text-balance;
+      .placeholder-content {
+        @apply shrink-0;
+      }
     }
   }
 }

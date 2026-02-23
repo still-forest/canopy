@@ -47,6 +47,19 @@ export const Compact: Story = {
   },
 };
 
+export const CompactWithChildren: Story = {
+  render: () => (
+    <Placeholder
+      description="Get started by creating your first item."
+      icon={<Inbox />}
+      title="No items yet"
+      variant="compact"
+    >
+      <Button size="sm">Create Item</Button>
+    </Placeholder>
+  ),
+};
+
 export const CompactCentered: Story = {
   args: {
     variant: "compact",
