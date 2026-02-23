@@ -1,0 +1,56 @@
+@import "@/styles/layers.css";
+@reference "@/styles/tokens.css";
+
+@layer components {
+  .sheet-overlay {
+    @apply bg-black/10 duration-100 supports-backdrop-filter:backdrop-blur-xs fixed inset-0 z-50;
+    @apply data-open:animate-in data-closed:animate-out data-closed:fade-out-0 data-open:fade-in-0;
+    @apply data-ending-style:opacity-0 data-starting-style:opacity-0;
+  }
+
+  .sheet-content {
+    @apply bg-background fixed z-50 flex flex-col gap-4 bg-clip-padding text-sm shadow-lg;
+    @apply transition duration-200 ease-in-out;
+    @apply data-open:animate-in data-closed:animate-out data-closed:fade-out-0 data-open:fade-in-0;
+
+    &[data-side="right"] {
+      @apply inset-y-0 right-0 h-full w-3/4 border-l sm:max-w-sm;
+      @apply data-closed:slide-out-to-right-10 data-open:slide-in-from-right-10;
+    }
+
+    &[data-side="left"] {
+      @apply inset-y-0 left-0 h-full w-3/4 border-r sm:max-w-sm;
+      @apply data-closed:slide-out-to-left-10 data-open:slide-in-from-left-10;
+    }
+
+    &[data-side="top"] {
+      @apply inset-x-0 top-0 h-auto border-b;
+      @apply data-closed:slide-out-to-top-10 data-open:slide-in-from-top-10;
+    }
+
+    &[data-side="bottom"] {
+      @apply inset-x-0 bottom-0 h-auto border-t;
+      @apply data-closed:slide-out-to-bottom-10 data-open:slide-in-from-bottom-10;
+    }
+  }
+
+  .sheet-header {
+    @apply gap-1.5 p-4 flex flex-col mr-12;
+  }
+
+  .sheet-body {
+    @apply flex flex-1 flex-col gap-1.5 overflow-y-auto p-4;
+  }
+
+  .sheet-footer {
+    @apply gap-2 p-4 mt-auto flex flex-col;
+  }
+
+  .sheet-title {
+    @apply text-foreground font-medium;
+  }
+
+  .sheet-description {
+    @apply text-muted-foreground text-sm;
+  }
+}
