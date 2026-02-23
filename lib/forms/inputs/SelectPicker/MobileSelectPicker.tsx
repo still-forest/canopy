@@ -38,7 +38,7 @@ export const MobileSelectPicker = ({ selectedLabel, open, setOpen, children, id 
         )}
       />
       <Sheet.Content className="mobile-select-picker-content" showCloseButton={false}>
-        <Sheet.Close render={CloseButton}>
+        <Sheet.Close render={<CloseButton />}>
           <span className="sr-only">Close</span>
         </Sheet.Close>
         {children}

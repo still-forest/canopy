@@ -66,8 +66,8 @@ export const SelectInput = ({
         <SelectValue placeholder={placeholder} />
       </SelectTrigger>
       <SelectContent>
-        {optionGroups.map((optionGroup) => (
-          <SelectGroup key={optionGroup.label ?? "options"}>
+        {optionGroups.map((optionGroup, index) => (
+          <SelectGroup key={optionGroup.label ?? `options-${index}`}>
             {optionGroup.label && <SelectLabel>{optionGroup.label}</SelectLabel>}
             {optionGroup.options.map((option) => (
               <SelectItem key={option.value} value={option.value}>
