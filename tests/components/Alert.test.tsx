@@ -6,14 +6,7 @@ import { Alert } from "@/components";
 
 describe("Alert", () => {
   test("renders info Alert", async () => {
-    render(
-      <Alert variant="info">
-        <Alert.Content>
-          <Alert.Title>Important Information</Alert.Title>
-          <Alert.Description>This is an important message.</Alert.Description>
-        </Alert.Content>
-      </Alert>,
-    );
+    render(<Alert description="This is an important message." title="Important Information" variant="info" />);
 
     const alert = screen.getByRole("alert");
     expect(alert).toBeInTheDocument();
@@ -24,14 +17,7 @@ describe("Alert", () => {
   });
 
   test("renders success Alert", async () => {
-    render(
-      <Alert variant="success">
-        <Alert.Content>
-          <Alert.Title>Important Information</Alert.Title>
-          <Alert.Description>This is an important message.</Alert.Description>
-        </Alert.Content>
-      </Alert>,
-    );
+    render(<Alert description="This is an important message." title="Important Information" variant="success" />);
 
     const alert = screen.getByRole("alert");
     expect(alert).toBeInTheDocument();
@@ -42,14 +28,7 @@ describe("Alert", () => {
   });
 
   test("renders warning Alert", async () => {
-    render(
-      <Alert variant="warning">
-        <Alert.Content>
-          <Alert.Title>Important Information</Alert.Title>
-          <Alert.Description>This is an important message.</Alert.Description>
-        </Alert.Content>
-      </Alert>,
-    );
+    render(<Alert description="This is an important message." title="Important Information" variant="warning" />);
 
     const alert = screen.getByRole("alert");
     expect(alert).toBeInTheDocument();
@@ -60,14 +39,7 @@ describe("Alert", () => {
   });
 
   test("renders danger Alert", async () => {
-    render(
-      <Alert variant="danger">
-        <Alert.Content>
-          <Alert.Title>Important Information</Alert.Title>
-          <Alert.Description>This is an important message.</Alert.Description>
-        </Alert.Content>
-      </Alert>,
-    );
+    render(<Alert description="This is an important message." title="Important Information" variant="danger" />);
 
     const alert = screen.getByRole("alert");
     expect(alert).toBeInTheDocument();

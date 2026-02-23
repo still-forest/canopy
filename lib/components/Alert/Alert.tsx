@@ -5,16 +5,15 @@ import type { NotificationVariant } from "@/types/variants";
 import { cn } from "@/utils";
 import "./Alert.css";
 
-interface StyleableProps {
-  children: ReactNode;
+interface AlertProps {
+  variant: NotificationVariant;
+  title?: string;
+  description?: string;
+  actions?: ReactNode;
   className?: string;
 }
 
-interface AlertProps extends StyleableProps {
-  variant: NotificationVariant;
-}
-
-const Alert = ({ variant, children, className }: AlertProps) => {
+export const Alert = ({ variant, title, description, actions, className }: AlertProps) => {
   return (
     <div
       className={cn(
@@ -35,29 +34,11 @@ const Alert = ({ variant, children, className }: AlertProps) => {
         {variant === "warning" && <TriangleAlert />}
         {variant === "danger" && <OctagonX />}
       </div>
-      {children}
+      <div className="alert-content">
+        {title && <h6 className="alert-title">{title}</h6>}
+        {description && <p className="alert-description">{description}</p>}
+        {actions && <div className="alert-actions">{actions}</div>}
+      </div>
     </div>
   );
 };
-
-const AlertContent = ({ children, className }: StyleableProps) => {
-  return <div className={cn("alert-content", className)}>{children}</div>;
-};
-
-const AlertTitle = ({ children, className }: StyleableProps) => {
-  return <h6 className={cn("alert-title", className)}>{children}</h6>;
-};
-
-const AlertDescription = ({ children, className }: StyleableProps) => {
-  return <p className={cn("alert-description", className)}>{children}</p>;
-};
-
-const AlertActions = ({ children, className }: StyleableProps) => {
-  return <div className={cn("alert-actions", className)}>{children}</div>;
-};
-
-Alert.Content = AlertContent;
-Alert.Title = AlertTitle;
-Alert.Description = AlertDescription;
-Alert.Actions = AlertActions;
-export { Alert };
