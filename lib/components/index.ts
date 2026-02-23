@@ -13,6 +13,7 @@ export * from "./Pagination";
 export * from "./Placeholder";
 export * from "./Popover";
 export * from "./Separator";
+export * from "./Sheet";
 export * from "./Skeleton";
 export * from "./Table";
 export * from "./Tabs";
