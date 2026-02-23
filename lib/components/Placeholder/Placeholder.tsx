@@ -1,5 +1,4 @@
 import type { ComponentProps, ReactElement, ReactNode } from "react";
-import { Empty } from "@/components/Empty";
 import { Flex } from "@/layout";
 import "./Placeholder.css";
 
@@ -38,15 +37,13 @@ export const Placeholder = ({
   }
 
   return (
-    <Empty className="placeholder">
-      <Empty.Header>
-        <Empty.Media className="placeholder-media" variant="default">
-          {icon}
-        </Empty.Media>
+    <div className="placeholder">
+      <div className="placeholder-header">
+        <div className="placeholder-media">{icon}</div>
         {title && <h3>{title}</h3>}
         {description && <p className="muted">{description}</p>}
-      </Empty.Header>
-      {children && <Empty.Content>{children}</Empty.Content>}
-    </Empty>
+      </div>
+      {children && <div className="placeholder-content">{children}</div>}
+    </div>
   );
 };

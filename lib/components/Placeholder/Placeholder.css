@@ -5,8 +5,12 @@
   .placeholder {
     .placeholder-media {
       & > svg {
-        @apply size-24;
+        @apply size-18;
       }
+    }
+
+    &:not(.placeholder--compact) {
+      @apply flex min-w-0 flex-1 flex-col items-center justify-center gap-6 rounded-lg border-dashed p-6 text-center text-balance md:p-12;
     }
 
     &.placeholder--compact {
@@ -15,6 +19,14 @@
           @apply hidden sm:block size-12;
         }
       }
+    }
+
+    .placeholder-header {
+      @apply flex max-w-sm flex-col items-center gap-2 text-center;
+    }
+
+    .placeholder-content {
+      @apply flex w-full max-w-sm min-w-0 flex-col items-center gap-4 text-sm text-balance;
     }
   }
 }

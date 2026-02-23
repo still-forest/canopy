@@ -5,7 +5,6 @@ export * from "./Breadcrumbs";
 export * from "./Card";
 export * from "./Collapsible";
 export * from "./Dialog";
-export * from "./Empty";
 export * from "./Hint";
 export * from "./Item";
 export * from "./Loader";
