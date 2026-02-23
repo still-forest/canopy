@@ -20,6 +20,7 @@ export const buildButtonClassNames = ({
       "btn-muted": variant === "muted",
       "btn-ghost": variant === "ghost",
       "btn-link": variant === "link",
+      "btn-input": variant === "input",
       "btn-info": variant === "info",
       "btn-success": variant === "success",
       "btn-warning": variant === "warning",

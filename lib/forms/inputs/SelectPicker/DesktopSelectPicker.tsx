@@ -31,10 +31,10 @@ export const DesktopSelectPicker = ({
       <Popover.Trigger
         render={(props) => (
           <Button
-            type="button"
             {...mergeProps(props, {
               "aria-expanded": open,
-              className: cn("btn btn-input desktop-select-picker-trigger", triggerClassName),
+              variant: "input",
+              className: cn("desktop-select-picker-trigger", triggerClassName),
               id,
               role: "combobox",
               ...triggerProps,

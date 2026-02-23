@@ -19,10 +19,14 @@
   }
 
   .desktop-select-picker-trigger {
-    @apply w-full justify-between font-normal;
+    @apply w-full;
 
-    > svg {
-      @apply opacity-50;
+    .btn-label {
+      @apply w-full justify-between font-normal;
+
+      > svg {
+        @apply opacity-50;
+      }
     }
   }
 
