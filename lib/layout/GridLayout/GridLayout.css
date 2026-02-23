@@ -1,0 +1,34 @@
+@import "@/styles/layers.css";
+@reference "@/styles/tokens.css";
+
+@layer components {
+  .grid-layout {
+    @apply grid grid-cols-12 gap-4;
+  }
+
+  .grid-layout-item {
+    grid-row: span var(--row, 1);
+    grid-column: span var(--span);
+  }
+
+  @media (width >= theme(--breakpoint-sm)) {
+    .grid-layout-item {
+      grid-row: span var(--sm-row, var(--row, 1));
+      grid-column: span var(--sm, var(--span));
+    }
+  }
+
+  @media (width >= theme(--breakpoint-md)) {
+    .grid-layout-item {
+      grid-row: span var(--md-row, var(--sm-row, var(--row, 1)));
+      grid-column: span var(--md, var(--sm, var(--span)));
+    }
+  }
+
+  @media (width >= theme(--breakpoint-lg)) {
+    .grid-layout-item {
+      grid-row: span var(--lg-row, var(--md-row, var(--sm-row, var(--row, 1))));
+      grid-column: span var(--lg, var(--md, var(--sm, var(--span))));
+    }
+  }
+}
