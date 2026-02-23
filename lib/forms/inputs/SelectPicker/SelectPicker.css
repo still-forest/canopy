@@ -1,0 +1,36 @@
+@import "@/styles/layers.css";
+@reference "@/styles/tokens.css";
+
+@layer components {
+  .mobile-select-picker-trigger {
+    @apply w-full justify-start;
+  }
+
+  .mobile-select-picker-content {
+    @apply gap-0!;
+
+    .mobile-select-picker-close-button {
+      @apply w-full rounded-none py-3;
+
+      div[data-slot="sheet-close-control"] {
+        @apply w-24 h-2 bg-muted rounded-full mx-auto;
+      }
+    }
+  }
+
+  .desktop-select-picker-trigger {
+    @apply w-full;
+
+    .btn-label {
+      @apply w-full justify-between font-normal;
+
+      > svg {
+        @apply opacity-50;
+      }
+    }
+  }
+
+  .desktop-select-picker-content {
+    @apply p-0!;
+  }
+}

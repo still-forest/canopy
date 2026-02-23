@@ -5,25 +5,23 @@ import { MobileSelectPicker } from "./MobileSelectPicker";
 import { GroupedOptionList } from "./OptionList";
 import type { SelectPickerOption, SelectPickerOptionGroup } from "./types";
 
-export interface SelectPickerFieldProps {
+export interface SelectPickerProps {
   name: string;
   value?: string | null;
   onChange: (value: string) => void;
   options: SelectPickerOption[] | SelectPickerOptionGroup[];
   placeholder?: string;
   renderSelected?: (selected: SelectPickerOption) => React.ReactNode;
-  dropdownClassName?: string;
 }
 
-export const SelectPickerField = ({
+export const SelectPicker = ({
   options,
   value,
   placeholder = "Select an option",
   onChange,
   name,
   renderSelected = (selected) => selected.label,
-  dropdownClassName,
-}: SelectPickerFieldProps) => {
+}: SelectPickerProps) => {
   const [open, setOpen] = useState(false);
   const isMobile = useIsMobile();
   const isOptionGroup = options.some((option) => "options" in option);
@@ -44,8 +42,8 @@ export const SelectPickerField = ({
     return label;
   }, [value, placeholder, renderSelected, flattenedOptions]);
 
-  const handleSelect = (newValue: string) => {
-    onChange(newValue === value ? "" : newValue);
+  const handleSelect = (currentValue: string) => {
+    onChange(currentValue === value ? "" : currentValue);
     setOpen(false);
   };
 
@@ -63,13 +61,7 @@ export const SelectPickerField = ({
   }
 
   return (
-    <DesktopSelectPicker
-      dropdownClassName={dropdownClassName}
-      id={name}
-      open={open}
-      selectedLabel={selectedLabel}
-      setOpen={setOpen}
-    >
+    <DesktopSelectPicker id={name} open={open} selectedLabel={selectedLabel} setOpen={setOpen}>
       <GroupedOptionList
         onSelect={handleSelect}
         optionGroups={optionGroups}

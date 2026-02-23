@@ -33,13 +33,12 @@ const SampleIcon = () => <OrigamiIcon />;
 
 export const Variants: Story = {
   render: () => (
-    <div className="grid grid-cols-5 gap-4">
+    <div className="grid grid-cols-4 gap-4">
       <Badge label="Default" />
       <Badge className="col-start-1" label="Primary" variant="primary" />
       <Badge label="Secondary" variant="secondary" />
       <Badge label="Muted" variant="muted" />
       <Badge label="Ghost" variant="ghost" />
-      <Badge label="Link" variant="link" />
       <Badge label="Info" variant="info" />
       <Badge label="Success" variant="success" />
       <Badge label="Warning" variant="warning" />
@@ -50,13 +49,12 @@ export const Variants: Story = {
 
 export const OutlineVariants: Story = {
   render: () => (
-    <div className="grid grid-cols-5 gap-4">
+    <div className="grid grid-cols-4 gap-4">
       <Badge label="Default" outline />
       <Badge className="col-start-1" label="Primary" outline variant="primary" />
       <Badge label="Secondary" outline variant="secondary" />
       <Badge label="Muted" outline variant="muted" />
       <Badge label="Ghost" outline variant="ghost" />
-      <Badge label="Link" outline variant="link" />
       <Badge label="Info" outline variant="info" />
       <Badge label="Success" outline variant="success" />
       <Badge label="Warning" outline variant="warning" />
@@ -79,7 +77,7 @@ export const Sizes: Story = {
 
 export const WithIcon: Story = {
   render: () => (
-    <div className="grid grid-cols-5 gap-4">
+    <div className="grid grid-cols-4 gap-4">
       <Badge>
         <SampleIcon />
         Default
@@ -99,10 +97,6 @@ export const WithIcon: Story = {
       <Badge variant="ghost">
         <SampleIcon />
         Ghost
-      </Badge>
-      <Badge variant="link">
-        <SampleIcon />
-        Link
       </Badge>
       <Badge variant="info">
         <SampleIcon />
