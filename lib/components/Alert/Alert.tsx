@@ -11,9 +11,10 @@ interface AlertProps {
   description?: string;
   actions?: ReactNode;
   className?: string;
+  children?: ReactNode;
 }
 
-export const Alert = ({ variant, title, description, actions, className }: AlertProps) => {
+export const Alert = ({ variant, title, description, actions, className, children }: AlertProps) => {
   return (
     <div
       className={cn(
@@ -37,6 +38,7 @@ export const Alert = ({ variant, title, description, actions, className }: Alert
       <div className="alert-content">
         {title && <h6 className="alert-title">{title}</h6>}
         {description && <p className="alert-description">{description}</p>}
+        {children}
         {actions && <div className="alert-actions">{actions}</div>}
       </div>
     </div>
