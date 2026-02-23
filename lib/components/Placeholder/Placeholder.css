@@ -22,6 +22,8 @@
     }
 
     &.placeholder--compact {
+      @apply flex items-center gap-4;
+
       .placeholder-media {
         & > svg {
           @apply hidden sm:block size-12;

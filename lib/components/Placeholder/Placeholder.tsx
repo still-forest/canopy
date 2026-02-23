@@ -1,5 +1,4 @@
 import type { ComponentProps, ReactElement, ReactNode } from "react";
-import { Flex } from "@/layout";
 import "./Placeholder.css";
 
 interface PlaceholderProps {
@@ -13,14 +12,14 @@ interface PlaceholderProps {
 export const Placeholder = ({ icon, title, variant = "default", description, children }: PlaceholderProps) => {
   if (variant === "compact") {
     return (
-      <Flex align="center" className="placeholder placeholder--compact" gap="4">
+      <div className="placeholder placeholder--compact">
         <div className="placeholder-media">{icon}</div>
         <div className="placeholder-header">
           {title && <h3>{title}</h3>}
           {description && <p className="footnote">{description}</p>}
         </div>
         {children && <div className="placeholder-content">{children}</div>}
-      </Flex>
+      </div>
     );
   }
 
