@@ -1,6 +1,6 @@
 import type { ComponentProps, FC } from "react";
 import { Button as BaseButton } from "@/buttons";
-import { Textarea } from "@/forms/inputs";
+import { Textarea as BaseTextarea } from "@/forms/inputs";
 import { cn } from "@/utils/cn";
 import "./InputGroup.css";
 
@@ -51,25 +51,27 @@ const Addon = ({ children, align = "inline-start", className, ...props }: AddonP
   );
 };
 
-const Button = ({
-  children,
-  size = "xs",
-  variant = "ghost",
-  className,
-  ...props
-}: ComponentProps<typeof BaseButton>) => {
+const Button = ({ children, size = "xs", variant = "ghost", ...props }: ComponentProps<typeof BaseButton>) => {
   return (
-    <BaseButton className={cn("input-group-button", className)} size={size} variant={variant} {...props}>
+    <BaseButton size={size} variant={variant} {...props}>
       {children}
     </BaseButton>
   );
 };
 
-const Text = ({ children, ...props }: ComponentProps<"span">) => {
+const Text = ({ children, className, ...props }: ComponentProps<"span">) => {
   return (
-    <span data-slot="input-group-text" {...props}>
+    <span className={cn("input-group-text", className)} {...props}>
       {children}
     </span>
+  );
+};
+
+const Textarea = ({ children, className, ...props }: ComponentProps<typeof BaseTextarea>) => {
+  return (
+    <BaseTextarea className={cn("input-group-textarea", className)} data-slot="input-group-control" {...props}>
+      {children}
+    </BaseTextarea>
   );
 };
 

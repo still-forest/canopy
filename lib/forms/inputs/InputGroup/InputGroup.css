@@ -17,8 +17,8 @@
       @apply opacity-50;
     }
 
-    &:has(> [data-align="block-start"]),
-    &:has(> [data-align="block-end"]) {
+    &:has(> .input-group-addon--block-start),
+    &:has(> .input-group-addon--block-end) {
       @apply h-auto flex-col;
     }
 
@@ -26,19 +26,19 @@
       @apply h-auto;
     }
 
-    &:has(> [data-align="block-start"]) > input {
+    &:has(> .input-group-addon--block-start) > input {
       @apply pb-3;
     }
 
-    &:has(> [data-align="block-end"]) > input {
+    &:has(> .input-group-addon--block-end) > input {
       @apply pt-3;
     }
 
-    &:has(> [data-align="inline-start"]) > input {
+    &:has(> .input-group-addon--inline-start) > input {
       @apply pl-1.5;
     }
 
-    &:has(> [data-align="inline-end"]) > input {
+    &:has(> .input-group-addon--inline-end) > input {
       @apply pr-1.5;
     }
 
@@ -131,6 +131,15 @@
       &:not([class*="size-"]) {
         @apply size-4;
       }
+    }
+  }
+
+  .input-group-textarea {
+    @apply rounded-none border-0 bg-transparent py-2 shadow-none ring-0 dark:bg-transparent flex-1 resize-none;
+
+    &:focus-visible,
+    [aria-invalid="true"] {
+      @apply ring-0;
     }
   }
 }
