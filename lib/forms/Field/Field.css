@@ -1,6 +1,5 @@
+@import "@/styles/layers.css";
 @reference "@/styles/tokens.css";
-
-@layer theme, base, components, utilities;
 
 @layer components {
   .field {
