@@ -34,10 +34,10 @@ export const Alert = ({ variant, title, description, actions, className }: Alert
         {variant === "warning" && <TriangleAlert />}
         {variant === "danger" && <OctagonX />}
       </div>
-      <div className={cn("alert-content", className)}>
-        {title && <h6 className={cn("alert-title", className)}>{title}</h6>}
-        {description && <p className={cn("alert-description", className)}>{description}</p>}
-        {actions && <div className={cn("alert-actions", className)}>{actions}</div>}
+      <div className="alert-content">
+        {title && <h6 className="alert-title">{title}</h6>}
+        {description && <p className="alert-description">{description}</p>}
+        {actions && <div className="alert-actions">{actions}</div>}
       </div>
     </div>
   );
