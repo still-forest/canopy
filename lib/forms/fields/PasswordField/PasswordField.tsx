@@ -37,7 +37,7 @@ export const PasswordField = ({
       )}
       <InputGroup>
         <InputGroup.Input type={showPassword ? "text" : "password"} {...props} id={id || name} name={name} />
-        <InputGroup.Addon right>
+        <InputGroup.Addon align="inline-end">
           <InputGroup.Button
             aria-label={showPassword ? "Hide password" : "Show password"}
             asIcon

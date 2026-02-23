@@ -70,46 +70,54 @@
         @apply bg-transparent disabled:bg-transparent;
       }
     }
+  }
 
-    [data-slot="input-group-addon"] {
-      @apply flex h-auto cursor-text items-center justify-center gap-2 py-1.5 text-sm font-normal select-none;
-      @apply text-muted-foreground;
+  .input-group-addon {
+    @apply flex h-auto cursor-text items-center justify-center gap-2 py-1.5 text-sm font-normal select-none;
+    @apply text-muted-foreground;
 
-      &:has(> svg:not([class*="size-"])) > svg:not([class*="size-"]) {
-        @apply size-4;
+    &:has(> svg:not([class*="size-"])) > svg:not([class*="size-"]) {
+      @apply size-4;
+    }
+
+    & > kbd {
+      @apply rounded-[calc(var(--radius)-5px)];
+    }
+
+    :is([data-disabled="true"].input-group) & {
+      @apply opacity-50;
+    }
+
+    &.input-group-addon--inline-start {
+      @apply order-first pl-2;
+
+      &:has(> button) {
+        @apply ml-[-0.3rem];
       }
 
-      & > kbd {
-        @apply rounded-[calc(var(--radius)-5px)];
+      &:has(> kbd) {
+        @apply ml-[-0.15rem];
+      }
+    }
+
+    &.input-group-addon--inline-end {
+      @apply order-last pr-2;
+
+      &:has(> button) {
+        @apply mr-[-0.3rem];
       }
 
-      :is([data-disabled="true"].input-group) & {
-        @apply opacity-50;
+      &:has(> kbd) {
+        @apply mr-[-0.15rem];
       }
+    }
 
-      &[data-align="inline-start"] {
-        @apply order-first pl-2;
+    &.input-group-addon--block-start {
+      @apply px-2.5 pt-2 group-has-[>input]/input-group:pt-2 [.border-b]:pb-2 order-first w-full justify-start;
+    }
 
-        &:has(> button) {
-          @apply ml-[-0.3rem];
-        }
-
-        &:has(> kbd) {
-          @apply ml-[-0.15rem];
-        }
-      }
-
-      &[data-align="inline-end"] {
-        @apply order-last pr-2;
-
-        &:has(> button) {
-          @apply mr-[-0.3rem];
-        }
-
-        &:has(> kbd) {
-          @apply mr-[-0.15rem];
-        }
-      }
+    &.input-group-addon--block-end {
+      @apply px-2.5 pb-2 group-has-[>input]/input-group:pb-2 [.border-t]:pt-2 order-last w-full justify-start;
     }
   }
 

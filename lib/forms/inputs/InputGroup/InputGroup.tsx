@@ -1,5 +1,5 @@
 import type { ComponentProps, FC } from "react";
-import { Button } from "@/buttons";
+import { Button as BaseButton } from "@/buttons";
 import { Textarea } from "@/forms/inputs";
 import { cn } from "@/utils/cn";
 import "./InputGroup.css";
@@ -9,14 +9,59 @@ const Input = ({ id, name, ...props }: ComponentProps<"input">) => {
 };
 
 interface AddonProps extends ComponentProps<"div"> {
-  align?: "inline-start" | "inline-end";
+  align?: "inline-start" | "inline-end" | "block-start" | "block-end";
 }
 
-const Addon = ({ children, align = "inline-start", ...props }: AddonProps) => {
+const Addon = ({ children, align = "inline-start", className, ...props }: AddonProps) => {
   return (
-    <div data-align={align} data-slot="input-group-addon" {...props}>
+    <div
+      className={cn(
+        "input-group-addon",
+        {
+          "input-group-addon--inline-start": align === "inline-start",
+          "input-group-addon--inline-end": align === "inline-end",
+          "input-group-addon--block-start": align === "block-start",
+          "input-group-addon--block-end": align === "block-end",
+        },
+        className,
+      )}
+      onClick={(e) => {
+        if ((e.target as HTMLElement).closest("button")) {
+          return;
+        }
+        e.currentTarget.parentElement?.querySelector("input")?.focus();
+      }}
+      onKeyDown={(e) => {
+        if ((e.target as HTMLElement).closest("button")) {
+          return;
+        }
+        e.currentTarget.parentElement?.querySelector("input")?.focus();
+      }}
+      onKeyUp={(e) => {
+        if ((e.target as HTMLElement).closest("button")) {
+          return;
+        }
+        e.currentTarget.parentElement?.querySelector("input")?.focus();
+      }}
+      role="group"
+      {...props}
+    >
       {children}
     </div>
+  );
+};
+
+const Button = ({
+  children,
+  size = "xs",
+  variant = "ghost",
+  className,
+  ...props
+}: ComponentProps<typeof BaseButton>) => {
+  return (
+    <BaseButton className={cn("input-group-button", className)} size={size} variant={variant} {...props}>
+      {children}
+    </BaseButton>
   );
 };
 
