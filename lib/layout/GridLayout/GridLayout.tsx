@@ -22,51 +22,27 @@ export interface ItemProps extends ComponentProps<"div"> {
   lg?: Span;
 }
 
-const Item = ({ children, className, span, sm, md, lg, style, ...props }: ItemProps) => {
-  const cols = {
-    base: col(span)!,
-    sm: col(sm) ?? col(span)!,
-    md: col(md) ?? col(sm) ?? col(span)!,
-    lg: col(lg) ?? col(md) ?? col(sm) ?? col(span)!,
-  };
-
-  const rows = {
-    base: row(span),
-    sm: row(sm) ?? row(span),
-    md: row(md) ?? row(sm) ?? row(span),
-    lg: row(lg) ?? row(md) ?? row(sm) ?? row(span),
-  };
-
-  const hasRows = rows.base !== undefined;
-
-  return (
-    <div
-      className={cn(
-        "col-span-(--span) sm:col-span-(--sm) md:col-span-(--md) lg:col-span-(--lg)",
-        hasRows && "row-span-(--row-span) sm:row-span-(--sm-row) md:row-span-(--md-row) lg:row-span-(--lg-row)",
-        className,
-      )}
-      style={
-        {
-          "--span": cols.base,
-          "--sm": cols.sm,
-          "--md": cols.md,
-          "--lg": cols.lg,
-          ...(hasRows && {
-            "--row-span": rows.base,
-            "--sm-row": rows.sm,
-            "--md-row": rows.md,
-            "--lg-row": rows.lg,
-          }),
-          ...style,
-        } as CSSProperties
-      }
-      {...props}
-    >
-      {children}
-    </div>
-  );
-};
+const Item = ({ children, className, span, sm, md, lg, style, ...props }: ItemProps) => (
+  <div
+    className={cn("grid-layout-item", className)}
+    style={
+      {
+        "--span": col(span),
+        "--sm": col(sm),
+        "--md": col(md),
+        "--lg": col(lg),
+        "--row": row(span),
+        "--sm-row": row(sm),
+        "--md-row": row(md),
+        "--lg-row": row(lg),
+        ...style,
+      } as CSSProperties
+    }
+    {...props}
+  >
+    {children}
+  </div>
+);
 
 GridLayout.Item = Item;
 export { GridLayout };

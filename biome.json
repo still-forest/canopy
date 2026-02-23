@@ -15,7 +15,8 @@
         "useKeyWithClickEvents": "warn"
       },
       "correctness": {
-        "noNestedComponentDefinitions": "off"
+        "noNestedComponentDefinitions": "off",
+        "noUnknownFunction": "off"
       }
     }
   },
