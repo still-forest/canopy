@@ -9,6 +9,7 @@ export * from "./DropdownMenu";
 export * from "./Hint";
 export * from "./Item";
 export * from "./Loader";
+export * from "./MenuBar";
 export * from "./Modal";
 export * from "./Pagination";
 export * from "./Placeholder";

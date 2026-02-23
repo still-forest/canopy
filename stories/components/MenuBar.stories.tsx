@@ -1,6 +1,6 @@
 import type { Meta, StoryObj } from "@storybook/react-vite";
 import { useState } from "react";
-import { Menubar } from "@/components/MenuBar";
+import { Menubar } from "@/components";
 
 const meta: Meta<typeof Menubar> = {
   title: "Components/MenuBar",
