@@ -1,35 +1,32 @@
-@reference "tailwindcss";
-@reference "../../styles/index.css";
+@reference "@/styles/tokens.css";
 
-@layer components {
-  .layout-container {
-    @apply w-full px-1 sm:px-2 md:px-4 py-2 md:py-4;
-    @apply flex flex-col;
+.layout-container {
+  @apply w-full px-1 sm:px-2 md:px-4 py-2 md:py-4;
+  @apply flex flex-col;
 
-    &[data-slot="container"] {
-      + [data-slot="container"] {
-        @apply mt-8;
-      }
+  &[data-slot="container"] {
+    + [data-slot="container"] {
+      @apply mt-8;
     }
+  }
 
-    &.layout-container--sm {
-      @apply max-w-lg;
-    }
+  &.layout-container--sm {
+    @apply max-w-lg;
+  }
 
-    &.layout-container--md {
-      @apply max-w-2xl;
-    }
+  &.layout-container--md {
+    @apply max-w-2xl;
+  }
 
-    &.layout-container--lg {
-      @apply max-w-3xl;
-    }
+  &.layout-container--lg {
+    @apply max-w-3xl;
+  }
 
-    &.layout-container--xl {
-      @apply max-w-4xl;
-    }
+  &.layout-container--xl {
+    @apply max-w-4xl;
+  }
 
-    &.layout-container--centered {
-      @apply mx-auto;
-    }
+  &.layout-container--centered {
+    @apply mx-auto;
   }
 }

@@ -1,56 +1,53 @@
-@reference "tailwindcss";
-@reference "../../styles/index.css";
+@reference "@/styles/tokens.css";
 
-@layer components {
-  .alert {
-    @apply flex rounded-md;
-    @apply p-4 gap-4;
-    @apply text-background;
+.alert {
+  @apply flex rounded-md;
+  @apply p-4 gap-4;
+  @apply text-background;
 
-    &.alert-info {
-      @apply bg-info;
-    }
-
-    &.alert-success {
-      @apply bg-success;
-    }
-
-    &.alert-warning {
-      @apply bg-warning;
-    }
-
-    &.alert-danger {
-      @apply bg-danger;
-    }
+  &.alert-info {
+    @apply bg-info;
   }
 
-  .alert-media {
-    & > svg {
-      @apply size-4;
-    }
+  &.alert-success {
+    @apply bg-success;
   }
 
-  .alert-content {
-    @apply flex grow gap-1 md:flex-col md:items-start;
+  &.alert-warning {
+    @apply bg-warning;
   }
 
-  .alert-title {
-    @apply text-inherit font-semibold leading-none;
+  &.alert-danger {
+    @apply bg-danger;
   }
+}
 
-  .alert-description {
-    @apply text-sm text-inherit text-balance;
+.alert-media {
+  & > svg {
+    @apply size-4;
   }
+}
 
-  .alert-actions {
-    @apply flex gap-2 grow items-center justify-end;
+.alert-content {
+  @apply flex grow gap-1 md:flex-col md:items-start;
+}
 
-    & > .btn-primary {
-      @apply bg-background border-background text-foreground;
+.alert-title {
+  @apply text-inherit font-semibold leading-none;
+}
 
-      &:hover {
-        @apply bg-background/80 border-inherit;
-      }
+.alert-description {
+  @apply text-sm text-inherit text-balance;
+}
+
+.alert-actions {
+  @apply flex gap-2 grow items-center justify-end;
+
+  & > .btn-primary {
+    @apply bg-background border-background text-foreground;
+
+    &:hover {
+      @apply bg-background/80 border-inherit;
     }
   }
 }
