@@ -11,6 +11,7 @@ export * from "./Item";
 export * from "./Loader";
 export * from "./Modal";
 export * from "./Pagination";
+export * from "./Placeholder";
 export * from "./Popover";
 export * from "./Separator";
 export * from "./Skeleton";
