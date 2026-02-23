@@ -1,5 +1,6 @@
-import { Empty, Flex } from "@still-forest/canopy";
-import type { ComponentProps, ReactElement } from "react";
+import type { ComponentProps, ReactElement, ReactNode } from "react";
+import { Empty } from "@/components/Empty";
+import { Flex } from "@/layout";
 import "./Placeholder.css";
 
 interface PlaceholderProps {
@@ -8,7 +9,7 @@ interface PlaceholderProps {
   title?: string;
   description?: string;
   align?: "center" | "left";
-  children?: React.ReactNode;
+  children?: ReactNode;
 }
 
 export const Placeholder = ({
@@ -29,7 +30,7 @@ export const Placeholder = ({
       >
         <div className="placeholder-media">{icon}</div>
         <Flex direction="col">
-          {title && <h3 className="text-muted-foreground">{title}</h3>}
+          {title && <h3>{title}</h3>}
           {description && <p className="footnote">{description}</p>}
         </Flex>
       </Flex>
@@ -42,8 +43,8 @@ export const Placeholder = ({
         <Empty.Media className="placeholder-media" variant="default">
           {icon}
         </Empty.Media>
-        {title && <Empty.Title>{title}</Empty.Title>}
-        {description && <Empty.Description>{description}</Empty.Description>}
+        {title && <h3>{title}</h3>}
+        {description && <p className="muted">{description}</p>}
       </Empty.Header>
       {children && <Empty.Content>{children}</Empty.Content>}
     </Empty>
