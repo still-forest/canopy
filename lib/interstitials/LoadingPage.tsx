@@ -2,7 +2,7 @@ import { Loader } from "@/components/Loader";
 import { Interstitial, type InterstitialProps } from "./Interstitial";
 
 const DefaultIconComponent = (props: React.SVGProps<SVGSVGElement>) => {
-  return <Loader className="text-info" data-testid="icon" {...props} />;
+  return <Loader className="text-info" {...props} />;
 };
 
 export const LoadingPage = ({ message, icon, ...props }: InterstitialProps) => {

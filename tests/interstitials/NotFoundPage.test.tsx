@@ -9,14 +9,11 @@ describe("NotFoundPage", () => {
     const headline = screen.getByText("Page not found");
     expect(headline).toBeInTheDocument();
     expect(headline.tagName).toBe("H2");
-    expect(headline.className).toContain("font-bold");
-    expect(headline.className).toContain("text-foreground");
-    expect(headline.className).toContain("text-center");
+    expect(headline).toHaveClass("interstitial-headline");
 
-    const icon = screen.getByTestId("icon");
+    const icon = document.querySelector(".interstitial-icon");
     expect(icon).toBeInTheDocument();
-    expect(icon.getAttribute("class")).toContain("text-warning");
-    expect(icon.getAttribute("class")).toContain("size-32");
+    expect(icon).toHaveClass("lucide lucide-file-question-mark interstitial-icon");
   });
 
   it("renders with message", () => {
@@ -28,9 +25,7 @@ describe("NotFoundPage", () => {
     const message = screen.getByText("You appear to be lost");
     expect(message).toBeInTheDocument();
     expect(message.tagName).toBe("P");
-    expect(message.className).toContain("text-foreground");
-    expect(message.className).toContain("text-center");
-    expect(message.className).toContain("font-body");
+    expect(message.className).toBe("interstitial-message");
   });
 
   it("renders with onBack function", () => {

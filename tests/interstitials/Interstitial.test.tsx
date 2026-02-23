@@ -10,11 +10,9 @@ describe("Interstitial", () => {
     const message = screen.getByText("This is a message");
     expect(message).toBeInTheDocument();
     expect(message.tagName).toBe("P");
-    expect(message.className).toContain("text-foreground");
-    expect(message.className).toContain("text-center");
-    expect(message.className).toContain("font-body");
+    expect(message).toHaveClass("interstitial-message");
 
-    expect(screen.queryByTestId("icon")).not.toBeInTheDocument();
+    expect(document.querySelector(".interstitial-icon")).not.toBeInTheDocument();
   });
 
   it("renders with headline", () => {
@@ -23,10 +21,7 @@ describe("Interstitial", () => {
     const headline = screen.getByText("This is a headline");
     expect(headline).toBeInTheDocument();
     expect(headline.tagName).toBe("H2");
-    expect(headline.className).toContain("font-bold");
-    expect(headline.className).toContain("text-foreground");
-    expect(headline.className).toContain("text-center");
-    expect(headline.className).toContain("font-heading");
+    expect(headline).toHaveClass("interstitial-headline");
 
     const message = screen.getByText("This is a message");
     expect(message).toBeInTheDocument();
@@ -37,52 +32,54 @@ describe("Interstitial", () => {
 
     expect(screen.getByText("This is an Interstitial")).toBeInTheDocument();
 
-    const icon = screen.getByTestId("icon");
+    const icon = document.querySelector(".interstitial-icon");
     expect(icon).toBeInTheDocument();
-    expect(icon.getAttribute("class")).toContain("size-32");
+    expect(icon).toHaveClass("lucide-mailbox");
   });
 
   it("renders with icon and info variant", () => {
-    render(<Interstitial icon={<Mailbox />} message="This is an Interstitial" variant="info" />);
+    const { container } = render(<Interstitial icon={<Mailbox />} message="This is an Interstitial" variant="info" />);
 
     expect(screen.getByText("This is an Interstitial")).toBeInTheDocument();
+    expect(container.firstChild).toHaveClass("interstitial--info");
 
-    const icon = screen.getByTestId("icon");
+    const icon = document.querySelector(".interstitial-icon");
     expect(icon).toBeInTheDocument();
-    expect(icon.getAttribute("class")).toContain("text-info");
-    expect(icon.getAttribute("class")).toContain("size-32");
   });
 
   it("renders with icon and success variant", () => {
-    render(<Interstitial icon={<Mailbox />} message="This is an Interstitial" variant="success" />);
+    const { container } = render(
+      <Interstitial icon={<Mailbox />} message="This is an Interstitial" variant="success" />,
+    );
 
     expect(screen.getByText("This is an Interstitial")).toBeInTheDocument();
+    expect(container.firstChild).toHaveClass("interstitial--success");
 
-    const icon = screen.getByTestId("icon");
+    const icon = document.querySelector(".interstitial-icon");
     expect(icon).toBeInTheDocument();
-    expect(icon.getAttribute("class")).toContain("text-success");
-    expect(icon.getAttribute("class")).toContain("size-32");
   });
 
   it("renders with icon and warning variant", () => {
-    render(<Interstitial icon={<Mailbox />} message="This is an Interstitial" variant="warning" />);
+    const { container } = render(
+      <Interstitial icon={<Mailbox />} message="This is an Interstitial" variant="warning" />,
+    );
 
     expect(screen.getByText("This is an Interstitial")).toBeInTheDocument();
+    expect(container.firstChild).toHaveClass("interstitial--warning");
 
-    const icon = screen.getByTestId("icon");
+    const icon = document.querySelector(".interstitial-icon");
     expect(icon).toBeInTheDocument();
-    expect(icon.getAttribute("class")).toContain("text-warning");
-    expect(icon.getAttribute("class")).toContain("size-32");
   });
 
   it("renders with icon and error variant", () => {
-    render(<Interstitial icon={<Mailbox />} message="This is an Interstitial" variant="danger" />);
+    const { container } = render(
+      <Interstitial icon={<Mailbox />} message="This is an Interstitial" variant="danger" />,
+    );
 
     expect(screen.getByText("This is an Interstitial")).toBeInTheDocument();
+    expect(container.firstChild).toHaveClass("interstitial--danger");
 
-    const icon = screen.getByTestId("icon");
+    const icon = document.querySelector(".interstitial-icon");
     expect(icon).toBeInTheDocument();
-    expect(icon.getAttribute("class")).toContain("text-danger");
-    expect(icon.getAttribute("class")).toContain("size-32");
   });
 });
