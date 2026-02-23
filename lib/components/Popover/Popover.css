@@ -1,0 +1,55 @@
+@import "@/styles/layers.css";
+@reference "@/styles/tokens.css";
+
+@layer components {
+  .popover-portal {
+    @apply relative;
+  }
+
+  .popover-positioner {
+    @apply isolate z-50;
+  }
+
+  .popover-content {
+    @apply bg-popover text-popover-foreground ring-foreground/10;
+    @apply flex flex-col gap-4 rounded-md p-4 text-sm shadow-md ring-1 outline-hidden z-50 origin-(--transform-origin);
+    @apply duration-100;
+    @apply w-(--anchor-width) max-w-(--available-width);
+
+    &[data-open] {
+      @apply animate-in zoom-in-95 fade-in-0;
+    }
+
+    &[data-closed] {
+      @apply animate-out zoom-out-95 fade-out-0;
+    }
+
+    &[data-side="bottom"] {
+      @apply data-[side=bottom]:slide-in-from-top-2;
+    }
+
+    &[data-side="left"] {
+      @apply data-[side=left]:slide-in-from-right-2;
+    }
+
+    &[data-side="right"] {
+      @apply data-[side=right]:slide-in-from-left-2;
+    }
+
+    &[data-side="top"] {
+      @apply data-[side=top]:slide-in-from-bottom-2;
+    }
+  }
+
+  .popover-header {
+    @apply flex flex-col gap-1 text-sm;
+  }
+
+  .popover-title {
+    @apply text-base font-body font-medium;
+  }
+
+  .popover-description {
+    @apply text-sm text-muted-foreground;
+  }
+}
