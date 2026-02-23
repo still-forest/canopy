@@ -2,6 +2,7 @@ import { type ComponentProps, type KeyboardEvent, type ReactElement, useRef } fr
 import { Button, ButtonGroup } from "@/buttons";
 import { SelectInput, type SelectOption } from "@/forms/inputs";
 import "./ButtonRadioInput.css";
+
 import { useIsMobile } from "@/hooks/use-mobile";
 
 interface Option {
@@ -113,6 +114,7 @@ export const ButtonRadioInput = ({
       })}
       {hasSecondaryOptions && (
         <SelectInput
+          className="w-[150px] btn btn-primary"
           name="secondary-options"
           onChange={(value) => onChange(value)}
           options={secondaryOptions}
