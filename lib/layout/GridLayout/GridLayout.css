@@ -1,0 +1,8 @@
+@import "@/styles/layers.css";
+@reference "@/styles/tokens.css";
+
+@layer components {
+  .grid-layout {
+    @apply grid grid-cols-12 gap-4;
+  }
+}
