@@ -1,13 +1,13 @@
 import type { ReactNode, RefObject } from "react";
-import { cn } from "@/utils";
+import { cn } from "@/utils/cn";
+import "./TextList.css";
 
 type TextListProps = React.ComponentProps<"ul"> & {
-  position?: "inside" | "outside";
   variant?: "ordered" | "unordered" | "none";
+  position?: "inside" | "outside";
   children: ReactNode;
 };
 type TextListItemProps = React.ComponentProps<"li"> & {
-  asChild?: boolean;
   children: ReactNode;
 };
 
@@ -19,23 +19,17 @@ const TextList: TextListComponent = ({
   children,
   className,
   variant = "unordered",
-  position = "outside",
+  position,
   ref,
   ...props
 }: TextListProps) => {
   const classNames = cn(
+    "textlist",
     {
-      "list-decimal": variant === "ordered",
-      "list-disc": variant === "unordered",
-      "list-none": variant === "none",
-    },
-    {
-      "list-inside": position === "inside",
-      "list-outside": position === "outside",
-    },
-    {
-      "ml-4": position === "outside" && variant === "unordered",
-      "ml-6": position === "outside" && variant === "ordered",
+      "textlist-ordered": variant === "ordered",
+      "textlist-none": variant === "none",
+      "textlist--inside": position === "inside",
+      "textlist--outside": position === "outside",
     },
     className,
   );
