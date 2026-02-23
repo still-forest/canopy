@@ -6,13 +6,14 @@ import { ErrorPage } from "@/interstitials";
 
 describe("ErrorPage", () => {
   it("renders with default message", () => {
-    render(<ErrorPage />);
+    const { container } = render(<ErrorPage />);
 
     expect(screen.getByText("Something went wrong")).toBeInTheDocument();
+    expect(container.firstChild).toHaveClass("interstitial--danger");
 
-    const icon = screen.getByTestId("icon");
+    const icon = document.querySelector(".interstitial-icon");
     expect(icon).toBeInTheDocument();
-    expect(icon.getAttribute("class")).toBe("lucide lucide-circle-x text-danger size-32");
+    expect(icon).toHaveClass("lucide-circle-x");
   });
 
   it("renders with custom message", () => {
@@ -20,9 +21,9 @@ describe("ErrorPage", () => {
 
     expect(screen.getByText("What just happened?")).toBeInTheDocument();
 
-    const icon = screen.getByTestId("icon");
+    const icon = document.querySelector(".interstitial-icon");
     expect(icon).toBeInTheDocument();
-    expect(icon.getAttribute("class")).toBe("lucide lucide-circle-x text-danger size-32");
+    expect(icon).toHaveClass("lucide-circle-x");
   });
 
   it("renders with children", () => {

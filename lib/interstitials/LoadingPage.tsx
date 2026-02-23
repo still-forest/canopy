@@ -1,28 +1,20 @@
 import { Loader } from "@/components/Loader";
-import { cn } from "@/utils";
+import { cn } from "@/utils/cn";
 import { Interstitial, type InterstitialProps } from "./Interstitial";
 
-const DefaultIconComponent = (props: React.SVGProps<SVGSVGElement>) => {
-  return <Loader className="text-info" data-testid="icon" {...props} />;
+const DefaultIconComponent = ({ className, ...props }: React.ComponentProps<"svg">) => {
+  return <Loader className={cn("text-info size-12", className)} {...props} />;
 };
 
-export const LoadingPage = ({
-  iconComponent,
-  message,
-  iconSize = "5xl",
-  iconClassName,
-  ...props
-}: InterstitialProps) => {
-  const IconComponent = iconComponent ? iconComponent : DefaultIconComponent;
+export const LoadingPage = ({ message, icon, ...props }: InterstitialProps) => {
+  const Icon = icon ? icon : <DefaultIconComponent />;
 
   return (
     <Interstitial
       headline={message}
-      headlineLevel="4"
-      headlineWeight="normal"
-      iconClassName={cn("text-info", iconClassName)}
-      iconComponent={IconComponent}
-      iconSize={iconSize}
+      headlineClassName="text-xl font-normal mt-4"
+      icon={Icon}
+      variant="info"
       {...props}
     />
   );

@@ -1,4 +1,4 @@
-export type AlertVariant = "info" | "success" | "warning" | "danger";
+export type NotificationVariant = "info" | "success" | "warning" | "danger";
 
 export type ButtonVariant =
   | "primary"

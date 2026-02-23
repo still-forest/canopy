@@ -1,7 +1,7 @@
 import { CircleCheckBig, Info, OctagonX, TriangleAlert } from "lucide-react";
 import type { ReactNode } from "react";
 
-import type { AlertVariant } from "@/types/variants";
+import type { NotificationVariant } from "@/types/variants";
 import { cn } from "@/utils";
 import "./Alert.css";
 
@@ -11,7 +11,7 @@ interface StyleableProps {
 }
 
 interface AlertProps extends StyleableProps {
-  variant: AlertVariant;
+  variant: NotificationVariant;
 }
 
 const Alert = ({ variant, children, className }: AlertProps) => {

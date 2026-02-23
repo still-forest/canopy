@@ -19,6 +19,7 @@
     "declaration": true,
     "declarationDir": "dist",
     "emitDeclarationOnly": true,
+    "rootDir": ".",
     "baseUrl": ".",
     "paths": {
       "@/*": ["./lib/*"],
