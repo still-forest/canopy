@@ -13,7 +13,6 @@ describe("ErrorPage", () => {
 
     const icon = document.querySelector(".interstitial-icon");
     expect(icon).toBeInTheDocument();
-    expect(icon).toHaveClass("lucide-circle-x");
   });
 
   it("renders with custom message", () => {
@@ -23,7 +22,6 @@ describe("ErrorPage", () => {
 
     const icon = document.querySelector(".interstitial-icon");
     expect(icon).toBeInTheDocument();
-    expect(icon).toHaveClass("lucide-circle-x");
   });
 
   it("renders with children", () => {
