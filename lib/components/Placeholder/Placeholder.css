@@ -36,12 +36,12 @@
       @apply flex flex-col;
 
       .placeholder-description {
-        @apply text-sm text-muted-foreground;
+        @apply text-sm text-muted-foreground text-balance;
       }
     }
 
     .placeholder-content {
-      @apply shrink-0;
+      @apply shrink-0 text-balance;
     }
   }
 }
