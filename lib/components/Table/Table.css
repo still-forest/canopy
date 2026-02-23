@@ -1,0 +1,68 @@
+@import "@/styles/layers.css";
+@reference "@/styles/tokens.css";
+
+@layer components {
+  .table {
+    @apply w-full caption-bottom text-sm;
+
+    thead {
+      @apply bg-muted;
+    }
+
+    tbody {
+      tr:last-child {
+        @apply border-0;
+      }
+    }
+
+    tfoot {
+      @apply bg-muted/50 border-t font-medium;
+
+      tr:last-child {
+        @apply border-b-0;
+      }
+    }
+
+    tr {
+      @apply hover:bg-muted/50 border-b transition-colors;
+    }
+
+    th {
+      @apply text-foreground h-10 px-2 text-left align-middle font-medium whitespace-nowrap;
+
+      &:has([role="checkbox"], input[type="checkbox"]) {
+        @apply pr-0;
+      }
+
+      & > [role="checkbox"] {
+        @apply translate-y-[2px];
+      }
+
+      &:has(.resize-handle) {
+        @apply relative;
+      }
+
+      .resize-handle {
+        @apply absolute right-0 top-0 h-full w-1 cursor-col-resize select-none touch-none;
+        @apply border-l border-dotted border-border/100;
+        @apply bg-transparent hover:bg-border;
+      }
+    }
+
+    td {
+      @apply p-2 align-middle whitespace-nowrap;
+
+      &:has([role="checkbox"], input[type="checkbox"]) {
+        @apply pr-0;
+      }
+
+      &:has([data-slot="dropdown-menu-trigger"]) {
+        @apply pl-0 pr-1;
+      }
+    }
+
+    caption {
+      @apply text-muted-foreground mt-4 text-sm;
+    }
+  }
+}
