@@ -1,9 +1,9 @@
 import { type ComponentProps, type KeyboardEvent, type ReactElement, useId, useRef, useState } from "react";
 import { Button, ButtonGroup, type ButtonGroupProps } from "@/buttons";
 import { Hint } from "@/components";
+import type { SelectPickerOption } from "@/forms";
 import { DesktopSelectPicker } from "@/forms/fields/SelectPickerField/DesktopSelectPicker";
 import { GroupedOptionList } from "@/forms/fields/SelectPickerField/OptionList";
-import type { SelectPickerOption } from "@/forms/fields/SelectPickerField/types";
 import { InputError } from "@/forms/InputError";
 import { Label } from "@/forms/Label";
 import { Flex } from "@/layout";

@@ -1,9 +1,9 @@
 import { useMemo, useState } from "react";
+import type { SelectPickerOption, SelectPickerOptionGroup } from "@/forms";
 import { useIsMobile } from "@/hooks/use-mobile";
 import { DesktopSelectPicker } from "./DesktopSelectPicker";
 import { MobileSelectPicker } from "./MobileSelectPicker";
 import { GroupedOptionList } from "./OptionList";
-import type { SelectPickerOption, SelectPickerOptionGroup } from "./types";
 
 export interface SelectPickerFieldProps {
   name: string;

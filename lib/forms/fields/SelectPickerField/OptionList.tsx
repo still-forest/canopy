@@ -1,7 +1,7 @@
 import { Check } from "lucide-react";
 import { Command, CommandEmpty, CommandGroup, CommandInput, CommandItem, CommandList } from "@/components/ui/command";
+import type { SelectPickerOption, SelectPickerOptionGroup, SelectPickerOptionValue } from "@/forms";
 import { cn } from "@/utils/cn";
-import type { SelectPickerOption, SelectPickerOptionGroup, SelectPickerOptionValue } from "./types";
 
 interface OptionListProps {
   label?: string;
