@@ -19,7 +19,7 @@ const TextList: TextListComponent = ({
   children,
   className,
   variant = "unordered",
-  position = "outside",
+  position,
   ref,
   ...props
 }: TextListProps) => {
@@ -28,6 +28,7 @@ const TextList: TextListComponent = ({
     {
       "textlist-ordered": variant === "ordered",
       "textlist-none": variant === "none",
+      "textlist--inside": position === "inside",
       "textlist--outside": position === "outside",
     },
     className,

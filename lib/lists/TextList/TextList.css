@@ -17,6 +17,8 @@
       @apply list-inside;
     }
 
+    /* textlist--outside is the default */
+
     li {
       @apply pb-0.5;
 

@@ -17,7 +17,7 @@ describe("TextList", () => {
     const textList = screen.getByRole("list");
     expect(textList).toBeInTheDocument();
     expect(textList.tagName).toBe("UL");
-    expect(textList.className).toEqual("textlist textlist--outside");
+    expect(textList.className).toEqual("textlist");
 
     const items = screen.getAllByRole("listitem");
     expect(items).toHaveLength(3);
@@ -38,7 +38,7 @@ describe("TextList", () => {
     const textList = screen.getByRole("list");
     expect(textList).toBeInTheDocument();
     expect(textList.tagName).toBe("OL");
-    expect(textList.className).toEqual("textlist textlist-ordered textlist--outside");
+    expect(textList.className).toEqual("textlist textlist-ordered");
 
     const items = screen.getAllByRole("listitem");
     expect(items).toHaveLength(2);
@@ -57,7 +57,7 @@ describe("TextList", () => {
     const textList = screen.getByRole("list");
     expect(textList).toBeInTheDocument();
     expect(textList.tagName).toBe("UL");
-    expect(textList.className).toEqual("textlist textlist-none textlist--outside");
+    expect(textList.className).toEqual("textlist textlist-none");
 
     const items = screen.getAllByRole("listitem");
     expect(items).toHaveLength(1);
@@ -75,7 +75,25 @@ describe("TextList", () => {
     const textList = screen.getByRole("list");
     expect(textList).toBeInTheDocument();
     expect(textList.tagName).toBe("UL");
-    expect(textList.className).toEqual("textlist");
+    expect(textList.className).toEqual("textlist textlist--inside");
+
+    const items = screen.getAllByRole("listitem");
+    expect(items).toHaveLength(1);
+
+    expect(items[0].textContent).toBe("Item 1");
+  });
+
+  test("renders an outside TextList", async () => {
+    render(
+      <TextList position="outside">
+        <TextList.Item>Item 1</TextList.Item>
+      </TextList>,
+    );
+
+    const textList = screen.getByRole("list");
+    expect(textList).toBeInTheDocument();
+    expect(textList.tagName).toBe("UL");
+    expect(textList.className).toEqual("textlist textlist--outside");
 
     const items = screen.getAllByRole("listitem");
     expect(items).toHaveLength(1);
