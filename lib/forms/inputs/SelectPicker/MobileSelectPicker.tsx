@@ -1,12 +1,12 @@
 import { mergeProps } from "@base-ui/react";
-import { Button } from "@still-forest/canopy";
 import type { ReactNode } from "react";
+import { Button, type ButtonProps } from "@/buttons";
 import { Sheet } from "@/components/Sheet";
 import "./SelectPicker.css";
 
-const CloseButton = () => {
+const CloseButton = (props: ButtonProps) => {
   return (
-    <button className="mobile-select-picker-close-button" type="button">
+    <button className="mobile-select-picker-close-button" type="button" {...props}>
       <div data-slot="sheet-close-control" />
       <span className="sr-only">Close</span>
     </button>
@@ -38,7 +38,7 @@ export const MobileSelectPicker = ({ selectedLabel, open, setOpen, children, id 
         )}
       />
       <Sheet.Content className="mobile-select-picker-content" showCloseButton={false}>
-        <Sheet.Close render={<CloseButton />}>
+        <Sheet.Close render={CloseButton}>
           <span className="sr-only">Close</span>
         </Sheet.Close>
         {children}
