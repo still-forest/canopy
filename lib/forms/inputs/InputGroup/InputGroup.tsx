@@ -27,18 +27,6 @@ const Addon = ({ children, align = "inline-start", className, ...props }: AddonP
         }
         e.currentTarget.parentElement?.querySelector("input")?.focus();
       }}
-      onKeyDown={(e) => {
-        if ((e.target as HTMLElement).closest("button")) {
-          return;
-        }
-        e.currentTarget.parentElement?.querySelector("input")?.focus();
-      }}
-      onKeyUp={(e) => {
-        if ((e.target as HTMLElement).closest("button")) {
-          return;
-        }
-        e.currentTarget.parentElement?.querySelector("input")?.focus();
-      }}
       role="group"
       {...props}
     >

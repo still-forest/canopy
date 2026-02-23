@@ -138,7 +138,7 @@
     @apply rounded-none border-0 bg-transparent py-2 shadow-none ring-0 dark:bg-transparent flex-1 resize-none;
 
     &:focus-visible,
-    [aria-invalid="true"] {
+    &[aria-invalid="true"] {
       @apply ring-0;
     }
   }

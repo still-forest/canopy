@@ -11,7 +11,7 @@
       @apply border-ring ring-ring/50 ring-3;
     }
 
-    [aria-invalid="true"] {
+    &[aria-invalid="true"] {
       @apply ring-destructive/20 dark:ring-destructive/40 border-destructive dark:border-destructive/50 ring-3;
     }
 

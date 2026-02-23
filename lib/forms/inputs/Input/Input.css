@@ -5,7 +5,7 @@
   .input {
     @apply border-input h-9 rounded-md border bg-transparent px-2.5 py-1 text-base shadow-xs transition-[color,box-shadow] focus-visible:ring-[3px] md:text-sm placeholder:text-muted-foreground w-full min-w-0 outline-none;
 
-    [type="file"] {
+    &[type="file"] {
       @apply inline-flex border-0 bg-transparent h-7 text-sm font-medium text-foreground;
     }
 
@@ -13,18 +13,18 @@
       @apply border-ring ring-ring/50;
     }
 
-    [aria-invalid="true"] {
+    &[aria-invalid="true"] {
       @apply border-destructive ring-destructive/20 ring-[3px];
     }
 
-    &:has(:disabled) {
+    &:disabled {
       @apply pointer-events-none cursor-not-allowed opacity-50;
     }
 
     :is(.dark) & {
       @apply bg-input/30;
 
-      [aria-invalid="true"] {
+      &[aria-invalid="true"] {
         @apply ring-destructive/40 border-destructive;
       }
     }
