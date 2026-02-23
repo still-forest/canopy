@@ -56,7 +56,7 @@ export const Inside: Story = {
 
 export const WithClassName: Story = {
   render: () => (
-    <TextList className="ml-0">
+    <TextList className="px-16">
       {sampleSentences.map((sentence) => (
         <TextList.Item key={sentence}>{sentence}.</TextList.Item>
       ))}
