@@ -1,7 +1,7 @@
 import { Dialog as SheetPrimitive } from "@base-ui/react/dialog";
-import { Button } from "@still-forest/canopy";
 import { XIcon } from "lucide-react";
 import type { ComponentProps } from "react";
+import { Button } from "@/buttons";
 import { cn } from "@/utils/cn";
 import "./Sheet.css";
 import { useIsMobile } from "@/hooks/use-mobile";
