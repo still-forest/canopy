@@ -57,7 +57,7 @@ export const SelectInput = ({
       items={flatOptions}
       name={name}
       onValueChange={(value) => {
-        onChange(value === undefined ? null : (value as string));
+        onChange(value === undefined || value === "" ? null : (value as string));
       }}
       {...props}
       value={value ?? ""}
