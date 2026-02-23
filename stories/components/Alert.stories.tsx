@@ -77,6 +77,21 @@ export const LongContent: Story = {
   ),
 };
 
+export const WithChildren: Story = {
+  render: () => (
+    <Alert title="Detailed Information" variant="info">
+      <i>This is a longer message that provides more detailed information.</i>
+      <ul className="list-disc pl-4">
+        <li>
+          It demonstrates how the alert component handles multiple lines of text and maintains proper spacing and
+          alignment with the icon.
+        </li>
+        <li>The content should wrap naturally and remain readable.</li>
+      </ul>
+    </Alert>
+  ),
+};
+
 export const AllTypes: Story = {
   render: () => (
     <div className="flex flex-col gap-4">
