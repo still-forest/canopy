@@ -1,37 +1,40 @@
+@import "@/styles/layers.css";
 @reference "@/styles/tokens.css";
 
-.input {
-  @apply border-input h-9 rounded-md border bg-transparent px-2.5 py-1 text-base shadow-xs transition-[color,box-shadow] focus-visible:ring-[3px] md:text-sm placeholder:text-muted-foreground w-full min-w-0 outline-none;
+@layer components {
+  .input {
+    @apply border-input h-9 rounded-md border bg-transparent px-2.5 py-1 text-base shadow-xs transition-[color,box-shadow] focus-visible:ring-[3px] md:text-sm placeholder:text-muted-foreground w-full min-w-0 outline-none;
 
-  &[type="file"] {
-    @apply inline-flex border-0 bg-transparent h-7 text-sm font-medium text-foreground;
-  }
+    &[type="file"] {
+      @apply inline-flex border-0 bg-transparent h-7 text-sm font-medium text-foreground;
+    }
 
-  &:focus-visible {
-    @apply border-ring ring-ring/50;
-  }
-
-  &[aria-invalid="true"] {
-    @apply border-destructive ring-destructive/20 ring-[3px];
-  }
-
-  &:disabled {
-    @apply pointer-events-none cursor-not-allowed opacity-50;
-  }
-
-  :is(.dark) & {
-    @apply bg-input/30;
+    &:focus-visible {
+      @apply border-ring ring-ring/50;
+    }
 
     &[aria-invalid="true"] {
-      @apply ring-destructive/40 border-destructive;
+      @apply border-destructive ring-destructive/20 ring-[3px];
     }
-  }
 
-  &.input--sm {
-    @apply h-8 text-sm;
-  }
+    &:disabled {
+      @apply pointer-events-none cursor-not-allowed opacity-50;
+    }
 
-  &.input--lg {
-    @apply h-10 text-lg md:text-base;
+    :is(.dark) & {
+      @apply bg-input/30;
+
+      &[aria-invalid="true"] {
+        @apply ring-destructive/40 border-destructive;
+      }
+    }
+
+    &.input--sm {
+      @apply h-8 text-sm;
+    }
+
+    &.input--lg {
+      @apply h-10 text-lg md:text-base;
+    }
   }
 }
