@@ -40,7 +40,7 @@ export const TitleOnly: Story = {
 
 export const Compact: Story = {
   args: {
-    variant: "compact",
+    compact: true,
     icon: <Bird />,
     title: "No birds found",
     description: "Try adjusting your search filters.",
@@ -49,12 +49,7 @@ export const Compact: Story = {
 
 export const CompactWithChildren: Story = {
   render: () => (
-    <Placeholder
-      description="Get started by creating your first item."
-      icon={<Inbox />}
-      title="No items yet"
-      variant="compact"
-    >
+    <Placeholder compact description="Get started by creating your first item." icon={<Inbox />} title="No items yet">
       <Button size="sm">Create Item</Button>
     </Placeholder>
   ),
