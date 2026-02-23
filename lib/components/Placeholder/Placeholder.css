@@ -28,7 +28,7 @@
 
     .placeholder-media {
       & > svg {
-        @apply hidden sm:block size-12;
+        @apply hidden sm:block size-12 stroke-muted-foreground;
       }
     }
 
