@@ -1,0 +1,32 @@
+@import "@/styles/layers.css";
+@reference "@/styles/tokens.css";
+
+@layer components {
+  .textlist {
+    @apply list-disc list-outside;
+
+    &.textlist-ordered {
+      @apply list-decimal;
+    }
+
+    &.textlist-none {
+      @apply list-none;
+    }
+
+    &.textlist--inside {
+      @apply list-inside;
+    }
+
+    li {
+      @apply pb-0.5;
+
+      &:first-of-type {
+        @apply pt-1;
+      }
+
+      &:last-of-type {
+        @apply pb-1;
+      }
+    }
+  }
+}
