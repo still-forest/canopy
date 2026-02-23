@@ -1,4 +1,5 @@
 import type { ComponentProps, ReactElement } from "react";
+import type { ButtonSize, ButtonVariant } from "@/types";
 
 export type BaseButtonProps = {
   className?: string;
@@ -12,16 +13,3 @@ export type BaseButtonProps = {
   fit?: boolean;
   asIcon?: boolean;
 };
-
-export type ButtonVariant =
-  | "primary"
-  | "secondary"
-  | "muted"
-  | "ghost"
-  | "link"
-  | "info"
-  | "success"
-  | "warning"
-  | "danger";
-
-export type ButtonSize = "xs" | "sm" | "md" | "lg" | "xl";

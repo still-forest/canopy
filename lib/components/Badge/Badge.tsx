@@ -1,17 +1,18 @@
+import type { ReactNode } from "react";
 import { SimpleTooltip } from "@/components";
 import { cn } from "@/utils/cn";
 import "./Badge.css";
-import type { ButtonSize, ButtonVariant } from "@/buttons";
+import type { BadgeSize, BadgeVariant } from "@/types";
 
 export interface BadgeProps {
-  variant?: ButtonVariant;
+  variant?: BadgeVariant;
   outline?: boolean;
-  size?: ButtonSize;
+  size?: BadgeSize;
   as?: "button" | "div";
   onClick?: () => void;
   label?: string;
   tooltip?: string;
-  children?: React.ReactNode;
+  children?: ReactNode;
   className?: string;
 }
 
