@@ -12,7 +12,9 @@
     }
 
     .interstitial-icon {
-      @apply size-24;
+      svg:not([class*="size-"]) {
+        @apply size-24;
+      }
 
       &:has(+ .interstitial-headline),
       &:has(+ .interstitial-message) {
