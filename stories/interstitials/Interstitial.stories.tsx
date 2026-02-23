@@ -1,7 +1,7 @@
-import { Button } from "@still-forest/canopy";
 import { INTERSTITIAL_DECORATOR } from "@stories/support/decorators";
 import type { Meta, StoryObj } from "@storybook/react-vite";
 import { Info, Origami } from "lucide-react";
+import { Button } from "@/buttons";
 import { Interstitial, type InterstitialProps } from "@/interstitials";
 
 const meta: Meta<typeof Interstitial> = {

@@ -12,7 +12,7 @@
     }
 
     .interstitial-icon {
-      @apply size-24!;
+      @apply size-24;
 
       &:has(+ .interstitial-headline),
       &:has(+ .interstitial-message) {
