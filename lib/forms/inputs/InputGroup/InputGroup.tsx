@@ -1,12 +1,8 @@
 import type { ComponentProps, FC } from "react";
 import { Button as BaseButton } from "@/buttons";
-import { Textarea as BaseTextarea } from "@/forms/inputs";
+import { Input as BaseInput, Textarea as BaseTextarea } from "@/forms/inputs";
 import { cn } from "@/utils/cn";
 import "./InputGroup.css";
-
-const Input = ({ id, name, ...props }: ComponentProps<"input">) => {
-  return <input data-slot="input-group-control" id={id || name} name={name} {...props} />;
-};
 
 interface AddonProps extends ComponentProps<"div"> {
   align?: "inline-start" | "inline-end" | "block-start" | "block-end";
@@ -65,6 +61,10 @@ const Text = ({ children, className, ...props }: ComponentProps<"span">) => {
       {children}
     </span>
   );
+};
+
+const Input = (props: ComponentProps<typeof BaseInput>) => {
+  return <BaseInput data-slot="input-group-control" {...props} />;
 };
 
 const Textarea = ({ children, className, ...props }: ComponentProps<typeof BaseTextarea>) => {
