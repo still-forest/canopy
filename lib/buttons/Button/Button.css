@@ -29,6 +29,10 @@
       @apply px-3;
     }
 
+    .btn-label {
+      @apply flex items-center justify-center gap-2;
+    }
+
     svg {
       @apply pointer-events-none shrink-0;
 
