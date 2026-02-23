@@ -1,0 +1,98 @@
+@reference "tailwindcss";
+@reference "../../styles/index.css";
+
+@layer components {
+  .field {
+    @apply flex flex-col gap-2 w-full items-center;
+
+    &.field--vertical {
+      @apply flex-col;
+
+      & > * {
+        @apply w-full;
+      }
+
+      & > .sr-only {
+        @apply w-auto;
+      }
+    }
+
+    &.field--horizontal {
+      @apply flex-row items-center;
+
+      & > .field-label {
+        @apply flex-auto;
+      }
+
+      &:has(> .field-content) {
+        @apply items-start;
+
+        & > [role="checkbox"],
+        & > [data-slot="checkbox"],
+        & > [role="radio"] {
+          @apply mt-0.5; /* align checkbox with text */
+        }
+      }
+    }
+  }
+
+  .field-group {
+    @apply flex w-full flex-col gap-4;
+
+    &:has(> [data-slot="field-group"]) {
+      @apply gap-4;
+    }
+
+    &:has(> [data-slot="checkbox-group"]) {
+      @apply gap-2;
+    }
+  }
+
+  .field-label-group {
+    @apply flex items-center gap-2;
+
+    &:has(.badge) {
+      @apply justify-between;
+    }
+  }
+
+  .field-label {
+    @apply gap-2 text-sm font-medium flex w-fit leading-snug;
+
+    &:has([data-checked]) {
+      @apply bg-primary/5 border-primary/30;
+    }
+
+    &:where(.dark, .dark *):has([data-checked]) {
+      @apply border-primary/20 bg-primary/10;
+    }
+
+    .field[data-disabled="true"] & {
+      @apply opacity-50;
+    }
+
+    &:has(> [data-slot="field"]) {
+      @apply rounded-md border w-full flex-col;
+    }
+
+    & > [data-slot="field"] {
+      @apply p-3;
+    }
+  }
+
+  .field-description {
+    @apply text-sm text-muted-foreground leading-normal font-normal;
+  }
+
+  .field-error {
+    @apply text-destructive text-sm font-normal;
+  }
+
+  .field-content {
+    @apply gap-1 flex flex-1 flex-col leading-snug;
+  }
+
+  .field-title {
+    @apply gap-2 text-sm font-medium flex w-fit items-center leading-snug;
+  }
+}
