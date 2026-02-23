@@ -25,6 +25,17 @@ export const Info: Story = {
   ),
 };
 
+export const Success: Story = {
+  render: () => (
+    <Alert variant="success">
+      <Alert.Content>
+        <Alert.Title>Success</Alert.Title>
+        <Alert.Description>This is a success message.</Alert.Description>
+      </Alert.Content>
+    </Alert>
+  ),
+};
+
 export const Warning: Story = {
   render: () => (
     <Alert variant="warning">
@@ -120,6 +131,12 @@ export const AllTypes: Story = {
         <Alert.Content>
           <Alert.Title>Information</Alert.Title>
           <Alert.Description>This is an informational message for general notices.</Alert.Description>
+        </Alert.Content>
+      </Alert>
+      <Alert variant="success">
+        <Alert.Content>
+          <Alert.Title>Success</Alert.Title>
+          <Alert.Description>This is a success message for successful operations.</Alert.Description>
         </Alert.Content>
       </Alert>
       <Alert variant="warning">

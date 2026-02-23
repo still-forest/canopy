@@ -11,6 +11,10 @@
       @apply bg-info;
     }
 
+    &.alert-success {
+      @apply bg-success;
+    }
+
     &.alert-warning {
       @apply bg-warning;
     }
