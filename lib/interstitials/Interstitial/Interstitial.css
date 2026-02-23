@@ -1,89 +1,93 @@
 @reference "@/styles/tokens.css";
 
-.interstitial {
-  @apply flex flex-col items-center justify-center;
-  @apply w-full md:max-w-96 mx-auto px-4;
-  @apply h-full min-h-[70vh]; /* Mostly full screen, to accomodate header; partial footer view is OK */
+@layer theme, base, components, utilities;
 
-  &.interstitial--fit {
-    @apply min-h-auto;
-  }
+@layer components {
+  .interstitial {
+    @apply flex flex-col items-center justify-center;
+    @apply w-full md:max-w-96 mx-auto px-4;
+    @apply h-full min-h-[70vh]; /* Mostly full screen, to accomodate header; partial footer view is OK */
 
-  .interstitial-icon {
-    @apply size-24;
-
-    &:has(+ .interstitial-headline),
-    &:has(+ .interstitial-message) {
-      @apply mb-8;
-    }
-  }
-
-  .interstitial-headline {
-    @apply text-center;
-
-    &:has(+ .interstitial-message) {
-      @apply mb-2;
+    &.interstitial--fit {
+      @apply min-h-auto;
     }
 
-    + .interstitial-message {
-      @apply text-muted-foreground;
-    }
-  }
+    .interstitial-icon {
+      @apply size-24;
 
-  .interstitial-message {
-    @apply text-center text-balance;
-
-    &:not(:last-child) {
-      @apply mb-2;
-    }
-
-    &:first-of-type:not(:only-of-type) {
-      @apply mt-4;
-    }
-  }
-
-  &:has(.interstitial-headline) .interstitial-message {
-    @apply text-muted-foreground;
-  }
-
-  .interstitial-children {
-    @apply flex flex-col gap-2 w-full mt-8;
-
-    > .btn,
-    > form > .btn {
-      @apply w-full md:w-[80%] md:mx-auto;
-
-      &.btn--fit {
-        @apply md:w-auto;
+      &:has(+ .interstitial-headline),
+      &:has(+ .interstitial-message) {
+        @apply mb-8;
       }
     }
 
-    &:has([role="progressbar"]) {
-      @apply mt-2;
-    }
-  }
+    .interstitial-headline {
+      @apply text-center;
 
-  &.interstitial--info {
-    .interstitial-icon {
-      @apply text-info;
-    }
-  }
+      &:has(+ .interstitial-message) {
+        @apply mb-2;
+      }
 
-  &.interstitial--success {
-    .interstitial-icon {
-      @apply text-success;
+      + .interstitial-message {
+        @apply text-muted-foreground;
+      }
     }
-  }
 
-  &.interstitial--warning {
-    .interstitial-icon {
-      @apply text-warning;
+    .interstitial-message {
+      @apply text-center text-balance;
+
+      &:not(:last-child) {
+        @apply mb-2;
+      }
+
+      &:first-of-type:not(:only-of-type) {
+        @apply mt-4;
+      }
     }
-  }
 
-  &.interstitial--danger {
-    .interstitial-icon {
-      @apply text-danger;
+    &:has(.interstitial-headline) .interstitial-message {
+      @apply text-muted-foreground;
+    }
+
+    .interstitial-children {
+      @apply flex flex-col gap-2 w-full mt-8;
+
+      > .btn,
+      > form > .btn {
+        @apply w-full md:w-[80%] md:mx-auto;
+
+        &.btn--fit {
+          @apply md:w-auto;
+        }
+      }
+
+      &:has([role="progressbar"]) {
+        @apply mt-2;
+      }
+    }
+
+    &.interstitial--info {
+      .interstitial-icon {
+        @apply text-info;
+      }
+    }
+
+    &.interstitial--success {
+      .interstitial-icon {
+        @apply text-success;
+      }
+    }
+
+    &.interstitial--warning {
+      .interstitial-icon {
+        @apply text-warning;
+      }
+    }
+
+    &.interstitial--danger {
+      .interstitial-icon {
+        @apply text-danger;
+      }
     }
   }
 }
