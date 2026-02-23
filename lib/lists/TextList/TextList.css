@@ -3,18 +3,18 @@
 
 @layer components {
   .textlist {
-    @apply list-disc list-outside;
+    @apply list-disc list-outside ml-5;
 
     &.textlist-ordered {
-      @apply list-decimal;
+      @apply list-decimal ml-5;
     }
 
     &.textlist-none {
-      @apply list-none;
+      @apply list-none ml-0;
     }
 
     &.textlist--inside {
-      @apply list-inside;
+      @apply list-inside ml-0;
     }
 
     /* textlist--outside is the default */
