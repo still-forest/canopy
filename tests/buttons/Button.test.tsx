@@ -219,6 +219,7 @@ describe("Button", () => {
     render(
       <Button asIcon>
         <svg>
+          <title>Test Icon</title>
           <path d="M1 1h10v10H1z" />
         </svg>
       </Button>,

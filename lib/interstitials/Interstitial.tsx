@@ -61,7 +61,7 @@ export const Interstitial = ({
               aria-hidden={!!message}
               aria-label={!message ? `${variant || "info"} icon` : undefined}
               className={cn(
-                variant === "error" && "text-destructive",
+                variant === "danger" && "text-danger",
                 variant === "success" && "text-success",
                 variant === "warning" && "text-warning",
                 variant === "info" && "text-info",

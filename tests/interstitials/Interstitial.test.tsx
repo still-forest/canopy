@@ -106,13 +106,13 @@ describe("Interstitial", () => {
   });
 
   it("renders with icon and error variant", () => {
-    render(<Interstitial iconComponent={Mailbox} message="This is an Interstitial" variant="error" />);
+    render(<Interstitial iconComponent={Mailbox} message="This is an Interstitial" variant="danger" />);
 
     expect(screen.getByText("This is an Interstitial")).toBeInTheDocument();
 
     const icon = screen.getByTestId("icon");
     expect(icon).toBeInTheDocument();
-    expect(icon.getAttribute("class")).toContain("text-destructive");
+    expect(icon.getAttribute("class")).toContain("text-danger");
     expect(icon.getAttribute("class")).toContain("size-32");
   });
 });
