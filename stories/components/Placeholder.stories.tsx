@@ -59,13 +59,3 @@ export const CompactWithChildren: Story = {
     </Placeholder>
   ),
 };
-
-export const CompactCentered: Story = {
-  args: {
-    variant: "compact",
-    icon: <Bird />,
-    title: "No birds found",
-    description: "Try adjusting your search filters.",
-    align: "center",
-  },
-};

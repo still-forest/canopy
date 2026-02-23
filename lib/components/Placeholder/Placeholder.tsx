@@ -7,26 +7,13 @@ interface PlaceholderProps {
   icon: ReactElement<ComponentProps<"svg">>;
   title?: string;
   description?: string;
-  align?: "center" | "left";
   children?: ReactNode;
 }
 
-export const Placeholder = ({
-  icon,
-  title,
-  variant = "default",
-  description,
-  align = "left",
-  children,
-}: PlaceholderProps) => {
+export const Placeholder = ({ icon, title, variant = "default", description, children }: PlaceholderProps) => {
   if (variant === "compact") {
     return (
-      <Flex
-        align="center"
-        className="placeholder placeholder--compact"
-        gap="4"
-        justify={align === "center" ? "center" : "start"}
-      >
+      <Flex align="center" className="placeholder placeholder--compact" gap="4">
         <div className="placeholder-media">{icon}</div>
         <div className="placeholder-header">
           {title && <h3>{title}</h3>}
