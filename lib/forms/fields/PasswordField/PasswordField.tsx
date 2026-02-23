@@ -41,12 +41,11 @@ export const PasswordField = ({
           <InputGroup.Button
             aria-label={showPassword ? "Hide password" : "Show password"}
             asIcon
+            icon={showPassword ? <Eye /> : <EyeOff />}
             onClick={togglePassword}
             size="xs"
             variant="ghost"
-          >
-            {showPassword ? <Eye /> : <EyeOff />}
-          </InputGroup.Button>
+          />
         </InputGroup.Addon>
       </InputGroup>
       {note && (

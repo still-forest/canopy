@@ -28,6 +28,9 @@ export const Button = ({
   if (!label && !children && !icon) {
     throw new Error("Either label or children or icon must be provided");
   }
+  if (asIcon && !icon) {
+    throw new Error("icon is required when asIcon is true");
+  }
   return (
     <button
       className={buildButtonClassNames({ variant, size, outline, knockout, rounded, fit, asIcon, className })}

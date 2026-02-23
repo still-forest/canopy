@@ -105,9 +105,7 @@ export const WithButton: Story = {
           <Popover.Trigger
             render={
               <InputGroup.Addon>
-                <InputGroup.Button asIcon size="xs" variant="secondary">
-                  <Circle />
-                </InputGroup.Button>
+                <InputGroup.Button asIcon icon={<Circle />} size="xs" variant="secondary" />
               </InputGroup.Addon>
             }
           />
@@ -119,12 +117,17 @@ export const WithButton: Story = {
         <InputGroup.Addon className="text-muted-foreground pl-1.5">https://</InputGroup.Addon>
         <InputGroup.Input name="url" />
         <InputGroup.Addon align="inline-end">
-          <InputGroup.Button asIcon onClick={() => console.log("Favorite")} size="xs">
-            <Star
-              className="data-[favorite=true]:fill-blue-600 data-[favorite=true]:stroke-blue-600"
-              data-favorite={true}
-            />
-          </InputGroup.Button>
+          <InputGroup.Button
+            asIcon
+            icon={
+              <Star
+                className="data-[favorite=true]:fill-blue-600 data-[favorite=true]:stroke-blue-600"
+                data-favorite={true}
+              />
+            }
+            onClick={() => console.log("Favorite")}
+            size="xs"
+          />
         </InputGroup.Addon>
       </InputGroup>
       <InputGroup>
@@ -145,11 +148,7 @@ export const WithTooltip: Story = {
         <InputGroup.Addon align="inline-end">
           <Tooltip>
             <Tooltip.Trigger
-              render={
-                <InputGroup.Button aria-label="Info" asIcon size="xs" variant="ghost">
-                  <InfoIcon />
-                </InputGroup.Button>
-              }
+              render={<InputGroup.Button aria-label="Info" asIcon icon={<InfoIcon />} size="xs" variant="ghost" />}
             />
             <Tooltip.Content>
               <p>Password must be at least 8 characters</p>
@@ -162,11 +161,7 @@ export const WithTooltip: Story = {
         <InputGroup.Addon align="inline-end">
           <Tooltip>
             <Tooltip.Trigger
-              render={
-                <InputGroup.Button aria-label="Help" asIcon size="xs" variant="ghost">
-                  <HelpCircle />
-                </InputGroup.Button>
-              }
+              render={<InputGroup.Button aria-label="Help" asIcon icon={<HelpCircle />} size="xs" variant="ghost" />}
             />
             <Tooltip.Content>
               <p>We&apos;ll use this to send you notifications</p>
@@ -180,9 +175,7 @@ export const WithTooltip: Story = {
           <Tooltip.Trigger
             render={() => (
               <InputGroup.Addon>
-                <InputGroup.Button aria-label="Help" asIcon size="xs" variant="ghost">
-                  <HelpCircle />
-                </InputGroup.Button>
+                <InputGroup.Button aria-label="Help" asIcon icon={<HelpCircle />} size="xs" variant="ghost" />
               </InputGroup.Addon>
             )}
           />
@@ -211,12 +204,8 @@ export const Textarea: Story = {
             <ScrollText />
             script.js
           </InputGroup.Text>
-          <InputGroup.Button asIcon className="ml-auto" size="xs">
-            <RotateCcw />
-          </InputGroup.Button>
-          <InputGroup.Button asIcon size="xs" variant="ghost">
-            <Copy />
-          </InputGroup.Button>
+          <InputGroup.Button asIcon className="ml-auto" icon={<RotateCcw />} size="xs" />
+          <InputGroup.Button asIcon icon={<Copy />} size="xs" variant="ghost" />
         </InputGroup.Addon>
       </InputGroup>
     </Flex>
@@ -283,11 +272,10 @@ export const WithLabel: Story = {
                     aria-label="Help"
                     asIcon
                     className="ml-auto rounded-full"
+                    icon={<InfoIcon />}
                     size="xs"
                     variant="ghost"
-                  >
-                    <InfoIcon />
-                  </InputGroup.Button>
+                  />
                 }
               />
               <Tooltip.Content>
