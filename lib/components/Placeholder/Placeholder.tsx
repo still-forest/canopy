@@ -16,7 +16,7 @@ export const Placeholder = ({ icon, title, variant = "default", description, chi
         <div className="placeholder-media">{icon}</div>
         <div className="placeholder-header">
           {title && <h3>{title}</h3>}
-          {description && <p className="footnote">{description}</p>}
+          {description && <p className="placeholder-description">{description}</p>}
         </div>
         {children && <div className="placeholder-content">{children}</div>}
       </div>
@@ -25,10 +25,10 @@ export const Placeholder = ({ icon, title, variant = "default", description, chi
 
   return (
     <div className="placeholder">
+      <div className="placeholder-media">{icon}</div>
       <div className="placeholder-header">
-        <div className="placeholder-media">{icon}</div>
         {title && <h3>{title}</h3>}
-        {description && <p className="muted">{description}</p>}
+        {description && <p className="placeholder-description">{description}</p>}
       </div>
       {children && <div className="placeholder-content">{children}</div>}
     </div>
