@@ -3,9 +3,8 @@ import { CheckIcon, ChevronRightIcon } from "lucide-react";
 import type * as React from "react";
 import { cn } from "@/utils/cn";
 import "./DropdownMenu.css";
-
 import { mergeProps } from "@base-ui/react";
-import { Button } from "@still-forest/canopy";
+import { Button } from "@/buttons";
 
 const DropdownMenu = ({ ...props }: MenuPrimitive.Root.Props) => {
   return <MenuPrimitive.Root data-slot="dropdown-menu" {...props} />;
