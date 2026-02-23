@@ -1,8 +1,9 @@
 import { Loader } from "@/components/Loader";
+import { cn } from "@/utils/cn";
 import { Interstitial, type InterstitialProps } from "./Interstitial";
 
-const DefaultIconComponent = () => {
-  return <Loader className="text-info size-12" />;
+const DefaultIconComponent = ({ className, ...props }: React.ComponentProps<"svg">) => {
+  return <Loader className={cn("text-info size-12", className)} {...props} />;
 };
 
 export const LoadingPage = ({ message, icon, ...props }: InterstitialProps) => {
