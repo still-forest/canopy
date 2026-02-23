@@ -1,5 +1,4 @@
-@reference "tailwindcss";
-@reference "../../styles/index.css";
+@reference "@/styles/tokens.css";
 
 .btn {
   @apply inline-flex items-center justify-center whitespace-nowrap text-sm font-medium transition-all shrink-0 outline-none cursor-pointer rounded-md shadow-xs;

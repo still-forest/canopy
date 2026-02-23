@@ -1,5 +1,4 @@
-@reference "tailwindcss";
-@reference "../../styles/index.css";
+@reference "@/styles/tokens.css";
 
 .badge {
   @apply inline-flex items-center justify-center rounded-full font-medium gap-1;

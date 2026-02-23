@@ -1,5 +1,4 @@
-@reference "tailwindcss";
-@reference "../../../styles/index.css";
+@reference "@/styles/tokens.css";
 
 .input-group {
   @apply border-input relative flex h-9 w-full min-w-0 items-center rounded-md border outline-none transition-colors;

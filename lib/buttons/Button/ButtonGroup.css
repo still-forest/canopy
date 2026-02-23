@@ -1,5 +1,4 @@
-@reference "tailwindcss";
-@reference "../../styles/index.css";
+@reference "@/styles/tokens.css";
 
 .button-group {
   @apply inline-flex w-fit items-stretch;

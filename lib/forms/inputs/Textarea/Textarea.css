@@ -1,5 +1,4 @@
-@reference "tailwindcss";
-@reference "../../../styles/index.css";
+@reference "@/styles/tokens.css";
 
 .textarea {
   @apply border-input dark:bg-input/30 rounded-md border bg-transparent shadow-xs transition-[color,box-shadow] flex field-sizing-content outline-none;

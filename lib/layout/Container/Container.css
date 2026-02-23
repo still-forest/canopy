@@ -1,5 +1,4 @@
-@reference "tailwindcss";
-@reference "../../styles/index.css";
+@reference "@/styles/tokens.css";
 
 .layout-container {
   @apply w-full px-1 sm:px-2 md:px-4 py-2 md:py-4;
