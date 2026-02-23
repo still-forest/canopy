@@ -1,8 +1,8 @@
 import { fireEvent, render, screen, within } from "@testing-library/react";
 import { describe, expect, it, vi } from "vitest";
-import { SelectPickerField, type SelectPickerOption } from "@/forms";
+import { SelectPicker, type SelectPickerOption } from "@/forms";
 
-describe("SelectPickerField", () => {
+describe("SelectPicker", () => {
   const OPTION_GROUPS = [
     {
       label: "Elements",
@@ -34,7 +34,7 @@ describe("SelectPickerField", () => {
   const onSelect = vi.fn();
 
   it("renders with default props", () => {
-    render(<SelectPickerField name="some_input" onChange={onSelect} options={OPTION_GROUPS} />);
+    render(<SelectPicker name="some_input" onChange={onSelect} options={OPTION_GROUPS} />);
 
     const trigger = screen.getByRole("combobox") as HTMLButtonElement;
     expect(trigger.tagName).toBe("BUTTON");
@@ -75,7 +75,7 @@ describe("SelectPickerField", () => {
       ...group,
       options: group.options.map((option) => ({ ...option, icon: undefined })),
     }));
-    render(<SelectPickerField name="some_input" onChange={onSelect} options={optionGroups} />);
+    render(<SelectPicker name="some_input" onChange={onSelect} options={optionGroups} />);
 
     const trigger = screen.getByRole("combobox") as HTMLButtonElement;
     expect(trigger).toHaveTextContent("Select an option");
@@ -94,7 +94,7 @@ describe("SelectPickerField", () => {
 
   it("renders with a selected value", () => {
     render(
-      <SelectPickerField
+      <SelectPicker
         name="some_input"
         onChange={onSelect}
         options={OPTION_GROUPS}
@@ -109,7 +109,7 @@ describe("SelectPickerField", () => {
   it("renders with a custom renderSelected function", () => {
     const renderSelected = ({ label }: SelectPickerOption) => `The thing is ${label}`;
     render(
-      <SelectPickerField
+      <SelectPicker
         name="some_input"
         onChange={onSelect}
         options={OPTION_GROUPS}
@@ -151,7 +151,7 @@ describe("SelectPickerField", () => {
         ],
       },
     ];
-    render(<SelectPickerField name="some_input" onChange={onSelect} options={optionGroups} />);
+    render(<SelectPicker name="some_input" onChange={onSelect} options={optionGroups} />);
 
     const trigger = screen.getByRole("combobox") as HTMLButtonElement;
     expect(trigger).toHaveTextContent("Select an option");

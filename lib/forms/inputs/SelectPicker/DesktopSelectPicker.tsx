@@ -1,7 +1,9 @@
 import { mergeProps } from "@base-ui/react";
 import { ChevronsUpDown } from "lucide-react";
 import type { ReactNode } from "react";
+import { Button, type ButtonProps } from "@/buttons";
 import { Popover } from "@/components/Popover";
+import { cn } from "@/utils/cn";
 
 interface DesktopSelectPickerProps {
   selectedLabel: string | ReactNode;
@@ -9,28 +11,41 @@ interface DesktopSelectPickerProps {
   setOpen: (open: boolean) => void;
   children: ReactNode;
   id?: string;
+  triggerClassName?: string;
+  dropdownClassName?: string;
+  triggerProps?: Partial<ButtonProps>;
 }
 
-export const DesktopSelectPicker = ({ selectedLabel, open, setOpen, children, id }: DesktopSelectPickerProps) => {
+export const DesktopSelectPicker = ({
+  selectedLabel,
+  open,
+  setOpen,
+  children,
+  id,
+  triggerClassName,
+  dropdownClassName,
+  triggerProps,
+}: DesktopSelectPickerProps) => {
   return (
     <Popover onOpenChange={setOpen} open={open}>
       <Popover.Trigger
         render={(props) => (
-          <button
+          <Button
             type="button"
             {...mergeProps(props, {
               "aria-expanded": open,
-              className: "btn btn-input desktop-select-picker-trigger",
+              className: cn("btn btn-input desktop-select-picker-trigger", triggerClassName),
               id,
               role: "combobox",
+              ...triggerProps,
             })}
           >
             {selectedLabel}
             <ChevronsUpDown />
-          </button>
+          </Button>
         )}
       />
-      <Popover.Content className="desktop-select-picker-content">{children}</Popover.Content>
+      <Popover.Content className={cn("desktop-select-picker-content", dropdownClassName)}>{children}</Popover.Content>
     </Popover>
   );
 };

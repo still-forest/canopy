@@ -191,7 +191,7 @@ describe("ButtonRadioField", () => {
       expect(error).toHaveAttribute("id", ids[1]);
     });
 
-    it("does not have aria-expanded on secondary trigger with role radio", () => {
+    it("has aria-expanded=false on secondary trigger with role radio", () => {
       const onChange = vi.fn();
       render(
         <ButtonRadioField
@@ -204,7 +204,7 @@ describe("ButtonRadioField", () => {
 
       const buttons = screen.getAllByRole("radio");
       const secondaryButton = buttons[buttons.length - 1];
-      expect(secondaryButton).not.toHaveAttribute("aria-expanded");
+      expect(secondaryButton).toHaveAttribute("aria-expanded", "false");
     });
   });
 
