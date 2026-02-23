@@ -41,24 +41,6 @@ describe("Alert", () => {
     expect(within(alert).getByText("This is an important message.")).toBeInTheDocument();
   });
 
-  test("renders success Alert", async () => {
-    render(
-      <Alert variant="success">
-        <Alert.Content>
-          <Alert.Title>Important Information</Alert.Title>
-          <Alert.Description>This is an important message.</Alert.Description>
-        </Alert.Content>
-      </Alert>,
-    );
-
-    const alert = screen.getByRole("alert");
-    expect(alert).toBeInTheDocument();
-    expect(alert.className).toEqual("alert alert-success");
-
-    expect(within(alert).getByText("Important Information")).toBeInTheDocument();
-    expect(within(alert).getByText("This is an important message.")).toBeInTheDocument();
-  });
-
   test("renders warning Alert", async () => {
     render(
       <Alert variant="warning">

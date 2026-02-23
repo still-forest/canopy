@@ -31,7 +31,7 @@
   }
 
   .alert-content {
-    @apply flex grow gap-1 justify-baseline md:flex-col md:items-start;
+    @apply flex grow gap-1 md:flex-col md:items-start;
   }
 
   .alert-title {
