@@ -17,7 +17,7 @@ type Story = StoryObj<typeof meta>;
 
 export const Default: Story = {
   args: {
-    icon: <Inbox size={96} />,
+    icon: <Inbox />,
     title: "No items yet",
     description: "Get started by creating your first item.",
   },
@@ -25,7 +25,7 @@ export const Default: Story = {
 
 export const WithChildren: Story = {
   render: () => (
-    <Placeholder description="Get started by creating your first item." icon={<Inbox size={96} />} title="No items yet">
+    <Placeholder description="Get started by creating your first item." icon={<Inbox />} title="No items yet">
       <Button size="sm">Create Item</Button>
     </Placeholder>
   ),
@@ -33,7 +33,7 @@ export const WithChildren: Story = {
 
 export const TitleOnly: Story = {
   args: {
-    icon: <Search size={96} />,
+    icon: <Search />,
     title: "No results found",
   },
 };

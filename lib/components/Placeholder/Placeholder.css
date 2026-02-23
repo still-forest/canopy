@@ -1,0 +1,20 @@
+@reference "tailwindcss";
+@reference "../../styles/index.css";
+
+@layer components {
+  .placeholder {
+    .placeholder-media {
+      & > svg {
+        @apply size-24;
+      }
+    }
+
+    &.placeholder--compact {
+      .placeholder-media {
+        & > svg {
+          @apply hidden sm:block size-12;
+        }
+      }
+    }
+  }
+}

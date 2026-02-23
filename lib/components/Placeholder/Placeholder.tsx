@@ -1,5 +1,6 @@
-import { cn, Empty, Flex } from "@still-forest/canopy";
-import { type ComponentProps, cloneElement, type ReactElement } from "react";
+import { Empty, Flex } from "@still-forest/canopy";
+import type { ComponentProps, ReactElement } from "react";
+import "./Placeholder.css";
 
 interface PlaceholderProps {
   variant?: "default" | "compact";
@@ -20,8 +21,13 @@ export const Placeholder = ({
 }: PlaceholderProps) => {
   if (variant === "compact") {
     return (
-      <Flex align="center" gap="4" justify={align === "center" ? "center" : "start"}>
-        {icon && cloneElement(icon, { className: cn("hidden sm:block", icon.props.className) })}
+      <Flex
+        align="center"
+        className="placeholder placeholder--compact"
+        gap="4"
+        justify={align === "center" ? "center" : "start"}
+      >
+        <div className="placeholder-media">{icon}</div>
         <Flex direction="col">
           {title && <h3 className="text-muted-foreground">{title}</h3>}
           {description && <p className="footnote">{description}</p>}
@@ -31,9 +37,11 @@ export const Placeholder = ({
   }
 
   return (
-    <Empty>
+    <Empty className="placeholder">
       <Empty.Header>
-        <Empty.Media variant="default">{icon}</Empty.Media>
+        <Empty.Media className="placeholder-media" variant="default">
+          {icon}
+        </Empty.Media>
         {title && <Empty.Title>{title}</Empty.Title>}
         {description && <Empty.Description>{description}</Empty.Description>}
       </Empty.Header>
