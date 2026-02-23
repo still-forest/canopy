@@ -54,3 +54,12 @@ export const CompactWithChildren: Story = {
     </Placeholder>
   ),
 };
+
+export const CompactWithLongContent: Story = {
+  args: {
+    compact: true,
+    icon: <Bird />,
+    description:
+      "This is a longer message that provides more detailed information. It demonstrates how the placeholder component handles multiple lines of text.",
+  },
+};
