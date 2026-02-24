@@ -5,9 +5,11 @@ import { cn } from "@/utils";
 function Switch({
   className,
   size = "md",
+  thumbClassName,
   ...props
 }: SwitchPrimitive.Root.Props & {
   size?: "xs" | "sm" | "md" | "lg" | "xl";
+  thumbClassName?: string;
 }) {
   return (
     <SwitchPrimitive.Root
@@ -47,6 +49,7 @@ function Switch({
           "group-data-[size=xl]/switch:size-6",
           "group-data-[size=xl]/switch:data-checked:translate-x-[calc(100%-2px)]",
           "group-data-[size=xl]/switch:data-unchecked:translate-x-0",
+          thumbClassName,
         )}
         data-slot="switch-thumb"
       />
