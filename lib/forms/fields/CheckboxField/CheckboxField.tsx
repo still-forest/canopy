@@ -1,19 +1,15 @@
 import { useEffect, useState } from "react";
 
 import { Hint } from "@/components";
-import { Checkbox as BaseCheckbox } from "@/components/ui/checkbox";
 import { InputError, Label } from "@/forms";
+import { Checkbox as BaseCheckbox, type CheckboxProps } from "@/forms/inputs";
 import { Flex } from "@/layout";
 import { Text } from "@/typography";
 import { cn } from "@/utils";
 
-export interface CheckboxFieldProps extends React.ComponentProps<typeof BaseCheckbox> {
+export interface CheckboxFieldProps extends CheckboxProps {
   label: string;
   labelClassName?: string;
-  name: string;
-  value?: string;
-  checked: boolean;
-  onCheckedChange?: (checked: boolean) => void;
   hint?: string;
   note?: string;
   error?: string;
@@ -55,7 +51,6 @@ const CheckboxField = ({
       <Flex align="center" gap="2">
         <BaseCheckbox
           checked={checkedState}
-          className="bg-background"
           id={fullId}
           name={name}
           onCheckedChange={handleChange}
