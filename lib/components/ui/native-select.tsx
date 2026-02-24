@@ -3,6 +3,7 @@ import type * as React from "react";
 
 import { cn } from "@/utils";
 
+// TODO: Remove this
 function NativeSelect({ className, ...props }: React.ComponentProps<"select">) {
   return (
     <div

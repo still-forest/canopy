@@ -3,6 +3,7 @@ import type * as React from "react";
 
 import { cn } from "@/utils";
 
+// TODO: Remove this
 function Input({ className, type, ...props }: React.ComponentProps<"input">) {
   return (
     <InputPrimitive
