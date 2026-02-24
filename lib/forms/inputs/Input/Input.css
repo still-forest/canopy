@@ -28,12 +28,20 @@
       }
     }
 
+    &.input--xs {
+      @apply h-8 text-xs;
+    }
+
     &.input--sm {
       @apply h-8 text-sm;
     }
 
     &.input--lg {
       @apply h-10 text-lg md:text-base;
+    }
+
+    &.input--xl {
+      @apply h-11 text-lg;
     }
   }
 }
