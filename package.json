@@ -29,7 +29,7 @@
   },
   "type": "module",
   "scripts": {
-    "build": "tsc -b && vite build",
+    "build": "tsc -b && NODE_ENV=production vite build",
     "build:watch": "tsc -b && vite build --watch",
     "chromatic": "chromatic --exit-zero-on-changes",
     "dev": "vite",
