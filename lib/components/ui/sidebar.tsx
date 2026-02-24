@@ -1,7 +1,7 @@
 import { mergeProps } from "@base-ui/react/merge-props";
 import { useRender } from "@base-ui/react/use-render";
 import { cva, type VariantProps } from "class-variance-authority";
-import { PanelLeftIcon, PanelRightIcon } from "lucide-react";
+import { PanelLeftIcon } from "lucide-react";
 import * as React from "react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
@@ -229,12 +229,12 @@ function Sidebar({
   );
 }
 
-function SidebarTrigger({ className, onClick, children, ...props }: React.ComponentProps<typeof Button>) {
-  const { toggleSidebar, open } = useSidebar();
+function SidebarTrigger({ className, onClick, ...props }: React.ComponentProps<typeof Button>) {
+  const { toggleSidebar } = useSidebar();
 
   return (
     <Button
-      className={cn("size-7", className)}
+      className={cn(className)}
       data-sidebar="trigger"
       data-slot="sidebar-trigger"
       onClick={(event) => {
@@ -245,9 +245,8 @@ function SidebarTrigger({ className, onClick, children, ...props }: React.Compon
       variant="ghost"
       {...props}
     >
-      {open ? <PanelLeftIcon /> : <PanelRightIcon />}
+      <PanelLeftIcon />
       <span className="sr-only">Toggle Sidebar</span>
-      {open ? children : null}
     </Button>
   );
 }
@@ -476,16 +475,11 @@ function SidebarMenuButton({
     tooltip?: string | React.ComponentProps<typeof TooltipContent>;
   } & VariantProps<typeof sidebarMenuButtonVariants>) {
   const { isMobile, state } = useSidebar();
-
-  // When tooltip is present and user provided a render prop, pass user's render to TooltipTrigger
-  // This composes tooltip functionality with custom rendering (e.g., Link for routing)
   const comp = useRender({
     defaultTagName: "button",
     props: mergeProps<"button">(
       {
         className: cn(sidebarMenuButtonVariants({ variant, size }), className),
-        // Pass user's render to TooltipTrigger when both tooltip and render exist
-        ...(tooltip && render ? { render } : {}),
       },
       props,
     ),

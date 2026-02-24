@@ -46,7 +46,8 @@
   --sidebar-ring: var(--color-neutral-400);
 
   --border: var(--color-neutral-200);
-  --input: var(--color-neutral-200);
+  --input: var(--background);
+  --input-border: var(--color-neutral-200);
   --ring: var(--color-neutral-400);
 }
 
@@ -98,7 +99,8 @@
   --sidebar-ring: var(--color-neutral-500);
 
   --border: oklch(1 0 0 / 10%);
-  --input: oklch(1 0 0 / 15%);
+  --input: var(--background);
+  --input-border: oklch(1 0 0 / 15%);
   --ring: var(--color-neutral-500);
 }
 
@@ -160,6 +162,7 @@
   /* Other */
   --color-border: var(--border);
   --color-input: var(--input);
+  --color-input-border: var(--input-border);
   --color-popover: var(--popover);
   --color-popover-foreground: var(--popover-foreground);
   --color-ring: var(--ring);
