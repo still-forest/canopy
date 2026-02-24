@@ -8,13 +8,14 @@ interface ToggleFieldProps extends React.ComponentProps<typeof BaseSwitch> {
   label?: string | (string | null)[];
   size?: "xs" | "sm" | "md" | "lg" | "xl";
   labelClassName?: string | string[];
+  containerClassName?: string;
 }
 
 export const ToggleField = ({
   id: idProp,
   label,
-  className,
   labelClassName,
+  containerClassName,
   size = "md",
   ...props
 }: ToggleFieldProps) => {
@@ -28,7 +29,7 @@ export const ToggleField = ({
   const rightLabelClassName = labelClassName && Array.isArray(labelClassName) ? labelClassName[1] : labelClassName;
 
   return (
-    <div className={cn("flex items-center space-x-2", className)}>
+    <div className={cn("flex items-center space-x-2", containerClassName)}>
       {leftLabel && (
         <Label className={cn(commonLabelClassNames, leftLabelClassName)} htmlFor={id} size={size}>
           {leftLabel}

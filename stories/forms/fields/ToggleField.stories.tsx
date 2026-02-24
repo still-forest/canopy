@@ -73,6 +73,14 @@ export const WithLabelClassNames: Story = {
   },
 };
 
+export const WithThumbClassNames: Story = {
+  args: {
+    ...defaultProps,
+    className: "data-unchecked:bg-red-500 data-checked:bg-blue-500",
+    thumbClassName: "data-unchecked:bg-blue-500 data-checked:bg-red-500",
+  },
+};
+
 export const WithCallback: Story = {
   args: {
     ...defaultProps,
