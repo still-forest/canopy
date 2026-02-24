@@ -3,6 +3,7 @@ import { RadioGroup, RadioGroupItem } from "@/components/ui/radio-group";
 import { InputError, Label } from "@/forms";
 import { Flex, Grid } from "@/layout";
 import type { Gap, GridCols } from "@/types";
+import { cn } from "@/utils";
 
 interface Option {
   value: string;
@@ -51,7 +52,11 @@ export const RadioField = ({
           <Grid cols={cols} gap={gap}>
             {options.map((option, i) => (
               <Flex align="center" gap="2" justify="start" key={i}>
-                <RadioGroupItem className={radioSizeClasses} id={option.value} value={option.value} />
+                <RadioGroupItem
+                  className={cn("bg-input dark:bg-input border-input-border", radioSizeClasses)}
+                  id={option.value}
+                  value={option.value}
+                />
                 <Label className={labelClassName} htmlFor={option.value} size={size}>
                   {option.label}
                 </Label>

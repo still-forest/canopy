@@ -62,7 +62,7 @@ export const SelectInput = ({
       {...props}
       value={value ?? ""}
     >
-      <SelectTrigger className={cn("w-full", className)}>
+      <SelectTrigger className={cn("w-full bg-input dark:bg-input border-input-border", className)}>
         <SelectValue placeholder={placeholder} />
       </SelectTrigger>
       <SelectContent>

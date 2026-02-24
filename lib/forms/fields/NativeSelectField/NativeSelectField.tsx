@@ -1,7 +1,7 @@
 import type { ChangeEvent, ComponentProps } from "react";
 import { Hint } from "@/components";
-import { NativeSelect, NativeSelectOptGroup, NativeSelectOption } from "@/components/ui/native-select";
 import { InputError, Label } from "@/forms";
+import { NativeSelect } from "@/forms/inputs/NativeSelect/NativeSelect";
 import { Flex } from "@/layout";
 import { Text } from "@/typography";
 import { cn } from "@/utils";
@@ -87,22 +87,22 @@ const NativeSelectField = ({
         {...(value !== undefined ? { value } : { defaultValue: defaultValue as string | undefined })}
         {...props}
       >
-        <NativeSelectOption value="">{placeholder}</NativeSelectOption>
+        <NativeSelect.Option value="">{placeholder}</NativeSelect.Option>
         {!isOptionGroup &&
           (options as unknown as NativeSelectFieldOption[]).map(({ value, label }) => (
-            <NativeSelectOption key={`option-${value}`} value={value}>
+            <NativeSelect.Option key={`option-${value}`} value={value}>
               {label}
-            </NativeSelectOption>
+            </NativeSelect.Option>
           ))}
         {isOptionGroup &&
           (options as unknown as NativeSelectFieldOptionGroup[]).map(({ label, options: optionGroups }) => (
-            <NativeSelectOptGroup key={`option-group-${label}`} label={label}>
+            <NativeSelect.OptGroup key={`option-group-${label}`} label={label}>
               {optionGroups.map(({ value, label }) => (
-                <NativeSelectOption key={`option-${value}`} value={value}>
+                <NativeSelect.Option key={`option-${value}`} value={value}>
                   {label}
-                </NativeSelectOption>
+                </NativeSelect.Option>
               ))}
-            </NativeSelectOptGroup>
+            </NativeSelect.OptGroup>
           ))}
       </NativeSelect>
       {note && (
