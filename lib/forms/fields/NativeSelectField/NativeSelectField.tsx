@@ -55,7 +55,6 @@ const NativeSelectField = ({
     size === "md" && "h-9 text-sm",
     size === "lg" && "h-10 text-base",
     size === "xl" && "h-11 text-lg",
-    "bg-background border-input-border bg-input dark:bg-input",
     className,
   );
 

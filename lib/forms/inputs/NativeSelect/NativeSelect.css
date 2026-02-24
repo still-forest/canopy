@@ -16,7 +16,7 @@
     @apply placeholder:text-muted-foreground selection:bg-primary selection:text-primary-foreground;
 
     :is(.dark) & {
-      @apply bg-input/30 hover:bg-input/50;
+      @apply hover:bg-input/80;
     }
 
     &:focus-visible {
