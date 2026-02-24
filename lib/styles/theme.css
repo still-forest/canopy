@@ -99,7 +99,7 @@
   --sidebar-ring: var(--color-neutral-500);
 
   --border: oklch(1 0 0 / 10%);
-  --input: oklch(1 0 0 / 15%);
+  --input: oklch(1 0 0 / 5%);
   --input-border: oklch(1 0 0 / 10%);
   --ring: var(--color-neutral-500);
 }
