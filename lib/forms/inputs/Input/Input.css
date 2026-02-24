@@ -3,16 +3,15 @@
 
 @layer components {
   .input {
-    @apply h-9 rounded-md px-2.5 py-1 text-base shadow-xs transition-[color,box-shadow] focus-visible:ring-[3px] md:text-sm placeholder:text-muted-foreground w-full min-w-0 outline-none;
-    @apply border-input-border bg-input dark:bg-input;
-    @apply bg-input;
+    @apply h-9 rounded-md px-2.5 py-1 text-base shadow-xs transition-[color,box-shadow] md:text-sm placeholder:text-muted-foreground w-full min-w-0 outline-none;
+    @apply border border-input-border bg-input dark:bg-input;
 
     &[type="file"] {
       @apply inline-flex border-0 bg-transparent h-7 text-sm font-medium text-foreground;
     }
 
     &:focus-visible {
-      @apply border-ring ring-ring/50;
+      @apply border-ring ring-ring/50 ring-[3px];
     }
 
     &[aria-invalid="true"] {
@@ -25,7 +24,7 @@
 
     :is(.dark) & {
       &[aria-invalid="true"] {
-        @apply ring-danger/40 border-danger;
+        @apply border-danger ring-danger/40;
       }
     }
 
