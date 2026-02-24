@@ -19,7 +19,6 @@ const TextField = ({
   id,
   name,
   type = "text",
-  placeholder,
   label,
   labelClassName,
   labelOrientation = "top",
@@ -36,7 +35,7 @@ const TextField = ({
           {label && (
             <Label
               className={cn(labelOrientation === "left" ? "text-nowrap" : "", labelClassName)}
-              htmlFor={name}
+              htmlFor={id || name}
               size={size}
             >
               {label}

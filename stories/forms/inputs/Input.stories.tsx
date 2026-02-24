@@ -55,9 +55,11 @@ export const ReadOnly: Story = {
 export const Sizes: Story = {
   render: () => (
     <Flex direction="col" gap="4">
+      <Input name="extra-small" placeholder="Extra Small (xs)" size="xs" />
       <Input name="small" placeholder="Small (sm)" size="sm" />
       <Input name="medium" placeholder="Medium (md) — default" size="md" />
       <Input name="large" placeholder="Large (lg)" size="lg" />
+      <Input name="extra-large" placeholder="Extra Large (xl)" size="xl" />
     </Flex>
   ),
 };

@@ -5,7 +5,6 @@ import { cn } from "@/utils";
 
 import "./NativeSelect.css";
 
-// TODO: Remove this
 const NativeSelect = ({ className, ...props }: React.ComponentProps<"select">) => {
   return (
     <div className="native-select-wrapper" data-slot="native-select-wrapper">
