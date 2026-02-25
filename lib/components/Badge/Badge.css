@@ -19,7 +19,7 @@
       @apply border-primary;
 
       &.badge--outline {
-        @apply bg-background border-primary/50 text-primary;
+        @apply bg-transparent border-primary/50 text-primary;
       }
     }
 
@@ -28,7 +28,7 @@
       @apply border-secondary;
 
       &.badge--outline {
-        @apply bg-background border-secondary-foreground/20 text-secondary-foreground/80;
+        @apply bg-transparent border-secondary-foreground/20 text-secondary-foreground/80;
       }
     }
 
@@ -37,7 +37,7 @@
       @apply border-muted;
 
       &.badge--outline {
-        @apply bg-background border-muted-foreground/50 text-muted-foreground;
+        @apply bg-transparent border-muted-foreground/50 text-muted-foreground;
       }
     }
 
@@ -47,7 +47,7 @@
       @apply border-info;
 
       &.badge--outline {
-        @apply bg-background border-info/50 text-info;
+        @apply bg-transparent border-info/50 text-info;
       }
     }
 
@@ -56,7 +56,7 @@
       @apply border-success;
 
       &.badge--outline {
-        @apply bg-background border-success/50 text-success;
+        @apply bg-transparent border-success/50 text-success;
       }
     }
 
@@ -65,7 +65,7 @@
       @apply border-danger;
 
       &.badge--outline {
-        @apply bg-background border-danger/50 text-danger;
+        @apply bg-transparent border-danger/50 text-danger;
       }
     }
 
@@ -74,7 +74,7 @@
       @apply border-warning;
 
       &.badge--outline {
-        @apply bg-background border-warning/50 text-warning;
+        @apply bg-transparent border-warning/50 text-warning;
       }
     }
 
@@ -90,7 +90,7 @@
 
     /* outline (standalone) */
     &.badge--outline {
-      @apply bg-background border-border text-primary;
+      @apply bg-transparent border-border text-primary;
     }
 
     /* sizes */
