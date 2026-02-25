@@ -75,7 +75,7 @@ const NativeSelectField = ({
       )}
       <NativeSelect
         aria-describedby={error ? `${id}-error` : undefined}
-        aria-invalid={Boolean(error) || undefined}
+        aria-invalid={isInvalid}
         className={triggerClasses}
         id={id}
         name={name}

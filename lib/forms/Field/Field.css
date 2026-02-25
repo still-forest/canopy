@@ -2,6 +2,15 @@
 @reference "@/styles/tokens.css";
 
 @layer components {
+  .field-set {
+    @apply flex flex-col gap-6;
+
+    &:has(> [data-slot="checkbox-group"]),
+    &:has(> [data-slot="radio-group"]) {
+      @apply gap-2;
+    }
+  }
+
   .field {
     @apply flex flex-col gap-2 w-full items-center;
 
@@ -51,6 +60,18 @@
 
     &:has(> [data-slot="checkbox-group"]) {
       @apply gap-2;
+    }
+  }
+
+  .field-legend {
+    @apply mb-1.5 font-medium text-sm;
+
+    &[data-variant="label"] {
+      @apply text-sm;
+    }
+
+    &[data-variant="legend"] {
+      @apply text-base;
     }
   }
 

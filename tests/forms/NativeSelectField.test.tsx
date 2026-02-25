@@ -83,7 +83,7 @@ describe("NativeSelectField", () => {
     render(<NativeSelectField error="What'd you do?" name="some_input" onChange={onSelect} options={OPTIONS} />);
 
     const error = screen.getByText("What'd you do?");
-    expect(error.tagName).toBe("P");
+    expect(error.tagName).toBe("DIV");
   });
 
   it("combines custom className with generated classes", () => {
