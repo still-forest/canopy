@@ -49,6 +49,10 @@ export const ButtonRadioField = ({
   const defaultId = useId();
   const baseId = id ?? defaultId;
   const labelId = `${baseId}-label`;
+  const noteId = `${baseId}-note`;
+  const errorId = `${baseId}-error`;
+
+  const describedBy = [note ? noteId : null, error ? errorId : null].filter(Boolean).join(" ") || undefined;
 
   // Refs for managing focus
   const buttonRefs = useRef<Map<string, HTMLButtonElement>>(new Map());
@@ -106,6 +110,7 @@ export const ButtonRadioField = ({
         </Field.LabelGroup>
       )}
       <ButtonGroup
+        aria-describedby={describedBy}
         aria-invalid={error ? "true" : undefined}
         aria-label={!label ? name : undefined}
         aria-labelledby={label ? labelId : undefined}
@@ -187,8 +192,8 @@ export const ButtonRadioField = ({
           </DesktopSelectPicker>
         )}
       </ButtonGroup>
-      {note && <Field.Description>{note}</Field.Description>}
-      {error && <Field.Error>{error}</Field.Error>}
+      {note && <Field.Description id={noteId}>{note}</Field.Description>}
+      {error && <Field.Error id={errorId}>{error}</Field.Error>}
     </Field>
   );
 };
