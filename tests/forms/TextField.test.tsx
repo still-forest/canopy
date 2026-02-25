@@ -43,7 +43,7 @@ describe("TextField", () => {
     render(<TextField error="What'd you do?" name="some_input" />);
 
     const error = screen.getByText("What'd you do?");
-    expect(error.tagName).toBe("P");
+    expect(error.tagName).toBe("DIV");
 
     const input = screen.getByRole("textbox", { name: "some_input" }) as HTMLInputElement;
     expect(input.tagName).toBe("INPUT");
