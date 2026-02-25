@@ -44,9 +44,12 @@ const CheckboxField = ({
     onCheckedChange?.(newChecked);
   };
 
+  const isInvalid = !!error;
+
   return (
-    <Field orientation="horizontal">
+    <Field data-invalid={isInvalid} orientation="horizontal">
       <BaseCheckbox
+        aria-invalid={isInvalid}
         checked={checkedState}
         id={fullId}
         name={name}
