@@ -96,7 +96,7 @@
     }
 
     &.btn--outline {
-      @apply border bg-transparent!;
+      @apply border bg-transparent;
 
       &:hover,
       &[aria-pressed="true"] {
@@ -131,7 +131,7 @@
     }
 
     &.btn--outline {
-      @apply border-primary/30 text-primary;
+      @apply border-primary/80 text-primary;
 
       &:hover,
       &[aria-pressed="true"] {
@@ -156,7 +156,7 @@
     }
 
     &.btn--outline {
-      @apply border-secondary-foreground/20 text-secondary-foreground/80;
+      @apply bg-transparent border-secondary/80 text-secondary-foreground;
 
       &:hover,
       &[aria-pressed="true"] {
@@ -170,11 +170,11 @@
 
     &:hover,
     &[aria-pressed="true"] {
-      @apply bg-muted/90 dark:bg-muted/50;
+      @apply bg-muted/90;
     }
 
     &.btn--outline {
-      @apply border-muted-foreground/30 text-muted-foreground;
+      @apply bg-transparent border-muted/80 text-muted-foreground;
 
       &:hover,
       &[aria-pressed="true"] {
@@ -193,23 +193,28 @@
 
     &.btn--outline {
       @apply border-input-border;
+
+      &:hover,
+      &[aria-pressed="true"] {
+        @apply bg-accent/10 dark:bg-accent/20 text-accent-foreground;
+      }
     }
   }
 
   .btn-info {
-    @apply bg-info text-info-foreground dark:bg-info/60 border-info;
+    @apply bg-info text-info-foreground border-info;
 
     &:hover,
     &[aria-pressed="true"] {
-      @apply bg-info/90 dark:bg-info/50;
+      @apply bg-info/90;
     }
 
     &:focus-visible {
-      @apply ring-info/20 dark:ring-info/40;
+      @apply ring-info/20;
     }
 
     &.btn--outline {
-      @apply border-info/80 text-info;
+      @apply bg-transparent border-info/80 text-info;
 
       &:hover,
       &[aria-pressed="true"] {
@@ -219,19 +224,19 @@
   }
 
   .btn-success {
-    @apply bg-success text-success-foreground dark:bg-success/60 border-success;
+    @apply bg-success text-success-foreground border-success;
 
     &:hover,
     &[aria-pressed="true"] {
-      @apply bg-success/90 dark:bg-success/50;
+      @apply bg-success/90;
     }
 
     &:focus-visible {
-      @apply ring-success/20 dark:ring-success/40;
+      @apply ring-success/20;
     }
 
     &.btn--outline {
-      @apply border-success/80 text-success;
+      @apply bg-transparent border-success/80 text-success;
 
       &:hover,
       &[aria-pressed="true"] {
@@ -241,19 +246,19 @@
   }
 
   .btn-warning {
-    @apply bg-warning text-warning-foreground dark:bg-warning/60 border-warning;
+    @apply bg-warning text-warning-foreground border-warning;
 
     &:hover,
     &[aria-pressed="true"] {
-      @apply bg-warning/90 dark:bg-warning/50;
+      @apply bg-warning/90;
     }
 
     &:focus-visible {
-      @apply ring-warning/20 dark:ring-warning/40;
+      @apply ring-warning/20;
     }
 
     &.btn--outline {
-      @apply border-warning/80 text-warning;
+      @apply bg-transparent border-warning/80 text-warning;
 
       &:hover,
       &[aria-pressed="true"] {
@@ -263,19 +268,19 @@
   }
 
   .btn-danger {
-    @apply bg-danger text-danger-foreground dark:bg-danger/60 border-danger;
+    @apply bg-danger text-danger-foreground border-danger;
 
     &:hover,
     &[aria-pressed="true"] {
-      @apply bg-danger/90 dark:bg-danger/50;
+      @apply bg-danger/90;
     }
 
     &:focus-visible {
-      @apply ring-danger/20 dark:ring-danger/40;
+      @apply ring-danger/20;
     }
 
     &.btn--outline {
-      @apply border-danger/80 text-danger;
+      @apply bg-transparent border-danger/80 text-danger;
 
       &:hover,
       &[aria-pressed="true"] {
@@ -296,7 +301,7 @@
     &.btn--outline {
       &:hover,
       &[aria-pressed="true"] {
-        @apply bg-transparent;
+        @apply bg-transparent dark:bg-transparent;
       }
     }
   }
