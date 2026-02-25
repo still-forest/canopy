@@ -95,15 +95,6 @@
       }
     }
 
-    &.btn--outline {
-      @apply border bg-transparent;
-
-      &:hover,
-      &[aria-pressed="true"] {
-        @apply bg-accent text-accent-foreground dark:bg-accent/50;
-      }
-    }
-
     &.btn--knockout {
       @apply border border-foreground text-foreground;
 
@@ -123,15 +114,15 @@
   }
 
   .btn-primary {
-    @apply bg-primary text-primary-foreground border-primary;
+    @apply bg-primary border-primary text-primary-foreground;
 
     &:hover,
     &[aria-pressed="true"] {
-      @apply bg-primary/90;
+      @apply bg-primary/80;
     }
 
     &.btn--outline {
-      @apply border-primary/80 text-primary;
+      @apply bg-transparent border-primary/80 text-primary;
 
       &:hover,
       &[aria-pressed="true"] {
@@ -148,7 +139,7 @@
   }
 
   .btn-secondary {
-    @apply bg-secondary text-secondary-foreground border-secondary;
+    @apply bg-secondary border-secondary text-secondary-foreground;
 
     &:hover,
     &[aria-pressed="true"] {
@@ -166,11 +157,15 @@
   }
 
   .btn-muted {
-    @apply bg-muted text-muted-foreground focus-visible:ring-muted/20 dark:focus-visible:ring-muted/40 dark:bg-muted/60 border-muted;
+    @apply bg-muted border-muted text-muted-foreground;
 
     &:hover,
     &[aria-pressed="true"] {
       @apply bg-muted/90;
+    }
+
+    &:focus-visible {
+      @apply ring-muted/20 dark:ring-muted/40;
     }
 
     &.btn--outline {
@@ -202,7 +197,7 @@
   }
 
   .btn-info {
-    @apply bg-info text-info-foreground border-info;
+    @apply bg-info border-info text-info-foreground;
 
     &:hover,
     &[aria-pressed="true"] {
@@ -224,7 +219,7 @@
   }
 
   .btn-success {
-    @apply bg-success text-success-foreground border-success;
+    @apply bg-success border-success text-success-foreground;
 
     &:hover,
     &[aria-pressed="true"] {
@@ -246,7 +241,7 @@
   }
 
   .btn-warning {
-    @apply bg-warning text-warning-foreground border-warning;
+    @apply bg-warning border-warning text-warning-foreground;
 
     &:hover,
     &[aria-pressed="true"] {
@@ -268,7 +263,7 @@
   }
 
   .btn-danger {
-    @apply bg-danger text-danger-foreground border-danger;
+    @apply bg-danger border-danger text-danger-foreground;
 
     &:hover,
     &[aria-pressed="true"] {
