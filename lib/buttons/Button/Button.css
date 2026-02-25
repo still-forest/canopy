@@ -218,7 +218,7 @@
     }
 
     &:focus-visible {
-      @apply ring-info/20;
+      @apply ring-info/20 dark:ring-info/40;
     }
 
     &.btn--outline {
@@ -249,7 +249,7 @@
     }
 
     &:focus-visible {
-      @apply ring-success/20;
+      @apply ring-success/20 dark:ring-success/40;
     }
 
     &.btn--outline {
@@ -280,7 +280,7 @@
     }
 
     &:focus-visible {
-      @apply ring-warning/20;
+      @apply ring-warning/20 dark:ring-warning/40;
     }
 
     &.btn--outline {
@@ -311,7 +311,7 @@
     }
 
     &:focus-visible {
-      @apply ring-danger/20;
+      @apply ring-danger/20 dark:ring-danger/40;
     }
 
     &.btn--outline {
