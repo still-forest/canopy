@@ -95,15 +95,6 @@
       }
     }
 
-    &.btn--knockout {
-      @apply border border-foreground text-foreground;
-
-      &:hover,
-      &[aria-pressed="true"] {
-        @apply bg-foreground text-background;
-      }
-    }
-
     &.btn--rounded {
       @apply rounded-full;
     }
@@ -131,9 +122,11 @@
     }
 
     &.btn--knockout {
+      @apply bg-primary-foreground border-primary-foreground text-primary;
+
       &:hover,
       &[aria-pressed="true"] {
-        @apply bg-primary text-background;
+        @apply bg-primary-foreground/90 border-primary-foreground/90 text-primary;
       }
     }
   }
@@ -152,6 +145,15 @@
       &:hover,
       &[aria-pressed="true"] {
         @apply bg-secondary/10 dark:bg-secondary/20;
+      }
+    }
+
+    &.btn--knockout {
+      @apply bg-secondary-foreground border-secondary-foreground text-secondary;
+
+      &:hover,
+      &[aria-pressed="true"] {
+        @apply bg-secondary-foreground/90 border-secondary-foreground/90 text-secondary;
       }
     }
   }
@@ -176,6 +178,15 @@
         @apply bg-muted/10 dark:bg-muted/20;
       }
     }
+
+    &.btn--knockout {
+      @apply bg-muted-foreground border-muted-foreground text-muted;
+
+      &:hover,
+      &[aria-pressed="true"] {
+        @apply bg-muted-foreground/90 border-muted-foreground/90 text-muted;
+      }
+    }
   }
 
   .btn-ghost {
@@ -194,6 +205,8 @@
         @apply bg-accent/10 dark:bg-accent/20 text-accent-foreground;
       }
     }
+
+    /* no knockout style for ghost */
   }
 
   .btn-info {
@@ -214,6 +227,15 @@
       &:hover,
       &[aria-pressed="true"] {
         @apply bg-info/10 dark:bg-info/20 text-info;
+      }
+    }
+
+    &.btn--knockout {
+      @apply bg-info-foreground border-info-foreground text-info;
+
+      &:hover,
+      &[aria-pressed="true"] {
+        @apply bg-info-foreground/90 border-info-foreground/90 text-info;
       }
     }
   }
@@ -238,6 +260,15 @@
         @apply bg-success/10 dark:bg-success/20 text-success;
       }
     }
+
+    &.btn--knockout {
+      @apply bg-success-foreground border-success-foreground text-success;
+
+      &:hover,
+      &[aria-pressed="true"] {
+        @apply bg-success-foreground/90 border-success-foreground/90 text-success;
+      }
+    }
   }
 
   .btn-warning {
@@ -260,6 +291,15 @@
         @apply bg-warning/10 dark:bg-warning/20 text-warning;
       }
     }
+
+    &.btn--knockout {
+      @apply bg-warning-foreground border-warning-foreground text-warning;
+
+      &:hover,
+      &[aria-pressed="true"] {
+        @apply bg-warning-foreground/90 border-warning-foreground/90 text-warning;
+      }
+    }
   }
 
   .btn-danger {
@@ -280,6 +320,15 @@
       &:hover,
       &[aria-pressed="true"] {
         @apply bg-danger/10 dark:bg-danger/20 text-danger;
+      }
+    }
+
+    &.btn--knockout {
+      @apply bg-danger-foreground border-danger-foreground text-danger;
+
+      &:hover,
+      &[aria-pressed="true"] {
+        @apply bg-danger-foreground/90 border-danger-foreground/90 text-danger;
       }
     }
   }
