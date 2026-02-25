@@ -3,7 +3,7 @@
 
   /* Hydrangea */
   /* anchor: 500 = rgb(164, 179, 198) / #A4B3C6 */
-  /* Full palette generated using https://www.tints.dev/palette (hue 0, saturation 2, lightness 100-5 */
+  /* Full palette generated using https://www.tints.dev (hue 0, saturation 2, lightness 100-5 */
   --color-hydrangea: rgb(164, 179, 198);
   --color-hydrangea-50: oklch(0.975 0.005 247.84);
   --color-hydrangea-100: oklch(0.948 0.01 261.82);
@@ -19,7 +19,7 @@
 
   /* English Violet */
   /* anchor: 800 = rgb(71, 49, 68) / #473144 */
-  /* Full palette generated using https://www.tints.dev/palette (hue 0, saturation 0, lightness 100-0 */
+  /* Full palette generated using https://www.tints.dev (hue 0, saturation 0, lightness 100-0 */
   --color-english-violet: rgb(71, 49, 68);
   --color-english-violet-50: oklch(0.958 0.009 331.18);
   --color-english-violet-100: oklch(0.916 0.019 331.21);
@@ -35,7 +35,7 @@
 
   /* Forest */
   /* anchor: 700 = rgb(39, 80, 45) / #27502D */
-  /* Full palette generated using https://www.tints.dev/palette (hue 0, saturation -4, lightness 100-0 */
+  /* Full palette generated using https://www.tints.dev (hue 0, saturation -4, lightness 100-0 */
   --color-forest: rgb(39, 80, 45);
   --color-forest-50: oklch(0.955 0.009 150.47);
   --color-forest-100: oklch(0.91 0.04 148.67);
@@ -51,7 +51,7 @@
 
   /* French Violet (Benjamin Moore) */
   /* anchor: 600 = rgb(105, 109, 134) / #696D86 */
-  /* Full palette generated using https://www.tints.dev/palette (hue 0, saturation 0, lightness 100-0 */
+  /* Full palette generated using https://www.tints.dev (hue 0, saturation 0, lightness 100-0 */
   --color-french-violet: rgb(105, 109, 134);
   --color-french-violet-50: oklch(0.965 0.003 286.81);
   --color-french-violet-100: oklch(0.923 0.007 277.28);
@@ -79,6 +79,21 @@
   --color-coral-reef-800: oklch(0.35 0.062 34.95);
   --color-coral-reef-900: oklch(0.246 0.042 36.48);
   --color-coral-reef-950: oklch(0.191 0.034 32.86);
+
+  /* Cream */
+  /* anchor: 300 = #e8d1b7 */
+  /* Full palette generated using https://www.tints.dev (hue -5, saturation 0, lightness 100-0 */
+  --color-cream-50: oklch(0.984 0.004 56.51);
+  --color-cream-100: oklch(0.957 0.01 48.7);
+  --color-cream-200: oklch(0.915 0.024 63.48);
+  --color-cream-300: oklch(0.873 0.043 70.63);
+  --color-cream-400: oklch(0.77 0.064 67.44);
+  --color-cream-500: oklch(0.668 0.058 62.04);
+  --color-cream-600: oklch(0.565 0.053 55.07);
+  --color-cream-700: oklch(0.452 0.047 47.65);
+  --color-cream-800: oklch(0.348 0.04 40.63);
+  --color-cream-900: oklch(0.246 0.032 35.42);
+  --color-cream-950: oklch(0.191 0.028 31.31);
 
   /* Benjamin Moore color palettes */
   /* french violet */

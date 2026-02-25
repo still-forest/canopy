@@ -2,7 +2,18 @@ import type { Meta, StoryObj } from "@storybook/react-vite";
 
 const customColors = ["hydrangea", "french-violet", "english-violet", "coral-reef", "forest"] as const;
 
-const neutralColors = ["neutral", "mist", "olive", "stone", "taupe", "zinc", "gray", "slate", "mauve"] as const;
+const neutralColors = [
+  "neutral",
+  "mist",
+  "olive",
+  "stone",
+  "taupe",
+  "cream",
+  "zinc",
+  "gray",
+  "slate",
+  "mauve",
+] as const;
 
 const baseColors = [
   "red",
