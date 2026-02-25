@@ -112,6 +112,7 @@ function ColorSection({
 
 const meta: Meta = {
   title: "Styles/Color Palette",
+  tags: ["autodocs"],
   parameters: {
     layout: "fullscreen",
   },

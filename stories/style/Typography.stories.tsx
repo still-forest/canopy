@@ -74,6 +74,10 @@ function HeadingShowcase() {
           <div className="w-24 footnote-xs">h6 / .heading-6</div>
           <h6>Heading 6</h6>
         </div>
+        <div className="flex items-baseline gap-8">
+          <div className="w-24 footnote-xs">p / .body-base</div>
+          <p>Paragraph</p>
+        </div>
       </div>
     </div>
   );
@@ -129,6 +133,7 @@ function BodyShowcase() {
 
 const meta: Meta = {
   title: "Styles/Typography",
+  tags: ["autodocs"],
   parameters: {
     layout: "fullscreen",
   },
