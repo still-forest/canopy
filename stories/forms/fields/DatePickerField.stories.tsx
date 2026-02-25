@@ -54,6 +54,28 @@ export const Large: Story = {
   args: { ...defaultProps, size: "lg" },
 };
 
+export const WithLabel: Story = {
+  args: { ...defaultProps, label: "Select a date" },
+};
+
+export const WithHint: Story = {
+  args: { ...defaultProps, label: "Select a date", hint: "Select a date" },
+};
+
+export const WithNotes: Story = {
+  args: { ...defaultProps, label: "Select a date", note: "Select a date, or else" },
+};
+
 export const WithError: Story = {
   args: { ...defaultProps, error: "What'd you do?!" },
+};
+
+export const WithEverything: Story = {
+  args: {
+    ...defaultProps,
+    error: "What'd you do?!",
+    label: "Select a date",
+    hint: "Select a date, please",
+    note: "Select a date, or else",
+  },
 };
