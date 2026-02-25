@@ -2,11 +2,7 @@ import { type ComponentProps, type KeyboardEvent, type ReactElement, useId, useR
 import { Button, ButtonGroup, type ButtonGroupProps } from "@/buttons";
 import { Hint } from "@/components";
 import type { SelectPickerOption } from "@/forms";
-import { DesktopSelectPicker, GroupedOptionList } from "@/forms";
-import { InputError } from "@/forms/InputError";
-import { Label } from "@/forms/Label";
-import { Flex } from "@/layout";
-import { Text } from "@/typography";
+import { DesktopSelectPicker, Field, GroupedOptionList } from "@/forms";
 import { cn } from "@/utils";
 
 interface Option {
@@ -30,6 +26,7 @@ interface ButtonRadioFieldProps extends Omit<ButtonGroupProps, "children" | "onC
 }
 
 export const ButtonRadioField = ({
+  id,
   name,
   label,
   hint,
@@ -49,10 +46,8 @@ export const ButtonRadioField = ({
   const selectedSecondaryOption = secondaryOptions?.find((option) => option.value === value);
   const secondaryLabel = selectedSecondaryOption?.label || "More options...";
 
-  // Generate stable IDs for accessibility
-  const labelId = useId();
-  const errorId = useId();
-  const noteId = useId();
+  const defaultId = useId();
+  const inputId = id ?? name ?? defaultId;
 
   // Refs for managing focus
   const buttonRefs = useRef<Map<string, HTMLButtonElement>>(new Map());
@@ -102,18 +97,17 @@ export const ButtonRadioField = ({
   };
 
   return (
-    <Flex className="w-full" direction="col" gap="2">
-      {(label || hint) && (
-        <Flex align="center" direction="row" gap="1">
-          {label && <Label id={labelId}>{label}</Label>}
+    <Field data-invalid={!!error}>
+      {label && (
+        <Field.LabelGroup>
+          <Field.Label htmlFor={inputId}>{label}</Field.Label>
           {hint && <Hint content={hint} />}
-        </Flex>
+        </Field.LabelGroup>
       )}
       <ButtonGroup
-        aria-describedby={[note && noteId, error && errorId].filter(Boolean).join(" ") || undefined}
         aria-invalid={error ? "true" : undefined}
         aria-label={!label ? name : undefined}
-        aria-labelledby={label ? labelId : undefined}
+        aria-labelledby={inputId}
         className={cn("w-full", groupClassName)}
         role="radiogroup"
         {...props}
@@ -128,7 +122,7 @@ export const ButtonRadioField = ({
             <Button
               aria-checked={isSelected}
               aria-label={option.label ? undefined : option.value}
-              className={cn("flex-grow", buttonClassName)}
+              className={cn("grow", buttonClassName)}
               icon={option.icon}
               key={option.value}
               label={option.label}
@@ -192,12 +186,8 @@ export const ButtonRadioField = ({
           </DesktopSelectPicker>
         )}
       </ButtonGroup>
-      {note && (
-        <Text id={noteId} size="sm" variant="muted">
-          {note}
-        </Text>
-      )}
-      {error && <InputError id={errorId} message={error} />}
-    </Flex>
+      {note && <Field.Description>{note}</Field.Description>}
+      {error && <Field.Error>{error}</Field.Error>}
+    </Field>
   );
 };

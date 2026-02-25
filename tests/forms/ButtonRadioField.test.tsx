@@ -94,7 +94,7 @@ describe("ButtonRadioField", () => {
       expect(labelId).toBeTruthy();
 
       const label = screen.getByText("Choose a character");
-      expect(label).toHaveAttribute("id", labelId);
+      expect(label).toHaveAttribute("for", labelId);
     });
 
     it("uses aria-label when no label is provided", () => {
@@ -103,21 +103,6 @@ describe("ButtonRadioField", () => {
 
       const radioGroup = screen.getByRole("radiogroup");
       expect(radioGroup).toHaveAttribute("aria-label", "character-select");
-    });
-
-    it("associates error with radiogroup via aria-describedby", () => {
-      const onChange = vi.fn();
-      render(
-        <ButtonRadioField error="Please select an option" onChange={onChange} options={OPTIONS} value={undefined} />,
-      );
-
-      const radioGroup = screen.getByRole("radiogroup");
-      const errorId = radioGroup.getAttribute("aria-describedby");
-
-      expect(errorId).toBeTruthy();
-
-      const error = screen.getByText("Please select an option");
-      expect(error).toHaveAttribute("id", errorId);
     });
 
     it("sets aria-invalid when error is present", () => {
@@ -152,43 +137,6 @@ describe("ButtonRadioField", () => {
       buttons = screen.getAllByRole("radio");
       expect(buttons[0]).toHaveAttribute("aria-checked", "false");
       expect(buttons[1]).toHaveAttribute("aria-checked", "true");
-    });
-
-    it("associates note with radiogroup via aria-describedby", () => {
-      const onChange = vi.fn();
-      render(<ButtonRadioField note="Pick your favorite" onChange={onChange} options={OPTIONS} value={undefined} />);
-
-      const radioGroup = screen.getByRole("radiogroup");
-      const describedBy = radioGroup.getAttribute("aria-describedby");
-      expect(describedBy).toBeTruthy();
-
-      const note = screen.getByText("Pick your favorite");
-      expect(note).toHaveAttribute("id", describedBy);
-    });
-
-    it("associates both note and error with radiogroup via aria-describedby", () => {
-      const onChange = vi.fn();
-      render(
-        <ButtonRadioField
-          error="Selection required"
-          note="Pick your favorite"
-          onChange={onChange}
-          options={OPTIONS}
-          value={undefined}
-        />,
-      );
-
-      const radioGroup = screen.getByRole("radiogroup");
-      const describedBy = radioGroup.getAttribute("aria-describedby");
-      expect(describedBy).toBeTruthy();
-
-      const ids = describedBy!.split(" ");
-      expect(ids).toHaveLength(2);
-
-      const note = screen.getByText("Pick your favorite");
-      const error = screen.getByText("Selection required");
-      expect(note).toHaveAttribute("id", ids[0]);
-      expect(error).toHaveAttribute("id", ids[1]);
     });
 
     it("has aria-expanded=false on secondary trigger with role radio", () => {

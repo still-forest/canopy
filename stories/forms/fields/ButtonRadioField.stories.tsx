@@ -98,6 +98,34 @@ export const WithLabelAndNote: Story = {
   },
 };
 
+export const WithEverything: Story = {
+  render: () => {
+    const [value, setValue] = useState<string | undefined>(undefined);
+    const secondaryOptions = [
+      { value: "abraham", label: "Abraham" },
+      { value: "herbert", label: "Herbert" },
+      { value: "jacqueline", label: "Jacqueline" },
+      { value: "patty", label: "Patty" },
+      { value: "selma", label: "Selma" },
+    ];
+
+    const handleChange = (value: string) => {
+      setValue(value);
+      onChange(value);
+    };
+
+    const props = {
+      ...defaultProps,
+      label: "Select a character:",
+      hint: "This is a hint",
+      note: "My cat's breath smells like cat food.",
+      error: "What'd you do?!",
+    };
+
+    return <ButtonRadioField {...props} onChange={handleChange} secondaryOptions={secondaryOptions} value={value} />;
+  },
+};
+
 export const WithIcons: Story = {
   render: () => {
     const [value, setValue] = useState<string | undefined>(undefined);
