@@ -77,6 +77,7 @@ export const WithEverything: Story = {
     placeholder: "Pull, Willie!",
     note: "I don't agree to that.",
     hint: "My cat's breath smells like cat food",
+    error: "What'd you do?!",
   },
 };
 
