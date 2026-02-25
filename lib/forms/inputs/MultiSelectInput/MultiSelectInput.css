@@ -3,7 +3,8 @@
 
 @layer components {
   .multi-select-trigger {
-    @apply border-input-border gap-1.5 rounded-md border bg-transparent py-2 pr-2 pl-2.5 shadow-xs transition-[color,box-shadow] outline-none;
+    @apply gap-1.5 rounded-md py-2 pr-2 pl-2.5 shadow-xs transition-[color,box-shadow] outline-none;
+    @apply bg-input border border-input-border;
     @apply flex w-full items-center justify-between whitespace-nowrap;
     @apply [&_svg:not([class*='size-'])]:size-4 [&_svg]:pointer-events-none [&_svg]:shrink-0;
 
