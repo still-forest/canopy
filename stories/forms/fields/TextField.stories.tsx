@@ -67,6 +67,7 @@ export const WithEverything: Story = {
     label: "Some value:",
     hint: "My cat's breath smells like cat food",
     note: "Sorry, buddy. You got me confused with Fred Flintstone.",
+    error: "What'd you do?!",
   },
 };
 

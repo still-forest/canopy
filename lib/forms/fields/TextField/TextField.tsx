@@ -1,11 +1,9 @@
 import { Hint } from "@/components";
-import { InputError, Label } from "@/forms";
+import { Field } from "@/forms";
 import { Input, type InputProps } from "@/forms/inputs";
-import { Flex } from "@/layout";
-import { Text } from "@/typography";
-import { cn } from "@/utils";
 
 export interface TextFieldProps extends InputProps {
+  name: string;
   label?: string;
   labelClassName?: string;
   labelOrientation?: "top" | "left";
@@ -29,29 +27,17 @@ const TextField = ({
   ...props
 }: TextFieldProps) => {
   return (
-    <Flex className="w-full" direction={labelOrientation === "left" ? "row" : "col"} gap="2">
-      {(label || hint) && (
-        <Flex align="center" direction="row" gap="1">
-          {label && (
-            <Label
-              className={cn(labelOrientation === "left" ? "text-nowrap" : "", labelClassName)}
-              htmlFor={id || name}
-              size={size}
-            >
-              {label}
-            </Label>
-          )}
+    <Field>
+      {label && (
+        <Field.Label className={labelClassName} htmlFor={id || name}>
+          {label}
           {hint && <Hint content={hint} />}
-        </Flex>
+        </Field.Label>
       )}
       <Input aria-label={label || name} id={id || name} name={name} size={size} type={type} {...props} />
-      {note && (
-        <Text size="sm" variant="muted">
-          {note}
-        </Text>
-      )}
-      {error && <InputError message={error} />}
-    </Flex>
+      {note && <Field.Description>{note}</Field.Description>}
+      {error && <Field.Error>{error}</Field.Error>}
+    </Field>
   );
 };
 
