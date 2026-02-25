@@ -60,14 +60,6 @@ export const WithEverything: Story = {
   },
 };
 
-export const WithLeftLabelOrientation: Story = {
-  args: {
-    ...defaultProps,
-    label: "Some value:",
-    labelOrientation: "left",
-  },
-};
-
 export const WithCustomStep: Story = {
   args: {
     ...defaultProps,

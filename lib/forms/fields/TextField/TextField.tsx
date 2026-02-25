@@ -6,7 +6,6 @@ export interface TextFieldProps extends InputProps {
   name: string;
   label?: string;
   labelClassName?: string;
-  labelOrientation?: "top" | "left";
   hint?: string;
   note?: string;
   className?: string;
@@ -19,7 +18,6 @@ const TextField = ({
   type = "text",
   label,
   labelClassName,
-  labelOrientation = "top",
   hint,
   note,
   size = "md",

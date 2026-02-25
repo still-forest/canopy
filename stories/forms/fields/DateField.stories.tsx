@@ -43,14 +43,6 @@ export const WithEverything: Story = {
   },
 };
 
-export const WithLeftLabelOrientation: Story = {
-  args: {
-    ...defaultProps,
-    label: "Some date:",
-    labelOrientation: "left",
-  },
-};
-
 export const WithError: Story = {
   args: {
     ...defaultProps,

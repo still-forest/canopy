@@ -71,14 +71,6 @@ export const WithEverything: Story = {
   },
 };
 
-export const WithLeftLabelOrientation: Story = {
-  args: {
-    ...defaultProps,
-    label: "Some value:",
-    labelOrientation: "left",
-  },
-};
-
 export const Disabled: Story = {
   args: {
     ...defaultProps,

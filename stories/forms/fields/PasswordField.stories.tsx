@@ -50,16 +50,10 @@ export const WithEverything: Story = {
     placeholder: "super-secret",
     label: "Password",
     note: "Your password must be at least 8 characters long",
+    error: "Password is required",
   },
 };
 
-export const WithLeftLabelOrientation: Story = {
-  args: {
-    ...defaultProps,
-    label: "Some value:",
-    labelOrientation: "left",
-  },
-};
 export const WithError: Story = {
   args: {
     ...defaultProps,
