@@ -25,7 +25,7 @@ const FieldLabelGroup = ({ children, className, ...props }: ComponentProps<"div"
 };
 
 interface FieldLabelProps extends ComponentProps<"label"> {
-  htmlFor: string;
+  htmlFor?: string;
 }
 
 const FieldLabel = ({ children, className, htmlFor, ...props }: FieldLabelProps) => {

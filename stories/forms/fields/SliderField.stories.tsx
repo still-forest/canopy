@@ -66,7 +66,7 @@ export const VerticalSizes: Story = {
 };
 
 export const WithLabel: Story = {
-  args: { ...defaultProps, defaultValue: 20 },
+  args: { ...defaultProps, label: "Volume", defaultValue: 20 },
 };
 
 export const WithNotes: Story = {

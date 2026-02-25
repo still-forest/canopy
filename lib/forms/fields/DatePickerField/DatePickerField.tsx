@@ -44,6 +44,10 @@ export const DatePickerField = ({
 
   const defaultId = useId();
   const inputId = id ?? name ?? defaultId;
+  const noteId = `${inputId}-note`;
+  const errorId = `${inputId}-error`;
+
+  const describedBy = [note ? noteId : null, error ? errorId : null].filter(Boolean).join(" ") || undefined;
 
   const isInvalid = !!error;
 
@@ -59,12 +63,13 @@ export const DatePickerField = ({
         <PopoverTrigger
           render={
             <Button
-              aria-describedby={inputId}
+              aria-describedby={describedBy}
               className={cn(
                 "w-[280px] justify-start text-left font-normal bg-background",
                 !date && "text-muted-foreground",
                 className,
               )}
+              id={inputId}
               outline
               size={size}
             >
@@ -77,8 +82,8 @@ export const DatePickerField = ({
           <Calendar autoFocus mode="single" onSelect={handleSelect} selected={date} />
         </PopoverContent>
       </Popover>
-      {note && <Field.Description>{note}</Field.Description>}
-      {error && <Field.Error>{error}</Field.Error>}
+      {note && <Field.Description id={noteId}>{note}</Field.Description>}
+      {error && <Field.Error id={errorId}>{error}</Field.Error>}
     </Field>
   );
 };

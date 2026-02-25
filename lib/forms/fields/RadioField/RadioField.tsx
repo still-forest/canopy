@@ -1,3 +1,4 @@
+import { useId } from "react";
 import { Hint } from "@/components";
 import { RadioGroup, RadioGroupItem } from "@/components/ui/radio-group";
 import { Field, FieldSet } from "@/forms";
@@ -15,10 +16,11 @@ interface RadioOptionProps {
   isInvalid: boolean;
   radioSizeClasses?: string;
   labelClassName?: string;
+  groupId: string;
 }
 
-const RadioOption = ({ option, isInvalid, radioSizeClasses, labelClassName }: RadioOptionProps) => {
-  const id = `radio-input-${option.value}`;
+const RadioOption = ({ option, isInvalid, radioSizeClasses, labelClassName, groupId }: RadioOptionProps) => {
+  const id = `${groupId}-radio-${option.value}`;
   return (
     <Field data-invalid={isInvalid} orientation="horizontal">
       <RadioGroupItem
@@ -63,6 +65,8 @@ export const RadioField = ({
   error,
   labelClassName,
 }: RadioFieldProps) => {
+  const defaultId = useId();
+  const groupId = name ?? defaultId;
   const radioSizeClasses = size === "lg" ? "size-5" : size === "md" ? "size-4" : "size-3";
   const isInvalid = !!error;
 
@@ -73,6 +77,7 @@ export const RadioField = ({
       <RadioGroup className="gap-2" name={name} onValueChange={onChange} value={value}>
         {options.map((option) => (
           <RadioOption
+            groupId={groupId}
             isInvalid={isInvalid}
             key={option.value}
             labelClassName={labelClassName}

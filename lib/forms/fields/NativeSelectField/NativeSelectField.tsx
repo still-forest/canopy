@@ -47,6 +47,7 @@ const NativeSelectField = ({
   ...props
 }: NativeSelectFieldProps) => {
   const inputId = id ?? name;
+  const errorId = `${inputId}-error`;
   const isInvalid = !!error;
 
   const triggerClasses = cn(
@@ -74,10 +75,10 @@ const NativeSelectField = ({
         </Field.LabelGroup>
       )}
       <NativeSelect
-        aria-describedby={error ? `${id}-error` : undefined}
+        aria-describedby={error ? errorId : undefined}
         aria-invalid={isInvalid}
         className={triggerClasses}
-        id={id}
+        id={inputId}
         name={name}
         onChange={handleSelectChange}
         {...(value !== undefined ? { value } : { defaultValue: defaultValue as string | undefined })}
@@ -102,7 +103,7 @@ const NativeSelectField = ({
           ))}
       </NativeSelect>
       {note && <Field.Description>{note}</Field.Description>}
-      {error && <Field.Error>{error}</Field.Error>}
+      {error && <Field.Error id={errorId}>{error}</Field.Error>}
     </Field>
   );
 };

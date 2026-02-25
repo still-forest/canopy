@@ -94,7 +94,7 @@ describe("ButtonRadioField", () => {
       expect(labelId).toBeTruthy();
 
       const label = screen.getByText("Choose a character");
-      expect(label).toHaveAttribute("for", labelId);
+      expect(label).toHaveAttribute("id", labelId);
     });
 
     it("uses aria-label when no label is provided", () => {

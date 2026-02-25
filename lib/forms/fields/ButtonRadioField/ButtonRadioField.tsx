@@ -47,7 +47,8 @@ export const ButtonRadioField = ({
   const secondaryLabel = selectedSecondaryOption?.label || "More options...";
 
   const defaultId = useId();
-  const inputId = id ?? name ?? defaultId;
+  const baseId = id ?? defaultId;
+  const labelId = `${baseId}-label`;
 
   // Refs for managing focus
   const buttonRefs = useRef<Map<string, HTMLButtonElement>>(new Map());
@@ -100,14 +101,14 @@ export const ButtonRadioField = ({
     <Field data-invalid={!!error}>
       {label && (
         <Field.LabelGroup>
-          <Field.Label htmlFor={inputId}>{label}</Field.Label>
+          <Field.Label id={labelId}>{label}</Field.Label>
           {hint && <Hint content={hint} />}
         </Field.LabelGroup>
       )}
       <ButtonGroup
         aria-invalid={error ? "true" : undefined}
         aria-label={!label ? name : undefined}
-        aria-labelledby={inputId}
+        aria-labelledby={label ? labelId : undefined}
         className={cn("w-full", groupClassName)}
         role="radiogroup"
         {...props}
