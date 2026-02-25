@@ -1,8 +1,6 @@
 import { Hint } from "@/components";
-import { InputError, Label } from "@/forms";
+import { Field } from "@/forms";
 import { Textarea } from "@/forms/inputs";
-import { Flex } from "@/layout";
-import { Text } from "@/typography";
 
 export interface TextareaFieldProps extends React.ComponentProps<"textarea"> {
   name: string;
@@ -16,6 +14,7 @@ export interface TextareaFieldProps extends React.ComponentProps<"textarea"> {
 }
 
 export function TextareaField({
+  id,
   label,
   name,
   note,
@@ -26,30 +25,29 @@ export function TextareaField({
   hint,
   ...props
 }: TextareaFieldProps) {
+  const isInvalid = !!error;
+
   return (
-    <Flex className="w-full" direction="col" gap="2">
-      <Flex align="center" direction="row" gap="1">
-        {label && (
-          <Label className={labelClassName} htmlFor={name}>
+    <Field data-invalid={isInvalid}>
+      {label && (
+        <Field.LabelGroup>
+          <Field.Label className={labelClassName} htmlFor={id || name}>
             {label}
-          </Label>
-        )}
-        {hint && <Hint content={hint} />}
-      </Flex>
+          </Field.Label>
+          {hint && <Hint content={hint} />}
+        </Field.LabelGroup>
+      )}
       <Textarea
+        aria-invalid={isInvalid}
         aria-label={label || name}
         className={className}
-        id={name}
+        id={id || name}
         name={name}
         placeholder={placeholder}
         {...props}
       />
-      {note && (
-        <Text size="sm" variant="muted">
-          {note}
-        </Text>
-      )}
-      {error && <InputError message={error} />}
-    </Flex>
+      {note && <Field.Description>{note}</Field.Description>}
+      {error && <Field.Error>{error}</Field.Error>}
+    </Field>
   );
 }

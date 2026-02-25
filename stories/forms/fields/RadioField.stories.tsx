@@ -65,10 +65,24 @@ export const WithError: Story = {
   },
 };
 
-export const WithCols: Story = {
+export const WithFieldNotes: Story = {
   args: {
     ...defaultProps,
-    cols: "2",
+    label: "Select your favorite Simpson",
+    note: "My cat's breath smells like cat food.",
+  },
+};
+
+export const WithOptionNotes: Story = {
+  args: {
+    ...defaultProps,
+    options: [
+      { value: "homer", label: "Homer", note: "Homer is the father of the Simpson family." },
+      { value: "marge", label: "Marge", note: "Marge is the mother of the Simpson family." },
+      { value: "bart", label: "Bart", note: "Bart is the oldest child of the Simpson family." },
+      { value: "lisa", label: "Lisa", note: "Lisa is the second child of the Simpson family." },
+      { value: "maggie", label: "Maggie", note: "Maggie is the youngest child of the Simpson family." },
+    ],
   },
 };
 

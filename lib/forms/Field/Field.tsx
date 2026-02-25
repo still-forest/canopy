@@ -2,6 +2,20 @@ import type { ComponentProps } from "react";
 import { cn } from "@/utils/cn";
 import "./Field.css";
 
+function FieldSet({ className, ...props }: React.ComponentProps<"fieldset">) {
+  return <fieldset className={cn("field-set", className)} data-slot="field-set" {...props} />;
+}
+
+function FieldLegend({
+  className,
+  variant = "legend",
+  ...props
+}: React.ComponentProps<"legend"> & { variant?: "legend" | "label" }) {
+  return (
+    <legend className={cn("field-legend", className)} data-slot="field-legend" data-variant={variant} {...props} />
+  );
+}
+
 const FieldLabelGroup = ({ children, className, ...props }: ComponentProps<"div">) => {
   return (
     <div className={cn("field-label-group", className)} data-slot="field-label-group" {...props}>
@@ -11,7 +25,7 @@ const FieldLabelGroup = ({ children, className, ...props }: ComponentProps<"div"
 };
 
 interface FieldLabelProps extends ComponentProps<"label"> {
-  htmlFor: string;
+  htmlFor?: string;
 }
 
 const FieldLabel = ({ children, className, htmlFor, ...props }: FieldLabelProps) => {
@@ -83,8 +97,9 @@ const Field = ({ children, className, orientation = "vertical", ...props }: Fiel
 
 Field.Label = FieldLabel;
 Field.LabelGroup = FieldLabelGroup;
+Field.Legend = FieldLegend;
 Field.Title = FieldTitle;
 Field.Content = FieldContent;
 Field.Description = FieldDescription;
 Field.Error = FieldError;
-export { Field };
+export { Field, FieldSet };

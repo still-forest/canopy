@@ -1,9 +1,7 @@
 import type { ChangeEvent, ComponentProps } from "react";
 import { Hint } from "@/components";
-import { InputError, Label } from "@/forms";
+import { Field } from "@/forms";
 import { NativeSelect } from "@/forms/inputs/NativeSelect/NativeSelect";
-import { Flex } from "@/layout";
-import { Text } from "@/typography";
 import { cn } from "@/utils";
 
 export interface NativeSelectFieldOptionGroup {
@@ -45,10 +43,12 @@ const NativeSelectField = ({
   onChange,
   error,
   size = "md",
-  id: idProp,
+  id,
   ...props
 }: NativeSelectFieldProps) => {
-  const id = idProp ?? name;
+  const inputId = id ?? name;
+  const errorId = `${inputId}-error`;
+  const isInvalid = !!error;
 
   const triggerClasses = cn(
     (size === "xs" || size === "sm") && "h-8 text-xs",
@@ -65,22 +65,20 @@ const NativeSelectField = ({
   };
 
   return (
-    <Flex className="w-full" direction="col" gap="2">
-      {(label || hint) && (
-        <Flex align="center" direction="row" gap="1">
-          {label && (
-            <Label className={labelClassName} htmlFor={id}>
-              {label}
-            </Label>
-          )}
+    <Field data-invalid={isInvalid}>
+      {label && (
+        <Field.LabelGroup>
+          <Field.Label className={labelClassName} htmlFor={inputId}>
+            {label}
+          </Field.Label>
           {hint && <Hint content={hint} />}
-        </Flex>
+        </Field.LabelGroup>
       )}
       <NativeSelect
-        aria-describedby={error ? `${id}-error` : undefined}
-        aria-invalid={Boolean(error) || undefined}
+        aria-describedby={error ? errorId : undefined}
+        aria-invalid={isInvalid}
         className={triggerClasses}
-        id={id}
+        id={inputId}
         name={name}
         onChange={handleSelectChange}
         {...(value !== undefined ? { value } : { defaultValue: defaultValue as string | undefined })}
@@ -104,13 +102,9 @@ const NativeSelectField = ({
             </NativeSelect.OptGroup>
           ))}
       </NativeSelect>
-      {note && (
-        <Text size="sm" variant="muted">
-          {note}
-        </Text>
-      )}
-      {error && <InputError id={`${id}-error`} message={error} />}
-    </Flex>
+      {note && <Field.Description>{note}</Field.Description>}
+      {error && <Field.Error id={errorId}>{error}</Field.Error>}
+    </Field>
   );
 };
 

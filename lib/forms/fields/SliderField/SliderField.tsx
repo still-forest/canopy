@@ -1,8 +1,6 @@
 import { Hint } from "@/components";
 import { Slider as BaseSlider } from "@/components/ui/slider";
-import { InputError, Label } from "@/forms";
-import { Flex } from "@/layout";
-import { Text } from "@/typography";
+import { Field } from "@/forms";
 import { cn } from "@/utils";
 
 interface SliderFieldProps extends Omit<React.ComponentProps<typeof BaseSlider>, "value" | "defaultValue"> {
@@ -21,6 +19,7 @@ interface SliderFieldProps extends Omit<React.ComponentProps<typeof BaseSlider>,
 }
 
 export const SliderField = ({
+  id,
   name,
   size = "md",
   label,
@@ -43,31 +42,25 @@ export const SliderField = ({
       : undefined;
   const value = valueProp !== undefined ? (Array.isArray(valueProp) ? valueProp : [valueProp]) : undefined;
 
-  const errorId = error ? `${name}-error` : undefined;
-  const noteId = note ? `${name}-note` : undefined;
-  const describedBy = [noteId, errorId].filter(Boolean).join(" ") || undefined;
+  const inputId = id || name;
+  const isInvalid = !!error;
 
   return (
-    <Flex className="w-full" direction={labelOrientation === "left" ? "row" : "col"} gap="2">
+    <Field data-invalid={isInvalid}>
       {(label || hint) && (
-        <Flex align="center" direction="row" gap="1">
+        <Field.LabelGroup>
           {label && (
-            <Label
-              className={cn(labelOrientation === "left" ? "text-nowrap" : "", labelClassName)}
-              htmlFor={name}
-              size={size}
-            >
+            <Field.Label className={labelClassName} htmlFor={inputId}>
               {label}
-            </Label>
+            </Field.Label>
           )}
           {hint && <Hint content={hint} />}
-        </Flex>
+        </Field.LabelGroup>
       )}
       <BaseSlider
-        aria-describedby={describedBy}
         aria-invalid={error ? true : undefined}
         defaultValue={defaultValue}
-        id={name}
+        id={inputId}
         name={name}
         thumbClassName={cn(
           {
@@ -93,12 +86,8 @@ export const SliderField = ({
         value={value}
         {...props}
       />
-      {note && (
-        <Text id={noteId} size="sm" variant="muted">
-          {note}
-        </Text>
-      )}
-      {error && <InputError id={errorId} message={error} />}
-    </Flex>
+      {note && <Field.Description>{note}</Field.Description>}
+      {error && <Field.Error>{error}</Field.Error>}
+    </Field>
   );
 };

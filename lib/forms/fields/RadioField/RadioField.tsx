@@ -1,22 +1,52 @@
+import { useId } from "react";
 import { Hint } from "@/components";
 import { RadioGroup, RadioGroupItem } from "@/components/ui/radio-group";
-import { InputError, Label } from "@/forms";
-import { Flex, Grid } from "@/layout";
-import type { Gap, GridCols } from "@/types";
+import { Field, FieldSet } from "@/forms";
 import { cn } from "@/utils";
 
 interface Option {
   value: string;
   label: string;
   hint?: string;
+  note?: string;
 }
 
+interface RadioOptionProps {
+  option: Option;
+  isInvalid: boolean;
+  radioSizeClasses?: string;
+  labelClassName?: string;
+  groupId: string;
+}
+
+const RadioOption = ({ option, isInvalid, radioSizeClasses, labelClassName, groupId }: RadioOptionProps) => {
+  const id = `${groupId}-radio-${option.value}`;
+  return (
+    <Field data-invalid={isInvalid} orientation="horizontal">
+      <RadioGroupItem
+        aria-invalid={isInvalid}
+        className={cn("bg-input dark:bg-input border-input-border", radioSizeClasses)}
+        id={id}
+        value={option.value}
+      />
+      <Field.Content>
+        <Field.LabelGroup>
+          <Field.Label className={labelClassName} htmlFor={id}>
+            {option.label}
+          </Field.Label>
+          {option.hint && <Hint content={option.hint} />}
+        </Field.LabelGroup>
+        {option.note && <Field.Description>{option.note}</Field.Description>}
+      </Field.Content>
+    </Field>
+  );
+};
+
 interface RadioFieldProps {
-  cols?: GridCols;
-  gap?: Gap;
   name: string;
   label?: string;
   labelClassName?: string;
+  note?: string;
   value?: string;
   options: Option[];
   onChange?: (value: string) => void;
@@ -25,48 +55,38 @@ interface RadioFieldProps {
 }
 
 export const RadioField = ({
-  cols = "1",
-  gap = "2",
   label,
   name,
   options,
+  note,
   value,
   size = "md",
   onChange,
   error,
   labelClassName,
 }: RadioFieldProps) => {
+  const defaultId = useId();
+  const groupId = name ?? defaultId;
   const radioSizeClasses = size === "lg" ? "size-5" : size === "md" ? "size-4" : "size-3";
+  const isInvalid = !!error;
+
   return (
-    <Flex direction="col" gap="2">
-      {label && (
-        <Label className={labelClassName} htmlFor={name}>
-          {label}
-        </Label>
-      )}
-      <Flex
-        className="flex flex-col gap-4 px-4 py-2 rounded-md border border-input-border bg-input p-2 shadow-xs"
-        gapY="1"
-      >
-        <RadioGroup className="w-full" name={name} onValueChange={onChange} value={value}>
-          <Grid cols={cols} gap={gap}>
-            {options.map((option, i) => (
-              <Flex align="center" gap="2" justify="start" key={i}>
-                <RadioGroupItem
-                  className={cn("bg-input dark:bg-input border-input-border", radioSizeClasses)}
-                  id={option.value}
-                  value={option.value}
-                />
-                <Label className={labelClassName} htmlFor={option.value} size={size}>
-                  {option.label}
-                </Label>
-                {option.hint && <Hint content={option.hint} />}
-              </Flex>
-            ))}
-          </Grid>
-        </RadioGroup>
-        {error && <InputError message={error} />}
-      </Flex>
-    </Flex>
+    <FieldSet data-invalid={isInvalid}>
+      {label && <Field.Legend variant="label">{label}</Field.Legend>}
+      {note && <Field.Description>{note}</Field.Description>}
+      <RadioGroup className="gap-2" name={name} onValueChange={onChange} value={value}>
+        {options.map((option) => (
+          <RadioOption
+            groupId={groupId}
+            isInvalid={isInvalid}
+            key={option.value}
+            labelClassName={labelClassName}
+            option={option}
+            radioSizeClasses={radioSizeClasses}
+          />
+        ))}
+      </RadioGroup>
+      {error && <Field.Error>{error}</Field.Error>}
+    </FieldSet>
   );
 };

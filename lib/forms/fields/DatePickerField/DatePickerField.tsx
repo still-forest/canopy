@@ -1,10 +1,10 @@
 import { Calendar as CalendarIcon } from "lucide-react";
-import { useState } from "react";
+import { useId, useState } from "react";
 import { Button } from "@/buttons";
+import { Hint } from "@/components";
 import { Calendar } from "@/components/ui/calendar";
 import { Popover, PopoverContent, PopoverTrigger } from "@/components/ui/popover";
-import { InputError } from "@/forms";
-import { Flex } from "@/layout";
+import { Field } from "@/forms";
 import type { ButtonSize } from "@/types";
 import { cn } from "@/utils";
 
@@ -13,10 +13,26 @@ interface DatePickerFieldProps {
   initialValue?: Date;
   className?: string;
   size?: ButtonSize;
+  id?: string;
+  name?: string;
+  label?: string;
+  hint?: string;
+  note?: string;
   error?: string;
 }
 
-export const DatePickerField = ({ onDateSelection, initialValue, className, size, error }: DatePickerFieldProps) => {
+export const DatePickerField = ({
+  onDateSelection,
+  initialValue,
+  className,
+  size,
+  error,
+  id,
+  name,
+  label,
+  hint,
+  note,
+}: DatePickerFieldProps) => {
   const [date, setDate] = useState<Date | undefined>(initialValue);
 
   const handleSelect = (date: Date | undefined) => {
@@ -26,17 +42,34 @@ export const DatePickerField = ({ onDateSelection, initialValue, className, size
     }
   };
 
+  const defaultId = useId();
+  const inputId = id ?? name ?? defaultId;
+  const noteId = `${inputId}-note`;
+  const errorId = `${inputId}-error`;
+
+  const describedBy = [note ? noteId : null, error ? errorId : null].filter(Boolean).join(" ") || undefined;
+
+  const isInvalid = !!error;
+
   return (
-    <Flex direction="col" gap="2">
+    <Field data-invalid={isInvalid}>
+      {label && (
+        <Field.LabelGroup>
+          <Field.Label htmlFor={inputId}>{label}</Field.Label>
+          {hint && <Hint content={hint} />}
+        </Field.LabelGroup>
+      )}
       <Popover>
         <PopoverTrigger
           render={
             <Button
+              aria-describedby={describedBy}
               className={cn(
                 "w-[280px] justify-start text-left font-normal bg-background",
                 !date && "text-muted-foreground",
                 className,
               )}
+              id={inputId}
               outline
               size={size}
             >
@@ -49,7 +82,8 @@ export const DatePickerField = ({ onDateSelection, initialValue, className, size
           <Calendar autoFocus mode="single" onSelect={handleSelect} selected={date} />
         </PopoverContent>
       </Popover>
-      {error && <InputError message={error} />}
-    </Flex>
+      {note && <Field.Description id={noteId}>{note}</Field.Description>}
+      {error && <Field.Error id={errorId}>{error}</Field.Error>}
+    </Field>
   );
 };

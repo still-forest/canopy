@@ -64,3 +64,29 @@ export const VerticalSizes: Story = {
     </Flex>
   ),
 };
+
+export const WithLabel: Story = {
+  args: { ...defaultProps, label: "Volume", defaultValue: 20 },
+};
+
+export const WithNotes: Story = {
+  args: { ...defaultProps, note: "My cat's breath smells like cat food.", defaultValue: 20 },
+};
+
+export const WithHint: Story = {
+  args: { ...defaultProps, label: "Some value:", hint: "My cat's breath smells like cat food.", defaultValue: 20 },
+};
+
+export const WithError: Story = {
+  args: { ...defaultProps, error: "What'd you do?!", defaultValue: 20 },
+};
+
+export const WithEverything: Story = {
+  args: {
+    ...defaultProps,
+    error: "What'd you do?!",
+    label: "Some value:",
+    note: "My cat's breath smells like cat food.",
+    defaultValue: 20,
+  },
+};
