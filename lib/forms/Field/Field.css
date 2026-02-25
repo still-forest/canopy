@@ -91,7 +91,7 @@
   }
 
   .field-error {
-    @apply text-destructive text-sm font-normal;
+    @apply text-danger text-sm font-normal;
   }
 
   .field-content {
