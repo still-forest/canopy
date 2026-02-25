@@ -96,7 +96,7 @@
     }
 
     &.btn--outline {
-      @apply border bg-transparent! dark:border-input;
+      @apply border bg-transparent!;
 
       &:hover,
       &[aria-pressed="true"] {
@@ -189,6 +189,10 @@
     &:hover,
     &[aria-pressed="true"] {
       @apply bg-accent text-accent-foreground dark:bg-accent/50;
+    }
+
+    &.btn--outline {
+      @apply border-input-border;
     }
   }
 
