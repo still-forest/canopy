@@ -9,7 +9,7 @@ export interface HintProps {
 
 export const Hint = ({ content, className }: HintProps) => {
   return (
-    <SimpleTooltip content={content}>
+    <SimpleTooltip content={content} cursor="arrow">
       <CircleQuestionMark className={cn("size-4 text-muted-foreground stroke-1", className)} />
     </SimpleTooltip>
   );
