@@ -113,7 +113,7 @@
     }
 
     &.btn--outline {
-      @apply bg-transparent border-primary/80 text-primary;
+      @apply bg-background border-primary/80 text-primary;
 
       &:hover,
       &[aria-pressed="true"] {
@@ -140,7 +140,7 @@
     }
 
     &.btn--outline {
-      @apply bg-transparent border-secondary/80 text-secondary-foreground;
+      @apply bg-background border-secondary/80 text-secondary-foreground;
 
       &:hover,
       &[aria-pressed="true"] {
@@ -171,7 +171,7 @@
     }
 
     &.btn--outline {
-      @apply bg-transparent border-muted/80 text-muted-foreground;
+      @apply bg-background border-muted/80 text-muted-foreground;
 
       &:hover,
       &[aria-pressed="true"] {
@@ -222,7 +222,7 @@
     }
 
     &.btn--outline {
-      @apply bg-transparent border-info/80 text-info;
+      @apply bg-background border-info/80 text-info;
 
       &:hover,
       &[aria-pressed="true"] {
@@ -253,7 +253,7 @@
     }
 
     &.btn--outline {
-      @apply bg-transparent border-success/80 text-success;
+      @apply bg-background border-success/80 text-success;
 
       &:hover,
       &[aria-pressed="true"] {
@@ -284,7 +284,7 @@
     }
 
     &.btn--outline {
-      @apply bg-transparent border-warning/80 text-warning;
+      @apply bg-background border-warning/80 text-warning;
 
       &:hover,
       &[aria-pressed="true"] {
@@ -315,7 +315,7 @@
     }
 
     &.btn--outline {
-      @apply bg-transparent border-danger/80 text-danger;
+      @apply bg-background border-danger/80 text-danger;
 
       &:hover,
       &[aria-pressed="true"] {
