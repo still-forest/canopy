@@ -1,6 +1,6 @@
 import { Hint } from "@/components";
-import { Textarea as BaseTextarea } from "@/components/ui/textarea";
 import { InputError, Label } from "@/forms";
+import { Textarea } from "@/forms/inputs";
 import { Flex } from "@/layout";
 import { Text } from "@/typography";
 
@@ -36,7 +36,7 @@ export function TextareaField({
         )}
         {hint && <Hint content={hint} />}
       </Flex>
-      <BaseTextarea
+      <Textarea
         aria-label={label || name}
         className={className}
         id={name}

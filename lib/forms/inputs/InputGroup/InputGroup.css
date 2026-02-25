@@ -3,7 +3,8 @@
 
 @layer components {
   .input-group {
-    @apply border-input relative flex h-9 w-full min-w-0 items-center rounded-md border outline-none transition-colors;
+    @apply relative flex h-9 w-full min-w-0 items-center rounded-md outline-none transition-colors;
+    @apply border border-input-border bg-input dark:bg-input;
 
     &:has([data-slot="input-group-control"]:focus-visible) {
       @apply border-ring ring-[3px] ring-ring/50;
@@ -47,8 +48,6 @@
     }
 
     :is(.dark) & {
-      @apply bg-input/30;
-
       &:has([data-slot][aria-invalid="true"]) {
         @apply ring-destructive/40;
       }

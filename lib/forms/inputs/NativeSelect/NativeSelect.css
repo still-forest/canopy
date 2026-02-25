@@ -1,0 +1,42 @@
+@import "@/styles/layers.css";
+@reference "@/styles/tokens.css";
+
+@layer components {
+  .native-select-wrapper {
+    @apply relative w-fit;
+
+    &:has(select:disabled) {
+      @apply opacity-50;
+    }
+  }
+
+  .native-select {
+    @apply h-9 w-full min-w-0 appearance-none rounded-md px-3 py-2 pr-9 text-sm shadow-xs transition-[color,box-shadow] outline-none;
+    @apply border border-input-border bg-input;
+    @apply placeholder:text-muted-foreground selection:bg-primary selection:text-primary-foreground;
+
+    :is(.dark) & {
+      @apply hover:bg-input/80;
+    }
+
+    &:focus-visible {
+      @apply border-ring ring-ring/50 ring-[3px];
+    }
+
+    &[aria-invalid="true"] {
+      @apply border-destructive ring-destructive/20;
+    }
+
+    :is(.dark) &[aria-invalid="true"] {
+      @apply ring-destructive/40 border-destructive;
+    }
+
+    &:disabled {
+      @apply pointer-events-none cursor-not-allowed;
+    }
+  }
+
+  .native-select-icon {
+    @apply text-muted-foreground pointer-events-none absolute top-1/2 right-3.5 size-4 -translate-y-1/2 opacity-50 select-none;
+  }
+}

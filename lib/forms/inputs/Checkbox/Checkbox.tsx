@@ -3,13 +3,13 @@ import "./Checkbox.css";
 import { cn } from "@/utils/cn";
 
 export interface CheckboxProps extends Omit<ComponentProps<"input">, "onChange"> {
-  onCheckedChange: (checked: boolean) => void;
+  onCheckedChange?: (checked: boolean) => void;
 }
 
 export const Checkbox = ({ children, className, onCheckedChange, name, id, ...props }: CheckboxProps) => {
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     e.stopPropagation();
-    onCheckedChange(e.target.checked);
+    onCheckedChange?.(e.target.checked);
   };
 
   const handleClick = (e: React.MouseEvent<HTMLInputElement>) => {

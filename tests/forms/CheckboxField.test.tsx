@@ -10,27 +10,24 @@ describe("CheckboxField", () => {
   test("renders a CheckboxField", async () => {
     render(<CheckboxField checked={false} label="Test CheckboxField" name="test-checkbox" />);
 
-    const checkbox = screen.getByRole("checkbox");
+    const checkbox = screen.getByRole("checkbox") as HTMLInputElement;
 
-    expect(checkbox).toHaveAttribute("aria-checked", "false");
-    expect(checkbox).toHaveAttribute("data-unchecked", "");
+    expect(checkbox.checked).toBe(false);
     expect(checkbox).not.toBeDisabled();
 
     const label = screen.getByText("Test CheckboxField");
     expect(label).toHaveAttribute("for", "test-checkbox");
 
     fireEvent.click(checkbox);
-    expect(checkbox).toHaveAttribute("aria-checked", "true");
-    expect(checkbox).toHaveAttribute("data-checked", "");
+    expect(checkbox.checked).toBe(true);
   });
 
   test("renders a CheckboxField with value", async () => {
     render(<CheckboxField checked={false} label="Test CheckboxField" name="test-checkbox" value="abc1" />);
 
-    const checkbox = screen.getByRole("checkbox");
+    const checkbox = screen.getByRole("checkbox") as HTMLInputElement;
 
-    expect(checkbox).toHaveAttribute("aria-checked", "false");
-    expect(checkbox).toHaveAttribute("data-unchecked", "");
+    expect(checkbox.checked).toBe(false);
     expect(checkbox).not.toBeDisabled();
 
     const label = screen.getByText("Test CheckboxField");
@@ -42,15 +39,13 @@ describe("CheckboxField", () => {
       <CheckboxField checked={false} label="Test CheckboxField" name="test-checkbox" onCheckedChange={handleClick} />,
     );
 
-    const checkbox = screen.getByRole("checkbox");
+    const checkbox = screen.getByRole("checkbox") as HTMLInputElement;
 
-    expect(checkbox).toHaveAttribute("aria-checked", "false");
-    expect(checkbox).toHaveAttribute("data-unchecked", "");
+    expect(checkbox.checked).toBe(false);
     expect(checkbox).not.toBeDisabled();
 
     fireEvent.click(checkbox);
-    expect(checkbox).toHaveAttribute("aria-checked", "true");
-    expect(checkbox).toHaveAttribute("data-checked", "");
+    expect(checkbox.checked).toBe(true);
     expect(handleClick).toHaveBeenCalledWith(true);
   });
 });
