@@ -1,0 +1,74 @@
+@import "@/styles/layers.css";
+@reference "@/styles/tokens.css";
+
+@layer components {
+  .multi-select-trigger {
+    @apply border-input-border gap-1.5 rounded-md border bg-transparent py-2 pr-2 pl-2.5 shadow-xs transition-[color,box-shadow] outline-none;
+    @apply flex w-full items-center justify-between whitespace-nowrap;
+    @apply [&_svg:not([class*='size-'])]:size-4 [&_svg]:pointer-events-none [&_svg]:shrink-0;
+
+    &:focus-visible {
+      @apply border-ring ring-ring/50 ring-[3px];
+    }
+
+    &:disabled {
+      @apply cursor-not-allowed opacity-50;
+    }
+
+    :is(.dark) & {
+      @apply bg-input/30 hover:bg-input/50;
+    }
+
+    &[data-placeholder] {
+      @apply text-muted-foreground;
+    }
+
+    &.multi-select-trigger--sm {
+      @apply h-8 text-sm md:text-xs;
+    }
+
+    &.multi-select-trigger--default {
+      @apply h-9 text-base md:text-sm;
+    }
+
+    &.multi-select-trigger--lg {
+      @apply h-10 text-lg md:text-base;
+    }
+
+    &.multi-select-trigger--filtered {
+      @apply border-primary;
+    }
+  }
+
+  .multi-select-label {
+    @apply flex-1 text-left truncate text-muted-foreground;
+
+    &.multi-select-label--filtered {
+      @apply text-foreground;
+    }
+  }
+
+  .multi-select-chevron {
+    @apply text-muted-foreground size-4;
+  }
+
+  .multi-select-content {
+    @apply w-full md:w-84 p-2!;
+  }
+
+  .multi-select-options {
+    @apply max-h-84 overflow-y-auto;
+  }
+
+  .multi-select-option-label {
+    @apply font-body text-sm truncate;
+  }
+
+  .multi-select-only-btn {
+    @apply h-4! opacity-0 group-hover:opacity-100;
+  }
+
+  .multi-select-group-label {
+    @apply font-body text-muted-foreground text-xs;
+  }
+}

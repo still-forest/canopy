@@ -9,16 +9,7 @@ import {
   SelectValue,
 } from "@/components/ui/select";
 import { cn } from "@/utils/cn";
-
-export interface SelectOptionGroup {
-  label: string | null;
-  options: SelectOption[];
-}
-
-export interface SelectOption {
-  label: string;
-  value: string;
-}
+import type { SelectOption, SelectOptionGroup } from "../types";
 
 export interface SelectInputProps
   extends Omit<React.ComponentProps<typeof Select>, "onValueChange" | "onChange" | "error" | "label"> {

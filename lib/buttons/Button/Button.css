@@ -46,7 +46,7 @@
     }
 
     &.btn--xs {
-      @apply gap-1 h-6 px-2 text-xs;
+      @apply gap-1 h-6 px-2 text-xs rounded-xs;
 
       &.btn--icon {
         @apply size-6 p-1!;
