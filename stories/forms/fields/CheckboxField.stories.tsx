@@ -1,7 +1,7 @@
 import type { Meta, StoryObj } from "@storybook/react-vite";
 
-import { CheckboxField, type CheckboxFieldProps } from "@/forms";
-import { Box, Flex } from "@/layout";
+import { CheckboxField, type CheckboxFieldProps, FieldGroup } from "@/forms";
+import { Flex } from "@/layout";
 
 const meta: Meta<typeof CheckboxField> = {
   title: "Forms/Fields/CheckboxField",
@@ -73,7 +73,7 @@ export const WithEverything: Story = {
 
 export const AsList: Story = {
   render: () => (
-    <Box>
+    <FieldGroup>
       <CheckboxField checked={false} label="Thing 1" name="something" value="thing-1" />
       <CheckboxField checked={false} label="Thing 2" name="something" value="thing-2" />
       <CheckboxField
@@ -91,7 +91,7 @@ export const AsList: Story = {
         name="something"
         value="thing-5"
       />
-    </Box>
+    </FieldGroup>
   ),
 };
 
