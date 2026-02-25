@@ -40,6 +40,7 @@ export const WithEverything: Story = {
     ...defaultProps,
     label: "Some date:",
     note: "The world will end on or about this date.",
+    error: "What'd you do?!",
   },
 };
 
