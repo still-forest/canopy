@@ -45,7 +45,7 @@ export const RadioField = ({
         </Label>
       )}
       <Flex
-        className="flex flex-col gap-4 px-4 py-2 rounded-md border border-input bg-background p-2 shadow-xs"
+        className="flex flex-col gap-4 px-4 py-2 rounded-md border border-input-border bg-input p-2 shadow-xs"
         gapY="1"
       >
         <RadioGroup className="w-full" name={name} onValueChange={onChange} value={value}>
