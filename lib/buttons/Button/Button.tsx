@@ -21,13 +21,13 @@ export const Button = ({
   ...props
 }: ButtonProps) => {
   if (label && children) {
-    throw new Error("Both label and children should not be provided");
+    console.warn("[Button] Only one of label and children is expected, but both were provided");
   }
   if (!label && !children && !icon) {
-    throw new Error("Either label or children or icon must be provided");
+    console.warn("[Button] One of label, children, or icon is expected, but none were provided");
   }
   if (asIcon && !icon) {
-    throw new Error("icon is required when asIcon is true");
+    console.warn("[Button] An icon is expected when asIcon is true, but none was provided");
   }
   return (
     <button
