@@ -6,3 +6,4 @@ export * from "./NativeSelect";
 export * from "./SelectInput";
 export * from "./SelectPicker";
 export * from "./Textarea";
+export * from "./types";

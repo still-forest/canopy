@@ -6,13 +6,8 @@ import { Separator } from "@/components/ui/separator";
 import { Checkbox } from "@/forms/inputs";
 import { Flex } from "@/layout";
 import { cn } from "@/utils/cn";
-import type { SelectOption } from "../types";
+import type { SelectOption, SelectOptionGroup } from "../types";
 import "./MultiSelectInput.css";
-
-export interface SelectOptionGroup {
-  label: string | null;
-  options: SelectOption[];
-}
 
 interface MultiSelectInputProps {
   options: SelectOptionGroup[] | SelectOption[];
