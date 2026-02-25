@@ -9,15 +9,11 @@ import {
   SelectValue,
 } from "@/components/ui/select";
 import { cn } from "@/utils/cn";
+import type { SelectOption } from "../types";
 
 export interface SelectOptionGroup {
   label: string | null;
   options: SelectOption[];
-}
-
-export interface SelectOption {
-  label: string;
-  value: string;
 }
 
 export interface SelectInputProps
