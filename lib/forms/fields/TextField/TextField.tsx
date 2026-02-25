@@ -26,15 +26,26 @@ const TextField = ({
   error,
   ...props
 }: TextFieldProps) => {
+  const isInvalid = !!error;
   return (
-    <Field>
+    <Field data-invalid={isInvalid}>
       {label && (
-        <Field.Label className={labelClassName} htmlFor={id || name}>
-          {label}
+        <Field.LabelGroup>
+          <Field.Label className={labelClassName} htmlFor={id || name}>
+            {label}
+          </Field.Label>
           {hint && <Hint content={hint} />}
-        </Field.Label>
+        </Field.LabelGroup>
       )}
-      <Input aria-label={label || name} id={id || name} name={name} size={size} type={type} {...props} />
+      <Input
+        aria-invalid={isInvalid}
+        aria-label={label || name}
+        id={id || name}
+        name={name}
+        size={size}
+        type={type}
+        {...props}
+      />
       {note && <Field.Description>{note}</Field.Description>}
       {error && <Field.Error>{error}</Field.Error>}
     </Field>

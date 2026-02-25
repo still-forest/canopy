@@ -34,6 +34,12 @@
         }
       }
     }
+
+    &[data-invalid="true"] {
+      .field-label {
+        @apply text-danger;
+      }
+    }
   }
 
   .field-group {
