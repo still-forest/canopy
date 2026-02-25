@@ -67,14 +67,7 @@ export const WithEverything: Story = {
     label: "Some value:",
     hint: "My cat's breath smells like cat food",
     note: "Sorry, buddy. You got me confused with Fred Flintstone.",
-  },
-};
-
-export const WithLeftLabelOrientation: Story = {
-  args: {
-    ...defaultProps,
-    label: "Some value:",
-    labelOrientation: "left",
+    error: "What'd you do?!",
   },
 };
 

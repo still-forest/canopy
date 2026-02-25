@@ -22,17 +22,6 @@ describe("TextField", () => {
     expect(input.tagName).toBe("INPUT");
   });
 
-  it("renders with left-oriented label", () => {
-    render(<TextField label="Some thing" labelOrientation="left" name="some_input" />);
-
-    const label = screen.getByText("Some thing");
-    expect(label.tagName).toBe("LABEL");
-    expect(label.className).toContain("text-nowrap");
-
-    const input = screen.getByLabelText("Some thing");
-    expect(input.tagName).toBe("INPUT");
-  });
-
   it("renders with placeholder", () => {
     render(<TextField name="some_input" placeholder="Type here" />);
 
@@ -54,7 +43,7 @@ describe("TextField", () => {
     render(<TextField error="What'd you do?" name="some_input" />);
 
     const error = screen.getByText("What'd you do?");
-    expect(error.tagName).toBe("P");
+    expect(error.tagName).toBe("DIV");
 
     const input = screen.getByRole("textbox", { name: "some_input" }) as HTMLInputElement;
     expect(input.tagName).toBe("INPUT");

@@ -40,14 +40,7 @@ export const WithEverything: Story = {
     ...defaultProps,
     label: "Some date:",
     note: "The world will end on or about this date.",
-  },
-};
-
-export const WithLeftLabelOrientation: Story = {
-  args: {
-    ...defaultProps,
-    label: "Some date:",
-    labelOrientation: "left",
+    error: "What'd you do?!",
   },
 };
 

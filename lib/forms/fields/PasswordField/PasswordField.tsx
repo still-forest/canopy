@@ -1,42 +1,41 @@
 import { Eye, EyeOff } from "lucide-react";
 import { type ComponentProps, useState } from "react";
-import { InputGroup } from "@/forms/inputs";
-import { Flex, InputError, Label, Text } from "@/main";
+import { Field, InputGroup } from "@/forms";
 
-interface PasswordFieldProps extends Omit<ComponentProps<"input">, "type" | "size"> {
+interface PasswordFieldProps extends Omit<ComponentProps<typeof InputGroup.Input>, "type" | "size"> {
   name: string;
   size?: "xs" | "sm" | "md" | "lg" | "xl";
   label?: string;
-  labelOrientation?: "top" | "left";
+  labelClassName?: string;
   note?: string;
   error?: string;
 }
 
-export const PasswordField = ({
-  name,
-  size = "md",
-  label,
-  labelOrientation = "top",
-  note,
-  error,
-  id,
-  ...props
-}: PasswordFieldProps) => {
+export const PasswordField = ({ id, name, label, labelClassName, note, error, ...props }: PasswordFieldProps) => {
   const [showPassword, setShowPassword] = useState(false);
 
   const togglePassword = () => {
     setShowPassword(!showPassword);
   };
 
+  const isInvalid = !!error;
+
   return (
-    <Flex className="w-full" direction={labelOrientation === "left" ? "row" : "col"} gap="2">
+    <Field data-invalid={isInvalid}>
       {label && (
-        <Label className={labelOrientation === "left" ? "text-nowrap" : ""} htmlFor={id || name} size={size}>
+        <Field.Label className={labelClassName} htmlFor={id || name}>
           {label}
-        </Label>
+        </Field.Label>
       )}
       <InputGroup>
-        <InputGroup.Input type={showPassword ? "text" : "password"} {...props} id={id || name} name={name} />
+        <InputGroup.Input
+          aria-invalid={isInvalid}
+          aria-label={label || name}
+          id={id || name}
+          name={name}
+          type={showPassword ? "text" : "password"}
+          {...props}
+        />
         <InputGroup.Addon align="inline-end">
           <InputGroup.Button
             aria-label={showPassword ? "Hide password" : "Show password"}
@@ -48,12 +47,8 @@ export const PasswordField = ({
           />
         </InputGroup.Addon>
       </InputGroup>
-      {note && (
-        <Text size="sm" variant="muted">
-          {note}
-        </Text>
-      )}
-      {error && <InputError message={error} />}
-    </Flex>
+      {note && <Field.Description>{note}</Field.Description>}
+      {error && <Field.Error>{error}</Field.Error>}
+    </Field>
   );
 };

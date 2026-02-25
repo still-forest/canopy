@@ -1,14 +1,11 @@
 import { Hint } from "@/components";
-import { InputError, Label } from "@/forms";
+import { Field } from "@/forms";
 import { Input, type InputProps } from "@/forms/inputs";
-import { Flex } from "@/layout";
-import { Text } from "@/typography";
-import { cn } from "@/utils";
 
 export interface TextFieldProps extends InputProps {
+  name: string;
   label?: string;
   labelClassName?: string;
-  labelOrientation?: "top" | "left";
   hint?: string;
   note?: string;
   className?: string;
@@ -21,37 +18,35 @@ const TextField = ({
   type = "text",
   label,
   labelClassName,
-  labelOrientation = "top",
   hint,
   note,
   size = "md",
   error,
   ...props
 }: TextFieldProps) => {
+  const isInvalid = !!error;
   return (
-    <Flex className="w-full" direction={labelOrientation === "left" ? "row" : "col"} gap="2">
-      {(label || hint) && (
-        <Flex align="center" direction="row" gap="1">
-          {label && (
-            <Label
-              className={cn(labelOrientation === "left" ? "text-nowrap" : "", labelClassName)}
-              htmlFor={id || name}
-              size={size}
-            >
-              {label}
-            </Label>
-          )}
+    <Field data-invalid={isInvalid}>
+      {label && (
+        <Field.LabelGroup>
+          <Field.Label className={labelClassName} htmlFor={id || name}>
+            {label}
+          </Field.Label>
           {hint && <Hint content={hint} />}
-        </Flex>
+        </Field.LabelGroup>
       )}
-      <Input aria-label={label || name} id={id || name} name={name} size={size} type={type} {...props} />
-      {note && (
-        <Text size="sm" variant="muted">
-          {note}
-        </Text>
-      )}
-      {error && <InputError message={error} />}
-    </Flex>
+      <Input
+        aria-invalid={isInvalid}
+        aria-label={label || name}
+        id={id || name}
+        name={name}
+        size={size}
+        type={type}
+        {...props}
+      />
+      {note && <Field.Description>{note}</Field.Description>}
+      {error && <Field.Error>{error}</Field.Error>}
+    </Field>
   );
 };
 
