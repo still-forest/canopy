@@ -1,51 +1,16 @@
-import { type ComponentProps, type KeyboardEvent, type ReactElement, useId, useRef, useState } from "react";
-import { Button, ButtonGroup, type ButtonGroupProps } from "@/buttons";
+import { useId } from "react";
 import { Hint } from "@/components";
-import type { SelectPickerOption } from "@/forms";
-import { DesktopSelectPicker, Field, GroupedOptionList } from "@/forms";
-import { cn } from "@/utils";
+import { Field } from "@/forms";
+import { ButtonRadioInput, type ButtonRadioInputProps } from "@/forms/inputs/ButtonRadioInput";
 
-interface Option {
-  label?: string;
-  value: string;
-  icon?: ReactElement<ComponentProps<"svg">>;
-}
-
-interface ButtonRadioFieldProps extends Omit<ButtonGroupProps, "children" | "onChange"> {
-  name?: string;
+interface ButtonRadioFieldProps extends ButtonRadioInputProps {
   label?: string;
   hint?: string;
   error?: string;
   note?: string;
-  options: Option[];
-  secondaryOptions?: SelectPickerOption[];
-  value: string | undefined;
-  onChange: (value: string) => void;
-  buttonClassName?: string;
-  secondaryButtonClassName?: string;
 }
 
-export const ButtonRadioField = ({
-  id,
-  name,
-  label,
-  hint,
-  options,
-  error,
-  note,
-  secondaryOptions,
-  value,
-  onChange,
-  buttonClassName,
-  secondaryButtonClassName,
-  className: groupClassName,
-  ...props
-}: ButtonRadioFieldProps) => {
-  const [open, setOpen] = useState(false);
-  const hasSecondaryOptions = secondaryOptions && secondaryOptions.length > 0;
-  const selectedSecondaryOption = secondaryOptions?.find((option) => option.value === value);
-  const secondaryLabel = selectedSecondaryOption?.label || "More options...";
-
+export const ButtonRadioField = ({ id, name, label, hint, error, note, ...inputProps }: ButtonRadioFieldProps) => {
   const defaultId = useId();
   const baseId = id ?? defaultId;
   const labelId = `${baseId}-label`;
@@ -53,53 +18,6 @@ export const ButtonRadioField = ({
   const errorId = `${baseId}-error`;
 
   const describedBy = [note ? noteId : null, error ? errorId : null].filter(Boolean).join(" ") || undefined;
-
-  // Refs for managing focus
-  const buttonRefs = useRef<Map<string, HTMLButtonElement>>(new Map());
-
-  // All available options (primary + secondary)
-  const allOptions: Array<Option | SelectPickerOption> = [...options, ...(secondaryOptions || [])];
-
-  const handleKeyDown = (e: KeyboardEvent<HTMLButtonElement>, currentValue: string) => {
-    const currentIndex = allOptions.findIndex((opt) => opt.value === currentValue);
-    let newIndex = currentIndex;
-
-    switch (e.key) {
-      case "ArrowRight":
-      case "ArrowDown":
-        e.preventDefault();
-        newIndex = (currentIndex + 1) % allOptions.length;
-        break;
-      case "ArrowLeft":
-      case "ArrowUp":
-        e.preventDefault();
-        newIndex = currentIndex <= 0 ? allOptions.length - 1 : currentIndex - 1;
-        break;
-      case "Home":
-        e.preventDefault();
-        newIndex = 0;
-        break;
-      case "End":
-        e.preventDefault();
-        newIndex = allOptions.length - 1;
-        break;
-      case " ":
-      case "Enter":
-        e.preventDefault();
-        onChange(currentValue);
-        return;
-      default:
-        return;
-    }
-
-    // Focus and select the new option
-    const newOption = allOptions[newIndex];
-    const buttonRef = buttonRefs.current.get(newOption.value);
-    if (buttonRef) {
-      buttonRef.focus();
-      onChange(newOption.value);
-    }
-  };
 
   return (
     <Field data-invalid={!!error}>
@@ -109,89 +27,14 @@ export const ButtonRadioField = ({
           {hint && <Hint content={hint} />}
         </Field.LabelGroup>
       )}
-      <ButtonGroup
+      <ButtonRadioInput
         aria-describedby={describedBy}
         aria-invalid={error ? "true" : undefined}
         aria-label={!label ? name : undefined}
         aria-labelledby={label ? labelId : undefined}
-        className={cn("w-full", groupClassName)}
-        role="radiogroup"
-        {...props}
-      >
-        {options.map((option, index) => {
-          const isSelected = option.value === value;
-          // If nothing is selected, make the first option tabbable
-          const isFirstOption = index === 0;
-          const shouldBeInTabOrder = isSelected || (!value && isFirstOption);
-
-          return (
-            <Button
-              aria-checked={isSelected}
-              aria-label={option.label ? undefined : option.value}
-              className={cn("grow", buttonClassName)}
-              icon={option.icon}
-              key={option.value}
-              label={option.label}
-              onClick={() => onChange(option.value)}
-              onKeyDown={(e) => handleKeyDown(e, option.value)}
-              outline={!isSelected}
-              ref={(el) => {
-                if (el) {
-                  buttonRefs.current.set(option.value, el);
-                } else {
-                  buttonRefs.current.delete(option.value);
-                }
-              }}
-              role="radio"
-              tabIndex={shouldBeInTabOrder ? 0 : -1}
-            />
-          );
-        })}
-        {hasSecondaryOptions && (
-          <DesktopSelectPicker
-            dropdownClassName={cn("w-[150px]", secondaryButtonClassName)}
-            id={name}
-            open={open}
-            selectedLabel={secondaryLabel}
-            setOpen={setOpen}
-            triggerClassName={cn(
-              "w-[150px] font-normal",
-              selectedSecondaryOption && "font-medium",
-              secondaryButtonClassName,
-            )}
-            triggerProps={{
-              "aria-checked": !!selectedSecondaryOption,
-              "aria-label": secondaryLabel,
-              role: "radio",
-              variant: "primary",
-              outline: !selectedSecondaryOption,
-              tabIndex: selectedSecondaryOption ? 0 : -1,
-              onKeyDown: (e: KeyboardEvent<HTMLButtonElement>) => {
-                // Use the selected secondary value if available, otherwise first secondary option
-                const currentValue = selectedSecondaryOption?.value || secondaryOptions?.[0]?.value;
-                if (currentValue) {
-                  handleKeyDown(e, currentValue);
-                }
-              },
-              ref: (el: HTMLButtonElement | null) => {
-                if (el && secondaryOptions) {
-                  for (const option of secondaryOptions) {
-                    buttonRefs.current.set(option.value, el);
-                  }
-                }
-              },
-            }}
-          >
-            <GroupedOptionList
-              noSearch
-              onSelect={(value) => onChange(value)}
-              optionGroups={[{ options: secondaryOptions }]}
-              placeholder="More options..."
-              selectedValue={value}
-            />
-          </DesktopSelectPicker>
-        )}
-      </ButtonGroup>
+        name={name}
+        {...inputProps}
+      />
       {note && <Field.Description id={noteId}>{note}</Field.Description>}
       {error && <Field.Error id={errorId}>{error}</Field.Error>}
     </Field>

@@ -2,41 +2,35 @@ import { DEFAULT_DECORATOR_WITH_MIN_WIDTH_MD } from "@stories/support/decorators
 import type { Meta, StoryObj } from "@storybook/react-vite";
 import { Heart, Home, Settings, Star, User } from "lucide-react";
 import { useState } from "react";
-import { ButtonRadioField } from "@/forms";
+import { ButtonRadioInput } from "@/forms";
 import { Flex } from "@/layout";
 import { Text } from "@/typography";
 
-const meta: Meta<typeof ButtonRadioField> = {
-  title: "Forms/Fields/ButtonRadioField",
+const meta: Meta<typeof ButtonRadioInput> = {
+  title: "Forms/Inputs/ButtonRadioInput",
   decorators: [DEFAULT_DECORATOR_WITH_MIN_WIDTH_MD],
-  component: ButtonRadioField,
+  component: ButtonRadioInput,
   tags: ["autodocs"],
-} satisfies Meta<typeof ButtonRadioField>;
+} satisfies Meta<typeof ButtonRadioInput>;
 
 export default meta;
 
 type Story = StoryObj<typeof meta>;
 
-const onChange = (value: string) => console.log(`Selected option: ${value}`);
-
-const defaultProps = {
-  name: "someThing",
-  options: [
-    { value: "homer", label: "Homer" },
-    { value: "marge", label: "Marge" },
-    { value: "bart", label: "Bart" },
-    { value: "lisa", label: "Lisa" },
-    { value: "maggie", label: "Maggie" },
-  ],
-  onChange,
-};
+const defaultOptions = [
+  { value: "homer", label: "Homer" },
+  { value: "marge", label: "Marge" },
+  { value: "bart", label: "Bart" },
+  { value: "lisa", label: "Lisa" },
+  { value: "maggie", label: "Maggie" },
+];
 
 export const Default: Story = {
   render: () => {
     const [value, setValue] = useState<string | undefined>(undefined);
     return (
       <Flex direction="col" gap="4">
-        <ButtonRadioField {...defaultProps} onChange={setValue} value={value} />
+        <ButtonRadioInput aria-label="Select a character" onChange={setValue} options={defaultOptions} value={value} />
         <Text className="italic" variant="muted">
           Selected value: {value || "none"}
         </Text>
@@ -56,75 +50,20 @@ export const WithSecondaryOptions: Story = {
       { value: "selma", label: "Selma" },
     ];
 
-    const handleChange = (value: string) => {
-      setValue(value);
-      onChange(value);
-    };
-
     return (
       <Flex direction="col" gap="4">
-        <ButtonRadioField {...defaultProps} onChange={handleChange} secondaryOptions={secondaryOptions} value={value} />
+        <ButtonRadioInput
+          aria-label="Select a character"
+          onChange={setValue}
+          options={defaultOptions}
+          secondaryOptions={secondaryOptions}
+          value={value}
+        />
         <Text className="italic" variant="muted">
           Selected value: {value || "none"}
         </Text>
       </Flex>
     );
-  },
-};
-
-export const WithLabelAndNote: Story = {
-  render: () => {
-    const [value, setValue] = useState<string | undefined>(undefined);
-    const secondaryOptions = [
-      { value: "abraham", label: "Abraham" },
-      { value: "herbert", label: "Herbert" },
-      { value: "jacqueline", label: "Jacqueline" },
-      { value: "patty", label: "Patty" },
-      { value: "selma", label: "Selma" },
-    ];
-
-    const handleChange = (value: string) => {
-      setValue(value);
-      onChange(value);
-    };
-
-    const props = {
-      ...defaultProps,
-      label: "Select a character:",
-      hint: "This is a hint",
-      note: "My cat's breath smells like cat food.",
-      error: value ? `You picked ${value}, which is incorrect.` : undefined,
-    };
-
-    return <ButtonRadioField {...props} onChange={handleChange} secondaryOptions={secondaryOptions} value={value} />;
-  },
-};
-
-export const WithEverything: Story = {
-  render: () => {
-    const [value, setValue] = useState<string | undefined>(undefined);
-    const secondaryOptions = [
-      { value: "abraham", label: "Abraham" },
-      { value: "herbert", label: "Herbert" },
-      { value: "jacqueline", label: "Jacqueline" },
-      { value: "patty", label: "Patty" },
-      { value: "selma", label: "Selma" },
-    ];
-
-    const handleChange = (value: string) => {
-      setValue(value);
-      onChange(value);
-    };
-
-    const props = {
-      ...defaultProps,
-      label: "Select a character:",
-      hint: "This is a hint",
-      note: "My cat's breath smells like cat food.",
-      error: "What'd you do?!",
-    };
-
-    return <ButtonRadioField {...props} onChange={handleChange} secondaryOptions={secondaryOptions} value={value} />;
   },
 };
 
@@ -140,13 +79,7 @@ export const WithIcons: Story = {
 
     return (
       <Flex direction="col" gap="4">
-        <ButtonRadioField
-          label="Select an action:"
-          name="iconSelect"
-          onChange={setValue}
-          options={iconOptions}
-          value={value}
-        />
+        <ButtonRadioInput aria-label="Select an action" onChange={setValue} options={iconOptions} value={value} />
         <Text className="italic" variant="muted">
           Selected value: {value || "none"}
         </Text>
@@ -167,13 +100,7 @@ export const WithIconsAndLabels: Story = {
 
     return (
       <Flex direction="col" gap="4">
-        <ButtonRadioField
-          label="Navigate to:"
-          name="iconLabelSelect"
-          onChange={setValue}
-          options={iconOptions}
-          value={value}
-        />
+        <ButtonRadioInput aria-label="Navigate to" onChange={setValue} options={iconOptions} value={value} />
         <Text className="italic" variant="muted">
           Selected value: {value || "none"}
         </Text>
@@ -202,14 +129,7 @@ export const WithLabelOnSelection: Story = {
 
     return (
       <Flex className="w-[300px]" direction="col" gap="4">
-        <ButtonRadioField
-          hint="Label only appears on selected option"
-          label="Select an action:"
-          name="mixedSelect"
-          onChange={setValue}
-          options={mixedOptions}
-          value={value}
-        />
+        <ButtonRadioInput aria-label="Select an action" onChange={setValue} options={mixedOptions} value={value} />
         <Text className="italic" variant="muted">
           Selected value: {value || "none"}
         </Text>

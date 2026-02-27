@@ -1,0 +1,167 @@
+import { type ComponentProps, type KeyboardEvent, type ReactElement, useRef, useState } from "react";
+import { Button, ButtonGroup, type ButtonGroupProps } from "@/buttons";
+import type { SelectPickerOption } from "@/forms";
+import { DesktopSelectPicker, GroupedOptionList } from "@/forms";
+import { cn } from "@/utils";
+
+export interface ButtonRadioOption {
+  label?: string;
+  value: string;
+  icon?: ReactElement<ComponentProps<"svg">>;
+}
+
+export interface ButtonRadioInputProps extends Omit<ButtonGroupProps, "children" | "onChange"> {
+  name?: string;
+  options: ButtonRadioOption[];
+  secondaryOptions?: SelectPickerOption[];
+  value: string | undefined;
+  onChange: (value: string) => void;
+  buttonClassName?: string;
+  secondaryButtonClassName?: string;
+  "aria-label"?: string;
+  "aria-labelledby"?: string;
+  "aria-describedby"?: string;
+  "aria-invalid"?: "true" | undefined;
+}
+
+export const ButtonRadioInput = ({
+  name,
+  options,
+  secondaryOptions,
+  value,
+  onChange,
+  buttonClassName,
+  secondaryButtonClassName,
+  className: groupClassName,
+  ...props
+}: ButtonRadioInputProps) => {
+  const [open, setOpen] = useState(false);
+  const hasSecondaryOptions = secondaryOptions && secondaryOptions.length > 0;
+  const selectedSecondaryOption = secondaryOptions?.find((option) => option.value === value);
+  const secondaryLabel = selectedSecondaryOption?.label || "More options...";
+
+  // Refs for managing focus
+  const buttonRefs = useRef<Map<string, HTMLButtonElement>>(new Map());
+
+  // All available options (primary + secondary)
+  const allOptions: Array<ButtonRadioOption | SelectPickerOption> = [...options, ...(secondaryOptions || [])];
+
+  const handleKeyDown = (e: KeyboardEvent<HTMLButtonElement>, currentValue: string) => {
+    const currentIndex = allOptions.findIndex((opt) => opt.value === currentValue);
+    let newIndex = currentIndex;
+
+    switch (e.key) {
+      case "ArrowRight":
+      case "ArrowDown":
+        e.preventDefault();
+        newIndex = (currentIndex + 1) % allOptions.length;
+        break;
+      case "ArrowLeft":
+      case "ArrowUp":
+        e.preventDefault();
+        newIndex = currentIndex <= 0 ? allOptions.length - 1 : currentIndex - 1;
+        break;
+      case "Home":
+        e.preventDefault();
+        newIndex = 0;
+        break;
+      case "End":
+        e.preventDefault();
+        newIndex = allOptions.length - 1;
+        break;
+      case " ":
+      case "Enter":
+        e.preventDefault();
+        onChange(currentValue);
+        return;
+      default:
+        return;
+    }
+
+    // Focus and select the new option
+    const newOption = allOptions[newIndex];
+    const buttonRef = buttonRefs.current.get(newOption.value);
+    if (buttonRef) {
+      buttonRef.focus();
+      onChange(newOption.value);
+    }
+  };
+
+  return (
+    <ButtonGroup className={cn("w-full", groupClassName)} role="radiogroup" {...props}>
+      {options.map((option, index) => {
+        const isSelected = option.value === value;
+        // If nothing is selected, make the first option tabbable
+        const isFirstOption = index === 0;
+        const shouldBeInTabOrder = isSelected || (!value && isFirstOption);
+
+        return (
+          <Button
+            aria-checked={isSelected}
+            aria-label={option.label ? undefined : option.value}
+            className={cn("grow", buttonClassName)}
+            icon={option.icon}
+            key={option.value}
+            label={option.label}
+            onClick={() => onChange(option.value)}
+            onKeyDown={(e) => handleKeyDown(e, option.value)}
+            outline={!isSelected}
+            ref={(el) => {
+              if (el) {
+                buttonRefs.current.set(option.value, el);
+              } else {
+                buttonRefs.current.delete(option.value);
+              }
+            }}
+            role="radio"
+            tabIndex={shouldBeInTabOrder ? 0 : -1}
+          />
+        );
+      })}
+      {hasSecondaryOptions && (
+        <DesktopSelectPicker
+          dropdownClassName={cn("w-[150px]", secondaryButtonClassName)}
+          id={name}
+          open={open}
+          selectedLabel={secondaryLabel}
+          setOpen={setOpen}
+          triggerClassName={cn(
+            "w-[150px] font-normal",
+            selectedSecondaryOption && "font-medium",
+            secondaryButtonClassName,
+          )}
+          triggerProps={{
+            "aria-checked": !!selectedSecondaryOption,
+            "aria-label": secondaryLabel,
+            role: "radio",
+            variant: "primary",
+            outline: !selectedSecondaryOption,
+            tabIndex: selectedSecondaryOption ? 0 : -1,
+            onKeyDown: (e: KeyboardEvent<HTMLButtonElement>) => {
+              // Use the selected secondary value if available, otherwise first secondary option
+              const currentValue = selectedSecondaryOption?.value || secondaryOptions?.[0]?.value;
+              if (currentValue) {
+                handleKeyDown(e, currentValue);
+              }
+            },
+            ref: (el: HTMLButtonElement | null) => {
+              if (el && secondaryOptions) {
+                for (const option of secondaryOptions) {
+                  buttonRefs.current.set(option.value, el);
+                }
+              }
+            },
+          }}
+        >
+          <GroupedOptionList
+            noSearch
+            onSelect={(value) => onChange(value)}
+            optionGroups={[{ options: secondaryOptions }]}
+            placeholder="More options..."
+            selectedValue={value}
+          />
+        </DesktopSelectPicker>
+      )}
+    </ButtonGroup>
+  );
+};
