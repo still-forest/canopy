@@ -99,7 +99,7 @@
   "packageManager": "pnpm@10.30.2",
   "pnpm": {
     "overrides": {
-      "rollup": "4.57.1"
+      "rollup": "4.59.0"
     }
   }
 }
