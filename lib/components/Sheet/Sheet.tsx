@@ -31,7 +31,7 @@ const SheetContent = ({
   children,
   side,
   showCloseButton = true,
-  showOverlay = true,
+  showOverlay = false,
   ...props
 }: SheetPrimitive.Popup.Props & {
   side?: "top" | "right" | "bottom" | "left";
