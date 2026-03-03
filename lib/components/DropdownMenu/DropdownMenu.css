@@ -3,7 +3,7 @@
 
 @layer components {
   .dropdown-menu-positioner {
-    @apply isolate z-50 outline-none;
+    @apply isolate z-[60] outline-none;
   }
 
   .dropdown-menu-content {
