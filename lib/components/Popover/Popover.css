@@ -7,7 +7,7 @@
   }
 
   .popover-positioner {
-    @apply isolate z-50;
+    @apply isolate z-[60];
   }
 
   .popover-content {

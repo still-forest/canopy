@@ -63,6 +63,16 @@ Override any Canopy design tokens by redefining CSS variables after the import:
 }
 ```
 
+## z-index layering
+
+Overlay components use a tiered z-index system to ensure correct stacking when nested:
+
+| z-index | Layer | Components |
+|---------|-------|------------|
+| `50` | Panels | Sheet |
+| `55` | Modals | Dialog |
+| `60` | Floating | Popover, DropdownMenu |
+
 ## Testing locally
 
 ### Using pnpm link
