@@ -85,7 +85,7 @@ export const SidebarProvider = ({
   return (
     <SidebarContext.Provider value={contextValue}>
       <div
-        className={cn("group/sidebar-wrapper flex min-h-svh w-full has-data-[variant=inset]:bg-sidebar", className)}
+        className={cn("group/sidebar-wrapper flex min-h-svh w-full", className)}
         data-slot="sidebar-wrapper"
         style={
           {
