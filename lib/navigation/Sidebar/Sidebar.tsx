@@ -10,12 +10,12 @@ import {
   SidebarGroupContent,
   SidebarHeader,
   SidebarMenu,
-  SidebarMenuButton,
   SidebarMenuItem,
   SidebarRail,
   SidebarSeparator,
   SidebarTrigger,
 } from "./primitives";
+import { SidebarMenuButton } from "./SidebarMenuButton";
 import { Sidebar as BaseSidebar } from "./SidebarPrimitive";
 
 interface SideLink {
