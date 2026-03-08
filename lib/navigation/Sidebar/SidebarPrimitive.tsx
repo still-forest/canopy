@@ -1,7 +1,7 @@
 import { Sheet, SheetContent, SheetDescription, SheetHeader, SheetTitle } from "@/components/ui/sheet";
 import { cn } from "@/utils";
 import { SIDEBAR_WIDTH_MOBILE } from "./constants";
-import { useSidebar } from "./primitives";
+import { useSidebar } from "./context";
 
 export interface SidebarProps extends React.ComponentProps<"div"> {
   side?: "left" | "right";
