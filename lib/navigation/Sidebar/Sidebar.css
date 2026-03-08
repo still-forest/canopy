@@ -1,0 +1,69 @@
+@import "@/styles/layers.css";
+@reference "@/styles/tokens.css";
+
+@layer components {
+  .sidebar-menu-button {
+    @apply h-8 p-2 flex w-full items-center;
+    @apply text-sm text-left overflow-hidden text-sidebar-foreground;
+    @apply ring-sidebar-ring gap-2 rounded-md outline-hidden;
+    @apply transition-[width,height,padding];
+    @apply group-data-[collapsible=icon]:size-8! group-data-[collapsible=icon]:p-2!;
+
+    &.sidebar-menu-button--icon {
+      @apply w-8 rounded-md aspect-square overflow-hidden p-0! justify-center;
+      @apply bg-sidebar-secondary text-sidebar-secondary-foreground hover:bg-sidebar-accent;
+
+      &[data-active="true"],
+      &:hover {
+        @apply overflow-visible outline-1 outline-offset-1 outline-sidebar-ring outline-solid;
+      }
+    }
+
+    &.sidebar-menu-button--primary {
+      @apply bg-sidebar-primary text-sidebar-primary-foreground;
+
+      &:hover {
+        @apply bg-sidebar-primary/80! text-sidebar-primary-foreground!;
+      }
+    }
+
+    &:hover {
+      @apply bg-sidebar-accent text-sidebar-accent-foreground;
+    }
+
+    &:active {
+      @apply bg-sidebar-accent text-sidebar-accent-foreground;
+    }
+
+    &:focus-visible {
+      @apply ring-2;
+    }
+
+    &:disabled,
+    &[aria-disabled="true"] {
+      @apply opacity-50 pointer-events-none;
+    }
+
+    &[data-active="true"] {
+      @apply bg-sidebar-accent text-sidebar-accent-foreground;
+      @apply font-medium;
+    }
+
+    &[data-open="true"]:hover {
+      @apply bg-sidebar-accent text-sidebar-accent-foreground;
+    }
+
+    & > span:last-child {
+      @apply truncate;
+    }
+
+    & svg {
+      @apply size-4 shrink-0;
+    }
+
+    &.sidebar-menu-button--lg {
+      @apply h-12;
+      @apply group-data-[collapsible=icon]:p-0!;
+    }
+  }
+}

@@ -19,7 +19,9 @@ export const SidebarTrigger = ({ className, icon, onClick, children, ...props }:
       className={className}
       data-sidebar="trigger"
       data-slot="sidebar-trigger"
+      forceTooltip
       onClick={toggleSidebar}
+      tooltip={open ? "Collapse menu" : "Expand menu"}
       {...props}
     >
       <Icon className="size-4" />

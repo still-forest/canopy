@@ -2,7 +2,6 @@ import { SquareArrowOutUpRight } from "lucide-react";
 import { Fragment } from "react";
 import type { Theme } from "@/types";
 import { Text } from "@/typography";
-import { cn } from "@/utils";
 import {
   SidebarContent,
   SidebarFooter,
@@ -56,7 +55,7 @@ const MenuSubSection = ({ itemSet, activeSlug }: MenuSubSectionProps) => {
     <>
       {itemSet.links.map((item) => (
         <SidebarMenuItem className="hover:cursor-pointer" key={item.slug} onClick={item.onClick}>
-          <SidebarMenuButton isActive={activeSlug === item.slug}>
+          <SidebarMenuButton active={activeSlug === item.slug}>
             <item.icon />
             <MenuItemText>{item.title}</MenuItemText>
             {item.external && <SquareArrowOutUpRight size={12} strokeWidth={1.5} />}
@@ -122,14 +121,9 @@ export const Sidebar = ({
       <SidebarFooter className="mb-4">
         <SidebarMenu>
           <SidebarMenuItem>
-            <SidebarMenuButton
-              render={({ className, ...props }) => (
-                <SidebarTrigger className={cn("justify-start font-normal", className)} {...props}>
-                  <MenuItemText>Collapse menu</MenuItemText>
-                </SidebarTrigger>
-              )}
-              tooltip="Collapse menu"
-            />
+            <SidebarTrigger>
+              <MenuItemText>Collapse menu</MenuItemText>
+            </SidebarTrigger>
           </SidebarMenuItem>
           {bottomItemSets.length > 0 && (
             <>
