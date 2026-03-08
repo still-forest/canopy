@@ -1,5 +1,4 @@
-import { SidebarInset, SidebarProvider } from "@/components/ui/sidebar";
-
+import { SidebarInset, SidebarProvider } from "./primitives";
 import { Sidebar, type SidebarProps } from "./Sidebar";
 
 interface Props extends SidebarProps {

@@ -1,9 +1,9 @@
-"use client";
-
 import { SquareArrowOutUpRight } from "lucide-react";
 import { Fragment } from "react";
+import type { Theme } from "@/types";
+import { Text } from "@/typography";
+import { cn } from "@/utils";
 import {
-  Sidebar as BaseSidebar,
   SidebarContent,
   SidebarFooter,
   SidebarGroup,
@@ -15,10 +15,8 @@ import {
   SidebarRail,
   SidebarSeparator,
   SidebarTrigger,
-} from "@/components/ui/sidebar";
-import type { Theme } from "@/types";
-import { Text } from "@/typography";
-import { cn } from "@/utils";
+} from "./primitives";
+import { Sidebar as BaseSidebar } from "./SidebarPrimitive";
 
 interface SideLink {
   slug: string;
