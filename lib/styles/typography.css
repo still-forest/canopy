@@ -105,6 +105,14 @@
   }
 
   .dialog-title {
-    @apply font-heading font-semibold text-lg;
+    @apply font-heading font-semibold text-xl;
+
+    &:has(+ .dialog-description) {
+      @apply mb-0.5;
+    }
+  }
+
+  .dialog-description {
+    @apply text-muted-foreground text-sm text-balance;
   }
 }

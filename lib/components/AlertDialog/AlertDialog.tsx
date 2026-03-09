@@ -60,11 +60,7 @@ function AlertDialogMedia({ className, ...props }: React.ComponentProps<"div">) 
 
 function AlertDialogTitle({ className, ...props }: React.ComponentProps<typeof AlertDialogPrimitive.Title>) {
   return (
-    <AlertDialogPrimitive.Title
-      className={cn("alert-dialog-title", className)}
-      data-slot="alert-dialog-title"
-      {...props}
-    />
+    <AlertDialogPrimitive.Title className={cn("dialog-title", className)} data-slot="alert-dialog-title" {...props} />
   );
 }
 
@@ -74,7 +70,7 @@ function AlertDialogDescription({
 }: React.ComponentProps<typeof AlertDialogPrimitive.Description>) {
   return (
     <AlertDialogPrimitive.Description
-      className={cn("alert-dialog-description", className)}
+      className={cn("dialog-description", className)}
       data-slot="alert-dialog-description"
       {...props}
     />
