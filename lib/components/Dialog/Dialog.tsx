@@ -83,12 +83,14 @@ const DialogDescription = ({ className, ...props }: DialogPrimitive.Description.
   );
 };
 
-Dialog.Trigger = DialogTrigger;
 Dialog.Close = DialogClose;
 Dialog.Content = DialogContent;
+Dialog.Description = DialogDescription;
 Dialog.Header = DialogHeader;
 Dialog.Footer = DialogFooter;
+Dialog.Overlay = DialogOverlay;
+Dialog.Portal = DialogPortal;
 Dialog.Title = DialogTitle;
-Dialog.Description = DialogDescription;
+Dialog.Trigger = DialogTrigger;
 
 export { Dialog };

@@ -62,9 +62,13 @@ export const NoTitleOrDescription: Story = {
 export const CustomTrigger: Story = {
   render: () => (
     <Dialog>
-      <Dialog.Trigger icon={<OrigamiIcon />} variant="info">
-        Open dialog
-      </Dialog.Trigger>
+      <Dialog.Trigger
+        render={
+          <Button icon={<OrigamiIcon />} variant="info">
+            Open dialog
+          </Button>
+        }
+      />
       <Dialog.Content>
         <SampleContent />
       </Dialog.Content>
