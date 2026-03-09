@@ -1,12 +1,12 @@
 import type { Meta, StoryObj } from "@storybook/react-vite";
 import { useState } from "react";
 import { Button } from "@/buttons";
-import { SimpleDialog } from "@/components";
 import { Flex } from "@/layout";
+import { SimpleDialog } from "@/presentation";
 import { Text } from "@/typography";
 
 const meta: Meta<typeof SimpleDialog> = {
-  title: "Components/SimpleDialog",
+  title: "Presentation/SimpleDialog",
   component: SimpleDialog,
   tags: ["autodocs"],
 } satisfies Meta<typeof SimpleDialog>;

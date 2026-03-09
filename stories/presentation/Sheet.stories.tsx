@@ -2,12 +2,12 @@ import { sampleParagraphText } from "@stories/support/sampleText";
 import type { Meta, StoryObj } from "@storybook/react-vite";
 import { useState } from "react";
 import { Button } from "@/buttons";
-import { Sheet } from "@/components";
 import { Flex } from "@/layout";
+import { Sheet } from "@/presentation";
 import { Text } from "@/typography";
 
 const meta: Meta<typeof Sheet> = {
-  title: "Components/Sheet",
+  title: "Presentation/Sheet",
   component: Sheet,
   tags: ["autodocs"],
 } satisfies Meta<typeof Sheet>;

@@ -1,5 +1,5 @@
 import { CircleQuestionMark } from "lucide-react";
-import { SimpleTooltip } from "@/components/Tooltip";
+import { SimpleTooltip } from "@/presentation/Tooltip";
 import { cn } from "@/utils";
 
 export interface HintProps {

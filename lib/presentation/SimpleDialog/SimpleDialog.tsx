@@ -1,5 +1,5 @@
 import { type ReactElement, type ReactNode, useEffect, useState } from "react";
-import { Dialog } from "@/components/Dialog";
+import { Dialog } from "@/presentation/Dialog";
 
 interface Props {
   children: ReactNode;

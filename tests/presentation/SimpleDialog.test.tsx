@@ -4,7 +4,7 @@ import "@testing-library/jest-dom";
 import userEvent from "@testing-library/user-event";
 import { useState } from "react";
 import { Button } from "@/buttons";
-import { SimpleDialog } from "@/components";
+import { SimpleDialog } from "@/presentation";
 
 describe("SimpleDialog", () => {
   test("renders a SimpleDialog", async () => {

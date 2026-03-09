@@ -3,7 +3,7 @@ import { describe, expect, test, vi } from "vitest";
 import "@testing-library/jest-dom";
 import userEvent from "@testing-library/user-event";
 
-import { Tooltip } from "@/components";
+import { Tooltip } from "@/presentation";
 
 describe("Tooltip", () => {
   test("renders a Tooltip", async () => {
