@@ -1,0 +1,45 @@
+@import "@/styles/layers.css";
+@reference "@/styles/tokens.css";
+
+@layer components {
+  .switch {
+    @apply shrink-0 rounded-full border border-input-border shadow-xs relative inline-flex items-center transition-all outline-none;
+
+    &[data-unchecked] {
+      @apply bg-input dark:bg-input/80;
+    }
+
+    &[data-checked] {
+      @apply bg-primary border-transparent;
+    }
+
+    &[data-disabled] {
+      @apply cursor-not-allowed opacity-50;
+    }
+
+    &:focus-visible {
+      @apply border-ring ring-ring/50 ring-3;
+    }
+
+    &[aria-invalid="true"] {
+      @apply ring-3 border-danger dark:border-danger/50;
+      @apply ring-danger/20 dark:ring-danger/40;
+    }
+
+    &:after {
+      @apply absolute -inset-x-3 -inset-y-2 content-[''];
+    }
+  }
+
+  .switch-thumb {
+    @apply bg-background rounded-full pointer-events-none block ring-0 transition-transform;
+
+    &[data-unchecked] {
+      @apply bg-input-border dark:bg-foreground;
+    }
+
+    &[data-checked] {
+      @apply dark:bg-primary-foreground;
+    }
+  }
+}

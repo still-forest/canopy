@@ -12,9 +12,9 @@ import {
   PasswordField,
   RadioField,
   SliderField,
+  SwitchField,
   TextareaField,
   TextField,
-  ToggleField,
 } from "@/forms";
 
 import { Flex } from "@/layout";
@@ -204,7 +204,7 @@ const CompleteFormExample = () => {
             value={formData.bio}
           />
 
-          <ToggleField
+          <SwitchField
             checked={formData.theme === "dark"}
             label="Dark Mode"
             name="theme"

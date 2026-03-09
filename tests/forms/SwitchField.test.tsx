@@ -1,11 +1,11 @@
 import { render, screen } from "@testing-library/react";
 import userEvent from "@testing-library/user-event";
 import { describe, expect, it, vi } from "vitest";
-import { ToggleField } from "@/forms";
+import { SwitchField } from "@/forms";
 
-describe("ToggleField", () => {
-  it("renders a ToggleField", () => {
-    render(<ToggleField checked={false} label="Test Switch" name="test-switch" />);
+describe("SwitchField", () => {
+  it("renders a SwitchField", () => {
+    render(<SwitchField checked={false} label="Test Switch" name="test-switch" />);
 
     const switchElement = screen.getByRole("switch");
     expect(switchElement).toBeInTheDocument();
@@ -17,7 +17,7 @@ describe("ToggleField", () => {
   });
 
   it("renders a Switch with checked", () => {
-    render(<ToggleField checked={true} label="Test Switch" name="test-switch" />);
+    render(<SwitchField checked={true} label="Test Switch" name="test-switch" />);
 
     const switchElement = screen.getByRole("switch");
     expect(switchElement).toBeInTheDocument();
@@ -26,7 +26,7 @@ describe("ToggleField", () => {
   });
 
   it("renders a Switch with left and right labels", () => {
-    render(<ToggleField checked={false} label={["Leftie", "Rightie"]} name="test-switch" />);
+    render(<SwitchField checked={false} label={["Leftie", "Rightie"]} name="test-switch" />);
 
     const leftLabel = screen.getByText("Leftie");
     expect(leftLabel).toBeInTheDocument();
@@ -37,7 +37,7 @@ describe("ToggleField", () => {
 
   it("renders a Switch with change handler", async () => {
     const handleClick = vi.fn();
-    render(<ToggleField checked={false} label="Test Switch" name="test-switch" onCheckedChange={handleClick} />);
+    render(<SwitchField checked={false} label="Test Switch" name="test-switch" onCheckedChange={handleClick} />);
 
     const switchElement = screen.getByRole("switch");
     await userEvent.click(switchElement);
@@ -46,7 +46,7 @@ describe("ToggleField", () => {
 
   it("renders a Switch with label class name", () => {
     render(
-      <ToggleField
+      <SwitchField
         checked={false}
         label={["Leftie", "Rightie"]}
         labelClassName={["text-blue-500", "text-red-500"]}

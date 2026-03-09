@@ -7,6 +7,6 @@ export * from "./NumberField";
 export * from "./PasswordField";
 export * from "./RadioField";
 export * from "./SliderField";
+export * from "./SwitchField";
 export * from "./TextareaField";
 export * from "./TextField";
-export * from "./ToggleField";
