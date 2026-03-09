@@ -28,7 +28,7 @@ export interface SidebarProps extends React.ComponentProps<"div"> {
   collapsible?: "offcanvas" | "icon" | "none";
 }
 
-const Sidebar = ({ side = "left", collapsible = "offcanvas", className, children, dir, ...props }: SidebarProps) => {
+const Sidebar = ({ side = "left", collapsible = "offcanvas", className, children, ...props }: SidebarProps) => {
   const { isMobile, state, openMobile, setOpenMobile } = useSidebar();
 
   if (collapsible === "none") {
@@ -51,7 +51,6 @@ const Sidebar = ({ side = "left", collapsible = "offcanvas", className, children
           data-mobile="true"
           data-sidebar="sidebar"
           data-slot="sidebar"
-          dir={dir}
           side={side}
           style={
             {

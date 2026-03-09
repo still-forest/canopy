@@ -48,8 +48,6 @@ export const SidebarMenuButton = ({
     return comp;
   }
 
-  console.log(tooltip);
-
   return (
     <Tooltip>
       {comp}

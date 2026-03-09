@@ -47,6 +47,17 @@ export const SidebarProvider = ({
   React.useEffect(() => {
     const handleKeyDown = (event: KeyboardEvent) => {
       if (event.key === SIDEBAR_KEYBOARD_SHORTCUT && (event.metaKey || event.ctrlKey)) {
+        // Don't trigger sidebar toggle if user is typing in an input/textarea/contenteditable
+        const target = event.target as HTMLElement;
+        const isEditableElement =
+          target.tagName === "INPUT" ||
+          target.tagName === "TEXTAREA" ||
+          target.isContentEditable ||
+          target.closest('[contenteditable="true"]');
+
+        if (isEditableElement) {
+          return;
+        }
         event.preventDefault();
         toggleSidebar();
       }

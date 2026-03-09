@@ -6,10 +6,9 @@ import { SidebarMenuButton } from "./menu-button";
 
 export interface SidebarTriggerProps extends React.ComponentProps<typeof SidebarMenuButton> {
   icon?: ElementType;
-  onClick?: (event: React.MouseEvent<HTMLButtonElement>) => void;
 }
 
-export const SidebarTrigger = ({ className, icon, onClick, children, ...props }: SidebarTriggerProps) => {
+export const SidebarTrigger = ({ className, icon, children, ...props }: SidebarTriggerProps) => {
   const { toggleSidebar, open } = useSidebar();
 
   const Icon = icon || (open ? PanelRightOpen : PanelLeftOpen);

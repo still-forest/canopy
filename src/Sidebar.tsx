@@ -1,7 +1,6 @@
 import { SquareArrowOutUpRight } from "lucide-react";
 import { Fragment } from "react";
 import { Sidebar as BaseSidebar } from "@/navigation/Sidebar";
-import type { Theme } from "@/types";
 import { Text } from "@/typography";
 import { cn } from "@/utils";
 
@@ -23,8 +22,6 @@ export interface SidebarProps extends React.ComponentProps<typeof BaseSidebar> {
   activeSlug?: string;
   itemSets: SideLinkSet[];
   bottomItemSets?: SideLinkSet[];
-  theme: Theme;
-  setTheme: (theme: Theme) => void;
 }
 
 export const MenuItemText = ({ children }: { children: React.ReactNode }) => (
@@ -80,8 +77,6 @@ export const Sidebar = ({
   activeSlug,
   itemSets,
   bottomItemSets = [],
-  theme,
-  setTheme,
   ...props
 }: SidebarProps) => {
   return (
