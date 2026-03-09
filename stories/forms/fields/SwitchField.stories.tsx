@@ -1,14 +1,14 @@
 import { DEFAULT_DECORATOR_WITH_MIN_WIDTH_MD } from "@stories/support/decorators";
 import type { Meta, StoryObj } from "@storybook/react-vite";
-import { ToggleField } from "@/forms";
+import { SwitchField } from "@/forms";
 import { Flex } from "@/layout";
 
-const meta: Meta<typeof ToggleField> = {
-  title: "Forms/Fields/ToggleField",
-  component: ToggleField,
+const meta: Meta<typeof SwitchField> = {
+  title: "Forms/Fields/SwitchField",
+  component: SwitchField,
   decorators: [DEFAULT_DECORATOR_WITH_MIN_WIDTH_MD],
   tags: ["autodocs"],
-} satisfies Meta<typeof ToggleField>;
+} satisfies Meta<typeof SwitchField>;
 
 export default meta;
 
@@ -31,11 +31,11 @@ export const NoLabel: Story = {
 export const Sizes: Story = {
   render: () => (
     <Flex direction="col" gap="2">
-      <ToggleField {...defaultProps} label="Extra small" size="xs" />
-      <ToggleField {...defaultProps} label="Small" size="sm" />
-      <ToggleField {...defaultProps} label="Medium" size="md" />
-      <ToggleField {...defaultProps} label="Large" size="lg" />
-      <ToggleField {...defaultProps} label="Extra large" size="xl" />
+      <SwitchField {...defaultProps} label="Extra small" size="xs" />
+      <SwitchField {...defaultProps} label="Small" size="sm" />
+      <SwitchField {...defaultProps} label="Medium" size="md" />
+      <SwitchField {...defaultProps} label="Large" size="lg" />
+      <SwitchField {...defaultProps} label="Extra large" size="xl" />
     </Flex>
   ),
 };

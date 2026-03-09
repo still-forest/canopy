@@ -3,7 +3,7 @@ import { Switch } from "@/components/Switch";
 import { Label } from "@/forms/Label";
 import { cn } from "@/utils";
 
-interface ToggleFieldProps extends React.ComponentProps<typeof Switch> {
+interface SwitchFieldProps extends React.ComponentProps<typeof Switch> {
   id?: string;
   label?: string | (string | null)[];
   size?: "xs" | "sm" | "md" | "lg" | "xl";
@@ -11,14 +11,14 @@ interface ToggleFieldProps extends React.ComponentProps<typeof Switch> {
   containerClassName?: string;
 }
 
-export const ToggleField = ({
+export const SwitchField = ({
   id: idProp,
   label,
   labelClassName,
   containerClassName,
   size = "md",
   ...props
-}: ToggleFieldProps) => {
+}: SwitchFieldProps) => {
   const generatedId = useId();
   const id = idProp || generatedId;
 
