@@ -2,20 +2,33 @@ import { Sheet, SheetContent, SheetDescription, SheetHeader, SheetTitle } from "
 import { cn } from "@/utils";
 import { SIDEBAR_WIDTH_MOBILE } from "./constants";
 import { useSidebar } from "./context";
+import {
+  SidebarContent,
+  SidebarFooter,
+  SidebarGroup,
+  SidebarGroupAction,
+  SidebarGroupContent,
+  SidebarGroupLabel,
+  SidebarHeader,
+  SidebarInset,
+  SidebarMenu,
+  SidebarMenuAction,
+  SidebarMenuItem,
+  SidebarMenuSub,
+  SidebarMenuSubButton,
+  SidebarMenuSubItem,
+  SidebarRail,
+  SidebarSeparator,
+} from "./primitives";
+import { SidebarMenuButton } from "./SidebarMenuButton";
+import { SidebarTrigger } from "./SidebarTrigger";
 
 export interface SidebarProps extends React.ComponentProps<"div"> {
   side?: "left" | "right";
   collapsible?: "offcanvas" | "icon" | "none";
 }
 
-export function Sidebar({
-  side = "left",
-  collapsible = "offcanvas",
-  className,
-  children,
-  dir,
-  ...props
-}: SidebarProps) {
+const Sidebar = ({ side = "left", collapsible = "offcanvas", className, children, dir, ...props }: SidebarProps) => {
   const { isMobile, state, openMobile, setOpenMobile } = useSidebar();
 
   if (collapsible === "none") {
@@ -90,4 +103,25 @@ export function Sidebar({
       </div>
     </div>
   );
-}
+};
+
+Sidebar.Rail = SidebarRail;
+Sidebar.Inset = SidebarInset;
+Sidebar.Header = SidebarHeader;
+Sidebar.Footer = SidebarFooter;
+Sidebar.Content = SidebarContent;
+Sidebar.Group = SidebarGroup;
+Sidebar.GroupLabel = SidebarGroupLabel;
+Sidebar.GroupAction = SidebarGroupAction;
+Sidebar.GroupContent = SidebarGroupContent;
+Sidebar.Menu = SidebarMenu;
+Sidebar.MenuItem = SidebarMenuItem;
+Sidebar.MenuAction = SidebarMenuAction;
+Sidebar.MenuSub = SidebarMenuSub;
+Sidebar.MenuSubItem = SidebarMenuSubItem;
+Sidebar.MenuSubButton = SidebarMenuSubButton;
+Sidebar.Separator = SidebarSeparator;
+Sidebar.MenuButton = SidebarMenuButton;
+Sidebar.Trigger = SidebarTrigger;
+
+export { Sidebar };

@@ -2,18 +2,6 @@ import { SquareArrowOutUpRight } from "lucide-react";
 import { Fragment } from "react";
 import type { Theme } from "@/types";
 import { Text } from "@/typography";
-import {
-  SidebarContent,
-  SidebarFooter,
-  SidebarGroup,
-  SidebarGroupContent,
-  SidebarHeader,
-  SidebarMenu,
-  SidebarMenuItem,
-  SidebarRail,
-  SidebarSeparator,
-  SidebarTrigger,
-} from "./primitives";
 import { SidebarMenuButton } from "./SidebarMenuButton";
 import { Sidebar as BaseSidebar } from "./SidebarPrimitive";
 
@@ -54,13 +42,13 @@ const MenuSubSection = ({ itemSet, activeSlug }: MenuSubSectionProps) => {
   return (
     <>
       {itemSet.links.map((item) => (
-        <SidebarMenuItem className="hover:cursor-pointer" key={item.slug} onClick={item.onClick}>
-          <SidebarMenuButton active={activeSlug === item.slug}>
+        <BaseSidebar.MenuItem className="hover:cursor-pointer" key={item.slug} onClick={item.onClick}>
+          <BaseSidebar.MenuButton active={activeSlug === item.slug}>
             <item.icon />
             <MenuItemText>{item.title}</MenuItemText>
             {item.external && <SquareArrowOutUpRight size={12} strokeWidth={1.5} />}
-          </SidebarMenuButton>
-        </SidebarMenuItem>
+          </BaseSidebar.MenuButton>
+        </BaseSidebar.MenuItem>
       ))}
     </>
   );
@@ -73,16 +61,16 @@ interface MenuSectionProps {
 
 const MenuSection = ({ itemSets, activeSlug }: MenuSectionProps) => {
   return (
-    <SidebarMenu>
+    <BaseSidebar.Menu>
       {itemSets.map((itemSet, i) => {
         return (
           <Fragment key={`item-set-${i}`}>
             <MenuSubSection activeSlug={activeSlug} itemSet={itemSet} />
-            {i < itemSets.length - 1 && <SidebarSeparator />}
+            {i < itemSets.length - 1 && <BaseSidebar.Separator />}
           </Fragment>
         );
       })}
-    </SidebarMenu>
+    </BaseSidebar.Menu>
   );
 };
 
@@ -98,9 +86,9 @@ export const Sidebar = ({
 }: SidebarProps) => {
   return (
     <BaseSidebar collapsible="icon" {...props}>
-      <SidebarHeader>
-        <SidebarMenu>
-          <SidebarMenuItem>
+      <BaseSidebar.Header>
+        <BaseSidebar.Menu>
+          <BaseSidebar.MenuItem>
             <SidebarMenuButton
               className={brandOnClick ? "cursor-pointer" : "cursor-default"}
               onClick={brandOnClick}
@@ -108,32 +96,32 @@ export const Sidebar = ({
             >
               {brandContent}
             </SidebarMenuButton>
-          </SidebarMenuItem>
-        </SidebarMenu>
-      </SidebarHeader>
-      <SidebarContent>
-        <SidebarGroup>
-          <SidebarGroupContent>
+          </BaseSidebar.MenuItem>
+        </BaseSidebar.Menu>
+      </BaseSidebar.Header>
+      <BaseSidebar.Content>
+        <BaseSidebar.Group>
+          <BaseSidebar.GroupContent>
             <MenuSection activeSlug={activeSlug} itemSets={itemSets} />
-          </SidebarGroupContent>
-        </SidebarGroup>
-      </SidebarContent>
-      <SidebarFooter className="mb-4">
-        <SidebarMenu>
-          <SidebarMenuItem>
-            <SidebarTrigger>
+          </BaseSidebar.GroupContent>
+        </BaseSidebar.Group>
+      </BaseSidebar.Content>
+      <BaseSidebar.Footer className="mb-4">
+        <BaseSidebar.Menu>
+          <BaseSidebar.MenuItem>
+            <BaseSidebar.Trigger>
               <MenuItemText>Collapse menu</MenuItemText>
-            </SidebarTrigger>
-          </SidebarMenuItem>
+            </BaseSidebar.Trigger>
+          </BaseSidebar.MenuItem>
           {bottomItemSets.length > 0 && (
             <>
-              <SidebarSeparator />
+              <BaseSidebar.Separator />
               <MenuSection activeSlug={activeSlug} itemSets={bottomItemSets} />
             </>
           )}
-        </SidebarMenu>
-      </SidebarFooter>
-      <SidebarRail />
+        </BaseSidebar.Menu>
+      </BaseSidebar.Footer>
+      <BaseSidebar.Rail />
     </BaseSidebar>
   );
 };

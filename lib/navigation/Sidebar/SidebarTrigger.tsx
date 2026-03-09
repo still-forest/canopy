@@ -4,7 +4,7 @@ import type { ElementType } from "react";
 import { useSidebar } from "./context";
 import { SidebarMenuButton } from "./SidebarMenuButton";
 
-interface SidebarTriggerProps extends React.ComponentProps<typeof SidebarMenuButton> {
+export interface SidebarTriggerProps extends React.ComponentProps<typeof SidebarMenuButton> {
   icon?: ElementType;
   onClick?: (event: React.MouseEvent<HTMLButtonElement>) => void;
 }

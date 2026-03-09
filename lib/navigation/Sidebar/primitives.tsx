@@ -62,7 +62,7 @@ export const SidebarFooter = ({ className, ...props }: React.ComponentProps<"div
   );
 };
 
-function _SidebarSeparator({ className, ...props }: React.ComponentProps<typeof Separator>) {
+export const SidebarSeparator = ({ className, ...props }: React.ComponentProps<typeof Separator>) => {
   return (
     <Separator
       className={cn("mx-2 w-auto bg-sidebar-border", className)}
@@ -71,7 +71,7 @@ function _SidebarSeparator({ className, ...props }: React.ComponentProps<typeof 
       {...props}
     />
   );
-}
+};
 
 export const SidebarContent = ({ className, ...props }: React.ComponentProps<"div">) => {
   return (
