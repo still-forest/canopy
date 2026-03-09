@@ -2,7 +2,7 @@ import { PanelLeftOpen, PanelRightOpen } from "lucide-react";
 import type * as React from "react";
 import type { ElementType } from "react";
 import { useSidebar } from "./context";
-import { SidebarMenuButton } from "./SidebarMenuButton";
+import { SidebarMenuButton } from "./menu-button";
 
 export interface SidebarTriggerProps extends React.ComponentProps<typeof SidebarMenuButton> {
   icon?: ElementType;

@@ -1,4 +1,3 @@
 export * from "./Sidebar";
-export * from "./SidebarLayout";
 export * from "./SidebarProvider";
 export * from "./SidebarTrigger";

@@ -2,6 +2,7 @@ import { Sheet, SheetContent, SheetDescription, SheetHeader, SheetTitle } from "
 import { cn } from "@/utils";
 import { SIDEBAR_WIDTH_MOBILE } from "./constants";
 import { useSidebar } from "./context";
+import { SidebarMenuButton } from "./menu-button";
 import {
   SidebarContent,
   SidebarFooter,
@@ -20,7 +21,6 @@ import {
   SidebarRail,
   SidebarSeparator,
 } from "./primitives";
-import { SidebarMenuButton } from "./SidebarMenuButton";
 import { SidebarTrigger } from "./SidebarTrigger";
 
 export interface SidebarProps extends React.ComponentProps<"div"> {
