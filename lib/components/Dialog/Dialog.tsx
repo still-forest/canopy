@@ -1,8 +1,9 @@
 import { Dialog as DialogPrimitive } from "@base-ui/react/dialog";
 import { XIcon } from "lucide-react";
 import type * as React from "react";
-import { Button } from "@/components/ui/button";
+import { Button } from "@/buttons";
 import { cn } from "@/utils";
+import "./Dialog.css";
 
 const Dialog = ({ ...props }: DialogPrimitive.Root.Props) => {
   return <DialogPrimitive.Root data-slot="dialog" {...props} />;
@@ -21,16 +22,7 @@ const DialogClose = ({ ...props }: DialogPrimitive.Close.Props) => {
 };
 
 const DialogOverlay = ({ className, ...props }: DialogPrimitive.Backdrop.Props) => {
-  return (
-    <DialogPrimitive.Backdrop
-      className={cn(
-        "data-open:animate-in data-closed:animate-out data-closed:fade-out-0 data-open:fade-in-0 bg-black/10 duration-100 supports-backdrop-filter:backdrop-blur-xs fixed inset-0 isolate z-[55]",
-        className,
-      )}
-      data-slot="dialog-overlay"
-      {...props}
-    />
-  );
+  return <DialogPrimitive.Backdrop className={cn("dialog-overlay", className)} data-slot="dialog-overlay" {...props} />;
 };
 
 const DialogContent = ({
@@ -44,20 +36,10 @@ const DialogContent = ({
   return (
     <DialogPortal>
       <DialogOverlay />
-      <DialogPrimitive.Popup
-        className={cn(
-          "bg-background data-open:animate-in data-closed:animate-out data-closed:fade-out-0 data-open:fade-in-0 data-closed:zoom-out-95 data-open:zoom-in-95 ring-foreground/10 grid max-w-[calc(100%-2rem)] gap-6 rounded-xl p-6 text-sm ring-1 duration-100 sm:max-w-md fixed top-1/2 left-1/2 z-[55] w-full -translate-x-1/2 -translate-y-1/2 outline-none",
-          className,
-        )}
-        data-slot="dialog-content"
-        {...props}
-      >
+      <DialogPrimitive.Popup className={cn("dialog-content", className)} data-slot="dialog-content" {...props}>
         {children}
         {showCloseButton && (
-          <DialogPrimitive.Close
-            data-slot="dialog-close"
-            render={<Button className="absolute top-4 right-4" size="icon-sm" variant="ghost" />}
-          >
+          <DialogPrimitive.Close data-slot="dialog-close" render={<Button className="dialog-close" variant="ghost" />}>
             <XIcon />
             <span className="sr-only">Close</span>
           </DialogPrimitive.Close>
@@ -68,7 +50,7 @@ const DialogContent = ({
 };
 
 const DialogHeader = ({ className, ...props }: React.ComponentProps<"div">) => {
-  return <div className={cn("flex flex-col", className)} data-slot="dialog-header" {...props} />;
+  return <div className={cn("dialog-header", className)} data-slot="dialog-header" {...props} />;
 };
 
 const DialogFooter = ({
@@ -80,13 +62,9 @@ const DialogFooter = ({
   showCloseButton?: boolean;
 }) => {
   return (
-    <div
-      className={cn("flex flex-col-reverse gap-2 sm:flex-row sm:justify-end", className)}
-      data-slot="dialog-footer"
-      {...props}
-    >
+    <div className={cn("dialog-footer", className)} data-slot="dialog-footer" {...props}>
       {children}
-      {showCloseButton && <DialogPrimitive.Close render={<Button variant="outline" />}>Close</DialogPrimitive.Close>}
+      {showCloseButton && <DialogPrimitive.Close render={<Button outline />}>Close</DialogPrimitive.Close>}
     </div>
   );
 };
@@ -98,10 +76,7 @@ const DialogTitle = ({ className, ...props }: DialogPrimitive.Title.Props) => {
 const DialogDescription = ({ className, ...props }: DialogPrimitive.Description.Props) => {
   return (
     <DialogPrimitive.Description
-      className={cn(
-        "dialog-description [&_a]:hover:text-foreground text-sm [&_a]:underline [&_a]:underline-offset-3",
-        className,
-      )}
+      className={cn("dialog-description", className)}
       data-slot="dialog-description"
       {...props}
     />
