@@ -1,5 +1,5 @@
 import type { ReactNode } from "react";
-import { SimpleTooltip } from "@/components";
+import { SimpleTooltip } from "@/presentation";
 import { cn } from "@/utils/cn";
 import "./Badge.css";
 import type { BadgeSize, BadgeVariant } from "@/types";

@@ -1,13 +1,13 @@
 import { sampleLongText } from "@stories/support/sampleText";
 import type { Meta, StoryObj } from "@storybook/react-vite";
 import { Button } from "@/buttons";
-import { CURSOR_TYPES, type CursorType, SimpleTooltip, Tooltip } from "@/components";
 import { Box, Flex } from "@/layout";
+import { CURSOR_TYPES, type CursorType, SimpleTooltip, Tooltip } from "@/presentation";
 import { Heading, Text } from "@/typography";
 import OptionList from "../templates/OptionList";
 
 const meta: Meta<typeof Tooltip> = {
-  title: "Components/Tooltip",
+  title: "Presentation/Tooltip",
   component: Tooltip,
   tags: ["autodocs"],
 } satisfies Meta<typeof Tooltip>;

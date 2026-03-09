@@ -1,12 +1,12 @@
 import type { Meta, StoryObj } from "@storybook/react-vite";
 import { useState } from "react";
 import { Button } from "@/buttons";
-import { Popover } from "@/components";
 import { Flex } from "@/layout";
+import { Popover } from "@/presentation";
 import { Text } from "@/typography";
 
 const meta: Meta<typeof Popover> = {
-  title: "Components/Popover",
+  title: "Presentation/Popover",
   component: Popover,
   tags: ["autodocs"],
 } satisfies Meta<typeof Popover>;

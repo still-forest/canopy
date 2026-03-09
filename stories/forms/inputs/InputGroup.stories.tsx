@@ -16,11 +16,11 @@ import {
 } from "lucide-react";
 import { useId } from "react";
 import { Loader } from "@/components/Loader";
-import { Popover } from "@/components/Popover";
-import { Tooltip } from "@/components/Tooltip";
 import { InputGroup } from "@/forms";
 import { Label } from "@/forms/Label";
 import { Flex } from "@/layout";
+import { Popover } from "@/presentation/Popover";
+import { Tooltip } from "@/presentation/Tooltip";
 
 const meta: Meta<typeof InputGroup> = {
   title: "Forms/Inputs/InputGroup",

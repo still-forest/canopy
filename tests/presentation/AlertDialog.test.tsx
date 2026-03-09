@@ -3,7 +3,7 @@ import { describe, expect, test, vi } from "vitest";
 import "@testing-library/jest-dom";
 import userEvent from "@testing-library/user-event";
 import { Button } from "@/buttons";
-import { AlertDialog } from "@/components";
+import { AlertDialog } from "@/presentation";
 
 function renderAlertDialog({
   size,

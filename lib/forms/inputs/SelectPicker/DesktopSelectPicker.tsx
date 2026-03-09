@@ -2,7 +2,7 @@ import { mergeProps } from "@base-ui/react";
 import { ChevronsUpDown } from "lucide-react";
 import type { ReactNode } from "react";
 import { Button, type ButtonProps } from "@/buttons";
-import { Popover } from "@/components/Popover";
+import { Popover } from "@/presentation/Popover";
 import { cn } from "@/utils/cn";
 
 interface DesktopSelectPickerProps {

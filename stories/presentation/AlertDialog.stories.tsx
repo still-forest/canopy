@@ -1,10 +1,10 @@
 import type { Meta, StoryObj } from "@storybook/react-vite";
 import { TrashIcon, TriangleAlertIcon } from "lucide-react";
 import { Button } from "@/buttons";
-import { AlertDialog } from "@/components";
+import { AlertDialog } from "@/presentation";
 
 const meta: Meta<typeof AlertDialog> = {
-  title: "Components/AlertDialog",
+  title: "Presentation/AlertDialog",
   component: AlertDialog,
   tags: ["autodocs"],
 } satisfies Meta<typeof AlertDialog>;

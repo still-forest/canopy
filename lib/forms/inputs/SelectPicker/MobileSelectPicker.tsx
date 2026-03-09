@@ -1,7 +1,7 @@
 import { mergeProps } from "@base-ui/react";
 import type { ReactNode } from "react";
 import { Button, type ButtonProps } from "@/buttons";
-import { Sheet } from "@/components/Sheet";
+import { Sheet } from "@/presentation/Sheet";
 import "./SelectPicker.css";
 
 const CloseButton = (props: ButtonProps) => {

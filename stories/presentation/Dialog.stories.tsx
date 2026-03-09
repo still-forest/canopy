@@ -3,12 +3,12 @@ import type { Meta, StoryObj } from "@storybook/react-vite";
 import { OrigamiIcon } from "lucide-react";
 import { useState } from "react";
 import { Button } from "@/buttons";
-import { Dialog } from "@/components";
 import { Flex } from "@/layout";
+import { Dialog } from "@/presentation";
 import { Text } from "@/typography";
 
 const meta: Meta<typeof Dialog> = {
-  title: "Components/Dialog",
+  title: "Presentation/Dialog",
   component: Dialog,
   tags: ["autodocs"],
 } satisfies Meta<typeof Dialog>;
