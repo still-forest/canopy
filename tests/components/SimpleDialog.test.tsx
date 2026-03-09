@@ -4,16 +4,16 @@ import "@testing-library/jest-dom";
 import userEvent from "@testing-library/user-event";
 import { useState } from "react";
 import { Button } from "@/buttons";
-import { Modal } from "@/components";
+import { SimpleDialog } from "@/components";
 
-describe("Modal", () => {
-  test("renders a Modal", async () => {
+describe("SimpleDialog", () => {
+  test("renders a SimpleDialog", async () => {
     const user = userEvent.setup();
 
     render(
-      <Modal description="Modal description" title="Modal title" trigger={<Button>Open modal</Button>}>
+      <SimpleDialog description="Modal description" title="Modal title" trigger={<Button>Open modal</Button>}>
         <p>Modal content</p>
-      </Modal>,
+      </SimpleDialog>,
     );
 
     const trigger = screen.getByRole("button");
@@ -36,13 +36,13 @@ describe("Modal", () => {
     expect(content).toBeInTheDocument();
   });
 
-  test("renders a Modal with no title", async () => {
+  test("renders a SimpleDialog with no title", async () => {
     const user = userEvent.setup();
 
     render(
-      <Modal description="Modal description" trigger={<Button>Open modal</Button>}>
+      <SimpleDialog description="Modal description" trigger={<Button>Open modal</Button>}>
         Modal content
-      </Modal>,
+      </SimpleDialog>,
     );
 
     const trigger = screen.getByRole("button");
@@ -54,13 +54,13 @@ describe("Modal", () => {
     expect(dialog).toHaveTextContent("Modal content");
   });
 
-  test("renders a Modal with no description", async () => {
+  test("renders a SimpleDialog with no description", async () => {
     const user = userEvent.setup();
 
     render(
-      <Modal title="Modal title" trigger={<Button>Open modal</Button>}>
+      <SimpleDialog title="Modal title" trigger={<Button>Open modal</Button>}>
         Modal content
-      </Modal>,
+      </SimpleDialog>,
     );
 
     const trigger = screen.getByRole("button");
@@ -72,10 +72,10 @@ describe("Modal", () => {
     expect(dialog).toHaveTextContent("Modal content");
   });
 
-  test("renders a Modal with no title or description", async () => {
+  test("renders a SimpleDialog with no title or description", async () => {
     const user = userEvent.setup();
 
-    render(<Modal trigger={<Button>Open modal</Button>}>Modal content</Modal>);
+    render(<SimpleDialog trigger={<Button>Open modal</Button>}>Modal content</SimpleDialog>);
 
     const trigger = screen.getByRole("button");
     await user.click(trigger);
@@ -86,7 +86,7 @@ describe("Modal", () => {
     expect(dialog).not.toHaveTextContent("Modal description");
   });
 
-  test("renders a controlled Modal", async () => {
+  test("renders a controlled SimpleDialog", async () => {
     const user = userEvent.setup();
 
     const DummyApp = () => {
@@ -96,9 +96,9 @@ describe("Modal", () => {
           <Button data-testid="external-trigger" onClick={() => setOpen(true)}>
             Open modal
           </Button>
-          <Modal onOpenChange={setOpen} open={open}>
+          <SimpleDialog onOpenChange={setOpen} open={open}>
             <p>Modal content</p>
-          </Modal>
+          </SimpleDialog>
         </>
       );
     };
@@ -114,9 +114,9 @@ describe("Modal", () => {
     expect(dialog).toHaveTextContent("Modal content");
   });
 
-  test("throws an error if trigger is not provided and modal is uncontrolled", () => {
-    expect(() => render(<Modal>Modal content</Modal>)).toThrow(
-      "Trigger must be provided if modal state is not controlled through open, onOpenChange props.",
+  test("throws an error if trigger is not provided and dialog is uncontrolled", () => {
+    expect(() => render(<SimpleDialog>Modal content</SimpleDialog>)).toThrow(
+      "Trigger must be provided if dialog state is not controlled through open, onOpenChange props.",
     );
   });
 });

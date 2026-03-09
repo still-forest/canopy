@@ -11,7 +11,7 @@ interface Props {
   ariaDescription?: string;
 }
 
-export const Modal = ({ trigger, children, title, description, open, onOpenChange, ariaDescription }: Props) => {
+export const SimpleDialog = ({ trigger, children, title, description, open, onOpenChange, ariaDescription }: Props) => {
   const isControlled = open !== undefined;
   const [openState, setOpenState] = useState<boolean>(isControlled ? open : false);
 
@@ -28,7 +28,7 @@ export const Modal = ({ trigger, children, title, description, open, onOpenChang
   }, [open, isControlled]);
 
   if (!trigger && !isControlled) {
-    throw new Error("Trigger must be provided if modal state is not controlled through open, onOpenChange props.");
+    throw new Error("Trigger must be provided if dialog state is not controlled through open, onOpenChange props.");
   }
 
   const handleOpenChange = (open: boolean) => {
