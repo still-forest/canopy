@@ -4,12 +4,12 @@ import { Link } from "react-router";
 import { Button } from "@/buttons";
 import { buildButtonClassNames } from "@/buttons/Button/utils";
 import { Container, Flex, Footer } from "@/layout";
-import { SidebarLayout, SidebarTrigger } from "@/navigation";
+import { SidebarTrigger } from "@/navigation";
 import { Heading } from "@/typography";
 import { cn } from "@/utils";
 import { Brand } from "./components/Brand";
 import { FooterContent } from "./components/FooterContent";
-import { useTheme } from "./context/useTheme";
+import { SidebarLayout } from "./SidebarLayout";
 
 const itemSet1 = [
   {
@@ -70,7 +70,6 @@ const itemSet3 = [
 ];
 
 export default function App() {
-  const { theme, setTheme } = useTheme();
   const [showDimensions, setShowDimensions] = useState(true);
 
   return (
@@ -82,11 +81,9 @@ export default function App() {
         window.alert("brand");
       }}
       itemSets={[{ links: itemSet1 }, { links: itemSet2 }]}
-      setTheme={setTheme}
-      theme={theme}
     >
       <Container className={cn(showDimensions && "bg-red-500/5 inset-shadow-sm inset-shadow-red-500", "border-b")}>
-        <SidebarTrigger />
+        <SidebarTrigger className="w-fit hover:bg-transparent" />
       </Container>
       <Container className={cn(showDimensions && "bg-yellow-500/5 inset-shadow-sm inset-shadow-yellow-500")}>
         <Heading className="mt-4" family="brand" level="1">

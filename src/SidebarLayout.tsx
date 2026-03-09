@@ -1,5 +1,4 @@
-import { SidebarInset, SidebarProvider } from "@/components/ui/sidebar";
-
+import { Sidebar as BaseSidebar, SidebarProvider } from "@/navigation/Sidebar";
 import { Sidebar, type SidebarProps } from "./Sidebar";
 
 interface Props extends SidebarProps {
@@ -10,7 +9,7 @@ export const SidebarLayout = ({ children, ...props }: Props) => {
   return (
     <SidebarProvider>
       <Sidebar {...props} />
-      <SidebarInset className="max-w-screen-xl">{children}</SidebarInset>
+      <BaseSidebar.Inset className="max-w-screen-xl">{children}</BaseSidebar.Inset>
     </SidebarProvider>
   );
 };
