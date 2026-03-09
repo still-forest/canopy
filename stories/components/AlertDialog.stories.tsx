@@ -26,7 +26,7 @@ export const Default: Story = {
         </AlertDialog.Header>
         <AlertDialog.Footer>
           <AlertDialog.Cancel>Cancel</AlertDialog.Cancel>
-          <AlertDialog.Action variant="destructive">Delete</AlertDialog.Action>
+          <AlertDialog.Action variant="danger">Delete</AlertDialog.Action>
         </AlertDialog.Footer>
       </AlertDialog.Content>
     </AlertDialog>
@@ -36,7 +36,7 @@ export const Default: Story = {
 export const WithMedia: Story = {
   render: () => (
     <AlertDialog>
-      <AlertDialog.Trigger render={<Button variant="destructive">Delete account</Button>} />
+      <AlertDialog.Trigger render={<Button variant="danger">Delete account</Button>} />
       <AlertDialog.Content>
         <AlertDialog.Header>
           <AlertDialog.Media>
@@ -49,7 +49,7 @@ export const WithMedia: Story = {
         </AlertDialog.Header>
         <AlertDialog.Footer>
           <AlertDialog.Cancel>Cancel</AlertDialog.Cancel>
-          <AlertDialog.Action variant="destructive">Delete account</AlertDialog.Action>
+          <AlertDialog.Action variant="danger">Delete account</AlertDialog.Action>
         </AlertDialog.Footer>
       </AlertDialog.Content>
     </AlertDialog>
@@ -67,7 +67,7 @@ export const SmallSize: Story = {
         </AlertDialog.Header>
         <AlertDialog.Footer>
           <AlertDialog.Cancel size="sm">Cancel</AlertDialog.Cancel>
-          <AlertDialog.Action size="sm" variant="destructive">
+          <AlertDialog.Action size="sm" variant="danger">
             Remove
           </AlertDialog.Action>
         </AlertDialog.Footer>
@@ -90,7 +90,7 @@ export const SmallSizeWithMedia: Story = {
         </AlertDialog.Header>
         <AlertDialog.Footer>
           <AlertDialog.Cancel size="sm">Cancel</AlertDialog.Cancel>
-          <AlertDialog.Action size="sm" variant="destructive">
+          <AlertDialog.Action size="sm" variant="danger">
             Delete
           </AlertDialog.Action>
         </AlertDialog.Footer>
