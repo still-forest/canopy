@@ -68,7 +68,7 @@ function DialogContent({
 }
 
 function DialogHeader({ className, ...props }: React.ComponentProps<"div">) {
-  return <div className={cn("gap-2 flex flex-col", className)} data-slot="dialog-header" {...props} />;
+  return <div className={cn("flex flex-col", className)} data-slot="dialog-header" {...props} />;
 }
 
 function DialogFooter({
@@ -92,16 +92,14 @@ function DialogFooter({
 }
 
 function DialogTitle({ className, ...props }: DialogPrimitive.Title.Props) {
-  return (
-    <DialogPrimitive.Title className={cn("leading-none font-medium", className)} data-slot="dialog-title" {...props} />
-  );
+  return <DialogPrimitive.Title className={cn("dialog-title", className)} data-slot="dialog-title" {...props} />;
 }
 
 function DialogDescription({ className, ...props }: DialogPrimitive.Description.Props) {
   return (
     <DialogPrimitive.Description
       className={cn(
-        "text-muted-foreground *:[a]:hover:text-foreground text-sm *:[a]:underline *:[a]:underline-offset-3",
+        "dialog-description [&_a]:hover:text-foreground text-sm [&_a]:underline [&_a]:underline-offset-3",
         className,
       )}
       data-slot="dialog-description"
