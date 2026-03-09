@@ -21,9 +21,9 @@ function Switch({
         "data-[size=sm]:w-[24px]",
         "data-[size=md]:h-[18.4px]",
         "data-[size=md]:w-[32px]",
-        "data-[size=lg]:h-[22.8px]",
+        "data-[size=lg]:h-[22px]",
         "data-[size=lg]:w-[40px]",
-        "data-[size=xl]:h-[27.2px]",
+        "data-[size=xl]:h-[26px]",
         "data-[size=xl]:w-[48px]",
         className,
       )}

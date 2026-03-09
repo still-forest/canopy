@@ -3,14 +3,14 @@
 
 @layer components {
   .switch {
-    @apply shrink-0 rounded-full border border-transparent shadow-xs relative inline-flex items-center transition-all outline-none;
-
-    &[data-checked] {
-      @apply bg-primary;
-    }
+    @apply shrink-0 rounded-full border border-input-border shadow-xs relative inline-flex items-center transition-all outline-none;
 
     &[data-unchecked] {
       @apply bg-input dark:bg-input/80;
+    }
+
+    &[data-checked] {
+      @apply bg-primary border-transparent;
     }
 
     &[data-disabled] {
@@ -33,6 +33,13 @@
 
   .switch-thumb {
     @apply bg-background rounded-full pointer-events-none block ring-0 transition-transform;
-    @apply dark:data-unchecked:bg-foreground dark:data-checked:bg-primary-foreground;
+
+    &[data-unchecked] {
+      @apply bg-input-border dark:bg-foreground;
+    }
+
+    &[data-checked] {
+      @apply dark:bg-primary-foreground;
+    }
   }
 }
