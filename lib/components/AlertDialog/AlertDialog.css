@@ -1,0 +1,76 @@
+@import "@/styles/layers.css";
+@reference "@/styles/tokens.css";
+
+@layer components {
+  .alert-dialog-overlay {
+    @apply fixed inset-0 isolate z-50 bg-black/10 duration-100 supports-backdrop-filter:backdrop-blur-xs;
+    @apply data-open:animate-in data-open:fade-in-0;
+    @apply data-closed:animate-out data-closed:fade-out-0;
+  }
+
+  .alert-dialog-header {
+    @apply grid grid-rows-[auto_1fr] place-items-center gap-1.5 text-center;
+
+    &:has([data-slot="alert-dialog-media"]) {
+      @apply grid-rows-[auto_auto_1fr] gap-x-6;
+    }
+  }
+
+  .alert-dialog-footer {
+    @apply flex flex-col-reverse gap-2 sm:flex-row sm:justify-end;
+  }
+
+  .alert-dialog-media {
+    @apply mb-2 inline-flex size-16 items-center justify-center rounded-md bg-muted;
+
+    & svg:not([class*="size-"]) {
+      @apply size-8;
+    }
+  }
+
+  .alert-dialog-title {
+    @apply text-lg font-medium;
+  }
+
+  .alert-dialog-description {
+    @apply text-sm text-balance text-muted-foreground md:text-pretty;
+
+    & a {
+      @apply underline underline-offset-3 hover:text-foreground;
+    }
+  }
+
+  .alert-dialog-content {
+    @apply fixed top-1/2 left-1/2 z-50 grid w-full -translate-x-1/2 -translate-y-1/2 gap-6 rounded-xl bg-background p-6 ring-1 ring-foreground/10 duration-100 outline-none;
+    @apply data-open:animate-in data-open:fade-in-0 data-open:zoom-in-95;
+    @apply data-closed:animate-out data-closed:fade-out-0 data-closed:zoom-out-95;
+
+    &[data-size="default"] {
+      @apply max-w-xs sm:max-w-lg;
+
+      & .alert-dialog-header {
+        @apply sm:place-items-start sm:text-left;
+
+        &:has([data-slot="alert-dialog-media"]) {
+          @apply sm:grid-rows-[auto_1fr];
+        }
+      }
+
+      & .alert-dialog-media {
+        @apply sm:row-span-2;
+      }
+
+      &:has([data-slot="alert-dialog-media"]) .alert-dialog-title {
+        @apply sm:col-start-2;
+      }
+    }
+
+    &[data-size="sm"] {
+      @apply max-w-xs;
+
+      & .alert-dialog-footer {
+        @apply grid grid-cols-2;
+      }
+    }
+  }
+}

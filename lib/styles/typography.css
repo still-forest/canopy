@@ -36,38 +36,32 @@
 @layer base {
   h1,
   .heading-1 {
-    @apply font-heading;
-    @apply text-5xl tracking-tight;
+    @apply font-heading text-5xl tracking-tight;
   }
 
   h2,
   .heading-2 {
-    @apply font-heading;
-    @apply text-4xl tracking-normal;
+    @apply font-heading text-4xl tracking-normal;
   }
 
   h3,
   .heading-3 {
-    @apply font-heading;
-    @apply text-3xl tracking-normal;
+    @apply font-heading text-3xl tracking-normal;
   }
 
   h4,
   .heading-4 {
-    @apply font-body font-medium;
-    @apply text-xl;
+    @apply font-body font-medium text-xl;
   }
 
   h5,
   .heading-5 {
-    @apply font-body font-semibold;
-    @apply text-lg;
+    @apply font-body font-semibold text-lg;
   }
 
   h6,
   .heading-6 {
-    @apply font-body font-bold;
-    @apply text-base;
+    @apply font-body font-bold text-base;
   }
 
   p,
@@ -108,5 +102,9 @@
 
   .eyebrow {
     @apply font-body text-muted-foreground text-xs uppercase tracking-wide;
+  }
+
+  .dialog-title {
+    @apply font-heading font-semibold text-lg;
   }
 }
