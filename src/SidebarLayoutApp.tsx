@@ -86,7 +86,7 @@ export default function App() {
       theme={theme}
     >
       <Container className={cn(showDimensions && "bg-red-500/5 inset-shadow-sm inset-shadow-red-500", "border-b")}>
-        <SidebarTrigger>Close menu</SidebarTrigger>
+        <SidebarTrigger className="w-fit hover:bg-transparent" />
       </Container>
       <Container className={cn(showDimensions && "bg-yellow-500/5 inset-shadow-sm inset-shadow-yellow-500")}>
         <Heading className="mt-4" family="brand" level="1">
