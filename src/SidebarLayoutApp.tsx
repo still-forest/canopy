@@ -4,12 +4,13 @@ import { Link } from "react-router";
 import { Button } from "@/buttons";
 import { buildButtonClassNames } from "@/buttons/Button/utils";
 import { Container, Flex, Footer } from "@/layout";
-import { SidebarLayout, SidebarTrigger } from "@/navigation";
+import { SidebarTrigger } from "@/navigation";
 import { Heading } from "@/typography";
 import { cn } from "@/utils";
 import { Brand } from "./components/Brand";
 import { FooterContent } from "./components/FooterContent";
 import { useTheme } from "./context/useTheme";
+import { SidebarLayout } from "./SidebarLayout";
 
 const itemSet1 = [
   {

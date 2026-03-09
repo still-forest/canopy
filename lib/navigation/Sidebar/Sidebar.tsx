@@ -1,127 +1,127 @@
-import { SquareArrowOutUpRight } from "lucide-react";
-import { Fragment } from "react";
-import type { Theme } from "@/types";
-import { Text } from "@/typography";
+import { Sheet, SheetContent, SheetDescription, SheetHeader, SheetTitle } from "@/components/ui/sheet";
+import { cn } from "@/utils";
+import { SIDEBAR_WIDTH_MOBILE } from "./constants";
+import { useSidebar } from "./context";
+import {
+  SidebarContent,
+  SidebarFooter,
+  SidebarGroup,
+  SidebarGroupAction,
+  SidebarGroupContent,
+  SidebarGroupLabel,
+  SidebarHeader,
+  SidebarInset,
+  SidebarMenu,
+  SidebarMenuAction,
+  SidebarMenuItem,
+  SidebarMenuSub,
+  SidebarMenuSubButton,
+  SidebarMenuSubItem,
+  SidebarRail,
+  SidebarSeparator,
+} from "./primitives";
 import { SidebarMenuButton } from "./SidebarMenuButton";
-import { Sidebar as BaseSidebar } from "./SidebarPrimitive";
+import { SidebarTrigger } from "./SidebarTrigger";
 
-interface SideLink {
-  slug: string;
-  title: string;
-  icon: React.ElementType;
-  onClick?: () => void;
-  external?: boolean;
+export interface SidebarProps extends React.ComponentProps<"div"> {
+  side?: "left" | "right";
+  collapsible?: "offcanvas" | "icon" | "none";
 }
 
-interface SideLinkSet {
-  links: SideLink[];
-}
+const Sidebar = ({ side = "left", collapsible = "offcanvas", className, children, dir, ...props }: SidebarProps) => {
+  const { isMobile, state, openMobile, setOpenMobile } = useSidebar();
 
-export interface SidebarProps extends React.ComponentProps<typeof BaseSidebar> {
-  brandContent: React.ReactNode;
-  brandOnClick?: () => void;
-  activeSlug?: string;
-  itemSets: SideLinkSet[];
-  bottomItemSets?: SideLinkSet[];
-  theme: Theme;
-  setTheme: (theme: Theme) => void;
-}
+  if (collapsible === "none") {
+    return (
+      <div
+        className={cn("flex h-full w-(--sidebar-width) flex-col bg-sidebar text-sidebar-foreground", className)}
+        data-slot="sidebar"
+        {...props}
+      >
+        {children}
+      </div>
+    );
+  }
 
-export const MenuItemText = ({ children }: { children: React.ReactNode }) => (
-  <Text size="base" truncate>
-    {children}
-  </Text>
-);
+  if (isMobile) {
+    return (
+      <Sheet onOpenChange={setOpenMobile} open={openMobile} {...props}>
+        <SheetContent
+          className="w-(--sidebar-width) bg-sidebar p-0 text-sidebar-foreground [&>button]:hidden"
+          data-mobile="true"
+          data-sidebar="sidebar"
+          data-slot="sidebar"
+          dir={dir}
+          side={side}
+          style={
+            {
+              "--sidebar-width": SIDEBAR_WIDTH_MOBILE,
+            } as React.CSSProperties
+          }
+        >
+          <SheetHeader className="sr-only">
+            <SheetTitle>Sidebar</SheetTitle>
+            <SheetDescription>Displays the mobile sidebar.</SheetDescription>
+          </SheetHeader>
+          <div className="flex h-full w-full flex-col">{children}</div>
+        </SheetContent>
+      </Sheet>
+    );
+  }
 
-interface MenuSubSectionProps {
-  itemSet: SideLinkSet;
-  activeSlug?: string;
-}
-
-const MenuSubSection = ({ itemSet, activeSlug }: MenuSubSectionProps) => {
   return (
-    <>
-      {itemSet.links.map((item) => (
-        <BaseSidebar.MenuItem className="hover:cursor-pointer" key={item.slug} onClick={item.onClick}>
-          <BaseSidebar.MenuButton active={activeSlug === item.slug}>
-            <item.icon />
-            <MenuItemText>{item.title}</MenuItemText>
-            {item.external && <SquareArrowOutUpRight size={12} strokeWidth={1.5} />}
-          </BaseSidebar.MenuButton>
-        </BaseSidebar.MenuItem>
-      ))}
-    </>
+    <div
+      className="group peer hidden text-sidebar-foreground md:block"
+      data-collapsible={state === "collapsed" ? collapsible : ""}
+      data-side={side}
+      data-slot="sidebar"
+      data-state={state}
+    >
+      {/* This is what handles the sidebar gap on desktop */}
+      <div
+        className={cn(
+          "relative w-(--sidebar-width) bg-transparent transition-[width] duration-200 ease-linear",
+          "group-data-[collapsible=offcanvas]:w-0",
+          "group-data-[side=right]:rotate-180",
+          "group-data-[collapsible=icon]:w-(--sidebar-width-icon)",
+        )}
+        data-slot="sidebar-gap"
+      />
+      <div
+        className={cn(
+          "fixed inset-y-0 z-10 hidden h-svh w-(--sidebar-width) transition-[left,right,width] duration-200 ease-linear data-[side=left]:left-0 data-[side=left]:group-data-[collapsible=offcanvas]:left-[calc(var(--sidebar-width)*-1)] data-[side=right]:right-0 data-[side=right]:group-data-[collapsible=offcanvas]:right-[calc(var(--sidebar-width)*-1)] md:flex",
+          "group-data-[collapsible=icon]:w-(--sidebar-width-icon) group-data-[side=left]:border-r group-data-[side=right]:border-l",
+          className,
+        )}
+        data-side={side}
+        data-slot="sidebar-container"
+        {...props}
+      >
+        <div className="flex size-full flex-col bg-sidebar" data-sidebar="sidebar" data-slot="sidebar-inner">
+          {children}
+        </div>
+      </div>
+    </div>
   );
 };
 
-interface MenuSectionProps {
-  itemSets: SideLinkSet[];
-  activeSlug?: string;
-}
+Sidebar.Rail = SidebarRail;
+Sidebar.Inset = SidebarInset;
+Sidebar.Header = SidebarHeader;
+Sidebar.Footer = SidebarFooter;
+Sidebar.Content = SidebarContent;
+Sidebar.Group = SidebarGroup;
+Sidebar.GroupLabel = SidebarGroupLabel;
+Sidebar.GroupAction = SidebarGroupAction;
+Sidebar.GroupContent = SidebarGroupContent;
+Sidebar.Menu = SidebarMenu;
+Sidebar.MenuItem = SidebarMenuItem;
+Sidebar.MenuAction = SidebarMenuAction;
+Sidebar.MenuSub = SidebarMenuSub;
+Sidebar.MenuSubItem = SidebarMenuSubItem;
+Sidebar.MenuSubButton = SidebarMenuSubButton;
+Sidebar.Separator = SidebarSeparator;
+Sidebar.MenuButton = SidebarMenuButton;
+Sidebar.Trigger = SidebarTrigger;
 
-const MenuSection = ({ itemSets, activeSlug }: MenuSectionProps) => {
-  return (
-    <BaseSidebar.Menu>
-      {itemSets.map((itemSet, i) => {
-        return (
-          <Fragment key={`item-set-${i}`}>
-            <MenuSubSection activeSlug={activeSlug} itemSet={itemSet} />
-            {i < itemSets.length - 1 && <BaseSidebar.Separator />}
-          </Fragment>
-        );
-      })}
-    </BaseSidebar.Menu>
-  );
-};
-
-export const Sidebar = ({
-  brandContent,
-  brandOnClick,
-  activeSlug,
-  itemSets,
-  bottomItemSets = [],
-  theme,
-  setTheme,
-  ...props
-}: SidebarProps) => {
-  return (
-    <BaseSidebar collapsible="icon" {...props}>
-      <BaseSidebar.Header>
-        <BaseSidebar.Menu>
-          <BaseSidebar.MenuItem>
-            <SidebarMenuButton
-              className={brandOnClick ? "cursor-pointer" : "cursor-default"}
-              onClick={brandOnClick}
-              size="lg"
-            >
-              {brandContent}
-            </SidebarMenuButton>
-          </BaseSidebar.MenuItem>
-        </BaseSidebar.Menu>
-      </BaseSidebar.Header>
-      <BaseSidebar.Content>
-        <BaseSidebar.Group>
-          <BaseSidebar.GroupContent>
-            <MenuSection activeSlug={activeSlug} itemSets={itemSets} />
-          </BaseSidebar.GroupContent>
-        </BaseSidebar.Group>
-      </BaseSidebar.Content>
-      <BaseSidebar.Footer className="mb-4">
-        <BaseSidebar.Menu>
-          <BaseSidebar.MenuItem>
-            <BaseSidebar.Trigger>
-              <MenuItemText>Collapse menu</MenuItemText>
-            </BaseSidebar.Trigger>
-          </BaseSidebar.MenuItem>
-          {bottomItemSets.length > 0 && (
-            <>
-              <BaseSidebar.Separator />
-              <MenuSection activeSlug={activeSlug} itemSets={bottomItemSets} />
-            </>
-          )}
-        </BaseSidebar.Menu>
-      </BaseSidebar.Footer>
-      <BaseSidebar.Rail />
-    </BaseSidebar>
-  );
-};
+export { Sidebar };
