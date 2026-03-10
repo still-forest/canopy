@@ -4,33 +4,32 @@
 @layer components {
   .sheet-overlay {
     @apply bg-black/10 duration-100 supports-backdrop-filter:backdrop-blur-xs fixed inset-0 z-50;
-    @apply data-open:animate-in data-closed:animate-out data-closed:fade-out-0 data-open:fade-in-0;
-    @apply data-ending-style:opacity-0 data-starting-style:opacity-0;
+    @apply transition-opacity data-ending-style:opacity-0 data-starting-style:opacity-0;
   }
 
   .sheet-content {
     @apply bg-background fixed z-50 flex flex-col gap-4 bg-clip-padding text-sm shadow-lg;
     @apply transition duration-200 ease-in-out;
-    @apply data-open:animate-in data-closed:animate-out data-closed:fade-out-0 data-open:fade-in-0;
+    @apply data-starting-style:opacity-0 data-ending-style:opacity-0;
 
     &[data-side="right"] {
       @apply inset-y-0 right-0 h-full w-3/4 border-l sm:max-w-sm;
-      @apply data-closed:slide-out-to-right-10 data-open:slide-in-from-right-10;
+      @apply data-ending-style:translate-x-[2.5rem] data-starting-style:translate-x-[2.5rem];
     }
 
     &[data-side="left"] {
       @apply inset-y-0 left-0 h-full w-3/4 border-r sm:max-w-sm;
-      @apply data-closed:slide-out-to-left-10 data-open:slide-in-from-left-10;
+      @apply data-ending-style:translate-x-[-2.5rem] data-starting-style:translate-x-[-2.5rem];
     }
 
     &[data-side="top"] {
       @apply inset-x-0 top-0 h-auto border-b;
-      @apply data-closed:slide-out-to-top-10 data-open:slide-in-from-top-10;
+      @apply data-ending-style:translate-y-[-2.5rem] data-starting-style:translate-y-[-2.5rem];
     }
 
     &[data-side="bottom"] {
       @apply inset-x-0 bottom-0 h-auto border-t;
-      @apply data-closed:slide-out-to-bottom-10 data-open:slide-in-from-bottom-10;
+      @apply data-ending-style:translate-y-[2.5rem] data-starting-style:translate-y-[2.5rem];
     }
   }
 
