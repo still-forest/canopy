@@ -3,7 +3,8 @@
 
 @layer components {
   .sheet-overlay {
-    @apply fixed inset-0 z-50 bg-black/10 transition-opacity duration-150 data-ending-style:opacity-0 data-starting-style:opacity-0 supports-backdrop-filter:backdrop-blur-xs;
+    @apply bg-black/10 duration-100 supports-backdrop-filter:backdrop-blur-xs fixed inset-0 z-50;
+    @apply transition-opacity data-ending-style:opacity-0 data-starting-style:opacity-0;
   }
 
   .sheet-content {
