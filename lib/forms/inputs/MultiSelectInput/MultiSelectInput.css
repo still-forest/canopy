@@ -25,7 +25,7 @@
     }
 
     &.multi-select-trigger--sm {
-      @apply h-8 text-sm md:text-xs;
+      @apply h-8 text-base sm:text-xs;
     }
 
     &.multi-select-trigger--default {
