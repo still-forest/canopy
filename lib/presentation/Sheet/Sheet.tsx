@@ -31,18 +31,20 @@ const SheetContent = ({
   children,
   side,
   showCloseButton = true,
-  showOverlay = false,
+  showOverlay = true,
+  overlayClassName,
   ...props
 }: SheetPrimitive.Popup.Props & {
   side?: "top" | "right" | "bottom" | "left";
   showCloseButton?: boolean;
   showOverlay?: boolean;
+  overlayClassName?: string;
 }) => {
   const isMobile = useIsMobile();
   const defaultSide = isMobile ? "bottom" : "right";
   return (
     <SheetPortal>
-      {showOverlay && <SheetOverlay />}
+      {showOverlay && <SheetOverlay className={overlayClassName} />}
       <SheetPrimitive.Popup
         className={cn("sheet-content", className)}
         data-side={side ?? defaultSide}
