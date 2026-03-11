@@ -70,11 +70,11 @@
       }
 
       &.input--xs {
-        @apply h-8 text-xs;
+        @apply h-8 text-base sm:text-xs;
       }
 
       &.input--sm {
-        @apply h-8 text-sm;
+        @apply h-8 text-base sm:text-sm;
       }
 
       &.input--lg {
