@@ -10,6 +10,7 @@
   .sheet-content {
     @apply bg-background fixed z-50 flex flex-col gap-4 bg-clip-padding text-sm shadow-lg;
     @apply transition duration-200 ease-in-out;
+    @apply max-h-dvh;
     @apply data-starting-style:opacity-0 data-ending-style:opacity-0;
 
     &[data-side="right"] {
