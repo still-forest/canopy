@@ -3,7 +3,7 @@
 
 @layer components {
   .btn {
-    @apply inline-flex items-center justify-center whitespace-nowrap text-sm font-medium transition-all shrink-0 outline-none cursor-pointer rounded-md shadow-xs;
+    @apply inline-flex items-center justify-center whitespace-nowrap text-sm font-medium transition-[color,background-color,border-color,text-decoration-color,box-shadow,ring-color] shrink-0 outline-none cursor-pointer rounded-md shadow-xs;
     @apply gap-2 h-9 px-4 py-2;
     @apply border;
 
