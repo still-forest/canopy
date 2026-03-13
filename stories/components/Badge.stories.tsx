@@ -35,10 +35,11 @@ export const Variants: Story = {
   render: () => (
     <div className="grid grid-cols-4 gap-4">
       <Badge label="Default" />
+      <Badge label="Ghost" variant="ghost" />
       <Badge className="col-start-1" label="Primary" variant="primary" />
       <Badge label="Secondary" variant="secondary" />
+      <Badge label="Tertiary" variant="tertiary" />
       <Badge label="Muted" variant="muted" />
-      <Badge label="Ghost" variant="ghost" />
       <Badge label="Info" variant="info" />
       <Badge label="Success" variant="success" />
       <Badge label="Warning" variant="warning" />
@@ -51,10 +52,11 @@ export const OutlineVariants: Story = {
   render: () => (
     <div className="grid grid-cols-4 gap-4">
       <Badge label="Default" outline />
+      <Badge label="Ghost" outline variant="ghost" />
       <Badge className="col-start-1" label="Primary" outline variant="primary" />
       <Badge label="Secondary" outline variant="secondary" />
+      <Badge label="Tertiary" outline variant="tertiary" />
       <Badge label="Muted" outline variant="muted" />
-      <Badge label="Ghost" outline variant="ghost" />
       <Badge label="Info" outline variant="info" />
       <Badge label="Success" outline variant="success" />
       <Badge label="Warning" outline variant="warning" />
@@ -82,6 +84,10 @@ export const WithIcon: Story = {
         <SampleIcon />
         Default
       </Badge>
+      <Badge variant="ghost">
+        <SampleIcon />
+        Ghost
+      </Badge>
       <Badge className="col-start-1" variant="primary">
         <SampleIcon />
         Primary
@@ -90,13 +96,13 @@ export const WithIcon: Story = {
         <SampleIcon />
         Secondary
       </Badge>
+      <Badge variant="tertiary">
+        <SampleIcon />
+        Tertiary
+      </Badge>
       <Badge variant="muted">
         <SampleIcon />
         Muted
-      </Badge>
-      <Badge variant="ghost">
-        <SampleIcon />
-        Ghost
       </Badge>
       <Badge variant="info">
         <SampleIcon />

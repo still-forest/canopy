@@ -36,14 +36,15 @@ export const Default: Story = {
 
 export const Variants: Story = {
   render: () => (
-    <div className="grid grid-cols-5 gap-4">
+    <div className="grid grid-cols-4 gap-4">
       <Button label="Default" />
-      <Button className="col-start-1" label="Primary" variant="primary" />
-      <Button label="Secondary" variant="secondary" />
-      <Button label="Muted" variant="muted" />
-      <Button label="Ghost" variant="ghost" />
       <Button label="Link" variant="link" />
       <Button label="Info" variant="info" />
+      <Button className="col-start-1" label="Primary" variant="primary" />
+      <Button label="Secondary" variant="secondary" />
+      <Button label="Tertiary" variant="tertiary" />
+      <Button label="Muted" variant="muted" />
+      <Button label="Ghost" variant="ghost" />
       <Button label="Success" variant="success" />
       <Button label="Warning" variant="warning" />
       <Button label="Danger" variant="danger" />
@@ -53,13 +54,14 @@ export const Variants: Story = {
 
 export const OutlineStyles: Story = {
   render: () => (
-    <div className="grid grid-cols-5 gap-4">
+    <div className="grid grid-cols-4 gap-4">
       <Button label="Default" outline />
-      <Button className="col-start-1" label="Primary" outline variant="primary" />
-      <Button label="Secondary" outline variant="secondary" />
-      <Button label="Muted" outline variant="muted" />
       <Button label="Ghost" outline variant="ghost" />
       <Button label="Link" outline variant="link" />
+      <Button className="col-start-1" label="Primary" outline variant="primary" />
+      <Button label="Secondary" outline variant="secondary" />
+      <Button label="Tertiary" outline variant="tertiary" />
+      <Button label="Muted" outline variant="muted" />
       <Button label="Info" outline variant="info" />
       <Button label="Success" outline variant="success" />
       <Button label="Warning" outline variant="warning" />
@@ -70,13 +72,14 @@ export const OutlineStyles: Story = {
 
 export const KnockoutStyles: Story = {
   render: () => (
-    <div className="grid grid-cols-5 gap-4">
+    <div className="grid grid-cols-4 gap-4">
       <Button knockout label="Default" />
-      <Button className="col-start-1" knockout label="Primary" variant="primary" />
-      <Button knockout label="Secondary" variant="secondary" />
-      <Button knockout label="Muted" variant="muted" />
       <Button knockout label="Ghost" variant="ghost" />
       <Button knockout label="Link" variant="link" />
+      <Button className="col-start-1" knockout label="Primary" variant="primary" />
+      <Button knockout label="Secondary" variant="secondary" />
+      <Button knockout label="Tertiary" variant="tertiary" />
+      <Button knockout label="Muted" variant="muted" />
       <Button knockout label="Info" variant="info" />
       <Button knockout label="Success" variant="success" />
       <Button knockout label="Warning" variant="warning" />
@@ -87,17 +90,36 @@ export const KnockoutStyles: Story = {
 
 export const RoundedStyles: Story = {
   render: () => (
-    <div className="grid grid-cols-5 gap-4">
+    <div className="grid grid-cols-4 gap-4">
       <Button label="Default" rounded />
-      <Button className="col-start-1" label="Primary" rounded variant="primary" />
-      <Button label="Secondary" rounded variant="secondary" />
-      <Button label="Muted" rounded variant="muted" />
       <Button label="Ghost" rounded variant="ghost" />
       <Button label="Link" rounded variant="link" />
+      <Button className="col-start-1" label="Primary" rounded variant="primary" />
+      <Button label="Secondary" rounded variant="secondary" />
+      <Button label="Tertiary" rounded variant="tertiary" />
+      <Button label="Muted" rounded variant="muted" />
       <Button label="Info" rounded variant="info" />
       <Button label="Success" rounded variant="success" />
       <Button label="Warning" rounded variant="warning" />
       <Button label="Danger" rounded variant="danger" />
+    </div>
+  ),
+};
+
+export const WithIcon: Story = {
+  render: () => (
+    <div className="grid grid-cols-4 gap-4">
+      <Button label="Default" {...iconProps} />
+      <Button label="Ghost" variant="ghost" {...iconProps} />
+      <Button label="Link" variant="link" {...iconProps} />
+      <Button className="col-start-1" label="Primary" variant="primary" {...iconProps} />
+      <Button label="Secondary" variant="secondary" {...iconProps} />
+      <Button label="Tertiary" variant="tertiary" {...iconProps} />
+      <Button label="Muted" variant="muted" {...iconProps} />
+      <Button label="Info" variant="info" {...iconProps} />
+      <Button label="Success" variant="success" {...iconProps} />
+      <Button label="Warning" variant="warning" {...iconProps} />
+      <Button label="Danger" variant="danger" {...iconProps} />
     </div>
   ),
 };
@@ -128,23 +150,6 @@ export const Sizes: Story = {
       <Button label="Medium" size="md" />
       <Button label="Large" size="lg" />
       <Button label="Extra large" size="xl" />
-    </div>
-  ),
-};
-
-export const WithIcon: Story = {
-  render: () => (
-    <div className="grid grid-cols-5 gap-4">
-      <Button label="Default" {...iconProps} />
-      <Button className="col-start-1" label="Primary" variant="primary" {...iconProps} />
-      <Button label="Secondary" variant="secondary" {...iconProps} />
-      <Button label="Muted" variant="muted" {...iconProps} />
-      <Button label="Ghost" variant="ghost" {...iconProps} />
-      <Button label="Link" variant="link" {...iconProps} />
-      <Button label="Info" variant="info" {...iconProps} />
-      <Button label="Success" variant="success" {...iconProps} />
-      <Button label="Warning" variant="warning" {...iconProps} />
-      <Button label="Danger" variant="danger" {...iconProps} />
     </div>
   ),
 };

@@ -158,6 +158,15 @@
     }
   }
 
+  .btn-tertiary {
+    @apply bg-tertiary border-tertiary text-tertiary-foreground;
+
+    &:hover,
+    &[aria-pressed="true"] {
+      @apply bg-tertiary/80;
+    }
+  }
+
   .btn-muted {
     @apply bg-muted border-muted text-muted-foreground;
 

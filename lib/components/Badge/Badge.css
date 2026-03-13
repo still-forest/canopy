@@ -32,6 +32,15 @@
       }
     }
 
+    &.badge-tertiary {
+      @apply bg-tertiary text-tertiary-foreground;
+      @apply border-tertiary;
+
+      &.badge--outline {
+        @apply bg-background border-tertiary/50 text-tertiary;
+      }
+    }
+
     &.badge-muted {
       @apply bg-muted text-muted-foreground;
       @apply border-muted;

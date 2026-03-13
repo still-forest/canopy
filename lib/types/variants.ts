@@ -3,6 +3,7 @@ export type NotificationVariant = "info" | "success" | "warning" | "danger";
 export type ButtonVariant =
   | "primary"
   | "secondary"
+  | "tertiary"
   | "muted"
   | "ghost"
   | "link"
@@ -12,4 +13,13 @@ export type ButtonVariant =
   | "warning"
   | "danger";
 
-export type BadgeVariant = "primary" | "secondary" | "muted" | "ghost" | "info" | "success" | "warning" | "danger";
+export type BadgeVariant =
+  | "primary"
+  | "secondary"
+  | "tertiary"
+  | "muted"
+  | "ghost"
+  | "info"
+  | "success"
+  | "warning"
+  | "danger";
