@@ -106,8 +106,8 @@
   /* ----------------------------------------------------------------
        6. SHADCN COMPATIBILITY ALIASES
        These map ShadCN's expected token names to the system above.
-       Every stock ShadCN component will keep working — but you can
-       progressively migrate components to use the real tokens.
+       Every stock ShadCN component will keep working, but can be
+       progressively migrated to use the real tokens.
        ---------------------------------------------------------------- */
 
   --background: var(--surface);
@@ -121,9 +121,6 @@
 
   --muted: var(--surface-variant);
   --muted-foreground: var(--surface-variant-foreground);
-
-  /* ShadCN "accent" = interactive surface highlight, not a brand accent.
-       Map it to the container scale so hover states feel layered. */
   --accent: var(--surface-container-high);
   --accent-foreground: var(--surface-foreground);
 
