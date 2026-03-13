@@ -129,13 +129,7 @@ function InputPair() {
     <div className="flex flex-col gap-2">
       <h4 className="heading-4">Input</h4>
       <div className="flex items-center gap-3">
-        <div
-          className="h-10 w-full rounded-lg border-2"
-          style={{
-            backgroundColor: "var(--input)",
-            borderColor: "var(--input-border)",
-          }}
-        />
+        <div className="h-10 w-full rounded-lg border-2 bg-input border-input-border" />
         <div className="flex shrink-0 flex-col font-mono text-xs text-muted-foreground">
           <span>input (fill)</span>
           <span>input-border (stroke)</span>
