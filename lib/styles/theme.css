@@ -28,15 +28,15 @@
   --primary-container: var(--color-forest-200);
   --primary-container-foreground: var(--color-forest-900);
 
-  --secondary: var(--color-cyan-700);
-  --secondary-foreground: var(--color-cyan-50);
-  --secondary-container: var(--color-cyan-200);
-  --secondary-container-foreground: var(--color-cyan-900);
+  --secondary: var(--color-stone-600);
+  --secondary-foreground: var(--color-stone-50);
+  --secondary-container: var(--color-stone-200);
+  --secondary-container-foreground: var(--color-stone-900);
 
-  --tertiary: var(--color-amber-600);
-  --tertiary-foreground: var(--color-amber-50);
-  --tertiary-container: var(--color-amber-200);
-  --tertiary-container-foreground: var(--color-amber-900);
+  --tertiary: var(--color-teal-700);
+  --tertiary-foreground: var(--color-teal-50);
+  --tertiary-container: var(--color-teal-200);
+  --tertiary-container-foreground: var(--color-teal-900);
 
   /* ----------------------------------------------------------------
        2. SURFACES
@@ -78,17 +78,17 @@
   --danger-container: var(--color-red-200);
   --danger-container-foreground: var(--color-red-900);
 
-  --success: var(--color-green-700);
+  --success: var(--color-green-600);
   --success-foreground: var(--color-green-50);
   --success-container: var(--color-green-200);
   --success-container-foreground: var(--color-green-900);
 
-  --warning: var(--color-amber-500);
-  --warning-foreground: var(--color-amber-950);
-  --warning-container: var(--color-amber-200);
-  --warning-container-foreground: var(--color-amber-900);
+  --warning: var(--color-orange-400);
+  --warning-foreground: var(--color-orange-950);
+  --warning-container: var(--color-orange-200);
+  --warning-container-foreground: var(--color-orange-900);
 
-  --info: var(--color-blue-600);
+  --info: var(--color-blue-500);
   --info-foreground: var(--color-blue-50);
   --info-container: var(--color-blue-200);
   --info-container-foreground: var(--color-blue-900);
@@ -151,15 +151,15 @@
   --primary-container: var(--color-forest-800);
   --primary-container-foreground: var(--color-forest-100);
 
-  --secondary: var(--color-cyan-300);
-  --secondary-foreground: var(--color-cyan-950);
-  --secondary-container: var(--color-cyan-800);
-  --secondary-container-foreground: var(--color-cyan-100);
+  --secondary: var(--color-stone-300);
+  --secondary-foreground: var(--color-stone-950);
+  --secondary-container: var(--color-stone-800);
+  --secondary-container-foreground: var(--color-stone-100);
 
-  --tertiary: var(--color-amber-300);
-  --tertiary-foreground: var(--color-amber-950);
-  --tertiary-container: var(--color-amber-800);
-  --tertiary-container-foreground: var(--color-amber-100);
+  --tertiary: var(--color-teal-300);
+  --tertiary-foreground: var(--color-teal-950);
+  --tertiary-container: var(--color-teal-800);
+  --tertiary-container-foreground: var(--color-teal-100);
 
   --surface: var(--color-neutral-950);
   --surface-foreground: var(--color-neutral-50);
