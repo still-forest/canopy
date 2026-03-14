@@ -1,12 +1,16 @@
-import { Link } from "@tanstack/react-router";
+import { createFileRoute, Link } from "@tanstack/react-router";
 import { useState } from "react";
 import { Button, buildButtonClassNames } from "@/buttons";
 import { Container, Layout } from "@/layout";
 import { cn } from "@/utils";
-import { Brand } from "./components/Brand";
-import { FooterContent } from "./components/FooterContent";
+import { Brand } from "../components/Brand";
+import { FooterContent } from "../components/FooterContent";
 
-export default function App() {
+export const Route = createFileRoute("/layout")({
+  component: LayoutPage,
+});
+
+function LayoutPage() {
   const [showDimensions, setShowDimensions] = useState(false);
 
   return (

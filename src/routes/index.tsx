@@ -1,17 +1,21 @@
-import { Link } from "@tanstack/react-router";
+import { createFileRoute, Link } from "@tanstack/react-router";
 import { buildButtonClassNames } from "@/buttons/Button/utils";
 import { Flex } from "@/layout";
 
 const items = [
   {
     label: "Layout",
-    to: "/layout",
+    to: "/layout" as const,
   },
   {
     label: "SidebarLayout",
-    to: "/sidebar",
+    to: "/sidebar" as const,
   },
 ];
+
+export const Route = createFileRoute("/")({
+  component: App,
+});
 
 function App() {
   return (
@@ -26,5 +30,3 @@ function App() {
     </Flex>
   );
 }
-
-export default App;
