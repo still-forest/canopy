@@ -1,0 +1,15 @@
+export const DEFAULT_FONT_NAMES = [
+  "Baskervville",
+  "Baskervville SC",
+  "Cardo",
+  "Cinzel",
+  "Cinzel Decorative",
+  "Cormorant",
+  "Cormorant Garamond",
+  "Cormorant SC",
+  "Cormorant Unicase",
+  "EB Garamond",
+  "Jacques Francois",
+  "Noto Serif HK",
+  "Sorts Mill Goudy",
+];
