@@ -1,6 +1,6 @@
+import { Link } from "@tanstack/react-router";
 import { BookType, FolderTree, Home, LayoutDashboard, LogOut, Settings2 } from "lucide-react";
 import { useState } from "react";
-import { Link } from "react-router";
 import { Button } from "@/buttons";
 import { buildButtonClassNames } from "@/buttons/Button/utils";
 import { Container, Flex, Footer } from "@/layout";

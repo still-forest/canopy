@@ -1,6 +1,6 @@
+import { createRootRoute, createRoute, createRouter, RouterProvider } from "@tanstack/react-router";
 import { StrictMode } from "react";
 import { createRoot } from "react-dom/client";
-import { BrowserRouter, Route, Routes } from "react-router";
 
 import "../lib/styles/index.css";
 
@@ -9,16 +9,40 @@ import ThemeProvider from "./context/ThemeProvider.tsx";
 import LayoutApp from "./LayoutApp.tsx";
 import SidebarLayoutApp from "./SidebarLayoutApp.tsx";
 
+const rootRoute = createRootRoute();
+
+const indexRoute = createRoute({
+  getParentRoute: () => rootRoute,
+  path: "/",
+  component: App,
+});
+
+const layoutRoute = createRoute({
+  getParentRoute: () => rootRoute,
+  path: "/layout",
+  component: LayoutApp,
+});
+
+const sidebarRoute = createRoute({
+  getParentRoute: () => rootRoute,
+  path: "/sidebar",
+  component: SidebarLayoutApp,
+});
+
+const routeTree = rootRoute.addChildren([indexRoute, layoutRoute, sidebarRoute]);
+
+const router = createRouter({ routeTree });
+
+declare module "@tanstack/react-router" {
+  interface Register {
+    router: typeof router;
+  }
+}
+
 createRoot(document.getElementById("root")!).render(
   <StrictMode>
     <ThemeProvider defaultTheme="light" storageKey="canopy-theme">
-      <BrowserRouter>
-        <Routes>
-          <Route element={<App />} path="/" />
-          <Route element={<LayoutApp />} path="/layout" />
-          <Route element={<SidebarLayoutApp />} path="/sidebar" />
-        </Routes>
-      </BrowserRouter>
+      <RouterProvider router={router} />
     </ThemeProvider>
   </StrictMode>,
 );
