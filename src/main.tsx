@@ -1,24 +1,21 @@
+import { createRouter, RouterProvider } from "@tanstack/react-router";
 import { StrictMode } from "react";
 import { createRoot } from "react-dom/client";
-import { BrowserRouter, Route, Routes } from "react-router";
 
 import "../lib/styles/index.css";
 
-import App from "./App.tsx";
-import ThemeProvider from "./context/ThemeProvider.tsx";
-import LayoutApp from "./LayoutApp.tsx";
-import SidebarLayoutApp from "./SidebarLayoutApp.tsx";
+import { routeTree } from "./routeTree.gen";
+
+const router = createRouter({ routeTree });
+
+declare module "@tanstack/react-router" {
+  interface Register {
+    router: typeof router;
+  }
+}
 
 createRoot(document.getElementById("root")!).render(
   <StrictMode>
-    <ThemeProvider defaultTheme="light" storageKey="canopy-theme">
-      <BrowserRouter>
-        <Routes>
-          <Route element={<App />} path="/" />
-          <Route element={<LayoutApp />} path="/layout" />
-          <Route element={<SidebarLayoutApp />} path="/sidebar" />
-        </Routes>
-      </BrowserRouter>
-    </ThemeProvider>
+    <RouterProvider router={router} />
   </StrictMode>,
 );

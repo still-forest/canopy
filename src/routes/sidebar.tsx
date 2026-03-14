@@ -1,15 +1,15 @@
+import { createFileRoute, Link } from "@tanstack/react-router";
 import { BookType, FolderTree, Home, LayoutDashboard, LogOut, Settings2 } from "lucide-react";
 import { useState } from "react";
-import { Link } from "react-router";
 import { Button } from "@/buttons";
 import { buildButtonClassNames } from "@/buttons/Button/utils";
 import { Container, Flex, Footer } from "@/layout";
 import { SidebarTrigger } from "@/navigation";
 import { Heading } from "@/typography";
 import { cn } from "@/utils";
-import { Brand } from "./components/Brand";
-import { FooterContent } from "./components/FooterContent";
-import { SidebarLayout } from "./SidebarLayout";
+import { Brand } from "../components/Brand";
+import { FooterContent } from "../components/FooterContent";
+import { SidebarLayout } from "../SidebarLayout";
 
 const itemSet1 = [
   {
@@ -69,7 +69,11 @@ const itemSet3 = [
   },
 ];
 
-export default function App() {
+export const Route = createFileRoute("/sidebar")({
+  component: SidebarPage,
+});
+
+function SidebarPage() {
   const [showDimensions, setShowDimensions] = useState(true);
 
   return (
