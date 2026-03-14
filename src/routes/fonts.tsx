@@ -1,6 +1,6 @@
 import { Button, cn, Flex, Grid, Text } from "@still-forest/canopy";
 import { createFileRoute } from "@tanstack/react-router";
-import { Fragment, useState } from "react";
+import { Fragment, useEffect, useState } from "react";
 import { ButtonRadioField } from "@/forms";
 import { Layout } from "@/layout";
 import type { Theme } from "../context/ThemeProviderContext";
@@ -64,6 +64,17 @@ function RouteComponent() {
   ]
     .filter((fontName, index, self) => self.indexOf(fontName) === index)
     .sort();
+
+  useEffect(() => {
+    const families = FONT_NAMES.map((name) => `family=${name.replace(/ /g, "+")}`).join("&");
+    const link = document.createElement("link");
+    link.rel = "stylesheet";
+    link.href = `https://fonts.googleapis.com/css2?${families}&display=swap`;
+    document.head.appendChild(link);
+    return () => {
+      document.head.removeChild(link);
+    };
+  }, [FONT_NAMES.map]);
 
   const FONT_WEIGHT_CLASSES = [
     "font-thin",
