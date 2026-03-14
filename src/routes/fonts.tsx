@@ -15,6 +15,7 @@ function RouteComponent() {
   const [fontSpacing, setFontSpacing] = useState("tracking-normal");
   const { theme, setTheme } = useTheme();
   const [highlight, setHighlight] = useState<number | null>(null);
+  const [sampleText, setSampleText] = useState("Canopy");
 
   const THEMES = [
     { label: "Light", value: "light" as Theme },
@@ -113,6 +114,13 @@ function RouteComponent() {
     <Layout>
       <Flex align="center" className="h-screen py-8" direction="col" gap="2" justify="center">
         <Flex className="col-span-3 mb-4" direction="col" gap="2" justify="between">
+          <input
+            className="border border-border rounded-md px-3 py-2 bg-background text-foreground"
+            onChange={(e) => setSampleText(e.target.value)}
+            placeholder="Sample text"
+            type="text"
+            value={sampleText}
+          />
           <ButtonRadioField
             name="font-weight"
             onChange={setFontWeight}
@@ -127,7 +135,7 @@ function RouteComponent() {
           />
           <ButtonRadioField name="theme" onChange={setTheme} options={THEMES} value={theme} />
         </Flex>
-        <Grid className="overflow-y-auto" cols="3" gap="2">
+        <Grid className="overflow-y-auto" cols="2" gap="2">
           {FONT_NAMES.map((fontName, index) => (
             <Fragment key={fontName}>
               <Button onClick={() => setHighlight(index)} size="md" variant="ghost">
@@ -138,14 +146,7 @@ function RouteComponent() {
                 size="4xl"
                 style={{ fontFamily: fontName }}
               >
-                Manor
-              </Text>
-              <Text
-                className={cn(classNames, highlight !== index && "text-muted-foreground")}
-                size="4xl"
-                style={{ fontFamily: fontName }}
-              >
-                MANOR
+                {sampleText}
               </Text>
             </Fragment>
           ))}
