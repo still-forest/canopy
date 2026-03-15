@@ -1,5 +1,5 @@
 import { AlertDialog, Button, Card, Container, cn, Flex, GridLayout, Input, Text } from "@still-forest/canopy";
-import { createFileRoute } from "@tanstack/react-router";
+import { createFileRoute, Link } from "@tanstack/react-router";
 import { XIcon } from "lucide-react";
 import { Fragment, useEffect, useState } from "react";
 import { ButtonRadioField, InputGroup } from "@/forms";
@@ -115,8 +115,9 @@ function RouteComponent() {
 
   return (
     <Layout>
-      <Layout.Header>
+      <Layout.Header className="flex flex-row items-center gap-2 layout-container layout-container--xl">
         <h1>Fonts</h1>
+        <Link to="/">Home</Link>
       </Layout.Header>
       <Layout.Body>
         <Container width="xl">
