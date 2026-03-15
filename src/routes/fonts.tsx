@@ -1,4 +1,4 @@
-import { AlertDialog, Button, Container, cn, Flex, GridLayout, Input, Text } from "@still-forest/canopy";
+import { AlertDialog, Button, Card, Container, cn, Flex, GridLayout, Input, Text } from "@still-forest/canopy";
 import { createFileRoute } from "@tanstack/react-router";
 import { XIcon } from "lucide-react";
 import { Fragment, useEffect, useState } from "react";
@@ -115,104 +115,115 @@ function RouteComponent() {
 
   return (
     <Layout>
-      <Flex align="center" className="h-screen py-8" direction="col" gap="2" justify="center">
-        <Container gap="2" width="md">
-          <Flex gap="2">
-            <Input
-              onChange={(e) => setSampleText(e.target.value)}
-              placeholder="Sample text"
-              type="text"
-              value={sampleText}
-            />
-            <InputGroup>
-              <InputGroup.Input
-                name="add-font"
-                onChange={(e) => setNewFontName(e.target.value)}
-                onKeyDown={(e) => e.key === "Enter" && addFont(newFontName)}
-                placeholder="Add a Google Font..."
-                value={newFontName}
-              />
-              <InputGroup.Addon align="inline-end">
-                <InputGroup.Button onClick={() => addFont(newFontName)}>Add</InputGroup.Button>
-              </InputGroup.Addon>
-            </InputGroup>
-          </Flex>
-          <ButtonRadioField
-            name="font-weight"
-            onChange={setFontWeight}
-            options={fontWeightOptions}
-            value={fontWeight}
-          />
-          <ButtonRadioField
-            name="font-spacing"
-            onChange={setFontSpacing}
-            options={fontSpacingOptions}
-            value={fontSpacing}
-          />
-          <ButtonRadioField
-            name="theme"
-            onChange={(value) => setTheme(value as Theme)}
-            options={THEMES}
-            value={theme}
-          />
-          <Flex justify="end">
-            <AlertDialog>
-              <AlertDialog.Trigger
-                render={
-                  <Button outline size="sm" variant="danger">
-                    Reset to defaults
-                  </Button>
-                }
-              />
-              <AlertDialog.Content size="sm">
-                <AlertDialog.Header>
-                  <AlertDialog.Title>Reset fonts?</AlertDialog.Title>
-                  <AlertDialog.Description>
-                    This will remove any custom fonts and restore the default list.
-                  </AlertDialog.Description>
-                </AlertDialog.Header>
-                <AlertDialog.Footer>
-                  <AlertDialog.Cancel>Cancel</AlertDialog.Cancel>
-                  <AlertDialog.Action onClick={resetFonts} variant="danger">
-                    Reset
-                  </AlertDialog.Action>
-                </AlertDialog.Footer>
-              </AlertDialog.Content>
-            </AlertDialog>
-          </Flex>
-        </Container>
-        <Container className="flex-1 overflow-y-auto" width="md">
-          <GridLayout>
-            {fontNames.map((fontName, index) => (
-              <Fragment key={fontName}>
-                <GridLayout.Item className="flex items-center" span={4}>
-                  <Button className="px-2 -ml-2" onClick={() => setHighlight(index)} size="sm" variant="ghost">
-                    {fontName}
-                  </Button>
-                  <Button
-                    asIcon
-                    className="text-muted-foreground"
-                    icon={<XIcon />}
-                    onClick={() => removeFont(fontName)}
-                    rounded
-                    size="xs"
-                    variant="ghost"
+      <Layout.Header>
+        <h1>Fonts</h1>
+      </Layout.Header>
+      <Layout.Body>
+        <Container width="xl">
+          <Card>
+            <Card.Content className="flex flex-col gap-2">
+              <Flex gap="2">
+                <Input
+                  onChange={(e) => setSampleText(e.target.value)}
+                  placeholder="Sample text"
+                  type="text"
+                  value={sampleText}
+                />
+                <InputGroup>
+                  <InputGroup.Input
+                    name="add-font"
+                    onChange={(e) => setNewFontName(e.target.value)}
+                    onKeyDown={(e) => e.key === "Enter" && addFont(newFontName)}
+                    placeholder="Add a Google Font..."
+                    value={newFontName}
                   />
-                </GridLayout.Item>
-                <GridLayout.Item span={8}>
-                  <Text
-                    className={cn(classNames, highlight !== index && "text-muted-foreground")}
-                    size="4xl"
-                    style={{ fontFamily: fontName }}
-                  >
-                    {sampleText}
-                  </Text>
-                </GridLayout.Item>
-              </Fragment>
-            ))}
-          </GridLayout>
+                  <InputGroup.Addon align="inline-end">
+                    <InputGroup.Button onClick={() => addFont(newFontName)}>Add</InputGroup.Button>
+                  </InputGroup.Addon>
+                </InputGroup>
+              </Flex>
+              <ButtonRadioField
+                name="font-weight"
+                onChange={setFontWeight}
+                options={fontWeightOptions}
+                value={fontWeight}
+              />
+              <ButtonRadioField
+                name="font-spacing"
+                onChange={setFontSpacing}
+                options={fontSpacingOptions}
+                value={fontSpacing}
+              />
+              <ButtonRadioField
+                name="theme"
+                onChange={(value) => setTheme(value as Theme)}
+                options={THEMES}
+                value={theme}
+              />
+            </Card.Content>
+            <Card.Footer>
+              <AlertDialog>
+                <AlertDialog.Trigger
+                  render={
+                    <Button outline size="sm" variant="danger">
+                      Reset to defaults
+                    </Button>
+                  }
+                />
+                <AlertDialog.Content size="sm">
+                  <AlertDialog.Header>
+                    <AlertDialog.Title>Reset fonts?</AlertDialog.Title>
+                    <AlertDialog.Description>
+                      This will remove any custom fonts and restore the default list.
+                    </AlertDialog.Description>
+                  </AlertDialog.Header>
+                  <AlertDialog.Footer>
+                    <AlertDialog.Cancel>Cancel</AlertDialog.Cancel>
+                    <AlertDialog.Action onClick={resetFonts} variant="danger">
+                      Reset
+                    </AlertDialog.Action>
+                  </AlertDialog.Footer>
+                </AlertDialog.Content>
+              </AlertDialog>
+            </Card.Footer>
+          </Card>
         </Container>
-      </Flex>
+        <Container className="flex-1 overflow-y-auto" width="xl">
+          <Card>
+            <Card.Content>
+              <GridLayout>
+                {fontNames.map((fontName, index) => (
+                  <Fragment key={fontName}>
+                    <GridLayout.Item className="flex items-center" span={4}>
+                      <Button className="px-2 -ml-2" onClick={() => setHighlight(index)} size="sm" variant="ghost">
+                        {fontName}
+                      </Button>
+                      <Button
+                        asIcon
+                        className="text-muted-foreground"
+                        icon={<XIcon />}
+                        onClick={() => removeFont(fontName)}
+                        rounded
+                        size="xs"
+                        variant="ghost"
+                      />
+                    </GridLayout.Item>
+                    <GridLayout.Item span={8}>
+                      <Text
+                        className={cn(classNames, highlight !== index && "text-muted-foreground")}
+                        size="4xl"
+                        style={{ fontFamily: fontName }}
+                      >
+                        {sampleText}
+                      </Text>
+                    </GridLayout.Item>
+                  </Fragment>
+                ))}
+              </GridLayout>
+            </Card.Content>
+          </Card>
+        </Container>
+      </Layout.Body>
     </Layout>
   );
 }

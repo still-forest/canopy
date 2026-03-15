@@ -1,7 +1,8 @@
 import { cpSync, watch } from "node:fs";
 import { resolve } from "node:path";
 import tailwindcss from "@tailwindcss/vite";
-import { TanStackRouterVite } from "@tanstack/router-plugin/vite";
+import { devtools } from "@tanstack/devtools-vite";
+import tanstackRouter from "@tanstack/router-plugin/vite";
 import react from "@vitejs/plugin-react";
 import dts from "vite-plugin-dts";
 import { libInjectCss } from "vite-plugin-lib-inject-css";
@@ -11,7 +12,12 @@ export default defineConfig(
   ({ mode }) =>
     ({
       plugins: [
-        TanStackRouterVite({ routesDirectory: "./src/routes", generatedRouteTree: "./src/routeTree.gen.ts" }),
+        devtools(),
+        tanstackRouter({
+          target: "react",
+          routesDirectory: "./src/routes",
+          generatedRouteTree: "./src/routeTree.gen.ts",
+        }),
         react(),
         dts({
           include: ["lib/**/*"],
