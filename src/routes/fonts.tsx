@@ -1,5 +1,6 @@
-import { AlertDialog, Button, cn, Flex, Grid, Text } from "@still-forest/canopy";
+import { AlertDialog, Button, Container, cn, Flex, GridLayout, Input, Text } from "@still-forest/canopy";
 import { createFileRoute } from "@tanstack/react-router";
+import { XIcon } from "lucide-react";
 import { Fragment, useEffect, useState } from "react";
 import { ButtonRadioField, InputGroup } from "@/forms";
 import { Layout } from "@/layout";
@@ -115,26 +116,27 @@ function RouteComponent() {
   return (
     <Layout>
       <Flex align="center" className="h-screen py-8" direction="col" gap="2" justify="center">
-        <Flex className="col-span-3 mb-4" direction="col" gap="2" justify="between">
-          <input
-            className="border border-border rounded-md px-3 py-2 bg-background text-foreground"
-            onChange={(e) => setSampleText(e.target.value)}
-            placeholder="Sample text"
-            type="text"
-            value={sampleText}
-          />
-          <InputGroup>
-            <InputGroup.Input
-              name="add-font"
-              onChange={(e) => setNewFontName(e.target.value)}
-              onKeyDown={(e) => e.key === "Enter" && addFont(newFontName)}
-              placeholder="Add a Google Font..."
-              value={newFontName}
+        <Container gap="2" width="md">
+          <Flex gap="2">
+            <Input
+              onChange={(e) => setSampleText(e.target.value)}
+              placeholder="Sample text"
+              type="text"
+              value={sampleText}
             />
-            <InputGroup.Addon align="inline-end">
-              <InputGroup.Button onClick={() => addFont(newFontName)}>Add</InputGroup.Button>
-            </InputGroup.Addon>
-          </InputGroup>
+            <InputGroup>
+              <InputGroup.Input
+                name="add-font"
+                onChange={(e) => setNewFontName(e.target.value)}
+                onKeyDown={(e) => e.key === "Enter" && addFont(newFontName)}
+                placeholder="Add a Google Font..."
+                value={newFontName}
+              />
+              <InputGroup.Addon align="inline-end">
+                <InputGroup.Button onClick={() => addFont(newFontName)}>Add</InputGroup.Button>
+              </InputGroup.Addon>
+            </InputGroup>
+          </Flex>
           <ButtonRadioField
             name="font-weight"
             onChange={setFontWeight}
@@ -147,52 +149,69 @@ function RouteComponent() {
             options={fontSpacingOptions}
             value={fontSpacing}
           />
-          <ButtonRadioField name="theme" onChange={setTheme} options={THEMES} value={theme} />
-          <AlertDialog>
-            <AlertDialog.Trigger
-              render={
-                <Button size="sm" variant="destructive">
-                  Reset to defaults
-                </Button>
-              }
-            />
-            <AlertDialog.Content size="sm">
-              <AlertDialog.Header>
-                <AlertDialog.Title>Reset fonts?</AlertDialog.Title>
-                <AlertDialog.Description>
-                  This will remove any custom fonts and restore the default list.
-                </AlertDialog.Description>
-              </AlertDialog.Header>
-              <AlertDialog.Footer>
-                <AlertDialog.Cancel>Cancel</AlertDialog.Cancel>
-                <AlertDialog.Action onClick={resetFonts} variant="destructive">
-                  Reset
-                </AlertDialog.Action>
-              </AlertDialog.Footer>
-            </AlertDialog.Content>
-          </AlertDialog>
-        </Flex>
-        <Grid className="overflow-y-auto" cols="2" gap="2">
-          {fontNames.map((fontName, index) => (
-            <Fragment key={fontName}>
-              <Flex align="center" gap="1">
-                <Button className="flex-1" onClick={() => setHighlight(index)} size="md" variant="ghost">
-                  {fontName}
-                </Button>
-                <Button onClick={() => removeFont(fontName)} size="sm" variant="ghost">
-                  ✕
-                </Button>
-              </Flex>
-              <Text
-                className={cn(classNames, highlight !== index && "text-muted-foreground")}
-                size="4xl"
-                style={{ fontFamily: fontName }}
-              >
-                {sampleText}
-              </Text>
-            </Fragment>
-          ))}
-        </Grid>
+          <ButtonRadioField
+            name="theme"
+            onChange={(value) => setTheme(value as Theme)}
+            options={THEMES}
+            value={theme}
+          />
+          <Flex justify="end">
+            <AlertDialog>
+              <AlertDialog.Trigger
+                render={
+                  <Button outline size="sm" variant="danger">
+                    Reset to defaults
+                  </Button>
+                }
+              />
+              <AlertDialog.Content size="sm">
+                <AlertDialog.Header>
+                  <AlertDialog.Title>Reset fonts?</AlertDialog.Title>
+                  <AlertDialog.Description>
+                    This will remove any custom fonts and restore the default list.
+                  </AlertDialog.Description>
+                </AlertDialog.Header>
+                <AlertDialog.Footer>
+                  <AlertDialog.Cancel>Cancel</AlertDialog.Cancel>
+                  <AlertDialog.Action onClick={resetFonts} variant="danger">
+                    Reset
+                  </AlertDialog.Action>
+                </AlertDialog.Footer>
+              </AlertDialog.Content>
+            </AlertDialog>
+          </Flex>
+        </Container>
+        <Container className="flex-1 overflow-y-auto" width="md">
+          <GridLayout>
+            {fontNames.map((fontName, index) => (
+              <Fragment key={fontName}>
+                <GridLayout.Item className="flex items-center" span={4}>
+                  <Button className="px-2 -ml-2" onClick={() => setHighlight(index)} size="sm" variant="ghost">
+                    {fontName}
+                  </Button>
+                  <Button
+                    asIcon
+                    className="text-muted-foreground"
+                    icon={<XIcon />}
+                    onClick={() => removeFont(fontName)}
+                    rounded
+                    size="xs"
+                    variant="ghost"
+                  />
+                </GridLayout.Item>
+                <GridLayout.Item span={8}>
+                  <Text
+                    className={cn(classNames, highlight !== index && "text-muted-foreground")}
+                    size="4xl"
+                    style={{ fontFamily: fontName }}
+                  >
+                    {sampleText}
+                  </Text>
+                </GridLayout.Item>
+              </Fragment>
+            ))}
+          </GridLayout>
+        </Container>
       </Flex>
     </Layout>
   );
