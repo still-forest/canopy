@@ -11,6 +11,7 @@
 import { Route as rootRouteImport } from './routes/__root'
 import { Route as SidebarRouteImport } from './routes/sidebar'
 import { Route as LayoutRouteImport } from './routes/layout'
+import { Route as FontsRouteImport } from './routes/fonts'
 import { Route as IndexRouteImport } from './routes/index'
 
 const SidebarRoute = SidebarRouteImport.update({
@@ -23,6 +24,11 @@ const LayoutRoute = LayoutRouteImport.update({
   path: '/layout',
   getParentRoute: () => rootRouteImport,
 } as any)
+const FontsRoute = FontsRouteImport.update({
+  id: '/fonts',
+  path: '/fonts',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const IndexRoute = IndexRouteImport.update({
   id: '/',
   path: '/',
@@ -31,30 +37,34 @@ const IndexRoute = IndexRouteImport.update({
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
+  '/fonts': typeof FontsRoute
   '/layout': typeof LayoutRoute
   '/sidebar': typeof SidebarRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
+  '/fonts': typeof FontsRoute
   '/layout': typeof LayoutRoute
   '/sidebar': typeof SidebarRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
+  '/fonts': typeof FontsRoute
   '/layout': typeof LayoutRoute
   '/sidebar': typeof SidebarRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/' | '/layout' | '/sidebar'
+  fullPaths: '/' | '/fonts' | '/layout' | '/sidebar'
   fileRoutesByTo: FileRoutesByTo
-  to: '/' | '/layout' | '/sidebar'
-  id: '__root__' | '/' | '/layout' | '/sidebar'
+  to: '/' | '/fonts' | '/layout' | '/sidebar'
+  id: '__root__' | '/' | '/fonts' | '/layout' | '/sidebar'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
+  FontsRoute: typeof FontsRoute
   LayoutRoute: typeof LayoutRoute
   SidebarRoute: typeof SidebarRoute
 }
@@ -75,6 +85,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof LayoutRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/fonts': {
+      id: '/fonts'
+      path: '/fonts'
+      fullPath: '/fonts'
+      preLoaderRoute: typeof FontsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/': {
       id: '/'
       path: '/'
@@ -87,6 +104,7 @@ declare module '@tanstack/react-router' {
 
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
+  FontsRoute: FontsRoute,
   LayoutRoute: LayoutRoute,
   SidebarRoute: SidebarRoute,
 }

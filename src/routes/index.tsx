@@ -11,6 +11,10 @@ const items = [
     label: "SidebarLayout",
     to: "/sidebar" as const,
   },
+  {
+    label: "Fonts",
+    to: "/fonts" as const,
+  },
 ];
 
 export const Route = createFileRoute("/")({
