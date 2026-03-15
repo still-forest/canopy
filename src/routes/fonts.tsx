@@ -1,9 +1,13 @@
-import { AlertDialog, Button, Card, Container, cn, Flex, GridLayout, Input, Text } from "@still-forest/canopy";
 import { createFileRoute, Link } from "@tanstack/react-router";
 import { XIcon } from "lucide-react";
 import { Fragment, useEffect, useState } from "react";
-import { ButtonRadioField, InputGroup } from "@/forms";
-import { Layout } from "@/layout";
+import { Button } from "@/buttons";
+import { Card } from "@/components";
+import { ButtonRadioField, Input, InputGroup } from "@/forms";
+import { Container, Flex, GridLayout, Layout } from "@/layout";
+import { AlertDialog } from "@/presentation";
+import { Text } from "@/typography";
+import { cn } from "@/utils";
 import { DEFAULT_FONT_NAMES } from "../constants/fonts";
 import type { Theme } from "../context/ThemeProviderContext";
 import { useTheme } from "../context/useTheme";
