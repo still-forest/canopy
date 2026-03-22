@@ -24,4 +24,5 @@ const NativeSelectOptGroup = ({ className, ...props }: React.ComponentProps<"opt
 
 NativeSelect.Option = NativeSelectOption;
 NativeSelect.OptGroup = NativeSelectOptGroup;
+
 export { NativeSelect };

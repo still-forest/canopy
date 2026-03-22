@@ -45,4 +45,5 @@ const Item = ({ children, className, span, sm, md, lg, style, ...props }: ItemPr
 );
 
 GridLayout.Item = Item;
+
 export { GridLayout };
