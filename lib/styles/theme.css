@@ -151,15 +151,15 @@
   --primary-container: var(--color-forest-800);
   --primary-container-foreground: var(--color-forest-100);
 
-  --secondary: var(--color-stone-300);
-  --secondary-foreground: var(--color-stone-950);
-  --secondary-container: var(--color-stone-800);
-  --secondary-container-foreground: var(--color-stone-100);
+  --secondary: var(--color-cyan-300);
+  --secondary-foreground: var(--color-cyan-950);
+  --secondary-container: var(--color-cyan-800);
+  --secondary-container-foreground: var(--color-cyan-100);
 
-  --tertiary: var(--color-teal-300);
-  --tertiary-foreground: var(--color-teal-950);
-  --tertiary-container: var(--color-teal-800);
-  --tertiary-container-foreground: var(--color-teal-100);
+  --tertiary: var(--color-amber-300);
+  --tertiary-foreground: var(--color-amber-950);
+  --tertiary-container: var(--color-amber-800);
+  --tertiary-container-foreground: var(--color-amber-100);
 
   --surface: var(--color-neutral-950);
   --surface-foreground: var(--color-neutral-50);
