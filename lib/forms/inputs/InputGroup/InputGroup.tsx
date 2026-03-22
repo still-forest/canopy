@@ -84,4 +84,5 @@ InputGroup.Addon = Addon;
 InputGroup.Text = Text;
 InputGroup.Button = Button;
 InputGroup.Textarea = Textarea;
+
 export { InputGroup };
