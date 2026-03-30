@@ -5,7 +5,7 @@ settings:
   excludeLinksFromLockfile: false
 
 overrides:
-  rollup: 4.59.0
+  rollup: 4.60.0
 
 importers:
 
@@ -1153,7 +1153,7 @@ packages:
     resolution: {integrity: sha512-5EdhGZtnu3V88ces7s53hhfK5KSASnJZv8Lulpc04cWO3REESroJXg73DFsOmgbU2BhwV0E20bu2IDZb3VKW4Q==}
     engines: {node: '>=14.0.0'}
     peerDependencies:
-      rollup: 4.59.0
+      rollup: 4.60.0
     peerDependenciesMeta:
       rollup:
         optional: true
@@ -1216,7 +1216,7 @@ packages:
     resolution: {integrity: sha512-Utlh7zubm+4iOzBBfzLW4F4vD99UBtl2Do4edlzK2F7krQIcFvR2ontjAE8S1FQVLZAC3WHalCOS+Ch8zf3knA==}
     peerDependencies:
       esbuild: '*'
-      rollup: 4.59.0
+      rollup: 4.60.0
       storybook: ^10.3.3
       vite: '*'
       webpack: '*'
