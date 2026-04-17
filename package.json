@@ -59,7 +59,7 @@
     "tailwind-merge": "^3.5.0"
   },
   "devDependencies": {
-    "@biomejs/biome": "2.4.11",
+    "@biomejs/biome": "2.4.12",
     "@still-forest/biomejs-config": "2.2.0",
     "@storybook/addon-docs": "10.3.5",
     "@storybook/addon-themes": "10.3.5",
