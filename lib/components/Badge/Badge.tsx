@@ -37,6 +37,7 @@ export const Badge = ({
     {
       "badge-primary": variant === "primary",
       "badge-secondary": variant === "secondary",
+      "badge-tertiary": variant === "tertiary",
       "badge-muted": variant === "muted",
       "badge-ghost": variant === "ghost",
       "badge-success": variant === "success",

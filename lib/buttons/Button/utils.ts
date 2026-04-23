@@ -17,6 +17,7 @@ export const buildButtonClassNames = ({
     {
       "btn-primary": variant === "primary",
       "btn-secondary": variant === "secondary",
+      "btn-tertiary": variant === "tertiary",
       "btn-muted": variant === "muted",
       "btn-ghost": variant === "ghost",
       "btn-link": variant === "link",

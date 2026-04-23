@@ -1,158 +1,280 @@
+/*
+ * Color Token System
+ *
+ * Mental model: AlwanKit / Material Design 3 semantics,
+ * with ShadCN compatibility aliases at the bottom.
+ *
+ * Format: OKLCH where possible (perceptually uniform lightness),
+ * falling back to HSL for broad support. Values below are
+ * placeholder — swap in your actual palette.
+ *
+ * Naming conventions:
+ *   --{role}                  → fill / background color
+ *   --{role}-foreground       → text/icon color on that fill
+ *   --{role}-container        → softer variant for larger surfaces (chips, cards)
+ *   --{role}-container-foreground → text/icon on that container
+ */
+
+/* ----------------------------------------------------------------
+   1. BRAND COLORS
+   Primary → hero actions, FAB, key interactive elements
+   Secondary → supporting UI (filters, toggles, less prominent actions)
+   Tertiary → contrasting accent to balance primary/secondary
+   ---------------------------------------------------------------- */
+
 :root {
-  --brand: var(--color-forest-800);
-  --brand-foreground: var(--color-forest-100);
-
-  --background: var(--color-white);
-  --foreground: var(--color-neutral-950);
-  --muted: var(--color-neutral-100);
-  --muted-foreground: var(--color-neutral-500);
-  --accent: var(--color-neutral-100);
-  --accent-foreground: var(--color-neutral-900);
-
-  --primary: var(--color-forest-700);
+  --primary: var(--color-forest-800);
   --primary-foreground: var(--color-forest-50);
-  --secondary: var(--color-stone-100);
-  --secondary-foreground: var(--color-stone-900);
+  --primary-container: var(--color-forest-200);
+  --primary-container-foreground: var(--color-forest-900);
 
-  --info: var(--color-blue-500);
-  --info-foreground: var(--color-blue-100);
-  --success: var(--color-green-600);
-  --success-foreground: var(--color-green-100);
-  --warning: var(--color-orange-500);
-  --warning-foreground: var(--color-orange-100);
-  --danger: var(--color-red-600);
-  --danger-foreground: var(--color-red-100);
-
-  --card: var(--color-white);
-  --card-foreground: var(--color-neutral-950);
-  --popover: var(--color-white);
-  --popover-foreground: var(--color-neutral-950);
-
-  --chart-1: var(--color-blue-300);
-  --chart-2: var(--color-blue-500);
-  --chart-3: var(--color-blue-600);
-  --chart-4: var(--color-blue-700);
-  --chart-5: var(--color-blue-800);
-
-  --sidebar: var(--color-stone-50);
-  --sidebar-foreground: var(--color-neutral-950);
-  --sidebar-primary: var(--color-blue-600);
-  --sidebar-primary-foreground: var(--color-blue-50);
-  --sidebar-secondary: var(--color-stone-100);
-  --sidebar-secondary-foreground: var(--color-stone-900);
-  --sidebar-accent: var(--color-neutral-100);
-  --sidebar-accent-foreground: var(--color-neutral-900);
-  --sidebar-muted: var(--color-neutral-100);
-  --sidebar-muted-foreground: var(--color-neutral-500);
-  --sidebar-border: var(--color-neutral-200);
-  --sidebar-ring: var(--color-neutral-400);
-
-  --border: var(--color-neutral-200);
-  --input: var(--background);
-  --input-border: var(--color-neutral-200);
-  --ring: var(--color-neutral-400);
-}
-
-.dark {
-  --brand: var(--color-forest-100);
-  --brand-foreground: var(--color-forest-800);
-
-  --background: var(--color-neutral-950);
-  --foreground: var(--color-neutral-50);
-  --muted: var(--color-neutral-800);
-  --muted-foreground: var(--color-neutral-400);
-  --accent: var(--color-neutral-700);
-  --accent-foreground: var(--color-neutral-50);
-
-  --primary: var(--color-blue-800);
-  --primary-foreground: var(--color-blue-50);
-  --secondary: var(--color-stone-800);
+  --secondary: var(--color-stone-600);
   --secondary-foreground: var(--color-stone-50);
+  --secondary-container: var(--color-stone-200);
+  --secondary-container-foreground: var(--color-stone-900);
 
-  --info: var(--color-blue-500);
-  --info-foreground: var(--color-blue-100);
+  --tertiary: var(--color-teal-700);
+  --tertiary-foreground: var(--color-teal-50);
+  --tertiary-container: var(--color-teal-200);
+  --tertiary-container-foreground: var(--color-teal-900);
+
+  /* ----------------------------------------------------------------
+       2. SURFACES
+       The base canvas and its text. Surface-variant is a slightly
+       different tone for subtle differentiation (e.g. zebra rows,
+       hover states on neutral backgrounds).
+       ---------------------------------------------------------------- */
+
+  --surface: var(--color-neutral-50);
+  --surface-foreground: var(--color-neutral-950);
+  --surface-variant: var(--color-neutral-200);
+  --surface-variant-foreground: var(--color-neutral-500);
+
+  /* ----------------------------------------------------------------
+       3. SURFACE CONTAINERS
+       A graduated elevation scale for layered UI. Use the level that
+       makes sense for the component's visual prominence:
+         lowest  → inset/recessed areas
+         low     → cards, sidebars
+         (base)  → sheets, dialogs
+         high    → dropdowns, popovers
+         highest → tooltips, toasts
+       ---------------------------------------------------------------- */
+
+  --surface-container-lowest: var(--color-white);
+  --surface-container-low: var(--color-neutral-50);
+  --surface-container: var(--color-neutral-100);
+  --surface-container-high: var(--color-neutral-200);
+  --surface-container-highest: var(--color-neutral-300);
+
+  /* ----------------------------------------------------------------
+       4. STATUS COLORS
+       Each gets a bold variant (banners, badges) and a container
+       variant (softer backgrounds for inline alerts, form states).
+       ---------------------------------------------------------------- */
+
+  --danger: var(--color-red-600);
+  --danger-foreground: var(--color-red-50);
+  --danger-container: var(--color-red-200);
+  --danger-container-foreground: var(--color-red-900);
+
   --success: var(--color-green-600);
   --success-foreground: var(--color-green-50);
+  --success-container: var(--color-green-200);
+  --success-container-foreground: var(--color-green-900);
+
   --warning: var(--color-orange-400);
-  --warning-foreground: var(--color-orange-100);
+  --warning-foreground: var(--color-orange-950);
+  --warning-container: var(--color-orange-200);
+  --warning-container-foreground: var(--color-orange-900);
+
+  --info: var(--color-blue-500);
+  --info-foreground: var(--color-blue-50);
+  --info-container: var(--color-blue-200);
+  --info-container-foreground: var(--color-blue-900);
+
+  /* ----------------------------------------------------------------
+       5. UTILITY TOKENS
+       ---------------------------------------------------------------- */
+
+  --border: var(--color-neutral-300);
+  --input: var(--color-neutral-50);
+  --input-border: var(--color-neutral-300);
+  --ring: var(--primary);
+  --radius: 0.5rem;
+
+  /* ----------------------------------------------------------------
+       6. SHADCN COMPATIBILITY ALIASES
+       These map ShadCN's expected token names to the system above.
+       Every stock ShadCN component will keep working, but can be
+       progressively migrated to use the real tokens.
+       ---------------------------------------------------------------- */
+
+  --background: var(--surface);
+  --foreground: var(--surface-foreground);
+
+  --card: var(--surface-container-low);
+  --card-foreground: var(--surface-foreground);
+
+  --popover: var(--surface-container-high);
+  --popover-foreground: var(--surface-foreground);
+
+  --muted: var(--surface-variant);
+  --muted-foreground: var(--surface-variant-foreground);
+  --accent: var(--surface-container-high);
+  --accent-foreground: var(--surface-foreground);
+
+  --sidebar-background: var(--surface-container-low);
+  --sidebar-foreground: var(--surface-foreground);
+  --sidebar-primary: var(--primary);
+  --sidebar-primary-foreground: var(--primary-foreground);
+  --sidebar-secondary: var(--secondary-container);
+  --sidebar-secondary-foreground: var(--secondary-container-foreground);
+  --sidebar-accent: var(--surface-container);
+  --sidebar-accent-foreground: var(--surface-foreground);
+  --sidebar-border: var(--border);
+  --sidebar-ring: var(--ring);
+}
+
+/* ----------------------------------------------------------------
+     DARK MODE
+     Key shifts from light:
+     - Surface lightness drops, slight primary tint stays
+     - Containers invert direction (lowest = darkest)
+     - Brand colors bump lightness for contrast on dark bg
+     - Container variants become more prominent (higher chroma)
+     ---------------------------------------------------------------- */
+
+.dark {
+  --primary: var(--color-forest-300);
+  --primary-foreground: var(--color-forest-950);
+  --primary-container: var(--color-forest-800);
+  --primary-container-foreground: var(--color-forest-100);
+
+  --secondary: var(--color-cyan-300);
+  --secondary-foreground: var(--color-cyan-950);
+  --secondary-container: var(--color-cyan-800);
+  --secondary-container-foreground: var(--color-cyan-100);
+
+  --tertiary: var(--color-amber-300);
+  --tertiary-foreground: var(--color-amber-950);
+  --tertiary-container: var(--color-amber-800);
+  --tertiary-container-foreground: var(--color-amber-100);
+
+  --surface: var(--color-neutral-950);
+  --surface-foreground: var(--color-neutral-50);
+  --surface-variant: var(--color-neutral-800);
+  --surface-variant-foreground: var(--color-neutral-400);
+
+  /* Dark containers: lowest is darkest, highest is lightest */
+  --surface-container-lowest: var(--color-black);
+  --surface-container-low: var(--color-neutral-950);
+  --surface-container: var(--color-neutral-900);
+  --surface-container-high: var(--color-neutral-800);
+  --surface-container-highest: var(--color-neutral-700);
+
   --danger: var(--color-red-400);
-  --danger-foreground: var(--color-red-100);
+  --danger-foreground: var(--color-red-950);
+  --danger-container: var(--color-red-900);
+  --danger-container-foreground: var(--color-red-100);
 
-  --card: var(--color-neutral-900);
-  --card-foreground: var(--color-neutral-50);
-  --popover: var(--color-neutral-900);
-  --popover-foreground: var(--color-neutral-50);
+  --success: var(--color-green-400);
+  --success-foreground: var(--color-green-950);
+  --success-container: var(--color-green-900);
+  --success-container-foreground: var(--color-green-100);
 
-  --chart-1: var(--color-blue-300);
-  --chart-2: var(--color-blue-500);
-  --chart-3: var(--color-blue-600);
-  --chart-4: var(--color-blue-700);
-  --chart-5: var(--color-blue-800);
+  --warning: var(--color-amber-300);
+  --warning-foreground: var(--color-amber-950);
+  --warning-container: var(--color-amber-900);
+  --warning-container-foreground: var(--color-amber-100);
 
-  --sidebar: var(--color-neutral-900);
-  --sidebar-foreground: var(--color-neutral-50);
-  --sidebar-primary: var(--color-blue-500);
-  --sidebar-primary-foreground: var(--color-blue-50);
-  --sidebar-secondary: var(--color-stone-800);
-  --sidebar-secondary-foreground: var(--color-stone-50);
-  --sidebar-accent: var(--color-neutral-800);
-  --sidebar-accent-foreground: var(--color-neutral-50);
-  --sidebar-muted: var(--color-neutral-800);
-  --sidebar-muted-foreground: var(--color-neutral-400);
-  --sidebar-border: oklch(1 0 0 / 10%);
-  --sidebar-ring: var(--color-neutral-500);
+  --info: var(--color-blue-400);
+  --info-foreground: var(--color-blue-950);
+  --info-container: var(--color-blue-900);
+  --info-container-foreground: var(--color-blue-100);
 
-  --border: oklch(1 0 0 / 10%);
-  --input: oklch(1 0 0 / 5%);
-  --input-border: oklch(1 0 0 / 10%);
-  --ring: var(--color-neutral-500);
+  --border: var(--color-neutral-700);
+  --input: var(--color-neutral-900);
 }
 
 @theme {
-  /* Brand */
-  --color-brand: var(--brand);
-  --color-brand-foreground: var(--brand-foreground);
-
-  /* Base */
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --color-muted: var(--muted);
-  --color-muted-foreground: var(--muted-foreground);
-  --color-accent: var(--accent);
-  --color-accent-foreground: var(--accent-foreground);
-
-  /* Actions */
+  /* 1. Brand Colors */
   --color-primary: var(--primary);
   --color-primary-foreground: var(--primary-foreground);
+  --color-primary-container: var(--primary-container);
+  --color-primary-container-foreground: var(--primary-container-foreground);
+
   --color-secondary: var(--secondary);
   --color-secondary-foreground: var(--secondary-foreground);
+  --color-secondary-container: var(--secondary-container);
+  --color-secondary-container-foreground: var(--secondary-container-foreground);
 
-  /* Alerts */
-  --color-info: var(--info);
-  --color-info-foreground: var(--info-foreground);
-  --color-success: var(--success);
-  --color-success-foreground: var(--success-foreground);
-  --color-warning: var(--warning);
-  --color-warning-foreground: var(--warning-foreground);
+  --color-tertiary: var(--tertiary);
+  --color-tertiary-foreground: var(--tertiary-foreground);
+  --color-tertiary-container: var(--tertiary-container);
+  --color-tertiary-container-foreground: var(--tertiary-container-foreground);
+
+  /* 2. Surfaces */
+  --color-surface: var(--surface);
+  --color-surface-foreground: var(--surface-foreground);
+  --color-surface-variant: var(--surface-variant);
+  --color-surface-variant-foreground: var(--surface-variant-foreground);
+
+  /* 3. Surface Containers */
+  --color-surface-container-lowest: var(--surface-container-lowest);
+  --color-surface-container-low: var(--surface-container-low);
+  --color-surface-container: var(--surface-container);
+  --color-surface-container-high: var(--surface-container-high);
+  --color-surface-container-highest: var(--surface-container-highest);
+
+  /* 4. Status Colors */
   --color-danger: var(--danger);
   --color-danger-foreground: var(--danger-foreground);
-  /* @deprecated */
-  --color-destructive: var(--danger);
-  --color-destructive-foreground: var(--danger-foreground);
+  --color-danger-container: var(--danger-container);
+  --color-danger-container-foreground: var(--danger-container-foreground);
 
-  /* Card */
+  --color-success: var(--success);
+  --color-success-foreground: var(--success-foreground);
+  --color-success-container: var(--success-container);
+  --color-success-container-foreground: var(--success-container-foreground);
+
+  --color-warning: var(--warning);
+  --color-warning-foreground: var(--warning-foreground);
+  --color-warning-container: var(--warning-container);
+  --color-warning-container-foreground: var(--warning-container-foreground);
+
+  --color-info: var(--info);
+  --color-info-foreground: var(--info-foreground);
+  --color-info-container: var(--info-container);
+  --color-info-container-foreground: var(--info-container-foreground);
+
+  /* 5. Utility Tokens */
+  --color-border: var(--border);
+  --color-input: var(--input);
+  --color-input-border: var(--input-border);
+  --color-ring: var(--ring);
+
+  /* 6. ShadCN Compatibility Aliases */
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+
   --color-card: var(--card);
   --color-card-foreground: var(--card-foreground);
 
-  /* Chart */
-  --color-chart-1: var(--chart-1);
-  --color-chart-2: var(--chart-2);
-  --color-chart-3: var(--chart-3);
-  --color-chart-4: var(--chart-4);
-  --color-chart-5: var(--chart-5);
+  --color-popover: var(--popover);
+  --color-popover-foreground: var(--popover-foreground);
 
-  /* Sidebar */
-  --color-sidebar: var(--sidebar);
+  --color-muted: var(--muted);
+  --color-muted-foreground: var(--muted-foreground);
+
+  --color-accent: var(--accent);
+  --color-accent-foreground: var(--accent-foreground);
+
+  /* @deprecated — use --color-danger */
+  --color-destructive: var(--danger);
+  --color-destructive-foreground: var(--danger-foreground);
+
+  --color-sidebar-background: var(--sidebar-background);
   --color-sidebar-foreground: var(--sidebar-foreground);
   --color-sidebar-primary: var(--sidebar-primary);
   --color-sidebar-primary-foreground: var(--sidebar-primary-foreground);
@@ -160,16 +282,6 @@
   --color-sidebar-secondary-foreground: var(--sidebar-secondary-foreground);
   --color-sidebar-accent: var(--sidebar-accent);
   --color-sidebar-accent-foreground: var(--sidebar-accent-foreground);
-  --color-sidebar-muted: var(--sidebar-muted);
-  --color-sidebar-muted-foreground: var(--sidebar-muted-foreground);
   --color-sidebar-border: var(--sidebar-border);
   --color-sidebar-ring: var(--sidebar-ring);
-
-  /* Other */
-  --color-border: var(--border);
-  --color-input: var(--input);
-  --color-input-border: var(--input-border);
-  --color-popover: var(--popover);
-  --color-popover-foreground: var(--popover-foreground);
-  --color-ring: var(--ring);
 }
