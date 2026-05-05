@@ -18,7 +18,7 @@
       @apply font-medium hover:text-accent-foreground aria-expanded:text-accent-foreground;
 
       &[data-variant="outline"] {
-        @apply border bg-background shadow-xs dark:bg-input/30 dark:border-input;
+        @apply border bg-transparent shadow-xs dark:bg-input/30 dark:border-input;
         &:hover,
         &[data-pressed] {
           @apply bg-accent text-accent-foreground dark:bg-accent/50;
