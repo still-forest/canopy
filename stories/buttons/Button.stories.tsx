@@ -1,6 +1,7 @@
 import type { Meta, StoryObj } from "@storybook/react-vite";
 import { Loader2, Origami } from "lucide-react";
 import { Button } from "@/buttons";
+import { Card } from "@/components/Card";
 
 const meta: Meta<typeof Button> = {
   title: "Buttons/Button",
@@ -201,4 +202,25 @@ export const FlexContainerFit: Story = {
       </div>
     ),
   ],
+};
+
+export const OutlineStylesWithinCard: Story = {
+  render: () => (
+    <Card>
+      <Card.Content>
+        <div className="grid grid-cols-5 gap-4">
+          <Button label="Default" outline />
+          <Button className="col-start-1" label="Primary" outline variant="primary" />
+          <Button label="Secondary" outline variant="secondary" />
+          <Button label="Muted" outline variant="muted" />
+          <Button label="Ghost" outline variant="ghost" />
+          <Button label="Link" outline variant="link" />
+          <Button label="Info" outline variant="info" />
+          <Button label="Success" outline variant="success" />
+          <Button label="Warning" outline variant="warning" />
+          <Button label="Danger" outline variant="danger" />
+        </div>
+      </Card.Content>
+    </Card>
+  ),
 };
