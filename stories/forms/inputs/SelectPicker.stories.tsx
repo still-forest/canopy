@@ -183,3 +183,7 @@ export const WithCustomRenderSelectedAndInitialValue: Story = {
 export const WithMultipleGroups: Story = {
   render: (args) => <RenderedSelectPicker {...args} options={OPTION_GROUPS} />,
 };
+
+export const Disabled: Story = {
+  render: (args) => <RenderedSelectPicker {...args} enabled={false} />,
+};

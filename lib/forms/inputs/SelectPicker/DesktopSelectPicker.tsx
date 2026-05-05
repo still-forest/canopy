@@ -6,6 +6,7 @@ import { Popover } from "@/presentation/Popover";
 import { cn } from "@/utils/cn";
 
 interface DesktopSelectPickerProps {
+  enabled?: boolean;
   selectedLabel: string | ReactNode;
   open: boolean;
   setOpen: (open: boolean) => void;
@@ -17,6 +18,7 @@ interface DesktopSelectPickerProps {
 }
 
 export const DesktopSelectPicker = ({
+  enabled = true,
   selectedLabel,
   open,
   setOpen,
@@ -34,9 +36,14 @@ export const DesktopSelectPicker = ({
             {...mergeProps(props, {
               "aria-expanded": open,
               variant: "input",
-              className: cn("desktop-select-picker-trigger", triggerClassName),
+              className: cn(
+                "desktop-select-picker-trigger",
+                !enabled && "desktop-select-picker-trigger--disabled",
+                triggerClassName,
+              ),
               id,
               role: "combobox",
+              disabled: !enabled,
               ...triggerProps,
             })}
           >

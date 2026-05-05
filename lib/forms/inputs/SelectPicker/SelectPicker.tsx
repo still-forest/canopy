@@ -7,6 +7,7 @@ import type { SelectPickerOption, SelectPickerOptionGroup } from "./types";
 
 export interface SelectPickerProps {
   name: string;
+  enabled?: boolean;
   value?: string | null;
   onChange: (value: string) => void;
   options: SelectPickerOption[] | SelectPickerOptionGroup[];
@@ -16,6 +17,7 @@ export interface SelectPickerProps {
 
 export const SelectPicker = ({
   options,
+  enabled = true,
   value,
   placeholder = "Select an option",
   onChange,
@@ -49,7 +51,7 @@ export const SelectPicker = ({
 
   if (isMobile) {
     return (
-      <MobileSelectPicker id={name} open={open} selectedLabel={selectedLabel} setOpen={setOpen}>
+      <MobileSelectPicker enabled={enabled} id={name} open={open} selectedLabel={selectedLabel} setOpen={setOpen}>
         <GroupedOptionList
           onSelect={handleSelect}
           optionGroups={optionGroups}
@@ -61,7 +63,7 @@ export const SelectPicker = ({
   }
 
   return (
-    <DesktopSelectPicker id={name} open={open} selectedLabel={selectedLabel} setOpen={setOpen}>
+    <DesktopSelectPicker enabled={enabled} id={name} open={open} selectedLabel={selectedLabel} setOpen={setOpen}>
       <GroupedOptionList
         onSelect={handleSelect}
         optionGroups={optionGroups}
