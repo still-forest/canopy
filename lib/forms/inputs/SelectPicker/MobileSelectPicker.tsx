@@ -19,9 +19,17 @@ interface MobileSelectPickerProps {
   setOpen: (open: boolean) => void;
   children: ReactNode;
   id?: string;
+  enabled?: boolean;
 }
 
-export const MobileSelectPicker = ({ selectedLabel, open, setOpen, children, id }: MobileSelectPickerProps) => {
+export const MobileSelectPicker = ({
+  selectedLabel,
+  open,
+  setOpen,
+  children,
+  id,
+  enabled = true,
+}: MobileSelectPickerProps) => {
   return (
     <Sheet onOpenChange={setOpen} open={open}>
       <Sheet.Trigger
@@ -31,6 +39,7 @@ export const MobileSelectPicker = ({ selectedLabel, open, setOpen, children, id 
               className: "mobile-select-picker-trigger",
               id,
               outline: true,
+              disabled: !enabled,
             })}
           >
             {selectedLabel}

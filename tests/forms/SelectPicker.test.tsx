@@ -173,4 +173,16 @@ describe("SelectPicker", () => {
     expect(options[6]).toHaveTextContent("Green");
     expect(options[7]).toHaveTextContent("Blue");
   });
+
+  it("renders as disabled", () => {
+    render(<SelectPicker enabled={false} name="some_input" onChange={onSelect} options={OPTION_GROUPS} />);
+
+    const trigger = screen.getByRole("combobox") as HTMLButtonElement;
+    expect(trigger).toHaveAttribute("disabled");
+
+    fireEvent.click(trigger);
+
+    expect(trigger.getAttribute("aria-expanded")).toBe("false");
+    expect(trigger.ariaExpanded).toBe("false");
+  });
 });
