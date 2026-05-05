@@ -36,7 +36,11 @@ export const DesktopSelectPicker = ({
             {...mergeProps(props, {
               "aria-expanded": open,
               variant: "input",
-              className: cn("desktop-select-picker-trigger", triggerClassName),
+              className: cn(
+                "desktop-select-picker-trigger",
+                !enabled && "desktop-select-picker-trigger--disabled",
+                triggerClassName,
+              ),
               id,
               role: "combobox",
               disabled: !enabled,
