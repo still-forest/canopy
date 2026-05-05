@@ -4,6 +4,7 @@ import tailwindcss from "@tailwindcss/vite";
 import { devtools } from "@tanstack/devtools-vite";
 import tanstackRouter from "@tanstack/router-plugin/vite";
 import react from "@vitejs/plugin-react";
+import { esmExternalRequirePlugin } from "vite";
 import dts from "vite-plugin-dts";
 import { libInjectCss } from "vite-plugin-lib-inject-css";
 import { defineConfig, type ViteUserConfig } from "vitest/config";
@@ -49,20 +50,21 @@ export default defineConfig(
           fileName: "index",
           formats: ["es"],
         },
-        rollupOptions: {
+        rolldownOptions: {
           output: {
             entryFileNames: "[name].js",
             chunkFileNames: "chunks/[name]-[hash].js",
             preserveModules: false,
-            manualChunks: undefined, // Use Rollup defaults
+            manualChunks: undefined,
           },
-          external: [
-            "react",
-            "react/jsx-runtime",
-            "react/jsx-dev-runtime",
-            "react-dom",
-            "tailwindcss",
-            "tw-animate-css",
+          external: ["tailwindcss", "tw-animate-css"],
+          // React externals are managed by esmExternalRequirePlugin so that require() calls
+          // in inlined CJS deps (e.g. use-sync-external-store/shim from @base-ui/react)
+          // are rewritten to ESM imports rather than left as runtime require() calls.
+          plugins: [
+            esmExternalRequirePlugin({
+              external: ["react", "react/jsx-runtime", "react/jsx-dev-runtime", "react-dom"],
+            }),
           ],
         },
         minify: true,
