@@ -1,6 +1,6 @@
 import type { Meta, StoryObj } from "@storybook/react-vite";
 import { OrigamiIcon } from "lucide-react";
-import { Badge } from "@/components";
+import { Badge, Card } from "@/components";
 
 const meta: Meta<typeof Badge> = {
   title: "Components/Badge",
@@ -115,5 +115,25 @@ export const WithIcon: Story = {
         Danger
       </Badge>
     </div>
+  ),
+};
+
+export const OutlineVariantsWithinCard: Story = {
+  render: () => (
+    <Card>
+      <Card.Content>
+        <div className="grid grid-cols-4 gap-4">
+          <Badge label="Default" outline />
+          <Badge className="col-start-1" label="Primary" outline variant="primary" />
+          <Badge label="Secondary" outline variant="secondary" />
+          <Badge label="Muted" outline variant="muted" />
+          <Badge label="Ghost" outline variant="ghost" />
+          <Badge label="Info" outline variant="info" />
+          <Badge label="Success" outline variant="success" />
+          <Badge label="Warning" outline variant="warning" />
+          <Badge label="Danger" outline variant="danger" />
+        </div>
+      </Card.Content>
+    </Card>
   ),
 };
