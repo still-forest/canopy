@@ -3,6 +3,7 @@ import type { ReactNode } from "react";
 import { Button, type ButtonProps } from "@/buttons";
 import { Sheet } from "@/presentation/Sheet";
 import "./SelectPicker.css";
+import { cn } from "@/utils/cn";
 
 const CloseButton = (props: ButtonProps) => {
   return (
@@ -20,6 +21,7 @@ interface MobileSelectPickerProps {
   children: ReactNode;
   id?: string;
   enabled?: boolean;
+  className?: string;
 }
 
 export const MobileSelectPicker = ({
@@ -29,6 +31,7 @@ export const MobileSelectPicker = ({
   children,
   id,
   enabled = true,
+  className,
 }: MobileSelectPickerProps) => {
   return (
     <Sheet onOpenChange={setOpen} open={open}>
@@ -36,7 +39,7 @@ export const MobileSelectPicker = ({
         render={(props) => (
           <Button
             {...mergeProps(props, {
-              className: "mobile-select-picker-trigger",
+              className: cn("mobile-select-picker-trigger", className),
               id,
               outline: true,
               disabled: !enabled,

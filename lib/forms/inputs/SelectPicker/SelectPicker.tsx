@@ -13,6 +13,7 @@ export interface SelectPickerProps {
   options: SelectPickerOption[] | SelectPickerOptionGroup[];
   placeholder?: string;
   renderSelected?: (selected: SelectPickerOption) => React.ReactNode;
+  className?: string;
 }
 
 export const SelectPicker = ({
@@ -23,6 +24,7 @@ export const SelectPicker = ({
   onChange,
   name,
   renderSelected = (selected) => selected.label,
+  className,
 }: SelectPickerProps) => {
   const [open, setOpen] = useState(false);
   const isMobile = useIsMobile();
@@ -51,7 +53,14 @@ export const SelectPicker = ({
 
   if (isMobile) {
     return (
-      <MobileSelectPicker enabled={enabled} id={name} open={open} selectedLabel={selectedLabel} setOpen={setOpen}>
+      <MobileSelectPicker
+        className={className}
+        enabled={enabled}
+        id={name}
+        open={open}
+        selectedLabel={selectedLabel}
+        setOpen={setOpen}
+      >
         <GroupedOptionList
           onSelect={handleSelect}
           optionGroups={optionGroups}
@@ -63,7 +72,14 @@ export const SelectPicker = ({
   }
 
   return (
-    <DesktopSelectPicker enabled={enabled} id={name} open={open} selectedLabel={selectedLabel} setOpen={setOpen}>
+    <DesktopSelectPicker
+      enabled={enabled}
+      id={name}
+      open={open}
+      selectedLabel={selectedLabel}
+      setOpen={setOpen}
+      triggerClassName={className}
+    >
       <GroupedOptionList
         onSelect={handleSelect}
         optionGroups={optionGroups}
