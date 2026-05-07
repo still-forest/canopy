@@ -187,3 +187,7 @@ export const WithMultipleGroups: Story = {
 export const Disabled: Story = {
   render: (args) => <RenderedSelectPicker {...args} enabled={false} />,
 };
+
+export const WithClassName: Story = {
+  render: (args) => <RenderedSelectPicker {...args} className="bg-red-200" />,
+};

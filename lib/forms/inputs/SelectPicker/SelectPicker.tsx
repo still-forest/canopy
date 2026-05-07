@@ -6,6 +6,7 @@ import { GroupedOptionList } from "./OptionList";
 import type { SelectPickerOption, SelectPickerOptionGroup } from "./types";
 
 export interface SelectPickerProps {
+  id?: string;
   name: string;
   enabled?: boolean;
   value?: string | null;
@@ -17,6 +18,7 @@ export interface SelectPickerProps {
 }
 
 export const SelectPicker = ({
+  id,
   options,
   enabled = true,
   value,
@@ -46,6 +48,8 @@ export const SelectPicker = ({
     return label;
   }, [value, placeholder, renderSelected, flattenedOptions]);
 
+  const inputId = id ?? name;
+
   const handleSelect = (currentValue: string) => {
     onChange(currentValue === value ? "" : currentValue);
     setOpen(false);
@@ -56,7 +60,7 @@ export const SelectPicker = ({
       <MobileSelectPicker
         className={className}
         enabled={enabled}
-        id={name}
+        id={inputId}
         open={open}
         selectedLabel={selectedLabel}
         setOpen={setOpen}
@@ -74,7 +78,7 @@ export const SelectPicker = ({
   return (
     <DesktopSelectPicker
       enabled={enabled}
-      id={name}
+      id={inputId}
       open={open}
       selectedLabel={selectedLabel}
       setOpen={setOpen}
