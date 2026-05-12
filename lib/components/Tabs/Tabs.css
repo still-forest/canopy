@@ -1,0 +1,12 @@
+@import "@/styles/layers.css";
+@reference "@/styles/tokens.css";
+
+@layer components {
+  .tabs {
+    @apply gap-2 flex;
+
+    &[data-horizontal="true"] {
+      @apply flex-col;
+    }
+  }
+}

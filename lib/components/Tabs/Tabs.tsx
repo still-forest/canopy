@@ -1,12 +1,12 @@
 import { Tabs as TabsPrimitive } from "@base-ui/react/tabs";
 import { cva, type VariantProps } from "class-variance-authority";
-
+import "./Tabs.css";
 import { cn } from "@/utils";
 
 function Tabs({ className, orientation = "horizontal", ...props }: TabsPrimitive.Root.Props) {
   return (
     <TabsPrimitive.Root
-      className={cn("gap-2 group/tabs flex data-horizontal:flex-col", className)}
+      className={cn("tabs group/tabs", className)}
       data-orientation={orientation}
       data-slot="tabs"
       {...(orientation === "vertical" && { "data-vertical": true })}
@@ -68,4 +68,8 @@ function TabsContent({ className, ...props }: TabsPrimitive.Panel.Props) {
   );
 }
 
-export { Tabs, TabsContent, TabsList, TabsTrigger, tabsListVariants };
+Tabs.List = TabsList;
+Tabs.Trigger = TabsTrigger;
+Tabs.Content = TabsContent;
+
+export { Tabs };
