@@ -4,9 +4,9 @@
 
   --background: var(--color-neutral-50);
   --foreground: var(--color-neutral-950);
-  --muted: var(--color-neutral-100);
+  --muted: var(--color-neutral-200);
   --muted-foreground: var(--color-neutral-500);
-  --accent: var(--color-neutral-100);
+  --accent: var(--color-neutral-200);
   --accent-foreground: var(--color-neutral-900);
 
   --primary: var(--color-forest-700);
