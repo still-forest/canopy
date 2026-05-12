@@ -8,6 +8,7 @@ function Tabs({ className, orientation = "horizontal", ...props }: TabsPrimitive
       className={cn("tabs group/tabs", className)}
       data-orientation={orientation}
       data-slot="tabs"
+      orientation={orientation}
       {...(orientation === "vertical" && { "data-vertical": true })}
       {...(orientation === "horizontal" && { "data-horizontal": true })}
       {...props}
