@@ -3,21 +3,21 @@ import { describe, expect, test } from "vitest";
 import "@testing-library/jest-dom";
 
 import userEvent from "@testing-library/user-event";
-import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components";
+import { Tabs } from "@/components";
 
 describe("Tabs", () => {
   test("renders Tabs", async () => {
     const user = userEvent.setup();
     render(
       <Tabs defaultValue="tab_1">
-        <TabsList>
-          <TabsTrigger value="tab_1">Tab 1</TabsTrigger>
-          <TabsTrigger value="tab_2">Tab 2</TabsTrigger>
-          <TabsTrigger value="tab_3">Tab 3</TabsTrigger>
-        </TabsList>
-        <TabsContent value="tab_1">This is tab 1</TabsContent>
-        <TabsContent value="tab_2">Tab 2, this is</TabsContent>
-        <TabsContent value="tab_3">Tab the 3rd, at your service</TabsContent>
+        <Tabs.List>
+          <Tabs.Trigger value="tab_1">Tab 1</Tabs.Trigger>
+          <Tabs.Trigger value="tab_2">Tab 2</Tabs.Trigger>
+          <Tabs.Trigger value="tab_3">Tab 3</Tabs.Trigger>
+        </Tabs.List>
+        <Tabs.Content value="tab_1">This is tab 1</Tabs.Content>
+        <Tabs.Content value="tab_2">Tab 2, this is</Tabs.Content>
+        <Tabs.Content value="tab_3">Tab the 3rd, at your service</Tabs.Content>
       </Tabs>,
     );
 
@@ -54,14 +54,14 @@ describe("Tabs", () => {
     const user = userEvent.setup();
     render(
       <Tabs defaultValue="tab_2" orientation="vertical">
-        <TabsList>
-          <TabsTrigger value="tab_1">Tab 1</TabsTrigger>
-          <TabsTrigger value="tab_2">Tab 2</TabsTrigger>
-          <TabsTrigger value="tab_3">Tab 3</TabsTrigger>
-        </TabsList>
-        <TabsContent value="tab_1">This is tab 1</TabsContent>
-        <TabsContent value="tab_2">Tab 2, this is</TabsContent>
-        <TabsContent value="tab_3">Tab the 3rd, at your service</TabsContent>
+        <Tabs.List>
+          <Tabs.Trigger value="tab_1">Tab 1</Tabs.Trigger>
+          <Tabs.Trigger value="tab_2">Tab 2</Tabs.Trigger>
+          <Tabs.Trigger value="tab_3">Tab 3</Tabs.Trigger>
+        </Tabs.List>
+        <Tabs.Content value="tab_1">This is tab 1</Tabs.Content>
+        <Tabs.Content value="tab_2">Tab 2, this is</Tabs.Content>
+        <Tabs.Content value="tab_3">Tab the 3rd, at your service</Tabs.Content>
       </Tabs>,
     );
 

@@ -1,6 +1,6 @@
 import { sampleLongText, sampleParagraphText, sampleText } from "@stories/support/sampleText";
 import type { Meta, StoryObj } from "@storybook/react-vite";
-import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components";
+import { Tabs } from "@/components";
 
 const meta: Meta<typeof Tabs> = {
   title: "Components/Tabs",
@@ -15,14 +15,14 @@ type Story = StoryObj<typeof meta>;
 export const Default: Story = {
   render: () => (
     <Tabs defaultValue="tab_1">
-      <TabsList>
-        <TabsTrigger value="tab_1">Tab 1</TabsTrigger>
-        <TabsTrigger value="tab_2">Tab 2</TabsTrigger>
-        <TabsTrigger value="tab_3">Tab 3</TabsTrigger>
-      </TabsList>
-      <TabsContent value="tab_1">{sampleParagraphText}</TabsContent>
-      <TabsContent value="tab_2">{sampleText}</TabsContent>
-      <TabsContent value="tab_3">{sampleLongText}</TabsContent>
+      <Tabs.List>
+        <Tabs.Trigger value="tab_1">Tab 1</Tabs.Trigger>
+        <Tabs.Trigger value="tab_2">Tab 2</Tabs.Trigger>
+        <Tabs.Trigger value="tab_3">Tab 3</Tabs.Trigger>
+      </Tabs.List>
+      <Tabs.Content value="tab_1">{sampleParagraphText}</Tabs.Content>
+      <Tabs.Content value="tab_2">{sampleText}</Tabs.Content>
+      <Tabs.Content value="tab_3">{sampleLongText}</Tabs.Content>
     </Tabs>
   ),
 };
@@ -30,14 +30,14 @@ export const Default: Story = {
 export const Vertical: Story = {
   render: () => (
     <Tabs defaultValue="tab_1" orientation="vertical">
-      <TabsList>
-        <TabsTrigger value="tab_1">Tab 1</TabsTrigger>
-        <TabsTrigger value="tab_2">Tab 2</TabsTrigger>
-        <TabsTrigger value="tab_3">Tab 3</TabsTrigger>
-      </TabsList>
-      <TabsContent value="tab_1">{sampleParagraphText}</TabsContent>
-      <TabsContent value="tab_2">{sampleText}</TabsContent>
-      <TabsContent value="tab_3">{sampleLongText}</TabsContent>
+      <Tabs.List>
+        <Tabs.Trigger value="tab_1">Tab 1</Tabs.Trigger>
+        <Tabs.Trigger value="tab_2">Tab 2</Tabs.Trigger>
+        <Tabs.Trigger value="tab_3">Tab 3</Tabs.Trigger>
+      </Tabs.List>
+      <Tabs.Content value="tab_1">{sampleParagraphText}</Tabs.Content>
+      <Tabs.Content value="tab_2">{sampleText}</Tabs.Content>
+      <Tabs.Content value="tab_3">{sampleLongText}</Tabs.Content>
     </Tabs>
   ),
 };
@@ -45,14 +45,14 @@ export const Vertical: Story = {
 export const OtherDefaultTab: Story = {
   render: () => (
     <Tabs defaultValue="tab_3" orientation="vertical">
-      <TabsList>
-        <TabsTrigger value="tab_1">Tab 1</TabsTrigger>
-        <TabsTrigger value="tab_2">Tab 2</TabsTrigger>
-        <TabsTrigger value="tab_3">Tab 3</TabsTrigger>
-      </TabsList>
-      <TabsContent value="tab_1">{sampleParagraphText}</TabsContent>
-      <TabsContent value="tab_2">{sampleText}</TabsContent>
-      <TabsContent value="tab_3">{sampleLongText}</TabsContent>
+      <Tabs.List>
+        <Tabs.Trigger value="tab_1">Tab 1</Tabs.Trigger>
+        <Tabs.Trigger value="tab_2">Tab 2</Tabs.Trigger>
+        <Tabs.Trigger value="tab_3">Tab 3</Tabs.Trigger>
+      </Tabs.List>
+      <Tabs.Content value="tab_1">{sampleParagraphText}</Tabs.Content>
+      <Tabs.Content value="tab_2">{sampleText}</Tabs.Content>
+      <Tabs.Content value="tab_3">{sampleLongText}</Tabs.Content>
     </Tabs>
   ),
 };

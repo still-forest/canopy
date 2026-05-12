@@ -1,0 +1,57 @@
+@import "@/styles/layers.css";
+@reference "@/styles/tokens.css";
+
+@layer components {
+  .tabs {
+    @apply gap-2 flex;
+
+    &[data-horizontal="true"] {
+      @apply flex-col;
+    }
+
+    .tabs-list {
+      @apply bg-muted rounded-lg p-[3px] text-muted-foreground inline-flex w-fit items-center justify-center;
+    }
+
+    .tabs-trigger {
+      @apply gap-1.5 rounded-md border border-transparent px-2 py-1 text-sm font-medium;
+      @apply relative inline-flex flex-1 items-center justify-center whitespace-nowrap transition-all;
+      @apply text-foreground/60 dark:text-muted-foreground;
+      @apply h-[calc(100%-1px)];
+
+      &[data-active] {
+        @apply shadow-sm bg-background text-foreground;
+        @apply dark:text-foreground dark:border-input dark:bg-input/30;
+      }
+
+      &[aria-disabled="true"],
+      &:disabled {
+        @apply opacity-50 cursor-not-allowed pointer-events-none;
+      }
+
+      &:focus-visible {
+        @apply border-ring ring-ring/50 ring-3 outline-ring outline-1;
+      }
+
+      &:hover {
+        @apply text-foreground dark:text-foreground;
+      }
+
+      svg {
+        @apply pointer-events-none shrink-0;
+
+        &:not([class*="size-"]) {
+          @apply size-4;
+        }
+      }
+
+      &::after {
+        @apply bg-foreground absolute opacity-0 transition-opacity;
+      }
+    }
+
+    .tabs-content {
+      @apply text-sm flex-1 outline-none;
+    }
+  }
+}
