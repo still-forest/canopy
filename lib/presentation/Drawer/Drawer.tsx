@@ -15,9 +15,9 @@ const DrawerTrigger = ({ className, ...props }: DrawerPrimitive.Trigger.Props) =
 const DrawerContent = ({ className, ...props }: DrawerPrimitive.Content.Props) => {
   return (
     <DrawerPrimitive.Portal>
-      <DrawerPrimitive.Backdrop />
-      <DrawerPrimitive.Viewport>
-        <DrawerPrimitive.Popup>
+      <DrawerPrimitive.Backdrop className="drawer-backdrop" />
+      <DrawerPrimitive.Viewport className="drawer-viewport">
+        <DrawerPrimitive.Popup className="drawer-popup">
           <DrawerPrimitive.Content className={cn("drawer-content", className)} data-slot="drawer-content" {...props} />
         </DrawerPrimitive.Popup>
       </DrawerPrimitive.Viewport>
