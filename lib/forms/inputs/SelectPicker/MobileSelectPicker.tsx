@@ -1,18 +1,9 @@
 import { mergeProps } from "@base-ui/react";
 import type { ReactNode } from "react";
-import { Button, type ButtonProps } from "@/buttons";
+import { Button } from "@/buttons";
 import { Drawer } from "@/presentation/Drawer";
 import "./SelectPicker.css";
 import { cn } from "@/utils/cn";
-
-const _CloseButton = (props: ButtonProps) => {
-  return (
-    <button className="mobile-select-picker-close-button" type="button" {...props}>
-      <div data-slot="sheet-close-control" />
-      <span className="sr-only">Close</span>
-    </button>
-  );
-};
 
 interface MobileSelectPickerProps {
   selectedLabel: string | ReactNode;
@@ -24,7 +15,6 @@ interface MobileSelectPickerProps {
   className?: string;
 }
 
-// TODO: replace with drawer
 export const MobileSelectPicker = ({
   selectedLabel,
   open,
@@ -50,7 +40,7 @@ export const MobileSelectPicker = ({
           </Button>
         )}
       />
-      <Drawer.Content className="mobile-select-picker-content">{children}</Drawer.Content>
+      <Drawer.Content>{children}</Drawer.Content>
     </Drawer>
   );
 };
