@@ -1,0 +1,100 @@
+@import "@/styles/layers.css";
+@reference "@/styles/tokens.css";
+
+@layer components {
+  .drawer-backdrop {
+    --backdrop-opacity: 0.2;
+    --bleed: 3rem;
+    position: fixed;
+    inset: 0;
+    min-height: 100dvh;
+    opacity: calc(var(--backdrop-opacity) * (1 - var(--drawer-swipe-progress)));
+    transition-timing-function: cubic-bezier(0.32, 0.72, 0, 1);
+    transition-duration: 450ms;
+    transition-property: opacity;
+    @apply bg-black;
+
+    @media (prefers-color-scheme: dark) {
+      --backdrop-opacity: 0.7;
+    }
+
+    &[data-starting-style],
+    &[data-ending-style] {
+      opacity: 0;
+    }
+
+    &[data-swiping] {
+      transition-duration: 0ms;
+    }
+
+    &[data-ending-style] {
+      transition-duration: calc(var(--drawer-swipe-strength) * 400ms);
+    }
+  }
+
+  .drawer-viewport {
+    position: fixed;
+    inset: 0;
+    display: flex;
+    align-items: flex-end;
+    justify-content: center;
+  }
+
+  .drawer-popup {
+    --bleed: 3rem;
+    box-sizing: border-box;
+    width: 100%;
+    max-height: calc(80vh + var(--bleed));
+    padding-bottom: calc(1.5rem + env(safe-area-inset-bottom, 0px) + var(--bleed));
+    margin-bottom: calc(-1 * var(--bleed));
+    overflow-y: auto;
+    overscroll-behavior: contain;
+    transform: translateY(var(--drawer-swipe-movement-y));
+    transition: transform 450ms cubic-bezier(0.32, 0.72, 0, 1);
+    will-change: transform;
+    @apply px-2 md:px-4 pt-2 md:pt-4;
+    @apply bg-background border border-border rounded-t-lg;
+
+    &[data-swiping] {
+      user-select: none;
+    }
+
+    @media (prefers-color-scheme: dark) {
+      outline: 1px solid var(--color-gray-300);
+    }
+
+    &[data-starting-style],
+    &[data-ending-style] {
+      transform: translateY(calc(100% - var(--bleed) + 2px));
+    }
+
+    &[data-ending-style] {
+      transition-duration: calc(var(--drawer-swipe-strength) * 400ms);
+    }
+  }
+
+  .drawer-content {
+    @apply w-full max-w-128 mx-auto space-y-4;
+  }
+
+  .drawer-handle {
+    @apply bg-muted w-12 rounded-full h-1;
+    @apply mx-auto mb-4;
+  }
+
+  .drawer-header {
+    @apply mb-4;
+  }
+
+  .drawer-title {
+    @apply text-foreground text-2xl font-medium;
+  }
+
+  .drawer-description {
+    @apply text-muted-foreground text-sm;
+  }
+
+  .drawer-actions {
+    @apply flex gap-4 justify-center;
+  }
+}

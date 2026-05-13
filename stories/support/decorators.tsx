@@ -13,7 +13,7 @@ export const DEFAULT_DECORATOR = (Story: (props: any) => ReactNode | Promise<Rea
 
 export const DEFAULT_DECORATOR_WITH_MIN_WIDTH_MD = (Story: (props: any) => ReactNode | Promise<ReactNode>) => (
   <ThemeProvider defaultTheme={THEMES.LIGHT} storageKey="canopy-storybook-theme">
-    <div className="w-full min-w-md bg-background p-1 outline-2 outline-gray-200 ">
+    <div className="w-full min-w-full md:min-w-md bg-background p-1 outline-2 outline-gray-200 ">
       <Story />
     </div>
   </ThemeProvider>
