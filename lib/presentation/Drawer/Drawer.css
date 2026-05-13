@@ -7,6 +7,7 @@
     --bleed: 3rem;
     position: fixed;
     inset: 0;
+    z-index: 60;
     min-height: 100dvh;
     opacity: calc(var(--backdrop-opacity) * (1 - var(--drawer-swipe-progress)));
     transition-timing-function: cubic-bezier(0.32, 0.72, 0, 1);
@@ -35,6 +36,7 @@
   .drawer-viewport {
     position: fixed;
     inset: 0;
+    z-index: 60;
     display: flex;
     align-items: flex-end;
     justify-content: center;
