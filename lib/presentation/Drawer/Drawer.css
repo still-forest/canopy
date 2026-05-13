@@ -8,11 +8,11 @@
     position: fixed;
     inset: 0;
     min-height: 100dvh;
-    @apply bg-black;
     opacity: calc(var(--backdrop-opacity) * (1 - var(--drawer-swipe-progress)));
     transition-timing-function: cubic-bezier(0.32, 0.72, 0, 1);
     transition-duration: 450ms;
     transition-property: opacity;
+    @apply bg-black;
 
     @media (prefers-color-scheme: dark) {
       --backdrop-opacity: 0.7;
@@ -45,15 +45,15 @@
     box-sizing: border-box;
     width: 100%;
     max-height: calc(80vh + var(--bleed));
-    padding: 1rem 1.5rem 1.5rem;
     padding-bottom: calc(1.5rem + env(safe-area-inset-bottom, 0px) + var(--bleed));
     margin-bottom: calc(-1 * var(--bleed));
     overflow-y: auto;
     overscroll-behavior: contain;
-    @apply bg-background border border-border rounded-t-lg;
     transform: translateY(var(--drawer-swipe-movement-y));
     transition: transform 450ms cubic-bezier(0.32, 0.72, 0, 1);
     will-change: transform;
+    @apply px-2 md:px-4 pt-2 md:pt-4;
+    @apply bg-background border border-border rounded-t-lg;
 
     &[data-swiping] {
       user-select: none;

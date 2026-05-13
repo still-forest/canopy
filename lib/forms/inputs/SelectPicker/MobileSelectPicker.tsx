@@ -1,11 +1,11 @@
 import { mergeProps } from "@base-ui/react";
 import type { ReactNode } from "react";
 import { Button, type ButtonProps } from "@/buttons";
-import { Sheet } from "@/presentation/Sheet";
+import { Drawer } from "@/presentation/Drawer";
 import "./SelectPicker.css";
 import { cn } from "@/utils/cn";
 
-const CloseButton = (props: ButtonProps) => {
+const _CloseButton = (props: ButtonProps) => {
   return (
     <button className="mobile-select-picker-close-button" type="button" {...props}>
       <div data-slot="sheet-close-control" />
@@ -35,8 +35,8 @@ export const MobileSelectPicker = ({
   className,
 }: MobileSelectPickerProps) => {
   return (
-    <Sheet onOpenChange={setOpen} open={open}>
-      <Sheet.Trigger
+    <Drawer onOpenChange={setOpen} open={open}>
+      <Drawer.Trigger
         render={(props) => (
           <Button
             {...mergeProps(props, {
@@ -50,12 +50,7 @@ export const MobileSelectPicker = ({
           </Button>
         )}
       />
-      <Sheet.Content className="mobile-select-picker-content" showCloseButton={false}>
-        <Sheet.Close render={<CloseButton />}>
-          <span className="sr-only">Close</span>
-        </Sheet.Close>
-        {children}
-      </Sheet.Content>
-    </Sheet>
+      <Drawer.Content className="mobile-select-picker-content">{children}</Drawer.Content>
+    </Drawer>
   );
 };
