@@ -83,11 +83,8 @@
   }
 
   .drawer-handle {
-    width: 3rem;
-    height: 0.25rem;
-    margin: 0 auto 1rem;
-    background-color: var(--color-gray-300);
-    border-radius: 9999px;
+    @apply bg-muted w-12 rounded-full h-1;
+    @apply mx-auto mb-4;
   }
 
   .drawer-header {
