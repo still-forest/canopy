@@ -19,11 +19,11 @@ type Story = StoryObj<typeof meta>;
 export const Default: Story = {
   render: () => (
     <Drawer>
-      <Drawer.Trigger render={<Button>Open sheet</Button>} />
+      <Drawer.Trigger render={<Button>Open drawer</Button>} />
       <Drawer.Content>
         <Drawer.Header>
           <Drawer.Title>Drawer title</Drawer.Title>
-          <Drawer.Description>This is a description of the sheet content.</Drawer.Description>
+          <Drawer.Description>This is a description of the drawer content.</Drawer.Description>
         </Drawer.Header>
         <Drawer.Body>
           <Text size="sm">{sampleParagraphText[0]}</Text>
@@ -45,7 +45,7 @@ export const Controlled: Story = {
           <Drawer.Trigger render={<Button>Inline trigger</Button>} />
           <Drawer.Content>
             <Drawer.Header>
-              <Drawer.Title>Controlled sheet</Drawer.Title>
+              <Drawer.Title>Controlled drawer</Drawer.Title>
               <Drawer.Description>Opened via external state.</Drawer.Description>
             </Drawer.Header>
             <Drawer.Body>
@@ -61,10 +61,10 @@ export const Controlled: Story = {
 export const NoHeader: Story = {
   render: () => (
     <Drawer>
-      <Drawer.Trigger render={<Button>Open sheet</Button>} />
+      <Drawer.Trigger render={<Button>Open drawer</Button>} />
       <Drawer.Content>
         <Drawer.Body>
-          <Text size="sm">A simple sheet with no header, title, or description.</Text>
+          <Text size="sm">A simple drawer with no header, title, or description.</Text>
         </Drawer.Body>
       </Drawer.Content>
     </Drawer>
