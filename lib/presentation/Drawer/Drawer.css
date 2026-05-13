@@ -14,11 +14,6 @@
     transition-duration: 450ms;
     transition-property: opacity;
 
-    /* iOS 26+: Ensure the backdrop covers the entire visible viewport. */
-    @supports (-webkit-touch-callout: none) {
-      position: absolute;
-    }
-
     @media (prefers-color-scheme: dark) {
       --backdrop-opacity: 0.7;
     }
@@ -38,34 +33,28 @@
   }
 
   .drawer-viewport {
-    --viewport-padding: 0px;
     position: fixed;
     inset: 0;
     display: flex;
-    justify-content: flex-end;
-    padding: var(--viewport-padding);
-
-    @supports (-webkit-touch-callout: none) {
-      --viewport-padding: 0.625rem;
-    }
+    align-items: flex-end;
+    justify-content: center;
   }
 
   .drawer-popup {
     --bleed: 3rem;
     box-sizing: border-box;
-    width: calc(20rem + var(--bleed));
-    max-width: calc(100vw - 3rem + var(--bleed));
-    height: 100%;
-    padding: 1.5rem;
-    padding-right: calc(1.5rem + var(--bleed));
-    margin-right: calc(-1 * var(--bleed));
+    width: 100%;
+    max-height: calc(80vh + var(--bleed));
+    padding: 1rem 1.5rem 1.5rem;
+    padding-bottom: calc(1.5rem + env(safe-area-inset-bottom, 0px) + var(--bleed));
+    margin-bottom: calc(-1 * var(--bleed));
     overflow-y: auto;
     overscroll-behavior: contain;
     color: var(--color-gray-900);
-    touch-action: auto;
     outline: 1px solid var(--color-gray-200);
     background-color: var(--color-gray-50);
-    transform: translateX(var(--drawer-swipe-movement-x));
+    border-radius: 1rem 1rem 0 0;
+    transform: translateY(var(--drawer-swipe-movement-y));
     transition: transform 450ms cubic-bezier(0.32, 0.72, 0, 1);
     will-change: transform;
 
@@ -79,17 +68,11 @@
 
     &[data-starting-style],
     &[data-ending-style] {
-      transform: translateX(calc(100% - var(--bleed) + var(--viewport-padding) + 2px));
+      transform: translateY(calc(100% - var(--bleed) + 2px));
     }
 
     &[data-ending-style] {
       transition-duration: calc(var(--drawer-swipe-strength) * 400ms);
-    }
-
-    @supports (-webkit-touch-callout: none) {
-      --bleed: 0px;
-      margin-right: 0;
-      border-radius: 10px;
     }
   }
 
@@ -97,6 +80,14 @@
     width: 100%;
     max-width: 32rem;
     margin: 0 auto;
+  }
+
+  .drawer-handle {
+    width: 3rem;
+    height: 0.25rem;
+    margin: 0 auto 1rem;
+    background-color: var(--color-gray-300);
+    border-radius: 9999px;
   }
 
   .drawer-title {
@@ -118,6 +109,6 @@
   .drawer-actions {
     display: flex;
     gap: 1rem;
-    justify-content: flex-end;
+    justify-content: center;
   }
 }

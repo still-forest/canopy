@@ -18,6 +18,7 @@ const DrawerContent = ({ className, ...props }: DrawerPrimitive.Content.Props) =
       <DrawerPrimitive.Backdrop className="drawer-backdrop" />
       <DrawerPrimitive.Viewport className="drawer-viewport">
         <DrawerPrimitive.Popup className="drawer-popup">
+          <div className="drawer-handle" />
           <DrawerPrimitive.Content className={cn("drawer-content", className)} data-slot="drawer-content" {...props} />
         </DrawerPrimitive.Popup>
       </DrawerPrimitive.Viewport>
@@ -47,6 +48,10 @@ const DrawerBody = ({ className, ...props }: ComponentProps<"div">) => {
   return <div className={cn("drawer-body", className)} data-slot="drawer-body" {...props} />;
 };
 
+const DrawerActions = ({ className, ...props }: ComponentProps<"div">) => {
+  return <div className={cn("drawer-actions", className)} data-slot="drawer-actions" {...props} />;
+};
+
 const DrawerClose = ({ className, ...props }: DrawerPrimitive.Close.Props) => {
   return <DrawerPrimitive.Close className={cn("drawer-close", className)} data-slot="drawer-close" {...props} />;
 };
@@ -57,6 +62,7 @@ Drawer.Header = DrawerHeader;
 Drawer.Title = DrawerTitle;
 Drawer.Description = DrawerDescription;
 Drawer.Body = DrawerBody;
+Drawer.Actions = DrawerActions;
 Drawer.Close = DrawerClose;
 
 export { Drawer };
