@@ -28,6 +28,7 @@ export const Default: Story = {
         <Drawer.Body>
           <Text size="sm">{sampleParagraphText[0]}</Text>
         </Drawer.Body>
+        <Drawer.Close render={<Button>Close</Button>} />
       </Drawer.Content>
     </Drawer>
   ),

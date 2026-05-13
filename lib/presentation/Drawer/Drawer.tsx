@@ -1,41 +1,54 @@
 import { Drawer as DrawerPrimitive } from "@base-ui/react/drawer";
 import type { ComponentProps } from "react";
+import { cn } from "@/utils/cn";
 
-const Drawer = ({ ...props }: DrawerPrimitive.Root.Props) => {
-  return <DrawerPrimitive.Root data-slot="drawer" {...props} />;
+import "./Drawer.css";
+
+const Drawer = ({ swipeDirection = "down", ...props }: DrawerPrimitive.Root.Props) => {
+  return <DrawerPrimitive.Root data-slot="drawer" swipeDirection={swipeDirection} {...props} />;
 };
 
-const DrawerTrigger = ({ ...props }: DrawerPrimitive.Trigger.Props) => {
-  return <DrawerPrimitive.Trigger data-slot="drawer-trigger" {...props} />;
+const DrawerTrigger = ({ className, ...props }: DrawerPrimitive.Trigger.Props) => {
+  return <DrawerPrimitive.Trigger className={cn("drawer-trigger", className)} data-slot="drawer-trigger" {...props} />;
 };
 
-const DrawerContent = ({ ...props }: DrawerPrimitive.Content.Props) => {
+const DrawerContent = ({ className, ...props }: DrawerPrimitive.Content.Props) => {
   return (
     <DrawerPrimitive.Portal>
       <DrawerPrimitive.Backdrop />
       <DrawerPrimitive.Viewport>
         <DrawerPrimitive.Popup>
-          <DrawerPrimitive.Content data-slot="drawer-content" {...props} />
+          <DrawerPrimitive.Content className={cn("drawer-content", className)} data-slot="drawer-content" {...props} />
         </DrawerPrimitive.Popup>
       </DrawerPrimitive.Viewport>
     </DrawerPrimitive.Portal>
   );
 };
 
-const DrawerHeader = ({ ...props }: ComponentProps<"div">) => {
-  return <div data-slot="drawer-header" {...props} />;
+const DrawerHeader = ({ className, ...props }: ComponentProps<"div">) => {
+  return <div className={cn("drawer-header", className)} data-slot="drawer-header" {...props} />;
 };
 
-const DrawerTitle = ({ ...props }: DrawerPrimitive.Title.Props) => {
-  return <DrawerPrimitive.Title data-slot="drawer-title" {...props} />;
+const DrawerTitle = ({ className, ...props }: DrawerPrimitive.Title.Props) => {
+  return <DrawerPrimitive.Title className={cn("drawer-title", className)} data-slot="drawer-title" {...props} />;
 };
 
-const DrawerDescription = ({ ...props }: DrawerPrimitive.Description.Props) => {
-  return <DrawerPrimitive.Description data-slot="drawer-description" {...props} />;
+const DrawerDescription = ({ className, ...props }: DrawerPrimitive.Description.Props) => {
+  return (
+    <DrawerPrimitive.Description
+      className={cn("drawer-description", className)}
+      data-slot="drawer-description"
+      {...props}
+    />
+  );
 };
 
-const DrawerBody = ({ ...props }: ComponentProps<"div">) => {
-  return <div data-slot="drawer-body" {...props} />;
+const DrawerBody = ({ className, ...props }: ComponentProps<"div">) => {
+  return <div className={cn("drawer-body", className)} data-slot="drawer-body" {...props} />;
+};
+
+const DrawerClose = ({ className, ...props }: DrawerPrimitive.Close.Props) => {
+  return <DrawerPrimitive.Close className={cn("drawer-close", className)} data-slot="drawer-close" {...props} />;
 };
 
 Drawer.Trigger = DrawerTrigger;
@@ -44,5 +57,6 @@ Drawer.Header = DrawerHeader;
 Drawer.Title = DrawerTitle;
 Drawer.Description = DrawerDescription;
 Drawer.Body = DrawerBody;
+Drawer.Close = DrawerClose;
 
 export { Drawer };
