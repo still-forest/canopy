@@ -8,7 +8,7 @@
     position: fixed;
     inset: 0;
     min-height: 100dvh;
-    background-color: black;
+    @apply bg-black;
     opacity: calc(var(--backdrop-opacity) * (1 - var(--drawer-swipe-progress)));
     transition-timing-function: cubic-bezier(0.32, 0.72, 0, 1);
     transition-duration: 450ms;
@@ -50,10 +50,7 @@
     margin-bottom: calc(-1 * var(--bleed));
     overflow-y: auto;
     overscroll-behavior: contain;
-    color: var(--color-gray-900);
-    outline: 1px solid var(--color-gray-200);
-    background-color: var(--color-gray-50);
-    border-radius: 1rem 1rem 0 0;
+    @apply bg-background border border-border rounded-t-lg;
     transform: translateY(var(--drawer-swipe-movement-y));
     transition: transform 450ms cubic-bezier(0.32, 0.72, 0, 1);
     will-change: transform;
@@ -77,9 +74,7 @@
   }
 
   .drawer-content {
-    width: 100%;
-    max-width: 32rem;
-    margin: 0 auto;
+    @apply w-full max-w-128 mx-auto space-y-4;
   }
 
   .drawer-handle {
@@ -100,8 +95,6 @@
   }
 
   .drawer-actions {
-    display: flex;
-    gap: 1rem;
-    justify-content: center;
+    @apply flex gap-4 justify-center;
   }
 }
