@@ -2,7 +2,7 @@ import { DEFAULT_DECORATOR_WITH_WIDTH_MD } from "@stories/support/decorators";
 import type { Meta, StoryObj } from "@storybook/react-vite";
 import { useState } from "react";
 import { Button } from "@/buttons";
-import { NativeSelectField } from "@/forms";
+import { NativeSelectField, type NativeSelectFieldProps } from "@/forms";
 import { Flex } from "@/layout";
 
 const meta: Meta<typeof NativeSelectField> = {
@@ -16,7 +16,7 @@ export default meta;
 
 type Story = StoryObj<typeof meta>;
 
-const defaultProps = {
+const defaultProps: NativeSelectFieldProps = {
   name: "someThing",
   options: [
     { value: "homer", label: "Homer" },

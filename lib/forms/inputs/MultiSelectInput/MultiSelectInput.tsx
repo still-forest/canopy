@@ -9,13 +9,14 @@ import { cn } from "@/utils/cn";
 import type { SelectOption, SelectOptionGroup } from "../types";
 import "./MultiSelectInput.css";
 
-interface MultiSelectInputProps {
+export interface MultiSelectInputProps {
   options: SelectOptionGroup[] | SelectOption[];
   selectedOptions: string[];
   onChange: (value: string[]) => void;
   unFilteredLabel?: string;
   filteredLabel?: string;
   size?: "sm" | "default" | "lg";
+  placeholder?: string; // TODO: do somethign with this
   className?: string;
 }
 
