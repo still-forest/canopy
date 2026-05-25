@@ -19,7 +19,7 @@ export interface SelectInputProps
   name: string;
   value?: string | null;
   className?: string;
-  onChange: (value?: string | null) => void;
+  onChange: (value: string | null) => void;
 }
 
 export const SelectInput = ({
