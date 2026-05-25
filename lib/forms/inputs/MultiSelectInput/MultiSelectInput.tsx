@@ -23,7 +23,7 @@ export interface MultiSelectInputProps {
   selectedOptions: string[];
   onChange: (value: string[]) => void;
   size?: "sm" | "default" | "lg";
-  placeholder?: string; // TODO: do somethign with this
+  placeholder?: string;
   className?: string;
 }
 
@@ -33,6 +33,7 @@ export const MultiSelectInput = ({
   onChange,
   size = "default",
   className,
+  placeholder = "Select an option",
 }: MultiSelectInputProps) => {
   const anchor = useComboboxAnchor();
 
@@ -67,6 +68,8 @@ export const MultiSelectInput = ({
     });
   }, [size]);
 
+  const hasSelections = useMemo(() => selectedOptions.length > 0, [selectedOptions]);
+
   return (
     <Combobox
       autoHighlight
@@ -76,23 +79,26 @@ export const MultiSelectInput = ({
       value={selectedOptions}
     >
       <ComboboxChips className={inputClassName} ref={anchor}>
-        <ComboboxValue>
-          {(selectedValues) => {
-            const selectedOptions = selectedValues.map((value: string) =>
-              flatOptions.find((option) => option.value === value),
-            );
-            return (
-              <>
-                {selectedOptions.map((option: SelectOption) => (
-                  <ComboboxChip className={chipValueClassName} key={option.value}>
-                    {option.label}
-                  </ComboboxChip>
-                ))}
-                <ComboboxChipsInput />
-              </>
-            );
-          }}
-        </ComboboxValue>
+        {hasSelections && (
+          <ComboboxValue placeholder={placeholder}>
+            {(selectedValues) => {
+              const selectedOptions = selectedValues.map((value: string) =>
+                flatOptions.find((option) => option.value === value),
+              );
+              return (
+                <>
+                  {selectedOptions.map((option: SelectOption) => (
+                    <ComboboxChip className={chipValueClassName} key={option.value}>
+                      {option.label}
+                    </ComboboxChip>
+                  ))}
+                  <ComboboxChipsInput />
+                </>
+              );
+            }}
+          </ComboboxValue>
+        )}
+        {!hasSelections && <span className="text-muted-foreground">{placeholder}</span>}
       </ComboboxChips>
       <ComboboxContent anchor={anchor}>
         <ComboboxEmpty>No items found.</ComboboxEmpty>
