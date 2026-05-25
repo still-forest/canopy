@@ -16,7 +16,6 @@ import {
   useComboboxAnchor,
 } from "@/components/ui/combobox";
 import type { SelectOption, SelectOptionGroup } from "../types";
-import "./MultiSelectInput.css";
 
 export interface MultiSelectInputProps {
   options: SelectOptionGroup[] | SelectOption[];
@@ -46,12 +45,17 @@ export const MultiSelectInput = ({
       ? (options as SelectOptionGroup[]).flatMap((optionGroup) => optionGroup.options)
       : (options as SelectOption[]);
   }, [options, isOptionGroup]);
-  const optionGroups: SelectOptionGroup[] = isOptionGroup
-    ? (options as SelectOptionGroup[])
-    : [{ label: null, options: options as SelectOption[] }];
+  // Base UI detects grouped items by looking for an `items` key on each group
+  // (see isGroupedItems in @base-ui/react). Our public API uses `options`, so we
+  // remap to `items` here — otherwise Base UI treats the group objects as the flat
+  // item list and only the first N items (N = number of groups) can be highlighted.
+  const comboboxGroups = useMemo(
+    () => (options as SelectOptionGroup[]).map((group) => ({ label: group.label, items: group.options })),
+    [options],
+  );
 
   return (
-    <Combobox autoHighlight items={isOptionGroup ? optionGroups : flatOptions} multiple>
+    <Combobox autoHighlight items={isOptionGroup ? comboboxGroups : flatOptions} multiple>
       <ComboboxChips className="w-full" ref={anchor}>
         <ComboboxValue>
           {(selectedValues) => {
@@ -74,7 +78,7 @@ export const MultiSelectInput = ({
         {isOptionGroup && (
           <ComboboxList>
             {(group, index) => (
-              <ComboboxGroup items={group.options} key={group.label}>
+              <ComboboxGroup items={group.items} key={group.label}>
                 <ComboboxLabel>{group.label}</ComboboxLabel>
                 <ComboboxCollection>
                   {(item) => (
@@ -83,21 +87,18 @@ export const MultiSelectInput = ({
                     </ComboboxItem>
                   )}
                 </ComboboxCollection>
-                {index < optionGroups.length - 1 && <ComboboxSeparator />}
+                {index < comboboxGroups.length - 1 && <ComboboxSeparator />}
               </ComboboxGroup>
             )}
           </ComboboxList>
         )}
         {!isOptionGroup && (
           <ComboboxList>
-            {(item) => {
-              console.log("item", item);
-              return (
-                <ComboboxItem key={item.value} value={item.value}>
-                  {item.label}
-                </ComboboxItem>
-              );
-            }}
+            {(item) => (
+              <ComboboxItem key={item.value} value={item.value}>
+                {item.label}
+              </ComboboxItem>
+            )}
           </ComboboxList>
         )}
       </ComboboxContent>
