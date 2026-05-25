@@ -3,7 +3,6 @@ import { Field, SelectInput, type SelectInputProps } from "@/forms";
 
 export interface SelectFieldProps extends SelectInputProps {
   label?: string;
-  labelClassName?: string;
   hint?: string;
   note?: string;
   error?: string;
