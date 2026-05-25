@@ -69,16 +69,6 @@ export const NoneSelected: Story = {
   },
 };
 
-export const CustomLabels: Story = {
-  args: {
-    options: flatOptions,
-    selectedOptions: allFlatValues,
-    unFilteredLabel: "Showing all fruits",
-    filteredLabel: "Filtered fruits",
-    onChange: () => {},
-  },
-};
-
 export const SmallSize: Story = {
   args: {
     options: flatOptions,
