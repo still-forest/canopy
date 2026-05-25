@@ -25,7 +25,7 @@ const defaultProps: SelectFieldProps = {
     { value: "lisa", label: "Lisa" },
     { value: "maggie", label: "Maggie" },
   ],
-  onChange: (value?: string | null) => window.alert(`Selected option ${value}`),
+  onChange: (value: string | null) => window.alert(`Selected option ${value}`),
 };
 
 export const Default: Story = {
@@ -177,7 +177,7 @@ export const WithMultipleGroups: Story = {
 };
 
 const ControlledInput = () => {
-  const [value, setValue] = useState("marge");
+  const [value, setValue] = useState<string | null>("marge");
   return (
     <Flex align="center" direction="col" gap="4">
       <Flex.Item>
