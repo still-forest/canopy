@@ -4,10 +4,14 @@ import {
   ComboboxChip,
   ComboboxChips,
   ComboboxChipsInput,
+  ComboboxCollection,
   ComboboxContent,
   ComboboxEmpty,
+  ComboboxGroup,
   ComboboxItem,
+  ComboboxLabel,
   ComboboxList,
+  ComboboxSeparator,
   ComboboxValue,
   useComboboxAnchor,
 } from "@/components/ui/combobox";
@@ -42,14 +46,12 @@ export const MultiSelectInput = ({
       ? (options as SelectOptionGroup[]).flatMap((optionGroup) => optionGroup.options)
       : (options as SelectOption[]);
   }, [options, isOptionGroup]);
-  const _optionGroups: SelectOptionGroup[] = isOptionGroup
+  const optionGroups: SelectOptionGroup[] = isOptionGroup
     ? (options as SelectOptionGroup[])
     : [{ label: null, options: options as SelectOption[] }];
 
-  const _hasFilter = flatOptions.length !== selectedOptions.length;
-
   return (
-    <Combobox autoHighlight items={flatOptions} multiple>
+    <Combobox autoHighlight items={isOptionGroup ? optionGroups : flatOptions} multiple>
       <ComboboxChips className="w-full" ref={anchor}>
         <ComboboxValue>
           {(selectedValues) => {
@@ -69,13 +71,35 @@ export const MultiSelectInput = ({
       </ComboboxChips>
       <ComboboxContent anchor={anchor}>
         <ComboboxEmpty>No items found.</ComboboxEmpty>
-        <ComboboxList>
-          {(item) => (
-            <ComboboxItem key={item.value} value={item.value}>
-              {item.label}
-            </ComboboxItem>
-          )}
-        </ComboboxList>
+        {isOptionGroup && (
+          <ComboboxList>
+            {(group, index) => (
+              <ComboboxGroup items={group.options} key={group.label}>
+                <ComboboxLabel>{group.label}</ComboboxLabel>
+                <ComboboxCollection>
+                  {(item) => (
+                    <ComboboxItem key={item.value} value={item.value}>
+                      {item.label}
+                    </ComboboxItem>
+                  )}
+                </ComboboxCollection>
+                {index < optionGroups.length - 1 && <ComboboxSeparator />}
+              </ComboboxGroup>
+            )}
+          </ComboboxList>
+        )}
+        {!isOptionGroup && (
+          <ComboboxList>
+            {(item) => {
+              console.log("item", item);
+              return (
+                <ComboboxItem key={item.value} value={item.value}>
+                  {item.label}
+                </ComboboxItem>
+              );
+            }}
+          </ComboboxList>
+        )}
       </ComboboxContent>
     </Combobox>
   );
