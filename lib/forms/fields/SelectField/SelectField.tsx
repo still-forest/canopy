@@ -4,22 +4,12 @@ import { Field, SelectInput, type SelectInputProps } from "@/forms";
 export interface SelectFieldProps extends SelectInputProps {
   label?: string;
   labelClassName?: string;
-  placeholder?: string;
   hint?: string;
   note?: string;
   error?: string;
 }
 
-export const SelectField = ({
-  name,
-  label,
-  placeholder = "Select an option",
-  hint,
-  note,
-  error,
-  id,
-  ...props
-}: SelectFieldProps) => {
+export const SelectField = ({ name, label, hint, note, error, id, ...props }: SelectFieldProps) => {
   const inputId = id ?? name;
   const errorId = `${inputId}-error`;
   const isInvalid = !!error;
