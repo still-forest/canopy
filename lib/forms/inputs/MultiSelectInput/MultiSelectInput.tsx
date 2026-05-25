@@ -1,21 +1,29 @@
-import { ChevronDownIcon, Square, SquareCheck } from "lucide-react";
 import { useMemo } from "react";
-import { Button } from "@/buttons";
-import { Popover, PopoverContent, PopoverTrigger } from "@/components/ui/popover";
-import { Separator } from "@/components/ui/separator";
-import { Checkbox } from "@/forms/inputs";
-import { Flex } from "@/layout";
+import {
+  Combobox,
+  ComboboxChip,
+  ComboboxChips,
+  ComboboxChipsInput,
+  ComboboxCollection,
+  ComboboxContent,
+  ComboboxEmpty,
+  ComboboxGroup,
+  ComboboxItem,
+  ComboboxLabel,
+  ComboboxList,
+  ComboboxSeparator,
+  ComboboxValue,
+  useComboboxAnchor,
+} from "@/components/ui/combobox";
 import { cn } from "@/utils/cn";
 import type { SelectOption, SelectOptionGroup } from "../types";
-import "./MultiSelectInput.css";
 
-interface MultiSelectInputProps {
+export interface MultiSelectInputProps {
   options: SelectOptionGroup[] | SelectOption[];
   selectedOptions: string[];
   onChange: (value: string[]) => void;
-  unFilteredLabel?: string;
-  filteredLabel?: string;
   size?: "sm" | "default" | "lg";
+  placeholder?: string;
   className?: string;
 }
 
@@ -23,89 +31,104 @@ export const MultiSelectInput = ({
   options,
   selectedOptions,
   onChange,
-  unFilteredLabel = "All options selected",
-  filteredLabel,
   size = "default",
   className,
+  placeholder = "Select an option",
 }: MultiSelectInputProps) => {
+  const anchor = useComboboxAnchor();
+
   const isOptionGroup = useMemo(() => options.some((option) => "options" in option), [options]);
+  const comboboxGroups = useMemo(
+    () => (options as SelectOptionGroup[]).map((group) => ({ label: group.label, items: group.options })),
+    [options],
+  );
   const flatOptions: SelectOption[] = useMemo(() => {
     return isOptionGroup
       ? (options as SelectOptionGroup[]).flatMap((optionGroup) => optionGroup.options)
       : (options as SelectOption[]);
   }, [options, isOptionGroup]);
-  const optionGroups: SelectOptionGroup[] = isOptionGroup
-    ? (options as SelectOptionGroup[])
-    : [{ label: null, options: options as SelectOption[] }];
 
-  const hasFilter = flatOptions.length !== selectedOptions.length;
+  const inputClassName = useMemo(() => {
+    return cn(
+      "w-full",
+      {
+        "h-8 text-base sm:text-xs min-h-8": size === "sm",
+        "h-9 text-base md:text-sm": size === "default",
+        "h-10 text-lg md:text-base": size === "lg",
+      },
+      className,
+    );
+  }, [className, size]);
 
-  const renderOption = ({ value, label }: SelectOption) => (
-    <Flex align="center" className="group" direction="row" gap="2" key={value}>
-      <Checkbox
-        checked={selectedOptions.includes(value)}
-        id={value}
-        name={value}
-        onCheckedChange={(checked) => {
-          if (checked) {
-            onChange([...selectedOptions, value]);
-          } else {
-            onChange(selectedOptions.filter((option) => option !== value));
-          }
-        }}
-      />
-      <label className="multi-select-option-label" htmlFor={value}>
-        {label}
-      </label>
-      <Button className="multi-select-only-btn" onClick={() => onChange([value])} outline size="xs" variant="ghost">
-        Only
-      </Button>
-    </Flex>
-  );
+  const chipValueClassName = useMemo(() => {
+    return cn({
+      "text-base sm:text-xs h-[calc(--spacing(4.5))]": size === "sm",
+      "text-base md:text-sm": size === "default",
+      "text-lg md:text-base h-[calc(--spacing(6.5))]": size === "lg",
+    });
+  }, [size]);
 
-  const displayLabel = hasFilter
-    ? filteredLabel || `${selectedOptions.length} of ${flatOptions.length} selected`
-    : unFilteredLabel;
+  const hasSelections = useMemo(() => selectedOptions.length > 0, [selectedOptions]);
 
   return (
-    <Popover>
-      <PopoverTrigger
-        className={cn(
-          "multi-select-trigger",
-          `multi-select-trigger--${size}`,
-          hasFilter && "multi-select-trigger--filtered",
-          className,
+    <Combobox
+      autoHighlight
+      items={isOptionGroup ? comboboxGroups : flatOptions}
+      multiple
+      onValueChange={onChange}
+      value={selectedOptions}
+    >
+      <ComboboxChips className={inputClassName} ref={anchor}>
+        {hasSelections && (
+          <ComboboxValue placeholder={placeholder}>
+            {(selectedValues) => {
+              const selectedOptions = selectedValues.map((value: string) =>
+                flatOptions.find((option) => option.value === value),
+              );
+              return (
+                <>
+                  {selectedOptions.map((option: SelectOption) => (
+                    <ComboboxChip className={chipValueClassName} key={option.value}>
+                      {option.label}
+                    </ComboboxChip>
+                  ))}
+                  <ComboboxChipsInput />
+                </>
+              );
+            }}
+          </ComboboxValue>
         )}
-      >
-        <span className={cn("multi-select-label", hasFilter && "multi-select-label--filtered")}>{displayLabel}</span>
-        <ChevronDownIcon className="multi-select-chevron" />
-      </PopoverTrigger>
-      <PopoverContent className="multi-select-content w-(--anchor-width)">
-        <Flex className="multi-select-options" direction="col" gap="4">
-          {optionGroups.map((optionGroup, _index) => (
-            <Flex direction="col" gap="1" key={optionGroup.label ?? "options"}>
-              {optionGroup.label && <p className="multi-select-group-label">{optionGroup.label}</p>}
-              {optionGroup.options.map(renderOption)}
-            </Flex>
-          ))}
-        </Flex>
-        <Separator />
-        <Flex direction="row" gap="2">
-          <Button
-            onClick={() => onChange(flatOptions.map(({ value }) => value))}
-            outline={hasFilter}
-            size="xs"
-            variant="primary"
-          >
-            <SquareCheck className="size-4" />
-            All
-          </Button>
-          <Button onClick={() => onChange([])} outline={selectedOptions.length > 0} size="xs" variant="primary">
-            <Square className="size-4" />
-            None
-          </Button>
-        </Flex>
-      </PopoverContent>
-    </Popover>
+        {!hasSelections && <span className="text-muted-foreground">{placeholder}</span>}
+      </ComboboxChips>
+      <ComboboxContent anchor={anchor}>
+        <ComboboxEmpty>No items found.</ComboboxEmpty>
+        {isOptionGroup && (
+          <ComboboxList>
+            {(group, index) => (
+              <ComboboxGroup items={group.items} key={group.label}>
+                <ComboboxLabel>{group.label}</ComboboxLabel>
+                <ComboboxCollection>
+                  {(item) => (
+                    <ComboboxItem key={item.value} value={item.value}>
+                      {item.label}
+                    </ComboboxItem>
+                  )}
+                </ComboboxCollection>
+                {index < comboboxGroups.length - 1 && <ComboboxSeparator />}
+              </ComboboxGroup>
+            )}
+          </ComboboxList>
+        )}
+        {!isOptionGroup && (
+          <ComboboxList>
+            {(item) => (
+              <ComboboxItem key={item.value} value={item.value}>
+                {item.label}
+              </ComboboxItem>
+            )}
+          </ComboboxList>
+        )}
+      </ComboboxContent>
+    </Combobox>
   );
 };

@@ -2,6 +2,7 @@ export * from "./ButtonRadioField";
 export * from "./CheckboxField";
 export * from "./DateField";
 export * from "./DatePickerField";
+export * from "./MultiSelectField";
 export * from "./NativeSelectField";
 export * from "./NumberField";
 export * from "./PasswordField";
