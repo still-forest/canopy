@@ -131,46 +131,4 @@ export const MultiSelectInput = ({
       </ComboboxContent>
     </Combobox>
   );
-
-  // return (
-  //   <Popover>
-  //     <PopoverTrigger
-  //       className={cn(
-  //         "multi-select-trigger",
-  //         `multi-select-trigger--${size}`,
-  //         hasFilter && "multi-select-trigger--filtered",
-  //         className,
-  //       )}
-  //     >
-  //       <span className={cn("multi-select-label", hasFilter && "multi-select-label--filtered")}>{displayLabel}</span>
-  //       <ChevronDownIcon className="multi-select-chevron" />
-  //     </PopoverTrigger>
-  //     <PopoverContent className="multi-select-content w-(--anchor-width)">
-  //       <Flex className="multi-select-options" direction="col" gap="4">
-  //         {optionGroups.map((optionGroup, _index) => (
-  //           <Flex direction="col" gap="1" key={optionGroup.label ?? "options"}>
-  //             {optionGroup.label && <p className="multi-select-group-label">{optionGroup.label}</p>}
-  //             {optionGroup.options.map(renderOption)}
-  //           </Flex>
-  //         ))}
-  //       </Flex>
-  //       <Separator />
-  //       <Flex direction="row" gap="2">
-  //         <Button
-  //           onClick={() => onChange(flatOptions.map(({ value }) => value))}
-  //           outline={hasFilter}
-  //           size="xs"
-  //           variant="primary"
-  //         >
-  //           <SquareCheck className="size-4" />
-  //           All
-  //         </Button>
-  //         <Button onClick={() => onChange([])} outline={selectedOptions.length > 0} size="xs" variant="primary">
-  //           <Square className="size-4" />
-  //           None
-  //         </Button>
-  //       </Flex>
-  //     </PopoverContent>
-  //   </Popover>
-  // );
 };
