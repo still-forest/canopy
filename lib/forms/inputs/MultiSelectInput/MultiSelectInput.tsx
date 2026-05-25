@@ -15,14 +15,13 @@ import {
   ComboboxValue,
   useComboboxAnchor,
 } from "@/components/ui/combobox";
+import { cn } from "@/utils/cn";
 import type { SelectOption, SelectOptionGroup } from "../types";
 
 export interface MultiSelectInputProps {
   options: SelectOptionGroup[] | SelectOption[];
   selectedOptions: string[];
   onChange: (value: string[]) => void;
-  unFilteredLabel?: string;
-  filteredLabel?: string;
   size?: "sm" | "default" | "lg";
   placeholder?: string; // TODO: do somethign with this
   className?: string;
@@ -32,8 +31,6 @@ export const MultiSelectInput = ({
   options,
   selectedOptions,
   onChange,
-  unFilteredLabel = "All options selected",
-  filteredLabel,
   size = "default",
   className,
 }: MultiSelectInputProps) => {
@@ -54,9 +51,29 @@ export const MultiSelectInput = ({
     [options],
   );
 
+  const inputClassName = useMemo(() => {
+    return cn(
+      "w-full",
+      {
+        "h-8 text-base sm:text-xs min-h-8": size === "sm",
+        "h-9 text-base md:text-sm": size === "default",
+        "h-10 text-lg md:text-base": size === "lg",
+      },
+      className,
+    );
+  }, [className, size]);
+
+  const chipValueClassName = useMemo(() => {
+    return cn({
+      "text-base sm:text-xs h-[calc(--spacing(4.5))]": size === "sm",
+      "text-base md:text-sm": size === "default",
+      "text-lg md:text-base h-[calc(--spacing(6.5))]": size === "lg",
+    });
+  }, [size]);
+
   return (
     <Combobox autoHighlight items={isOptionGroup ? comboboxGroups : flatOptions} multiple>
-      <ComboboxChips className="w-full" ref={anchor}>
+      <ComboboxChips className={inputClassName} ref={anchor}>
         <ComboboxValue>
           {(selectedValues) => {
             const selectedOptions = selectedValues.map((value: string) =>
@@ -65,7 +82,9 @@ export const MultiSelectInput = ({
             return (
               <>
                 {selectedOptions.map((option: SelectOption) => (
-                  <ComboboxChip key={option.value}>{option.label}</ComboboxChip>
+                  <ComboboxChip className={chipValueClassName} key={option.value}>
+                    {option.label}
+                  </ComboboxChip>
                 ))}
                 <ComboboxChipsInput />
               </>
