@@ -1,5 +1,4 @@
 import { useMemo } from "react";
-import { Button } from "@/buttons";
 import {
   Combobox,
   ComboboxChip,
@@ -12,8 +11,6 @@ import {
   ComboboxValue,
   useComboboxAnchor,
 } from "@/components/ui/combobox";
-import { Checkbox } from "@/forms/inputs";
-import { Flex } from "@/layout";
 import type { SelectOption, SelectOptionGroup } from "../types";
 import "./MultiSelectInput.css";
 
@@ -49,44 +46,16 @@ export const MultiSelectInput = ({
     ? (options as SelectOptionGroup[])
     : [{ label: null, options: options as SelectOption[] }];
 
-  const hasFilter = flatOptions.length !== selectedOptions.length;
-
-  const _renderOption = ({ value, label }: SelectOption) => (
-    <Flex align="center" className="group" direction="row" gap="2" key={value}>
-      <Checkbox
-        checked={selectedOptions.includes(value)}
-        id={value}
-        name={value}
-        onCheckedChange={(checked) => {
-          if (checked) {
-            onChange([...selectedOptions, value]);
-          } else {
-            onChange(selectedOptions.filter((option) => option !== value));
-          }
-        }}
-      />
-      <label className="multi-select-option-label" htmlFor={value}>
-        {label}
-      </label>
-      <Button className="multi-select-only-btn" onClick={() => onChange([value])} outline size="xs" variant="ghost">
-        Only
-      </Button>
-    </Flex>
-  );
-
-  const _displayLabel = hasFilter
-    ? filteredLabel || `${selectedOptions.length} of ${flatOptions.length} selected`
-    : unFilteredLabel;
+  const _hasFilter = flatOptions.length !== selectedOptions.length;
 
   return (
     <Combobox autoHighlight items={flatOptions} multiple>
-      <ComboboxChips className="w-full max-w-xs" ref={anchor}>
+      <ComboboxChips className="w-full" ref={anchor}>
         <ComboboxValue>
           {(selectedValues) => {
             const selectedOptions = selectedValues.map((value: string) =>
               flatOptions.find((option) => option.value === value),
             );
-            console.log(selectedOptions);
             return (
               <>
                 {selectedOptions.map((option: SelectOption) => (
