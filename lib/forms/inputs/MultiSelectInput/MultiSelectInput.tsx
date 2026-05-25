@@ -37,19 +37,15 @@ export const MultiSelectInput = ({
   const anchor = useComboboxAnchor();
 
   const isOptionGroup = useMemo(() => options.some((option) => "options" in option), [options]);
+  const comboboxGroups = useMemo(
+    () => (options as SelectOptionGroup[]).map((group) => ({ label: group.label, items: group.options })),
+    [options],
+  );
   const flatOptions: SelectOption[] = useMemo(() => {
     return isOptionGroup
       ? (options as SelectOptionGroup[]).flatMap((optionGroup) => optionGroup.options)
       : (options as SelectOption[]);
   }, [options, isOptionGroup]);
-  // Base UI detects grouped items by looking for an `items` key on each group
-  // (see isGroupedItems in @base-ui/react). Our public API uses `options`, so we
-  // remap to `items` here — otherwise Base UI treats the group objects as the flat
-  // item list and only the first N items (N = number of groups) can be highlighted.
-  const comboboxGroups = useMemo(
-    () => (options as SelectOptionGroup[]).map((group) => ({ label: group.label, items: group.options })),
-    [options],
-  );
 
   const inputClassName = useMemo(() => {
     return cn(
@@ -72,7 +68,13 @@ export const MultiSelectInput = ({
   }, [size]);
 
   return (
-    <Combobox autoHighlight items={isOptionGroup ? comboboxGroups : flatOptions} multiple>
+    <Combobox
+      autoHighlight
+      items={isOptionGroup ? comboboxGroups : flatOptions}
+      multiple
+      onValueChange={onChange}
+      value={selectedOptions}
+    >
       <ComboboxChips className={inputClassName} ref={anchor}>
         <ComboboxValue>
           {(selectedValues) => {
