@@ -52,9 +52,9 @@ export const MultiSelectInput = ({
     return cn(
       "w-full",
       {
-        "h-8 text-base sm:text-xs min-h-8": size === "sm",
-        "h-9 text-base md:text-sm": size === "default",
-        "h-10 text-lg md:text-base": size === "lg",
+        "text-base sm:text-xs min-h-8": size === "sm",
+        "text-base md:text-sm min-h-9": size === "default",
+        "text-lg md:text-base min-h-10": size === "lg",
       },
       className,
     );
