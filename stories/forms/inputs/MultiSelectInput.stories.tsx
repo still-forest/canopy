@@ -20,6 +20,18 @@ const groupedOptions: SelectOptionGroup[] = [
       { label: "Apple", value: "apple" },
       { label: "Banana", value: "banana" },
       { label: "Cherry", value: "cherry" },
+      { label: "Dragonfruit", value: "dragonfruit" },
+      { label: "Elderberry", value: "elderberry" },
+      { label: "Tomato", value: "tomato" },
+      { label: "Pineapple", value: "pineapple" },
+      { label: "Mango", value: "mango" },
+      { label: "Orange", value: "orange" },
+      { label: "Pear", value: "pear" },
+      { label: "Peach", value: "peach" },
+      { label: "Plum", value: "plum" },
+      { label: "Pomegranate", value: "pomegranate" },
+      { label: "Raspberry", value: "raspberry" },
+      { label: "Strawberry", value: "strawberry" },
     ],
   },
   {
@@ -28,6 +40,9 @@ const groupedOptions: SelectOptionGroup[] = [
       { label: "Carrot", value: "carrot" },
       { label: "Broccoli", value: "broccoli" },
       { label: "Spinach", value: "spinach" },
+      { label: "Onion", value: "onion" },
+      { label: "Garlic", value: "garlic" },
+      { label: "Potato", value: "potato" },
     ],
   },
 ];
@@ -91,6 +106,28 @@ export const GroupedOptions: Story = {
   args: {
     options: groupedOptions,
     selectedOptions: ["apple", "banana", "cherry", "carrot", "broccoli", "spinach"],
+    onChange: () => {},
+  },
+};
+
+export const WithManySelections: Story = {
+  args: {
+    options: groupedOptions,
+    selectedOptions: [
+      "apple",
+      "banana",
+      "cherry",
+      "carrot",
+      "broccoli",
+      "spinach",
+      "tomato",
+      "onion",
+      "garlic",
+      "potato",
+      "carrot",
+      "broccoli",
+      "spinach",
+    ],
     onChange: () => {},
   },
 };
