@@ -1,7 +1,7 @@
 import { DEFAULT_DECORATOR_WITH_MIN_WIDTH_MD } from "@stories/support/decorators";
 import type { Meta, StoryObj } from "@storybook/react-vite";
 import { useState } from "react";
-import { MultiSelectInput, type SelectOption, type SelectOptionGroup } from "@/forms";
+import { ComboboxInput, type SelectOption, type SelectOptionGroup } from "@/forms";
 import { Flex } from "@/layout";
 import { Text } from "@/typography";
 
@@ -20,6 +20,18 @@ const groupedOptions: SelectOptionGroup[] = [
       { label: "Apple", value: "apple" },
       { label: "Banana", value: "banana" },
       { label: "Cherry", value: "cherry" },
+      { label: "Dragonfruit", value: "dragonfruit" },
+      { label: "Elderberry", value: "elderberry" },
+      { label: "Tomato", value: "tomato" },
+      { label: "Pineapple", value: "pineapple" },
+      { label: "Mango", value: "mango" },
+      { label: "Orange", value: "orange" },
+      { label: "Pear", value: "pear" },
+      { label: "Peach", value: "peach" },
+      { label: "Plum", value: "plum" },
+      { label: "Pomegranate", value: "pomegranate" },
+      { label: "Raspberry", value: "raspberry" },
+      { label: "Strawberry", value: "strawberry" },
     ],
   },
   {
@@ -28,18 +40,21 @@ const groupedOptions: SelectOptionGroup[] = [
       { label: "Carrot", value: "carrot" },
       { label: "Broccoli", value: "broccoli" },
       { label: "Spinach", value: "spinach" },
+      { label: "Onion", value: "onion" },
+      { label: "Garlic", value: "garlic" },
+      { label: "Potato", value: "potato" },
     ],
   },
 ];
 
 const allFlatValues = flatOptions.map((o) => o.value);
 
-const meta: Meta<typeof MultiSelectInput> = {
-  title: "Forms/Inputs/MultiSelectInput",
-  component: MultiSelectInput,
+const meta: Meta<typeof ComboboxInput> = {
+  title: "Forms/Inputs/ComboboxInput",
+  component: ComboboxInput,
   decorators: [DEFAULT_DECORATOR_WITH_MIN_WIDTH_MD],
   tags: ["autodocs"],
-} satisfies Meta<typeof MultiSelectInput>;
+} satisfies Meta<typeof ComboboxInput>;
 
 export default meta;
 
@@ -65,16 +80,6 @@ export const NoneSelected: Story = {
   args: {
     options: flatOptions,
     selectedOptions: [],
-    onChange: () => {},
-  },
-};
-
-export const CustomLabels: Story = {
-  args: {
-    options: flatOptions,
-    selectedOptions: allFlatValues,
-    unFilteredLabel: "Showing all fruits",
-    filteredLabel: "Filtered fruits",
     onChange: () => {},
   },
 };
@@ -105,13 +110,35 @@ export const GroupedOptions: Story = {
   },
 };
 
+export const WithManySelections: Story = {
+  args: {
+    options: groupedOptions,
+    selectedOptions: [
+      "apple",
+      "banana",
+      "cherry",
+      "carrot",
+      "broccoli",
+      "spinach",
+      "tomato",
+      "onion",
+      "garlic",
+      "potato",
+      "carrot",
+      "broccoli",
+      "spinach",
+    ],
+    onChange: () => {},
+  },
+};
+
 export const Controlled: Story = {
   render: () => {
     const [selected, setSelected] = useState<string[]>(allFlatValues);
 
     return (
       <Flex direction="col" gap="4">
-        <MultiSelectInput onChange={setSelected} options={flatOptions} selectedOptions={selected} />
+        <ComboboxInput onChange={setSelected} options={flatOptions} selectedOptions={selected} />
         <Text size="sm" variant="muted">
           Selected: {selected.length > 0 ? selected.join(", ") : "none"}
         </Text>

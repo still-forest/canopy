@@ -22,15 +22,10 @@ const OPTION_GROUPS: SelectOptionGroup[] = [
   { label: "Colors", options: COLORS },
 ];
 
-const getChips = (container: HTMLElement) =>
-  Array.from(container.querySelectorAll('[data-slot="combobox-chip"]')) as HTMLElement[];
-
-// The input (and therefore the dropdown trigger) only renders once at least one
-// option is selected, so opening the popup requires a non-empty selection.
+// The trigger always renders; opening the popover reveals the option checkboxes.
 const openPopup = () => {
-  // Base UI opens the combobox on `mousedown`, not `click`.
-  fireEvent.mouseDown(screen.getByRole("combobox"));
-  return screen.getByRole("listbox");
+  fireEvent.click(screen.getByRole("button"));
+  return screen.getByRole("dialog");
 };
 
 describe("MultiSelectInput", () => {
@@ -40,97 +35,157 @@ describe("MultiSelectInput", () => {
     onChange.mockClear();
   });
 
-  describe("chips", () => {
-    it("renders a chip for each selected option", () => {
-      const { container } = render(
-        <MultiSelectInput onChange={onChange} options={ELEMENTS} selectedOptions={["earth", "fire"]} />,
-      );
+  describe("trigger label", () => {
+    it("renders the placeholder when nothing is selected", () => {
+      render(<MultiSelectInput onChange={onChange} options={ELEMENTS} placeholder="Pick some" selectedOptions={[]} />);
 
-      const chips = getChips(container);
-      expect(chips).toHaveLength(2);
-      expect(chips[0]).toHaveTextContent("Earth");
-      expect(chips[1]).toHaveTextContent("Fire");
-    });
-
-    it("renders the placeholder and no chips when nothing is selected", () => {
-      const { container } = render(
-        <MultiSelectInput onChange={onChange} options={ELEMENTS} placeholder="Pick some" selectedOptions={[]} />,
-      );
-
-      expect(getChips(container)).toHaveLength(0);
       expect(screen.getByText("Pick some")).toBeInTheDocument();
     });
 
-    it("resolves chip labels from grouped options", () => {
-      const { container } = render(
-        <MultiSelectInput onChange={onChange} options={OPTION_GROUPS} selectedOptions={["earth", "blue"]} />,
+    it("renders the default placeholder when none is provided", () => {
+      render(<MultiSelectInput onChange={onChange} options={ELEMENTS} selectedOptions={[]} />);
+
+      expect(screen.getByText("Select an option")).toBeInTheDocument();
+    });
+
+    it("renders the unfiltered label when every option is selected", () => {
+      render(
+        <MultiSelectInput
+          onChange={onChange}
+          options={ELEMENTS}
+          selectedOptions={ELEMENTS.map(({ value }) => value)}
+        />,
       );
 
-      const chips = getChips(container);
-      expect(chips).toHaveLength(2);
-      expect(chips[0]).toHaveTextContent("Earth");
-      expect(chips[1]).toHaveTextContent("Blue");
+      expect(screen.getByText("All options selected")).toBeInTheDocument();
+    });
+
+    it("renders a custom unfiltered label when every option is selected", () => {
+      render(
+        <MultiSelectInput
+          onChange={onChange}
+          options={ELEMENTS}
+          selectedOptions={ELEMENTS.map(({ value }) => value)}
+          unFilteredLabel="Everything"
+        />,
+      );
+
+      expect(screen.getByText("Everything")).toBeInTheDocument();
+    });
+
+    it("renders a count label when a subset is selected", () => {
+      render(<MultiSelectInput onChange={onChange} options={ELEMENTS} selectedOptions={["earth", "fire"]} />);
+
+      expect(screen.getByText("2 of 4 selected")).toBeInTheDocument();
+    });
+
+    it("renders a custom filtered label when a subset is selected", () => {
+      render(
+        <MultiSelectInput
+          filteredLabel="Some selected"
+          onChange={onChange}
+          options={ELEMENTS}
+          selectedOptions={["earth"]}
+        />,
+      );
+
+      expect(screen.getByText("Some selected")).toBeInTheDocument();
     });
   });
 
   describe("options rendered", () => {
-    it("renders a flat list of options when not grouped", () => {
-      render(<MultiSelectInput onChange={onChange} options={ELEMENTS} selectedOptions={["earth"]} />);
+    it("renders a checkbox for each option when not grouped", () => {
+      render(<MultiSelectInput onChange={onChange} options={ELEMENTS} selectedOptions={[]} />);
 
-      const listbox = openPopup();
-      const options = within(listbox).getAllByRole("option");
+      const dialog = openPopup();
 
-      expect(options).toHaveLength(ELEMENTS.length);
-      expect(options[0]).toHaveTextContent("Earth");
-      expect(options[1]).toHaveTextContent("Wind");
-      expect(options[2]).toHaveTextContent("Fire");
-      expect(options[3]).toHaveTextContent("Water");
+      for (const { label } of ELEMENTS) {
+        expect(within(dialog).getByText(label)).toBeInTheDocument();
+      }
     });
 
     it("renders every option across all groups, with group labels", () => {
-      render(<MultiSelectInput onChange={onChange} options={OPTION_GROUPS} selectedOptions={["earth"]} />);
+      render(<MultiSelectInput onChange={onChange} options={OPTION_GROUPS} selectedOptions={[]} />);
 
-      const listbox = openPopup();
-      const options = within(listbox).getAllByRole("option");
+      const dialog = openPopup();
 
-      expect(options).toHaveLength(ELEMENTS.length + COLORS.length);
+      expect(within(dialog).getByText("Elements")).toBeInTheDocument();
+      expect(within(dialog).getByText("Colors")).toBeInTheDocument();
 
-      expect(within(listbox).getByText("Elements")).toBeInTheDocument();
-      expect(within(listbox).getByText("Colors")).toBeInTheDocument();
+      for (const { label } of [...ELEMENTS, ...COLORS]) {
+        expect(within(dialog).getByText(label)).toBeInTheDocument();
+      }
+    });
 
-      expect(options[0]).toHaveTextContent("Earth");
-      expect(options[3]).toHaveTextContent("Water");
-      expect(options[4]).toHaveTextContent("Red");
-      expect(options[7]).toHaveTextContent("Blue");
+    it("reflects the selected options as checked checkboxes", () => {
+      render(<MultiSelectInput onChange={onChange} options={ELEMENTS} selectedOptions={["earth", "fire"]} />);
+
+      const dialog = openPopup();
+      const checkboxes = within(dialog).getAllByRole("checkbox");
+
+      expect(checkboxes[0]).toBeChecked();
+      expect(checkboxes[1]).not.toBeChecked();
+      expect(checkboxes[2]).toBeChecked();
+      expect(checkboxes[3]).not.toBeChecked();
     });
   });
 
   describe("value / onChange", () => {
-    it("calls onChange with the value appended when an option is selected", () => {
+    it("calls onChange with the value appended when an unselected option is checked", () => {
       render(<MultiSelectInput onChange={onChange} options={ELEMENTS} selectedOptions={["earth"]} />);
 
-      const listbox = openPopup();
-      fireEvent.click(within(listbox).getByRole("option", { name: "Water" }));
+      const dialog = openPopup();
+      fireEvent.click(within(dialog).getAllByRole("checkbox")[3]);
 
       expect(onChange).toHaveBeenCalledTimes(1);
       expect(onChange.mock.calls[0][0]).toEqual(["earth", "water"]);
     });
 
-    it("calls onChange with the value removed when an already-selected option is clicked", () => {
+    it("calls onChange with the value removed when a selected option is unchecked", () => {
       render(<MultiSelectInput onChange={onChange} options={ELEMENTS} selectedOptions={["earth", "fire"]} />);
 
-      const listbox = openPopup();
-      fireEvent.click(within(listbox).getByRole("option", { name: "Earth" }));
+      const dialog = openPopup();
+      fireEvent.click(within(dialog).getAllByRole("checkbox")[0]);
 
       expect(onChange).toHaveBeenCalledTimes(1);
       expect(onChange.mock.calls[0][0]).toEqual(["fire"]);
     });
 
-    it("calls onChange when selecting an option from a group", () => {
+    it("calls onChange with only that value when the Only button is clicked", () => {
+      render(<MultiSelectInput onChange={onChange} options={ELEMENTS} selectedOptions={["earth", "fire"]} />);
+
+      const dialog = openPopup();
+      fireEvent.click(within(dialog).getAllByRole("button", { name: "Only" })[3]);
+
+      expect(onChange).toHaveBeenCalledTimes(1);
+      expect(onChange.mock.calls[0][0]).toEqual(["water"]);
+    });
+
+    it("calls onChange with every value when the All button is clicked", () => {
+      render(<MultiSelectInput onChange={onChange} options={ELEMENTS} selectedOptions={["earth"]} />);
+
+      const dialog = openPopup();
+      fireEvent.click(within(dialog).getByRole("button", { name: /All/ }));
+
+      expect(onChange).toHaveBeenCalledTimes(1);
+      expect(onChange.mock.calls[0][0]).toEqual(["earth", "wind", "fire", "water"]);
+    });
+
+    it("calls onChange with an empty array when the None button is clicked", () => {
+      render(<MultiSelectInput onChange={onChange} options={ELEMENTS} selectedOptions={["earth", "fire"]} />);
+
+      const dialog = openPopup();
+      fireEvent.click(within(dialog).getByRole("button", { name: /None/ }));
+
+      expect(onChange).toHaveBeenCalledTimes(1);
+      expect(onChange.mock.calls[0][0]).toEqual([]);
+    });
+
+    it("calls onChange when checking an option from a group", () => {
       render(<MultiSelectInput onChange={onChange} options={OPTION_GROUPS} selectedOptions={["earth"]} />);
 
-      const listbox = openPopup();
-      fireEvent.click(within(listbox).getByRole("option", { name: "Green" }));
+      const dialog = openPopup();
+      fireEvent.click(within(dialog).getByLabelText("Green"));
 
       expect(onChange).toHaveBeenCalledTimes(1);
       expect(onChange.mock.calls[0][0]).toEqual(["earth", "green"]);

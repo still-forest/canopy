@@ -1,5 +1,6 @@
 export * from "./ButtonRadioInput";
 export * from "./Checkbox";
+export * from "./ComboboxInput";
 export * from "./Input";
 export * from "./InputGroup";
 export * from "./MultiSelectInput";
