@@ -68,8 +68,6 @@ export const ComboboxInput = ({
     });
   }, [size]);
 
-  const _hasSelections = useMemo(() => selectedOptions.length > 0, [selectedOptions]);
-
   return (
     <Combobox
       autoHighlight
