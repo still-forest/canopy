@@ -1,6 +1,6 @@
 import { fireEvent, render, screen, within } from "@testing-library/react";
 import { beforeEach, describe, expect, it, vi } from "vitest";
-import { MultiSelectInput } from "@/forms";
+import { ComboboxInput } from "@/forms";
 import type { SelectOption, SelectOptionGroup } from "@/forms/inputs/types";
 
 const ELEMENTS: SelectOption[] = [
@@ -33,7 +33,7 @@ const openPopup = () => {
   return screen.getByRole("listbox");
 };
 
-describe("MultiSelectInput", () => {
+describe("ComboboxInput", () => {
   const onChange = vi.fn();
 
   beforeEach(() => {
@@ -43,7 +43,7 @@ describe("MultiSelectInput", () => {
   describe("chips", () => {
     it("renders a chip for each selected option", () => {
       const { container } = render(
-        <MultiSelectInput onChange={onChange} options={ELEMENTS} selectedOptions={["earth", "fire"]} />,
+        <ComboboxInput onChange={onChange} options={ELEMENTS} selectedOptions={["earth", "fire"]} />,
       );
 
       const chips = getChips(container);
@@ -54,7 +54,7 @@ describe("MultiSelectInput", () => {
 
     it("renders the placeholder and no chips when nothing is selected", () => {
       const { container } = render(
-        <MultiSelectInput onChange={onChange} options={ELEMENTS} placeholder="Pick some" selectedOptions={[]} />,
+        <ComboboxInput onChange={onChange} options={ELEMENTS} placeholder="Pick some" selectedOptions={[]} />,
       );
 
       expect(getChips(container)).toHaveLength(0);
@@ -63,7 +63,7 @@ describe("MultiSelectInput", () => {
 
     it("resolves chip labels from grouped options", () => {
       const { container } = render(
-        <MultiSelectInput onChange={onChange} options={OPTION_GROUPS} selectedOptions={["earth", "blue"]} />,
+        <ComboboxInput onChange={onChange} options={OPTION_GROUPS} selectedOptions={["earth", "blue"]} />,
       );
 
       const chips = getChips(container);
@@ -75,7 +75,7 @@ describe("MultiSelectInput", () => {
 
   describe("options rendered", () => {
     it("renders a flat list of options when not grouped", () => {
-      render(<MultiSelectInput onChange={onChange} options={ELEMENTS} selectedOptions={["earth"]} />);
+      render(<ComboboxInput onChange={onChange} options={ELEMENTS} selectedOptions={["earth"]} />);
 
       const listbox = openPopup();
       const options = within(listbox).getAllByRole("option");
@@ -88,7 +88,7 @@ describe("MultiSelectInput", () => {
     });
 
     it("renders every option across all groups, with group labels", () => {
-      render(<MultiSelectInput onChange={onChange} options={OPTION_GROUPS} selectedOptions={["earth"]} />);
+      render(<ComboboxInput onChange={onChange} options={OPTION_GROUPS} selectedOptions={["earth"]} />);
 
       const listbox = openPopup();
       const options = within(listbox).getAllByRole("option");
@@ -107,7 +107,7 @@ describe("MultiSelectInput", () => {
 
   describe("value / onChange", () => {
     it("calls onChange with the value appended when an option is selected", () => {
-      render(<MultiSelectInput onChange={onChange} options={ELEMENTS} selectedOptions={["earth"]} />);
+      render(<ComboboxInput onChange={onChange} options={ELEMENTS} selectedOptions={["earth"]} />);
 
       const listbox = openPopup();
       fireEvent.click(within(listbox).getByRole("option", { name: "Water" }));
@@ -117,7 +117,7 @@ describe("MultiSelectInput", () => {
     });
 
     it("calls onChange with the value removed when an already-selected option is clicked", () => {
-      render(<MultiSelectInput onChange={onChange} options={ELEMENTS} selectedOptions={["earth", "fire"]} />);
+      render(<ComboboxInput onChange={onChange} options={ELEMENTS} selectedOptions={["earth", "fire"]} />);
 
       const listbox = openPopup();
       fireEvent.click(within(listbox).getByRole("option", { name: "Earth" }));
@@ -127,7 +127,7 @@ describe("MultiSelectInput", () => {
     });
 
     it("calls onChange when selecting an option from a group", () => {
-      render(<MultiSelectInput onChange={onChange} options={OPTION_GROUPS} selectedOptions={["earth"]} />);
+      render(<ComboboxInput onChange={onChange} options={OPTION_GROUPS} selectedOptions={["earth"]} />);
 
       const listbox = openPopup();
       fireEvent.click(within(listbox).getByRole("option", { name: "Green" }));

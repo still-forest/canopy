@@ -1,6 +1,6 @@
 import { Hint } from "@/components";
 import { Field } from "@/forms/Field";
-import { MultiSelectInput, type MultiSelectInputProps } from "@/forms/inputs/MultiSelectInput";
+import { MultiSelectInput, type MultiSelectInputProps } from "@/forms/inputs/ComboboxInput";
 
 export interface MultiSelectFieldProps extends MultiSelectInputProps {
   name: string;

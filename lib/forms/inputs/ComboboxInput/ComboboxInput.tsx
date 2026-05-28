@@ -18,7 +18,7 @@ import {
 import { cn } from "@/utils/cn";
 import type { SelectOption, SelectOptionGroup } from "../types";
 
-export interface MultiSelectInputProps {
+export interface ComboboxInputProps {
   options: SelectOptionGroup[] | SelectOption[];
   selectedOptions: string[];
   onChange: (value: string[]) => void;
@@ -27,14 +27,14 @@ export interface MultiSelectInputProps {
   className?: string;
 }
 
-export const MultiSelectInput = ({
+export const ComboboxInput = ({
   options,
   selectedOptions,
   onChange,
   size = "default",
   className,
   placeholder = "Select an option",
-}: MultiSelectInputProps) => {
+}: ComboboxInputProps) => {
   const anchor = useComboboxAnchor();
 
   const isOptionGroup = useMemo(() => options.some((option) => "options" in option), [options]);
