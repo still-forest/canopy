@@ -8,7 +8,7 @@ import {
   ItemHeader,
   ItemMedia,
   ItemTitle,
-} from "../ui/item";
+} from "@/components/ui/item";
 
 export type ItemProps = React.ComponentProps<typeof BaseItem> & {
   children: ReactNode;

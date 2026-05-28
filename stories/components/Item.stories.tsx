@@ -31,7 +31,23 @@ export const Default: Story = {
   ),
 };
 
-export const AsOutlineVariant: Story = {
+export const CardVariant: Story = {
+  render: () => (
+    <Item variant="card">
+      <Item.Content>
+        <Item.Title>Basic Item</Item.Title>
+        <Item.Description>A simple item with title and description.</Item.Description>
+      </Item.Content>
+      <Item.Actions>
+        <Button outline size="sm">
+          Action
+        </Button>
+      </Item.Actions>
+    </Item>
+  ),
+};
+
+export const OutlineVariant: Story = {
   render: () => (
     <Item variant="outline">
       <Item.Content>
@@ -47,7 +63,7 @@ export const AsOutlineVariant: Story = {
   ),
 };
 
-export const AsMutedVariant: Story = {
+export const MutedVariant: Story = {
   render: () => (
     <Item variant="muted">
       <Item.Content>
