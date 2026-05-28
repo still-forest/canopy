@@ -1,5 +1,6 @@
 export * from "./ButtonRadioField";
 export * from "./CheckboxField";
+export * from "./ComboboxField";
 export * from "./DateField";
 export * from "./DatePickerField";
 export * from "./MultiSelectField";
