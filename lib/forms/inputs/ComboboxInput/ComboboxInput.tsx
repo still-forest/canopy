@@ -68,7 +68,7 @@ export const ComboboxInput = ({
     });
   }, [size]);
 
-  const hasSelections = useMemo(() => selectedOptions.length > 0, [selectedOptions]);
+  const _hasSelections = useMemo(() => selectedOptions.length > 0, [selectedOptions]);
 
   return (
     <Combobox
@@ -79,26 +79,23 @@ export const ComboboxInput = ({
       value={selectedOptions}
     >
       <ComboboxChips className={inputClassName} ref={anchor}>
-        {hasSelections && (
-          <ComboboxValue placeholder={placeholder}>
-            {(selectedValues) => {
-              const selectedOptions = selectedValues.map((value: string) =>
-                flatOptions.find((option) => option.value === value),
-              );
-              return (
-                <>
-                  {selectedOptions.map((option: SelectOption) => (
-                    <ComboboxChip className={chipValueClassName} key={option.value}>
-                      {option.label}
-                    </ComboboxChip>
-                  ))}
-                  <ComboboxChipsInput />
-                </>
-              );
-            }}
-          </ComboboxValue>
-        )}
-        {!hasSelections && <span className="text-muted-foreground">{placeholder}</span>}
+        <ComboboxValue>
+          {(selectedValues) => {
+            const resolvedSelectedOptions = selectedValues
+              .map((value: string) => flatOptions.find((option) => option.value === value))
+              .filter((option: SelectOption | undefined): option is SelectOption => Boolean(option));
+            return (
+              <>
+                {resolvedSelectedOptions.map((option: SelectOption) => (
+                  <ComboboxChip className={chipValueClassName} key={option.value}>
+                    {option.label}
+                  </ComboboxChip>
+                ))}
+                <ComboboxChipsInput placeholder={resolvedSelectedOptions.length > 0 ? undefined : placeholder} />
+              </>
+            );
+          }}
+        </ComboboxValue>
       </ComboboxChips>
       <ComboboxContent anchor={anchor}>
         <ComboboxEmpty>No items found.</ComboboxEmpty>

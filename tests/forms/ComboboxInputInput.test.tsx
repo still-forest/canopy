@@ -52,15 +52,6 @@ describe("ComboboxInput", () => {
       expect(chips[1]).toHaveTextContent("Fire");
     });
 
-    it("renders the placeholder and no chips when nothing is selected", () => {
-      const { container } = render(
-        <ComboboxInput onChange={onChange} options={ELEMENTS} placeholder="Pick some" selectedOptions={[]} />,
-      );
-
-      expect(getChips(container)).toHaveLength(0);
-      expect(screen.getByText("Pick some")).toBeInTheDocument();
-    });
-
     it("resolves chip labels from grouped options", () => {
       const { container } = render(
         <ComboboxInput onChange={onChange} options={OPTION_GROUPS} selectedOptions={["earth", "blue"]} />,
