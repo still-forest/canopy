@@ -7,12 +7,12 @@
   }
 
   .popover-positioner {
-    @apply isolate z-[60];
+    @apply isolate z-popup;
   }
 
   .popover-content {
     @apply bg-popover text-popover-foreground ring-foreground/10;
-    @apply flex flex-col gap-4 rounded-md p-4 text-sm shadow-md ring-1 outline-hidden z-50 origin-(--transform-origin);
+    @apply flex flex-col gap-4 rounded-md p-4 text-sm shadow-md ring-1 outline-hidden z-popup origin-(--transform-origin);
     @apply duration-100;
     @apply w-(--anchor-width) max-w-(--available-width);
 

@@ -3,12 +3,12 @@
 
 @layer components {
   .sheet-overlay {
-    @apply bg-black/10 duration-100 supports-backdrop-filter:backdrop-blur-xs fixed inset-0 z-50;
+    @apply bg-black/10 duration-100 supports-backdrop-filter:backdrop-blur-xs fixed inset-0 z-overlay;
     @apply transition-opacity data-ending-style:opacity-0 data-starting-style:opacity-0;
   }
 
   .sheet-content {
-    @apply bg-background fixed z-50 flex flex-col gap-4 bg-clip-padding text-sm shadow-lg;
+    @apply bg-background fixed z-surface flex flex-col gap-4 bg-clip-padding text-sm shadow-lg;
     @apply transition duration-200 ease-in-out;
     @apply max-h-dvh;
     @apply data-starting-style:opacity-0 data-ending-style:opacity-0;

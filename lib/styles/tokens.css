@@ -3,6 +3,7 @@
 @import "./dimensions.css";
 @import "./typography.css";
 @import "./theme.css";
+@import "./layering.css";
 
 @reference "tailwindcss";
 
