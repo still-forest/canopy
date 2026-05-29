@@ -3,7 +3,7 @@
 
 @layer components {
   .alert-dialog-overlay {
-    @apply fixed inset-0 isolate z-50 bg-black/10 duration-100 supports-backdrop-filter:backdrop-blur-xs;
+    @apply fixed inset-0 isolate z-overlay bg-black/10 duration-100 supports-backdrop-filter:backdrop-blur-xs;
     @apply data-open:animate-in data-open:fade-in-0;
     @apply data-closed:animate-out data-closed:fade-out-0;
   }
@@ -35,7 +35,7 @@
   }
 
   .alert-dialog-content {
-    @apply fixed top-1/2 left-1/2 z-50 grid w-full -translate-x-1/2 -translate-y-1/2 gap-6 rounded-xl bg-background p-6 ring-1 ring-foreground/10 duration-100 outline-none;
+    @apply fixed top-1/2 left-1/2 z-surface grid w-full -translate-x-1/2 -translate-y-1/2 gap-6 rounded-xl bg-background p-6 ring-1 ring-foreground/10 duration-100 outline-none;
     @apply data-open:animate-in data-open:fade-in-0 data-open:zoom-in-95;
     @apply data-closed:animate-out data-closed:fade-out-0 data-closed:zoom-out-95;
 

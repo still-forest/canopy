@@ -8,7 +8,12 @@ interface HeaderProps extends ContainerProps {
 
 export const Header = ({ children, sticky = false, className, ...props }: HeaderProps) => {
   return (
-    <Container as="header" className={cn("top-0 ", sticky && "z-50 sticky", className)} justify="between" {...props}>
+    <Container
+      as="header"
+      className={cn("top-0 ", sticky && "z-sticky sticky", className)}
+      justify="between"
+      {...props}
+    >
       {children}
     </Container>
   );

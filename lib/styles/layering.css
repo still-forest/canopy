@@ -1,0 +1,23 @@
+@reference "tailwindcss";
+
+/*
+ * Stacking order (z-index)
+ *
+ * A single semantic scale for everything that portals to the document body.
+ * Layers are ordered so that transient, contextual UI always wins over the
+ * surface that spawned it — e.g. a Select/Combobox/Popover opened inside a
+ * Drawer or Dialog renders *above* it. Always use these tokens (z-overlay,
+ * z-surface, z-popup, ...) instead of raw z-index values so the order stays
+ * coordinated and we stop playing z-index whack-a-mole.
+ *
+ * Generates the `z-sticky`, `z-overlay`, `z-surface`, `z-popup`, and
+ * `z-tooltip` utilities, and emits matching `--z-index-*` custom properties
+ * that components can reference directly and consumers can override.
+ */
+@theme {
+  --z-index-sticky: 30; /* sticky headers/footers */
+  --z-index-overlay: 40; /* modal/drawer/sheet backdrops & scrims */
+  --z-index-surface: 50; /* modal/dialog/drawer/sheet panels */
+  --z-index-popup: 60; /* popover, dropdown, select, combobox, multi-select */
+  --z-index-tooltip: 70; /* tooltips — float above popups */
+}
