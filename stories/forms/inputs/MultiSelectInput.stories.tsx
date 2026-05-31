@@ -56,14 +56,14 @@ export const Default: Story = {
 export const AllSelected: Story = {
   args: {
     ...defaultProps,
-    selectedOptions: allFlatValues,
+    defaultSelectedOptions: allFlatValues,
   },
 };
 
-export const WithFilter: Story = {
+export const WithInitialValue: Story = {
   args: {
     ...defaultProps,
-    selectedOptions: ["apple", "cherry"],
+    defaultSelectedOptions: ["apple", "cherry"],
   },
 };
 
