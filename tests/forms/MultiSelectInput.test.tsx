@@ -191,4 +191,72 @@ describe("MultiSelectInput", () => {
       expect(onChange.mock.calls[0][0]).toEqual(["earth", "green"]);
     });
   });
+
+  describe("uncontrolled", () => {
+    it("renders the placeholder when no default is provided", () => {
+      render(<MultiSelectInput options={ELEMENTS} placeholder="Pick some" />);
+
+      expect(screen.getByText("Pick some")).toBeInTheDocument();
+    });
+
+    it("reflects defaultSelectedOptions in the trigger label", () => {
+      render(<MultiSelectInput defaultSelectedOptions={["earth", "fire"]} options={ELEMENTS} />);
+
+      expect(screen.getByText("2 of 4 selected")).toBeInTheDocument();
+    });
+
+    it("reflects defaultSelectedOptions as checked checkboxes", () => {
+      render(<MultiSelectInput defaultSelectedOptions={["earth", "fire"]} options={ELEMENTS} />);
+
+      const dialog = openPopup();
+      const checkboxes = within(dialog).getAllByRole("checkbox");
+
+      expect(checkboxes[0]).toBeChecked();
+      expect(checkboxes[1]).not.toBeChecked();
+      expect(checkboxes[2]).toBeChecked();
+      expect(checkboxes[3]).not.toBeChecked();
+    });
+
+    it("updates its own state when an option is checked", () => {
+      render(<MultiSelectInput defaultSelectedOptions={["earth"]} options={ELEMENTS} />);
+
+      const dialog = openPopup();
+      fireEvent.click(within(dialog).getAllByRole("checkbox")[3]);
+
+      expect(screen.getByText("2 of 4 selected")).toBeInTheDocument();
+      expect(within(dialog).getAllByRole("checkbox")[3]).toBeChecked();
+    });
+
+    it("updates its own state when an option is unchecked", () => {
+      render(<MultiSelectInput defaultSelectedOptions={["earth", "fire"]} options={ELEMENTS} />);
+
+      const dialog = openPopup();
+      fireEvent.click(within(dialog).getAllByRole("checkbox")[0]);
+
+      expect(screen.getByText("Fire")).toBeInTheDocument();
+      expect(within(dialog).getAllByRole("checkbox")[0]).not.toBeChecked();
+    });
+
+    it("still notifies onChange while managing its own state", () => {
+      render(<MultiSelectInput defaultSelectedOptions={["earth"]} onChange={onChange} options={ELEMENTS} />);
+
+      const dialog = openPopup();
+      fireEvent.click(within(dialog).getAllByRole("checkbox")[3]);
+
+      expect(onChange).toHaveBeenCalledTimes(1);
+      expect(onChange.mock.calls[0][0]).toEqual(["earth", "water"]);
+      // State is owned by the component, not the parent.
+      expect(within(dialog).getAllByRole("checkbox")[3]).toBeChecked();
+    });
+
+    it("does not update its own state when controlled", () => {
+      render(<MultiSelectInput onChange={onChange} options={ELEMENTS} selectedOptions={["earth"]} />);
+
+      const dialog = openPopup();
+      fireEvent.click(within(dialog).getAllByRole("checkbox")[3]);
+
+      // Controlled: the parent owns state, so the checkbox stays as the prop dictates.
+      expect(within(dialog).getAllByRole("checkbox")[3]).not.toBeChecked();
+    });
+  });
 });
