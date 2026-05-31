@@ -192,6 +192,44 @@ describe("MultiSelectInput", () => {
     });
   });
 
+  describe("group-level Only", () => {
+    // Each option also has an "Only" button, so there is one extra "Only" per group.
+    const groupOnlyButton = (dialog: HTMLElement, groupLabel: string) => {
+      const heading = within(dialog).getByText(groupLabel);
+      const button = heading.parentElement?.querySelector("button");
+      if (!button) throw new Error(`No Only button found for group "${groupLabel}"`);
+      return button;
+    };
+
+    it("renders an Only button alongside each group label", () => {
+      render(<MultiSelectInput onChange={onChange} options={OPTION_GROUPS} selectedOptions={[]} />);
+
+      const dialog = openPopup();
+
+      expect(groupOnlyButton(dialog, "Elements")).toHaveTextContent("Only");
+      expect(groupOnlyButton(dialog, "Colors")).toHaveTextContent("Only");
+    });
+
+    it("selects only the group's options when its Only button is clicked", () => {
+      render(<MultiSelectInput onChange={onChange} options={OPTION_GROUPS} selectedOptions={["earth", "red"]} />);
+
+      const dialog = openPopup();
+      fireEvent.click(groupOnlyButton(dialog, "Colors"));
+
+      expect(onChange).toHaveBeenCalledTimes(1);
+      expect(onChange.mock.calls[0][0]).toEqual(["red", "yellow", "green", "blue"]);
+    });
+
+    it("does not render group Only buttons for ungrouped options", () => {
+      render(<MultiSelectInput onChange={onChange} options={ELEMENTS} selectedOptions={[]} />);
+
+      const dialog = openPopup();
+
+      // Only the per-option "Only" buttons exist — one per element.
+      expect(within(dialog).getAllByRole("button", { name: "Only" })).toHaveLength(ELEMENTS.length);
+    });
+  });
+
   describe("uncontrolled", () => {
     it("renders the placeholder when no default is provided", () => {
       render(<MultiSelectInput options={ELEMENTS} placeholder="Pick some" />);

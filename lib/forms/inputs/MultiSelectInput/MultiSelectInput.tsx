@@ -84,6 +84,26 @@ export const MultiSelectInput = ({
     </Flex>
   );
 
+  const renderGroup = (optionGroup: SelectOptionGroup) => (
+    <Flex direction="col" gap="1" key={optionGroup.label ?? "options"}>
+      {optionGroup.label && (
+        <Flex align="center" className="group" direction="row" gap="2">
+          <p className="multi-select-group-label">{optionGroup.label}</p>
+          <Button
+            className="multi-select-only-btn"
+            onClick={() => handleChange(optionGroup.options.map(({ value }) => value))}
+            outline
+            size="xs"
+            variant="ghost"
+          >
+            Only
+          </Button>
+        </Flex>
+      )}
+      {optionGroup.options.map(renderOption)}
+    </Flex>
+  );
+
   const displayLabel = noneSelected
     ? placeholder
     : hasFilter
@@ -105,12 +125,7 @@ export const MultiSelectInput = ({
       </PopoverTrigger>
       <PopoverContent className="multi-select-content w-(--anchor-width)">
         <Flex className="multi-select-options" direction="col" gap="4">
-          {optionGroups.map((optionGroup, _index) => (
-            <Flex direction="col" gap="1" key={optionGroup.label ?? "options"}>
-              {optionGroup.label && <p className="multi-select-group-label">{optionGroup.label}</p>}
-              {optionGroup.options.map(renderOption)}
-            </Flex>
-          ))}
+          {optionGroups.map(renderGroup)}
         </Flex>
         <Separator />
         <Flex direction="row" gap="2">
