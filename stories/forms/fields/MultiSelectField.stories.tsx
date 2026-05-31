@@ -1,5 +1,6 @@
 import { DEFAULT_DECORATOR_WITH_MIN_WIDTH_MD } from "@stories/support/decorators";
 import type { Meta, StoryObj } from "@storybook/react-vite";
+import { useState } from "react";
 import { MultiSelectField, type MultiSelectFieldProps, type SelectOption } from "@/forms";
 
 const flatOptions: SelectOption[] = [
@@ -26,18 +27,23 @@ type Story = StoryObj<typeof meta>;
 const defaultProps: MultiSelectFieldProps = {
   name: "someThing",
   options: flatOptions,
-  selectedOptions: allFlatValues,
-  onChange: () => {},
 };
 
 export const Default: Story = {
   args: defaultProps,
 };
 
+export const AllSelected: Story = {
+  args: {
+    ...defaultProps,
+    defaultSelectedOptions: allFlatValues,
+  },
+};
+
 export const WithInitialValue: Story = {
   args: {
     ...defaultProps,
-    selectedOptions: ["apple", "banana"],
+    defaultSelectedOptions: ["apple", "banana"],
   },
 };
 
@@ -85,5 +91,22 @@ export const WithError: Story = {
   args: {
     ...defaultProps,
     error: "What'd you do?!",
+  },
+};
+
+export const Controlled: Story = {
+  render: () => {
+    const [selected, setSelected] = useState<string[]>(allFlatValues);
+
+    return (
+      <MultiSelectField
+        {...defaultProps}
+        label="Select a thing:"
+        note={`Selected: ${selected.length > 0 ? selected.join(", ") : "none"}`}
+        onChange={setSelected}
+        placeholder="Pull, Willie!"
+        selectedOptions={selected}
+      />
+    );
   },
 };

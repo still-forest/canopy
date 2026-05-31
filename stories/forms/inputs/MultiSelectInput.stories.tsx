@@ -1,7 +1,7 @@
 import { DEFAULT_DECORATOR_WITH_MIN_WIDTH_MD } from "@stories/support/decorators";
 import type { Meta, StoryObj } from "@storybook/react-vite";
 import { useState } from "react";
-import { MultiSelectInput, type SelectOption, type SelectOptionGroup } from "@/forms";
+import { MultiSelectInput, type MultiSelectInputProps, type SelectOption, type SelectOptionGroup } from "@/forms";
 import { Flex } from "@/layout";
 import { Text } from "@/typography";
 
@@ -45,63 +45,54 @@ export default meta;
 
 type Story = StoryObj<typeof meta>;
 
+const defaultProps: MultiSelectInputProps = {
+  options: flatOptions,
+};
+
 export const Default: Story = {
+  args: defaultProps,
+};
+
+export const AllSelected: Story = {
   args: {
-    options: flatOptions,
-    selectedOptions: allFlatValues,
-    onChange: () => {},
+    ...defaultProps,
+    defaultSelectedOptions: allFlatValues,
   },
 };
 
-export const WithFilter: Story = {
+export const WithInitialValue: Story = {
   args: {
-    options: flatOptions,
-    selectedOptions: ["apple", "cherry"],
-    onChange: () => {},
-  },
-};
-
-export const NoneSelected: Story = {
-  args: {
-    options: flatOptions,
-    selectedOptions: [],
-    onChange: () => {},
+    ...defaultProps,
+    defaultSelectedOptions: ["apple", "cherry"],
   },
 };
 
 export const CustomLabels: Story = {
   args: {
-    options: flatOptions,
-    selectedOptions: allFlatValues,
+    ...defaultProps,
     unFilteredLabel: "Showing all fruits",
     filteredLabel: "Filtered fruits",
-    onChange: () => {},
   },
 };
 
 export const SmallSize: Story = {
   args: {
-    options: flatOptions,
-    selectedOptions: allFlatValues,
+    ...defaultProps,
     size: "sm",
-    onChange: () => {},
   },
 };
 
 export const LargeSize: Story = {
   args: {
-    options: flatOptions,
-    selectedOptions: allFlatValues,
+    ...defaultProps,
     size: "lg",
-    onChange: () => {},
   },
 };
 
 export const GroupedOptions: Story = {
   args: {
+    ...defaultProps,
     options: groupedOptions,
-    selectedOptions: ["apple", "banana", "cherry", "carrot", "broccoli", "spinach"],
-    onChange: () => {},
   },
 };
 
@@ -111,7 +102,7 @@ export const Controlled: Story = {
 
     return (
       <Flex direction="col" gap="4">
-        <MultiSelectInput onChange={setSelected} options={flatOptions} selectedOptions={selected} />
+        <MultiSelectInput {...defaultProps} onChange={setSelected} selectedOptions={selected} />
         <Text size="sm" variant="muted">
           Selected: {selected.length > 0 ? selected.join(", ") : "none"}
         </Text>

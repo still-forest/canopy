@@ -1,5 +1,5 @@
 import { ChevronDownIcon, Square, SquareCheck } from "lucide-react";
-import { useMemo } from "react";
+import { useCallback, useMemo, useState } from "react";
 import { Button } from "@/buttons";
 import { Popover, PopoverContent, PopoverTrigger } from "@/components/ui/popover";
 import { Separator } from "@/components/ui/separator";
@@ -11,8 +11,11 @@ import "./MultiSelectInput.css";
 
 export interface MultiSelectInputProps {
   options: SelectOptionGroup[] | SelectOption[];
-  selectedOptions: string[];
-  onChange: (value: string[]) => void;
+  /** Controlled selected values. Provide together with `onChange` to control the component. */
+  selectedOptions?: string[];
+  /** Initial selected values when used uncontrolled. Ignored when `selectedOptions` is provided. */
+  defaultSelectedOptions?: string[];
+  onChange?: (value: string[]) => void;
   unFilteredLabel?: string;
   filteredLabel?: string;
   placeholder?: string;
@@ -22,7 +25,8 @@ export interface MultiSelectInputProps {
 
 export const MultiSelectInput = ({
   options,
-  selectedOptions,
+  selectedOptions: controlledSelectedOptions,
+  defaultSelectedOptions = [],
   onChange,
   unFilteredLabel = "All options selected",
   filteredLabel,
@@ -30,6 +34,20 @@ export const MultiSelectInput = ({
   size = "default",
   className,
 }: MultiSelectInputProps) => {
+  const isControlled = controlledSelectedOptions !== undefined;
+  const [uncontrolledSelectedOptions, setUncontrolledSelectedOptions] = useState<string[]>(defaultSelectedOptions);
+  const selectedOptions = isControlled ? controlledSelectedOptions : uncontrolledSelectedOptions;
+
+  const handleChange = useCallback(
+    (value: string[]) => {
+      if (!isControlled) {
+        setUncontrolledSelectedOptions(value);
+      }
+      onChange?.(value);
+    },
+    [isControlled, onChange],
+  );
+
   const isOptionGroup = useMemo(() => options.some((option) => "options" in option), [options]);
   const flatOptions: SelectOption[] = useMemo(() => {
     return isOptionGroup
@@ -51,16 +69,16 @@ export const MultiSelectInput = ({
         name={value}
         onCheckedChange={(checked) => {
           if (checked) {
-            onChange([...selectedOptions, value]);
+            handleChange([...selectedOptions, value]);
           } else {
-            onChange(selectedOptions.filter((option) => option !== value));
+            handleChange(selectedOptions.filter((option) => option !== value));
           }
         }}
       />
       <label className="multi-select-option-label" htmlFor={value}>
         {label}
       </label>
-      <Button className="multi-select-only-btn" onClick={() => onChange([value])} outline size="xs" variant="ghost">
+      <Button className="multi-select-only-btn" onClick={() => handleChange([value])} outline size="xs" variant="ghost">
         Only
       </Button>
     </Flex>
@@ -97,7 +115,7 @@ export const MultiSelectInput = ({
         <Separator />
         <Flex direction="row" gap="2">
           <Button
-            onClick={() => onChange(flatOptions.map(({ value }) => value))}
+            onClick={() => handleChange(flatOptions.map(({ value }) => value))}
             outline={hasFilter}
             size="xs"
             variant="primary"
@@ -105,7 +123,7 @@ export const MultiSelectInput = ({
             <SquareCheck className="size-4" />
             All
           </Button>
-          <Button onClick={() => onChange([])} outline={selectedOptions.length > 0} size="xs" variant="primary">
+          <Button onClick={() => handleChange([])} outline={selectedOptions.length > 0} size="xs" variant="primary">
             <Square className="size-4" />
             None
           </Button>
