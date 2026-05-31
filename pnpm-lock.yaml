@@ -13,7 +13,10 @@ importers:
     dependencies:
       '@base-ui/react':
         specifier: 1.5.0
-        version: 1.5.0(@date-fns/tz@1.5.0)(@types/react@19.2.15)(date-fns@4.3.0)(react-dom@19.2.6(react@19.2.6))(react@19.2.6)
+        version: 1.5.0(@date-fns/tz@1.5.0)(@types/react@19.2.15)(date-fns@4.4.0)(react-dom@19.2.6(react@19.2.6))(react@19.2.6)
+      '@daypicker/react':
+        specifier: 10.0.1
+        version: 10.0.1(@types/react@19.2.15)(react@19.2.6)
       class-variance-authority:
         specifier: 0.7.1
         version: 0.7.1
@@ -26,9 +29,6 @@ importers:
       lucide-react:
         specifier: 1.16.0
         version: 1.16.0(react@19.2.6)
-      react-day-picker:
-        specifier: 9.14.0
-        version: 9.14.0(react@19.2.6)
       tailwind-merge:
         specifier: 3.6.0
         version: 3.6.0
@@ -429,6 +429,16 @@ packages:
 
   '@date-fns/tz@1.5.0':
     resolution: {integrity: sha512-lwYN/vDPeNRULcepoE/LO2Pgx+7/RV+S9ARfbc9lr2DtGkOD7pAiruHvbR1RX3Qyf6ja47EWJDMsNK5vK08DJg==}
+
+  '@daypicker/react@10.0.1':
+    resolution: {integrity: sha512-lH4YQz4iMBWP8hsI1bD9Eg0T7t503IkSUR/WDGGkV5mKZvwVv+ukCkJz7yN+uVFBv7vHTK+ww7a5EvlkeFwPYQ==}
+    engines: {node: '>=18'}
+    peerDependencies:
+      '@types/react': '>=16.8.0'
+      react: '>=16.8.0'
+    peerDependenciesMeta:
+      '@types/react':
+        optional: true
 
   '@emnapi/core@1.10.0':
     resolution: {integrity: sha512-yq6OkJ4p82CAfPl0u9mQebQHKPJkY7WrIuk205cTYnYe+k2Z8YBh11FrbRG/H6ihirqcacOgl2BIO8oyMQLeXw==}
@@ -1620,10 +1630,6 @@ packages:
       typescript:
         optional: true
 
-  '@tabby_ai/hijri-converter@1.0.5':
-    resolution: {integrity: sha512-r5bClKrcIusDoo049dSL8CawnHR6mRdDwhlQuIgZRNty68q0x8k3Lf1BtPAMxRf/GgnHBnIO4ujd3+GQdLWzxQ==}
-    engines: {node: '>=16.0.0'}
-
   '@tailwindcss/node@4.3.0':
     resolution: {integrity: sha512-aFb4gUhFOgdh9AXo4IzBEOzBkkAxm9VigwDJnMIYv3lcfXCJVesNfbEaBl4BNgVRyid92AmdviqwBUBRKSeY3g==}
 
@@ -2154,11 +2160,8 @@ packages:
     resolution: {integrity: sha512-23XHcCF+coGYevirZceTVD7NdJOqVn+49IHyxgszm+JIiHLoB2TkmPtsYkNWT1pvRSGkc35L6NHs0yHkN2SumA==}
     engines: {node: ^20.19.0 || ^22.12.0 || >=24.0.0}
 
-  date-fns-jalali@4.1.0-0:
-    resolution: {integrity: sha512-hTIP/z+t+qKwBDcmmsnmjWTduxCg+5KfdqWQvb2X/8C9+knYY6epN/pfxdDuyVlSVeFz0sM5eEfwIUQ70U4ckg==}
-
-  date-fns@4.3.0:
-    resolution: {integrity: sha512-OYcL+3N/jyWbYdFGqoMAhytDgxP9pbYPUUiRCOgn4Fewaadk9l/Wam4Avciiyp2BgkpfQyBV9B+ehnVJych+eQ==}
+  date-fns@4.4.0:
+    resolution: {integrity: sha512-+1UMbeh68lH1SegH83CGWwpb6OHHbpSgr3+s5Eww5M4CAgswBpoWS0AjTOfEJ33HiYKz1hdj/KTFprzXHmq/6w==}
 
   debug@4.4.3:
     resolution: {integrity: sha512-RGwwWnwQvkVfavKVt22FGLw+xYSdzARwm0ru6DhTVA3umU5hZc28V3kO4stgYryrTlLpuvgI9GiijltAjNbcqA==}
@@ -2830,11 +2833,15 @@ packages:
   rc9@2.1.2:
     resolution: {integrity: sha512-btXCnMmRIBINM2LDZoEmOogIZU7Qe7zn4BpomSKZ/ykbLObuBdvG+mFq11DL6fjH1DRwHhrlgtYWG96bJiC7Cg==}
 
-  react-day-picker@9.14.0:
-    resolution: {integrity: sha512-tBaoDWjPwe0M5pGrum4H0SR6Lyk+BO9oHnp9JbKpGKW2mlraNPgP9BMfsg5pWpwrssARmeqk7YBl2oXutZTaHA==}
+  react-day-picker@10.0.1:
+    resolution: {integrity: sha512-eNh6BlwcYInWaJtRv18mXQ06Ys/H6rdTZAnTaSdOYJuTpwP1JMCHNd1FDRadA+gbeinq+psdULN5Xnowy9mV8w==}
     engines: {node: '>=18'}
     peerDependencies:
+      '@types/react': '>=16.8.0'
       react: '>=16.8.0'
+    peerDependenciesMeta:
+      '@types/react':
+        optional: true
 
   react-docgen-typescript@2.4.0:
     resolution: {integrity: sha512-ZtAp5XTO5HRzQctjPU0ybY0RRCQO19X/8fxn3w7y2VVTUbGHDKULPTL4ky3vB05euSgG5NpALhEhDPvQ56wvXg==}
@@ -3585,7 +3592,7 @@ snapshots:
       '@babel/helper-string-parser': 7.27.1
       '@babel/helper-validator-identifier': 7.28.5
 
-  '@base-ui/react@1.5.0(@date-fns/tz@1.5.0)(@types/react@19.2.15)(date-fns@4.3.0)(react-dom@19.2.6(react@19.2.6))(react@19.2.6)':
+  '@base-ui/react@1.5.0(@date-fns/tz@1.5.0)(@types/react@19.2.15)(date-fns@4.4.0)(react-dom@19.2.6(react@19.2.6))(react@19.2.6)':
     dependencies:
       '@babel/runtime': 7.29.2
       '@base-ui/utils': 0.2.9(@types/react@19.2.15)(react-dom@19.2.6(react@19.2.6))(react@19.2.6)
@@ -3597,7 +3604,7 @@ snapshots:
     optionalDependencies:
       '@date-fns/tz': 1.5.0
       '@types/react': 19.2.15
-      date-fns: 4.3.0
+      date-fns: 4.4.0
 
   '@base-ui/utils@0.2.9(@types/react@19.2.15)(react-dom@19.2.6(react@19.2.6))(react@19.2.6)':
     dependencies:
@@ -3678,6 +3685,13 @@ snapshots:
   '@csstools/css-tokenizer@4.0.0': {}
 
   '@date-fns/tz@1.5.0': {}
+
+  '@daypicker/react@10.0.1(@types/react@19.2.15)(react@19.2.6)':
+    dependencies:
+      react: 19.2.6
+      react-day-picker: 10.0.1(@types/react@19.2.15)(react@19.2.6)
+    optionalDependencies:
+      '@types/react': 19.2.15
 
   '@emnapi/core@1.10.0':
     dependencies:
@@ -4558,8 +4572,6 @@ snapshots:
     transitivePeerDependencies:
       - supports-color
 
-  '@tabby_ai/hijri-converter@1.0.5': {}
-
   '@tailwindcss/node@4.3.0':
     dependencies:
       '@jridgewell/remapping': 2.3.5
@@ -5126,9 +5138,7 @@ snapshots:
     transitivePeerDependencies:
       - '@noble/hashes'
 
-  date-fns-jalali@4.1.0-0: {}
-
-  date-fns@4.3.0: {}
+  date-fns@4.4.0: {}
 
   debug@4.4.3:
     dependencies:
@@ -5824,13 +5834,13 @@ snapshots:
       defu: 6.1.7
       destr: 2.0.5
 
-  react-day-picker@9.14.0(react@19.2.6):
+  react-day-picker@10.0.1(@types/react@19.2.15)(react@19.2.6):
     dependencies:
       '@date-fns/tz': 1.5.0
-      '@tabby_ai/hijri-converter': 1.0.5
-      date-fns: 4.3.0
-      date-fns-jalali: 4.1.0-0
+      date-fns: 4.4.0
       react: 19.2.6
+    optionalDependencies:
+      '@types/react': 19.2.15
 
   react-docgen-typescript@2.4.0(typescript@6.0.3):
     dependencies:
