@@ -100,8 +100,8 @@ importers:
         specifier: 19.2.7
         version: 19.2.7(react@19.2.7)
       release-it:
-        specifier: 20.0.1
-        version: 20.0.1(@types/node@24.12.4)(magicast@0.5.3)
+        specifier: 20.2.0
+        version: 20.2.0(@types/node@24.12.4)(magicast@0.5.3)
       storybook:
         specifier: 10.4.2
         version: 10.4.2(@testing-library/dom@10.4.1)(@types/react@19.2.16)(prettier@3.8.3)(react-dom@19.2.7(react@19.2.7))(react@19.2.7)
@@ -2877,8 +2877,8 @@ packages:
     resolution: {integrity: sha512-6tDA8g98We0zd0GvVeMT9arEOnTw9qM03L9cJXaCjrip1OO764RDBLBfrB4cwzNGDj5OA5ioymC9GkizgWJDUg==}
     engines: {node: '>=8'}
 
-  release-it@20.0.1:
-    resolution: {integrity: sha512-3ob1P1aV+3+ZOoR7qgobfYyMlQbpitzOK09iKTtQ145vFi4rWxlRTgHwtVl8kokCvqiF/cJPxRlfcmZmF5aDJA==}
+  release-it@20.2.0:
+    resolution: {integrity: sha512-9ZTk9ripgctC6VTqH+P54KuboK29A5mG/I3tFfS5hnoAnkwtFFAMHRidYz93ylrW995vF50Ny1aOGJiyRmEN7w==}
     engines: {node: ^20.19.0 || ^22.13.0 || >=24.0.0}
     hasBin: true
 
@@ -5855,7 +5855,7 @@ snapshots:
       indent-string: 4.0.0
       strip-indent: 3.0.0
 
-  release-it@20.0.1(@types/node@24.12.4)(magicast@0.5.3):
+  release-it@20.2.0(@types/node@24.12.4)(magicast@0.5.3):
     dependencies:
       '@inquirer/prompts': 8.4.2(@types/node@24.12.4)
       '@octokit/rest': 22.0.1
