@@ -5,7 +5,7 @@ settings:
   excludeLinksFromLockfile: false
 
 overrides:
-  rollup: 4.60.4
+  rollup: 4.61.1
 
 importers:
 
@@ -1504,7 +1504,7 @@ packages:
     resolution: {integrity: sha512-MfPp06CjRLfXQ3wY0R8vJDYBy/MvVcc9OulEfR0B8Iv9ko+GCNaRZ+EpJYFl27LhKsZK0o420sYCRHCjfCgeUg==}
     engines: {node: '>=14.0.0'}
     peerDependencies:
-      rollup: 4.60.4
+      rollup: 4.61.1
     peerDependenciesMeta:
       rollup:
         optional: true
@@ -1541,7 +1541,7 @@ packages:
     resolution: {integrity: sha512-GqX/2DeF3/jKs5D7gpDiuT9gd0c/f2TKcnQ5av4/s3YqeN+0nhm7btkCrDfgF16uzE1Zj3OrkxvB3AOkfxWgDg==}
     peerDependencies:
       esbuild: '*'
-      rollup: 4.60.4
+      rollup: 4.61.1
       storybook: ^10.4.2
       vite: '*'
       webpack: '*'
@@ -3143,7 +3143,7 @@ packages:
       '@vue/language-core': ~3.1.5
       esbuild: '*'
       rolldown: '*'
-      rollup: 4.60.4
+      rollup: 4.61.1
       typescript: '>=4'
       vite: '>=3'
       webpack: ^4 || ^5
@@ -3212,7 +3212,7 @@ packages:
     resolution: {integrity: sha512-lNeHS+dwGju6eRmNvZQt8Shwv9j3m98hbHse/lIbLq9q3yE2DcIOBBYQEVUF6tS0kOmv+VA9Z5FqmzFnGe4U8g==}
     peerDependencies:
       '@microsoft/api-extractor': '>=7'
-      rollup: 4.60.4
+      rollup: 4.61.1
       vite: '>=3'
     peerDependenciesMeta:
       '@microsoft/api-extractor':
