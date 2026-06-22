@@ -1,4 +1,4 @@
 allowBuilds:
   esbuild: false
 overrides:
-  rollup: 4.61.1
+  rollup: 4.62.2
