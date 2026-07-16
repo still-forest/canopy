@@ -8,6 +8,7 @@
 
   .desktop-select-picker-trigger {
     @apply w-full hover:bg-inherit!;
+    @apply pl-2.5! pr-2!; /* Match SelectInput */
 
     .btn-label {
       @apply w-full justify-between font-normal;
