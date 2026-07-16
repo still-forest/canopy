@@ -97,5 +97,5 @@
     "tailwindcss": "^4.0.0",
     "tw-animate-css": "^1.0.0"
   },
-  "packageManager": "pnpm@11.10.0"
+  "packageManager": "pnpm@11.11.0"
 }
