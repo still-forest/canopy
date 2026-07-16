@@ -21,36 +21,6 @@ export const Default: Story = {
   args: defaultProps,
 };
 
-export const WithLabel: Story = {
-  args: {
-    ...defaultProps,
-    label: "Some date:",
-  },
-};
-
-export const WithNote: Story = {
-  args: {
-    ...defaultProps,
-    note: "The world will end on or about this date.",
-  },
-};
-
-export const WithEverything: Story = {
-  args: {
-    ...defaultProps,
-    label: "Some date:",
-    note: "The world will end on or about this date.",
-    error: "What'd you do?!",
-  },
-};
-
-export const WithError: Story = {
-  args: {
-    ...defaultProps,
-    error: "What'd you do?!",
-  },
-};
-
 export const WithSize: Story = {
   render: () => (
     <Flex direction="col" gap="4">
