@@ -83,6 +83,7 @@ export const SelectPicker = ({
       selectedLabel={selectedLabel}
       setOpen={setOpen}
       triggerClassName={className}
+      value={value}
     >
       <GroupedOptionList
         onSelect={handleSelect}

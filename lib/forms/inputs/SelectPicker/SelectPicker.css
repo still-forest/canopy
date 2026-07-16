@@ -7,7 +7,8 @@
   }
 
   .desktop-select-picker-trigger {
-    @apply w-full;
+    @apply w-full hover:bg-inherit!;
+    @apply pl-2.5! pr-2!; /* Match SelectInput */
 
     .btn-label {
       @apply w-full justify-between font-normal;
@@ -20,6 +21,10 @@
 
   .desktop-select-picker-content {
     @apply p-0!;
+  }
+
+  .desktop-select-picker-trigger--placeholder {
+    @apply text-muted-foreground!;
   }
 
   .desktop-select-picker-trigger--disabled {
