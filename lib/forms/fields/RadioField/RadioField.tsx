@@ -9,6 +9,7 @@ interface Option {
   label: string;
   hint?: string;
   note?: string;
+  disabled?: boolean;
 }
 
 interface RadioOptionProps {
@@ -22,16 +23,22 @@ interface RadioOptionProps {
 const RadioOption = ({ option, isInvalid, radioSizeClasses, labelClassName, groupId }: RadioOptionProps) => {
   const id = `${groupId}-radio-${option.value}`;
   return (
-    <Field data-invalid={isInvalid} orientation="horizontal">
+    <Field
+      className={cn(option.disabled && "cursor-not-allowed")}
+      data-disabled={option.disabled}
+      data-invalid={isInvalid}
+      orientation="horizontal"
+    >
       <RadioGroupItem
         aria-invalid={isInvalid}
         className={cn("bg-input dark:bg-input border-input-border", radioSizeClasses)}
+        disabled={option.disabled}
         id={id}
         value={option.value}
       />
       <Field.Content>
         <Field.LabelGroup>
-          <Field.Label className={labelClassName} htmlFor={id}>
+          <Field.Label className={cn(option.disabled && "cursor-not-allowed", labelClassName)} htmlFor={id}>
             {option.label}
           </Field.Label>
           {option.hint && <Hint content={option.hint} />}
