@@ -15,6 +15,7 @@ interface DesktopSelectPickerProps {
   triggerClassName?: string;
   dropdownClassName?: string;
   triggerProps?: Partial<ButtonProps>;
+  value?: string | null;
 }
 
 export const DesktopSelectPicker = ({
@@ -27,6 +28,7 @@ export const DesktopSelectPicker = ({
   triggerClassName,
   dropdownClassName,
   triggerProps,
+  value,
 }: DesktopSelectPickerProps) => {
   return (
     <Popover onOpenChange={setOpen} open={open}>
@@ -38,6 +40,7 @@ export const DesktopSelectPicker = ({
               variant: "input",
               className: cn(
                 "desktop-select-picker-trigger",
+                !value && "desktop-select-picker-trigger--placeholder",
                 !enabled && "desktop-select-picker-trigger--disabled",
                 triggerClassName,
               ),
