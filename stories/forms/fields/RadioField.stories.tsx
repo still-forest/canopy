@@ -106,3 +106,16 @@ export const LargeSize: Story = {
     size: "lg",
   },
 };
+
+export const WithDisabledOption: Story = {
+  args: {
+    ...defaultProps,
+    options: [
+      { value: "homer", label: "Homer", disabled: false },
+      { value: "marge", label: "Marge", disabled: false },
+      { value: "bart", label: "Bart", disabled: false },
+      { value: "lisa", label: "Lisa", disabled: false },
+      { value: "maggie", label: "Maggie", disabled: true },
+    ],
+  },
+};
