@@ -41,7 +41,7 @@ const LayeredControls = () => {
   const [comboboxSelected, setComboboxSelected] = useState<string[]>([]);
 
   return (
-    <Flex className="flex-wrap" gap="6">
+    <Flex direction="col" gap="6">
       <Flex direction="col" gap="2">
         <Text size="sm" variant="muted">
           SelectPicker
@@ -66,10 +66,28 @@ const LayeredControls = () => {
         <DropdownMenu>
           <DropdownMenu.Trigger>Options</DropdownMenu.Trigger>
           <DropdownMenu.Content>
-            <DropdownMenu.Item>Profile</DropdownMenu.Item>
-            <DropdownMenu.Item>Settings</DropdownMenu.Item>
+            <DropdownMenu.Item
+              onClick={() => {
+                window.alert("Profile");
+              }}
+            >
+              Profile
+            </DropdownMenu.Item>
+            <DropdownMenu.Item
+              onClick={() => {
+                window.alert("Settings");
+              }}
+            >
+              Settings
+            </DropdownMenu.Item>
             <DropdownMenu.Separator />
-            <DropdownMenu.Item>Log out</DropdownMenu.Item>
+            <DropdownMenu.Item
+              onClick={() => {
+                window.alert("Log out");
+              }}
+            >
+              Log out
+            </DropdownMenu.Item>
           </DropdownMenu.Content>
         </DropdownMenu>
       </Flex>
@@ -89,10 +107,28 @@ const LayeredControls = () => {
           <Menubar.Menu>
             <Menubar.Trigger>File</Menubar.Trigger>
             <Menubar.Content>
-              <Menubar.Item>New File</Menubar.Item>
-              <Menubar.Item>Open File</Menubar.Item>
+              <Menubar.Item
+                onClick={() => {
+                  window.alert("New File");
+                }}
+              >
+                New File
+              </Menubar.Item>
+              <Menubar.Item
+                onClick={() => {
+                  window.alert("Open File");
+                }}
+              >
+                Open File
+              </Menubar.Item>
               <Menubar.Separator />
-              <Menubar.Item>Save</Menubar.Item>
+              <Menubar.Item
+                onClick={() => {
+                  window.alert("Save");
+                }}
+              >
+                Save
+              </Menubar.Item>
             </Menubar.Content>
           </Menubar.Menu>
         </Menubar>
