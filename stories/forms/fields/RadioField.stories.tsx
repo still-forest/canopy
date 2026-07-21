@@ -40,14 +40,14 @@ export const WithInitialValue: Story = {
 export const WithLabel: Story = {
   args: {
     ...defaultProps,
-    label: "Favorite Simpson:",
+    label: "Who is your favorite Simpsons family member?",
   },
 };
 
 export const WithHint: Story = {
   args: {
     ...defaultProps,
-    label: "Favorite Simpson:",
+    label: "Who is your favorite Simpsons family member?",
     options: [
       { value: "homer", label: "Homer", hint: "Homer is the father of the Simpson family." },
       { value: "marge", label: "Marge", hint: "Marge is the mother of the Simpson family." },
@@ -76,6 +76,21 @@ export const WithFieldNotes: Story = {
 export const WithOptionNotes: Story = {
   args: {
     ...defaultProps,
+    options: [
+      { value: "homer", label: "Homer", note: "Homer is the father of the Simpson family." },
+      { value: "marge", label: "Marge", note: "Marge is the mother of the Simpson family." },
+      { value: "bart", label: "Bart", note: "Bart is the oldest child of the Simpson family." },
+      { value: "lisa", label: "Lisa", note: "Lisa is the second child of the Simpson family." },
+      { value: "maggie", label: "Maggie", note: "Maggie is the youngest child of the Simpson family." },
+    ],
+  },
+};
+
+export const WithEverything: Story = {
+  args: {
+    ...defaultProps,
+    label: "Who is your favorite Simpsons family member?",
+    note: "My cat's breath smells like cat food.",
     options: [
       { value: "homer", label: "Homer", note: "Homer is the father of the Simpson family." },
       { value: "marge", label: "Marge", note: "Marge is the mother of the Simpson family." },

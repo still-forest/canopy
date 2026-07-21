@@ -2,13 +2,32 @@
 @reference "@/styles/tokens.css";
 
 @layer components {
-  .field-set {
-    @apply flex flex-col gap-6;
+  .field-label {
+    @apply gap-2 text-sm font-medium flex w-fit leading-snug;
 
-    &:has(> [data-slot="checkbox-group"]),
-    &:has(> [data-slot="radio-group"]) {
-      @apply gap-2;
+    &:has([data-checked]) {
+      @apply bg-primary/5 border-primary/30;
     }
+
+    &:where(.dark, .dark *):has([data-checked]) {
+      @apply border-primary/20 bg-primary/10;
+    }
+
+    .field[data-disabled="true"] & {
+      @apply opacity-50;
+    }
+
+    &:has(> [data-slot="field"]) {
+      @apply rounded-md border w-full flex-col;
+    }
+
+    & > [data-slot="field"] {
+      @apply p-3;
+    }
+  }
+
+  .field-set {
+    @apply flex flex-col gap-4;
   }
 
   .field {
@@ -63,6 +82,18 @@
     }
   }
 
+  .field-description {
+    @apply text-sm text-muted-foreground leading-normal font-normal;
+
+    &:last-child {
+      @apply mt-0;
+    }
+
+    &:nth-last-child(2) {
+      @apply -mt-1;
+    }
+  }
+
   .field-legend {
     @apply mb-1.5 font-medium text-sm;
 
@@ -72,6 +103,10 @@
 
     &[data-variant="legend"] {
       @apply text-base;
+
+      & + .field-description {
+        @apply -mt-1.5;
+      }
     }
   }
 
@@ -83,40 +118,12 @@
     }
   }
 
-  .field-label {
-    @apply gap-2 text-sm font-medium flex w-fit leading-snug;
-
-    &:has([data-checked]) {
-      @apply bg-primary/5 border-primary/30;
-    }
-
-    &:where(.dark, .dark *):has([data-checked]) {
-      @apply border-primary/20 bg-primary/10;
-    }
-
-    .field[data-disabled="true"] & {
-      @apply opacity-50;
-    }
-
-    &:has(> [data-slot="field"]) {
-      @apply rounded-md border w-full flex-col;
-    }
-
-    & > [data-slot="field"] {
-      @apply p-3;
-    }
-  }
-
-  .field-description {
-    @apply text-sm text-muted-foreground leading-normal font-normal;
-  }
-
   .field-error {
     @apply text-danger text-sm font-normal;
   }
 
   .field-content {
-    @apply gap-1 flex flex-1 flex-col leading-snug;
+    @apply gap-0.5 flex flex-1 flex-col leading-snug;
   }
 
   .field-title {
