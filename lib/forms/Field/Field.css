@@ -2,6 +2,30 @@
 @reference "@/styles/tokens.css";
 
 @layer components {
+  .field-label {
+    @apply gap-2 text-sm font-medium flex w-fit leading-snug;
+
+    &:has([data-checked]) {
+      @apply bg-primary/5 border-primary/30;
+    }
+
+    &:where(.dark, .dark *):has([data-checked]) {
+      @apply border-primary/20 bg-primary/10;
+    }
+
+    .field[data-disabled="true"] & {
+      @apply opacity-50;
+    }
+
+    &:has(> [data-slot="field"]) {
+      @apply rounded-md border w-full flex-col;
+    }
+
+    & > [data-slot="field"] {
+      @apply p-3;
+    }
+  }
+
   .field-set {
     @apply flex flex-col gap-4;
   }
@@ -58,6 +82,18 @@
     }
   }
 
+  .field-description {
+    @apply text-sm text-muted-foreground leading-normal font-normal;
+
+    &:last-child {
+      @apply mt-0;
+    }
+
+    &:nth-last-child(2) {
+      @apply -mt-1;
+    }
+  }
+
   .field-legend {
     @apply mb-1.5 font-medium text-sm;
 
@@ -79,42 +115,6 @@
 
     &:has(.badge) {
       @apply justify-between;
-    }
-  }
-
-  .field-label {
-    @apply gap-2 text-sm font-medium flex w-fit leading-snug;
-
-    &:has([data-checked]) {
-      @apply bg-primary/5 border-primary/30;
-    }
-
-    &:where(.dark, .dark *):has([data-checked]) {
-      @apply border-primary/20 bg-primary/10;
-    }
-
-    .field[data-disabled="true"] & {
-      @apply opacity-50;
-    }
-
-    &:has(> [data-slot="field"]) {
-      @apply rounded-md border w-full flex-col;
-    }
-
-    & > [data-slot="field"] {
-      @apply p-3;
-    }
-  }
-
-  .field-description {
-    @apply text-sm text-muted-foreground leading-normal font-normal;
-
-    &:last-child {
-      @apply mt-0;
-    }
-
-    &:nth-last-child(2) {
-      @apply -mt-1;
     }
   }
 
