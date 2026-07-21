@@ -4,16 +4,17 @@ import { RadioGroup, RadioGroupItem } from "@/components/ui/radio-group";
 import { Field, FieldSet } from "@/forms";
 import { cn } from "@/utils";
 
-interface Option {
+export interface RadioFieldOption {
   value: string;
   label: string;
   hint?: string;
   note?: string;
   disabled?: boolean;
+  children?: React.ReactNode;
 }
 
 interface RadioOptionProps {
-  option: Option;
+  option: RadioFieldOption;
   isInvalid: boolean;
   radioSizeClasses?: string;
   labelClassName?: string;
@@ -44,6 +45,7 @@ const RadioOption = ({ option, isInvalid, radioSizeClasses, labelClassName, grou
           {option.hint && <Hint content={option.hint} />}
         </Field.LabelGroup>
         {option.note && <Field.Description>{option.note}</Field.Description>}
+        {option.children}
       </Field.Content>
     </Field>
   );
@@ -55,7 +57,7 @@ interface RadioFieldProps {
   labelClassName?: string;
   note?: string;
   value?: string;
-  options: Option[];
+  options: RadioFieldOption[];
   onChange?: (value: string) => void;
   size?: "sm" | "md" | "lg";
   error?: string;
