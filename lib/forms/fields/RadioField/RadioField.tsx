@@ -10,6 +10,7 @@ interface Option {
   hint?: string;
   note?: string;
   disabled?: boolean;
+  children?: React.ReactNode;
 }
 
 interface RadioOptionProps {
@@ -20,7 +21,7 @@ interface RadioOptionProps {
   groupId: string;
 }
 
-const RadioOption = ({ option, isInvalid, radioSizeClasses, labelClassName, groupId }: RadioOptionProps) => {
+const RadioOption = ({ option, isInvalid, radioSizeClasses, labelClassName, groupId, children }: RadioOptionProps) => {
   const id = `${groupId}-radio-${option.value}`;
   return (
     <Field
@@ -44,6 +45,7 @@ const RadioOption = ({ option, isInvalid, radioSizeClasses, labelClassName, grou
           {option.hint && <Hint content={option.hint} />}
         </Field.LabelGroup>
         {option.note && <Field.Description>{option.note}</Field.Description>}
+        {option.children}
       </Field.Content>
     </Field>
   );

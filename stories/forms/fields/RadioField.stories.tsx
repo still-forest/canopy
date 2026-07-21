@@ -101,6 +101,40 @@ export const WithEverything: Story = {
   },
 };
 
+export const WithChildren: Story = {
+  args: {
+    ...defaultProps,
+    label: "Who is your favorite Simpsons family member?",
+    options: [
+      {
+        value: "homer",
+        label: "Homer",
+        children: <div className="bg-info-foreground rounded-md p-2 text-sm">Hello Homer</div>,
+      },
+      {
+        value: "marge",
+        label: "Marge",
+        children: <div className="bg-info-foreground rounded-md p-2 text-sm">Hello Marge</div>,
+      },
+      {
+        value: "bart",
+        label: "Bart",
+        children: <div className="bg-info-foreground rounded-md p-2 text-sm">Hello Bart</div>,
+      },
+      {
+        value: "lisa",
+        label: "Lisa",
+        children: <div className="bg-info-foreground rounded-md p-2 text-sm">Hello Lisa</div>,
+      },
+      {
+        value: "maggie",
+        label: "Maggie",
+        children: <div className="bg-info-foreground rounded-md p-2 text-sm">Hello Maggie</div>,
+      },
+    ],
+  },
+};
+
 export const SmallSize: Story = {
   args: {
     ...defaultProps,
