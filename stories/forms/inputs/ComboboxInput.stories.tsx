@@ -132,6 +132,18 @@ export const WithManySelections: Story = {
   },
 };
 
+export const WithDisabledOptions: Story = {
+  args: {
+    options: [
+      ...flatOptions,
+      { label: "Raspberry", value: "raspberry", disabled: true },
+      { label: "Strawberry", value: "strawberry", disabled: true },
+    ],
+    selectedOptions: ["apple", "banana", "cherry", "carrot", "broccoli", "spinach"],
+    onChange: () => {},
+  },
+};
+
 export const Controlled: Story = {
   render: () => {
     const [selected, setSelected] = useState<string[]>(allFlatValues);

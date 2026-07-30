@@ -9,19 +9,14 @@
 // Additionally, you should also exclude this file from your linter and/or formatter to prevent it from being checked or modified.
 
 import { Route as rootRouteImport } from './routes/__root'
-import { Route as SidebarRouteImport } from './routes/sidebar'
-import { Route as LayoutRouteImport } from './routes/layout'
-import { Route as FontsRouteImport } from './routes/fonts'
 import { Route as IndexRouteImport } from './routes/index'
+import { Route as FontsRouteImport } from './routes/fonts'
+import { Route as LayoutRouteImport } from './routes/layout'
+import { Route as SidebarRouteImport } from './routes/sidebar'
 
-const SidebarRoute = SidebarRouteImport.update({
-  id: '/sidebar',
-  path: '/sidebar',
-  getParentRoute: () => rootRouteImport,
-} as any)
-const LayoutRoute = LayoutRouteImport.update({
-  id: '/layout',
-  path: '/layout',
+const IndexRoute = IndexRouteImport.update({
+  id: '/',
+  path: '/',
   getParentRoute: () => rootRouteImport,
 } as any)
 const FontsRoute = FontsRouteImport.update({
@@ -29,9 +24,14 @@ const FontsRoute = FontsRouteImport.update({
   path: '/fonts',
   getParentRoute: () => rootRouteImport,
 } as any)
-const IndexRoute = IndexRouteImport.update({
-  id: '/',
-  path: '/',
+const LayoutRoute = LayoutRouteImport.update({
+  id: '/layout',
+  path: '/layout',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const SidebarRoute = SidebarRouteImport.update({
+  id: '/sidebar',
+  path: '/sidebar',
   getParentRoute: () => rootRouteImport,
 } as any)
 
@@ -71,18 +71,11 @@ export interface RootRouteChildren {
 
 declare module '@tanstack/react-router' {
   interface FileRoutesByPath {
-    '/sidebar': {
-      id: '/sidebar'
-      path: '/sidebar'
-      fullPath: '/sidebar'
-      preLoaderRoute: typeof SidebarRouteImport
-      parentRoute: typeof rootRouteImport
-    }
-    '/layout': {
-      id: '/layout'
-      path: '/layout'
-      fullPath: '/layout'
-      preLoaderRoute: typeof LayoutRouteImport
+    '/': {
+      id: '/'
+      path: '/'
+      fullPath: '/'
+      preLoaderRoute: typeof IndexRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/fonts': {
@@ -92,11 +85,18 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof FontsRouteImport
       parentRoute: typeof rootRouteImport
     }
-    '/': {
-      id: '/'
-      path: '/'
-      fullPath: '/'
-      preLoaderRoute: typeof IndexRouteImport
+    '/layout': {
+      id: '/layout'
+      path: '/layout'
+      fullPath: '/layout'
+      preLoaderRoute: typeof LayoutRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/sidebar': {
+      id: '/sidebar'
+      path: '/sidebar'
+      fullPath: '/sidebar'
+      preLoaderRoute: typeof SidebarRouteImport
       parentRoute: typeof rootRouteImport
     }
   }

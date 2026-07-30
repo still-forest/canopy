@@ -23,6 +23,7 @@ export interface ComboboxInputProps {
   selectedOptions: string[];
   onChange: (value: string[]) => void;
   size?: "sm" | "default" | "lg";
+  name?: string;
   placeholder?: string;
   className?: string;
 }
@@ -33,6 +34,7 @@ export const ComboboxInput = ({
   onChange,
   size = "default",
   className,
+  name,
   placeholder = "Select an option",
 }: ComboboxInputProps) => {
   const anchor = useComboboxAnchor();
@@ -73,6 +75,7 @@ export const ComboboxInput = ({
       autoHighlight
       items={isOptionGroup ? comboboxGroups : flatOptions}
       multiple
+      name={name}
       onValueChange={onChange}
       value={selectedOptions}
     >
@@ -104,7 +107,7 @@ export const ComboboxInput = ({
                 <ComboboxLabel>{group.label}</ComboboxLabel>
                 <ComboboxCollection>
                   {(item) => (
-                    <ComboboxItem key={item.value} value={item.value}>
+                    <ComboboxItem disabled={item.disabled} key={item.value} value={item.value}>
                       {item.label}
                     </ComboboxItem>
                   )}
@@ -117,7 +120,7 @@ export const ComboboxInput = ({
         {!isOptionGroup && (
           <ComboboxList>
             {(item) => (
-              <ComboboxItem key={item.value} value={item.value}>
+              <ComboboxItem disabled={item.disabled} key={item.value} value={item.value}>
                 {item.label}
               </ComboboxItem>
             )}

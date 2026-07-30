@@ -27,7 +27,7 @@ export const ComboboxField = ({ name, id, label, labelClassName, hint, note, err
           {hint && <Hint content={hint} />}
         </Field.LabelGroup>
       )}
-      <ComboboxInput aria-describedby={error ? errorId : undefined} aria-invalid={isInvalid} {...props} />
+      <ComboboxInput aria-describedby={error ? errorId : undefined} aria-invalid={isInvalid} name={name} {...props} />
       {note && <Field.Description>{note}</Field.Description>}
       {error && <Field.Error id={errorId}>{error}</Field.Error>}
     </Field>
