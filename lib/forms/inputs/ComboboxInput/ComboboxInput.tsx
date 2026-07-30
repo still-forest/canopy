@@ -104,7 +104,7 @@ export const ComboboxInput = ({
                 <ComboboxLabel>{group.label}</ComboboxLabel>
                 <ComboboxCollection>
                   {(item) => (
-                    <ComboboxItem key={item.value} value={item.value}>
+                    <ComboboxItem disabled={item.disabled} key={item.value} value={item.value}>
                       {item.label}
                     </ComboboxItem>
                   )}
@@ -117,7 +117,7 @@ export const ComboboxInput = ({
         {!isOptionGroup && (
           <ComboboxList>
             {(item) => (
-              <ComboboxItem key={item.value} value={item.value}>
+              <ComboboxItem disabled={item.disabled} key={item.value} value={item.value}>
                 {item.label}
               </ComboboxItem>
             )}
