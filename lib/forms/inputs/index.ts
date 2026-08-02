@@ -2,6 +2,7 @@ export * from "./ButtonRadioInput";
 export * from "./Checkbox";
 export * from "./ComboboxInput";
 export * from "./DateInput";
+export * from "./EditableText";
 export * from "./Input";
 export * from "./InputGroup";
 export * from "./MultiSelectInput";
