@@ -62,55 +62,49 @@ export const EditableText = ({
 
   // biome-ignore-start lint:noAutoFocus: Necessary for the mechanics of this component
   return (
-    <div className="editable-text">
-      {isEditing ? (
-        <div className="editable-text-input-group">
-          <input
-            autoFocus
-            className={cn("grow", typographyClasses, className)}
-            name={name}
-            onBlur={handleSave}
-            onChange={(event) => setValue(event.target.value)}
-            onKeyDown={(event) => {
-              if (event.key === "Enter") handleSave();
-              if (event.key === "Escape") {
-                handleCancel();
-              }
-            }}
-            value={value}
-          />
-          <div className="editable-text-actions">
-            <Button
-              aria-label="Save edited text"
-              asIcon
-              className="editable-text-action"
-              icon={<CheckIcon />}
-              onClick={handleSave}
-              onPointerDown={preventInputBlur}
-              size="xs"
-              variant="ghost"
-            />
-            <Button
-              aria-label="Cancel editing text"
-              asIcon
-              className="editable-text-action"
-              icon={<XIcon />}
-              onClick={handleCancel}
-              onPointerDown={preventInputBlur}
-              size="xs"
-              variant="ghost"
-            />
-          </div>
-        </div>
-      ) : (
-        <button
-          className={cn("editable-text-button", typographyClasses, className)}
-          onClick={() => setIsEditing(true)}
-          type="button"
-        >
-          {value}
-        </button>
-      )}
+    <div className={cn("editable-text", isEditing && "editable-text--editing")}>
+      <input
+        autoFocus
+        className={cn("grow", typographyClasses, className)}
+        name={name}
+        onBlur={() => {
+          if (isEditing) {
+            handleSave();
+          }
+        }}
+        onChange={(event) => setValue(event.target.value)}
+        onFocus={() => setIsEditing(true)}
+        onKeyDown={(event) => {
+          if (event.key === "Enter") handleSave();
+          if (event.key === "Escape") {
+            handleCancel();
+          }
+        }}
+        readOnly={!isEditing}
+        value={value}
+      />
+      <div className="editable-text-actions">
+        <Button
+          aria-label="Save edited text"
+          asIcon
+          className="editable-text-action"
+          icon={<CheckIcon />}
+          onClick={handleSave}
+          onPointerDown={preventInputBlur}
+          size="xs"
+          variant="ghost"
+        />
+        <Button
+          aria-label="Cancel editing text"
+          asIcon
+          className="editable-text-action"
+          icon={<XIcon />}
+          onClick={handleCancel}
+          onPointerDown={preventInputBlur}
+          size="xs"
+          variant="ghost"
+        />
+      </div>
     </div>
   );
   // biome-ignore-end lint:noAutoFocus: Necessary for the mechanics of this component
