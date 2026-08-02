@@ -1,6 +1,6 @@
 import { DEFAULT_DECORATOR_WITH_MIN_WIDTH_MD } from "@stories/support/decorators";
 import type { Meta, StoryObj } from "@storybook/react-vite";
-import { EditableText } from "@/forms";
+import { EditableText, type EditableTextProps } from "@/forms";
 import { Flex } from "@/layout";
 
 const meta: Meta<typeof EditableText> = {
@@ -14,29 +14,49 @@ export default meta;
 
 type Story = StoryObj<typeof meta>;
 
+const defaultArgs: EditableTextProps = {
+  name: "default",
+  value: "Flanders was a zombie?",
+  onSave: () => {},
+};
+
 export const Default: Story = {
-  args: {
-    name: "default",
-    value: "Flanders was a zombie?",
-  },
+  args: defaultArgs,
 };
 
 export const Editing: Story = {
   args: {
-    name: "editing",
-    value: "Flanders was a zombie?",
+    ...defaultArgs,
     isEditing: true,
   },
 };
 
-export const Sizes: Story = {
+export const TypographyVariants: Story = {
   render: () => (
     <Flex direction="col" gap="4">
-      <EditableText name="extra-small" size="xs" value="Extra Small (xs)" />
-      <EditableText name="small" size="sm" value="Small (sm)" />
-      <EditableText name="medium" size="md" value="Medium (md) — default" />
-      <EditableText name="large" size="lg" value="Large (lg)" />
-      <EditableText name="extra-large" size="xl" value="Extra Large (xl)" />
+      <EditableText as="h1" name="h1" onSave={() => {}} value="Heading 1" />
+      <EditableText as="h2" name="h2" onSave={() => {}} value="Heading 2" />
+      <EditableText as="h3" name="h3" onSave={() => {}} value="Heading 3" />
+      <EditableText as="h4" name="h4" onSave={() => {}} value="Heading 4" />
+      <EditableText as="h5" name="h5" onSave={() => {}} value="Heading 5" />
+      <EditableText as="h6" name="h6" onSave={() => {}} value="Heading 6" />
+      <EditableText as="p" name="p" onSave={() => {}} value="Paragraph" />
+      <EditableText as="label" name="label" onSave={() => {}} value="Label" />
+    </Flex>
+  ),
+};
+
+export const TypographyVariantsEditing: Story = {
+  render: () => (
+    <Flex direction="col" gap="4">
+      <EditableText as="h1" isEditing name="h1" onSave={() => {}} value="Heading 1" />
+      <EditableText as="h2" isEditing name="h2" onSave={() => {}} value="Heading 2" />
+      <EditableText as="h3" isEditing name="h3" onSave={() => {}} value="Heading 3" />
+      <EditableText as="h4" isEditing name="h4" onSave={() => {}} value="Heading 4" />
+      <EditableText as="h5" isEditing name="h5" onSave={() => {}} value="Heading 5" />
+      <EditableText as="h6" isEditing name="h6" onSave={() => {}} value="Heading 6" />
+      <EditableText as="p" isEditing name="p" onSave={() => {}} value="Paragraph" />
+      <EditableText as="label" isEditing name="label" onSave={() => {}} value="Label" />
     </Flex>
   ),
 };

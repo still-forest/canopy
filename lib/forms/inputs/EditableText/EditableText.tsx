@@ -4,7 +4,10 @@ import "./EditableText.css";
 import { CheckIcon, XIcon } from "lucide-react";
 import { Button } from "@/buttons";
 
-interface EditableTextProps {
+type EditableTextTypography = "p" | "h1" | "h2" | "h3" | "h4" | "h5" | "h6" | "label";
+
+export interface EditableTextProps {
+  as?: EditableTextTypography;
   value: string;
   name: string;
   className?: string;
@@ -14,6 +17,7 @@ interface EditableTextProps {
 }
 
 export const EditableText = ({
+  as = "p",
   value: initialValue,
   name,
   className,
@@ -45,6 +49,17 @@ export const EditableText = ({
     setIsEditing(false);
   };
 
+  const typographyClasses = cn(
+    as === "p" && "body-base",
+    as === "h1" && "heading-1 h-12",
+    as === "h2" && "heading-2",
+    as === "h3" && "heading-3",
+    as === "h4" && "heading-4",
+    as === "h5" && "heading-5",
+    as === "h6" && "heading-6",
+    as === "label" && "label",
+  );
+
   // biome-ignore-start lint:noAutoFocus: Necessary for the mechanics of this component
   return (
     <div className="editable-text">
@@ -52,7 +67,7 @@ export const EditableText = ({
         <div className="editable-text-input-group">
           <input
             autoFocus
-            className={cn("grow", className)}
+            className={cn("grow", typographyClasses, className)}
             name={name}
             onBlur={handleSave}
             onChange={(event) => setValue(event.target.value)}
@@ -88,7 +103,11 @@ export const EditableText = ({
           </div>
         </div>
       ) : (
-        <button className={cn("editable-text-button", className)} onClick={() => setIsEditing(true)} type="button">
+        <button
+          className={cn("editable-text-button", typographyClasses, className)}
+          onClick={() => setIsEditing(true)}
+          type="button"
+        >
           {value}
         </button>
       )}
