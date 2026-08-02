@@ -21,6 +21,14 @@ export const Default: Story = {
   },
 };
 
+export const Editing: Story = {
+  args: {
+    name: "editing",
+    value: "Flanders was a zombie?",
+    isEditing: true,
+  },
+};
+
 export const Sizes: Story = {
   render: () => (
     <Flex direction="col" gap="4">

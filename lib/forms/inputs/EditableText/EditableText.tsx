@@ -64,11 +64,12 @@ export const EditableText = ({
             }}
             value={value}
           />
-          <div className="editable-text-buttons">
+          <div className="editable-text-actions">
             <Button
               aria-label="Save edited text"
               asIcon
-              icon={<CheckIcon className="size-4" />}
+              className="editable-text-action"
+              icon={<CheckIcon />}
               onClick={handleSave}
               onPointerDown={preventInputBlur}
               size="xs"
@@ -77,7 +78,8 @@ export const EditableText = ({
             <Button
               aria-label="Cancel editing text"
               asIcon
-              icon={<XIcon className="size-4" />}
+              className="editable-text-action"
+              icon={<XIcon />}
               onClick={handleCancel}
               onPointerDown={preventInputBlur}
               size="xs"

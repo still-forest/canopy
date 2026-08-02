@@ -14,8 +14,12 @@
       }
     }
 
-    .editable-text-buttons {
-      @apply ml-1;
+    .editable-text-actions {
+      @apply ml-1 my-auto flex items-center;
+    }
+
+    .editable-text-action {
+      @apply text-muted-foreground hover:text-foreground;
     }
 
     .editable-text-button {
