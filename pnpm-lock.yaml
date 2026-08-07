@@ -5,7 +5,7 @@ settings:
   excludeLinksFromLockfile: false
 
 overrides:
-  rollup: 4.62.3
+  rollup: 4.62.4
 
 importers:
 
