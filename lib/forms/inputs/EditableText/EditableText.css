@@ -1,0 +1,33 @@
+@import "@/styles/layers.css";
+@reference "@/styles/tokens.css";
+
+@layer components {
+  .editable-text {
+    @apply w-full;
+    @apply flex items-center;
+
+    input {
+      @apply outline-none;
+    }
+
+    &:hover {
+      @apply outline-[1.5px] outline-offset-2 rounded-[2px];
+    }
+
+    .editable-text-actions {
+      @apply ml-1 my-auto flex items-center invisible;
+    }
+
+    .editable-text-action {
+      @apply text-muted-foreground hover:text-foreground;
+    }
+
+    &.editable-text--editing {
+      @apply outline-[1.5px] outline-offset-2 rounded-[2px];
+
+      .editable-text-actions {
+        @apply visible;
+      }
+    }
+  }
+}
