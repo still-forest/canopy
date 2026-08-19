@@ -42,8 +42,15 @@
   }
 
   .drawer-handle {
-    @apply bg-muted w-12 rounded-full h-1;
-    @apply mx-auto mb-4;
+    @apply relative z-10 flex shrink-0 cursor-grab transition-opacity duration-200;
+
+    &:after {
+      @apply block shrink-0 rounded-full bg-muted;
+    }
+
+    &:active {
+      @apply cursor-grabbing;
+    }
   }
 
   .drawer-header {

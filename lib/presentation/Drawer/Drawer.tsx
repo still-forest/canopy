@@ -32,7 +32,7 @@ const Drawer = ({
   swipeDirection = "down",
   snapPoints,
   modal = true,
-  showSwipeHandle = false,
+  showSwipeHandle = true,
   ...props
 }: DrawerProps) => {
   const hasSnapPoints = snapPoints != null && snapPoints.length > 0;
@@ -49,20 +49,6 @@ const Drawer = ({
 
 const DrawerTrigger = ({ className, ...props }: DrawerPrimitive.Trigger.Props) => {
   return <DrawerPrimitive.Trigger className={cn("drawer-trigger", className)} data-slot="drawer-trigger" {...props} />;
-};
-
-const DrawerContent = ({ className, ...props }: DrawerPrimitive.Content.Props) => {
-  return (
-    <DrawerPrimitive.Portal data-slot="drawer-portal">
-      <DrawerPrimitive.Backdrop className="drawer-backdrop supports-backdrop-filter:backdrop-blur-xs supports-[-webkit-touch-callout:none]:absolute" />
-      <DrawerPrimitive.Viewport className="drawer-viewport" data-slot="drawer-viewport">
-        <DrawerPopup>
-          <div className="drawer-handle" />
-          <DrawerPrimitive.Content className={cn("drawer-content", className)} data-slot="drawer-content" {...props} />
-        </DrawerPopup>
-      </DrawerPrimitive.Viewport>
-    </DrawerPrimitive.Portal>
-  );
 };
 
 const DrawerPopup = ({ className, children, ...props }: DrawerPrimitive.Popup.Props) => {
@@ -105,6 +91,36 @@ const DrawerPopup = ({ className, children, ...props }: DrawerPrimitive.Popup.Pr
     >
       {children}
     </DrawerPrimitive.Popup>
+  );
+};
+
+const DrawerContent = ({ className, ...props }: DrawerPrimitive.Content.Props) => {
+  const { showSwipeHandle } = useDrawer();
+
+  return (
+    <DrawerPrimitive.Portal data-slot="drawer-portal">
+      <DrawerPrimitive.Backdrop className="drawer-backdrop supports-backdrop-filter:backdrop-blur-xs supports-[-webkit-touch-callout:none]:absolute" />
+      <DrawerPrimitive.Viewport className="drawer-viewport" data-slot="drawer-viewport">
+        <DrawerPopup>
+          {showSwipeHandle && <DrawerSwipeHandle />}
+          <DrawerPrimitive.Content className={cn("drawer-content", className)} data-slot="drawer-content" {...props} />
+        </DrawerPopup>
+      </DrawerPrimitive.Viewport>
+    </DrawerPrimitive.Portal>
+  );
+};
+
+const DrawerSwipeHandle = ({ className, ...props }: React.ComponentProps<"div">) => {
+  return (
+    <div
+      aria-hidden="true"
+      className={cn(
+        "drawer-handle group-data-nested-drawer-open/drawer-popup:opacity-0 group-data-nested-drawer-swiping/drawer-popup:opacity-100 group-data-[swipe-axis=x]/drawer-popup:h-full group-data-[swipe-axis=x]/drawer-popup:w-3 group-data-[swipe-axis=x]/drawer-popup:items-center group-data-[swipe-axis=y]/drawer-popup:h-3 group-data-[swipe-axis=y]/drawer-popup:w-full group-data-[swipe-axis=y]/drawer-popup:justify-center group-data-[swipe-direction=down]/drawer-popup:items-end group-data-[swipe-direction=left]/drawer-popup:order-last group-data-[swipe-direction=left]/drawer-popup:justify-start group-data-[swipe-direction=right]/drawer-popup:justify-end group-data-[swipe-direction=up]/drawer-popup:order-last group-data-[swipe-direction=up]/drawer-popup:items-start group-data-[swipe-axis=x]/drawer-popup:after:h-[100px] group-data-[swipe-axis=x]/drawer-popup:after:w-1.5 group-data-[swipe-axis=y]/drawer-popup:after:h-1.5 group-data-[swipe-axis=y]/drawer-popup:after:w-[100px]",
+        className,
+      )}
+      data-slot="drawer-swipe-handle"
+      {...props}
+    />
   );
 };
 
