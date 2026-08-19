@@ -16,7 +16,7 @@
     }
 
     &[data-snap-points] {
-      @apply --drawer-overlay-min-opacity:0.5;
+      @apply [--drawer-overlay-min-opacity:0.5];
     }
   }
 
