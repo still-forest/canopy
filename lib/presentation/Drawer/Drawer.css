@@ -21,45 +21,20 @@
   }
 
   .drawer-viewport {
-    position: fixed;
-    inset: 0;
     z-index: var(--z-index-surface);
     display: flex;
     align-items: flex-end;
     justify-content: center;
+    @apply pointer-events-none fixed inset-0 select-none;
+
+    &[data-modal="true"] {
+      @apply pointer-events-auto;
+    }
   }
 
   .drawer-popup {
-    --bleed: 3rem;
-    box-sizing: border-box;
-    width: 100%;
-    max-height: calc(80vh + var(--bleed));
-    padding-bottom: calc(1.5rem + env(safe-area-inset-bottom, 0px) + var(--bleed));
-    margin-bottom: calc(-1 * var(--bleed));
-    overflow-y: auto;
-    overscroll-behavior: contain;
-    transform: translateY(var(--drawer-swipe-movement-y));
-    transition: transform 450ms cubic-bezier(0.32, 0.72, 0, 1);
-    will-change: transform;
-    @apply px-2 md:px-4 pt-2 md:pt-4;
-    @apply bg-background border border-border rounded-t-lg;
-
-    &[data-swiping] {
-      user-select: none;
-    }
-
-    @media (prefers-color-scheme: dark) {
-      outline: 1px solid var(--color-gray-300);
-    }
-
-    &[data-starting-style],
-    &[data-ending-style] {
-      transform: translateY(calc(100% - var(--bleed) + 2px));
-    }
-
-    &[data-ending-style] {
-      transition-duration: calc(var(--drawer-swipe-strength) * 400ms);
-    }
+    z-index: var(--z-index-surface);
+    @apply pointer-events-auto fixed flex;
   }
 
   .drawer-content {
