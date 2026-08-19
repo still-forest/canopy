@@ -56,7 +56,7 @@ pnpm release:dry-run    # Test release process without publishing
   - `typography/`: Text components (Heading, Text, Code)
   - `types/`: TypeScript type definitions
   - `utils/`: Utility functions (cn for className merging)
-  - `hooks/`: React hooks (use-mobile)
+  - `hooks/`: React hooks
   - `main.ts`: Main entry point that exports all public APIs
 
 - **`src/`**: Demo/development apps (not published)

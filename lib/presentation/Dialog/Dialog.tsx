@@ -83,6 +83,11 @@ const DialogDescription = ({ className, ...props }: DialogPrimitive.Description.
   );
 };
 
+const DialogBody = ({ className, ...props }: React.ComponentProps<"div">) => {
+  return <div className={cn("dialog-body", className)} data-slot="dialog-body" {...props} />;
+};
+
+Dialog.Body = DialogBody;
 Dialog.Close = DialogClose;
 Dialog.Content = DialogContent;
 Dialog.Description = DialogDescription;

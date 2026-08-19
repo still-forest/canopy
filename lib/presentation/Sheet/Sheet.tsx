@@ -4,7 +4,7 @@ import type { ComponentProps } from "react";
 import { Button } from "@/buttons";
 import { cn } from "@/utils/cn";
 import "./Sheet.css";
-import { useIsMobile } from "@/hooks/use-mobile";
+import { useIsMobile } from "@/hooks/useIsMobile";
 
 const Sheet = ({ ...props }: SheetPrimitive.Root.Props) => {
   return <SheetPrimitive.Root data-slot="sheet" {...props} />;
