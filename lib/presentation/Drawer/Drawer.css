@@ -3,33 +3,20 @@
 
 @layer components {
   .drawer-backdrop {
-    --backdrop-opacity: 0.2;
-    --bleed: 3rem;
-    position: fixed;
-    inset: 0;
-    z-index: var(--z-index-overlay);
-    min-height: 100dvh;
-    opacity: calc(var(--backdrop-opacity) * (1 - var(--drawer-swipe-progress)));
-    transition-timing-function: cubic-bezier(0.32, 0.72, 0, 1);
-    transition-duration: 450ms;
-    transition-property: opacity;
-    @apply bg-black;
+    @apply fixed inset-0 z-50 min-h-dvh bg-black/10;
+    @apply opacity-[max(var(--drawer-overlay-min-opacity,0),calc(1-var(--drawer-swipe-progress)))] transition-opacity duration-450 ease-[cubic-bezier(0.32,0.72,0,1)];
+    @apply select-none;
 
-    @media (prefers-color-scheme: dark) {
-      --backdrop-opacity: 0.7;
-    }
-
-    &[data-starting-style],
-    &[data-ending-style] {
-      opacity: 0;
-    }
-
-    &[data-swiping] {
-      transition-duration: 0ms;
+    &[data-starting-style] {
+      @apply opacity-0;
     }
 
     &[data-ending-style] {
-      transition-duration: calc(var(--drawer-swipe-strength) * 400ms);
+      @apply pointer-events-none opacity-0 duration-[calc(var(--drawer-swipe-strength)*400ms)];
+    }
+
+    &[data-snap-points] {
+      @apply --drawer-overlay-min-opacity:0.5;
     }
   }
 

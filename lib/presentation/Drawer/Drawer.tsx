@@ -15,7 +15,7 @@ const DrawerTrigger = ({ className, ...props }: DrawerPrimitive.Trigger.Props) =
 const DrawerContent = ({ className, ...props }: DrawerPrimitive.Content.Props) => {
   return (
     <DrawerPrimitive.Portal data-slot="drawer-portal">
-      <DrawerPrimitive.Backdrop className="drawer-backdrop" />
+      <DrawerPrimitive.Backdrop className="drawer-backdrop supports-backdrop-filter:backdrop-blur-xs supports-[-webkit-touch-callout:none]:absolute" />
       <DrawerPrimitive.Viewport className="drawer-viewport" data-slot="drawer-viewport">
         <DrawerPrimitive.Popup className="drawer-popup" data-slot="drawer-popup">
           <div className="drawer-handle" />
