@@ -3,89 +3,59 @@
 
 @layer components {
   .drawer-backdrop {
-    --backdrop-opacity: 0.2;
-    --bleed: 3rem;
-    position: fixed;
-    inset: 0;
-    z-index: var(--z-index-overlay);
-    min-height: 100dvh;
-    opacity: calc(var(--backdrop-opacity) * (1 - var(--drawer-swipe-progress)));
-    transition-timing-function: cubic-bezier(0.32, 0.72, 0, 1);
-    transition-duration: 450ms;
-    transition-property: opacity;
-    @apply bg-black;
+    @apply fixed inset-0 z-50 min-h-dvh bg-black/10;
+    @apply opacity-[max(var(--drawer-overlay-min-opacity,0),calc(1-var(--drawer-swipe-progress)))] transition-opacity duration-450 ease-[cubic-bezier(0.32,0.72,0,1)];
+    @apply select-none;
 
-    @media (prefers-color-scheme: dark) {
-      --backdrop-opacity: 0.7;
-    }
-
-    &[data-starting-style],
-    &[data-ending-style] {
-      opacity: 0;
-    }
-
-    &[data-swiping] {
-      transition-duration: 0ms;
+    &[data-starting-style] {
+      @apply opacity-0;
     }
 
     &[data-ending-style] {
-      transition-duration: calc(var(--drawer-swipe-strength) * 400ms);
+      @apply pointer-events-none opacity-0 duration-[calc(var(--drawer-swipe-strength)*400ms)];
+    }
+
+    &[data-snap-points] {
+      @apply --drawer-overlay-min-opacity:0.5;
     }
   }
 
   .drawer-viewport {
-    position: fixed;
-    inset: 0;
     z-index: var(--z-index-surface);
     display: flex;
     align-items: flex-end;
     justify-content: center;
+    @apply pointer-events-none fixed inset-0 select-none;
+
+    &[data-modal="true"] {
+      @apply pointer-events-auto;
+    }
   }
 
   .drawer-popup {
-    --bleed: 3rem;
-    box-sizing: border-box;
-    width: 100%;
-    max-height: calc(80vh + var(--bleed));
-    padding-bottom: calc(1.5rem + env(safe-area-inset-bottom, 0px) + var(--bleed));
-    margin-bottom: calc(-1 * var(--bleed));
-    overflow-y: auto;
-    overscroll-behavior: contain;
-    transform: translateY(var(--drawer-swipe-movement-y));
-    transition: transform 450ms cubic-bezier(0.32, 0.72, 0, 1);
-    will-change: transform;
-    @apply px-2 md:px-4 pt-2 md:pt-4;
-    @apply bg-background border border-border rounded-t-lg;
+    z-index: var(--z-index-surface);
+    @apply pointer-events-auto fixed flex;
+  }
 
-    &[data-swiping] {
-      user-select: none;
+  .drawer-handle {
+    @apply relative z-10 flex shrink-0 cursor-grab transition-opacity duration-200;
+
+    &:after {
+      @apply block shrink-0 rounded-full bg-muted;
     }
 
-    @media (prefers-color-scheme: dark) {
-      outline: 1px solid var(--color-gray-300);
-    }
-
-    &[data-starting-style],
-    &[data-ending-style] {
-      transform: translateY(calc(100% - var(--bleed) + 2px));
-    }
-
-    &[data-ending-style] {
-      transition-duration: calc(var(--drawer-swipe-strength) * 400ms);
+    &:active {
+      @apply cursor-grabbing;
     }
   }
 
   .drawer-content {
-    @apply w-full max-w-128 mx-auto space-y-4;
-  }
-
-  .drawer-handle {
-    @apply bg-muted w-12 rounded-full h-1;
-    @apply mx-auto mb-4;
+    @apply flex min-h-0 flex-1 flex-col overflow-hidden overscroll-contain rounded-[inherit];
+    @apply transition-opacity duration-300 ease-[cubic-bezier(0.45,1.005,0,1.005)] select-text;
   }
 
   .drawer-header {
-    @apply mb-4;
+    @apply flex shrink-0 flex-col gap-0.5 p-4 pb-0 md:gap-1.5 md:text-left;
   }
 
   .drawer-title {
@@ -93,7 +63,15 @@
   }
 
   .drawer-description {
-    @apply text-muted-foreground text-sm;
+    @apply text-muted-foreground text-sm text-balance;
+  }
+
+  .drawer-body {
+    @apply flex flex-1 flex-col gap-4 p-4;
+  }
+
+  .drawer-footer {
+    @apply mt-auto flex shrink-0 flex-col gap-2 p-4 pt-0;
   }
 
   .drawer-actions {
