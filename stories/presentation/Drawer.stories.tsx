@@ -36,6 +36,66 @@ export const Default: Story = {
   ),
 };
 
+export const SwipeRight: Story = {
+  render: () => (
+    <Drawer swipeDirection="right">
+      <Drawer.Trigger render={<Button>Open drawer</Button>} />
+      <Drawer.Content>
+        <Drawer.Header>
+          <Drawer.Title>Drawer title</Drawer.Title>
+          <Drawer.Description>This is a description of the drawer content.</Drawer.Description>
+        </Drawer.Header>
+        <Drawer.Body>
+          <Text size="sm">{sampleParagraphText[0]}</Text>
+        </Drawer.Body>
+        <Drawer.Footer>
+          <Drawer.Close render={<Button>Close</Button>} />
+        </Drawer.Footer>
+      </Drawer.Content>
+    </Drawer>
+  ),
+};
+
+export const SwipeLeft: Story = {
+  render: () => (
+    <Drawer swipeDirection="left">
+      <Drawer.Trigger render={<Button>Open drawer</Button>} />
+      <Drawer.Content>
+        <Drawer.Header>
+          <Drawer.Title>Drawer title</Drawer.Title>
+          <Drawer.Description>This is a description of the drawer content.</Drawer.Description>
+        </Drawer.Header>
+        <Drawer.Body>
+          <Text size="sm">{sampleParagraphText[0]}</Text>
+        </Drawer.Body>
+        <Drawer.Footer>
+          <Drawer.Close render={<Button>Close</Button>} />
+        </Drawer.Footer>
+      </Drawer.Content>
+    </Drawer>
+  ),
+};
+
+export const SwipeUp: Story = {
+  render: () => (
+    <Drawer swipeDirection="up">
+      <Drawer.Trigger render={<Button>Open drawer</Button>} />
+      <Drawer.Content>
+        <Drawer.Header>
+          <Drawer.Title>Drawer title</Drawer.Title>
+          <Drawer.Description>This is a description of the drawer content.</Drawer.Description>
+        </Drawer.Header>
+        <Drawer.Body>
+          <Text size="sm">{sampleParagraphText[0]}</Text>
+        </Drawer.Body>
+        <Drawer.Footer>
+          <Drawer.Close render={<Button>Close</Button>} />
+        </Drawer.Footer>
+      </Drawer.Content>
+    </Drawer>
+  ),
+};
+
 export const Controlled: Story = {
   render: () => {
     const [open, setOpen] = useState(false);
