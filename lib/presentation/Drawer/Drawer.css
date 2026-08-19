@@ -66,6 +66,10 @@
     @apply text-muted-foreground text-sm text-balance;
   }
 
+  .drawer-body {
+    @apply flex flex-1 flex-col gap-4 p-4;
+  }
+
   .drawer-footer {
     @apply mt-auto flex shrink-0 flex-col gap-2 p-4 pt-0;
   }
