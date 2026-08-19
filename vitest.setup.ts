@@ -16,7 +16,7 @@ vi.stubGlobal(
   }),
 );
 
-vi.mock("@/hooks/use-mobile", () => ({
+vi.mock("@/hooks/useIsMobile", () => ({
   useIsMobile: vi.fn(function useIsMobile() {
     return false;
   }),
