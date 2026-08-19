@@ -37,10 +37,6 @@
     @apply pointer-events-auto fixed flex;
   }
 
-  .drawer-content {
-    @apply w-full max-w-128 mx-auto space-y-4;
-  }
-
   .drawer-handle {
     @apply relative z-10 flex shrink-0 cursor-grab transition-opacity duration-200;
 
@@ -53,8 +49,13 @@
     }
   }
 
+  .drawer-content {
+    @apply flex min-h-0 flex-1 flex-col overflow-hidden overscroll-contain rounded-[inherit];
+    @apply transition-opacity duration-300 ease-[cubic-bezier(0.45,1.005,0,1.005)] select-text;
+  }
+
   .drawer-header {
-    @apply mb-4;
+    @apply flex shrink-0 flex-col gap-0.5 p-4 pb-0 md:gap-1.5 md:text-left;
   }
 
   .drawer-title {
@@ -62,7 +63,11 @@
   }
 
   .drawer-description {
-    @apply text-muted-foreground text-sm;
+    @apply text-muted-foreground text-sm text-balance;
+  }
+
+  .drawer-footer {
+    @apply mt-auto flex shrink-0 flex-col gap-2 p-4 pt-0;
   }
 
   .drawer-actions {

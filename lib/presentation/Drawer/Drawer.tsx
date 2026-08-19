@@ -103,7 +103,14 @@ const DrawerContent = ({ className, ...props }: DrawerPrimitive.Content.Props) =
       <DrawerPrimitive.Viewport className="drawer-viewport" data-slot="drawer-viewport">
         <DrawerPopup>
           {showSwipeHandle && <DrawerSwipeHandle />}
-          <DrawerPrimitive.Content className={cn("drawer-content", className)} data-slot="drawer-content" {...props} />
+          <DrawerPrimitive.Content
+            className={cn(
+              "drawer-content group-data-nested-drawer-open/drawer-popup:opacity-0 group-data-nested-drawer-swiping/drawer-popup:opacity-100 group-data-swiping/drawer-popup:select-none",
+              className,
+            )}
+            data-slot="drawer-content"
+            {...props}
+          />
         </DrawerPopup>
       </DrawerPrimitive.Viewport>
     </DrawerPrimitive.Portal>
@@ -125,7 +132,13 @@ const DrawerSwipeHandle = ({ className, ...props }: React.ComponentProps<"div">)
 };
 
 const DrawerHeader = ({ className, ...props }: ComponentProps<"div">) => {
-  return <div className={cn("drawer-header", className)} data-slot="drawer-header" {...props} />;
+  return (
+    <div
+      className={cn("drawer-header group-data-[swipe-axis=y]/drawer-popup:text-center", className)}
+      data-slot="drawer-header"
+      {...props}
+    />
+  );
 };
 
 const DrawerTitle = ({ className, ...props }: DrawerPrimitive.Title.Props) => {
@@ -150,6 +163,10 @@ const DrawerActions = ({ className, ...props }: ComponentProps<"div">) => {
   return <div className={cn("drawer-actions", className)} data-slot="drawer-actions" {...props} />;
 };
 
+const DrawerFooter = ({ className, ...props }: ComponentProps<"div">) => {
+  return <div className={cn("drawer-footer", className)} data-slot="drawer-footer" {...props} />;
+};
+
 const DrawerClose = ({ className, ...props }: DrawerPrimitive.Close.Props) => {
   return <DrawerPrimitive.Close className={cn("drawer-close", className)} data-slot="drawer-close" {...props} />;
 };
@@ -161,6 +178,7 @@ Drawer.Title = DrawerTitle;
 Drawer.Description = DrawerDescription;
 Drawer.Body = DrawerBody;
 Drawer.Actions = DrawerActions;
+Drawer.Footer = DrawerFooter;
 Drawer.Close = DrawerClose;
 
 export { Drawer };
