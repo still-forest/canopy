@@ -52,7 +52,7 @@ const DrawerTrigger = ({ className, ...props }: DrawerPrimitive.Trigger.Props) =
 };
 
 const DrawerPopup = ({ className, children, ...props }: DrawerPrimitive.Popup.Props) => {
-  const { hasSnapPoints, modal, showSwipeHandle, swipeDirection } = useDrawer();
+  const { hasSnapPoints, swipeDirection } = useDrawer();
   const swipeAxis = swipeDirection === "down" || swipeDirection === "up" ? "y" : "x";
 
   return (
