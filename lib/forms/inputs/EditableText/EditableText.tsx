@@ -29,6 +29,7 @@ export const EditableText = ({
   const isControlled = controlledIsEditing !== undefined;
   const isEditing = isControlled ? controlledIsEditing : uncontrolledIsEditing;
   const [value, setValue] = useState(initialValue);
+  const isDirty = value !== initialValue;
 
   const setIsEditing = (value: boolean) => {
     if (!isControlled) setUncontrolledIsEditing(value);
@@ -40,8 +41,11 @@ export const EditableText = ({
   };
 
   const handleSave = () => {
-    onSave(value);
     setIsEditing(false);
+
+    if (isDirty) {
+      onSave(value);
+    }
   };
 
   const handleCancel = () => {
