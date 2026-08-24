@@ -1,4 +1,4 @@
-import { type PointerEvent, useState } from "react";
+import { type PointerEvent, useRef, useState } from "react";
 import { cn } from "@/utils";
 import "./EditableText.css";
 import { CheckIcon, XIcon } from "lucide-react";
@@ -10,6 +10,7 @@ export interface EditableTextProps {
   as?: EditableTextTypography;
   value: string;
   name: string;
+  label?: string;
   className?: string;
   onSave: (value: string) => void;
   isEditing?: boolean;
@@ -20,6 +21,7 @@ export const EditableText = ({
   as = "p",
   value: initialValue,
   name,
+  label,
   className,
   onSave,
   isEditing: controlledIsEditing,
@@ -31,6 +33,7 @@ export const EditableText = ({
   const [value, setValue] = useState(initialValue);
   const [lastSavedValue, setLastSavedValue] = useState(initialValue);
   const isDirty = value !== lastSavedValue;
+  const textareaRef = useRef<HTMLTextAreaElement>(null);
 
   const setIsEditing = (value: boolean) => {
     if (!isControlled) setUncontrolledIsEditing(value);
@@ -69,47 +72,54 @@ export const EditableText = ({
   // biome-ignore-start lint:noAutoFocus: Necessary for the mechanics of this component
   return (
     <div className={cn("editable-text", isEditing && "editable-text--editing")}>
-      <input
-        autoFocus
-        className={cn("grow", typographyClasses, className)}
-        name={name}
-        onBlur={() => {
-          if (isEditing) {
-            handleSave();
-          }
-        }}
-        onChange={(event) => setValue(event.target.value)}
-        onFocus={() => setIsEditing(true)}
-        onKeyDown={(event) => {
-          if (event.key === "Enter") handleSave();
-          if (event.key === "Escape") {
-            handleCancel();
-          }
-        }}
-        readOnly={!isEditing}
-        value={value}
-      />
-      <div className="editable-text-actions">
-        <Button
-          aria-label="Save edited text"
-          asIcon
-          className="editable-text-action"
-          icon={<CheckIcon />}
-          onClick={handleSave}
-          onPointerDown={preventInputBlur}
-          size="xs"
-          variant="ghost"
-        />
-        <Button
-          aria-label="Cancel editing text"
-          asIcon
-          className="editable-text-action"
-          icon={<XIcon />}
-          onClick={handleCancel}
-          onPointerDown={preventInputBlur}
-          size="xs"
-          variant="ghost"
-        />
+      <div className={cn("editable-text-group", isEditing && "editable-text-group--editing")}>
+        {isEditing ? (
+          <textarea
+            aria-label={label}
+            autoFocus
+            className={cn("grow", typographyClasses, className)}
+            defaultValue={value}
+            name={name}
+            onBlur={handleSave}
+            onFocus={() => setIsEditing(true)}
+            onKeyDown={(event) => {
+              if (event.key === "Enter") handleSave();
+              if (event.key === "Escape") {
+                handleCancel();
+              }
+            }}
+            ref={textareaRef}
+            rows={1}
+          />
+        ) : (
+          <button
+            className={cn("editable-text-button", typographyClasses, className)}
+            onClick={() => setIsEditing(true)}
+            type="button"
+          >
+            {value}
+          </button>
+        )}
+        <div className="editable-text-actions">
+          <Button
+            aria-label="Save edited text"
+            asIcon
+            icon={<CheckIcon />}
+            onClick={handleSave}
+            onPointerDown={preventInputBlur}
+            size="xs"
+            variant="ghost"
+          />
+          <Button
+            aria-label="Cancel editing text"
+            asIcon
+            icon={<XIcon />}
+            onClick={handleCancel}
+            onPointerDown={preventInputBlur}
+            size="xs"
+            variant="ghost"
+          />
+        </div>
       </div>
     </div>
   );

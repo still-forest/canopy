@@ -4,29 +4,43 @@
 @layer components {
   .editable-text {
     @apply w-full;
-    @apply flex items-center;
 
-    input {
-      @apply outline-none;
+    .editable-text-group {
+      @apply flex items-center w-full;
+
+      &.editable-text-group--editing {
+        @apply outline-[1.5px] outline-offset-2 rounded-[2px];
+      }
+
+      /* Grows with wrapped text, so the box matches the button it replaces. Overflow is hidden
+         because the content box runs a few pixels past the line box, which raises a scrollbar. */
+      textarea {
+        @apply field-sizing-content resize-none overflow-hidden;
+        @apply grow outline-none;
+      }
     }
 
-    &:hover {
-      @apply outline-[1.5px] outline-offset-2 rounded-[2px];
+    .editable-text-button {
+      @apply cursor-text text-left grow w-full;
+
+      &:hover {
+        @apply outline-[1.5px] outline-offset-2 rounded-[2px];
+      }
     }
 
     .editable-text-actions {
-      @apply ml-1 my-auto flex items-center invisible;
-    }
+      @apply ml-1 my-auto flex items-center hidden;
 
-    .editable-text-action {
-      @apply text-muted-foreground hover:text-foreground;
+      button {
+        @apply text-muted-foreground hover:text-foreground;
+      }
     }
 
     &.editable-text--editing {
       @apply outline-[1.5px] outline-offset-2 rounded-[2px];
 
       .editable-text-actions {
-        @apply visible;
+        @apply inline-flex;
       }
     }
   }
