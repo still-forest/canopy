@@ -1,4 +1,4 @@
-import { type PointerEvent, useRef, useState } from "react";
+import { type ChangeEvent, type PointerEvent, useRef, useState } from "react";
 import { cn } from "@/utils";
 import "./EditableText.css";
 import { CheckIcon, XIcon } from "lucide-react";
@@ -32,12 +32,12 @@ export const EditableText = ({
   const isEditing = isControlled ? controlledIsEditing : uncontrolledIsEditing;
   const [value, setValue] = useState(initialValue);
   const [lastSavedValue, setLastSavedValue] = useState(initialValue);
-  const isDirty = value !== lastSavedValue;
   const textareaRef = useRef<HTMLTextAreaElement>(null);
 
-  const setIsEditing = (value: boolean) => {
-    if (!isControlled) setUncontrolledIsEditing(value);
-    onEditingChange?.(value);
+  const setIsEditing = (editing: boolean) => {
+    if (editing) setValue(initialValue);
+    if (!isControlled) setUncontrolledIsEditing(editing);
+    onEditingChange?.(editing);
   };
 
   const preventInputBlur = (event: PointerEvent<HTMLButtonElement>) => {
@@ -45,11 +45,12 @@ export const EditableText = ({
   };
 
   const handleSave = () => {
+    const trimmedValue = value.replace(/\s+/g, " ").trim();
     setIsEditing(false);
 
-    if (isDirty) {
-      onSave(value);
-      setLastSavedValue(value);
+    if (trimmedValue && trimmedValue !== lastSavedValue) {
+      onSave(trimmedValue);
+      setLastSavedValue(trimmedValue);
     }
   };
 
@@ -78,18 +79,22 @@ export const EditableText = ({
             aria-label={label}
             autoFocus
             className={cn("grow", typographyClasses, className)}
-            defaultValue={value}
             name={name}
             onBlur={handleSave}
+            onChange={(event: ChangeEvent<HTMLTextAreaElement>) => setValue(event.target.value)}
             onFocus={() => setIsEditing(true)}
             onKeyDown={(event) => {
-              if (event.key === "Enter") handleSave();
+              if (event.key === "Enter") {
+                event.preventDefault();
+                handleSave();
+              }
               if (event.key === "Escape") {
                 handleCancel();
               }
             }}
             ref={textareaRef}
             rows={1}
+            value={value}
           />
         ) : (
           <button
@@ -97,7 +102,7 @@ export const EditableText = ({
             onClick={() => setIsEditing(true)}
             type="button"
           >
-            {value}
+            {initialValue}
           </button>
         )}
         <div className="editable-text-actions">
