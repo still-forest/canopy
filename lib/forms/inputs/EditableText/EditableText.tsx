@@ -1,4 +1,4 @@
-import { type ChangeEvent, type PointerEvent, useRef, useState } from "react";
+import { type ChangeEvent, type PointerEvent, useState } from "react";
 import { cn } from "@/utils";
 import "./EditableText.css";
 import { CheckIcon, XIcon } from "lucide-react";
@@ -32,7 +32,6 @@ export const EditableText = ({
   const isEditing = isControlled ? controlledIsEditing : uncontrolledIsEditing;
   const [value, setValue] = useState(initialValue);
   const [lastSavedValue, setLastSavedValue] = useState(initialValue);
-  const textareaRef = useRef<HTMLTextAreaElement>(null);
 
   const setIsEditing = (editing: boolean) => {
     if (editing) setValue(initialValue);
@@ -92,7 +91,6 @@ export const EditableText = ({
                 handleCancel();
               }
             }}
-            ref={textareaRef}
             rows={1}
             value={value}
           />
