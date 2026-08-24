@@ -79,7 +79,7 @@
     "@vitejs/plugin-react": "6.0.5",
     "@vitest/browser": "4.1.11",
     "@vitest/coverage-v8": "4.1.11",
-    "jsdom": "29.1.1",
+    "jsdom": "30.0.1",
     "react": "19.2.8",
     "react-dom": "19.2.8",
     "release-it": "20.2.1",
