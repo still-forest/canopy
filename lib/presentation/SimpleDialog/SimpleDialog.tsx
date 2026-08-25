@@ -9,9 +9,19 @@ interface Props {
   open?: boolean;
   onOpenChange?: (open: boolean) => void;
   ariaDescription?: string;
+  className?: string;
 }
 
-export const SimpleDialog = ({ trigger, children, title, description, open, onOpenChange, ariaDescription }: Props) => {
+export const SimpleDialog = ({
+  trigger,
+  children,
+  title,
+  description,
+  open,
+  onOpenChange,
+  ariaDescription,
+  className,
+}: Props) => {
   const isControlled = open !== undefined;
   const [openState, setOpenState] = useState<boolean>(isControlled ? open : false);
 
@@ -39,7 +49,7 @@ export const SimpleDialog = ({ trigger, children, title, description, open, onOp
   return (
     <Dialog onOpenChange={handleOpenChange} open={openState}>
       {trigger && <Dialog.Trigger render={trigger} />}
-      <Dialog.Content>
+      <Dialog.Content className={className}>
         {(title || description) && (
           <Dialog.Header>
             {title && <Dialog.Title>{title}</Dialog.Title>}
