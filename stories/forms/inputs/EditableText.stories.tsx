@@ -64,3 +64,18 @@ export const TypographyVariantsEditing: Story = {
     </Flex>
   ),
 };
+
+export const TypographyVariantsReadonly: Story = {
+  render: () => (
+    <Flex direction="col" gap="4">
+      <EditableText as="h1" name="h1" onSave={handleSave} readonly value="Heading 1" />
+      <EditableText as="h2" name="h2" onSave={handleSave} readonly value="Heading 2" />
+      <EditableText as="h3" name="h3" onSave={handleSave} readonly value="Heading 3" />
+      <EditableText as="h4" name="h4" onSave={handleSave} readonly value="Heading 4" />
+      <EditableText as="h5" name="h5" onSave={handleSave} readonly value="Heading 5" />
+      <EditableText as="h6" name="h6" onSave={handleSave} readonly value="Heading 6" />
+      <EditableText as="p" name="p" onSave={handleSave} readonly value="Paragraph" />
+      <EditableText as="label" name="label" onSave={handleSave} readonly value="Label" />
+    </Flex>
+  ),
+};

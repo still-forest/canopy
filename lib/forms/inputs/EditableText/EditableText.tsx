@@ -15,6 +15,7 @@ export interface EditableTextProps {
   onSave: (value: string) => void;
   isEditing?: boolean;
   onEditingChange?: (isEditing: boolean) => void;
+  readonly?: boolean;
 }
 
 export const EditableText = ({
@@ -26,6 +27,7 @@ export const EditableText = ({
   onSave,
   isEditing: controlledIsEditing,
   onEditingChange,
+  readonly = false,
 }: EditableTextProps) => {
   const [uncontrolledIsEditing, setUncontrolledIsEditing] = useState(false);
   const isControlled = controlledIsEditing !== undefined;
@@ -68,6 +70,10 @@ export const EditableText = ({
     as === "h6" && "heading-6",
     as === "label" && "label",
   );
+
+  if (readonly) {
+    return <span className={cn(typographyClasses, className)}>{value}</span>;
+  }
 
   // biome-ignore-start lint:noAutoFocus: Necessary for the mechanics of this component
   return (
