@@ -72,6 +72,13 @@ describe("EditableText", () => {
     expect(onSave).toHaveBeenCalledWith("Pantry");
   });
 
+  it("does not allow editing when readonly", async () => {
+    await renderComponent({ readonly: true });
+
+    expect(screen.getByText("Kitchen")).toBeInTheDocument();
+    expect(screen.queryByRole("button")).not.toBeInTheDocument();
+  });
+
   it("does not save when the value is unchanged", async () => {
     const { onSave, user } = await renderComponent();
 
