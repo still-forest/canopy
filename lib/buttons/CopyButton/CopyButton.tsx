@@ -8,7 +8,7 @@ interface CopyButtonProps extends Omit<ButtonProps, "onClick" | "disabled"> {
 
 export const CopyButton = ({ content, ...props }: CopyButtonProps) => {
   const [recentlyCopied, setRecentlyCopied] = useState(false);
-  const timeoutRef = useRef<NodeJS.Timeout | null>(null);
+  const timeoutRef = useRef<ReturnType<typeof setTimeout> | null>(null);
 
   useEffect(() => {
     return () => {
