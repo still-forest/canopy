@@ -7,6 +7,7 @@ import { cn } from "@/utils";
 interface SideLink {
   slug: string;
   title: string;
+  tooltip?: string;
   icon: React.ElementType;
   onClick?: () => void;
   external?: boolean;
@@ -40,7 +41,7 @@ const MenuSubSection = ({ itemSet, activeSlug }: MenuSubSectionProps) => {
     <>
       {itemSet.links.map((item) => (
         <BaseSidebar.MenuItem className="hover:cursor-pointer" key={item.slug} onClick={item.onClick}>
-          <BaseSidebar.MenuButton active={activeSlug === item.slug}>
+          <BaseSidebar.MenuButton active={activeSlug === item.slug} tooltip={item.tooltip}>
             <item.icon />
             <MenuItemText>{item.title}</MenuItemText>
             {item.external && <SquareArrowOutUpRight size={12} strokeWidth={1.5} />}

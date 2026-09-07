@@ -15,6 +15,7 @@ const itemSet1 = [
   {
     slug: "home",
     title: "Home",
+    tooltip: "Home",
     icon: Home,
     onClick: () => {
       window.location.href = "/";
@@ -23,6 +24,7 @@ const itemSet1 = [
   {
     slug: "summary",
     title: "Summary",
+    tooltip: "Summary",
     icon: LayoutDashboard,
     onClick: () => {
       window.alert("summary");
@@ -31,6 +33,7 @@ const itemSet1 = [
   {
     slug: "details",
     title: "Details",
+    tooltip: "Details",
     icon: FolderTree,
     onClick: () => {
       window.alert("details");
@@ -42,6 +45,7 @@ const itemSet2 = [
   {
     slug: "storybook",
     title: "Storybook",
+    tooltip: "Storybook",
     icon: BookType,
     external: true,
     onClick: () => {
@@ -54,6 +58,7 @@ const itemSet3 = [
   {
     slug: "settings",
     title: "Settings",
+    tooltip: "Settings",
     icon: Settings2,
     onClick: () => {
       window.alert("settings");
@@ -62,6 +67,7 @@ const itemSet3 = [
   {
     slug: "logout",
     title: "Log out",
+    tooltip: "Log out",
     icon: LogOut,
     onClick: () => {
       window.alert("logout");
