@@ -9,7 +9,7 @@ import "./Sidebar.css";
 type SidebarMenuButtonProps = useRender.ComponentProps<"button"> &
   React.ComponentProps<"button"> & {
     active?: boolean;
-    tooltip?: string;
+    tooltip?: string | React.ComponentProps<typeof TooltipContent>;
     forceTooltip?: boolean;
     size?: "default" | "lg";
   };
@@ -36,11 +36,12 @@ export const SidebarMenuButton = ({
       },
       mergedButtonProps,
     ),
-    render: !tooltip ? render : TooltipTrigger,
+    render: !tooltip ? render : <TooltipTrigger render={render} />,
     state: {
       slot: "sidebar-menu-button",
       sidebar: "menu-button",
       size,
+      active,
     },
   });
 
@@ -48,12 +49,16 @@ export const SidebarMenuButton = ({
     return comp;
   }
 
+  if (typeof tooltip === "string") {
+    tooltip = {
+      children: tooltip,
+    };
+  }
+
   return (
     <Tooltip>
       {comp}
-      <TooltipContent align="center" hidden={hideTooltip} side="right">
-        {tooltip}
-      </TooltipContent>
+      <TooltipContent align="center" hidden={hideTooltip} side="right" {...tooltip} />
     </Tooltip>
   );
 };
