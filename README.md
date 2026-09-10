@@ -86,19 +86,19 @@ pnpm build:watch
 Then expose it locally for linking:
 
 ```bash
-pnpm link
+pnpm link .
 ```
 
 2. In the consuming package, link package.json to the locally built version:
 
 ```bash
-pnpm link @still-forest/canopy
+pnpm link ~/Development/path/to/canopy
 ```
 
 3. When done, cleanup:
 
 ```bash
-pnpm unlink @still-forest/canopy
+pnpm unlink ~/Development/path/to/canopy
 pnpm store prune # clear pnpm's global store
 ```
 
