@@ -9,5 +9,6 @@ export * from "./MultiSelectInput";
 export * from "./NativeSelect";
 export * from "./SelectInput";
 export * from "./SelectPicker";
+export * from "./Slider";
 export * from "./Textarea";
 export * from "./types";
