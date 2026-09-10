@@ -120,3 +120,19 @@ export const WithSizeAndLabel: Story = {
     </Flex>
   ),
 };
+
+export const HorizontalOrientation: Story = {
+  render: () => (
+    <Flex direction="col" gap="8">
+      <TextField {...defaultProps} label="Some value:" orientation="horizontal" />
+      <TextField
+        {...defaultProps}
+        error="What'd you do?!"
+        label="Some value:"
+        note="Sorry, buddy. You got me confused with Fred Flintstone."
+        orientation="horizontal"
+        placeholder="Do alligators alligate?"
+      />
+    </Flex>
+  ),
+};

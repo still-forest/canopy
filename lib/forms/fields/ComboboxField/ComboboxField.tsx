@@ -3,6 +3,7 @@ import { Field } from "@/forms/Field";
 import { ComboboxInput, type ComboboxInputProps } from "@/forms/inputs/ComboboxInput";
 
 export interface ComboboxFieldProps extends ComboboxInputProps {
+  orientation?: "vertical" | "horizontal";
   name: string;
   id?: string;
   label?: string;
@@ -12,13 +13,23 @@ export interface ComboboxFieldProps extends ComboboxInputProps {
   error?: string;
 }
 
-export const ComboboxField = ({ name, id, label, labelClassName, hint, note, error, ...props }: ComboboxFieldProps) => {
+export const ComboboxField = ({
+  orientation = "vertical",
+  name,
+  id,
+  label,
+  labelClassName,
+  hint,
+  note,
+  error,
+  ...props
+}: ComboboxFieldProps) => {
   const inputId = id ?? name;
   const errorId = `${inputId}-error`;
   const isInvalid = !!error;
 
   return (
-    <Field data-invalid={isInvalid}>
+    <Field data-invalid={isInvalid} orientation={orientation}>
       {label && (
         <Field.LabelGroup>
           <Field.Label className={labelClassName} htmlFor={inputId}>

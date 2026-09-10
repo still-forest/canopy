@@ -2,19 +2,29 @@ import { Hint } from "@/components";
 import { Field, SelectInput, type SelectInputProps } from "@/forms";
 
 export interface SelectFieldProps extends SelectInputProps {
+  orientation?: "vertical" | "horizontal";
   label?: string;
   hint?: string;
   note?: string;
   error?: string;
 }
 
-export const SelectField = ({ name, label, hint, note, error, id, ...props }: SelectFieldProps) => {
+export const SelectField = ({
+  orientation = "vertical",
+  name,
+  label,
+  hint,
+  note,
+  error,
+  id,
+  ...props
+}: SelectFieldProps) => {
   const inputId = id ?? name;
   const errorId = `${inputId}-error`;
   const isInvalid = !!error;
 
   return (
-    <Field data-invalid={isInvalid}>
+    <Field data-invalid={isInvalid} orientation={orientation}>
       {label && (
         <Field.LabelGroup>
           <Field.Label htmlFor={inputId}>{label}</Field.Label>

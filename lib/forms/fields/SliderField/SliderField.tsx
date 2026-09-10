@@ -5,6 +5,7 @@ import { cn } from "@/utils";
 
 interface SliderFieldProps extends Omit<React.ComponentProps<typeof BaseSlider>, "value" | "defaultValue"> {
   name: string;
+  orientation?: "vertical" | "horizontal";
   size?: "xs" | "sm" | "md" | "lg" | "xl";
   thumbClassName?: string;
   trackClassName?: string;
@@ -21,6 +22,7 @@ interface SliderFieldProps extends Omit<React.ComponentProps<typeof BaseSlider>,
 export const SliderField = ({
   id,
   name,
+  orientation = "vertical",
   size = "md",
   label,
   labelClassName,
@@ -46,7 +48,7 @@ export const SliderField = ({
   const isInvalid = !!error;
 
   return (
-    <Field data-invalid={isInvalid}>
+    <Field data-invalid={isInvalid} orientation={orientation}>
       {(label || hint) && (
         <Field.LabelGroup>
           {label && (

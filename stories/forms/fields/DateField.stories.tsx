@@ -62,3 +62,11 @@ export const WithSize: Story = {
     </Flex>
   ),
 };
+
+export const HorizontalOrientation: Story = {
+  args: {
+    ...defaultProps,
+    label: "Some date:",
+    orientation: "horizontal",
+  },
+};

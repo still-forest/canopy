@@ -9,6 +9,7 @@ import type { ButtonSize } from "@/types";
 import { cn } from "@/utils";
 
 interface DatePickerFieldProps {
+  orientation?: "vertical" | "horizontal";
   onDateSelection: (date: Date) => void;
   initialValue?: Date;
   className?: string;
@@ -22,6 +23,7 @@ interface DatePickerFieldProps {
 }
 
 export const DatePickerField = ({
+  orientation = "vertical",
   onDateSelection,
   initialValue,
   className,
@@ -52,7 +54,7 @@ export const DatePickerField = ({
   const isInvalid = !!error;
 
   return (
-    <Field data-invalid={isInvalid}>
+    <Field data-invalid={isInvalid} orientation={orientation}>
       {label && (
         <Field.LabelGroup>
           <Field.Label htmlFor={inputId}>{label}</Field.Label>

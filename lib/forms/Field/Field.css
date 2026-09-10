@@ -3,7 +3,7 @@
 
 @layer components {
   .field-label {
-    @apply gap-2 text-sm font-medium flex w-fit leading-snug;
+    @apply gap-2 text-sm font-medium flex w-fit leading-snug text-nowrap;
 
     &:has([data-checked]) {
       @apply bg-primary/5 border-primary/30;
@@ -59,6 +59,20 @@
         & > [data-slot="checkbox"],
         & > [role="radio"] {
           @apply mt-0.5; /* align checkbox with text */
+        }
+      }
+
+      /* Label + control share a row; description/error stack beneath the control */
+      &:not(:has(> .field-content)) {
+        @apply grid grid-cols-[auto_minmax(0,1fr)] items-center;
+
+        & > .field-label-group,
+        & > .field-label {
+          @apply col-start-1;
+        }
+
+        & > :not(.field-label-group, .field-label) {
+          @apply col-start-2;
         }
       }
     }

@@ -90,3 +90,11 @@ export const WithEverything: Story = {
     defaultValue: 20,
   },
 };
+
+export const HorizontalOrientation: Story = {
+  args: {
+    ...defaultProps,
+    label: "Some value:",
+    orientation: "horizontal",
+  },
+};

@@ -94,6 +94,14 @@ export const WithError: Story = {
   },
 };
 
+export const HorizontalOrientation: Story = {
+  args: {
+    ...defaultProps,
+    label: "Select a thing:",
+    orientation: "horizontal",
+  },
+};
+
 export const Controlled: Story = {
   render: () => {
     const [selected, setSelected] = useState<string[]>(allFlatValues);

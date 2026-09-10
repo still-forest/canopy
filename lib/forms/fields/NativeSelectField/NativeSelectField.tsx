@@ -15,6 +15,7 @@ export interface NativeSelectFieldOption {
 }
 
 export interface NativeSelectFieldProps extends Omit<ComponentProps<"select">, "dir" | "size" | "onChange"> {
+  orientation?: "vertical" | "horizontal";
   name: string;
   value?: string;
   onChange: (value: string) => void;
@@ -30,6 +31,7 @@ export interface NativeSelectFieldProps extends Omit<ComponentProps<"select">, "
 }
 
 const NativeSelectField = ({
+  orientation = "vertical",
   name,
   defaultValue,
   options,
@@ -65,7 +67,7 @@ const NativeSelectField = ({
   };
 
   return (
-    <Field data-invalid={isInvalid}>
+    <Field data-invalid={isInvalid} orientation={orientation}>
       {label && (
         <Field.LabelGroup>
           <Field.Label className={labelClassName} htmlFor={inputId}>

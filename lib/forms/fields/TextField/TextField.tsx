@@ -3,6 +3,7 @@ import { Field } from "@/forms";
 import { Input, type InputProps } from "@/forms/inputs";
 
 export interface TextFieldProps extends InputProps {
+  orientation?: "vertical" | "horizontal";
   name: string;
   label?: string;
   labelClassName?: string;
@@ -13,6 +14,7 @@ export interface TextFieldProps extends InputProps {
 }
 
 const TextField = ({
+  orientation = "vertical",
   id,
   name,
   type = "text",
@@ -26,7 +28,7 @@ const TextField = ({
 }: TextFieldProps) => {
   const isInvalid = !!error;
   return (
-    <Field data-invalid={isInvalid}>
+    <Field data-invalid={isInvalid} orientation={orientation}>
       {label && (
         <Field.LabelGroup>
           <Field.Label className={labelClassName} htmlFor={id || name}>
