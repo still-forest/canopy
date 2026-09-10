@@ -61,6 +61,20 @@
           @apply mt-0.5; /* align checkbox with text */
         }
       }
+
+      /* Label + control share a row; description/error stack beneath the control */
+      &:not(:has(> .field-content)) {
+        @apply grid grid-cols-[auto_minmax(0,1fr)] items-center;
+
+        & > .field-label-group,
+        & > .field-label {
+          @apply col-start-1;
+        }
+
+        & > :not(.field-label-group, .field-label) {
+          @apply col-start-2;
+        }
+      }
     }
 
     &[data-invalid="true"] {

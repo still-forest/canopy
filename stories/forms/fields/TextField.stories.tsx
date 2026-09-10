@@ -122,12 +122,17 @@ export const WithSizeAndLabel: Story = {
 };
 
 export const HorizontalOrientation: Story = {
-  args: {
-    ...defaultProps,
-    placeholder: "Do alligators alligate?",
-    label: "Some value:",
-    note: "Sorry, buddy. You got me confused with Fred Flintstone.",
-    error: "What'd you do?!",
-    orientation: "horizontal",
-  },
+  render: () => (
+    <Flex direction="col" gap="8">
+      <TextField {...defaultProps} label="Some value:" orientation="horizontal" />
+      <TextField
+        {...defaultProps}
+        error="What'd you do?!"
+        label="Some value:"
+        note="Sorry, buddy. You got me confused with Fred Flintstone."
+        orientation="horizontal"
+        placeholder="Do alligators alligate?"
+      />
+    </Flex>
+  ),
 };
