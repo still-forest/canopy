@@ -10,7 +10,6 @@ interface SliderFieldProps extends SliderProps {
   hint?: string;
   note?: string;
   error?: string;
-  value?: number | number[];
 }
 
 export const SliderField = ({
