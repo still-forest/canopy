@@ -91,10 +91,10 @@ export const WithEverything: Story = {
   },
 };
 
-export const HorizontalOrientation: Story = {
+export const HorizontalLabelOrientation: Story = {
   args: {
     ...defaultProps,
     label: "Some value:",
-    orientation: "horizontal",
+    labelOrientation: "horizontal",
   },
 };

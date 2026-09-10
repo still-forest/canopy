@@ -11,7 +11,7 @@ interface SliderFieldProps extends Omit<React.ComponentProps<typeof BaseSlider>,
   trackClassName?: string;
   label?: string;
   labelClassName?: string;
-  labelOrientation?: "top" | "left";
+  labelOrientation?: "vertical" | "horizontal";
   hint?: string;
   note?: string;
   error?: string;
@@ -22,11 +22,11 @@ interface SliderFieldProps extends Omit<React.ComponentProps<typeof BaseSlider>,
 export const SliderField = ({
   id,
   name,
-  orientation = "vertical",
+  orientation = "horizontal",
   size = "md",
   label,
   labelClassName,
-  labelOrientation = "top",
+  labelOrientation = "vertical",
   hint,
   note,
   error,
@@ -48,7 +48,7 @@ export const SliderField = ({
   const isInvalid = !!error;
 
   return (
-    <Field data-invalid={isInvalid} orientation={orientation}>
+    <Field data-invalid={isInvalid} orientation={labelOrientation}>
       {(label || hint) && (
         <Field.LabelGroup>
           {label && (
@@ -64,6 +64,7 @@ export const SliderField = ({
         defaultValue={defaultValue}
         id={inputId}
         name={name}
+        orientation={orientation}
         thumbClassName={cn(
           {
             "size-2": size === "xs",
