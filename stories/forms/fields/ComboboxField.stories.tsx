@@ -87,3 +87,11 @@ export const WithError: Story = {
     error: "What'd you do?!",
   },
 };
+
+export const HorizontalOrientation: Story = {
+  args: {
+    ...defaultProps,
+    label: "Select a thing:",
+    orientation: "horizontal",
+  },
+};

@@ -4,13 +4,23 @@ import { Field } from "@/forms";
 import { ButtonRadioInput, type ButtonRadioInputProps } from "@/forms/inputs/ButtonRadioInput";
 
 interface ButtonRadioFieldProps extends ButtonRadioInputProps {
+  orientation?: "vertical" | "horizontal";
   label?: string;
   hint?: string;
   error?: string;
   note?: string;
 }
 
-export const ButtonRadioField = ({ id, name, label, hint, error, note, ...inputProps }: ButtonRadioFieldProps) => {
+export const ButtonRadioField = ({
+  orientation = "vertical",
+  id,
+  name,
+  label,
+  hint,
+  error,
+  note,
+  ...inputProps
+}: ButtonRadioFieldProps) => {
   const defaultId = useId();
   const baseId = id ?? defaultId;
   const labelId = `${baseId}-label`;
@@ -20,7 +30,7 @@ export const ButtonRadioField = ({ id, name, label, hint, error, note, ...inputP
   const describedBy = [note ? noteId : null, error ? errorId : null].filter(Boolean).join(" ") || undefined;
 
   return (
-    <Field data-invalid={!!error}>
+    <Field data-invalid={!!error} orientation={orientation}>
       {label && (
         <Field.LabelGroup>
           <Field.Label id={labelId}>{label}</Field.Label>

@@ -4,6 +4,7 @@ import { Field, InputGroup } from "@/forms";
 
 interface PasswordFieldProps extends Omit<ComponentProps<typeof InputGroup.Input>, "type" | "size"> {
   name: string;
+  orientation?: "vertical" | "horizontal";
   size?: "xs" | "sm" | "md" | "lg" | "xl";
   label?: string;
   labelClassName?: string;
@@ -11,7 +12,16 @@ interface PasswordFieldProps extends Omit<ComponentProps<typeof InputGroup.Input
   error?: string;
 }
 
-export const PasswordField = ({ id, name, label, labelClassName, note, error, ...props }: PasswordFieldProps) => {
+export const PasswordField = ({
+  orientation = "vertical",
+  id,
+  name,
+  label,
+  labelClassName,
+  note,
+  error,
+  ...props
+}: PasswordFieldProps) => {
   const [showPassword, setShowPassword] = useState(false);
 
   const togglePassword = () => {
@@ -21,7 +31,7 @@ export const PasswordField = ({ id, name, label, labelClassName, note, error, ..
   const isInvalid = !!error;
 
   return (
-    <Field data-invalid={isInvalid}>
+    <Field data-invalid={isInvalid} orientation={orientation}>
       {label && (
         <Field.Label className={labelClassName} htmlFor={id || name}>
           {label}

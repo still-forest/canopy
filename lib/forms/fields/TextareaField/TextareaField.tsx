@@ -3,6 +3,7 @@ import { Field } from "@/forms";
 import { Textarea } from "@/forms/inputs";
 
 export interface TextareaFieldProps extends React.ComponentProps<"textarea"> {
+  orientation?: "vertical" | "horizontal";
   name: string;
   label?: string;
   labelClassName?: string;
@@ -14,6 +15,7 @@ export interface TextareaFieldProps extends React.ComponentProps<"textarea"> {
 }
 
 export function TextareaField({
+  orientation = "vertical",
   id,
   label,
   name,
@@ -28,7 +30,7 @@ export function TextareaField({
   const isInvalid = !!error;
 
   return (
-    <Field data-invalid={isInvalid}>
+    <Field data-invalid={isInvalid} orientation={orientation}>
       {label && (
         <Field.LabelGroup>
           <Field.Label className={labelClassName} htmlFor={id || name}>

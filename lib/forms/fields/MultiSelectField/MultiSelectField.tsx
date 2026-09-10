@@ -3,6 +3,7 @@ import { Field } from "@/forms/Field";
 import { MultiSelectInput, type MultiSelectInputProps } from "@/forms/inputs/MultiSelectInput";
 
 export interface MultiSelectFieldProps extends MultiSelectInputProps {
+  orientation?: "vertical" | "horizontal";
   name: string;
   id?: string;
   label?: string;
@@ -13,6 +14,7 @@ export interface MultiSelectFieldProps extends MultiSelectInputProps {
 }
 
 export const MultiSelectField = ({
+  orientation = "vertical",
   name,
   id,
   label,
@@ -27,7 +29,7 @@ export const MultiSelectField = ({
   const isInvalid = !!error;
 
   return (
-    <Field data-invalid={isInvalid}>
+    <Field data-invalid={isInvalid} orientation={orientation}>
       {label && (
         <Field.LabelGroup>
           <Field.Label className={labelClassName} htmlFor={inputId}>

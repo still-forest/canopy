@@ -176,6 +176,14 @@ export const WithMultipleGroups: Story = {
   },
 };
 
+export const HorizontalOrientation: Story = {
+  args: {
+    ...defaultProps,
+    label: "Select a thing:",
+    orientation: "horizontal",
+  },
+};
+
 const ControlledInput = () => {
   const [value, setValue] = useState<string | null>("marge");
   return (

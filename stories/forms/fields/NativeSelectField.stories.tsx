@@ -100,6 +100,14 @@ export const WithSize: Story = {
   ),
 };
 
+export const HorizontalOrientation: Story = {
+  args: {
+    ...defaultProps,
+    label: "Select a thing:",
+    orientation: "horizontal",
+  },
+};
+
 export const WithMultipleGroups: Story = {
   args: {
     ...defaultProps,

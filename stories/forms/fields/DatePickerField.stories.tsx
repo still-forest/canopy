@@ -79,3 +79,11 @@ export const WithEverything: Story = {
     note: "Select a date, or else",
   },
 };
+
+export const HorizontalOrientation: Story = {
+  args: {
+    ...defaultProps,
+    label: "Select a date",
+    orientation: "horizontal",
+  },
+};

@@ -217,3 +217,11 @@ export const WithLabelOnSelection: Story = {
     );
   },
 };
+
+export const HorizontalOrientation: Story = {
+  args: {
+    ...defaultProps,
+    label: "Select a character:",
+    orientation: "horizontal",
+  },
+};
