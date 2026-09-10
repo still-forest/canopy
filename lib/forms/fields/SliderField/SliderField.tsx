@@ -6,7 +6,7 @@ interface SliderFieldProps extends SliderProps {
   orientation?: "vertical" | "horizontal";
   label?: string;
   labelClassName?: string;
-  labelOrientation?: "top" | "left";
+  labelOrientation?: "vertical" | "horizontal";
   hint?: string;
   note?: string;
   error?: string;
@@ -15,10 +15,10 @@ interface SliderFieldProps extends SliderProps {
 export const SliderField = ({
   id,
   name,
-  orientation = "vertical",
+  orientation = "horizontal",
   label,
   labelClassName,
-  labelOrientation = "top",
+  labelOrientation = "vertical",
   hint,
   note,
   error,
@@ -28,7 +28,7 @@ export const SliderField = ({
   const isInvalid = !!error;
 
   return (
-    <Field data-invalid={isInvalid} orientation={orientation}>
+    <Field data-invalid={isInvalid} orientation={labelOrientation}>
       {(label || hint) && (
         <Field.LabelGroup>
           {label && (
@@ -39,7 +39,7 @@ export const SliderField = ({
           {hint && <Hint content={hint} />}
         </Field.LabelGroup>
       )}
-      <Slider aria-invalid={error ? true : undefined} id={inputId} name={name} {...props} />
+      <Slider aria-invalid={error ? true : undefined} id={inputId} name={name} orientation={orientation} {...props} />
       {note && <Field.Description>{note}</Field.Description>}
       {error && <Field.Error>{error}</Field.Error>}
     </Field>
