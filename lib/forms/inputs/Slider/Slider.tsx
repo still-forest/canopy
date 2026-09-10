@@ -6,12 +6,14 @@ export interface SliderProps extends Omit<React.ComponentProps<typeof BaseSlider
   thumbClassName?: string;
   trackClassName?: string;
   defaultValue?: number | number[];
+  value?: number | number[];
 }
 
 export const Slider = ({
   size = "md",
   thumbClassName,
   trackClassName,
+  value: valueProp,
   defaultValue: defaultValueProp,
   ...props
 }: SliderProps) => {
@@ -21,6 +23,7 @@ export const Slider = ({
         ? defaultValueProp
         : [defaultValueProp]
       : undefined;
+  const value = valueProp !== undefined ? (Array.isArray(valueProp) ? valueProp : [valueProp]) : undefined;
 
   return (
     <BaseSlider
@@ -46,6 +49,7 @@ export const Slider = ({
         },
         trackClassName,
       )}
+      value={value}
       {...props}
     />
   );
