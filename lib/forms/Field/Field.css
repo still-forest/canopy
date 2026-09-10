@@ -3,7 +3,7 @@
 
 @layer components {
   .field-label {
-    @apply gap-2 text-sm font-medium flex w-fit leading-snug;
+    @apply gap-2 text-sm font-medium flex w-fit leading-snug text-nowrap;
 
     &:has([data-checked]) {
       @apply bg-primary/5 border-primary/30;

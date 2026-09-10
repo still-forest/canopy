@@ -120,3 +120,14 @@ export const WithSizeAndLabel: Story = {
     </Flex>
   ),
 };
+
+export const HorizontalOrientation: Story = {
+  args: {
+    ...defaultProps,
+    placeholder: "Do alligators alligate?",
+    label: "Some value:",
+    note: "Sorry, buddy. You got me confused with Fred Flintstone.",
+    error: "What'd you do?!",
+    orientation: "horizontal",
+  },
+};
