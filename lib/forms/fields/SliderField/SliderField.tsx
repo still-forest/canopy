@@ -64,6 +64,7 @@ export const SliderField = ({
         defaultValue={defaultValue}
         id={inputId}
         name={name}
+        orientation={orientation}
         thumbClassName={cn(
           {
             "size-2": size === "xs",
