@@ -22,7 +22,7 @@ const Content = ({
 }: PopoverPrimitive.Popup.Props &
   Pick<PopoverPrimitive.Positioner.Props, "align" | "alignOffset" | "side" | "sideOffset">) => {
   return (
-    <PopoverPrimitive.Portal className="popover-portal">
+    <PopoverPrimitive.Portal data-slot="popover-portal">
       <PopoverPrimitive.Positioner
         align={align}
         alignOffset={alignOffset}

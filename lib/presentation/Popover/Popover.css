@@ -2,10 +2,6 @@
 @reference "@/styles/tokens.css";
 
 @layer components {
-  .popover-portal {
-    @apply relative;
-  }
-
   .popover-positioner {
     @apply isolate z-popup;
   }
