@@ -58,7 +58,7 @@
     "lucide-react": "^1.39.0"
   },
   "devDependencies": {
-    "@biomejs/biome": "2.5.11",
+    "@biomejs/biome": "2.5.12",
     "@still-forest/biomejs-config": "2.2.0",
     "@storybook/addon-docs": "10.6.0",
     "@storybook/addon-themes": "10.6.0",
