@@ -50,7 +50,6 @@
     "release:dry-run": "release-it --dry-run"
   },
   "dependencies": {
-    "@base-ui/react": "^1.7.0",
     "@daypicker/react": "^10.0.1",
     "class-variance-authority": "^0.7.1",
     "cmdk": "^1.1.1",
@@ -58,6 +57,7 @@
     "lucide-react": "^1.39.0"
   },
   "devDependencies": {
+    "@base-ui/react": "1.8.0",
     "@biomejs/biome": "2.5.12",
     "@still-forest/biomejs-config": "2.2.0",
     "@storybook/addon-docs": "10.6.0",
@@ -92,6 +92,7 @@
     "vitest": "4.1.11"
   },
   "peerDependencies": {
+    "@base-ui/react": "^1.8.0",
     "react": "^19.0.0",
     "react-dom": "^19.0.0",
     "tailwindcss": "^4.0.0",
