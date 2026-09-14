@@ -11,9 +11,6 @@ importers:
 
   .:
     dependencies:
-      '@base-ui/react':
-        specifier: ^1.7.0
-        version: 1.7.0(@date-fns/tz@1.5.0)(@types/react@19.2.18)(date-fns@4.4.0)(react-dom@19.2.8(react@19.2.8))(react@19.2.8)
       '@daypicker/react':
         specifier: ^10.0.1
         version: 10.0.1(@types/react@19.2.18)(react@19.2.8)
@@ -30,6 +27,9 @@ importers:
         specifier: ^1.39.0
         version: 1.43.0(react@19.2.8)
     devDependencies:
+      '@base-ui/react':
+        specifier: 1.7.0
+        version: 1.7.0(@date-fns/tz@1.5.0)(@types/react@19.2.18)(date-fns@4.4.0)(react-dom@19.2.8(react@19.2.8))(react@19.2.8)
       '@biomejs/biome':
         specifier: 2.5.12
         version: 2.5.12
