@@ -258,8 +258,8 @@ importers:
         specifier: 19.3.0
         version: 19.3.0(react@19.3.0)
       release-it:
-        specifier: 21.0.2
-        version: 21.0.2(@types/node@24.13.4)(magicast@0.5.4)(supports-color@7.2.0)
+        specifier: 21.0.3
+        version: 21.0.3(@types/node@24.13.4)(magicast@0.5.4)(supports-color@7.2.0)
       storybook:
         specifier: 10.6.0
         version: 10.6.0(@types/react@19.3.0)(prettier@3.9.6)(react@19.3.0)
@@ -3228,8 +3228,8 @@ packages:
     resolution: {integrity: sha512-6tDA8g98We0zd0GvVeMT9arEOnTw9qM03L9cJXaCjrip1OO764RDBLBfrB4cwzNGDj5OA5ioymC9GkizgWJDUg==}
     engines: {node: '>=8'}
 
-  release-it@21.0.2:
-    resolution: {integrity: sha512-QwyDnWiQNB4d8Hc2b5FLMHcsKz9S2O1dMNnPB7w+0knsL5r8+qbnznDA1X7Bw5D863+Ud7eRHc71Cfth5Tlrgg==}
+  release-it@21.0.3:
+    resolution: {integrity: sha512-Pd5Uqj5hJmVAZzb+QSkkDgfvHJwRBazWryb90x5FYHhPxg35cE+1wX9v1DXk4ENy8C0osHxH/yRk1mvnZi7ZHQ==}
     engines: {node: ^22.21.0 || >=24.0.0}
     hasBin: true
 
@@ -6334,7 +6334,7 @@ snapshots:
       indent-string: 4.0.0
       strip-indent: 3.0.0
 
-  release-it@21.0.2(@types/node@24.13.4)(magicast@0.5.4)(supports-color@7.2.0):
+  release-it@21.0.3(@types/node@24.13.4)(magicast@0.5.4)(supports-color@7.2.0):
     dependencies:
       '@inquirer/prompts': 8.5.2(@types/node@24.13.4)
       '@octokit/rest': 22.0.1
