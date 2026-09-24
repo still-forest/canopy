@@ -88,8 +88,8 @@ export const WithTitle: Story = {
 export const WithContent: Story = {
   render: () => (
     <Field orientation="horizontal">
-      <Field.Label htmlFor="setting">Enable feature</Field.Label>
       <Field.Content>
+        <Field.Label htmlFor="setting">Enable feature</Field.Label>
         <Field.Description>This setting controls whether the feature is active.</Field.Description>
       </Field.Content>
     </Field>
