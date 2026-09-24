@@ -21,21 +21,18 @@
   .field {
     @apply flex flex-col gap-2 w-full;
 
-    & > * {
-      @apply w-full;
-    }
+    &:not(.field--horizontal) {
+      & > * {
+        @apply w-full;
+      }
 
-    & > .sr-only {
-      @apply w-auto;
+      & > .sr-only {
+        @apply w-auto;
+      }
     }
 
     &.field--horizontal {
       @apply flex-row items-center;
-
-      & > *,
-      & > .sr-only {
-        @apply w-auto;
-      }
 
       & > .field-label,
       & > [data-slot="field-label"] {
