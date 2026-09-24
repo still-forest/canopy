@@ -1,0 +1,12 @@
+@import "@/styles/layers.css";
+@reference "@/styles/tokens.css";
+
+@layer components {
+  .field-error-list {
+    @apply ml-4 flex list-disc flex-col gap-1;
+  }
+
+  .field-error {
+    @apply text-sm font-normal text-danger;
+  }
+}

@@ -1,6 +1,7 @@
 import type { ComponentProps } from "react";
 import { cn } from "@/utils/cn";
 import "./Field.css";
+import { FieldError } from "./FieldError";
 
 function FieldLegend({
   className,
@@ -74,19 +75,6 @@ const FieldDescription = ({ children, className, ...props }: ComponentProps<"p">
     </p>
   );
 };
-
-const FieldError = ({ children, className, ...props }: ComponentProps<"div">) => {
-  if (!children) {
-    return null;
-  }
-
-  return (
-    <div className={cn("field-error", className)} data-slot="field-error" role="alert" {...props}>
-      {children}
-    </div>
-  );
-};
-
 interface FieldProps extends ComponentProps<"div"> {
   orientation?: "vertical" | "horizontal";
 }

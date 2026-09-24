@@ -1,6 +1,5 @@
 import { cva, type VariantProps } from "class-variance-authority";
 import { cn } from "cn";
-import { useMemo } from "react";
 
 const fieldVariants = cva("group/field flex w-full gap-3 data-[invalid=true]:text-destructive", {
   variants: {
@@ -33,61 +32,4 @@ function Field({
   );
 }
 
-function FieldError({
-  className,
-  children,
-  errors,
-  ...props
-}: React.ComponentProps<"div"> & {
-  errors?: Array<{ message?: string } | undefined>;
-}) {
-  const content = useMemo(() => {
-    if (children) {
-      return children;
-    }
-
-    if (!errors?.length) {
-      return null;
-    }
-
-    const uniqueErrors = [...new Map(errors.map((error) => [error?.message, error])).values()];
-
-    if (uniqueErrors?.length === 1) {
-      return uniqueErrors[0]?.message;
-    }
-
-    return (
-      <ul className="ml-4 flex list-disc flex-col gap-1">
-        {uniqueErrors.map((error, index) => error?.message && <li key={index}>{error.message}</li>)}
-      </ul>
-    );
-  }, [children, errors]);
-
-  if (!content) {
-    return null;
-  }
-
-  return (
-    <div
-      className={cn("text-sm font-normal text-destructive", className)}
-      data-slot="field-error"
-      role="alert"
-      {...props}
-    >
-      {content}
-    </div>
-  );
-}
-
-export {
-  Field,
-  type FieldContent,
-  type FieldDescription,
-  FieldError,
-  type FieldGroup,
-  type FieldLabel,
-  type FieldLegend,
-  type FieldSeparator,
-  type FieldSet,
-  type FieldTitle,
-};
+export { Field };

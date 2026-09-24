@@ -127,8 +127,4 @@
       @apply justify-between;
     }
   }
-
-  .field-error {
-    @apply text-danger text-sm font-normal;
-  }
 }
