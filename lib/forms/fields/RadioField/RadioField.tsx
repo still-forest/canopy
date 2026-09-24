@@ -1,7 +1,7 @@
 import { useId } from "react";
 import { Hint } from "@/components";
-import { RadioGroup, RadioGroupItem } from "@/components/ui/radio-group";
 import { Field, FieldSet } from "@/forms";
+import { RadioGroup, RadioGroupItem } from "@/forms/inputs";
 import { cn } from "@/utils";
 
 export interface RadioFieldOption {
