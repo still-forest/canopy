@@ -31,7 +31,7 @@ const Card: CardComponent = ({ children, className, ...props }: CardProps) => {
 
 const CardHeader = ({ children, className, ...props }: CardHeaderProps) => {
   return (
-    <div className={cn("@container/card-header card-header", className)} data-slot="card-header" {...props}>
+    <div className={cn("card-header", className)} data-slot="card-header" {...props}>
       {children}
     </div>
   );
