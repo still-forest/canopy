@@ -1,0 +1,32 @@
+@import "@/styles/layers.css";
+@reference "@/styles/tokens.css";
+
+@layer components {
+  .card {
+    @apply flex flex-col gap-6 rounded-xl border bg-card py-6 text-card-foreground shadow-sm;
+  }
+
+  .card-header {
+    @apply grid auto-rows-min grid-rows-[auto_auto] items-start gap-1.5 px-6 has-data-[slot=card-action]:grid-cols-[1fr_auto] [.border-b]:pb-6;
+  }
+
+  .card-title {
+    @apply font-semibold leading-none;
+  }
+
+  .card-description {
+    @apply text-muted-foreground text-sm;
+  }
+
+  .card-action {
+    @apply col-start-2 row-span-2 row-start-1 self-start justify-self-end;
+  }
+
+  .card-footer {
+    @apply flex items-center px-6 [.border-t]:pt-6;
+  }
+
+  .card-content {
+    @apply px-6;
+  }
+}
