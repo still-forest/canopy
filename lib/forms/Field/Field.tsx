@@ -82,7 +82,7 @@ interface FieldProps extends ComponentProps<"div"> {
 const Field = ({ children, className, orientation = "vertical", ...props }: FieldProps) => {
   return (
     <div
-      className={cn("field", orientation === "horizontal" && "field--horizontal", className)}
+      className={cn("field group/field", orientation === "horizontal" && "field--horizontal", className)}
       data-slot="field"
       {...props}
     >
