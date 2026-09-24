@@ -1,15 +1,9 @@
 import type { ReactNode } from "react";
-import {
-  Card as BaseCard,
-  CardAction,
-  CardContent,
-  CardDescription,
-  CardFooter,
-  CardHeader,
-  CardTitle,
-} from "../ui/card";
+import { cn } from "@/utils";
+import { CardAction, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from "../ui/card";
+import "./Card.css";
 
-export type CardProps = React.ComponentProps<typeof BaseCard> & {
+export type CardProps = React.ComponentProps<"div"> & {
   children: ReactNode;
 };
 type CardActionProps = React.ComponentProps<typeof CardAction>;
@@ -28,8 +22,12 @@ type CardComponent = React.FC<CardProps> & {
   Title: React.FC<CardTitleProps>;
 };
 
-const Card: CardComponent = ({ children, ...props }: CardProps) => {
-  return <BaseCard {...props}>{children}</BaseCard>;
+const Card: CardComponent = ({ children, className, ...props }: CardProps) => {
+  return (
+    <div className={cn("card", className)} {...props}>
+      {children}
+    </div>
+  );
 };
 
 Card.Action = CardAction;
