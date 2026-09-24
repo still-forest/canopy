@@ -5,19 +5,6 @@ import { useMemo } from "react";
 import { Label } from "@/components/ui/label";
 import { Separator } from "@/components/ui/separator";
 
-function FieldGroup({ className, ...props }: React.ComponentProps<"div">) {
-  return (
-    <div
-      className={cn(
-        "group/field-group @container/field-group flex w-full flex-col gap-7 data-[slot=checkbox-group]:gap-3 *:data-[slot=field-group]:gap-4",
-        className,
-      )}
-      data-slot="field-group"
-      {...props}
-    />
-  );
-}
-
 const fieldVariants = cva("group/field flex w-full gap-3 data-[invalid=true]:text-destructive", {
   variants: {
     orientation: {
@@ -179,7 +166,7 @@ export {
   FieldContent,
   FieldDescription,
   FieldError,
-  FieldGroup,
+  type FieldGroup,
   FieldLabel,
   type FieldLegend,
   FieldSeparator,
