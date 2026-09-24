@@ -36,10 +36,7 @@ interface FieldLabelProps extends ComponentProps<"label"> {
 const FieldLabel = ({ children, className, htmlFor, ...props }: FieldLabelProps) => {
   return (
     <label
-      className={cn(
-        "field-label group/field-label peer/field-label group-data-[disabled=true]/field:opacity-50",
-        className,
-      )}
+      className={cn("field-label group/field-label peer/field-label", className)}
       data-slot="field-label"
       htmlFor={htmlFor}
       {...props}
@@ -51,11 +48,7 @@ const FieldLabel = ({ children, className, htmlFor, ...props }: FieldLabelProps)
 
 const FieldTitle = ({ children, className, ...props }: ComponentProps<"div">) => {
   return (
-    <div
-      className={cn("field-title group-data-[disabled=true]/field:opacity-50", className)}
-      data-slot="field-label"
-      {...props}
-    >
+    <div className={cn("field-title", className)} data-slot="field-label" {...props}>
       {children}
     </div>
   );
@@ -63,14 +56,7 @@ const FieldTitle = ({ children, className, ...props }: ComponentProps<"div">) =>
 
 const FieldDescription = ({ children, className, ...props }: ComponentProps<"p">) => {
   return (
-    <p
-      className={cn(
-        "field-description group-has-data-horizontal/field:text-balance [[data-variant=legend]+&]:-mt-1.5",
-        className,
-      )}
-      data-slot="field-description"
-      {...props}
-    >
+    <p className={cn("field-description", className)} data-slot="field-description" {...props}>
       {children}
     </p>
   );

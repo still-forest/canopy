@@ -11,10 +11,6 @@
 
     &[data-variant="legend"] {
       @apply text-base;
-
-      & + .field-description {
-        @apply -mt-1.5;
-      }
     }
   }
 
@@ -34,7 +30,6 @@
     &.field--horizontal {
       @apply flex-row items-center;
 
-      & > .field-label,
       & > [data-slot="field-label"] {
         @apply flex-auto;
       }
@@ -66,12 +61,8 @@
       @apply bg-primary/5 border-primary/30;
     }
 
-    &:where(.dark, .dark *):has([data-checked]) {
+    &:has([data-checked]):is(.dark *) {
       @apply border-primary/20 bg-primary/10;
-    }
-
-    .field[data-disabled="true"] & {
-      @apply opacity-50;
     }
 
     &:has(> [data-slot="field"]) {
@@ -81,10 +72,18 @@
     & > [data-slot="field"] {
       @apply p-3;
     }
+
+    .field[data-disabled="true"] & {
+      @apply opacity-50;
+    }
   }
 
   .field-title {
     @apply flex w-fit items-center gap-2 text-sm font-medium leading-snug;
+
+    .field[data-disabled="true"] & {
+      @apply opacity-50;
+    }
   }
 
   .field-description {
@@ -96,6 +95,15 @@
 
     &:nth-last-child(2) {
       @apply -mt-1;
+    }
+
+    .field.field--horizontal & {
+      @apply text-balance;
+    }
+
+    /* Declared after :last-child / :nth-last-child so the higher-specificity override reads in order */
+    .field-legend[data-variant="legend"] + & {
+      @apply -mt-1.5;
     }
 
     & > a {
