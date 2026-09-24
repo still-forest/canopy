@@ -30,7 +30,26 @@
     &.field--horizontal {
       @apply flex-row items-center;
 
+      /* Label hugs its text; text-like controls take the rest of the row */
       & > [data-slot="field-label"] {
+        @apply flex-none;
+      }
+
+      &
+        > :not(
+          [data-slot="field-label"],
+          .field-content,
+          [role="checkbox"],
+          [data-slot="checkbox"],
+          [role="radio"],
+          [role="switch"]
+        ) {
+        @apply flex-1 min-w-0;
+      }
+
+      /* Toggle rows: label fills the row so the whole line is clickable */
+      &:has(> [role="checkbox"], > [data-slot="checkbox"], > [role="radio"], > [role="switch"])
+        > [data-slot="field-label"] {
         @apply flex-auto;
       }
 
