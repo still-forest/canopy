@@ -2,10 +2,6 @@ import type { ComponentProps } from "react";
 import { cn } from "@/utils/cn";
 import "./Field.css";
 
-function FieldSet({ className, ...props }: React.ComponentProps<"fieldset">) {
-  return <fieldset className={cn("field-set", className)} data-slot="field-set" {...props} />;
-}
-
 function FieldLegend({
   className,
   variant = "legend",
@@ -96,4 +92,4 @@ Field.Content = FieldContent;
 Field.Description = FieldDescription;
 Field.Error = FieldError;
 
-export { Field, FieldSet };
+export { Field };

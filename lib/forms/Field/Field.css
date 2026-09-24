@@ -2,6 +2,22 @@
 @reference "@/styles/tokens.css";
 
 @layer components {
+  .field-legend {
+    @apply mb-1.5 font-medium text-sm;
+
+    &[data-variant="label"] {
+      @apply text-sm;
+    }
+
+    &[data-variant="legend"] {
+      @apply text-base;
+
+      & + .field-description {
+        @apply -mt-1.5;
+      }
+    }
+  }
+
   .field-label {
     @apply gap-2 text-sm font-medium flex w-fit leading-snug text-nowrap;
 
@@ -24,10 +40,6 @@
     & > [data-slot="field"] {
       @apply p-3;
     }
-  }
-
-  .field-set {
-    @apply flex flex-col gap-4;
   }
 
   .field {
@@ -101,22 +113,6 @@
 
     &:nth-last-child(2) {
       @apply -mt-1;
-    }
-  }
-
-  .field-legend {
-    @apply mb-1.5 font-medium text-sm;
-
-    &[data-variant="label"] {
-      @apply text-sm;
-    }
-
-    &[data-variant="legend"] {
-      @apply text-base;
-
-      & + .field-description {
-        @apply -mt-1.5;
-      }
     }
   }
 
