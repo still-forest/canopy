@@ -32,7 +32,7 @@ const RadioOption = ({ option, isInvalid, radioSizeClasses, labelClassName, grou
     >
       <RadioGroupItem
         aria-invalid={isInvalid}
-        className={cn("bg-input dark:bg-input border-input-border", radioSizeClasses)}
+        className={radioSizeClasses}
         disabled={option.disabled}
         id={id}
         value={option.value}

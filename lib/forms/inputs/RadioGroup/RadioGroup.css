@@ -1,0 +1,43 @@
+@import "@/styles/layers.css";
+@reference "@/styles/tokens.css";
+
+@layer components {
+  .radio-group {
+    @apply grid w-full gap-3;
+  }
+
+  .radio-group-item {
+    @apply bg-input dark:bg-input border border-input-border;
+    @apply relative flex aspect-square size-4 shrink-0 rounded-full outline-none;
+
+    &:after {
+      @apply absolute -inset-x-3 -inset-y-2;
+    }
+
+    &:focus-visible {
+      @apply border-ring ring-3 ring-ring/50;
+    }
+
+    &:disabled {
+      @apply cursor-not-allowed opacity-50;
+    }
+
+    &[aria-invalid="true"] {
+      @apply border-destructive ring-3 ring-destructive/20 aria-checked:border-primary;
+      @apply dark:aria-invalid:border-destructive/50 dark:aria-invalid:ring-destructive/40;
+    }
+
+    &[data-checked] {
+      @apply border-primary bg-primary text-primary-foreground;
+      @apply dark:data-checked:bg-primary;
+    }
+
+    .radio-group-indicator {
+      @apply flex size-4 items-center justify-center;
+
+      .radio-group-indicator-inset {
+        @apply absolute top-1/2 left-1/2 size-2 -translate-x-1/2 -translate-y-1/2 rounded-full bg-primary-foreground;
+      }
+    }
+  }
+}
