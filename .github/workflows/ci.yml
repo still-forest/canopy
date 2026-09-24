@@ -31,9 +31,16 @@ jobs:
       - name: Run ${{ matrix.task }}
         run: |
           if [ "${{ matrix.task }}" == "test" ]; then
-            pnpm test
+            pnpm test:coverage
           elif [ "${{ matrix.task }}" == "lint" ]; then
             pnpm lint:ci
           elif [ "${{ matrix.task }}" == "build" ]; then
             pnpm build
           fi
+
+      - name: Upload coverage reports to Codecov
+        if: matrix.task == 'test'
+        uses: codecov/codecov-action@303a32d7a59b442fa8d48b6a1cc6825c09c847a5 # v7
+        with:
+          token: ${{ secrets.CODECOV_TOKEN }}
+          slug: still-forest/canopy
