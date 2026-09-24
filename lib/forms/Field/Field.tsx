@@ -20,39 +20,58 @@ const FieldLabelGroup = ({ children, className, ...props }: ComponentProps<"div"
   );
 };
 
+const FieldContent = ({ children, className, ...props }: ComponentProps<"div">) => {
+  return (
+    <div className={cn("field-content group/field-content", className)} data-slot="field-content" {...props}>
+      {children}
+    </div>
+  );
+};
+
 interface FieldLabelProps extends ComponentProps<"label"> {
   htmlFor?: string;
 }
 
 const FieldLabel = ({ children, className, htmlFor, ...props }: FieldLabelProps) => {
   return (
-    <label className={cn("field-label", className)} data-slot="field-label" htmlFor={htmlFor} {...props}>
+    <label
+      className={cn(
+        "field-label group/field-label peer/field-label group-data-[disabled=true]/field:opacity-50",
+        className,
+      )}
+      data-slot="field-label"
+      htmlFor={htmlFor}
+      {...props}
+    >
       {children}
     </label>
   );
 };
 
-const FieldDescription = ({ children, className, ...props }: ComponentProps<"p">) => {
-  return (
-    <p className={cn("field-description", className)} data-slot="field-description" {...props}>
-      {children}
-    </p>
-  );
-};
-
 const FieldTitle = ({ children, className, ...props }: ComponentProps<"div">) => {
   return (
-    <div className={cn("field-title", className)} data-slot="field-label" {...props}>
+    <div
+      className={cn("field-title group-data-[disabled=true]/field:opacity-50", className)}
+      data-slot="field-label"
+      {...props}
+    >
       {children}
     </div>
   );
 };
 
-const FieldContent = ({ children, className, ...props }: ComponentProps<"div">) => {
+const FieldDescription = ({ children, className, ...props }: ComponentProps<"p">) => {
   return (
-    <div className={cn("field-content", className)} data-slot="field-content" {...props}>
+    <p
+      className={cn(
+        "field-description group-has-data-horizontal/field:text-balance [[data-variant=legend]+&]:-mt-1.5",
+        className,
+      )}
+      data-slot="field-description"
+      {...props}
+    >
       {children}
-    </div>
+    </p>
   );
 };
 

@@ -18,30 +18,6 @@
     }
   }
 
-  .field-label {
-    @apply gap-2 text-sm font-medium flex w-fit leading-snug text-nowrap;
-
-    &:has([data-checked]) {
-      @apply bg-primary/5 border-primary/30;
-    }
-
-    &:where(.dark, .dark *):has([data-checked]) {
-      @apply border-primary/20 bg-primary/10;
-    }
-
-    .field[data-disabled="true"] & {
-      @apply opacity-50;
-    }
-
-    &:has(> [data-slot="field"]) {
-      @apply rounded-md border w-full flex-col;
-    }
-
-    & > [data-slot="field"] {
-      @apply p-3;
-    }
-  }
-
   .field {
     @apply flex flex-col gap-2 w-full;
 
@@ -92,8 +68,40 @@
     }
   }
 
+  .field-content {
+    @apply gap-0.5 flex flex-1 flex-col leading-snug;
+  }
+
+  .field-label {
+    @apply flex w-fit gap-2 text-sm leading-snug font-medium text-nowrap;
+
+    &:has([data-checked]) {
+      @apply bg-primary/5 border-primary/30;
+    }
+
+    &:where(.dark, .dark *):has([data-checked]) {
+      @apply border-primary/20 bg-primary/10;
+    }
+
+    .field[data-disabled="true"] & {
+      @apply opacity-50;
+    }
+
+    &:has(> [data-slot="field"]) {
+      @apply rounded-md border w-full flex-col;
+    }
+
+    & > [data-slot="field"] {
+      @apply p-3;
+    }
+  }
+
+  .field-title {
+    @apply flex w-fit items-center gap-2 text-sm font-medium leading-snug;
+  }
+
   .field-description {
-    @apply text-sm text-muted-foreground leading-normal font-normal;
+    @apply text-left text-sm leading-normal font-normal text-muted-foreground;
 
     &:last-child {
       @apply mt-0;
@@ -101,6 +109,14 @@
 
     &:nth-last-child(2) {
       @apply -mt-1;
+    }
+
+    & > a {
+      @apply underline underline-offset-4;
+
+      &:hover {
+        @apply text-primary;
+      }
     }
   }
 
@@ -114,13 +130,5 @@
 
   .field-error {
     @apply text-danger text-sm font-normal;
-  }
-
-  .field-content {
-    @apply gap-0.5 flex flex-1 flex-col leading-snug;
-  }
-
-  .field-title {
-    @apply gap-2 text-sm font-medium flex w-fit items-center leading-snug;
   }
 }
