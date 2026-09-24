@@ -31,18 +31,14 @@
   }
 
   .field {
-    @apply flex flex-col gap-2 w-full items-center;
+    @apply flex flex-col gap-2 w-full;
 
-    &.field--vertical {
-      @apply flex-col;
+    & > * {
+      @apply w-full;
+    }
 
-      & > * {
-        @apply w-full;
-      }
-
-      & > .sr-only {
-        @apply w-auto;
-      }
+    & > .sr-only {
+      @apply w-auto;
     }
 
     &.field--horizontal {
