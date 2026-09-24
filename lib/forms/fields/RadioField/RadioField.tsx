@@ -1,7 +1,7 @@
 import { useId } from "react";
 import { Hint } from "@/components";
-import { RadioGroup, RadioGroupItem } from "@/components/ui/radio-group";
 import { Field, FieldSet } from "@/forms";
+import { RadioGroup, RadioGroupItem } from "@/forms/inputs";
 import { cn } from "@/utils";
 
 export interface RadioFieldOption {
@@ -32,7 +32,7 @@ const RadioOption = ({ option, isInvalid, radioSizeClasses, labelClassName, grou
     >
       <RadioGroupItem
         aria-invalid={isInvalid}
-        className={cn("bg-input dark:bg-input border-input-border", radioSizeClasses)}
+        className={radioSizeClasses}
         disabled={option.disabled}
         id={id}
         value={option.value}
