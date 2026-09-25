@@ -1,10 +1,7 @@
 import type { ComponentProps } from "react";
 import { cn } from "@/utils/cn";
 import "./Field.css";
-
-function FieldSet({ className, ...props }: React.ComponentProps<"fieldset">) {
-  return <fieldset className={cn("field-set", className)} data-slot="field-set" {...props} />;
-}
+import { FieldError } from "./FieldError";
 
 function FieldLegend({
   className,
@@ -24,23 +21,28 @@ const FieldLabelGroup = ({ children, className, ...props }: ComponentProps<"div"
   );
 };
 
+const FieldContent = ({ children, className, ...props }: ComponentProps<"div">) => {
+  return (
+    <div className={cn("field-content group/field-content", className)} data-slot="field-content" {...props}>
+      {children}
+    </div>
+  );
+};
+
 interface FieldLabelProps extends ComponentProps<"label"> {
   htmlFor?: string;
 }
 
 const FieldLabel = ({ children, className, htmlFor, ...props }: FieldLabelProps) => {
   return (
-    <label className={cn("field-label", className)} data-slot="field-label" htmlFor={htmlFor} {...props}>
+    <label
+      className={cn("field-label group/field-label peer/field-label", className)}
+      data-slot="field-label"
+      htmlFor={htmlFor}
+      {...props}
+    >
       {children}
     </label>
-  );
-};
-
-const FieldDescription = ({ children, className, ...props }: ComponentProps<"p">) => {
-  return (
-    <p className={cn("field-description", className)} data-slot="field-description" {...props}>
-      {children}
-    </p>
   );
 };
 
@@ -52,26 +54,13 @@ const FieldTitle = ({ children, className, ...props }: ComponentProps<"div">) =>
   );
 };
 
-const FieldContent = ({ children, className, ...props }: ComponentProps<"div">) => {
+const FieldDescription = ({ children, className, ...props }: ComponentProps<"p">) => {
   return (
-    <div className={cn("field-content", className)} data-slot="field-content" {...props}>
+    <p className={cn("field-description", className)} data-slot="field-description" {...props}>
       {children}
-    </div>
+    </p>
   );
 };
-
-const FieldError = ({ children, className, ...props }: ComponentProps<"div">) => {
-  if (!children) {
-    return null;
-  }
-
-  return (
-    <div className={cn("field-error", className)} data-slot="field-error" role="alert" {...props}>
-      {children}
-    </div>
-  );
-};
-
 interface FieldProps extends ComponentProps<"div"> {
   orientation?: "vertical" | "horizontal";
 }
@@ -79,14 +68,7 @@ interface FieldProps extends ComponentProps<"div"> {
 const Field = ({ children, className, orientation = "vertical", ...props }: FieldProps) => {
   return (
     <div
-      className={cn(
-        "field",
-        {
-          "field--vertical": orientation === "vertical",
-          "field--horizontal": orientation === "horizontal",
-        },
-        className,
-      )}
+      className={cn("field group/field", orientation === "horizontal" && "field--horizontal", className)}
       data-slot="field"
       {...props}
     >
@@ -103,4 +85,4 @@ Field.Content = FieldContent;
 Field.Description = FieldDescription;
 Field.Error = FieldError;
 
-export { Field, FieldSet };
+export { Field };

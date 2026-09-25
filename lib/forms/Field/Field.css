@@ -2,40 +2,22 @@
 @reference "@/styles/tokens.css";
 
 @layer components {
-  .field-label {
-    @apply gap-2 text-sm font-medium flex w-fit leading-snug text-nowrap;
+  .field-legend {
+    @apply mb-1.5 font-medium text-sm;
 
-    &:has([data-checked]) {
-      @apply bg-primary/5 border-primary/30;
+    &[data-variant="label"] {
+      @apply text-sm;
     }
 
-    &:where(.dark, .dark *):has([data-checked]) {
-      @apply border-primary/20 bg-primary/10;
+    &[data-variant="legend"] {
+      @apply text-base;
     }
-
-    .field[data-disabled="true"] & {
-      @apply opacity-50;
-    }
-
-    &:has(> [data-slot="field"]) {
-      @apply rounded-md border w-full flex-col;
-    }
-
-    & > [data-slot="field"] {
-      @apply p-3;
-    }
-  }
-
-  .field-set {
-    @apply flex flex-col gap-4;
   }
 
   .field {
-    @apply flex flex-col gap-2 w-full items-center;
+    @apply flex flex-col gap-2 w-full;
 
-    &.field--vertical {
-      @apply flex-col;
-
+    &:not(.field--horizontal) {
       & > * {
         @apply w-full;
       }
@@ -48,7 +30,26 @@
     &.field--horizontal {
       @apply flex-row items-center;
 
-      & > .field-label {
+      /* Label hugs its text; text-like controls take the rest of the row */
+      & > [data-slot="field-label"] {
+        @apply flex-none;
+      }
+
+      &
+        > :not(
+          [data-slot="field-label"],
+          .field-content,
+          [role="checkbox"],
+          [data-slot="checkbox"],
+          [role="radio"],
+          [role="switch"]
+        ) {
+        @apply flex-1 min-w-0;
+      }
+
+      /* Toggle rows: label fills the row so the whole line is clickable */
+      &:has(> [role="checkbox"], > [data-slot="checkbox"], > [role="radio"], > [role="switch"])
+        > [data-slot="field-label"] {
         @apply flex-auto;
       }
 
@@ -61,43 +62,51 @@
           @apply mt-0.5; /* align checkbox with text */
         }
       }
-
-      /* Label + control share a row; description/error stack beneath the control */
-      &:not(:has(> .field-content)) {
-        @apply grid grid-cols-[auto_minmax(0,1fr)] items-center;
-
-        & > .field-label-group,
-        & > .field-label {
-          @apply col-start-1;
-        }
-
-        & > :not(.field-label-group, .field-label) {
-          @apply col-start-2;
-        }
-      }
     }
 
     &[data-invalid="true"] {
-      .field-label {
-        @apply text-danger;
-      }
+      @apply text-danger;
     }
   }
 
-  .field-group {
-    @apply flex w-full flex-col gap-4;
+  .field-content {
+    @apply gap-0.5 flex flex-1 flex-col leading-snug;
+  }
 
-    &:has(> [data-slot="field-group"]) {
-      @apply gap-4;
+  .field-label {
+    @apply flex w-fit gap-2 text-sm leading-snug font-medium text-nowrap;
+
+    &:has([data-checked]) {
+      @apply bg-primary/5 border-primary/30;
     }
 
-    &:has(> [data-slot="checkbox-group"]) {
-      @apply gap-2;
+    &:has([data-checked]):is(.dark *) {
+      @apply border-primary/20 bg-primary/10;
+    }
+
+    &:has(> [data-slot="field"]) {
+      @apply rounded-md border w-full flex-col;
+    }
+
+    & > [data-slot="field"] {
+      @apply p-3;
+    }
+
+    .field[data-disabled="true"] & {
+      @apply opacity-50;
+    }
+  }
+
+  .field-title {
+    @apply flex w-fit items-center gap-2 text-sm font-medium leading-snug;
+
+    .field[data-disabled="true"] & {
+      @apply opacity-50;
     }
   }
 
   .field-description {
-    @apply text-sm text-muted-foreground leading-normal font-normal;
+    @apply text-left text-sm leading-normal font-normal text-muted-foreground;
 
     &:last-child {
       @apply mt-0;
@@ -106,20 +115,21 @@
     &:nth-last-child(2) {
       @apply -mt-1;
     }
-  }
 
-  .field-legend {
-    @apply mb-1.5 font-medium text-sm;
-
-    &[data-variant="label"] {
-      @apply text-sm;
+    .field.field--horizontal & {
+      @apply text-balance;
     }
 
-    &[data-variant="legend"] {
-      @apply text-base;
+    /* Declared after :last-child / :nth-last-child so the higher-specificity override reads in order */
+    .field-legend[data-variant="legend"] + & {
+      @apply -mt-1.5;
+    }
 
-      & + .field-description {
-        @apply -mt-1.5;
+    & > a {
+      @apply underline underline-offset-4;
+
+      &:hover {
+        @apply text-primary;
       }
     }
   }
@@ -130,17 +140,5 @@
     &:has(.badge) {
       @apply justify-between;
     }
-  }
-
-  .field-error {
-    @apply text-danger text-sm font-normal;
-  }
-
-  .field-content {
-    @apply gap-0.5 flex flex-1 flex-col leading-snug;
-  }
-
-  .field-title {
-    @apply gap-2 text-sm font-medium flex w-fit items-center leading-snug;
   }
 }

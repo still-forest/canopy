@@ -193,21 +193,6 @@ describe("SliderField", () => {
     expect(screen.getByRole("group")).toHaveAttribute("data-orientation", "horizontal");
   });
 
-  it.each([
-    ["vertical", "field--vertical"],
-    ["horizontal", "field--horizontal"],
-  ] as const)("renders a %s label layout", (labelOrientation, expectedClass) => {
-    const { container } = render(<SliderField label="Volume" labelOrientation={labelOrientation} name="some_slider" />);
-
-    expect(container.querySelector("[data-slot='field']")).toHaveClass(expectedClass);
-  });
-
-  it("defaults to a vertical label layout", () => {
-    const { container } = render(<SliderField label="Volume" name="some_slider" />);
-
-    expect(container.querySelector("[data-slot='field']")).toHaveClass("field--vertical");
-  });
-
   it("passes through additional props to the underlying slider", () => {
     render(<SliderField disabled={true} name="some_slider" />);
 
