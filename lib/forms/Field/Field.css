@@ -67,6 +67,10 @@
     &[data-invalid="true"] {
       @apply text-danger;
     }
+
+    &[data-disabled="true"] {
+      @apply cursor-not-allowed;
+    }
   }
 
   .field-content {
@@ -93,7 +97,7 @@
     }
 
     .field[data-disabled="true"] & {
-      @apply opacity-50;
+      @apply opacity-50 cursor-not-allowed;
     }
   }
 
@@ -101,7 +105,7 @@
     @apply flex w-fit items-center gap-2 text-sm font-medium leading-snug;
 
     .field[data-disabled="true"] & {
-      @apply opacity-50;
+      @apply opacity-50 cursor-not-allowed;
     }
   }
 
