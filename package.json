@@ -58,7 +58,7 @@
   },
   "devDependencies": {
     "@base-ui/react": "1.8.0",
-    "@biomejs/biome": "2.5.13",
+    "@biomejs/biome": "2.5.14",
     "@still-forest/biomejs-config": "2.2.0",
     "@storybook/addon-docs": "10.6.0",
     "@storybook/addon-themes": "10.6.0",
