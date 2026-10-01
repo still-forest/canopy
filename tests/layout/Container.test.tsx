@@ -27,11 +27,11 @@ describe("Container", () => {
 
   it("renders with custom element type", () => {
     render(
-      <Container as="section" data-testid="container-element">
+      <Container as="div" data-testid="container-element">
         Content
       </Container>,
     );
     const element = screen.getByTestId("container-element");
-    expect(element.tagName).toBe("SECTION");
+    expect(element.tagName).toBe("DIV");
   });
 });

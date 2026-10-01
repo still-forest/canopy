@@ -26,7 +26,7 @@ export const Container = ({
   className,
   ...props
 }: ContainerProps) => {
-  const Comp = as || "div";
+  const Comp = as || "section";
   const classNames = cn("layout-container", className, {
     "layout-container--sm": width === "sm",
     "layout-container--md": width === "md",
