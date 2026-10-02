@@ -163,7 +163,7 @@ settings:
   excludeLinksFromLockfile: false
 
 overrides:
-  rollup: 4.63.4
+  rollup: 4.63.5
 
 importers:
 
@@ -3487,7 +3487,7 @@ packages:
       '@vue/language-core': ^3.1.5
       esbuild: '*'
       rolldown: '*'
-      rollup: 4.63.4
+      rollup: 4.63.5
       typescript: '>=4'
       vite: '>=3'
       webpack: ^4 || ^5
@@ -3585,7 +3585,7 @@ packages:
     resolution: {integrity: sha512-U5dyX3DPFvHB+gaJIULn90kKGsXNYllyJ3vn491Y+LGu2nL5Fb8z7YgurN/Pi6ZFlnGljh2wSM0ZbFogSh4yAg==}
     peerDependencies:
       '@microsoft/api-extractor': '>=7'
-      rollup: 4.63.4
+      rollup: 4.63.5
       vite: '>=3'
     peerDependenciesMeta:
       '@microsoft/api-extractor':
