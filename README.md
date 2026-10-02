@@ -50,6 +50,46 @@ You can also import individual style modules:
 @import "@still-forest/canopy/styles/typography.css";
 ```
 
+### Responsive layout
+
+Layout props on `Grid` accept either a single token, applied at every width, or a
+mobile-first map of breakpoint to token (`base`, `sm`, `md`, `lg`, `xl`, `2xl`):
+
+```tsx
+import { Grid } from "@still-forest/canopy/layout";
+
+<Grid cols="3" gap="4" />                                  // three columns, always
+<Grid cols={{ base: "1", sm: "2", lg: "4" }} gap={{ base: "2", md: "8" }} />
+```
+
+`cols`, `rows`, `flow`, `gap`, `gapX`, `gapY`, `align`, `justify`, `alignContent`
+and `justifyItems` all work this way. Any breakpoint you leave out simply
+inherits the one below it.
+
+`Grid.Item` places children across tracks, and is responsive in the same way:
+
+```tsx
+<Grid cols="12" gap="4">
+  <Grid.Item colSpan={{ base: "12", md: "8" }}>Main</Grid.Item>
+  <Grid.Item colSpan={{ base: "12", md: "4" }}>Aside</Grid.Item>
+</Grid>
+```
+
+Because these compile to ordinary Tailwind utilities, `className` still overrides
+a single breakpoint without disturbing the rest — `className="md:grid-cols-6"`
+replaces only the `md` value.
+
+> **Migrating from `GridLayout`.** `GridLayout` and `GridLayout.Item` are
+> deprecated in favour of `Grid` and `Grid.Item`, which add responsive columns,
+> gaps and alignment instead of a fixed 12-column `gap-4` container. Note that
+> `Grid.Item` takes string tokens where `GridLayout.Item` took numbers:
+>
+> ```tsx
+> <GridLayout>                        <Grid cols="12" gap="4">
+>   <GridLayout.Item span={12}          <Grid.Item
+>     md={6} />                           colSpan={{ base: "12", md: "6" }} />
+> ```
+
 ### Customization
 
 Override any Canopy design tokens by redefining CSS variables after the import:

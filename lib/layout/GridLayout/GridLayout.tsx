@@ -2,6 +2,19 @@ import type { ComponentProps, CSSProperties } from "react";
 import { cn } from "@/utils/cn";
 import "./GridLayout.css";
 
+/**
+ * @deprecated Use {@link Grid} instead, which supports responsive `cols`, `gap`
+ * and alignment rather than a fixed 12-column, `gap-4` container:
+ *
+ * ```tsx
+ * <Grid cols="12" gap="4">
+ *   <Grid.Item colSpan={{ base: "12", md: "6" }} />
+ * </Grid>
+ * ```
+ *
+ * Note that `Grid` takes string tokens (`colSpan="6"`) where `GridLayout` takes
+ * numbers (`span={6}`).
+ */
 const GridLayout = ({ children, className, ...props }: ComponentProps<"div">) => {
   return (
     <div className={cn("grid-layout", className)} {...props}>
@@ -22,6 +35,10 @@ export interface ItemProps extends ComponentProps<"div"> {
   lg?: Span;
 }
 
+/**
+ * @deprecated Use {@link Grid.Item} instead. `span={12} md={6}` becomes
+ * `colSpan={{ base: "12", md: "6" }}`.
+ */
 const Item = ({ children, className, span, sm, md, lg, style, ...props }: ItemProps) => (
   <div
     className={cn("grid-layout-item", className)}

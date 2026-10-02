@@ -3,7 +3,20 @@ import { describe, expect, it } from "vitest";
 import "@testing-library/jest-dom";
 
 import { Grid } from "@/layout";
-import { GAPS, GRID_COLS, GRID_FLOWS, GRID_ROWS } from "@/types";
+import {
+  GAPS,
+  GRID_ALIGN_CONTENTS,
+  GRID_ALIGNS,
+  GRID_COLS,
+  GRID_FLOWS,
+  GRID_JUSTIFIES,
+  GRID_JUSTIFY_ITEMS,
+  GRID_ROWS,
+} from "@/types";
+
+// `className.toContain("grid-cols-3")` also matches "md:grid-cols-3", so it
+// cannot tell a base class from a prefixed one. Compare exact class tokens.
+const classesOf = (element: HTMLElement) => Array.from(element.classList);
 
 describe("Grid", () => {
   it("renders with default props", () => {
@@ -11,7 +24,7 @@ describe("Grid", () => {
     const element = screen.getByTestId("grid-element");
 
     expect(element.tagName).toBe("DIV");
-    expect(element.className).toContain("grid");
+    expect(classesOf(element)).toEqual(["grid"]);
   });
 
   it("renders with custom element type", () => {
@@ -22,7 +35,7 @@ describe("Grid", () => {
     );
     const element = screen.getByTestId("grid-element");
     expect(element.tagName).toBe("SECTION");
-    expect(element.className).toContain("grid");
+    expect(classesOf(element)).toContain("grid");
   });
 
   it("applies the correct grid columns classes", () => {
@@ -33,8 +46,7 @@ describe("Grid", () => {
         </Grid>,
       );
       const element = screen.getByTestId("grid-element");
-      expect(element.className).toContain("grid");
-      expect(element.className).toContain(`grid-cols-${cols}`);
+      expect(classesOf(element)).toEqual(["grid", `grid-cols-${cols}`]);
       rerender(<div />);
     }
   });
@@ -47,8 +59,7 @@ describe("Grid", () => {
         </Grid>,
       );
       const element = screen.getByTestId("grid-element");
-      expect(element.className).toContain("grid");
-      expect(element.className).toContain(`grid-rows-${rows}`);
+      expect(classesOf(element)).toEqual(["grid", `grid-rows-${rows}`]);
       rerender(<div />);
     }
   });
@@ -61,8 +72,7 @@ describe("Grid", () => {
         </Grid>,
       );
       const element = screen.getByTestId("grid-element");
-      expect(element.className).toContain("grid");
-      expect(element.className).toContain(`grid-flow-${flow}`);
+      expect(classesOf(element)).toEqual(["grid", `grid-flow-${flow}`]);
       rerender(<div />);
     }
   });
@@ -74,9 +84,7 @@ describe("Grid", () => {
           Gap {gap}
         </Grid>,
       );
-      const element = screen.getByTestId("grid-element");
-      expect(element.className).toContain("grid");
-      expect(element.className).toContain(`gap-${gap}`);
+      expect(classesOf(screen.getByTestId("grid-element"))).toEqual(["grid", `gap-${gap}`]);
       rerender(<div />);
     }
 
@@ -86,9 +94,7 @@ describe("Grid", () => {
           GapX {gapX}
         </Grid>,
       );
-      const element = screen.getByTestId("grid-element");
-      expect(element.className).toContain("grid");
-      expect(element.className).toContain(`gap-x-${gapX}`);
+      expect(classesOf(screen.getByTestId("grid-element"))).toEqual(["grid", `gap-x-${gapX}`]);
       rerender(<div />);
     }
 
@@ -98,9 +104,7 @@ describe("Grid", () => {
           GapY {gapY}
         </Grid>,
       );
-      const element = screen.getByTestId("grid-element");
-      expect(element.className).toContain("grid");
-      expect(element.className).toContain(`gap-y-${gapY}`);
+      expect(classesOf(screen.getByTestId("grid-element"))).toEqual(["grid", `gap-y-${gapY}`]);
       rerender(<div />);
     }
   });
@@ -113,10 +117,33 @@ describe("Grid", () => {
     );
 
     const element = screen.getByTestId("grid-element");
-    expect(element.className).toContain("grid");
-    expect(element.className).toContain("gap-2");
-    expect(element.className).toContain("gap-x-4");
-    expect(element.className).toContain("gap-y-8");
+    expect(classesOf(element)).toEqual(["grid", "gap-2", "gap-x-4", "gap-y-8"]);
+  });
+
+  it("applies the correct alignment classes", () => {
+    for (const align of GRID_ALIGNS) {
+      const { rerender } = render(<Grid align={align} data-testid="grid-element" />);
+      expect(classesOf(screen.getByTestId("grid-element"))).toEqual(["grid", `items-${align}`]);
+      rerender(<div />);
+    }
+
+    for (const justify of GRID_JUSTIFIES) {
+      const { rerender } = render(<Grid data-testid="grid-element" justify={justify} />);
+      expect(classesOf(screen.getByTestId("grid-element"))).toEqual(["grid", `justify-${justify}`]);
+      rerender(<div />);
+    }
+
+    for (const alignContent of GRID_ALIGN_CONTENTS) {
+      const { rerender } = render(<Grid alignContent={alignContent} data-testid="grid-element" />);
+      expect(classesOf(screen.getByTestId("grid-element"))).toEqual(["grid", `content-${alignContent}`]);
+      rerender(<div />);
+    }
+
+    for (const justifyItems of GRID_JUSTIFY_ITEMS) {
+      const { rerender } = render(<Grid data-testid="grid-element" justifyItems={justifyItems} />);
+      expect(classesOf(screen.getByTestId("grid-element"))).toEqual(["grid", `justify-items-${justifyItems}`]);
+      rerender(<div />);
+    }
   });
 
   it("passes additional props to the element", () => {
@@ -136,8 +163,7 @@ describe("Grid", () => {
       </Grid>,
     );
     const element = screen.getByTestId("grid-element");
-    expect(element.className).toContain("grid");
-    expect(element.className).toContain("custom-class");
+    expect(classesOf(element)).toEqual(["grid", "custom-class"]);
   });
 
   it("forwards ref correctly", () => {
@@ -170,12 +196,90 @@ describe("Grid", () => {
       </Grid>,
     );
 
-    const element = screen.getByTestId("grid-element");
+    expect(classesOf(screen.getByTestId("grid-element"))).toEqual([
+      "grid",
+      "grid-cols-3",
+      "grid-rows-2",
+      "gap-4",
+      "grid-flow-row-dense",
+    ]);
+  });
 
-    expect(element.className).toContain("grid");
-    expect(element.className).toContain("grid-cols-3");
-    expect(element.className).toContain("grid-rows-2");
-    expect(element.className).toContain("gap-4");
-    expect(element.className).toContain("grid-flow-row-dense");
+  describe("responsive props", () => {
+    it("treats a bare token as the base breakpoint, with no prefix", () => {
+      render(<Grid cols="3" data-testid="grid-element" />);
+
+      expect(classesOf(screen.getByTestId("grid-element"))).toEqual(["grid", "grid-cols-3"]);
+    });
+
+    it("emits one class per specified breakpoint, in mobile-first order", () => {
+      render(<Grid cols={{ base: "1", md: "2", lg: "4" }} data-testid="grid-element" />);
+
+      expect(classesOf(screen.getByTestId("grid-element"))).toEqual([
+        "grid",
+        "grid-cols-1",
+        "md:grid-cols-2",
+        "lg:grid-cols-4",
+      ]);
+    });
+
+    it("emits nothing for omitted breakpoints", () => {
+      render(<Grid cols={{ md: "2" }} data-testid="grid-element" />);
+
+      expect(classesOf(screen.getByTestId("grid-element"))).toEqual(["grid", "md:grid-cols-2"]);
+    });
+
+    it("supports every breakpoint", () => {
+      render(<Grid cols={{ base: "1", sm: "2", md: "3", lg: "4", xl: "6", "2xl": "12" }} data-testid="grid-element" />);
+
+      expect(classesOf(screen.getByTestId("grid-element"))).toEqual([
+        "grid",
+        "grid-cols-1",
+        "sm:grid-cols-2",
+        "md:grid-cols-3",
+        "lg:grid-cols-4",
+        "xl:grid-cols-6",
+        "2xl:grid-cols-12",
+      ]);
+    });
+
+    it("applies responsive gaps, flow and alignment", () => {
+      render(
+        <Grid
+          align={{ base: "start", md: "center" }}
+          data-testid="grid-element"
+          flow={{ base: "row", lg: "col" }}
+          gap={{ base: "2", md: "8" }}
+        />,
+      );
+
+      const classes = classesOf(screen.getByTestId("grid-element"));
+      expect(classes).toEqual(
+        expect.arrayContaining([
+          "gap-2",
+          "md:gap-8",
+          "grid-flow-row",
+          "lg:grid-flow-col",
+          "items-start",
+          "md:items-center",
+        ]),
+      );
+    });
+
+    it("lets className override a single breakpoint without clobbering the others", () => {
+      render(<Grid className="md:grid-cols-6" cols={{ base: "1", md: "2", lg: "4" }} data-testid="grid-element" />);
+
+      const classes = classesOf(screen.getByTestId("grid-element"));
+      expect(classes).toContain("grid-cols-1");
+      expect(classes).toContain("lg:grid-cols-4");
+      expect(classes).toContain("md:grid-cols-6");
+      expect(classes).not.toContain("md:grid-cols-2");
+    });
+
+    it("ignores undefined and empty maps", () => {
+      render(<Grid cols={undefined} data-testid="grid-element" gap={{}} />);
+
+      expect(classesOf(screen.getByTestId("grid-element"))).toEqual(["grid"]);
+    });
   });
 });
