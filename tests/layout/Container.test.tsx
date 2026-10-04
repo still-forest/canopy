@@ -9,7 +9,7 @@ describe("Container", () => {
     render(<Container data-testid="container-element">Content</Container>);
     const element = screen.getByTestId("container-element");
 
-    expect(element.tagName).toBe("DIV");
+    expect(element.tagName).toBe("SECTION");
     expect(element).toBeInTheDocument();
     expect(element.className).toBe("layout-container");
     expect(element).toHaveTextContent("Content");
