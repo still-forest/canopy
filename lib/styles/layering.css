@@ -3,12 +3,14 @@
 /*
  * Stacking order (z-index)
  *
- * A single semantic scale for everything that portals to the document body.
- * Layers are ordered so that transient, contextual UI always wins over the
- * surface that spawned it — e.g. a Select/Combobox/Popover opened inside a
- * Drawer or Dialog renders *above* it. Always use these tokens (z-overlay,
- * z-surface, z-popup, ...) instead of raw z-index values so the order stays
- * coordinated and we stop playing z-index whack-a-mole.
+ * Overlays, surfaces, and popups deliberately share one value. Every one of
+ * them portals to the end of document.body when it opens, so with equal
+ * z-index the DOM order decides: whatever opened last is on top. That covers
+ * both directions of nesting — a Select opened inside a Sheet, and a Sheet
+ * opened from a Popover. Distinct tiers can only satisfy one direction.
+ *
+ * The separate overlay/surface/popup tokens stay as semantic aliases so they
+ * can be overridden independently if a consumer needs to.
  *
  * Generates the `z-sticky`, `z-overlay`, `z-surface`, `z-popup`, and
  * `z-tooltip` utilities, and emits matching `--z-index-*` custom properties
@@ -16,8 +18,9 @@
  */
 @theme {
   --z-index-sticky: 30; /* sticky headers/footers */
-  --z-index-overlay: 40; /* modal/drawer/sheet backdrops & scrims */
-  --z-index-surface: 50; /* modal/dialog/drawer/sheet panels */
-  --z-index-popup: 60; /* popover, dropdown, select, combobox, multi-select */
-  --z-index-tooltip: 70; /* tooltips — float above popups */
+  --z-index-layer: 50; /* anything portaled: stacks by open order */
+  --z-index-overlay: var(--z-index-layer); /* modal/drawer/sheet backdrops & scrims */
+  --z-index-surface: var(--z-index-layer); /* modal/dialog/drawer/sheet panels */
+  --z-index-popup: var(--z-index-layer); /* popover, dropdown, select, combobox, multi-select */
+  --z-index-tooltip: 70; /* tooltips — float above everything else */
 }

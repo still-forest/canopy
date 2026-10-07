@@ -4,7 +4,7 @@ import { Button } from "@/buttons";
 import { DropdownMenu, Menubar } from "@/components";
 import { ComboboxInput, DatePickerField, type SelectOption, SelectPicker, type SelectPickerOption } from "@/forms";
 import { Flex } from "@/layout";
-import { Dialog, Drawer, Sheet, Tooltip } from "@/presentation";
+import { Dialog, Drawer, Popover, Sheet, Tooltip } from "@/presentation";
 import { Text } from "@/typography";
 
 const meta: Meta = {
@@ -194,5 +194,68 @@ export const InDrawer: Story = {
         </Drawer.Body>
       </Drawer.Content>
     </Drawer>
+  ),
+};
+
+const SheetOpenedFrom = ({ trigger }: { trigger: string }) => {
+  const [open, setOpen] = useState(false);
+
+  return (
+    <>
+      <Button onClick={() => setOpen(true)}>Open sheet</Button>
+      <Sheet onOpenChange={setOpen} open={open}>
+        <Sheet.Content>
+          <Sheet.Header>
+            <Sheet.Title>Opened from {trigger}</Sheet.Title>
+            <Sheet.Description>
+              This sheet should render above the {trigger}, and its own controls above it.
+            </Sheet.Description>
+          </Sheet.Header>
+          <Sheet.Body>
+            <LayeredControls />
+          </Sheet.Body>
+        </Sheet.Content>
+      </Sheet>
+    </>
+  );
+};
+
+/**
+ * The reverse of InSheet: the Sheet is rendered inside the Popover's content,
+ * so it is nested in the Popover's React tree and must still stack above it.
+ * Right-aligned so the popover overlaps the sheet, as with a header info menu.
+ */
+export const SheetFromPopover: Story = {
+  render: () => (
+    <Flex justify="end">
+      <Popover>
+        <Popover.Trigger render={<Button outline>Open popover</Button>} />
+        <Popover.Content>
+          <SheetOpenedFrom trigger="popover" />
+        </Popover.Content>
+      </Popover>
+    </Flex>
+  ),
+};
+
+export const DialogFromPopover: Story = {
+  render: () => (
+    <Flex justify="end">
+      <Popover>
+        <Popover.Trigger render={<Button outline>Open popover</Button>} />
+        <Popover.Content>
+          <Dialog>
+            <Dialog.Trigger>Open dialog</Dialog.Trigger>
+            <Dialog.Content>
+              <Dialog.Header>
+                <Dialog.Title>Opened from popover</Dialog.Title>
+                <Dialog.Description>This dialog should render above the popover.</Dialog.Description>
+              </Dialog.Header>
+              <LayeredControls />
+            </Dialog.Content>
+          </Dialog>
+        </Popover.Content>
+      </Popover>
+    </Flex>
   ),
 };
