@@ -65,13 +65,15 @@ Override any Canopy design tokens by redefining CSS variables after the import:
 
 ## z-index layering
 
-Overlay components use a tiered z-index system to ensure correct stacking when nested:
+Overlay components (backdrops, Sheet, Dialog, Drawer, Popover, DropdownMenu, Select, Combobox) share a single z-index and portal to the end of `<body>` when opened, so whatever opened last stacks on top. This works in both directions: a Select inside a Sheet, and a Sheet opened from a Popover.
 
-| z-index | Layer | Components |
-|---------|-------|------------|
-| `50` | Panels | Sheet |
-| `55` | Modals | Dialog |
-| `60` | Floating | Popover, DropdownMenu |
+| Token | z-index | Components |
+|-------|---------|------------|
+| `z-sticky` | `30` | Sticky headers/footers |
+| `z-overlay`, `z-surface`, `z-popup` | `50` (`--z-index-layer`) | Everything that portals |
+| `z-tooltip` | `70` | Tooltip |
+
+Non-portaled elements shouldn't use `z-overlay`/`z-surface`/`z-popup`: they'd tie with portaled layers and lose on DOM order.
 
 ## Testing locally
 
@@ -81,12 +83,6 @@ Overlay components use a tiered z-index system to ensure correct stacking when n
 
 ```bash
 pnpm build:watch
-```
-
-Then expose it locally for linking:
-
-```bash
-pnpm link .
 ```
 
 2. In the consuming package, link package.json to the locally built version:

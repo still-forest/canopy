@@ -3,7 +3,7 @@
 
 @layer components {
   .drawer-backdrop {
-    @apply fixed inset-0 z-50 min-h-dvh bg-black/10;
+    @apply fixed inset-0 z-overlay min-h-dvh bg-black/10;
     @apply opacity-[max(var(--drawer-overlay-min-opacity,0),calc(1-var(--drawer-swipe-progress)))] transition-opacity duration-450 ease-[cubic-bezier(0.32,0.72,0,1)];
     @apply select-none;
 
