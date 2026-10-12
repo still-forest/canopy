@@ -1,6 +1,6 @@
 import type { ReactNode } from "react";
 import { useIsMobile } from "@/hooks/useIsMobile";
-import { Dialog, Drawer } from "@/presentation";
+import { Dialog, type DialogContentProps, Drawer } from "@/presentation";
 
 export interface ResponsiveDialogProps {
   open: boolean;
@@ -10,6 +10,7 @@ export interface ResponsiveDialogProps {
   children: ReactNode;
   footer?: ReactNode;
   className?: string;
+  size?: DialogContentProps["size"];
 }
 
 export const ResponsiveDialog = ({
@@ -19,6 +20,7 @@ export const ResponsiveDialog = ({
   description,
   children,
   footer,
+  size = "default",
 }: ResponsiveDialogProps) => {
   const isMobile = useIsMobile();
 
@@ -39,7 +41,7 @@ export const ResponsiveDialog = ({
 
   return (
     <Dialog onOpenChange={onOpenChange} open={open}>
-      <Dialog.Content className="max-w-2xl">
+      <Dialog.Content size={size}>
         <Dialog.Header>
           <Dialog.Title>{title}</Dialog.Title>
           {description && <Dialog.Description>{description}</Dialog.Description>}

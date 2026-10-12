@@ -114,3 +114,18 @@ export const Controlled: Story = {
     );
   },
 };
+
+export const Wide: Story = {
+  render: () => (
+    <Dialog>
+      <Dialog.Trigger>Open dialog</Dialog.Trigger>
+      <Dialog.Content size="wide">
+        <Dialog.Header>
+          <Dialog.Title>Dialog title</Dialog.Title>
+          <Dialog.Description>Dialog description</Dialog.Description>
+        </Dialog.Header>
+        <SampleContent />
+      </Dialog.Content>
+    </Dialog>
+  ),
+};

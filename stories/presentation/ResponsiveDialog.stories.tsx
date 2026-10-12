@@ -58,3 +58,18 @@ export const WithFooter: Story = {
     );
   },
 };
+
+export const Wide: Story = {
+  render: () => {
+    const [open, setOpen] = useState(false);
+
+    return (
+      <>
+        <Button onClick={() => setOpen(true)}>Open responsive dialog</Button>
+        <ResponsiveDialog {...defaultProps} onOpenChange={setOpen} open={open} size="wide">
+          <SampleContent />
+        </ResponsiveDialog>
+      </>
+    );
+  },
+};
