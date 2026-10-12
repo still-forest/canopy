@@ -32,6 +32,10 @@
       @apply inset-x-0 bottom-0 h-auto border-t;
       @apply data-ending-style:translate-y-[2.5rem] data-starting-style:translate-y-[2.5rem];
     }
+
+    &.sheet-content--wide {
+      @apply w-full sm:min-w-md md:min-w-lg lg:min-w-2xl;
+    }
   }
 
   .sheet-header {
