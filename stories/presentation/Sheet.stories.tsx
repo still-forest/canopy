@@ -152,3 +152,19 @@ export const NoHeader: Story = {
     </Sheet>
   ),
 };
+
+export const Wide: Story = {
+  render: () => (
+    <Sheet>
+      <Sheet.Trigger render={<Button>Open wide sheet</Button>} />
+      <Sheet.Content size="wide">
+        <Sheet.Header>
+          <Sheet.Title>Wide sheet</Sheet.Title>
+        </Sheet.Header>
+        <Sheet.Body>
+          <Text size="sm">{sampleParagraphText[0]}</Text>
+        </Sheet.Body>
+      </Sheet.Content>
+    </Sheet>
+  ),
+};

@@ -26,6 +26,14 @@ const SheetOverlay = ({ className, ...props }: SheetPrimitive.Backdrop.Props) =>
   return <SheetPrimitive.Backdrop className={cn("sheet-overlay", className)} data-slot="sheet-overlay" {...props} />;
 };
 
+interface SheetContentProps extends SheetPrimitive.Popup.Props {
+  side?: "top" | "right" | "bottom" | "left";
+  showCloseButton?: boolean;
+  showOverlay?: boolean;
+  overlayClassName?: string;
+  size?: "default" | "wide";
+}
+
 const SheetContent = ({
   className,
   children,
@@ -33,20 +41,16 @@ const SheetContent = ({
   showCloseButton = true,
   showOverlay = true,
   overlayClassName,
+  size = "default",
   ...props
-}: SheetPrimitive.Popup.Props & {
-  side?: "top" | "right" | "bottom" | "left";
-  showCloseButton?: boolean;
-  showOverlay?: boolean;
-  overlayClassName?: string;
-}) => {
+}: SheetContentProps) => {
   const isMobile = useIsMobile();
   const defaultSide = isMobile ? "bottom" : "right";
   return (
     <SheetPortal>
       {showOverlay && <SheetOverlay className={overlayClassName} />}
       <SheetPrimitive.Popup
-        className={cn("sheet-content", className)}
+        className={cn("sheet-content", size === "wide" ? "sheet-content--wide" : className)}
         data-side={side ?? defaultSide}
         data-slot="sheet-content"
         {...props}
