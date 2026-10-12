@@ -25,18 +25,26 @@ const DialogOverlay = ({ className, ...props }: DialogPrimitive.Backdrop.Props) 
   return <DialogPrimitive.Backdrop className={cn("dialog-overlay", className)} data-slot="dialog-overlay" {...props} />;
 };
 
+export interface DialogContentProps extends DialogPrimitive.Popup.Props {
+  showCloseButton?: boolean;
+  size?: "default" | "wide";
+}
+
 const DialogContent = ({
   className,
   children,
   showCloseButton = true,
+  size = "default",
   ...props
-}: DialogPrimitive.Popup.Props & {
-  showCloseButton?: boolean;
-}) => {
+}: DialogContentProps) => {
   return (
     <DialogPortal>
       <DialogOverlay />
-      <DialogPrimitive.Popup className={cn("dialog-content", className)} data-slot="dialog-content" {...props}>
+      <DialogPrimitive.Popup
+        className={cn("dialog-content", size === "wide" && "dialog-content--wide", className)}
+        data-slot="dialog-content"
+        {...props}
+      >
         {children}
         {showCloseButton && (
           <DialogPrimitive.Close data-slot="dialog-close" render={<Button className="dialog-close" variant="ghost" />}>
