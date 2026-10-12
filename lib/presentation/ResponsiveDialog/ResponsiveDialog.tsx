@@ -1,16 +1,17 @@
-import type { ReactNode } from "react";
+import { type ReactElement, type ReactNode, useState } from "react";
 import { useIsMobile } from "@/hooks/useIsMobile";
 import { Dialog, type DialogContentProps, Drawer } from "@/presentation";
 
 export interface ResponsiveDialogProps {
-  open: boolean;
-  onOpenChange: (open: boolean) => void;
+  open?: boolean;
+  onOpenChange?: (open: boolean) => void;
   title: string;
   description?: string;
   children: ReactNode;
   footer?: ReactNode;
   className?: string;
   size?: DialogContentProps["size"];
+  trigger?: ReactElement;
 }
 
 export const ResponsiveDialog = ({
@@ -21,12 +22,22 @@ export const ResponsiveDialog = ({
   children,
   footer,
   size = "default",
+  trigger,
 }: ResponsiveDialogProps) => {
   const isMobile = useIsMobile();
+  // Own the open state so it survives switching between Drawer and Dialog across the breakpoint
+  const [uncontrolledOpen, setUncontrolledOpen] = useState(false);
+  const isControlled = open !== undefined;
+  const isOpen = isControlled ? open : uncontrolledOpen;
+  const handleOpenChange = (nextOpen: boolean) => {
+    if (!isControlled) setUncontrolledOpen(nextOpen);
+    onOpenChange?.(nextOpen);
+  };
 
   if (isMobile) {
     return (
-      <Drawer onOpenChange={onOpenChange} open={open}>
+      <Drawer onOpenChange={handleOpenChange} open={isOpen}>
+        {trigger && <Drawer.Trigger render={trigger} />}
         <Drawer.Content>
           <Drawer.Header>
             <Drawer.Title>{title}</Drawer.Title>
@@ -40,7 +51,8 @@ export const ResponsiveDialog = ({
   }
 
   return (
-    <Dialog onOpenChange={onOpenChange} open={open}>
+    <Dialog onOpenChange={handleOpenChange} open={isOpen}>
+      {trigger && <Dialog.Trigger render={trigger} />}
       <Dialog.Content size={size}>
         <Dialog.Header>
           <Dialog.Title>{title}</Dialog.Title>
