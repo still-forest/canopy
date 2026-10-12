@@ -19,22 +19,16 @@ const SampleContent = () => <Text>{sampleParagraphText[0]}</Text>;
 
 const defaultProps: Omit<ResponsiveDialogProps, "children"> = {
   description: "ResponsiveDialog description",
-  onOpenChange: () => {},
-  open: false,
   title: "ResponsiveDialog title",
+  trigger: <Button>Open responsive dialog</Button>,
 };
 
 export const Default: Story = {
   render: () => {
-    const [open, setOpen] = useState(false);
-
     return (
-      <>
-        <Button onClick={() => setOpen(true)}>Open responsive dialog</Button>
-        <ResponsiveDialog {...defaultProps} onOpenChange={setOpen} open={open}>
-          <SampleContent />
-        </ResponsiveDialog>
-      </>
+      <ResponsiveDialog {...defaultProps}>
+        <SampleContent />
+      </ResponsiveDialog>
     );
   },
 };
@@ -51,6 +45,7 @@ export const WithFooter: Story = {
           footer={<Button onClick={() => setOpen(false)}>Close</Button>}
           onOpenChange={setOpen}
           open={open}
+          trigger={undefined}
         >
           <SampleContent />
         </ResponsiveDialog>
@@ -59,17 +54,25 @@ export const WithFooter: Story = {
   },
 };
 
-export const Wide: Story = {
+export const Controlled: Story = {
   render: () => {
     const [open, setOpen] = useState(false);
 
     return (
       <>
         <Button onClick={() => setOpen(true)}>Open responsive dialog</Button>
-        <ResponsiveDialog {...defaultProps} onOpenChange={setOpen} open={open} size="wide">
+        <ResponsiveDialog {...defaultProps} onOpenChange={setOpen} open={open} trigger={undefined}>
           <SampleContent />
         </ResponsiveDialog>
       </>
     );
   },
+};
+
+export const Wide: Story = {
+  render: () => (
+    <ResponsiveDialog {...defaultProps} size="wide">
+      <SampleContent />
+    </ResponsiveDialog>
+  ),
 };
