@@ -1,5 +1,6 @@
 import { type ComponentProps, useMemo } from "react";
 import { cn } from "@/utils/cn";
+import "./FieldError.css";
 
 export const FieldError = ({
   children,
