@@ -117,7 +117,11 @@ export const WithLongText: Story = {
 };
 
 export const AsSimpleTooltip: Story = {
-  render: () => <SimpleTooltip content="This is a tooltip">Hover over me</SimpleTooltip>,
+  render: () => (
+    <SimpleTooltip content="This is a tooltip with some text that wraps to the next line, you see">
+      Hover over me
+    </SimpleTooltip>
+  ),
 };
 
 export const AsSimpleTooltipWithCursor: Story = {
