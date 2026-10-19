@@ -186,3 +186,21 @@ export const GAPS = [
   "16",
 ] as const;
 export type Gap = (typeof GAPS)[number];
+
+export const GRID_ALIGNS = ["start", "center", "end", "stretch", "baseline"] as const;
+export type GridAlign = (typeof GRID_ALIGNS)[number];
+
+export const GRID_JUSTIFIES = ["start", "center", "end", "between", "around", "evenly", "stretch", "normal"] as const;
+export type GridJustify = (typeof GRID_JUSTIFIES)[number];
+
+export const GRID_ALIGN_CONTENTS = [...GRID_JUSTIFIES, "baseline"] as const;
+export type GridAlignContent = (typeof GRID_ALIGN_CONTENTS)[number];
+
+export const GRID_JUSTIFY_ITEMS = ["start", "center", "end", "stretch", "normal"] as const;
+export type GridJustifyItems = (typeof GRID_JUSTIFY_ITEMS)[number];
+
+export const GRID_SPANS = ["1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12", "full"] as const;
+export type GridSpan = (typeof GRID_SPANS)[number];
+
+export const GRID_LINES = ["1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12", "13", "auto"] as const;
+export type GridLine = (typeof GRID_LINES)[number];
