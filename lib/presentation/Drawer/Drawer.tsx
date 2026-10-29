@@ -9,7 +9,7 @@ import {
   DrawerPortal,
   Drawer as DrawerPrimitive,
   DrawerSwipeHandle,
-  DrawerTitle,
+  DrawerTitle as DrawerTitlePrimitive,
   DrawerTrigger,
 } from "@/components/ui/drawer";
 import { cn } from "@/utils/cn";
@@ -20,6 +20,10 @@ const Drawer = (props: ComponentProps<typeof DrawerPrimitive>) => {
 
 const DrawerBody = ({ className, ...props }: ComponentProps<"div">) => {
   return <div className={cn("flex-1 p-4", className)} data-slot="drawer-body" {...props} />;
+};
+
+const DrawerTitle = ({ className, ...props }: ComponentProps<typeof DrawerTitlePrimitive>) => {
+  return <DrawerTitlePrimitive className={cn("text-xl font-medium", className)} {...props} />;
 };
 
 Drawer.Trigger = DrawerTrigger;
