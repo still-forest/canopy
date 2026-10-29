@@ -1,105 +1,56 @@
-import { Dialog as SheetPrimitive } from "@base-ui/react/dialog";
-import { XIcon } from "lucide-react";
 import type { ComponentProps } from "react";
-import { Button } from "@/buttons";
+import {
+  SheetClose,
+  SheetContent as SheetContentPrimitive,
+  SheetDescription,
+  SheetFooter,
+  SheetHeader,
+  Sheet as SheetPrimitive,
+  SheetTitle as SheetTitlePrimitive,
+  SheetTrigger,
+} from "@/components/ui/sheet";
 import { cn } from "@/utils/cn";
-import "./Sheet.css";
-import { useIsMobile } from "@/hooks/useIsMobile";
 
-const Sheet = ({ ...props }: SheetPrimitive.Root.Props) => {
-  return <SheetPrimitive.Root data-slot="sheet" {...props} />;
+const Sheet = ({ ...props }: ComponentProps<typeof SheetPrimitive>) => {
+  return <SheetPrimitive {...props} />;
 };
 
-const SheetTrigger = ({ ...props }: SheetPrimitive.Trigger.Props) => {
-  return <SheetPrimitive.Trigger data-slot="sheet-trigger" {...props} />;
-};
-
-const SheetClose = ({ ...props }: SheetPrimitive.Close.Props) => {
-  return <SheetPrimitive.Close data-slot="sheet-close" {...props} />;
-};
-
-const SheetPortal = ({ ...props }: SheetPrimitive.Portal.Props) => {
-  return <SheetPrimitive.Portal data-slot="sheet-portal" {...props} />;
-};
-
-const SheetOverlay = ({ className, ...props }: SheetPrimitive.Backdrop.Props) => {
-  return <SheetPrimitive.Backdrop className={cn("sheet-overlay", className)} data-slot="sheet-overlay" {...props} />;
-};
-
-interface SheetContentProps extends SheetPrimitive.Popup.Props {
-  side?: "top" | "right" | "bottom" | "left";
-  showCloseButton?: boolean;
-  showOverlay?: boolean;
-  overlayClassName?: string;
-  size?: "default" | "wide";
+interface SheetContentProps extends ComponentProps<typeof SheetContentPrimitive> {
+  className?: string;
+  size?: "default" | "lg" | "xl" | "2xl" | "3xl" | "4xl" | "full";
 }
 
-const SheetContent = ({
-  className,
-  children,
-  side,
-  showCloseButton = true,
-  showOverlay = true,
-  overlayClassName,
-  size = "default",
-  ...props
-}: SheetContentProps) => {
-  const isMobile = useIsMobile();
-  const defaultSide = isMobile ? "bottom" : "right";
+const SheetContent = ({ className, size, ...props }: SheetContentProps) => {
   return (
-    <SheetPortal>
-      {showOverlay && <SheetOverlay className={overlayClassName} />}
-      <SheetPrimitive.Popup
-        className={cn("sheet-content", size === "wide" ? "sheet-content--wide" : className)}
-        data-side={side ?? defaultSide}
-        data-slot="sheet-content"
-        {...props}
-      >
-        {children}
-        {showCloseButton && (
-          <SheetClose render={<Button className="absolute top-4 right-4" size="sm" variant="ghost" />}>
-            <XIcon />
-            <span className="sr-only">Close</span>
-          </SheetClose>
-        )}
-      </SheetPrimitive.Popup>
-    </SheetPortal>
-  );
-};
-
-const SheetHeader = ({ className, ...props }: ComponentProps<"div">) => {
-  return <div className={cn("sheet-header", className)} data-slot="sheet-header" {...props} />;
-};
-
-const SheetBody = ({ className, ...props }: ComponentProps<"div">) => {
-  return <div className={cn("sheet-body", className)} data-slot="sheet-body" {...props} />;
-};
-
-const SheetFooter = ({ className, ...props }: ComponentProps<"div">) => {
-  return <div className={cn("sheet-footer", className)} data-slot="sheet-footer" {...props} />;
-};
-
-const SheetTitle = ({ className, ...props }: SheetPrimitive.Title.Props) => {
-  return <SheetPrimitive.Title className={cn("sheet-title", className)} data-slot="sheet-title" {...props} />;
-};
-
-const SheetDescription = ({ className, ...props }: SheetPrimitive.Description.Props) => {
-  return (
-    <SheetPrimitive.Description
-      className={cn("sheet-description", className)}
-      data-slot="sheet-description"
+    <SheetContentPrimitive
+      className={cn(
+        size === "lg" && "data-[side=left]:sm:min-w-lg data-[side=right]:sm:min-w-lg",
+        size === "xl" && "data-[side=left]:sm:min-w-xl data-[side=right]:sm:min-w-xl",
+        size === "2xl" && "data-[side=left]:sm:min-w-2xl data-[side=right]:sm:min-w-2xl",
+        size === "3xl" && "data-[side=left]:sm:min-w-3xl data-[side=right]:sm:min-w-3xl",
+        size === "4xl" && "data-[side=left]:sm:min-w-4xl data-[side=right]:sm:min-w-4xl",
+        size === "full" && "data-[side=left]:sm:min-w-[calc(100%-2rem)] data-[side=right]:sm:min-w-[calc(100%-2rem)]",
+        className,
+      )}
       {...props}
     />
   );
 };
 
+const SheetTitle = ({ className, ...props }: ComponentProps<typeof SheetTitlePrimitive>) => {
+  return <SheetTitlePrimitive className={cn("text-xl font-medium", className)} {...props} />;
+};
+
+const SheetBody = ({ className, ...props }: ComponentProps<"div">) => {
+  return <div className={cn("flex-1 p-4", className)} data-slot="sheet-body" {...props} />;
+};
+
 Sheet.Trigger = SheetTrigger;
 Sheet.Close = SheetClose;
 Sheet.Content = SheetContent;
-Sheet.Overlay = SheetOverlay;
 Sheet.Header = SheetHeader;
-Sheet.Body = SheetBody;
 Sheet.Footer = SheetFooter;
+Sheet.Body = SheetBody;
 Sheet.Title = SheetTitle;
 Sheet.Description = SheetDescription;
 

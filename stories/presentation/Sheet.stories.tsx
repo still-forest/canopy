@@ -16,18 +16,24 @@ export default meta;
 
 type Story = StoryObj<typeof meta>;
 
+const SampleContent = () => (
+  <>
+    <Sheet.Header>
+      <Sheet.Title>Sheet title</Sheet.Title>
+      <Sheet.Description>This is a description of the sheet content.</Sheet.Description>
+    </Sheet.Header>
+    <Sheet.Body>
+      <Text size="sm">{sampleParagraphText[0]}</Text>
+    </Sheet.Body>
+  </>
+);
+
 export const Default: Story = {
   render: () => (
     <Sheet>
       <Sheet.Trigger render={<Button>Open sheet</Button>} />
       <Sheet.Content>
-        <Sheet.Header>
-          <Sheet.Title>Sheet title</Sheet.Title>
-          <Sheet.Description>This is a description of the sheet content.</Sheet.Description>
-        </Sheet.Header>
-        <Sheet.Body>
-          <Text size="sm">{sampleParagraphText[0]}</Text>
-        </Sheet.Body>
+        <SampleContent />
       </Sheet.Content>
     </Sheet>
   ),
@@ -38,13 +44,7 @@ export const WithFooter: Story = {
     <Sheet>
       <Sheet.Trigger render={<Button>Open sheet</Button>} />
       <Sheet.Content>
-        <Sheet.Header>
-          <Sheet.Title>Sheet title</Sheet.Title>
-          <Sheet.Description>A sheet with header, body, and footer sections.</Sheet.Description>
-        </Sheet.Header>
-        <Sheet.Body>
-          <Text size="sm">{sampleParagraphText[0]}</Text>
-        </Sheet.Body>
+        <SampleContent />
         <Sheet.Footer>
           <Flex gap="2" justify="end">
             <Sheet.Close render={<Button variant="ghost">Cancel</Button>} />
@@ -69,12 +69,7 @@ export const Side: Story = {
             }
           />
           <Sheet.Content side={side}>
-            <Sheet.Header>
-              <Sheet.Title>Sheet from {side}</Sheet.Title>
-            </Sheet.Header>
-            <Sheet.Body>
-              <Text size="sm">{sampleParagraphText[0]}</Text>
-            </Sheet.Body>
+            <SampleContent />
           </Sheet.Content>
         </Sheet>
       ))}
@@ -87,13 +82,7 @@ export const NoCloseButton: Story = {
     <Sheet>
       <Sheet.Trigger render={<Button>Open sheet</Button>} />
       <Sheet.Content showCloseButton={false}>
-        <Sheet.Header>
-          <Sheet.Title>No close button</Sheet.Title>
-          <Sheet.Description>Click the overlay to close.</Sheet.Description>
-        </Sheet.Header>
-        <Sheet.Body>
-          <Text size="sm">{sampleParagraphText[0]}</Text>
-        </Sheet.Body>
+        <SampleContent />
       </Sheet.Content>
     </Sheet>
   ),
@@ -104,13 +93,7 @@ export const NoOverlay: Story = {
     <Sheet>
       <Sheet.Trigger render={<Button>Open sheet</Button>} />
       <Sheet.Content showOverlay={false}>
-        <Sheet.Header>
-          <Sheet.Title>No overlay</Sheet.Title>
-          <Sheet.Description>This sheet has no backdrop overlay.</Sheet.Description>
-        </Sheet.Header>
-        <Sheet.Body>
-          <Text size="sm">{sampleParagraphText[0]}</Text>
-        </Sheet.Body>
+        <SampleContent />
       </Sheet.Content>
     </Sheet>
   ),
@@ -126,13 +109,7 @@ export const Controlled: Story = {
         <Sheet onOpenChange={setOpen} open={open}>
           <Sheet.Trigger render={<Button>Inline trigger</Button>} />
           <Sheet.Content>
-            <Sheet.Header>
-              <Sheet.Title>Controlled sheet</Sheet.Title>
-              <Sheet.Description>Opened via external state.</Sheet.Description>
-            </Sheet.Header>
-            <Sheet.Body>
-              <Text size="sm">{sampleParagraphText[0]}</Text>
-            </Sheet.Body>
+            <SampleContent />
           </Sheet.Content>
         </Sheet>
       </Flex>
@@ -153,18 +130,51 @@ export const NoHeader: Story = {
   ),
 };
 
-export const Wide: Story = {
+export const Size: Story = {
   render: () => (
-    <Sheet>
-      <Sheet.Trigger render={<Button>Open wide sheet</Button>} />
-      <Sheet.Content size="wide">
-        <Sheet.Header>
-          <Sheet.Title>Wide sheet</Sheet.Title>
-        </Sheet.Header>
-        <Sheet.Body>
-          <Text size="sm">{sampleParagraphText[0]}</Text>
-        </Sheet.Body>
-      </Sheet.Content>
-    </Sheet>
+    <Flex gap="4">
+      <Sheet>
+        <Sheet.Trigger render={<Button>Default size</Button>} />
+        <Sheet.Content>
+          <SampleContent />
+        </Sheet.Content>
+      </Sheet>
+      <Sheet>
+        <Sheet.Trigger render={<Button>Size = 'lg'</Button>} />
+        <Sheet.Content size="lg">
+          <SampleContent />
+        </Sheet.Content>
+      </Sheet>
+      <Sheet>
+        <Sheet.Trigger render={<Button>Size = 'xl'</Button>} />
+        <Sheet.Content size="xl">
+          <SampleContent />
+        </Sheet.Content>
+      </Sheet>
+      <Sheet>
+        <Sheet.Trigger render={<Button>Size = '2xl'</Button>} />
+        <Sheet.Content size="2xl">
+          <SampleContent />
+        </Sheet.Content>
+      </Sheet>
+      <Sheet>
+        <Sheet.Trigger render={<Button>Size = '3xl'</Button>} />
+        <Sheet.Content size="3xl">
+          <SampleContent />
+        </Sheet.Content>
+      </Sheet>
+      <Sheet>
+        <Sheet.Trigger render={<Button>Size = '4xl'</Button>} />
+        <Sheet.Content size="4xl">
+          <SampleContent />
+        </Sheet.Content>
+      </Sheet>
+      <Sheet>
+        <Sheet.Trigger render={<Button>Size = 'full'</Button>} />
+        <Sheet.Content size="full">
+          <SampleContent />
+        </Sheet.Content>
+      </Sheet>
+    </Flex>
   ),
 };
