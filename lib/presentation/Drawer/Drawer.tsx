@@ -19,7 +19,7 @@ const Drawer = (props: ComponentProps<typeof DrawerPrimitive>) => {
 };
 
 const DrawerBody = ({ className, ...props }: ComponentProps<"div">) => {
-  return <div className={cn("p-4", className)} data-slot="drawer-body" {...props} />;
+  return <div className={cn("flex-1 p-4", className)} data-slot="drawer-body" {...props} />;
 };
 
 Drawer.Trigger = DrawerTrigger;
