@@ -34,6 +34,7 @@ export const MobileSelectPicker = ({
               id,
               outline: true,
               disabled: !enabled,
+              variant: "input",
             })}
           >
             {selectedLabel}
