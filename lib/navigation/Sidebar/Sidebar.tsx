@@ -1,4 +1,4 @@
-import { Sheet, SheetContent, SheetDescription, SheetHeader, SheetTitle } from "@/components/ui/sheet";
+import { Sheet } from "@/presentation";
 import { cn } from "@/utils";
 import { SIDEBAR_WIDTH_MOBILE } from "./constants";
 import { useSidebar } from "./context";
@@ -46,7 +46,7 @@ const Sidebar = ({ side = "left", collapsible = "offcanvas", className, children
   if (isMobile) {
     return (
       <Sheet onOpenChange={setOpenMobile} open={openMobile} {...props}>
-        <SheetContent
+        <Sheet.Content
           className="w-(--sidebar-width) bg-sidebar p-0 text-sidebar-foreground [&>button]:hidden"
           data-mobile="true"
           data-sidebar="sidebar"
@@ -58,12 +58,14 @@ const Sidebar = ({ side = "left", collapsible = "offcanvas", className, children
             } as React.CSSProperties
           }
         >
-          <SheetHeader className="sr-only">
-            <SheetTitle>Sidebar</SheetTitle>
-            <SheetDescription>Displays the mobile sidebar.</SheetDescription>
-          </SheetHeader>
-          <div className="flex h-full w-full flex-col">{children}</div>
-        </SheetContent>
+          <Sheet.Header className="sr-only">
+            <Sheet.Title>Sidebar</Sheet.Title>
+            <Sheet.Description>Displays the mobile sidebar.</Sheet.Description>
+          </Sheet.Header>
+          <div className="flex h-full w-full flex-col" data-slot="sheet-body">
+            {children}
+          </div>
+        </Sheet.Content>
       </Sheet>
     );
   }
