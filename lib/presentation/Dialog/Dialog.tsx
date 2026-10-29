@@ -8,7 +8,7 @@ import {
   DialogOverlay,
   DialogPortal,
   Dialog as DialogPrimitive,
-  DialogTitle,
+  DialogTitle as DialogTitlePrimitive,
   DialogTrigger,
 } from "@/components/ui/dialog";
 import { cn } from "@/utils/cn";
@@ -41,6 +41,10 @@ const DialogContent = ({ className, size = "default", ...props }: DialogContentP
 
 const DialogBody = (props: ComponentProps<"div">) => {
   return <div data-slot="dialog-body" {...props} />;
+};
+
+const DialogTitle = ({ className, ...props }: ComponentProps<typeof DialogTitlePrimitive>) => {
+  return <DialogTitlePrimitive className={cn("text-xl font-medium", className)} {...props} />;
 };
 
 Dialog.Trigger = DialogTrigger;
