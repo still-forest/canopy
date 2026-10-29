@@ -30,6 +30,8 @@ const SheetContent = ({ className, size, ...props }: SheetContentProps) => {
         size === "3xl" && "data-[side=left]:sm:min-w-3xl data-[side=right]:sm:min-w-3xl",
         size === "4xl" && "data-[side=left]:sm:min-w-4xl data-[side=right]:sm:min-w-4xl",
         size === "full" && "data-[side=left]:sm:min-w-[calc(100%-2rem)] data-[side=right]:sm:min-w-[calc(100%-2rem)]",
+        "data-[side=left]:w-[90%] data-[side=right]:w-[90%]",
+        "data-[side=left]:sm:max-w-md data-[side=right]:sm:max-w-md",
         className,
       )}
       {...props}
