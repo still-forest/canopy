@@ -15,50 +15,50 @@ export default meta;
 
 type Story = StoryObj<typeof meta>;
 
+const defaultProps = {
+  description: "SimpleDialog description",
+  title: "SimpleDialog title",
+  trigger: <Button>Open modal</Button>,
+};
+
+const SampleContent = () => <Text>SimpleDialog content</Text>;
+
 export const Default: Story = {
   render: () => (
-    <SimpleDialog
-      description="SimpleDialog description"
-      title="SimpleDialog title"
-      trigger={<Button>Open modal</Button>}
-    >
-      <Text>SimpleDialog content</Text>
+    <SimpleDialog {...defaultProps}>
+      <SampleContent />
     </SimpleDialog>
   ),
 };
 
 export const NoTitle: Story = {
   render: () => (
-    <SimpleDialog description="SimpleDialog description" trigger={<Button>Open modal</Button>}>
-      <Text>SimpleDialog content</Text>
+    <SimpleDialog {...defaultProps} description="SimpleDialog description">
+      <SampleContent />
     </SimpleDialog>
   ),
 };
 
 export const NoDescription: Story = {
   render: () => (
-    <SimpleDialog title="SimpleDialog title" trigger={<Button>Open modal</Button>}>
-      <Text>SimpleDialog content</Text>
+    <SimpleDialog {...defaultProps} title="SimpleDialog title">
+      <SampleContent />
     </SimpleDialog>
   ),
 };
 
 export const NoTitleOrDescription: Story = {
   render: () => (
-    <SimpleDialog trigger={<Button>Open modal</Button>}>
-      <Text>SimpleDialog content</Text>
+    <SimpleDialog {...defaultProps}>
+      <SampleContent />
     </SimpleDialog>
   ),
 };
 
 export const SimpleTrigger: Story = {
   render: () => (
-    <SimpleDialog
-      description="SimpleDialog description"
-      title="SimpleDialog title"
-      trigger={<Text className="cursor-pointer hover:underline">Open modal</Text>}
-    >
-      <Text>SimpleDialog content</Text>
+    <SimpleDialog {...defaultProps} trigger={<Text className="cursor-pointer hover:underline">Open modal</Text>}>
+      <SampleContent />
     </SimpleDialog>
   ),
 };
@@ -71,15 +71,39 @@ export const Controlled: Story = {
       <Flex gap="4">
         <Button onClick={() => setOpen(true)}>External trigger</Button>
         <SimpleDialog
-          description="SimpleDialog description"
+          {...defaultProps}
           onOpenChange={setOpen}
           open={open}
-          title="SimpleDialog title"
           trigger={<Button outline>Internal trigger</Button>}
         >
-          <Text>SimpleDialog content</Text>
+          <SampleContent />
         </SimpleDialog>
       </Flex>
     );
   },
+};
+
+export const Sizes: Story = {
+  render: () => (
+    <Flex gap="4">
+      <SimpleDialog {...defaultProps} size="default" trigger={<Button>Default size</Button>}>
+        <SampleContent />
+      </SimpleDialog>
+      <SimpleDialog {...defaultProps} size="xl" trigger={<Button>Size = 'xl'</Button>}>
+        <SampleContent />
+      </SimpleDialog>
+      <SimpleDialog {...defaultProps} size="2xl" trigger={<Button>Size = '2xl'</Button>}>
+        <SampleContent />
+      </SimpleDialog>
+      <SimpleDialog {...defaultProps} size="3xl" trigger={<Button>Size = '3xl'</Button>}>
+        <SampleContent />
+      </SimpleDialog>
+      <SimpleDialog {...defaultProps} size="4xl" trigger={<Button>Size = '4xl'</Button>}>
+        <SampleContent />
+      </SimpleDialog>
+      <SimpleDialog {...defaultProps} size="full" trigger={<Button>Size = 'full'</Button>}>
+        <SampleContent />
+      </SimpleDialog>
+    </Flex>
+  ),
 };

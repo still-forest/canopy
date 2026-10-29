@@ -1,4 +1,3 @@
-import "./Dialog.css";
 import type { ComponentProps } from "react";
 import {
   DialogClose,
