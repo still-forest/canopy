@@ -36,7 +36,7 @@ export const ResponsiveDialog = ({
 
   if (isMobile) {
     return (
-      <Drawer onOpenChange={handleOpenChange} open={isOpen}>
+      <Drawer onOpenChange={handleOpenChange} open={isOpen} showSwipeHandle>
         {trigger && <Drawer.Trigger render={trigger} />}
         <Drawer.Content>
           <Drawer.Header>
