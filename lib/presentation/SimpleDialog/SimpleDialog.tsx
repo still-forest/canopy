@@ -1,5 +1,5 @@
 import { type ReactElement, type ReactNode, useEffect, useState } from "react";
-import { Dialog } from "@/presentation/Dialog";
+import { Dialog, type DialogContentProps } from "@/presentation/Dialog";
 
 interface Props {
   children: ReactNode;
@@ -10,6 +10,7 @@ interface Props {
   onOpenChange?: (open: boolean) => void;
   ariaDescription?: string;
   className?: string;
+  size?: DialogContentProps["size"];
 }
 
 export const SimpleDialog = ({
@@ -21,6 +22,7 @@ export const SimpleDialog = ({
   onOpenChange,
   ariaDescription,
   className,
+  size = "default",
 }: Props) => {
   const isControlled = open !== undefined;
   const [openState, setOpenState] = useState<boolean>(isControlled ? open : false);
@@ -49,7 +51,7 @@ export const SimpleDialog = ({
   return (
     <Dialog onOpenChange={handleOpenChange} open={openState}>
       {trigger && <Dialog.Trigger render={trigger} />}
-      <Dialog.Content className={className}>
+      <Dialog.Content className={className} size={size}>
         {(title || description) && (
           <Dialog.Header>
             {title && <Dialog.Title>{title}</Dialog.Title>}
@@ -59,7 +61,7 @@ export const SimpleDialog = ({
         {ariaDescription && !description && (
           <Dialog.Description className="sr-only">{ariaDescription}</Dialog.Description>
         )}
-        {children}
+        <Dialog.Body>{children}</Dialog.Body>
       </Dialog.Content>
     </Dialog>
   );

@@ -2,6 +2,7 @@ import { sampleParagraphText } from "@stories/support/sampleText";
 import type { Meta, StoryObj } from "@storybook/react-vite";
 import { useState } from "react";
 import { Button } from "@/buttons";
+import { Flex } from "@/layout";
 import { ResponsiveDialog, type ResponsiveDialogProps } from "@/presentation";
 import { Text } from "@/typography";
 
@@ -69,10 +70,30 @@ export const Controlled: Story = {
   },
 };
 
-export const Wide: Story = {
+export const Sizes: Story = {
   render: () => (
-    <ResponsiveDialog {...defaultProps} size="wide">
-      <SampleContent />
-    </ResponsiveDialog>
+    <Flex gap="4" wrap="wrap">
+      <ResponsiveDialog {...defaultProps} size="default" trigger={<Button>Default size</Button>}>
+        <SampleContent />
+      </ResponsiveDialog>
+      <ResponsiveDialog {...defaultProps} size="lg" trigger={<Button>Size = 'lg'</Button>}>
+        <SampleContent />
+      </ResponsiveDialog>
+      <ResponsiveDialog {...defaultProps} size="xl" trigger={<Button>Size = 'xl'</Button>}>
+        <SampleContent />
+      </ResponsiveDialog>
+      <ResponsiveDialog {...defaultProps} size="2xl" trigger={<Button>Size = '2xl'</Button>}>
+        <SampleContent />
+      </ResponsiveDialog>
+      <ResponsiveDialog {...defaultProps} size="3xl" trigger={<Button>Size = '3xl'</Button>}>
+        <SampleContent />
+      </ResponsiveDialog>
+      <ResponsiveDialog {...defaultProps} size="4xl" trigger={<Button>Size = '4xl'</Button>}>
+        <SampleContent />
+      </ResponsiveDialog>
+      <ResponsiveDialog {...defaultProps} size="full" trigger={<Button>Size = 'full'</Button>}>
+        <SampleContent />
+      </ResponsiveDialog>
+    </Flex>
   ),
 };
