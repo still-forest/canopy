@@ -44,7 +44,7 @@ const SheetTitle = ({ className, ...props }: ComponentProps<typeof SheetTitlePri
 };
 
 const SheetBody = ({ className, ...props }: ComponentProps<"div">) => {
-  return <div className={cn("flex-1 p-4", className)} data-slot="sheet-body" {...props} />;
+  return <div className={cn("flex-1 p-4 overflow-y-auto", className)} data-slot="sheet-body" {...props} />;
 };
 
 Sheet.Trigger = SheetTrigger;

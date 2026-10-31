@@ -16,6 +16,8 @@ export default meta;
 
 type Story = StoryObj<typeof meta>;
 
+const exceptionallyLongText = Array(10).fill(sampleParagraphText.join(" "));
+
 const SampleContent = () => (
   <>
     <Sheet.Header>
@@ -23,7 +25,7 @@ const SampleContent = () => (
       <Sheet.Description>This is a description of the sheet content.</Sheet.Description>
     </Sheet.Header>
     <Sheet.Body>
-      <Text size="sm">{sampleParagraphText[0]}</Text>
+      <Text size="sm">{exceptionallyLongText}</Text>
     </Sheet.Body>
   </>
 );
@@ -125,6 +127,23 @@ export const NoHeader: Story = {
         <Sheet.Body>
           <Text size="sm">A simple sheet with no header, title, or description.</Text>
         </Sheet.Body>
+      </Sheet.Content>
+    </Sheet>
+  ),
+};
+
+export const Scrollable: Story = {
+  render: () => (
+    <Sheet>
+      <Sheet.Trigger render={<Button>Open sheet</Button>} />
+      <Sheet.Content>
+        <SampleContent />
+        <Sheet.Footer>
+          <Flex gap="2" justify="end">
+            <Sheet.Close render={<Button variant="ghost">Cancel</Button>} />
+            <Button>Save changes</Button>
+          </Flex>
+        </Sheet.Footer>
       </Sheet.Content>
     </Sheet>
   ),
