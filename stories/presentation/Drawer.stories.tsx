@@ -133,7 +133,7 @@ export const NoHeader: Story = {
   ),
 };
 
-export const Scrollable: Story = {
+export const Scrolling: Story = {
   render: () => (
     <Drawer>
       <Drawer.Trigger render={<Button>Open drawer</Button>} />

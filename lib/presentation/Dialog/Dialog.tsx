@@ -32,6 +32,7 @@ const DialogContent = ({ className, size = "default", ...props }: DialogContentP
         size === "3xl" && "sm:max-w-3xl",
         size === "4xl" && "sm:max-w-4xl",
         size === "full" && "sm:max-w-[calc(100%-2rem)]",
+        "flex max-h-[calc(100dvh-2rem)] flex-col",
         className,
       )}
       {...props}
@@ -39,8 +40,8 @@ const DialogContent = ({ className, size = "default", ...props }: DialogContentP
   );
 };
 
-const DialogBody = (props: ComponentProps<"div">) => {
-  return <div data-slot="dialog-body" {...props} />;
+const DialogBody = ({ className, ...props }: ComponentProps<"div">) => {
+  return <div className={cn("min-h-0 flex-1 overflow-y-auto", className)} data-slot="dialog-body" {...props} />;
 };
 
 const DialogTitle = ({ className, ...props }: ComponentProps<typeof DialogTitlePrimitive>) => {
