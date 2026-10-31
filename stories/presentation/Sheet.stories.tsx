@@ -1,4 +1,4 @@
-import { sampleParagraphText } from "@stories/support/sampleText";
+import { exceptionallyLongText } from "@stories/support/sampleText";
 import type { Meta, StoryObj } from "@storybook/react-vite";
 import { useState } from "react";
 import { Button } from "@/buttons";
@@ -15,8 +15,6 @@ const meta: Meta<typeof Sheet> = {
 export default meta;
 
 type Story = StoryObj<typeof meta>;
-
-const exceptionallyLongText = Array(10).fill(sampleParagraphText.join(" "));
 
 const SampleContent = () => (
   <>

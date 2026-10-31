@@ -3,8 +3,8 @@ import {
   DrawerClose,
   DrawerContent,
   DrawerDescription,
-  DrawerFooter,
-  DrawerHeader,
+  DrawerFooter as DrawerFooterPrimitive,
+  DrawerHeader as DrawerHeaderPrimitive,
   DrawerOverlay,
   DrawerPortal,
   Drawer as DrawerPrimitive,
@@ -18,8 +18,16 @@ const Drawer = (props: ComponentProps<typeof DrawerPrimitive>) => {
   return <DrawerPrimitive {...props} />;
 };
 
+const DrawerHeader = ({ className, ...props }: ComponentProps<typeof DrawerHeaderPrimitive>) => {
+  return <DrawerHeaderPrimitive className={cn("pb-4", className)} {...props} />;
+};
+
 const DrawerBody = ({ className, ...props }: ComponentProps<"div">) => {
-  return <div className={cn("flex-1 p-4", className)} data-slot="drawer-body" {...props} />;
+  return <div className={cn("flex-1 px-4 overflow-y-auto", className)} data-slot="drawer-body" {...props} />;
+};
+
+const DrawerFooter = ({ className, ...props }: ComponentProps<typeof DrawerFooterPrimitive>) => {
+  return <DrawerFooterPrimitive className={cn("pt-4", className)} {...props} />;
 };
 
 const DrawerTitle = ({ className, ...props }: ComponentProps<typeof DrawerTitlePrimitive>) => {

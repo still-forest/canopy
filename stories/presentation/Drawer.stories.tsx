@@ -1,4 +1,4 @@
-import { sampleParagraphText } from "@stories/support/sampleText";
+import { exceptionallyLongText, sampleParagraphText } from "@stories/support/sampleText";
 import type { Meta, StoryObj } from "@storybook/react-vite";
 import { useState } from "react";
 import { Button } from "@/buttons";
@@ -128,6 +128,26 @@ export const NoHeader: Story = {
         <Drawer.Body>
           <Text size="sm">A simple drawer with no header, title, or description.</Text>
         </Drawer.Body>
+      </Drawer.Content>
+    </Drawer>
+  ),
+};
+
+export const Scrollable: Story = {
+  render: () => (
+    <Drawer>
+      <Drawer.Trigger render={<Button>Open drawer</Button>} />
+      <Drawer.Content>
+        <Drawer.Header>
+          <Drawer.Title>Drawer title</Drawer.Title>
+          <Drawer.Description>This is a description of the drawer content.</Drawer.Description>
+        </Drawer.Header>
+        <Drawer.Body>
+          <Text size="sm">{exceptionallyLongText}</Text>
+        </Drawer.Body>
+        <Drawer.Footer>
+          <Drawer.Close render={<Button>Close</Button>} />
+        </Drawer.Footer>
       </Drawer.Content>
     </Drawer>
   ),

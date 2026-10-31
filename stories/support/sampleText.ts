@@ -19,3 +19,4 @@ export const sampleSentences = sampleLongText.split(".").filter(Boolean);
 export const sampleSentence = `${sampleSentences[0]}.`;
 
 export const sampleLongWord = "Simpsoncalifragilisticexpiala(annoyed-grunt)cious";
+export const exceptionallyLongText = Array(20).fill(sampleParagraphText.join(" "));
