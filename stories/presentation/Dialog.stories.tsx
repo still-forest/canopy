@@ -1,4 +1,4 @@
-import { sampleParagraphText } from "@stories/support/sampleText";
+import { exceptionallyLongText } from "@stories/support/sampleText";
 import type { Meta, StoryObj } from "@storybook/react-vite";
 import { OrigamiIcon } from "lucide-react";
 import { useState } from "react";
@@ -26,42 +26,93 @@ const SampleHeader = () => (
   </Dialog.Header>
 );
 
-const SampleContent = () => (
+const SampleBody = () => (
   <Dialog.Body>
-    <Text>{sampleParagraphText[0]}</Text>
+    <Text>{exceptionallyLongText}</Text>
   </Dialog.Body>
+);
+
+const SampleFooter = () => (
+  <Dialog.Footer>
+    <Dialog.Close render={<Button>Close</Button>} />
+  </Dialog.Footer>
+);
+
+const SampleContent = () => (
+  <>
+    <SampleHeader />
+    <SampleBody />
+    <SampleFooter />
+  </>
 );
 
 export const Default: Story = {
   render: () => (
     <Dialog>
-      <ButtonTrigger label="Open dialog" />
+      <Dialog.Trigger>Open dialog</Dialog.Trigger>
       <Dialog.Content>
-        <SampleHeader />
         <SampleContent />
       </Dialog.Content>
     </Dialog>
   ),
 };
 
-export const NoDescription: Story = {
+export const Size: Story = {
   render: () => (
-    <Dialog>
-      <ButtonTrigger label="Open dialog" />
-      <Dialog.Content>
-        <SampleHeader />
-        <SampleContent />
-      </Dialog.Content>
-    </Dialog>
+    <Flex gap="4">
+      <Dialog>
+        <ButtonTrigger label="Default size" />
+        <Dialog.Content>
+          <SampleContent />
+        </Dialog.Content>
+      </Dialog>
+      <Dialog>
+        <ButtonTrigger label="Size = 'lg'" />
+        <Dialog.Content size="lg">
+          <SampleContent />
+        </Dialog.Content>
+      </Dialog>
+      <Dialog>
+        <ButtonTrigger label="Size = 'xl'" />
+        <Dialog.Content size="xl">
+          <SampleContent />
+        </Dialog.Content>
+      </Dialog>
+      <Dialog>
+        <ButtonTrigger label="Size = '2xl'" />
+        <Dialog.Content size="2xl">
+          <SampleContent />
+        </Dialog.Content>
+      </Dialog>
+      <Dialog>
+        <ButtonTrigger label="Size = '3xl'" />
+        <Dialog.Content size="3xl">
+          <SampleContent />
+        </Dialog.Content>
+      </Dialog>
+      <Dialog>
+        <ButtonTrigger label="Size = '4xl'" />
+        <Dialog.Content size="4xl">
+          <SampleContent />
+        </Dialog.Content>
+      </Dialog>
+      <Dialog>
+        <ButtonTrigger label="Size = 'full'" />
+        <Dialog.Content size="full">
+          <SampleContent />
+        </Dialog.Content>
+      </Dialog>
+    </Flex>
   ),
 };
 
-export const NoTitleOrDescription: Story = {
+export const NoHeader: Story = {
   render: () => (
     <Dialog>
-      <ButtonTrigger label="Open dialog" />
+      <Dialog.Trigger>Open dialog</Dialog.Trigger>
       <Dialog.Content>
-        <SampleContent />
+        <SampleBody />
+        <SampleFooter />
       </Dialog.Content>
     </Dialog>
   ),
@@ -78,7 +129,8 @@ export const CustomTrigger: Story = {
         }
       />
       <Dialog.Content>
-        <SampleContent />
+        <SampleBody />
+        <SampleFooter />
       </Dialog.Content>
     </Dialog>
   ),
@@ -92,7 +144,6 @@ export const SimpleTrigger: Story = {
         render={<Text className="cursor-pointer hover:underline">Open modal</Text>}
       />
       <Dialog.Content>
-        <SampleHeader />
         <SampleContent />
       </Dialog.Content>
     </Dialog>
@@ -108,67 +159,10 @@ export const Controlled: Story = {
         <Button onClick={() => setOpen(true)}>External trigger</Button>
         <Dialog onOpenChange={setOpen} open={open}>
           <Dialog.Content>
-            <SampleHeader />
             <SampleContent />
           </Dialog.Content>
         </Dialog>
       </Flex>
     );
   },
-};
-
-export const Sizes: Story = {
-  render: () => (
-    <Flex gap="4">
-      <Dialog>
-        <ButtonTrigger label="Default size" />
-        <Dialog.Content>
-          <SampleHeader />
-          <SampleContent />
-        </Dialog.Content>
-      </Dialog>
-      <Dialog>
-        <ButtonTrigger label="Size = 'lg'" />
-        <Dialog.Content size="lg">
-          <SampleHeader />
-          <SampleContent />
-        </Dialog.Content>
-      </Dialog>
-      <Dialog>
-        <ButtonTrigger label="Size = 'xl'" />
-        <Dialog.Content size="xl">
-          <SampleHeader />
-          <SampleContent />
-        </Dialog.Content>
-      </Dialog>
-      <Dialog>
-        <ButtonTrigger label="Size = '2xl'" />
-        <Dialog.Content size="2xl">
-          <SampleHeader />
-          <SampleContent />
-        </Dialog.Content>
-      </Dialog>
-      <Dialog>
-        <ButtonTrigger label="Size = '3xl'" />
-        <Dialog.Content size="3xl">
-          <SampleHeader />
-          <SampleContent />
-        </Dialog.Content>
-      </Dialog>
-      <Dialog>
-        <ButtonTrigger label="Size = '4xl'" />
-        <Dialog.Content size="4xl">
-          <SampleHeader />
-          <SampleContent />
-        </Dialog.Content>
-      </Dialog>
-      <Dialog>
-        <ButtonTrigger label="Size = 'full'" />
-        <Dialog.Content size="full">
-          <SampleHeader />
-          <SampleContent />
-        </Dialog.Content>
-      </Dialog>
-    </Flex>
-  ),
 };

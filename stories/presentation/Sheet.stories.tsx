@@ -1,5 +1,6 @@
-import { sampleParagraphText } from "@stories/support/sampleText";
+import { exceptionallyLongText } from "@stories/support/sampleText";
 import type { Meta, StoryObj } from "@storybook/react-vite";
+import { OrigamiIcon } from "lucide-react";
 import { useState } from "react";
 import { Button } from "@/buttons";
 import { Flex } from "@/layout";
@@ -16,6 +17,15 @@ export default meta;
 
 type Story = StoryObj<typeof meta>;
 
+const SampleFooter = () => (
+  <Sheet.Footer>
+    <Flex gap="2" justify="end">
+      <Sheet.Close render={<Button variant="ghost">Cancel</Button>} />
+      <Button>Save</Button>
+    </Flex>
+  </Sheet.Footer>
+);
+
 const SampleContent = () => (
   <>
     <Sheet.Header>
@@ -23,34 +33,18 @@ const SampleContent = () => (
       <Sheet.Description>This is a description of the sheet content.</Sheet.Description>
     </Sheet.Header>
     <Sheet.Body>
-      <Text size="sm">{sampleParagraphText[0]}</Text>
+      <Text size="sm">{exceptionallyLongText}</Text>
     </Sheet.Body>
+    <SampleFooter />
   </>
 );
 
 export const Default: Story = {
   render: () => (
     <Sheet>
-      <Sheet.Trigger render={<Button>Open sheet</Button>} />
+      <Sheet.Trigger>Open sheet</Sheet.Trigger>
       <Sheet.Content>
         <SampleContent />
-      </Sheet.Content>
-    </Sheet>
-  ),
-};
-
-export const WithFooter: Story = {
-  render: () => (
-    <Sheet>
-      <Sheet.Trigger render={<Button>Open sheet</Button>} />
-      <Sheet.Content>
-        <SampleContent />
-        <Sheet.Footer>
-          <Flex gap="2" justify="end">
-            <Sheet.Close render={<Button variant="ghost">Cancel</Button>} />
-            <Button>Save changes</Button>
-          </Flex>
-        </Sheet.Footer>
       </Sheet.Content>
     </Sheet>
   ),
@@ -74,59 +68,6 @@ export const Side: Story = {
         </Sheet>
       ))}
     </Flex>
-  ),
-};
-
-export const NoCloseButton: Story = {
-  render: () => (
-    <Sheet>
-      <Sheet.Trigger render={<Button>Open sheet</Button>} />
-      <Sheet.Content showCloseButton={false}>
-        <SampleContent />
-      </Sheet.Content>
-    </Sheet>
-  ),
-};
-
-export const NoOverlay: Story = {
-  render: () => (
-    <Sheet>
-      <Sheet.Trigger render={<Button>Open sheet</Button>} />
-      <Sheet.Content showOverlay={false}>
-        <SampleContent />
-      </Sheet.Content>
-    </Sheet>
-  ),
-};
-
-export const Controlled: Story = {
-  render: () => {
-    const [open, setOpen] = useState(false);
-
-    return (
-      <Flex gap="4">
-        <Button onClick={() => setOpen(!open)}>External trigger</Button>
-        <Sheet onOpenChange={setOpen} open={open}>
-          <Sheet.Trigger render={<Button>Inline trigger</Button>} />
-          <Sheet.Content>
-            <SampleContent />
-          </Sheet.Content>
-        </Sheet>
-      </Flex>
-    );
-  },
-};
-
-export const NoHeader: Story = {
-  render: () => (
-    <Sheet>
-      <Sheet.Trigger render={<Button>Open sheet</Button>} />
-      <Sheet.Content>
-        <Sheet.Body>
-          <Text size="sm">A simple sheet with no header, title, or description.</Text>
-        </Sheet.Body>
-      </Sheet.Content>
-    </Sheet>
   ),
 };
 
@@ -177,4 +118,85 @@ export const Size: Story = {
       </Sheet>
     </Flex>
   ),
+};
+
+export const NoHeader: Story = {
+  render: () => (
+    <Sheet>
+      <Sheet.Trigger>Open sheet</Sheet.Trigger>
+      <Sheet.Content>
+        <Sheet.Body>
+          <Text size="sm">A simple sheet with no header, title, or description.</Text>
+        </Sheet.Body>
+      </Sheet.Content>
+    </Sheet>
+  ),
+};
+
+export const CustomTrigger: Story = {
+  render: () => (
+    <Sheet>
+      <Sheet.Trigger
+        render={
+          <Button icon={<OrigamiIcon />} variant="info">
+            Open sheet
+          </Button>
+        }
+      />
+      <Sheet.Content>
+        <SampleContent />
+      </Sheet.Content>
+    </Sheet>
+  ),
+};
+
+export const SimpleTrigger: Story = {
+  render: () => (
+    <Sheet>
+      <Sheet.Trigger nativeButton={false} render={<Text className="cursor-pointer hover:underline">Open sheet</Text>} />
+      <Sheet.Content>
+        <SampleContent />
+      </Sheet.Content>
+    </Sheet>
+  ),
+};
+
+export const NoCloseButton: Story = {
+  render: () => (
+    <Sheet>
+      <Sheet.Trigger>Open sheet</Sheet.Trigger>
+      <Sheet.Content showCloseButton={false}>
+        <SampleContent />
+      </Sheet.Content>
+    </Sheet>
+  ),
+};
+
+export const NoOverlay: Story = {
+  render: () => (
+    <Sheet>
+      <Sheet.Trigger>Open sheet</Sheet.Trigger>
+      <Sheet.Content showOverlay={false}>
+        <SampleContent />
+      </Sheet.Content>
+    </Sheet>
+  ),
+};
+
+export const Controlled: Story = {
+  render: () => {
+    const [open, setOpen] = useState(false);
+
+    return (
+      <Flex gap="4">
+        <Button onClick={() => setOpen(!open)}>External trigger</Button>
+        <Sheet onOpenChange={setOpen} open={open}>
+          <Sheet.Trigger render={<Button>Inline trigger</Button>} />
+          <Sheet.Content>
+            <SampleContent />
+          </Sheet.Content>
+        </Sheet>
+      </Flex>
+    );
+  },
 };

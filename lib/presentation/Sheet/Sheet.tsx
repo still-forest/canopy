@@ -32,6 +32,7 @@ const SheetContent = ({ className, size, ...props }: SheetContentProps) => {
         size === "full" && "data-[side=left]:sm:min-w-[calc(100%-2rem)] data-[side=right]:sm:min-w-[calc(100%-2rem)]",
         "data-[side=left]:w-[90%] data-[side=right]:w-[90%]",
         "data-[side=left]:sm:max-w-md data-[side=right]:sm:max-w-md",
+        "data-[side=bottom]:max-h-[90dvh] data-[side=top]:max-h-[90dvh]",
         className,
       )}
       {...props}
@@ -44,7 +45,7 @@ const SheetTitle = ({ className, ...props }: ComponentProps<typeof SheetTitlePri
 };
 
 const SheetBody = ({ className, ...props }: ComponentProps<"div">) => {
-  return <div className={cn("flex-1 p-4", className)} data-slot="sheet-body" {...props} />;
+  return <div className={cn("flex-1 p-4 overflow-y-auto", className)} data-slot="sheet-body" {...props} />;
 };
 
 Sheet.Trigger = SheetTrigger;
