@@ -16,6 +16,15 @@ export default meta;
 
 type Story = StoryObj<typeof meta>;
 
+const SampleFooter = () => (
+  <Sheet.Footer>
+    <Flex gap="2" justify="end">
+      <Sheet.Close render={<Button variant="ghost">Cancel</Button>} />
+      <Button>Save</Button>
+    </Flex>
+  </Sheet.Footer>
+);
+
 const SampleContent = () => (
   <>
     <Sheet.Header>
@@ -25,6 +34,7 @@ const SampleContent = () => (
     <Sheet.Body>
       <Text size="sm">{exceptionallyLongText}</Text>
     </Sheet.Body>
+    <SampleFooter />
   </>
 );
 
@@ -34,23 +44,6 @@ export const Default: Story = {
       <Sheet.Trigger render={<Button>Open sheet</Button>} />
       <Sheet.Content>
         <SampleContent />
-      </Sheet.Content>
-    </Sheet>
-  ),
-};
-
-export const WithFooter: Story = {
-  render: () => (
-    <Sheet>
-      <Sheet.Trigger render={<Button>Open sheet</Button>} />
-      <Sheet.Content>
-        <SampleContent />
-        <Sheet.Footer>
-          <Flex gap="2" justify="end">
-            <Sheet.Close render={<Button variant="ghost">Cancel</Button>} />
-            <Button>Save changes</Button>
-          </Flex>
-        </Sheet.Footer>
       </Sheet.Content>
     </Sheet>
   ),
@@ -136,12 +129,6 @@ export const Scrolling: Story = {
       <Sheet.Trigger render={<Button>Open sheet</Button>} />
       <Sheet.Content>
         <SampleContent />
-        <Sheet.Footer>
-          <Flex gap="2" justify="end">
-            <Sheet.Close render={<Button variant="ghost">Cancel</Button>} />
-            <Button>Save changes</Button>
-          </Flex>
-        </Sheet.Footer>
       </Sheet.Content>
     </Sheet>
   ),
