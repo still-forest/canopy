@@ -1,4 +1,4 @@
-import { exceptionallyLongText, sampleParagraphText } from "@stories/support/sampleText";
+import { exceptionallyLongText } from "@stories/support/sampleText";
 import type { Meta, StoryObj } from "@storybook/react-vite";
 import { OrigamiIcon } from "lucide-react";
 import { useState } from "react";
@@ -28,7 +28,7 @@ const SampleHeader = () => (
 
 const SampleBody = () => (
   <Dialog.Body>
-    <Text>{sampleParagraphText[0]}</Text>
+    <Text>{exceptionallyLongText}</Text>
   </Dialog.Body>
 );
 
@@ -49,7 +49,7 @@ const SampleContent = () => (
 export const Default: Story = {
   render: () => (
     <Dialog>
-      <ButtonTrigger label="Open dialog" />
+      <Dialog.Trigger>Open dialog</Dialog.Trigger>
       <Dialog.Content>
         <SampleContent />
       </Dialog.Content>
@@ -57,21 +57,59 @@ export const Default: Story = {
   ),
 };
 
-export const NoDescription: Story = {
+export const Size: Story = {
   render: () => (
-    <Dialog>
-      <ButtonTrigger label="Open dialog" />
-      <Dialog.Content>
-        <SampleContent />
-      </Dialog.Content>
-    </Dialog>
+    <Flex gap="4">
+      <Dialog>
+        <ButtonTrigger label="Default size" />
+        <Dialog.Content>
+          <SampleContent />
+        </Dialog.Content>
+      </Dialog>
+      <Dialog>
+        <ButtonTrigger label="Size = 'lg'" />
+        <Dialog.Content size="lg">
+          <SampleContent />
+        </Dialog.Content>
+      </Dialog>
+      <Dialog>
+        <ButtonTrigger label="Size = 'xl'" />
+        <Dialog.Content size="xl">
+          <SampleContent />
+        </Dialog.Content>
+      </Dialog>
+      <Dialog>
+        <ButtonTrigger label="Size = '2xl'" />
+        <Dialog.Content size="2xl">
+          <SampleContent />
+        </Dialog.Content>
+      </Dialog>
+      <Dialog>
+        <ButtonTrigger label="Size = '3xl'" />
+        <Dialog.Content size="3xl">
+          <SampleContent />
+        </Dialog.Content>
+      </Dialog>
+      <Dialog>
+        <ButtonTrigger label="Size = '4xl'" />
+        <Dialog.Content size="4xl">
+          <SampleContent />
+        </Dialog.Content>
+      </Dialog>
+      <Dialog>
+        <ButtonTrigger label="Size = 'full'" />
+        <Dialog.Content size="full">
+          <SampleContent />
+        </Dialog.Content>
+      </Dialog>
+    </Flex>
   ),
 };
 
-export const NoTitleOrDescription: Story = {
+export const NoHeader: Story = {
   render: () => (
     <Dialog>
-      <ButtonTrigger label="Open dialog" />
+      <Dialog.Trigger>Open dialog</Dialog.Trigger>
       <Dialog.Content>
         <SampleBody />
         <SampleFooter />
@@ -127,68 +165,4 @@ export const Controlled: Story = {
       </Flex>
     );
   },
-};
-
-export const Sizes: Story = {
-  render: () => (
-    <Flex gap="4">
-      <Dialog>
-        <ButtonTrigger label="Default size" />
-        <Dialog.Content>
-          <SampleContent />
-        </Dialog.Content>
-      </Dialog>
-      <Dialog>
-        <ButtonTrigger label="Size = 'lg'" />
-        <Dialog.Content size="lg">
-          <SampleContent />
-        </Dialog.Content>
-      </Dialog>
-      <Dialog>
-        <ButtonTrigger label="Size = 'xl'" />
-        <Dialog.Content size="xl">
-          <SampleContent />
-        </Dialog.Content>
-      </Dialog>
-      <Dialog>
-        <ButtonTrigger label="Size = '2xl'" />
-        <Dialog.Content size="2xl">
-          <SampleContent />
-        </Dialog.Content>
-      </Dialog>
-      <Dialog>
-        <ButtonTrigger label="Size = '3xl'" />
-        <Dialog.Content size="3xl">
-          <SampleContent />
-        </Dialog.Content>
-      </Dialog>
-      <Dialog>
-        <ButtonTrigger label="Size = '4xl'" />
-        <Dialog.Content size="4xl">
-          <SampleContent />
-        </Dialog.Content>
-      </Dialog>
-      <Dialog>
-        <ButtonTrigger label="Size = 'full'" />
-        <Dialog.Content size="full">
-          <SampleContent />
-        </Dialog.Content>
-      </Dialog>
-    </Flex>
-  ),
-};
-
-export const Scrolling: Story = {
-  render: () => (
-    <Dialog>
-      <ButtonTrigger label="Open dialog" />
-      <Dialog.Content>
-        <SampleHeader />
-        <Dialog.Body>
-          <Text>{exceptionallyLongText}</Text>
-        </Dialog.Body>
-        <SampleFooter />
-      </Dialog.Content>
-    </Dialog>
-  ),
 };

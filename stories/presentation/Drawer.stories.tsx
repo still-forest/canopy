@@ -1,5 +1,6 @@
-import { exceptionallyLongText, sampleParagraphText } from "@stories/support/sampleText";
+import { exceptionallyLongText } from "@stories/support/sampleText";
 import type { Meta, StoryObj } from "@storybook/react-vite";
+import { OrigamiIcon } from "lucide-react";
 import { useState } from "react";
 import { Button } from "@/buttons";
 import { Flex } from "@/layout";
@@ -16,81 +17,97 @@ export default meta;
 
 type Story = StoryObj<typeof meta>;
 
+const SampleHeader = () => (
+  <Drawer.Header>
+    <Drawer.Title>Drawer title</Drawer.Title>
+    <Drawer.Description>This is a description of the drawer content.</Drawer.Description>
+  </Drawer.Header>
+);
+
+const SampleBody = () => (
+  <Drawer.Body>
+    <Text size="sm">{exceptionallyLongText}</Text>
+  </Drawer.Body>
+);
+
+const SampleFooter = () => (
+  <Drawer.Footer>
+    <Drawer.Close render={<Button>Close</Button>} />
+  </Drawer.Footer>
+);
+
+const SampleContent = () => (
+  <>
+    <SampleHeader />
+    <SampleBody />
+    <SampleFooter />
+  </>
+);
+
 export const Default: Story = {
   render: () => (
     <Drawer>
-      <Drawer.Trigger render={<Button>Open drawer</Button>} />
+      <Drawer.Trigger>Open drawer</Drawer.Trigger>
       <Drawer.Content>
-        <Drawer.Header>
-          <Drawer.Title>Drawer title</Drawer.Title>
-          <Drawer.Description>This is a description of the drawer content.</Drawer.Description>
-        </Drawer.Header>
-        <Drawer.Body>
-          <Text size="sm">{sampleParagraphText[0]}</Text>
-        </Drawer.Body>
-        <Drawer.Footer>
-          <Drawer.Close render={<Button>Close</Button>} />
-        </Drawer.Footer>
+        <SampleContent />
       </Drawer.Content>
     </Drawer>
   ),
 };
 
-export const SwipeRight: Story = {
+export const SwipeDirection: Story = {
   render: () => (
-    <Drawer swipeDirection="right">
-      <Drawer.Trigger render={<Button>Open drawer</Button>} />
+    <Flex gap="4">
+      {(["right", "left", "up", "down"] as const).map((direction) => (
+        <Drawer key={direction} swipeDirection={direction}>
+          <Drawer.Trigger render={<Button>{direction}</Button>} />
+          <Drawer.Content>
+            <SampleContent />
+          </Drawer.Content>
+        </Drawer>
+      ))}
+    </Flex>
+  ),
+};
+
+export const NoHeader: Story = {
+  render: () => (
+    <Drawer>
+      <Drawer.Trigger>Open drawer</Drawer.Trigger>
       <Drawer.Content>
-        <Drawer.Header>
-          <Drawer.Title>Drawer title</Drawer.Title>
-          <Drawer.Description>This is a description of the drawer content.</Drawer.Description>
-        </Drawer.Header>
-        <Drawer.Body>
-          <Text size="sm">{sampleParagraphText[0]}</Text>
-        </Drawer.Body>
-        <Drawer.Footer>
-          <Drawer.Close render={<Button>Close</Button>} />
-        </Drawer.Footer>
+        <SampleBody />
+        <SampleFooter />
       </Drawer.Content>
     </Drawer>
   ),
 };
 
-export const SwipeLeft: Story = {
+export const CustomTrigger: Story = {
   render: () => (
-    <Drawer swipeDirection="left">
-      <Drawer.Trigger render={<Button>Open drawer</Button>} />
+    <Drawer>
+      <Drawer.Trigger
+        render={
+          <Button icon={<OrigamiIcon />} variant="info">
+            Open drawer
+          </Button>
+        }
+      />
       <Drawer.Content>
-        <Drawer.Header>
-          <Drawer.Title>Drawer title</Drawer.Title>
-          <Drawer.Description>This is a description of the drawer content.</Drawer.Description>
-        </Drawer.Header>
-        <Drawer.Body>
-          <Text size="sm">{sampleParagraphText[0]}</Text>
-        </Drawer.Body>
-        <Drawer.Footer>
-          <Drawer.Close render={<Button>Close</Button>} />
-        </Drawer.Footer>
+        <SampleContent />
       </Drawer.Content>
     </Drawer>
   ),
 };
 
-export const SwipeUp: Story = {
+export const SimpleTrigger: Story = {
   render: () => (
-    <Drawer swipeDirection="up">
-      <Drawer.Trigger render={<Button>Open drawer</Button>} />
+    <Drawer>
+      <Drawer.Trigger
+        nativeButton={false}
+        render={<Text className="cursor-pointer hover:underline">Open drawer</Text>}
+      />
       <Drawer.Content>
-        <Drawer.Header>
-          <Drawer.Title>Drawer title</Drawer.Title>
-          <Drawer.Description>This is a description of the drawer content.</Drawer.Description>
-        </Drawer.Header>
-        <Drawer.Body>
-          <Text size="sm">{sampleParagraphText[0]}</Text>
-        </Drawer.Body>
-        <Drawer.Footer>
-          <Drawer.Close render={<Button>Close</Button>} />
-        </Drawer.Footer>
+        <SampleContent />
       </Drawer.Content>
     </Drawer>
   ),
@@ -106,49 +123,10 @@ export const Controlled: Story = {
         <Drawer onOpenChange={setOpen} open={open}>
           <Drawer.Trigger render={<Button>Inline trigger</Button>} />
           <Drawer.Content>
-            <Drawer.Header>
-              <Drawer.Title>Controlled drawer</Drawer.Title>
-              <Drawer.Description>Opened via external state.</Drawer.Description>
-            </Drawer.Header>
-            <Drawer.Body>
-              <Text size="sm">{sampleParagraphText[0]}</Text>
-            </Drawer.Body>
+            <SampleContent />
           </Drawer.Content>
         </Drawer>
       </Flex>
     );
   },
-};
-
-export const NoHeader: Story = {
-  render: () => (
-    <Drawer>
-      <Drawer.Trigger render={<Button>Open drawer</Button>} />
-      <Drawer.Content>
-        <Drawer.Body>
-          <Text size="sm">A simple drawer with no header, title, or description.</Text>
-        </Drawer.Body>
-      </Drawer.Content>
-    </Drawer>
-  ),
-};
-
-export const Scrolling: Story = {
-  render: () => (
-    <Drawer>
-      <Drawer.Trigger render={<Button>Open drawer</Button>} />
-      <Drawer.Content>
-        <Drawer.Header>
-          <Drawer.Title>Drawer title</Drawer.Title>
-          <Drawer.Description>This is a description of the drawer content.</Drawer.Description>
-        </Drawer.Header>
-        <Drawer.Body>
-          <Text size="sm">{exceptionallyLongText}</Text>
-        </Drawer.Body>
-        <Drawer.Footer>
-          <Drawer.Close render={<Button>Close</Button>} />
-        </Drawer.Footer>
-      </Drawer.Content>
-    </Drawer>
-  ),
 };
