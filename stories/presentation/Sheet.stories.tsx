@@ -133,6 +133,28 @@ export const NoHeader: Story = {
   ),
 };
 
+export const NoCloseButton: Story = {
+  render: () => (
+    <Sheet>
+      <Sheet.Trigger>Open sheet</Sheet.Trigger>
+      <Sheet.Content showCloseButton={false}>
+        <SampleContent />
+      </Sheet.Content>
+    </Sheet>
+  ),
+};
+
+export const NoOverlay: Story = {
+  render: () => (
+    <Sheet>
+      <Sheet.Trigger>Open sheet</Sheet.Trigger>
+      <Sheet.Content showOverlay={false}>
+        <SampleContent />
+      </Sheet.Content>
+    </Sheet>
+  ),
+};
+
 export const CustomTrigger: Story = {
   render: () => (
     <Sheet>
@@ -155,28 +177,6 @@ export const SimpleTrigger: Story = {
     <Sheet>
       <Sheet.Trigger nativeButton={false} render={<Text className="cursor-pointer hover:underline">Open sheet</Text>} />
       <Sheet.Content>
-        <SampleContent />
-      </Sheet.Content>
-    </Sheet>
-  ),
-};
-
-export const NoCloseButton: Story = {
-  render: () => (
-    <Sheet>
-      <Sheet.Trigger>Open sheet</Sheet.Trigger>
-      <Sheet.Content showCloseButton={false}>
-        <SampleContent />
-      </Sheet.Content>
-    </Sheet>
-  ),
-};
-
-export const NoOverlay: Story = {
-  render: () => (
-    <Sheet>
-      <Sheet.Trigger>Open sheet</Sheet.Trigger>
-      <Sheet.Content showOverlay={false}>
         <SampleContent />
       </Sheet.Content>
     </Sheet>

@@ -70,6 +70,21 @@ export const SwipeDirection: Story = {
   ),
 };
 
+export const SwipeHandle: Story = {
+  render: () => (
+    <Flex gap="4">
+      {(["right", "left", "up", "down"] as const).map((direction) => (
+        <Drawer key={direction} showSwipeHandle={true} swipeDirection={direction}>
+          <Drawer.Trigger render={<Button>{direction}</Button>} />
+          <Drawer.Content>
+            <SampleContent />
+          </Drawer.Content>
+        </Drawer>
+      ))}
+    </Flex>
+  ),
+};
+
 export const NoHeader: Story = {
   render: () => (
     <Drawer>
@@ -108,6 +123,34 @@ export const SimpleTrigger: Story = {
       />
       <Drawer.Content>
         <SampleContent />
+      </Drawer.Content>
+    </Drawer>
+  ),
+};
+
+const renderNestedDrawer = ({ children }: { children: React.ReactNode }) => (
+  <Drawer>
+    <Drawer.Trigger render={<Button variant="info">Open nested drawer</Button>} />
+    <Drawer.Content>
+      <SampleHeader />
+      <Drawer.Body>{children}</Drawer.Body>
+      <SampleFooter />
+    </Drawer.Content>
+  </Drawer>
+);
+
+const drawer3 = renderNestedDrawer({ children: <>and so on, and so forth</> });
+const drawer2 = renderNestedDrawer({ children: drawer3 });
+const drawer1 = renderNestedDrawer({ children: drawer2 });
+
+export const Nested: Story = {
+  render: () => (
+    <Drawer>
+      <Drawer.Trigger>Open drawer</Drawer.Trigger>
+      <Drawer.Content>
+        <SampleHeader />
+        <Drawer.Body>{drawer1}</Drawer.Body>
+        <SampleFooter />
       </Drawer.Content>
     </Drawer>
   ),
