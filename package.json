@@ -65,7 +65,7 @@
     "@storybook/builder-vite": "10.6.5",
     "@storybook/react-vite": "10.6.5",
     "@tailwindcss/vite": "4.3.3",
-    "@tanstack/devtools-vite": "0.8.5",
+    "@tanstack/devtools-vite": "0.8.6",
     "@tanstack/react-router": "1.170.46",
     "@tanstack/router-plugin": "1.168.48",
     "@testing-library/jest-dom": "7.0.1",
