@@ -192,8 +192,8 @@ importers:
         specifier: 2.5.15
         version: 2.5.15
       '@still-forest/biomejs-config':
-        specifier: 2.2.0
-        version: 2.2.0(@biomejs/biome@2.5.15)
+        specifier: 2.3.1
+        version: 2.3.1(@biomejs/biome@2.5.15)
       '@storybook/addon-docs':
         specifier: 10.6.5
         version: 10.6.5(@types/react-dom@19.3.0(@types/react@19.3.0))(@types/react@19.3.0)(storybook@10.6.5(@types/react@19.3.0)(prettier@3.9.9)(react@19.3.1))
@@ -1646,10 +1646,10 @@ packages:
       rollup:
         optional: true
 
-  '@still-forest/biomejs-config@2.2.0':
-    resolution: {integrity: sha512-+KomUBvMv9ld/djnhGEATM/c19/3Ihfr+GcI1g6OsAbVVXDHnczj0Ig1CHhG3FHTN/qkcep3va2nke/g78+1Rw==}
+  '@still-forest/biomejs-config@2.3.1':
+    resolution: {integrity: sha512-s/iTtCyWNdECTnnwD2w05AcZTNgA7OtqTpMcKG4UgZ/qFhZM41XkZkLsv1zjTCM/p0R2DIu93ILJKTvmPrAMhQ==}
     peerDependencies:
-      '@biomejs/biome': ^2.3.2
+      '@biomejs/biome': ^2.6.2
 
   '@storybook/addon-docs@10.6.5':
     resolution: {integrity: sha512-Kt0pGLA+nwdu2g80p8jbdoiiKXxwQbhrY6uzMzq/0G1lytxpJUzrOQAM+GDcEbqyvpKr0u5d1q05/LPem/uooQ==}
@@ -4756,7 +4756,7 @@ snapshots:
       estree-walker: 2.0.2
       picomatch: 4.0.7
 
-  '@still-forest/biomejs-config@2.2.0(@biomejs/biome@2.5.15)':
+  '@still-forest/biomejs-config@2.3.1(@biomejs/biome@2.5.15)':
     dependencies:
       '@biomejs/biome': 2.5.15
 
